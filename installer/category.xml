@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+	<description>TestNG p2 repository</description>
+	<feature url="features/org.testng.eclipse_0.0.0.jar" id="org.testng.eclipse" version="0.0.0" >
+		<category name="jbds" />
+	</feature>
+	<category-def name="jbds" label="JBoss Developer Studio">
+		<description>JBoss Developer Studio Features</description>
+	</category-def>
+</site>

@@ -1,0 +1,178 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	margin:0;
+	padding:0;
+	text-align:center;
+	background:url(../graphics/root4page/welcome_bkg.png) #660000 no-repeat;
+}
+
+/*
+ * to disablet scrollbars in both IE and Mozilla
+ */
+html,body { overflow: hidden; }
+html>body { overflow: hidden; }
+
+#header {
+	background:url(../graphics/root4page/header_bkg.png) repeat-x;
+	height:79px;
+	text-align: left;
+}
+
+#welcome {
+	background:url(../graphics/root4page/welcome.png) no-repeat;
+	height:97px;
+	width:563px;
+
+}
+
+#welcome a {
+	color:red;
+	display:block;
+}
+
+#welcome img {
+float: left;
+}
+
+
+#welcome a .link-label {
+	color:red;
+	margin-left:-9999px;	
+}
+
+#welcome a .link-extra-div {
+	display :none;
+}
+
+#workbench {
+	position:absolute;
+	top:0;
+	right:20px;	
+	width:130px;
+}
+
+#workbench a img {
+	background:url(../graphics/root4page/workbench.png) no-repeat;
+	display:block;
+	float:right;
+	height:41px;
+	width:43px;
+}
+
+#workbench a {
+	color:#660000;	
+}
+
+#workbench a:hover {
+	color:#C00;	
+}
+
+#welcome a .link-extra-div {
+	display :none;
+}
+
+#workbench b, #workbench a .link-label {
+	display:block;	
+	float:left;
+	padding: 20px 0 0 0;
+	font-weight: bold;
+}
+
+#separator {
+	height: 20px;
+	clear:both;
+}
+
+#icons {
+	width:500px;
+	margin:50px auto;
+	background-image:url(../graphics/root4page/icon_bkg.png);
+    -moz-box-shadow: 4px 4px 4px #330000;
+    -webkit-box-shadow: 4px 4px 4px #330000;
+    box-shadow: 4px 4px 4px #330000;
+	<!--[if IE 8]>
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#330000')";
+	<![endif]-->
+	<!--[if lte IE 7]> 
+    	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#330000');
+	<![endif]-->
+	min-width:465px;
+	padding-top: 100px;
+	padding-bottom: 100px; 
+	padding-left:30px;
+	padding-right: 30px;
+}
+
+a#getting-started {
+	color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+	background:url(../graphics/root4page/icon-getstartedwithcentral.png) no-repeat left 0px;
+	height:110px;
+	width:500px;
+	text-indent:-9999px;
+}
+
+#icons a {
+	background-position:30px 0px !Important;
+}
+#icons a:hover {
+	background-position:30px -110px !Important;
+}
+
+#footer {
+	background:url(../graphics/root4page/footer_bkg.png) repeat-x left 0px;	
+	position:absolute;
+	height:42px;
+	bottom:0;
+	right:0;
+	padding-left:9999px; 
+	padding-top:29px;
+	z-index: 100; 
+}
+
+
+#footer a .link-extra-div {
+	display :none;
+}
+
+#logos {
+	background:url(../graphics/root4page/logos.png) no-repeat;
+	position:relative;
+	bottom:0;
+	right:0;
+}
+
+a {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#FFF;
+	font-size:12px;
+	text-decoration:none;
+}
+
+a {
+    outline: none;
+ }
+ 
+a img {
+    border:none;
+ }
+ 
+/* Needed in IE to get shift+tab to don't show the active image border */
+a:active {
+	border : none 0px;
+}
+
+.clearfix {
+	clear:both;
+	height:0;
+	font-size:1px;
+	width:100%;
+	overflow:hidden;
+}
+
+img {
+	border:none;	
+}
+img, div, a, span, h1 { behavior: url(iepngfix.htc); }

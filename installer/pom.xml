@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.jboss.jbds</groupId>
+    <artifactId>product</artifactId>
+    <version>7.0.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.jboss.jbds</groupId>
+  <artifactId>universal-installer</artifactId>
+  <packaging>eclipse-repository</packaging>
+  <properties>
+    <!--
+      By default, use EAP 6.1.0.Alpha, which is publically available. This allows JBDS to be build locally w/o needing access to devel.redhat.com
+      To build the EAP bundled installer, use the "eap" profile: `mvn install -Peap`
+     -->
+    <eapVersion>6.1.0.Alpha</eapVersion>
+    <eapURL>http://download.jboss.org/jbosseap/6/jboss-eap-6.1.0.Alpha/jboss-eap-6.1.0.Alpha.zip</eapURL>
+    <eapMD5>21ab4c71230ca9fd311c265be24b6505</eapMD5>
+    <eapRootFolder>jboss-eap-6.1</eapRootFolder>
+    <buildEAPBundle>false</buildEAPBundle>
+
+    <IzPackVersion>4.3.5</IzPackVersion>
+  </properties>
+
+  <profiles>
+    <!-- 
+      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.1 Beta, which is not a public URL (unlike 6.1.0.Alpha).
+    -->
+    <profile>
+      <id>hudson</id>
+      <properties>
+        <eapVersion>6.1.0</eapVersion>
+        <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.1.0/jboss-eap-6.1.0.zip</eapURL>
+        <eapMD5>ff56dc5dc233dc4e0e153e3cfb2ecb1c</eapMD5>
+      </properties>
+    </profile>
+
+    <!-- 
+      Profile to optionally build an installer bundled w/ EAP as well as a Standalone one.
+    -->
+    <profile>
+      <id>eap</id>
+      <properties>
+        <buildEAPBundle>true</buildEAPBundle>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.googlecode.maven-download-plugin</groupId>
+            <artifactId>maven-download-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>get-EAP</id>
+                <phase>process-resources</phase>
+                <goals>
+                  <goal>wget</goal>
+                </goals>
+                <configuration>
+                  <url>${eapURL}</url>
+                  <md5>${eapMD5}</md5>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+  <repositories>
+    <repository>
+      <!-- use TestNG mirror instead jboss-requirements-composite-extras-mirror site, because of partial IUs from non-p2-enabled sites, which fail to resolve when building with Tycho 0.18.0 -->
+      <id>TestNG</id>
+      <url>https://devstudio.jboss.com/updates/requirements/testng/6.8.1.20130330_0839/</url>
+      <layout>p2</layout>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <outputDirectory>${project.build.directory}</outputDirectory>
+          <resources>
+            <resource>
+              <directory>src/main/resources</directory>
+              <includes>
+                <include>*.xml</include>
+              </includes>
+            </resource>
+          </resources>
+        </configuration>
+        <executions>
+          <execution>
+            <id>copy-metadata</id>
+            <!-- here the phase you need -->
+            <phase>process-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/update</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-publisher-plugin</artifactId>
+        <version>${tychoVersion}</version>
+        <configuration>
+          <publishArtifacts>true</publishArtifacts>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>2.4</version>
+        <executions>
+          <execution>
+            <id>unpack</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>unpack</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.jboss.jbds.site</groupId>
+                  <artifactId>com.jboss.jbds.site.product</artifactId>
+                  <version>${project.version}</version>
+                  <type>zip</type>
+                </artifactItem>
+              </artifactItems>
+              <outputDirectory>${project.build.directory}/update/jbds</outputDirectory>
+              <excludes>**/*.pack.gz</excludes>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-director</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>copy</goal>
+            </goals>
+            <configuration>
+              <artifactItems>
+                <artifactItem>
+                  <groupId>com.jboss.jbds.installer.p2-director</groupId>
+                  <artifactId>p2-director</artifactId>
+                  <version>${project.version}</version>
+                  <type>zip</type>
+                  <classifier>dist</classifier>
+                  <destFileName>p2-director.zip</destFileName>
+                </artifactItem>
+              </artifactItems>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.googlecode.maven-download-plugin</groupId>
+        <artifactId>maven-download-plugin</artifactId>
+        <executions>
+          <!-- get IzPack installer if not already present -->
+          <execution>
+            <id>get-IzPack</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <url>http://dist.codehaus.org/izpack/releases/${IzPackVersion}/IzPack-install-${IzPackVersion}.jar</url>
+              <md5>719267e4d0c2380447e671e6ccb8a0d3</md5>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>${maven.antrun.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>install</id>
+            <phase>install</phase>
+            <configuration>
+              <quiet>true</quiet>
+              <tasks>
+                <echo>Basedir: ${basedir}</echo>
+                <!-- regenerate IzPack auto-install.xml script to set correct target folder -->
+                <echo>Prepare IzPack auto-install script</echo>
+                <loadfile srcfile="${basedir}/IzPack-auto-install.xml" property="IzPack-auto-install.xml.updated">
+                  <filterchain>
+                    <expandproperties/>
+                  </filterchain>
+                </loadfile>
+                <echo file="${project.build.directory}/IzPack-${IzPackVersion}-auto-install.xml">${IzPack-auto-install.xml.updated}</echo>
+
+                <!-- install IzPack if not already present -->
+                <echo>Install IzPack from auto-install script</echo>
+                <java jar="${project.build.directory}/requirements/IzPack-install-${IzPackVersion}.jar" fork="true" failonerror="true" maxmemory="128m">
+                  <arg line="${project.build.directory}/IzPack-${IzPackVersion}-auto-install.xml"/>
+                </java>
+
+                <!-- this update site zip is only used to produce the installer -->
+                <echo>Prepare update site zip </echo>
+                <move todir="${project.build.directory}/update/testng">
+                  <fileset dir="${project.build.directory}/repository" />
+                </move>
+                <zip
+                  destfile="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip"
+                  whenempty="fail">
+                  <fileset dir="${project.build.directory}/update" includes="*.xml"
+                    excludes="category.xml" />
+                  <zipfileset dir="${project.build.directory}/update/jbds"
+                    prefix="jbds" />
+                  <zipfileset dir="${project.build.directory}/update/testng"
+                    prefix="testng" />
+                </zip>
+
+                <ant antfile="build.xml">
+                  <property name="buildEAPBundle" value="${buildEAPBundle}"/>
+                  <property name="artifacts.p2-director" value="${project.build.directory}/requirements/p2-director.zip" />
+                  <property name="artifacts.jbds.update"
+                    value="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip" />
+                  <property name="artifacts.jbosseap"
+                    location="${project.build.directory}/requirements/jboss-eap-${eapVersion}.zip" />
+                  <property name="eapRootFolder" value="${eapRootFolder}"/>
+                  <property name="destination.dir" value="${project.build.directory}" />
+                  <property name="izpack.home"
+                    value="${project.build.directory}/IzPack-${IzPackVersion}" />
+                  <property name="skip.ant.actions" value="true" />
+                  <property name="buildQualifier" value="${buildQualifier}" />
+                  <property name="product.buildType" value="R" />
+                  <!-- properties previously included in version.properties -->
+                  <property name="project.version" value="${project.version}" />
+                  <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
+                </ant>
+                <!-- clean up build-time artifacts so they won't be published -->
+                <delete includeEmptyDirs="true" quiet="true">
+                  <fileset dir="${project.build.directory}/update"/>
+                  <fileset file="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip"/>
+                </delete>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>ant</groupId>
+            <artifactId>ant-optional</artifactId>
+            <version>1.5.3-1</version>
+          </dependency>
+          <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>1.4.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-nodeps</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-trax</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-commons-net</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-apache-regexp</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>ant-contrib</groupId>
+            <artifactId>ant-contrib</artifactId>
+            <version>1.0b3</version>
+          </dependency>
+          <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.5.0</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+</project>

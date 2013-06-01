@@ -1,0 +1,241 @@
+<project default="build" name="jbds aggregate sources build.xml">
+  <!-- if ${WORKSPACE}/site folder exists, target that folder; else generate here. -->
+  <condition property="output.dir" value="${WORKSPACE}/results" else="${basedir}">
+    <available file="${WORKSPACE}/results" />
+  </condition>
+
+  <property name="tmpdir" value="${java.io.tmpdir}/jbds-results-build" />
+
+  <property name="project.build.directory" value="${output.dir}/target"/>
+
+  <target name="init">
+    <echo level="verbose">
+This script requires Ant 1.8+ and JDK 1.6+.
+-------------------------------------------
+$ant.version = ${ant.version}
+$ant.home = ${ant.home}
+$ant.java.version = ${ant.java.version}
+$java.home = ${java.home}</echo>
+    <taskdef resource="net/sf/antcontrib/antlib.xml" />
+
+    <mkdir dir="${tmpdir}" />
+    <delete dir="target/" quiet="true" />
+    <mkdir dir="target/" />
+  </target>
+
+  <target name="build" depends="init">
+
+    <!-- should be set already by Jenkins, but for local builds set a default -->
+    <property name="JOB_NAME" value="devstudio.product_trunk"/>
+    <property name="update.site.description" value="Local Build"/>
+
+    <!-- get timestamp from upstream installer build (units.unit.id = Alpha2-v20130326-1416-B6969.jbds) instead of maven since tycho and pure maven don't use the same value -->
+    <if>
+      <available file="../installer/target/p2content.xml"/>
+      <then>
+        <xmlproperty file="../installer/target/p2content.xml" collapseAttributes="true"/>
+        <propertyregex property="update.site.qualifier" defaultvalue="${units.unit.id}" input="${units.unit.id}" regexp=".jbds" replace="" override="true" />
+      </then>
+      <else>
+        <if>
+          <isset property="BUILD_NUMBER"/>
+          <then>
+            <var name="update.site.qualifier" value="${update.site.qualifier}-B${BUILD_NUMBER}"/>
+          </then>
+        </if>
+      </else>
+    </if>
+
+    <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
+
+    <path id="jbds-installer-universal-file-id"><fileset dir="../installer/target"><include name="jbdevstudio-product-universal-*.jar"/></fileset></path><property name="jbds-installer-universal-file" refid="jbds-installer-universal-file-id"/>
+    <path id="jbds-installer-eap-universal-file-id"><fileset dir="../installer/target"><include name="jbdevstudio-product-eap-universal-*.jar"/></fileset></path><property name="jbds-installer-eap-universal-file" refid="jbds-installer-eap-universal-file-id"/>
+
+    <echo level="verbose">update.site.version = ${update.site.version}, update.site.qualifier = ${update.site.qualifier}</echo>
+
+    <!-- no longer needed; just copy the file to the right folder -->
+    <path id="jbds-all-sources-file-id"><fileset dir="../sources/target"><include name="jbdevstudio-product-sources-*.zip"/></fileset></path><property name="jbds-all-sources-file" refid="jbds-all-sources-file-id"/>
+    <if>
+      <available file="${jbds-all-sources-file}" type="file"/>
+      <then>
+        <copy verbose="false" file="${jbds-all-sources-file}" tofile="${project.build.directory}/jbdevstudio-product-sources-${update.site.version}.${update.site.qualifier}.zip" preservelastmodified="true"/>
+        <var name="jbds-all-sources-file" unset="true"/>
+        <path id="jbds-all-sources-file-id2"><fileset dir="target"><include name="jbdevstudio-product-sources-*.zip"/></fileset></path>
+        <property name="jbds-all-sources-file" refid="jbds-all-sources-file-id2"/>
+      </then>
+    </if>
+
+    <!-- special case: copy the site_assembly.zip to target folder; the rest need not be moved -->
+    <!-- JBDS-2556 no longer need this zip because installer is an update site archive too! 
+    <property name="jbds-update-file" value="${basedir}/target/jbdevstudio-product-Update-${update.site.version}.${update.site.qualifier}.zip"/>
+    <if>
+      <available file="../site/target/site_assembly.zip" type="file"/>
+      <then>
+        <copy file="../site/target/site_assembly.zip" tofile="${jbds-update-file}" preservelastmodified="true" overwrite="true"/>
+      </then>
+    </if> -->
+
+    <antcall target="create.jbds.results.html">
+      <param name="update.site.qualifier" value="${update.site.qualifier}"/>
+    </antcall>
+
+    <antcall target="cleanup" />
+  </target>
+
+  <target name="cleanup">
+    <delete includeemptydirs="true" quiet="true">
+      <fileset dir="${tmpdir}" />
+    </delete>
+  </target>
+
+<!-- macros -->
+
+  <macrodef name="get.size">
+    <attribute name="file" />
+    <attribute name="property" />
+    <sequential>
+      <var name="size" unset="true" />
+      <var name="size-in-mb" unset="true" />
+      <if>
+        <available file="@{file}" />
+        <then>
+          <length file="@{file}" property="size" />
+
+          <math result="size-in-mb">
+            <op op="/">
+              <op op="floor">
+                <op op="*">
+                  <op op="/">
+                    <num value="${size}" />
+                    <num value="1048576" />
+                  </op>
+                  <num value="100" />
+                </op>
+              </op>
+              <num value="100" />
+            </op>
+          </math>
+
+          <property name="@{property}" value="${size-in-mb}" />
+        </then>
+        <else>
+          <property name="@{property}" value="-1" />
+        </else>
+      </if>
+    </sequential>
+  </macrodef>  
+
+  <target name="create.jbds.results.html">
+    <for list="jbds-installer-universal-file,jbds-installer-eap-universal-file,jbds-all-sources-file,jbds-update-file" param="this">
+      <sequential>
+        <if>
+          <available file="${@{this}}" type="file"/>
+          <then>
+            <checksum file="${@{this}}"/>
+            <loadfile srcfile="${@{this}}.MD5" property="@{this}-md5" failonerror="true" />
+            <get.size file="${@{this}}" property="@{this}-size" />
+            <basename file="${@{this}}" property="@{this}-name" />
+            <echo level="verbose">@{this} = ${@{this}}
+  :: ${@{this}-name}, ${@{this}-size}M, ${@{this}-md5}</echo>
+          </then>
+        </if>
+      </sequential>
+    </for>
+
+    <!-- use locally built files with relative paths -->
+    <antcall target="create.results.html">
+      <param name="update.site.qualifier" value="${update.site.qualifier}"/>
+      <param name="PREFIX" value="../../installer/target"/>
+      <param name="input" value="index-local-template.html"/>
+      <param name="output" value="local.html"/>
+    </antcall>
+    <!-- flatten paths and use filename instead of file; instead of absolute path, use simply .  -->
+    <antcall target="create.results.html">
+      <param name="update.site.qualifier" value="${update.site.qualifier}"/>
+      <param name="PREFIX" value="."/>
+      <param name="input" value="index-internal-template.html"/>
+      <param name="output" value="index.html"/>
+    </antcall>
+    <!-- flatten paths and use filename instead of file -->
+    <antcall target="create.results.html">
+      <param name="update.site.qualifier" value="${update.site.qualifier}"/>
+      <param name="PREFIX" value="/earlyaccess/builds/development/${update.site.version}.${BUILD_ALIAS}"/>
+      <param name="input" value="index-earlyaccess-template.html"/>
+      <param name="output" value="${update.site.version}.${BUILD_ALIAS}.html"/>
+    </antcall>
+  </target>
+
+  <!-- this method is the same in jbosstools-build-sites/aggregate/build.xml and in devstudio/product/site/build.xml -->
+  <target name="create.results.html">
+    <property name="input" value="results-template.html"/>
+    <property name="output" value="results.html"/>
+
+    <if>
+      <and>
+        <isset property="JOB_NAME"/>
+        <or>
+          <contains string="${JOB_NAME}" substring=".aggregate" />
+          <contains string="${JOB_NAME}" substring=".product" />
+        </or>
+        <isset property="update.site.description"/>
+        <isset property="TARGET_PLATFORM_VERSION_MAXIMUM"/>
+      </and>
+      <then>
+        <echo level="verbose">Generate index page for version = ${update.site.version}, qualifier = ${update.site.qualifier}</echo>
+
+        <condition property="BUILD_NUMBER_STRING" value="" else="${BUILD_NUMBER}">
+          <contains string="${BUILD_NUMBER}" substring="BUILD_NUMBER" />
+        </condition>
+
+        <property name="TARGET_PLATFORM_VERSION" value=""/>
+        <property name="TARGET_PLATFORM_VERSION_MAXIMUM" value=""/>
+        <propertyregex property="TARGET_PLATFORM_BRANCH" defaultvalue="${TARGET_PLATFORM_VERSION}" input="${TARGET_PLATFORM_VERSION}" regexp="([0-9]+\.[0-9]+)\..+" replace="\1.x" override="true" />
+        <propertyregex property="TARGET_PLATFORM_BRANCH_MAXIMUM" defaultvalue="${TARGET_PLATFORM_VERSION_MAXIMUM}" input="${TARGET_PLATFORM_VERSION_MAXIMUM}" regexp="([0-9]+\.[0-9]+)\..+" replace="\1.x" override="true" />
+
+        <echo level="verbose">Using target platform versions = ${TARGET_PLATFORM_VERSION}, ${TARGET_PLATFORM_VERSION_MAXIMUM}
+    From github branches = ${TARGET_PLATFORM_BRANCH}, ${TARGET_PLATFORM_BRANCH_MAXIMUM}</echo>
+
+        <!-- replace links to jobs w/ correct stream (eg., _41, _master, _70, _trunk) -->
+        <propertyregex property="STREAM_SUFFIX" defaultvalue="_master" input="${JOB_NAME}" regexp=".+(_[^_]+)" replace="\1" override="true"/>
+        <propertyregex property="STREAM_SUFFIX" defaultvalue="_master" input="${STREAM_SUFFIX}" regexp="_trunk" replace="_master" override="true"/>
+
+        <propertyregex property="STREAM_NAME" defaultvalue="Trunk" input="${inputRepo}" regexp=".+[^/]+/([^/]+)/*" replace="\1" override="true"/>
+        <propertyregex property="STREAM_NAME" defaultvalue="${STREAM_NAME}" input="${STREAM_NAME}" regexp="trunk" replace="Trunk" override="true"/>
+
+        <echo level="verbose">For JOB_NAME = ${JOB_NAME} and ${inputRepo} got stream = ${STREAM_SUFFIX} and ${STREAM_NAME}</echo>
+
+        <condition property="update.site.description_STRING" value="Nightly Build" else="${update.site.description}">
+          <contains string="${update.site.description}" substring="update.site.description" />
+        </condition>
+        <condition property="WARNING" value="This nightly build is a direct build from SVN/CVS and is provided as-is with no guarantees. Be advised that while there is no prior proof, if this build sets fire to your computer, you were sufficiently warned!" else="This build has been deemed by the JBossTools team to be in good working condition. Please note that this build may be a developer release, and if so should be treated with slightly more understanding and care than a stable release. Please see the release notes on JIRA and/or Sourceforge for further information.">
+          <contains string="${update.site.description_STRING}" substring="Nightly"/>
+        </condition>
+
+        <!-- set IDs for the chart widgets from the views -->
+        <!-- tests trend chart -->
+        <condition property="PORTLET.1" value="20174" else="27842">
+          <contains string="${JOB_NAME}" substring="_41" />
+        </condition>
+        <!-- tests pie chart -->
+        <condition property="PORTLET.2" value="25688" else="23303">
+          <contains string="${JOB_NAME}" substring="_41" />
+        </condition>
+
+        <!-- use locally built files with relative paths -->
+        <echo level="verbose">Generate ${project.build.directory}/${output} from ${input}</echo>
+        <copy todir="${project.build.directory}" overwrite="true">
+          <fileset file="${input}" />
+          <mapper type="merge" to="${output}" />
+          <filterchain>
+            <expandproperties />
+          </filterchain>
+        </copy>
+
+      </then>
+      <else>
+        <echo level="verbose">Skip generating results.html: update.site.description and TARGET_PLATFORM_VERSION_MAXIMUM are not set, and JOB_NAME does not contain .aggregate or .product.</echo>
+      </else>
+    </if>
+  </target>
+
+</project>

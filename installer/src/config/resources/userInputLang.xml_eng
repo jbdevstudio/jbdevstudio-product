@@ -1,0 +1,22 @@
+<langpack>
+  <str id="description.radio" txt="Do you want to install the JBoss Enterprise Application Platform that comes with JBoss Developer Studio ?"/>
+  <str id="radio.label.1" txt="Yes, and have it ready for use in Developer Studio"/>
+  <str id="radio.label.2" txt="No"/>
+  
+  <!-- JMX Security Panel -->
+   <str id="secureJmxConnector" txt="Secure jmx-invoker-service"/>
+   <str id="secureJmxConsole" txt="Secure jmx-console.war"/>
+   <str id="secureRmiHttpConnector" txt="Secure http invoker"/>
+   <str id="secureWebConsole" txt="Secure web-console.war"/>
+   <str id="serverConfigName.text" txt="The jboss server/xxx configuration name, e.g., default, all"/>
+   <str id="serverconf.note" txt="Note: Using a configuration name other than 'default' will require use of -c name to select the configuration"/>
+   <str id="text.genkeystore" txt="Generate Keystore"/>
+   <str id="text.namelabel" txt="Name:"/>
+   <str id="text.passwordLabel" txt="Enter admin password:"/>
+   <str id="text.securitydomain" txt="Enter security-domain:"/>
+   <str id="text.userLabel" txt="Enter admin username:"/>
+   <str id="jmxConsoleDomain.text" txt="The JAAS security domain name for the jmx access points"/>
+   <str id="jmxSecurity" txt=" JMX Security"/>
+   <str id="jmxSecurityText" txt="This section allows you to control whether the JMX interfaces are secured. See http://wiki.jboss.org/wiki/Wiki.jsp?page=SecureJBoss for additional security configuration."/>
+   
+</langpack>

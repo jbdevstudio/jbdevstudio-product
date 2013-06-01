@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="p2-meta-gen" default="main">
+	<description>
+            This script runs p2 metadata generator after all packs are installed
+    </description>
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+	<condition property="skipMain">
+		<equals arg1="${user.name}" arg2="root"/>
+	</condition>
+	
+	<target name="main" description="description" unless="skipMain">
+		<echo>Run p2 metadata generator</echo>
+		<condition property="jbdevstudio" value="jbdevstudio.app/Contents/MacOS/jbdevstudio" else="jbdevstudio">
+			<os family="mac" />
+		</condition>
+		<exec executable="${install-root}/studio/${jbdevstudio}" taskname="p2">
+			<arg value="-application" />
+			<arg value="com.jboss.jbds.product.EclipseGenerator" />
+			<arg value="-noSplash" />
+			<arg value="-clean" />
+		</exec>
+	</target>
+</project>

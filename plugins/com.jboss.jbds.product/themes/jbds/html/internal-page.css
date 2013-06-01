@@ -1,0 +1,509 @@
+@charset "UTF-8";
+/* CSS Document */
+body {
+	margin:0;
+	padding:0;
+	text-align:center;
+	background:url(../graphics/root4page/welcome_bkg.png) #660000 no-repeat;
+}
+
+#gettingstarted {
+	margin:0 0 auto;
+	text-align:left;
+}
+#createnew {
+	margin:0 0 auto;
+	text-align:left;
+}
+#perspectives {
+	margin:0 0 auto;
+	text-align:left;
+}
+#webresources {
+	margin:0 0 auto;
+	text-align:left;
+}
+
+#header {
+	background:url(../graphics/root4page/header_bkg.png) repeat-x;
+	height:79px;	
+}
+
+#welcome {
+	background:url(../graphics/root4page/welcome.png) no-repeat;
+	height:97px;
+	width:563px;
+}
+
+#welcome a .link-label {
+	color:red;
+	margin-left:-9999px;
+}
+
+#welcome a .link-extra-div {
+	display :none;
+}
+
+#workbench {
+	position:absolute;
+	top:0;
+	right:20px;	
+	width:100px;
+	height: 100px;
+}
+
+#workbench a img {
+	background:url(../graphics/root4page/workbench.png) no-repeat;
+	display:block;
+	float:right;
+	height:41px;
+	width:43px;
+}
+
+#workbench a span.link-label, #workbench a .link-label, #workbench a:active .link-label, #workbench a:hover .link-label, #workbench a:focus .link-label {
+/*	display:none; */
+}
+
+#workbench a .link-label {
+	position : relative;
+	color: #000000;
+	visibility : hidden;
+	font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	top: -13px;
+	left: 25px;
+	margin-top: 0px;
+	text-align:center;
+	width: 95px;
+}
+
+#workbench a:hover .link-label  {
+	position : relative;
+	color:#FFFFFF;	
+	visibility : visible;
+    text-decoration : none;
+	font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	top: -13px;
+	left: 25px;
+	margin-top: 0px;
+	text-align:center;
+	width: 95px;
+}
+
+#navigation {
+	position:absolute;
+	top:5;
+	right:60px;	
+	width:100px;
+	height: 100px;
+}
+
+#navigation a img {
+	display:block;
+	left:5px;
+	height:32px;
+	width:32px;
+}
+
+#navigation a span.link-label, #navigation a .link-label, #navigation a:active .link-label, #navigation a:hover .link-label, #navigation a:focus .link-label {
+/*	display:none; */
+}
+
+#gs-nav-link {
+	position:absolute;
+	top:0;
+	right: 135px;
+	width: 100px;
+}
+#cn-nav-link {
+	position:absolute;
+	top:0;
+	right: 90px;
+	width: 100px;
+}
+#ap-nav-link {
+	position:absolute;
+	top:0;
+	right: 45px;
+	width: 100px;
+}
+#wr-nav-link {
+	position:absolute;
+	top:0;
+	right: 0px;
+	width: 100px;
+}
+
+#navigation a .link-label {
+	position : relative;
+	color: #000000;
+	visibility : hidden;
+	font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	top: 10px;
+	left : -15px;
+	margin-top: 0px;
+	text-align:center;
+	width: 100px;
+}
+
+#navigation a:hover .link-label  {
+	position : relative;
+	color:#FFFFFF;	
+	visibility : visible;
+    text-decoration : none;
+	font-weight: bold;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	top: 10px;
+	left : -15px;
+	margin-top: 0px;
+	text-align:center;
+	width: 100px;
+}
+
+#welcome a .link-extra-div, #navigation a .link-extra-div {
+	display :none;
+}
+
+
+
+#workbench b, #workbench a .link-label {
+	display:block;	
+	float:left;
+	padding: 20px 0 0 0;
+	font-weight: bold;
+}
+
+
+/* 
+ * Page header - adding extra padding at the bottom to compensate
+ * for navigation background/header overlap.
+ */
+#content {
+	display: block;
+	margin: 30px 20px 0px; 
+	padding-top: 45px; 
+	background-image:url(../graphics/root4page/icon_bkg.png);
+    -moz-box-shadow: 4px 4px 4px #330000;
+    -webkit-box-shadow: 4px 4px 4px #330000;
+    box-shadow: 4px 4px 4px #330000;
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#330000')";
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#330000');
+	min-width:465px;
+}
+
+#page-content {
+	width: 100%;
+}
+#content-group {
+	width: 95%;
+	font-weight:bold;
+}
+
+#content-group a .link-label, #level2 a .link-label {
+	color:#EEE;
+	font-size: 14px;
+	text-decoration : none;
+}
+
+#content-group a:hover .link-label, #level2 a:hover .link-label {
+	color:#FCC;	
+}
+
+#content-group a .text, #level2 .text {
+	color:#EEE;
+	font-size: 12px;
+	text-decoration : none;
+}
+
+#footer {
+	background:url(../graphics/root4page/footer_bkg.png) repeat-x;	
+	height:42px;
+	position:absolute;
+	bottom:0;
+	right:0;
+	padding-left:9999px;
+	padding-top:29px;
+	z-index: 100; 
+}
+
+#footer a .link-extra-div {
+	display :none;
+}
+
+#logos {
+	background:url(../graphics/root4page/logos.png) no-repeat;
+	position:relative;
+	bottom:0;
+	right:0;
+}
+
+a {
+	font-family:Arial, Helvetica, sans-serif;
+	color:#FFF;
+	font-size:12px;
+	text-decoration:none;
+}
+a:hover {
+	color:#CCC;
+	font-size:12px;
+}
+p, dd, dl {
+	color:#EEE;	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 14px; 
+}
+.clearfix {
+	clear:both;
+	height:0;
+	font-size:1px;
+	width:100%;
+	overflow:hidden;
+}
+
+img {
+	border:none;	
+}
+img, div, a, span, h1 { behavior: url(iepngfix.htc); }
+
+
+/* OLD CSS content */
+
+/* Hide the extra div for links in the normal state. */
+a .link-extra-div {
+	display: none;
+}
+
+/* Link label properties */
+#page-links a .link-label {
+	top: -1.2em;
+	color:#00507C;	
+    font-family:Verdana,Arial,Helvetica;
+    font-weight:bold;
+}
+
+#page-links a:hover .link-label {
+	color: #69c; 
+	text-decoration : underline;
+}
+
+#page-links a {
+    width : 45%;
+    float : left;
+    margin-left : 3%; 
+	margin-bottom : 35px;
+}
+
+#level2 {
+	position: relative;
+	top : 0px;
+	left : 0px;
+}
+
+#level2 a span.link-label {
+	position : relative;
+	top : -45px;
+	left : 95px;
+	margin-right: 60px;
+	font-family:Arial, Helvetica, sans-serif;
+	font-weight: bold; 
+	line-height:1.5;
+/*	color: #00507C; */
+}
+#level2 a p .text {
+    left: 85px; 
+	display : block;
+	position : relative;
+	top : 5px;
+	margin-bottom: -25px;
+	margin-right: 78px;
+	font-family:Arial, Helvetica, sans-serif;
+	line-height: 1.3;
+}
+
+#page-links a img {
+	height : 48px;
+	width : 64px;
+	vertical-align : middle;
+}
+
+#page-links a span {
+	display : block;
+}
+
+#page-links a span.link-label {
+	position : relative;
+	top : -45px;
+	left : 60px;
+	margin-right: 60px;
+	font-family: Verdana, Arial, Helvetica; 
+	font-weight: bold; 
+	line-height:1.5;
+/*	color: #00507C; */
+}
+
+#page-links a p .text {
+    left: 51px; 
+	display : block;
+	position : relative;
+	top : -40px;
+	margin-bottom: -25px;
+	margin-right: 53px;
+	font-family: Verdana, Arial, Helvetica; 
+	line-height: 1.3;
+}
+
+#page-links a .background-image {
+	display: none;
+}
+
+#page-links a .link-extra-div {
+	display :none;
+}
+
+.content-img {
+    padding-left: 15px;
+}
+
+/*
+ * Not using action links.
+ */
+#action-links {
+/*	display: none; */
+}
+
+/*
+* Workbench
+*/
+
+#page-links a#workbench:hover .link-label
+{
+    color : #FFEC89;
+    text-decoration : none;
+}
+
+#workbench p span {
+    display : none;
+}
+
+* html #page-links a#workbench .content-img {
+    background-image:url(../graphics/icons/ctool/wb_nav.png);
+}
+
+#page-links a#workbench .content-img {
+    background-image:url(../graphics/icons/ctool/wb_nav.png);
+    display:block;
+    color : white;
+    height:32px;
+    margin:5px auto 0;
+    width:32px;
+    background-repeat:no-repeat;
+    border-width:0;
+}
+
+#page-links a#workbench .link-label {
+   position : static;
+   margin-right : 0px;
+   font-weight : bold;	
+   color : white;
+   font-family:Arial,sans-serif;
+}
+
+#page-links a#workbench .text {
+   display : none;
+}
+
+#page-links a#workbench {
+    position : absolute;
+    right : 20px;
+    top : 0px;
+    width : auto;
+    text-align:center;
+    margin-bottom : 0px;
+}
+
+#page-links a#workbench img {
+    padding : 0px;
+}
+
+#page-links a#workbench span {
+    margin-top : 0px;
+    line-height : normal;
+}
+
+#page-links a#workbench .link-label {
+    font-size:8pt;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+    margin-left: 0;
+}
+
+#separator {
+	display:block;
+	clear:both;
+}
+
+
+/* Link images */
+
+
+a#gettingstarted img { background-image : url('../graphics/icons/ctool/gs_nav.png'); width : 32px; height : 32px; }
+a#gettingstarted:hover img { background-image : url('../graphics/icons/ctool/gs_nav.png'); width : 32px; height : 32px; }
+
+a#createnew img { background-image : url('../graphics/icons/ctool/cn_nav.png'); width : 32px; height : 32px; }
+a#createnew:hover img { background-image : url('../graphics/icons/ctool/cn_nav.png'); width : 32px; height : 32px; }
+
+a#perspectives img { background-image : url('../graphics/icons/ctool/ap_nav.png'); width : 32px; height : 32px; }
+a#perspectives:hover img { background-image : url('../graphics/icons/ctool/ap_nav.png'); width : 32px; height : 32px; }
+
+a#webresources img { background-image : url('../graphics/icons/ctool/wr_nav.png'); width : 32px; height : 32px; }
+a#webresources:hover img { background-image : url('../graphics/icons/ctool/wr_nav.png'); width : 32px; height : 32px; }
+
+a#workbench img { background-image : url('../../images/topiclabel/wb_nav.png'); width : 32px; height : 32px; }
+a#workbench:hover img { background-image : url('../../images/topiclabel/wb_nav.png'); width : 32px; height : 32px; }
+
+a#weblink img { background-image : url('../graphics/icons/ctool/web_link.png'); width : 48px; height : 48px; }
+a#weblink:hover img { background-image : url('../graphics/icons/ctool/web_link_hov.png'); width : 48px; height : 48px; }
+
+a#weblink2 img { background-image : url('../graphics/icons/ctool/web_link_small.png'); width : 83px; height : 48px; }
+a#weblink2:hover img { background-image : url('../graphics/icons/ctool/web_link_small_hov.png'); width : 83px; height : 48px; }
+
+a#weblink3 img { background-image : url('../graphics/icons/ctool/web_link_small.png'); width : 83px; height : 48px; }
+a#weblink3:hover img { background-image : url('../graphics/icons/ctool/web_link_small_hov.png'); width : 83px; height : 48px; }
+
+a#workbench img { background-image : url('../graphics/icons/ctool/wb_nav.png'); width : 32px; height : 32px; }
+a#workbench:hover img { background-image : url('../graphics/icons/ctool/wb_nav.png'); width : 32px; height : 32px; }
+
+a#javaee_perspective img { background-image : url('../graphics/icons/ctool/j2ee_perspective.png'); width : 48px; height : 48px; }
+a#javaee_perspective:hover img { background-image : url('../graphics/icons/ctool/j2ee_perspective_hov.png'); width : 48px; height : 48px; }
+
+a#seam_perspective img { background-image : url('../graphics/icons/ctool/seam_perspective.png'); width : 48px; height : 48px; }
+a#seam_perspective:hover img { background-image : url('../graphics/icons/ctool/seam_perspective_hov.png'); width : 48px; height : 48px; }
+
+a#db_perspective img { background-image : url('../graphics/icons/ctool/db_perspective.png'); width : 48px; height : 48px; }
+a#db_perspective:hover img { background-image : url('../graphics/icons/ctool/db_perspective_hov.png'); width : 48px; height : 48px; }
+
+a#hibernate_perspective img { background-image : url('../graphics/icons/ctool/hibernate_perspective.png'); width : 48px; height : 48px; }
+a#hibernate_perspective:hover img { background-image : url('../graphics/icons/ctool/hibernate_perspective_hov.png'); width : 48px; height : 48px; }
+
+a#new_seam_project img { background-image : url('../graphics/icons/ctool/new_seam_project.png'); width : 48px; height : 48px; }
+a#new_seam_project:hover img { background-image : url('../graphics/icons/ctool/new_seam_project_hov.png'); width : 48px; height : 48px; }
+
+a#new_seam_project_by_generate_entities img { background-image : url('../graphics/icons/ctool/new_seam_project_small.png'); width : 83px; height : 48px; }
+a#new_seam_project_by_generate_entities:hover img { background-image : url('../graphics/icons/ctool/new_seam_project_small_hov.png'); width : 83px; height : 48px; }
+
+a#new_jsf_project img { background-image : url('../graphics/icons/ctool/new_jsf_project.png'); width : 48px; height : 48px; }
+a#new_jsf_project:hover img { background-image : url('../graphics/icons/ctool/new_jsf_project_hov.png'); width : 48px; height : 48px; }
+
+/* JBIDE-13618 remove struts 
+a#new_struts_project img { background-image : url('../graphics/icons/ctool/new_struts_project.png'); width : 48px; height : 48px; }
+a#new_struts_project:hover img { background-image : url('../graphics/icons/ctool/new_struts_project_hov.png'); width : 48px; height : 48px; }
+*/

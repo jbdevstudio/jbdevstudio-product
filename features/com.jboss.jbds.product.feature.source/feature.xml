@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.jboss.jbds.product.feature.source"
+      label="%featureName"
+      version="7.0.0.qualifier"
+      provider-name="%providerName"
+      plugin="com.jboss.jbds.product">
+
+   <description url="http://www.redhat.com/developer_studio/Getting_Started_Single/">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <includes
+         id="com.jboss.jbds.product.feature"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.jboss.jbds.product.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.jboss.jbds.project.examples.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="com.jboss.jbds.usage.branding.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="com.jboss.jbds.central.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

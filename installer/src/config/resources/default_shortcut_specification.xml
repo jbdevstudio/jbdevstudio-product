@@ -1,0 +1,20 @@
+<shortcuts>
+	<skipIfNotSupported />
+	<defaultCurrentUser />
+	<programGroup defaultName="JBoss Developer Studio @major_version@" location="applications" />
+	<shortcut
+		name="JBoss Developer Studio @version_string@@nightly_build_qualifier@"
+		iconFile="$INSTALL_PATH\studio\jbds.ico" 
+		target="$INSTALL_PATH\studio\jbdevstudio.exe"
+		workingDirectory="$INSTALL_PATH\studio"
+		description="Start JBoss Developer Studio @version_string@@nightly_build_qualifier@"
+		initialState="normal" programGroup="yes" desktop="yes" startMenu="no" />
+	<shortcut
+		name="Uninstall JBoss Developer Studio @version_string@@nightly_build_qualifier@"
+		iconFile="$INSTALL_PATH\studio\jbds_uninstall.ico" 
+		target="$JAVA_HOME\bin\javaw.exe"
+		workingDirectory=""
+		commandLine="-jar &quot;$INSTALL_PATH\Uninstaller\uninstaller.jar&quot;"
+		description="Uninstall JBoss Developer Studio @version_string@@nightly_build_qualifier@"
+		initialState="normal" programGroup="yes" desktop="no" startMenu="no" />
+</shortcuts>

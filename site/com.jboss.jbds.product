@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="JBoss Developer Studio (Branded Product)" uid="com.jboss.jbds.all" id="com.jboss.jbds.product.product" application="org.eclipse.ui.ide.workbench" version="7.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <aboutInfo>
+      <text>
+         Copyright (c) 2004-2013 Red Hat, Inc. and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+
+Red Hat, Inc. - Initial implementation.
+      </text>
+   </aboutInfo>
+
+   <configIni use="default">
+   </configIni>
+<!--
+   Defaults set in Eclipse Kepler JEE, Java, Classic, and Platform Runtime Binary* (as of 4.3M6):
+      launcher.XXMaxPermSize=256m
+      launcher.defaultAction=openFile
+      XX:MaxPermSize=256m
+      Xms40m
+      Xmx512m
+
+   * Platform Runtime Binary sets a lower max mem limit of Xmx384m
+
+   If launcher.XXMaxPermSize=256m is not set, I get tons of 'java.lang.OutOfMemoryError: PermGen space' errors on launch, especially if I've updated JBDS installer w/ stuff from Central. So while this is already set in Eclipse SDK/PRB/JEE Bundles, it's NOT set in the installer unless we specify it here. Better to see it in jbdevstudio.ini twice than not at all. ~nickboldt
+
+   launcher.defaultAction=openFile gets dropped when building installer; used to associate Eclipse executable w/ File > Open as default action. http://help.eclipse.org/juno/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Fruntime-options.html
+-->
+   <launcherArgs>
+      <programArgs>-product
+com.jboss.jbds.product.product
+-showsplash
+platform\:/base/plugins/com.jboss.jbds.product
+--launcher.XXMaxPermSize
+256m
+--launcher.defaultAction
+openFile</programArgs>
+      <vmArgs>-Xms512m
+-Xmx1024m
+-Dosgi.instance.area.default=@user.home/workspace</vmArgs>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
+-Xdock:icon=../Resources/JBDevStudio.icns -XX:MaxPermSize=256m</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <splash
+      location="com.jboss.jbds.product" />
+   <launcher name="jbdevstudio">
+      <macosx icon="macosx/JBDevStudio.icns"/>
+      <solaris/>
+      <win useIco="true">
+         <ico path="jbds.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <license>
+        <text>
+   Red Hat, Inc. licenses these features and plugins to you under certain open source licenses (or aggregations of such licenses), which in a particular case may include the Eclipse Public License, the GNU Lesser General Public License, and/or certain other open source licenses. For precise licensing details, consult the corresponding source code, or contact Red Hat Legal Affairs, 1801 Varsity Drive, Raleigh NC 27606 USA.
+         </text>
+   </license>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="com.jboss.jbds.product.feature"/>
+   </features>
+
+   <configurations>
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
+      <property name="org.eclipse.update.reconcile" value="false" />
+   </configurations>
+
+</product>

@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: com.jboss.jbds.project.examples;singleton:=true
+Bundle-Version: 7.0.0.qualifier
+Bundle-Localization: plugin
+Bundle-Vendor: %Bundle-Vendor
+Require-Bundle: org.jboss.tools.project.examples

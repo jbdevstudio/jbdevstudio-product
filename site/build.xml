@@ -1,0 +1,265 @@
+<project default="custom.build" name="devstudio extras site build.xml">
+  <!--
+  To test output, run maven in this folder:
+    $ mvn install -Dupdate.site.description="Stable Milestone"
+  -->
+
+  <!-- if ${WORKSPACE}/site folder exists, target that folder; else generate here. -->
+  <condition property="output.dir" value="${WORKSPACE}/results" else="${basedir}">
+    <available file="${WORKSPACE}/results" />
+  </condition>
+
+  <condition property="COMMON_TOOLS" value="/home/hudson/static_build_env/jbds/tools" else="${java.io.tmpdir}">
+    <available file="/home/hudson/static_build_env/jbds" type="dir" />
+  </condition>
+  <mkdir dir="${COMMON_TOOLS}" />
+
+  <property name="project.build.directory" value="${output.dir}/target"/>
+
+  <!-- look for target/repository (new) or target/site (old) -->
+  <condition property="update.site.source.dir" value="${project.build.directory}/site" else="${project.build.directory}/repository">
+    <available file="${project.build.directory}/site" type="dir" />
+  </condition>
+
+  <!-- load properties from file -->
+  <property name="associate.properties" value="associate.properties" />
+  <property file="${associate.properties}" />
+  <property name="web.content.files" value="index.html, **/*.css, README*, category.xml" />
+
+  <property name="target.zip" value="${output.dir}/target/site_assembly.zip"/>
+
+  <target name="init">
+    <taskdef resource="net/sf/antcontrib/antlib.xml" />
+  </target>
+
+  <target name="custom.build" description="JBDS update site extra processing steps" depends="init,check.target,unpack.content.jar,unpack.artifacts.jar,remove.references,add.associate.sites,remove.uncategorized.category,remove.uninstallable,add.web.content,pack.content.jar,pack.artifacts.jar,pack.zip" />
+
+  <target name="add.associate.sites" if="associate.sites">
+    <if>
+      <and>
+        <!-- Defined in associate.properties -->
+        <isset property="associate.sites" />
+        <not>
+          <equals arg1="${associate.sites}" arg2="" />
+        </not>
+      </and>
+      <then>
+        <!-- counter variable -->
+        <var name="associate.sites.0" value="" />
+        <for param="associate.site" list="${associate.sites}" delimiter=", 
+  ">
+          <sequential>
+            <var name="associate.sites.0" value="${associate.sites.0}00" />
+          </sequential>
+        </for>
+        <length property="associate.sites.length" string="${associate.sites.0}" />
+
+        <loadfile srcfile="${update.site.source.dir}/content.xml" property="content.xml">
+          <filterchain>
+            <tailfilter lines="-1" skip="1" />
+          </filterchain>
+        </loadfile>
+        <echo file="${update.site.source.dir}/content.xml" message="${content.xml}" />
+        <echo file="${update.site.source.dir}/content.xml" append="true">  &lt;references size='${associate.sites.length}'>
+</echo>
+        <for param="associate.site" list="${associate.sites}" delimiter=", 
+  ">
+          <sequential>
+            <!-- insert into content.xml -->
+            <echo file="${update.site.source.dir}/content.xml" append="true">    &lt;repository uri='@{associate.site}' url='@{associate.site}' type='0' options='1'/>
+    &lt;repository uri='@{associate.site}' url='@{associate.site}' type='1' options='1'/>
+</echo>
+          </sequential>
+        </for>
+        <echo file="${update.site.source.dir}/content.xml" append="true">  &lt;/references>
+&lt;/repository>
+</echo>
+      </then>
+    </if>
+  </target>
+
+  <target name="remove.references">
+    <copy file="${update.site.source.dir}/content.xml" tofile="${update.site.source.dir}/content.old.xml" overwrite="true" />
+    <xslt style="remove-references.xsl" in="${update.site.source.dir}/content.old.xml" out="${update.site.source.dir}/content.xml" />
+  </target>
+
+  <target name="remove.uncategorized.category">
+    <copy file="${update.site.source.dir}/content.xml" tofile="${update.site.source.dir}/content.old.xml" overwrite="true" />
+    <xslt style="remove-uncategorized.xsl" in="${update.site.source.dir}/content.old.xml" out="${update.site.source.dir}/content.xml" />
+  </target>
+
+  <target name="remove.uninstallable">
+    <copy file="${update.site.source.dir}/content.xml" tofile="${update.site.source.dir}/content.old.xml" overwrite="true" />
+    <xslt style="remove-uninstallable.xsl" in="${update.site.source.dir}/content.old.xml" out="${update.site.source.dir}/content.xml" />
+  </target>
+
+  <target name="pack.zip">
+    <zip destfile="${target.zip}" update="true" basedir="${update.site.source.dir}" includes="content.*, ${web.content.files}" />
+  </target>
+
+  <target name="check.target">
+
+    <!-- support eclipse-repository (new) and eclipse-update-site (old): put category.xml in correct folder -->
+    <if>
+      <available file="${project.build.directory}/category.xml" type="file"/>
+      <then>
+        <move file="${project.build.directory}/category.xml" tofile="${update.site.source.dir}/category.xml" />
+      </then>
+    </if>
+    <!-- support eclipse-repository (new) and eclipse-update-site (old): rename central.site-1.1.0-SNAPSHOT.zip to site_assembly.zip to be compatible with publish.sh script -->
+    <if>
+      <not><available file="${project.build.directory}/site_assembly.zip" type="file"/></not>
+      <then>
+        <move tofile="${project.build.directory}/site_assembly.zip">
+          <fileset dir="${project.build.directory}" includes="*.zip" excludes="site.zip, site_assembly.zip"/>
+        </move>
+      </then>
+    </if>
+
+    <if>
+      <not>
+        <and>
+          <available file="${update.site.source.dir}" type="dir" />
+          <available file="${project.build.directory}/site_assembly.zip" type="file" />
+        </and>
+      </not>
+      <then>
+        <fail>
+--
+Could not find ${update.site.source.dir} and ${project.build.directory}/site_assembly.zip
+Cannot adjust an update site w/o first building it!
+--
+To run this build, use Tycho. Try `mvn3 clean install -U -B -fae -q -e`
+</fail>
+      </then>
+    </if>
+  </target>
+
+  <target name="unpack.artifacts.jar">
+    <if>
+      <available file="${update.site.source.dir}/artifacts.jar" type="file" />
+      <then>
+        <unzip src="${update.site.source.dir}/artifacts.jar" dest="${update.site.source.dir}" />
+        <delete file="${update.site.source.dir}/artifacts.jar" />
+      </then>
+    </if>
+  </target>
+
+  <target name="unpack.content.jar">
+    <if>
+      <available file="${update.site.source.dir}/content.jar" type="file" />
+      <then>
+        <unzip src="${update.site.source.dir}/content.jar" dest="${update.site.source.dir}" />
+        <delete file="${update.site.source.dir}/content.jar" />
+      </then>
+    </if>
+  </target>
+
+  <target name="pack.artifacts.jar">
+    <zip destfile="${update.site.source.dir}/artifacts.jar" basedir="${update.site.source.dir}" includes="artifacts.xml" />
+    <delete file="${update.site.source.dir}/artifacts.xml" />
+  </target>
+
+  <target name="pack.content.jar">
+    <zip destfile="${update.site.source.dir}/content.jar" basedir="${update.site.source.dir}" includes="content.xml" />
+    <delete file="${update.site.source.dir}/content.xml" />
+    <delete file="${update.site.source.dir}/content.old.xml" />
+  </target>
+
+  <target name="add.web.content">
+    <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace=".${update.site.qualifier}" override="true" />
+
+    <!-- get category.xml as HTML, then load into ${site.contents} in order to merge into index.html -->
+    <antcallback target="generate.site.content.html" return="site.contents" />
+
+    <copy todir="${output.dir}" overwrite="true">
+      <fileset file="index-template.html" />
+      <mapper type="merge" to="index.html.tmp" />
+      <filterchain>
+        <expandproperties />
+      </filterchain>
+    </copy>
+
+    <antcallback target="generate.feature.categories.properties" return="feature.categories.properties" />
+    <loadproperties srcfile="${feature.categories.properties}" />
+    <copy todir="${output.dir}" overwrite="true">
+      <fileset file="index.html.tmp" />
+      <mapper type="merge" to="index.html" />
+      <filterchain>
+        <expandproperties />
+        <tokenfilter>
+          <replaceregex pattern="\{.+.feature.categories\}" replace="" flags="gi"/>
+          <replacestring from="$" to=""/>
+        </tokenfilter>
+      </filterchain>
+    </copy>
+    <delete file="${output.dir}/index.html.tmp" quiet="true" />
+    <delete file="${feature.categories.properties}" quiet="true" />
+
+    <antcall target="generate.category.xml"/>
+
+    <copy todir="${update.site.source.dir}">
+      <fileset dir="${output.dir}" includes="${web.content.files}" />
+    </copy>
+
+    <!-- replace template version w/ xslt-generated version -->
+    <move file="${output.dir}/category.out.xml" tofile="${update.site.source.dir}/category.xml" overwrite="true"/>
+  </target>
+
+  <!-- given content.xml
+    <repository><units>
+      <unit id="v20120601-1934-CR1.WebTools" version="1.0.0.868Q77cKlOUlEVmD7hD_LOfZhz0phj7jz-Ncb8q">
+          <properties size="3">
+            <property name="org.eclipse.equinox.p2.name" value="JBoss Web and Java EE Development"/>
+            <property name="org.eclipse.equinox.p2.description" value="Tools to help create web and enterprise applications, using JSF, Facelets, Seam, Hibernate/JPA, CSS, Webservices and more."/>
+            <property name="org.eclipse.equinox.p2.type.category" value="true"/>
+          </properties>
+          <provides size="1">
+            <provided namespace="org.eclipse.equinox.p2.iu" name="v20120601-1934-CR1.WebTools" version="1.0.0.868Q77cKlOUlEVmD7hD_LOfZhz0phj7jz-Ncb8q"/>
+          </provides>
+          <requires size="18">
+            <required namespace="org.eclipse.equinox.p2.iu" name="org.jboss.tools.ws.feature.feature.group" range="[1.2.2.v20120601-1328-H130-CR1,1.2.2.v20120601-1328-H130-CR1]"/>
+            <required namespace="org.eclipse.equinox.p2.iu" name="org.jboss.tools.vpe.feature.feature.group" range="[3.3.0.v20120601-1757-H99-CR1,3.3.0.v20120601-1757-H99-CR1]"/>
+    get 
+    org.jboss.tools.ws.feature.categories = AbridgedTools,WebTools
+  -->
+  <target name="generate.feature.categories.properties">
+    <property name="feature.categories.properties" value="${update.site.source.dir}/feature.categories.properties"/>
+    <delete quiet="true" file="${feature.categories.properties}" />
+    <xslt style="content.xml.to.feature.categories.properties.xsl" in="${update.site.source.dir}/content.xml" out="${update.site.source.dir}/feature.categories.properties" force="true">
+      <classpath location="${COMMON_TOOLS}/saxon.jar" />
+    </xslt>
+  </target>
+
+  <!-- two step process: first, replace 0.0.0 with variables, then replace variables with values from content.xml -->
+  <target name="generate.category.xml">
+    <xslt style="category.xml.xsl" in="${output.dir}/category.xml" out="${output.dir}/category.tmp.xml" force="true">
+      <classpath location="${COMMON_TOOLS}/saxon.jar" />
+    </xslt>
+    <xslt style="content.xml.to.feature.versions.properties.xsl" in="${update.site.source.dir}/content.xml" out="${output.dir}/feature.versions.properties" force="true">
+      <classpath location="${COMMON_TOOLS}/saxon.jar" />
+    </xslt>
+    <loadproperties srcfile="${output.dir}/feature.versions.properties" />
+    <delete file="${output.dir}/feature.versions.properties" quiet="true"/>
+    <!-- <echoproperties regex="com.jboss.*.version"/> -->
+    <copy todir="${output.dir}" overwrite="true">
+      <fileset file="category.tmp.xml" />
+      <mapper type="merge" to="category.out.xml" />
+      <filterchain>
+        <expandproperties />
+      </filterchain>
+    </copy>
+    <delete file="${output.dir}/category.tmp.xml" quiet="true"/>
+  </target>
+
+  <target name="generate.site.content.html">
+    <!-- turn artifacts.xml into artifacts.html via artifacts.xsl -->
+    <delete quiet="true" file="${update.site.source.dir}/site.content.html" />
+    <xslt style="artifacts.xml.to.site.content.html.xsl" in="${update.site.source.dir}/artifacts.xml" out="${update.site.source.dir}/site.contents.html" force="true" />
+    <!-- merge contents of artifacts.html into index.html, then remove artifacts.html -->
+    <loadfile property="site.contents" srcfile="${update.site.source.dir}/site.contents.html" failonerror="false" />
+    <property name="site.contents" value="" />
+    <delete quiet="true" file="${update.site.source.dir}/site.contents.html" />
+  </target>
+
+</project>

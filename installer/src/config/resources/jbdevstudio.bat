@@ -1,0 +1,1 @@
+start "JBoss Developer Studio" "%~dp0\studio\jbdevstudio.exe"

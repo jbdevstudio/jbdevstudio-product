@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.jboss.jbds</groupId>
+    <artifactId>product</artifactId>
+    <version>7.0.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.jboss.jbds</groupId>
+  <artifactId>com.jboss.jbds.sources</artifactId>
+  <name>JBoss Developer Studio Sources</name>
+  <description>
+    Aggregates upstream sources zip(s) and local sources into a single JBDS sources zip
+  </description>
+  <packaging>pom</packaging>
+
+  <properties>
+    <maven.build.timestamp.format>'${BUILD_ALIAS}-v'yyyyMMdd-HHmm</maven.build.timestamp.format>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <inherited>false</inherited>
+        <executions>
+          <execution>
+            <id>verify</id>
+            <phase>verify</phase>
+            <configuration>
+              <quiet>true</quiet>
+              <tasks>
+                <ant antfile="build.xml" target="build" dir="./">
+                  <!-- pass in URL of current published jbosstools-nightly URL, eg.,
+                     http://download.jboss.org/jbosstools/updates/nightly/core/trunk/ or 
+                     http://download.jboss.org/jbosstools/updates/nightly/core/4.1.kepler/ -->
+                  <property name="inputRepo" value="${jbosstools-nightly}"/>
+                  <property name="project.version" value="${project.version}" />
+                  <property name="update.site.qualifier" value="${maven.build.timestamp}"/>
+                </ant>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+        <dependencies>
+          <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>1.4.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-nodeps</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-trax</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-commons-net</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-apache-regexp</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+          <dependency>
+            <groupId>ant-contrib</groupId>
+            <artifactId>ant-contrib</artifactId>
+            <version>1.0b3</version>
+          </dependency>
+        </dependencies>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
+<!--
+To build locally
+  mvn clean verify -DBUILD_NUMBER=69
+-->

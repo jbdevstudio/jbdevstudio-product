@@ -1,0 +1,21 @@
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jboss.jbds</groupId>
+		<artifactId>product</artifactId>
+		<version>7.0.0-SNAPSHOT</version>
+	</parent>
+	<groupId>com.jboss.jbds.product</groupId>
+	<artifactId>plugins</artifactId>
+	<name>JBDS - Product Plugins - Core</name>
+	<packaging>pom</packaging>
+	<modules>
+		<module>com.jboss.jbds.product</module>
+		<module>com.jboss.jbds.project.examples</module>
+		<module>com.jboss.jbds.usage.branding</module>
+		<module>com.jboss.jbds.central</module>
+	</modules>
+</project>
+	

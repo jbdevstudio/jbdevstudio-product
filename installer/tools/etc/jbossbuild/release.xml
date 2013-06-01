@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+
+<!--
+ JBoss, the OpenSource J2EE webOS
+ 
+ Distributable under LGPL license.
+ See terms of license at gnu.org.
+-->
+
+<!-- ================================================================== -->
+<!-- JBoss AOP release build definition                                 -->
+<!-- ================================================================== -->
+
+<project name="main.build"
+         default="build" 
+         basedir="."
+>
+   <!-- Import the types -->
+   <import file="../tools/etc/jbossbuild/tasks.xml"/>
+
+   <!-- =============================================================== -->
+   <!-- The Main project definition                                     -->
+   <!-- =============================================================== -->
+
+   <build id="jboss-aop"
+          impltitle="JBoss AOP"
+          implversion="1.0.0-FINAL"
+          implvendor="JBoss by Red Hat"
+          implurl="http://www.jboss.com/products/aop"
+          description="JBoss Aspect Oriented Programming Framewoork"
+          cvsroot="cvs.sourceforge.net:/cvsroot/jboss"
+          thirdpartypath="../thirdparty/"
+          location="http://cruisecontrol.jboss.com/repository/"
+          targetdefs="targets">
+
+      <!-- ============================================================ -->
+      <!-- Common utilities                                             -->
+      <!-- ============================================================ -->
+
+      <component id="common"
+                 version="5.0-SNAPSHOT"
+      >
+         <artifact id="jboss-common.jar" release="lib"/>
+         <artifact id="jboss-common-client.jar"/>
+         <artifact id="namespace.jar"/>
+      </component>
+
+      <includes id="common-project">
+         <include input="jboss-common.jar"/>
+         <include input="namespace.jar"/>
+      </includes>
+
+      <!-- ============================================================ -->
+      <!-- Container                                                    -->
+      <!-- ============================================================ -->
+
+      <component id="container"
+                 version="5.0-SNAPSHOT"
+      >
+         <artifact id="jboss-container.jar"/>
+      </component>
+
+      <includes id="container-project">
+         <include input="jboss-container.jar"/>
+      </includes>
+
+      <!-- ============================================================ -->
+      <!-- AOP                                                          -->
+      <!-- ============================================================ -->
+
+      <component id="aop"
+                 module="jboss-aop"
+                 version="1.0.0-FINAL"
+      >
+         <artifact id="jboss-aop.jar" release="lib"/>
+      </component>
+
+      <includes id="aop-project">
+         <include input="jboss-aop.jar"/>
+      </includes>
+
+      <!-- ============================================================ -->
+      <!-- QDox                                                         -->
+      <!-- ============================================================ -->
+
+      <component id="qdox"
+                 version="1.4">
+         <artifact id="qdox.jar" release="lib"/>
+      </component>
+
+      <includes id="qdox-lib">
+         <include input="qdox.jar"/>
+      </includes>
+
+      <!-- ============================================================ -->
+      <!-- Javassist                                                    -->
+      <!-- ============================================================ -->
+
+      <component id="javassist"
+                 version="3.0beta">
+         <artifact id="javassist.jar" release="lib"/>
+      </component>
+
+      <includes id="javassist-lib">
+         <include input="javassist.jar"/>
+      </includes>
+
+      <!-- ============================================================ -->
+      <!-- Trove                                                        -->
+      <!-- ============================================================ -->
+      
+      <component id="trove"
+                 version="2.1.1">
+         <artifact id="trove.jar" release="lib"/>
+      </component>
+
+      <includes id="trove-lib">
+         <include input="trove.jar"/>
+      </includes>
+
+      <!-- ============================================================ -->
+      <!-- Oswego Concurrent Library                                    -->
+      <!-- ============================================================ -->
+
+      <component id="oswego-concurrent"
+                 version="1.0">
+         <artifact id="concurrent.jar" release="lib"/>
+      </component>
+
+      <includes id="concurrent">
+         <include input="concurrent.jar"/>
+      </includes>
+
+
+      <!-- ============================================================ -->
+      <!-- JUnit                                                        -->
+      <!-- ============================================================ -->
+
+      <component id="junit-junit"
+                 version="3.8.1">
+         <artifact id="junit.jar" release="lib"/>
+      </component>
+
+      <includes id="junit">
+         <include input="junit.jar"/>
+      </includes>
+   </build>
+
+   <!-- Generate the targets -->
+   <generate generate="jboss-aop"/>
+   
+</project>

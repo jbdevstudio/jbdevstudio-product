@@ -1,0 +1,89 @@
+<userInput>
+	<panel order="0">
+		<field type="radio" variable="INSTALL_GROUP">
+			<description align="left"
+				txt="Do you want to install the JBoss Enterprise Application Platform that comes with JBoss Developer Studio ?"
+				id="description.radio" />
+			<spec>
+				<choice
+					txt="Yes, and have it ready for use in Developer Studio"
+					id="radio.label.1" value="jbosseap" set="true"/>
+				<choice txt="No" id="radio.label.2" value="jbds"/>
+			</spec>
+		</field>
+	</panel>
+	
+   <!-- JMX Security Panel -->
+   <panel order="1">
+      <createForPack name="rmi-http-invoker"/>
+      <field type="title" align="right"
+         txt=" JMX Security" bold="true" size="2"
+         id="jmxSecurity"
+         />
+
+      <!-- JMX interface security -->
+      <field type="staticText" align="left"
+         txt="This section allows you to control whether the JMX interfaces are secured. See http://wiki.jboss.org/wiki/Wiki.jsp?page=SecureJBoss for additional security configuration."
+         id="jmxSecurityText"/>
+      <field type="check" variable="secureJmxConsole">
+         <!--
+         <description align="left" txt="Should the jmx-console.war be secured?"
+            id="secureJmxConsole"/>
+         -->
+         <spec txt="Secure jmx-console.war" id="secureJmxConsole" true="true" false="false"
+            set="true"/>
+      </field>
+      <field type="check" variable="secureWebConsole">
+         <spec txt="Secure web-console.war" id="secureWebConsole" true="true" false="false"
+            set="true"/>
+      </field>
+      <field type="check" variable="secureJmxConnector">
+         <spec txt="Secure jmx-invoker-service" id="secureJmxConnector" true="true" false="false"
+            set="true"/>
+      </field>
+      <field type="check" variable="secureRmiHttpConnector">
+         <spec txt="Secure http invoker" id="secureRmiHttpConnector" true="true" false="false"
+            set="true"/>
+      </field>
+
+      <!-- The JAAS security domain names (without the java:/jaas prefix) -->
+      <field type="divider" align="center"/>
+      <field type="space"/>
+      <field type="text" variable="jmxConsoleDomain">
+         <description align="left" txt="The JAAS security domain name for the jmx access points"
+            id="jmxConsoleDomain.text"/>
+         <spec txt="Enter security-domain:" id="text.securitydomain" size="16" set="jmx-console"/>
+      </field>
+      <!--
+      <field type="text" variable="webConsoleDomain">
+         <description align="left" txt="The JAAS security domain name for the web-console.war"
+            id="webConsoleDomain.text"/>
+         <spec txt="Enter security-domain:" id="text.securitydomain" size="32" set="web-console"/>
+      </field>
+      -->
+
+      <!-- The default admin username/password -->
+      <field type="divider" align="center"/>
+      <field type="space"/>
+      <field type="text" variable="adminUser">
+         <!--
+         <description align="left" txt="The default admin user name"
+            id="adminUser.text"/>
+         -->
+         <spec txt="Enter admin username:" id="text.userLabel" size="16" set="admin" >
+         </spec>
+      </field>
+      <field type="space"/>
+      <field type="password" variable="adminPassword">
+         <!--
+         <description align="left" txt="The default admin user password"
+            id="adminPassword.text"/>
+            -->
+         <spec>
+           <pwd txt="Enter admin password:" id="text.passwordLabel" size="16" />
+         </spec>            
+         <validator class="com.izforge.izpack.util.NotEmptyValidator" id="admin.passerror"	txt="please enter password"></validator>
+      </field>
+   </panel>
+</userInput>
+

@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+<!-- $Id: install.xml,v 1.1.2.70 2006/04/01 01:39:05 starksm Exp $ -->
+<!-- DOCTYPE installation PUBLIC "//IzPack/4.3.4" "https://fisheye.codehaus.org/browse/~raw,r=eae7d50e92c229a889831c7a7f22e400a164a6bf/izpack/src/dtd/installation.dtd" -->
+<!DOCTYPE installation PUBLIC "//IzPack/4.3.4" "resources/installation.dtd">
+<installation version="1.0">
+	<info>
+		<appname>JBoss Developer Studio @{specification.version.presentstring}</appname>
+		<appversion>
+			@{specification.version}, JBoss AS @{jboss.version}
+		</appversion>
+		<appsubpath>jbdevstudio</appsubpath>
+		<authors>
+			<author name="JBoss by Red Hat" email="sales@jboss.com" />
+		</authors>
+		<url>http://www.jboss.com/</url>
+		<webdir>http://labs.jboss.com/portal/jemsinstaller/</webdir>
+		<javaversion>1.5</javaversion>
+		<summarylogfilepath>$INSTALL_PATH/InstallSummary.html</summarylogfilepath>
+		<!-- uninstaller="no" attribute is required to fix unintaller problem under linux and it doesn't affect windows uninstaller -->
+		<!-- run-privileged condition="izpack.windowsinstall.7" uninstaller="no" /-->
+	</info>
+	<native type="izpack" name="ShellLink.dll">
+		<os family="windows" />
+		<os arch="x86" />
+	</native>
+	<native type="izpack" name="ShellLink_x64.dll">
+		<os family="windows" />
+		<os arch="x86_64" />
+	</native>
+	<native type="3rdparty" name="COIOSHelper.dll" stage="both">
+		<os family="windows" />
+		<os arch="x86" />
+	</native>
+	<variables>
+		<variable name="PACK_NAME" value="universal" />
+		<variable name="INSTALL_GROUP" value="@{install.group}"/>
+		<variable name="VERSION" value="@{specification.version.presentstring}"/>
+		<variable name="jboss.logname" value="jbdevstudio-install-"/>
+		<variable name="DESKTOP_SHORTCUT_NAME" 
+			value="JBoss-Developer-Studio-@{version.presentstring}@{nightly_build_qualifier}" />
+	</variables>
+	
+	<guiprefs width="700" height="500" resizable="no">
+		<laf name="looks">
+			<os family="unix" />
+		</laf>
+		<laf name="looks">
+			<os family="windows" />
+			<param name="variant" value="plasticXP" />
+		</laf>
+
+		<modifier key="useButtonIcons" value="yes" />
+		<modifier key="useLabelIcons" value="yes" />
+		<modifier key="useFlags" value="no" />
+		<modifier key="langDisplayType" value="native" />
+		<modifier key="useHeadingPanel" value="yes" />
+		<modifier key="headingFontSize" value="1.5"/>
+  		<modifier key="headingBackgroundColor" value="0x002e0200"/>
+  		<modifier key="headingForegroundColor" value="0x00ffffff"/>
+  		<modifier key="headingImageBorderSize" value="0"/>
+  		<modifier key="headingPanelCounter" value="text"/>
+  		<modifier key="headingPanelCounterPos" value="inHeading"/>
+		
+	</guiprefs>
+	<locale>
+		<langpack iso3="eng" />
+	</locale>
+
+	<resources>
+		<res id="Heading.image" src="config/resources/images/heading.png"/>
+	
+		<res id="HTMLLicencePanel.licence"
+			src="config/resources/EULA/JBoss-EULA.html" />
+		<res id="HTMLInfoPanel.info"
+			src="config/resources/readme.html" />
+		<res id="installer.langsel.img"
+			src="config/resources/images/logo.png" />
+		<!--res id="userInputSpec.xml"
+			src="config/resources/userInputSpec.xml" />
+		<res id="userInputLang.xml_eng"
+			src="config/resources/userInputLang.xml_eng" /-->
+		<res src="config/resources/default_shortcut_specification.xml"
+			id="shortcutSpec.xml" />
+		<res src="config/resources/unix_shortcut_specification.xml"
+			id="Unix_shortcutSpec.xml" />
+		<res id="JBossAsSelectPanel.create.image"
+			src="config/resources/images/jbeap_new_wiz.png" />
+		<res id="JBossAsSelectPanel.edit.image"
+			src="config/resources/images/jbeap_edit_wiz.png" />
+			
+		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
+		<!-- Licencees in different languages -->  
+		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
+
+	    <res id="HTMLLicencePanel.licence_chn" src="config/resources/EULA/JBoss-EULA.html"/>
+	    <res id="HTMLLicencePanel.licence_fra" src="config/resources/EULA/JBoss-EULA.html"/>
+	    <res id="HTMLLicencePanel.licence_deu" src="config/resources/EULA/JBoss-EULA.html"/>
+	    <res id="HTMLLicencePanel.licence_jpn" src="config/resources/EULA/JBoss-EULA.html"/>
+	    <res id="HTMLLicencePanel.licence_spa" src="config/resources/EULA/JBoss-EULA.html"/>
+	    <res id="CustomLangpack.xml_eng" src="config/resources/CustomLangpack_eng.xml"/>
+	    <res id="TargetPanel.dir.windows" src="config/resources/target-windows.txt"/>
+	    
+    	<res id="AntActionsSpec.xml@{skip.ant.actions}"
+    		src="config/resources/p2-meta-gen-action.xml" />
+    	<res id="RegistrySpec.xml"
+    		 src="config/resources/RegistrySpec.xml" />
+	</resources>
+
+	<panels>
+		<!-- Display the release readme panel -->
+		<panel classname="HTMLInfoPanelWithRootWarning" id="introduction"/>
+		
+		<!-- Display the license panel -->
+		<panel classname="HTMLLicencePanel" id="licence"/>
+		
+		<!-- Display an installation location panel -->
+		<panel classname="com.jboss.jbds.installer.PathInputPanel" id="target" />
+		
+		<!-- Display an jre location panel -->
+		<panel classname="JREPathPanel" id="jre" />
+		
+		<!-- This panel asks about JBoss Application Server installation -->
+		<panel classname="com.jboss.jbds.installer.JBossAsSelectPanel" id="as" />
+		
+		<!-- This panel updates idata.selectedPacks list -->
+		<panel classname="UpdatePacksPanel" id="updatepacks"/>
+		
+		<!-- This panel checks there is sufficient disk space to proceed with the installation -->
+		<panel classname="DiskSpaceCheckPanel" id="diskspacecheck"/>
+
+		<!-- This panel shows summary information -->
+		<panel classname="SummaryPanel" id="summary" />
+		
+		<!-- Do the install -->
+		<panel classname="InstallPanel" id="install" />
+		
+		<!-- This panel creates links folder in Eclipse home directory and creates jbds.link file -->
+		<panel classname="CreateLinkPanel" id="createlink"/>
+		
+		<!-- This panel creates shortcuts -->
+		<panel classname="ShortcutPanel" id="shortcut" />
+
+		<!-- This panel creates shortcuts -->
+		<panel classname="ShortcutPanelPatch" id="shortcutpatch" />
+		
+		<!-- This panel shows final information -->
+		<panel classname="SimpleFinishPanel" id="finish" />
+	</panels>
+
+	<listeners>
+		<listener installer="AntActionInstallerListener" >
+			<os family="unix"/>
+		</listener>
+		<!-- disabled to fix issue with windows  -->
+		<!-- installer on windows vista is not asking 
+		     for privilege lifting which leads to errors 
+		     during addin JBDS installation to the registry-->
+		<!-- listener installer="RegistryInstallerListener"
+			uninstaller="RegistryUninstallerListener" >
+			<os name="Windows 7"/>
+		</listener -->
+		<!--listener installer="RegistryInstallerListener"
+			uninstaller="RegistryUninstallerListener" >
+			<os family="windows" name="Windows Vista"/>
+		</listener-->
+	</listeners>
+	
+	<conditions>
+	   <condition type="variable" id="jbeap-selected">
+	      <name>INSTALL_GROUP</name>
+	      <value>jbosseap</value>
+	   </condition>
+	</conditions>
+
+	<packs>
+		<refpack file="config/install-pack-universal.xml" />
+	</packs>
+	
+	<jar src="@{izpack.home}/lib/izevent.jar" />
+	<jar src="../../tools/lib/ant.jar" />
+	<jar src="../../tools/lib/ant-launcher.jar" />
+	<jar src="@{artifacts.jbds.update}" />
+</installation>

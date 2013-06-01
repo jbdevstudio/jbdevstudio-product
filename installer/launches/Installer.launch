@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/IzPack-4.3.2/src/lib/com/izforge/izpack/installer/Installer.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.izforge.izpack.installer.Installer"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="IzPack-4.3.2"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DTRACE=TRUE1 -Dpack.name=pack-universal"/>
+</launchConfiguration>

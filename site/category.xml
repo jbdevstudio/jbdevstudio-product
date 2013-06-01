@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+  <description>JBoss Developer Studio 7.0 Updates - Core</description>
+
+  <!-- PLEASE NOTE!
+    When updating this file, please be sure that it parses as valid XML before committing it.
+    To test, just run `mvn clean install` in this folder.
+  -->
+
+  <feature id="org.jboss.tools.richfaces.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.vpe.browsersim.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+    <category name="MobileTools"/>
+  </feature>
+  <feature id="org.jboss.tools.jst.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.vpe.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.jsf.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.seam.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.cdi.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.tools.cdi.seam.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.tools.cdi.deltaspike.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.tools.jmx.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.ide.eclipse.as.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.openshift.express.feature">
+    <category name="CoreTools" />
+    <category name="CloudTools" />
+  </feature>
+  <feature id="org.jboss.tools.openshift.egit.integration.feature">
+    <category name="CoreTools" />
+    <category name="CloudTools" />
+  </feature>
+  <feature id="org.jboss.ide.eclipse.archives.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.hibernate.eclipse.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+    <category name="DataTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.ide.eclipse.freemarker.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.tools.ws.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.ws.jaxrs.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.portlet.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.forge.feature">
+    <category name="CoreTools"/>
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.jboss.tools.project.examples.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.apt.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.cdi.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.hibernate.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.jdt.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.portlet.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.profiles.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.project.examples.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.maven.seam.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools"/>
+  </feature>
+  <feature id="org.jboss.tools.maven.sourcelookup.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
+  <feature id="org.jboss.tools.common.jdt.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools"/>
+  </feature>
+  <feature id="org.jboss.tools.livereload.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+
+  <feature id="org.jboss.tools.stacks.core.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools"/>
+  </feature>
+
+  <feature id="org.jboss.tools.runtime.core.feature">
+    <category name="CoreTools" />
+  </feature>
+  <feature id="org.jboss.tools.runtime.seam.detector.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+
+  <!-- include but do not categorize -->
+  <feature id="org.jboss.tools.central.feature"/>
+  <feature id="org.jboss.tools.common.feature"/>
+  <feature id="org.jboss.tools.common.core.feature"/>
+  <feature id="org.jboss.tools.common.text.ext.feature"/>
+  <feature id="org.jboss.tools.common.ui.feature"/>
+  <feature id="org.jboss.tools.common.verification.feature"/>
+  <feature id="org.jboss.tools.xulrunner.feature"/>
+  <feature id="org.mozilla.xulrunner.feature"/>
+
+  <!-- only in JBT
+  <feature id="org.jboss.tools.aerogear.hybrid.feature">
+     <category name="MobileTools"/>
+  </feature>
+  <feature id="org.jboss.tools.arquillian.feature">
+    <category name="WebTools" />
+    <category name="GeneralTools"/>
+  </feature>
+  <feature id="org.jboss.tools.birt.feature">
+    <category name="ReportTools" />
+  </feature>
+  <feature id="org.jboss.tools.central.themes.feature">
+    <category name="OtherTools" />
+  </feature>
+  <feature id="org.jboss.tools.community.central.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.tools.community.project.examples.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.tools.forge.ext.feature">
+    --><!-- JBIDE-13691 don't put in CoreTools category yet <category name="CoreTools"/> --><!--
+    <category name="WebTools"/>
+  </feature>
+  <feature id="org.jboss.tools.gwt.feature">
+    <category name="GeneralTools" />
+  </feature>
+  <feature id="org.jboss.tools.vpe.cordovasim.feature">
+    <category name="MobileTools"/>
+  </feature>
+  -->
+
+  <!-- categorized in JBT; uncategorized in JBDS -->
+  <feature id="org.jboss.tools.maven.jbosspackaging.feature"/>
+  <feature id="org.jboss.tools.maven.gwt.feature"/>
+  <feature id="org.jboss.tools.common.mylyn.feature"/>
+  <feature id="org.jboss.tools.usage.feature"/>
+
+  <!-- only in JBDS -->
+  <feature id="com.jboss.jbds.product.feature" patch="false"><category name="BringYourOwnEclipse" /><category name="CoreTools" /></feature>
+  <feature id="com.jboss.jbds.m2e.feature"><category name="CoreTools"/><category name="MavenTools" /></feature>
+  <feature id="org.eclipse.egit"/>
+  <feature id="org.eclipse.jgit"/>
+  <feature id="org.eclipse.m2e.feature"/>
+  <feature id="org.eclipse.m2e.wtp.feature"/>
+  <feature id="org.sonatype.m2e.mavenarchiver.feature"/>
+
+
+  <!-- ####### -->
+  <!-- SOURCES : DO NOT CATEGORIZE -->
+  <!-- ####### -->
+
+  <feature id="org.jboss.tools.central.feature.source"/>
+  <feature id="org.jboss.tools.richfaces.feature.source"/>
+  <feature id="org.jboss.tools.vpe.browsersim.feature.source"/>
+  <feature id="org.jboss.tools.jst.feature.source"/>
+  <feature id="org.jboss.tools.vpe.feature.source"/>
+  <feature id="org.jboss.tools.jsf.feature.source"/>
+  <feature id="org.jboss.tools.xulrunner.feature.source"/>
+  <feature id="org.mozilla.xulrunner.feature.source"/>
+  <feature id="org.jboss.tools.seam.feature.source"/>
+  <feature id="org.jboss.tools.cdi.feature.source"/>
+  <feature id="org.jboss.tools.cdi.seam.feature.source"/>
+  <feature id="org.jboss.tools.cdi.deltaspike.feature.source"/>
+  <feature id="org.jboss.tools.jmx.feature.source"/>
+  <feature id="org.jboss.ide.eclipse.as.feature.source"/>
+  <feature id="org.jboss.tools.openshift.express.feature.source"/>
+  <feature id="org.jboss.tools.openshift.egit.integration.feature.source"/>
+  <feature id="org.jboss.ide.eclipse.archives.feature.source"/>
+  <feature id="org.hibernate.eclipse.feature.source"/>
+  <feature id="org.jboss.ide.eclipse.freemarker.feature.source"/>
+  <feature id="org.jboss.tools.ws.feature.source"/>
+  <feature id="org.jboss.tools.ws.jaxrs.feature.source"/>
+  <feature id="org.jboss.tools.portlet.feature.source"/>
+  <feature id="org.jboss.tools.forge.feature.source"/>
+  <feature id="org.jboss.tools.project.examples.feature.source"/>
+  <feature id="org.jboss.tools.maven.feature.source"/>
+  <!-- JBIDE-13926, JBIDE-13928 Do not include source feature <feature id="org.jboss.tools.maven.apt.feature.source"/> -->
+  <feature id="org.jboss.tools.maven.cdi.feature.source"/>
+  <feature id="org.jboss.tools.maven.hibernate.feature.source"/>
+  <feature id="org.jboss.tools.maven.jdt.feature.source"/>
+  <feature id="org.jboss.tools.maven.portlet.feature.source"/>
+  <feature id="org.jboss.tools.maven.profiles.feature.source"/>
+  <feature id="org.jboss.tools.maven.project.examples.feature.source"/>
+  <feature id="org.jboss.tools.maven.seam.feature.source"/>
+  <feature id="org.jboss.tools.maven.sourcelookup.feature.source"/>
+  <feature id="org.jboss.tools.runtime.core.feature.source"/>
+  <feature id="org.jboss.tools.runtime.seam.detector.feature.source"/>
+  <feature id="org.jboss.tools.livereload.feature.source"/>
+  <feature id="org.jboss.tools.usage.feature.source"/>
+  <feature id="org.jboss.tools.common.jdt.feature.source"/>
+  <feature id="org.jboss.tools.common.mylyn.feature.source"/>
+
+  <!-- include but do not categorize -->
+  <feature id="org.jboss.tools.common.feature.source"/>
+  <feature id="org.jboss.tools.common.core.feature.source"/>
+  <feature id="org.jboss.tools.common.text.ext.feature.source"/>
+  <feature id="org.jboss.tools.common.ui.feature.source"/>
+  <feature id="org.jboss.tools.common.verification.feature.source"/>
+
+  <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/>
+  <feature id="org.jboss.tools.maven.gwt.feature.source"/>
+
+  <!-- only in JBT
+  <feature id="org.jboss.tools.aerogear.hybrid.feature.source"/>
+  <feature id="org.jboss.tools.arquillian.feature.source"/>
+  <feature id="org.jboss.tools.central.themes.feature.source"/>
+  <feature id="org.jboss.tools.community.central.feature.source"/>
+  <feature id="org.jboss.tools.community.project.examples.feature.source"/>
+  <feature id="org.jboss.tools.birt.feature.source"/>
+  <feature id="org.jboss.tools.forge.ext.feature.source"/>
+  <feature id="org.jboss.tools.gwt.feature.source"/>
+  <feature id="org.jboss.tools.vpe.cordovasim.feature.source"/>
+  -->
+
+  <!-- only in JBDS -->
+  <feature id="com.jboss.jbds.product.feature.source" patch="false"/>
+
+
+  <!-- ########## -->
+  <!-- CATEGORIES -->
+  <!-- ########## -->
+
+  <!-- only in JBT
+  <category-def name="CoreTools" label="* Abridged JBoss Tools">
+    <description>Contains most of the JBoss Tools features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web and Seam Development.</description>
+  </category-def>
+  <category-def name="OtherTools" label="Other Tools">
+    <description>Miscellaneous other features, including incubating features. See individual feature descriptions for details.</description>
+  </category-def>
+  <category-def name="ReportTools" label="JBoss Business Intelligence, Reporting and Charting">
+    <description>Business Intelligence, Reporting and Charting. Use these if you plan to integrate Hibernate or Seam with Eclipse BIRT.</description>
+  </category-def>
+  -->
+
+  <!-- only in JBDS -->
+  <category-def name="BringYourOwnEclipse" label="* JBoss Developer Studio 7.0 - Bring Your Own Eclipse [Technology Preview]">
+    <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Kepler 4.3. 
+
+Note: this is a Technology Preview. It is provided for users and customers to try out and to provide the developers with feedback.</description>
+  </category-def>
+  <category-def name="CoreTools" label="* JBoss Developer Studio 7.0 - Core">
+    <description>Contains most of the JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web and Seam Development.</description>
+  </category-def>
+  
+  <category-def name="WebTools" label="JBoss Web and Java EE Development">
+    <description>Tools to help create web and enterprise applications, using JSF, Facelets, Seam, Hibernate/JPA, CSS, Webservices and more.</description>
+  </category-def>
+
+  <category-def name="MobileTools" label="JBoss Mobile Development">
+    <description>Tools to create applications targeting mobile devices.</description>
+  </category-def>
+
+  <category-def name="GeneralTools" label="JBoss Application Development">
+    <description>Tools for general application development.</description>
+  </category-def>
+
+  <category-def name="DataTools" label="JBoss Data Services">
+    <description>Tools related to data services such as persistence and transformation.</description>
+  </category-def>
+
+  <category-def name="MavenTools" label="JBoss Maven Support">
+    <description>Plugins related to Maven and m2eclipse support. Use these to enable use of Maven.</description>
+  </category-def>
+  <category-def name="CloudTools" label="JBoss Cloud Development Tools">
+    <description>Tools for Cloud Development.</description>
+  </category-def>
+</site>

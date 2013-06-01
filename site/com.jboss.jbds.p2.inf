@@ -1,0 +1,14 @@
+# This part defines category that contains feature generated based on product file
+units.1.id=com.jboss.jbds.all.category
+units.1.version=$version$
+units.1.provides.1.namespace=org.eclipse.equinox.p2.iu
+units.1.provides.1.name=com.jboss.jbds.all.category
+units.1.provides.1.version=$version$
+units.1.properties.1.name=org.eclipse.equinox.p2.type.category
+units.1.properties.1.value=true
+units.1.properties.2.name=org.eclipse.equinox.p2.name
+units.1.properties.2.value=JBoss Developer Studio
+units.1.requires.1.namespace=org.eclipse.equinox.p2.iu
+units.1.requires.1.name=com.jboss.jbds.all
+units.1.requires.1.range=[$version$,$version$]
+units.1.requires.1.greedy=true

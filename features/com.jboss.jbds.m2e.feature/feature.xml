@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature id="com.jboss.jbds.m2e.feature" label="Maven Integration (Selected)" version="7.0.0.qualifier" provider-name="JBoss by Red Hat">
+
+	<description>Contains 
+m2e 1.2, m2e-wtp 0.16 and mavenarchiver 0.15, including support for APT, Build Helper, CDI, Hibernate, JAX-RS, JDT, JPA, JSF, Portlet, Maven Profiles Management, Project Examples, Seam, and Source Lookup (Selected). 
+Features selected by Red Hat for use with JBoss Developer Studio.
+</description>
+
+   <copyright>%copyright
+   </copyright>
+
+   <license url="license.html">Red Hat, Inc. licenses these features and plugins to you under
+certain open source licenses (or aggregations of such licenses),
+which in a particular case may include the Eclipse Public License,
+the GNU Lesser General Public License, and/or certain other open
+source licenses. For precise licensing details, consult the corresponding
+source code, or contact Red Hat Legal Affairs, 1801 Varsity Drive,
+Raleigh NC 27606 USA.
+   </license>
+
+   <!-- New for 6.x: include org.eclipse.m2e.wtp.feature w/o set version so that we get the latest from the Target Platform -->
+   <!-- JBDS-2253: m2e.wtp requires m2e and m2e.mavenarchiver so keep things simple, just include m2e.wtp -->
+   <includes id="org.eclipse.m2e.wtp.feature" version="0.0.0"/>
+   <!-- JBDS-2290, JBIDE-12649 -->
+   <includes id="org.jboss.tools.maven.apt.feature" version="0.0.0"/>
+   <includes id="org.jboss.tools.m2e.jdt.feature" version="0.0.0"/>
+   <!-- JBDS-2296 -->
+   <includes id="org.sonatype.m2e.buildhelper.feature" version="0.0.0"/>
+
+   <requires>
+		<import plugin="org.eclipse.emf.ecore" />
+		<import plugin="org.eclipse.emf.ecore.xmi" />
+		<import plugin="org.eclipse.emf.edit" />
+		<import plugin="org.eclipse.emf.ecore.edit" />
+		<import plugin="org.eclipse.wst.common.emf" />
+		<import plugin="org.eclipse.wst.sse.core" />
+		<import plugin="org.eclipse.wst.xml.core" />
+		<import plugin="org.eclipse.jem.util" />
+		<import feature="org.eclipse.platform" />
+		<import feature="org.eclipse.rcp" />
+		<import feature="org.eclipse.jdt" />
+
+		<!-- JBIDE-13428: New for 7.x: migrated to Eclipse.org (o.j.t.maven.{jaxrs,jsf,jpa} ==> o.e.m2e.wtp.{jaxrs,jsf,jpa}) -->
+		<import feature="org.eclipse.m2e.wtp.jaxrs.feature"/>
+		<import feature="org.eclipse.m2e.wtp.jpa.feature"/>
+		<import feature="org.eclipse.m2e.wtp.jsf.feature"/>
+
+		<!-- New for 5.x: JBoss Tools Maven Integration plugins-->
+		<import feature="org.jboss.tools.maven.feature"/>
+		<import feature="org.jboss.tools.maven.apt.feature"/>
+		<import feature="org.jboss.tools.maven.cdi.feature"/>
+		<import feature="org.jboss.tools.maven.hibernate.feature"/>
+		<!-- JBDS-1938 not ready for JBDS yet <import feature="org.jboss.tools.maven.jbosspackaging.feature"/> -->
+		<import feature="org.jboss.tools.maven.jdt.feature"/>
+		<import feature="org.jboss.tools.maven.portlet.feature"/>
+		<import feature="org.jboss.tools.maven.profiles.feature"/>
+		<import feature="org.jboss.tools.maven.project.examples.feature"/>
+		<import feature="org.jboss.tools.maven.seam.feature"/>
+		<import feature="org.jboss.tools.maven.sourcelookup.feature"/>
+   </requires>
+</feature>

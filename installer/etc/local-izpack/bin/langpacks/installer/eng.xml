@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+
+<!-- The English langpack -->
+
+<langpack>
+    
+    <!-- General installer strings -->
+    <str id="installer.title" txt=" "/> <!-- X --> <!-- using a single space because of a limitation in the translation tools -->
+    <str id="installer.next" txt="Next"/>
+    <str id="installer.prev" txt="Previous"/>
+    <str id="installer.quit" txt="Quit"/>
+    <str id="installer.madewith" txt="JBoss by Red Hat"/> <!-- X -->
+    <str id="installer.quit.title" txt="Are you sure you want to quit?"/>
+    <str id="installer.quit.message" txt="This will cancel the installation!"/>
+    <str id="installer.warning" txt="Warning!"/>
+    <str id="installer.yes" txt="Yes"/>
+    <str id="installer.no" txt="No"/>
+    <str id="installer.cancel" txt="Cancel"/> 
+    <str id="installer.error" txt="Error"/>
+    <str id="installer.Message" txt="Message"/>
+    
+    <!-- Uninstaller specific strings -->
+    <str id="uninstaller.warning" txt="This will remove the installed application(s)!"/>
+    <str id="uninstaller.destroytarget" txt=" Force the deletion of "/>
+    <str id="uninstaller.uninstall" txt="Uninstall"/>
+    
+    <!-- The strings for the 'official' IzPack plugins -->
+    <str id="HelloPanel.welcome1" txt="Welcome to the installation of "/>
+    <str id="HelloPanel.welcome2" txt="!"/>
+    <str id="HelloPanel.authors" txt="This software is developed by: "/>
+    <str id="HelloPanel.url" txt="The homepage is at: "/>
+    
+    <str id="LicencePanel.info" txt="Please read the following license agreement carefully:"/>
+    <str id="LicencePanel.agree" txt="I accept the terms of this license agreement."/>
+    <str id="LicencePanel.notagree" txt="I do not accept the terms of this license agreement."/>
+    <str id="LicencePanel.yes" txt="Yes"/>
+    <str id="LicencePanel.no" txt="No"/>
+    
+    <str id="InfoPanel.info" txt="Please read the following information: "/>
+    
+    <str id="PathInputPanel.required" txt="The chosen directory should exist."/>
+    <str id="PathInputPanel.notValid" txt="The chosen directory does not contain the required product."/>
+
+    <str id="TargetPanel.info" txt="Select the installation path: "/>
+    <str id="TargetPanel.browse" txt="Browse..."/>
+    <str id="TargetPanel.warn" 
+         txt="The directory already exists! Are you sure you want to install here and possibly overwrite existing files?"/>
+    <str id="TargetPanel.empty_target"
+         txt="You have not specified a target location! Is this correct?"/>
+	<str id="TargetPanel.createdir" txt="The target directory will be created: " />
+    <str id="TargetPanel.nodir" 
+         txt="This file is not a directory! Please choose a directory!"/>
+    <str id="TargetPanel.notwritable" 
+         txt="This directory can not be written! Please choose another directory!"/>
+    
+    <str id="JDKPathPanel.intro" txt="The installed application needs a JDK. A java runtime environment (JRE) will be not sufficient."/>
+    <str id="JDKPathPanel.info" txt="Select the JDK path:"/>
+    <str id="JDKPathPanel.badVersion1" txt="The chosen JDK has the wrong version (available: "/>
+    <str id="JDKPathPanel.badVersion2" txt=" required: "/>
+    <str id="JDKPathPanel.badVersion3" txt=") should this JDK be used anyway?"/>
+
+    <str id="PacksPanel.info" txt="Select the packs you want to install:"/>
+    <str id="PacksPanel.tip" txt="Note: greyed out packs are required."/>
+    <str id="PacksPanel.space" txt="Total space Required: "/>
+    <str id="PacksPanel.freespace" txt="Available space: "/>
+    <str id="PacksPanel.description" txt="Description"/>
+    <str id="PacksPanel.dependencyList" txt="The selected package has the following dependencies"/>
+    <str id="ImgPacksPanel.dependencyList" txt="Dependencies"/>
+	<str id="PacksPanel.notEnoughSpace" txt="Disk space required for the installation exceeds available disk space."/>
+    <str id="PacksPanel.notAscertainable" txt="not ascertainable"/>
+    <str id="PacksPanel.excludes" txt="Excludes: "/>
+    <str id="PacksPanel.dependencies" txt="Dependencies: "/>
+    
+   <str id="InstallPanel.info" txt="Click 'Install!' to begin the installation process"/>
+   <str id="InstallPanel.install" txt="Install!"/>
+   <str id="InstallPanel.tip" txt="Pack installation progress:"/>
+   <str id="InstallPanel.begin" txt="[Nothing]"/>
+   <str id="InstallPanel.finished" txt="[Finished]"/>
+   <str id="InstallPanel.progress" txt="Overall installation progress:"/>
+   <str id="InstallPanel.overwrite.title" txt="File already exists"/>
+   <str id="InstallPanel.overwrite.question" txt="The following file already exists. Should it be overwritten?"/>
+
+   <str id="InstallationGroupPanel.info" txt="Select the profile you want to install:"/>
+   <str id="InstallationGroupPanel.tip" txt="This panel allows you to select the JBoss profile to install"/>
+   <str id="InstallationGroupPanel.begin" txt="[Nothing]"/>
+   <str id="InstallationGroupPanel.finished" txt="[Finished]"/>
+   <!-- The install group descriptions in txt and URLEncoder encoded html:
+class encode
+{
+   public static void main(String[] args) throws Exception
+   {
+      System.out.println(java.net.URLEncoder.encode(args[0], "UTF-8"));
+   }
+}
+   -->
+   <str id="InstallationGroupPanel.description.minimal"
+      txt="A minimal JMX microkernel. Note, this is not a J2EE 1.4 compatible configuration." />
+   <str id="InstallationGroupPanel.description.minimal.html"
+      txt="A minimal JMX microkernel. Note, this is not a J2EE 1.4 compatible configuration." />
+   <str id="InstallationGroupPanel.description.default"
+      txt="A base J2EE 1.4 server profile" />
+   <str id="InstallationGroupPanel.description.ejb3"
+      txt="A ejb3 profile supporting the full ejb3 spec with tomcat. Note, this requires a JDK5 runtime and is not a J2EE 1.4 compatible configuration" />
+   <str id="InstallationGroupPanel.description.ejb3.html"
+      txt="A+ejb3+profile+supporting+the+full+ejb3+spec+with+tomcat.+%3Cb%3E%0A%3Cfont+color%3D%22%23FF0000%22%3ENote%2C+this+requires+a+JDK5+runtime+and+is+not+a+J2EE+1.4+compatible+configuration.%3C%2Ffont%3E%0A%3C%2Fb%3E" />
+   <str id="InstallationGroupPanel.description.ejb3-clustered"
+      txt="A ejb3 profile supporting the full ejb3 spec with tomcat and clustering. Note, this requires a JDK5 runtime and is not a J2EE 1.4 compatible configuration" />
+   <str id="InstallationGroupPanel.description.ejb3-clustered.html"
+      txt="A+ejb3+profile+supporting+the+full+ejb3+spec+with+tomcat+and+clustering.+%3Cb%3E%0A%3Cfont+color%3D%22%23FF0000%22%3ENote%2C+this+requires+a+JDK5+runtime+and+is+not+a+J2EE+1.4+compatible+configuration.%3C%2Ffont%3E%0A%3C%2Fb%3E" />
+   <str id="InstallationGroupPanel.description.all"
+      txt="A full J2EE 1.4 server profile with enterprise extensions." />
+   <str id="InstallationGroupPanel.description.jms"
+      txt="A JMS 1.1 server profile. Note, this is not a J2EE 1.4 compatible configuration" />
+   <str id="InstallationGroupPanel.description.tomcat"
+      txt="A Servlet 2.4 container profile. Note, this is not a J2EE 1.4 compatible configuration" />
+   <str id="InstallationGroupPanel.description.portal"
+      txt="A JSR168 portal service on top of the Application Server." />
+   <str id="InstallationGroupPanel.description.jms.html"
+      txt="A JMS 1.1 server profile. Note, this is not a J2EE 1.4 compatible configuration" />
+   <str id="InstallationGroupPanel.description.tomcat.html"
+      txt="A Servlet 2.4 container profile. Note, this is not a J2EE 1.4 compatible configuration" />
+   <str id="InstallationGroupPanel.description.portal.html"
+      txt="A JSR168 portal service on top of the Application Server." />
+
+   <!-- Group names -->
+   <str id="InstallationGroupPanel.groups.all" txt="all"/>
+   <str id="InstallationGroupPanel.groups.ejb3" txt="ejb3"/>
+   <str id="InstallationGroupPanel.groups.ejb3-clustered" txt="ejb3-clustered"/>
+   <str id="InstallationGroupPanel.groups.default" txt="default"/>
+   <str id="InstallationGroupPanel.groups.jms" txt="jms"/>
+   <str id="InstallationGroupPanel.groups.portal" txt="portal"/>
+   <str id="InstallationGroupPanel.groups.tomcat" txt="tomcat"/>
+   <str id="InstallationGroupPanel.groups.minimal" txt="minimal"/>
+   
+    <str id="FinishPanel.success" txt="Installation has completed successfully."/>
+    <str id="FinishPanel.done" txt="Done"/>
+    <str id="FinishPanel.fail" txt="Installation has failed!"/>
+    <str id="FinishPanel.uninst.info" txt="An uninstaller program has been created in: "/>
+    <str id="FinishPanel.auto" txt="Generate an automatic installation script"/>
+    <str id="FinishPanel.auto.tip" 
+         txt="Use this script to repeat this installation on other computers."/>
+    
+    <str id="ImgPacksPanel.packs" txt="The following packs are available:"/>
+    <str id="ImgPacksPanel.snap" txt="Package snapshot:"/>
+    <str id="ImgPacksPanel.checkbox" txt=" Install this pack"/>
+    
+    <str id="ShortcutPanel.headline" txt="Setup Shortcuts"/>    
+    <str id="ShortcutPanel.regular.list" txt="Select a Program Group for the Shortcuts:"/>	
+	<str id="ShortcutPanel.regular.default" txt="Default"/>
+    <str id="ShortcutPanel.regular.desktop" txt="Create additional shortcut on the desktop"/>
+    <str id="ShortcutPanel.regular.StartMenu:Start-Menu" txt="Start-Menu"/>
+    <str id="ShortcutPanel.regular.StartMenu:K-Menu" txt="XDG-Menu"/>
+	                                                          <!-- "StartMenu" is a placeholder will be replaced at runtime -->
+    <str id="ShortcutPanel.regular.create" txt="Create shortcuts in the StartMenu"/>
+    <str id="ShortcutPanel.regular.userIntro" txt="create shortcut for:"/>
+    <str id="ShortcutPanel.regular.currentUser" txt="current user"/>
+    <str id="ShortcutPanel.regular.allUsers" txt="all users"/>
+
+    <str id="ShortcutPanel.alternate.apology" txt="We are sorry but IzPack does not support the creation of shortcuts on this operating system. To create the shortcuts, please refer to your operating system manual."/>
+    <str id="ShortcutPanel.alternate.targetsLabel" txt="The following is a list of targets that the manufacturer of this software product wanted you to have access to."/>
+    <str id="ShortcutPanel.alternate.textFileExplanation" txt="You can save detailed information about the application targets in a text file for later reference."/>
+    <str id="ShortcutPanel.alternate.saveButton" txt="Save Text File"/>
+    
+    <str id="ShortcutPanel.textFile.header" txt="Shortcut Information\n====================\n\nThe following is a listing of all relevant information about the intended\nshortcuts. This information should make it possible to create shortcuts manually.\n"/>
+    
+    <str id="ShortcutPanel.textFile.name"         txt="Shortcut          : "/>
+    <str id="ShortcutPanel.textFile.location"     txt="Intended Location : "/>
+    <str id="ShortcutPanel.textFile.description"  txt="Description       : "/>
+    <str id="ShortcutPanel.textFile.target"       txt="Shortcut Target   : "/>
+    <str id="ShortcutPanel.textFile.command"      txt="Command Line      : "/>
+    <str id="ShortcutPanel.textFile.iconName"     txt="Icon File         : "/>
+    <str id="ShortcutPanel.textFile.iconIndex"    txt="Icon Index        : "/>
+    <str id="ShortcutPanel.textFile.work"         txt="Working Directory : "/>
+
+    <str id="ShortcutPanel.location.desktop"      txt="Desktop"/>
+    <str id="ShortcutPanel.location.applications" txt="Applications Menu"/>
+    <str id="ShortcutPanel.location.startMenu"    txt="Start Menu"/>
+    <str id="ShortcutPanel.location.startup"      txt="Startup Group"/>
+    
+    <str id="UserInputPanel.error.caption"        txt="Input Problem"/>
+    <str id="UserInputPanel.search.autodetect"    txt="Autodetect"/>
+
+    <!-- more descriptive error message would be cool, like specifying what file we looked for -->
+    <str id="UserInputPanel.search.autodetect.failed.message"    txt="Autodetection failed."/>
+    <str id="UserInputPanel.search.autodetect.failed.caption"    txt="Autodetection failed."/>
+    <str id="UserInputPanel.search.autodetect.tooltip"           txt="Check for the file or directory in the paths given above."/>
+    <str id="UserInputPanel.search.location"           txt="Enter location of {0}."/>
+    <str id="UserInputPanel.search.location.checkedfile" txt="The existence of {0} is checked."/>
+    <str id="UserInputPanel.search.browse"           txt="Browse..."/>
+    <str id="UserInputPanel.search.wrongselection.message"   txt="The file or directory you choose either does not exist or is not appropiate."/>
+    <str id="UserInputPanel.search.wrongselection.caption"   txt="Invalid selection."/>
+
+    <str id="CompilePanel.heading" txt="Compilation" />
+    <str id="CompilePanel.tip" txt="Job compilation progress:" />
+    <str id="CompilePanel.browse" txt="Browse..." />
+    <str id="CompilePanel.browse.approve" txt="Use as compiler" />
+    <str id="CompilePanel.start" txt="Start" />
+    <str id="CompilePanel.progress.initial" txt="[Press Start button]" />
+    <str id="CompilePanel.progress.finished" txt="[Finished]" />
+    <str id="CompilePanel.progress.overall" txt="Overall compilation progress:" />
+    <str id="CompilePanel.error" txt="Compilation failed" />
+    <str id="CompilePanel.error.reconfigure" txt="Reconfigure" />
+    <str id="CompilePanel.error.ignore" txt="Ignore" />
+    <str id="CompilePanel.error.abort" txt="Abort" />
+    <str id="CompilePanel.error.seebelow" txt="See below for the failed command and its output." />
+    <str id="CompilePanel.error.nofiles" txt="Error while scanning for files for compilation." />
+    <str id="CompilePanel.error.compilernotfound" txt="The compiler could not be run." />
+    <str id="CompilePanel.error.invalidarguments" txt="Invalid arguments provided to the compiler." />
+    <str id="CompilePanel.error.noclassfile" txt="The compiler did not produce a class file for the source file " />
+    <str id="CompilePanel.choose_compiler" txt="Compiler to use:" />
+    <str id="CompilePanel.additional_arguments" txt="Additional compiler arguments:" />
+
+    <str id="ProcessPanel.heading" txt="Processing" />
+
+    <!-- Strings for the summary of panels - START -->
+    <str id="SummaryPanel.info" txt="Ready to install. Important data are listed below. Press &quot;Next&quot; to start installation, "/>
+    <str id="TargetPanel.summaryCaption" txt="Installation path"/>
+    <str id="JDKPathPanel.summaryCaption" txt="JDK path"/>
+    <str id="PacksPanel.summaryCaption" txt="Chosen installation packs"/>
+    <str id="ImgPacksPanel.summaryCaption" txt="Chosen installation packs"/>
+    <!-- Strings for the summary of panels - END -->
+
+    <!-- Strings for the Registry -->
+    <str id="functionFailed.RegOpenKeyEx" txt="Cannot open registry key {0}\\{1}."/>
+    
+    <!-- Add your own panels specific strings here if you need -->
+
+   <str id="InstallationGroupPanel.colNameSelected" txt="Selected"/>
+   <str id="InstallationGroupPanel.colNameInstallType" txt="InstallType"/>
+   <str id="InstallationGroupPanel.colNameSize" txt="Size"/>
+
+   <str id="installer.bytes" txt="bytes"/>
+   <str id="installer.kbytes" txt="KB"/>
+   <str id="installer.mbytes" txt="MB"/>
+   <str id="installer.gbytes" txt="GB"/>
+   
+   <!-- Pack names and descriptions -->
+   
+   <str id="jmx-core" txt="jmx-core"/>
+   <str id="jmx-core.description" txt="This package contains the core JBoss startup scripts and and libraries."/>
+
+   <str id="jmx-core" txt="jmx-core"/>
+   <str id="jmx-core.description" txt="This package contains the core JBoss startup scripts and and libraries."/>
+
+   <str id="docs" txt="docs"/>
+   <str id="docs.description" txt="This package contains the JBoss documentation directory, including XML DTDs and schemas and service examples."/>
+
+   <str id="client" txt="client"/>
+   <str id="client.description" txt="This package contains the JAR files needed to access JBoss from a remote client."/>
+   
+   <str id="tomcat-client" txt="tomcat-client"/>
+   <str id="tomcat-client.description" txt="This package contains the JAR files needed to access JBoss-Tomcat from a remote client."/>   
+
+   <str id="mc-minimal" txt="mc-minimal"/>
+   <str id="mc-minimal.description" txt="This package contains the core JMX microkernel and provides a minimal footprint with logging, services and hot deployment."/>
+   
+   <str id="xmlservice" txt="xmlservice"/>
+   <str id="xmlservice.description" txt="Dom4j and jaxen for resolving xml"/>
+
+   <str id="minimal" txt="minimal"/>
+   <str id="minimal.description" txt="This package contains the core JMX microkernel and provides a minimal footprint with logging, services and hot deployment."/>
+
+   <str id="xmlresolver" txt="xmlresolver"/>
+   <str id="xmlresolver.description" txt="XML entity resolution configuration service"/>
+
+   <str id="binding-service" txt="binding-service"/>
+   <str id="binding-service.description" txt="This package contains the binding service manager for port/host mapping when running multiple JBoss instances on one machine."/>
+
+   <str id="snmp-adaptor.sar" txt="snmp-adaptor.sar"/>
+   <str id="snmp-adaptor.sar.description" txt=""/>
+
+   <str id="bsh-deployer" txt="bsh-deployer"/>
+   <str id="bsh-deployer.description" txt="This package provides the bean shell deployer, which deploys bsh scripts as services."/>
+
+   <str id="cache-invalidation-service.xml" txt="cache-invalidation-service.xml"/>
+   <str id="cache-invalidation-service.xml.description" txt="This package provides the EJB2.1 entity cache invalidation service."/>
+
+   <str id="client-deployer-service" txt="client-deployer-service"/>
+   <str id="client-deployer-service.description" txt="This package provides the client application deployer, which deploys J2EE 1.4 application client JARs."/>
+
+   <str id="dynclassloader-service" txt="dynclassloader-service"/>
+   <str id="dynclassloader-service.description" txt="This package provides the RMI dynamic class loading service. It is only needed when using remote RMI clients that aren't bundles with all required JAR files."/>
+
+   <str id="iiop-service.xml" txt="iiop-service.xml"/>
+   <str id="iiop-service.xml.description" txt="This package provides the RMI dynamic class loading service. It is only needed when using remote RMI clients that aren't bundles with all required JAR files."/>
+
+   <str id="ear-deployer" txt="ear-deployer"/>
+   <str id="ear-deployer.description" txt="This package provides the EAR Deployer. It deploys J2EE 1.4 EAR files."/>
+
+   <str id="ejb-timer-service" txt="ejb-timer-service"/>
+   <str id="ejb-timer-service.description" txt="This is the EJB timer service provider"/>
+
+   <str id="ejb-deployer" txt="ejb-deployer"/>
+   <str id="ejb-deployer.description" txt="This is the EJB2.1 container and deployer. It deploys J2EE 1.4 EJB JAR files."/>
+
+   <str id="jboss-ds" txt="jboss-ds"/>
+   <str id="jboss-ds.description" txt="This package provides database configuration and requires you to copy the driver library  to jboss4.0.x\server\default\lib. HSQLDB drivers hsqldb-plugin.jar and hsqldb.jar are included by default. "/>
+
+   <str id="rmi-http-invoker" txt="rmi-http-invoker"/>
+   <str id="rmi-http-invoker.description" txt="This package provides the RMI over HTTP invoker service. It allows remote requests to be tunneled over HTTP to pass through firewalls."/>
+
+   <str id="jboss-aop-deployer" txt="jboss-aop-deployer"/>
+   <str id="jboss-aop-deployer.description" txt="JBossAOP aspect manager and deployer services"/>
+
+   <str id="jboss-aop-jdk50-deployer" txt="jboss-aop-jdk50-deployer"/>
+   <str id="jboss-aop-jdk50-deployer.description" txt="JBossAOP JDK5 version of the aspect manager and deployer services"/>
+
+   <str id="jboss-bean-deployer" txt="jboss-bean-deployer"/>
+   <str id="jboss-bean-deployer.description" txt="Application level microcontainer deployment service"/>
+
+   <str id="jboss-ha-local-jdbc" txt="jboss-ha-local-jdbc"/>
+   <str id="jboss-ha-local-jdbc.description" txt="A JDBC DataSource resource adaptor with local tx support and failover"/>
+
+   <str id="jboss-ha-xa-jdbc" txt="jboss-ha-xa-jdbc"/>
+   <str id="jboss-ha-xa-jdbc.description" txt="A JDBC DataSource resource adaptor with XA tx support and failover"/>
+
+   <str id="jboss-local-jdbc.rar" txt="jboss-local-jdbc.rar"/>
+   <str id="jboss-local-jdbc.rar.description" txt="A JDBC DataSource resource adaptor with local tx support"/>
+
+   <str id="jboss-xa-jdbc" txt="jboss-xa-jdbc"/>
+   <str id="jboss-xa-jdbc.description" txt="A JDBC DataSource resource adaptor with XA tx support"/>
+
+   <str id="javamail" txt="javamail"/>
+   <str id="javamail.description" txt="JavaMail jars"/>
+
+   <str id="jbossws14" txt="jbossws14"/>
+   <str id="jbossws14.description" txt="J2EE1.4/J2SE1.4 webservice support"/>
+
+   <str id="jbossws5" txt="jbossws5"/>
+   <str id="jbossws5.description" txt="JAXWS/J2SE5 webservice support"/>
+
+   <str id="jbossretro" txt="jbossretro"/>
+   <str id="jbossretro.description" txt="J2SE5 to J2SE1.4 translation support"/>
+
+   <str id="jca-service" txt="jca-service"/>
+   <str id="jca-service.description" txt="The JCA 1.5 connector architecture support"/>
+
+   <str id="jdbc-metadata-service" txt="jdbc-metadata-service"/>
+   <str id="jdbc-metadata-service.description" txt="An MBean that is a registry for JDBC type-mapping metadata"/>
+
+   <str id="jbossmq-service" txt="jbossmq-service"/>
+   <str id="jbossmq-service.description" txt="JMS 1.1 core services"/>
+
+   <str id="default-jms-destintations" txt="default-jms-destintations"/>
+   <str id="default-jms-destintations.description" txt="Optional JMS destintation definitions"/>
+
+   <str id="jms-asf-rar" txt="jms-asf-rar"/>
+   <str id="jms-asf-rar.description" txt="JMS resource adaptor and app server integration layer"/>
+
+   <str id="jms-http-invoker" txt="jms-http-invoker"/>
+   <str id="jms-http-invoker.description" txt="Optional JMS invoker using HTTP for transport"/>
+
+   <str id="jms-injvm-invoker" txt="jms-injvm-invoker"/>
+   <str id="jms-injvm-invoker.description" txt="Default JMS in memory invoker"/>
+
+   <str id="jms-socket-invoker" txt="jms-socket-invoker"/>
+   <str id="jms-socket-invoker.description" txt="Default JMS socket based invoker"/>
+
+   <str id="jmx-console" txt="jmx-console"/>
+   <str id="jmx-console.description" txt="An HTML console for the JMX server"/>
+
+   <str id="invokers-service" txt="invokers-service"/>
+   <str id="invokers-service.description" txt="This package provides the basic detached transport invoker services in JBoss, including RMI over JRMP and the more efficient pooled invoker. It is needed for remote RMI access into JBoss."/>
+
+   <str id="jmx-invoker-service" txt="jmx-invoker-service"/>
+   <str id="jmx-invoker-service.description" txt="A RMI invoker for accessing the JMX server"/>
+
+   <str id="jsr77-service" txt="jsr77-service"/>
+   <str id="jsr77-service.description" txt="JSR-77 Single JBoss Server Management Domain"/>
+   
+   <str id="attribute-persistence-service" txt="attribute-persistence-service"/>
+   <str id="attribute-persistence-service.description" txt="JBoss ModelMBeans (XMBeans) can specify a PersistenceManager to load, save attributes based on the chosen Persistence Policy"/>   
+
+   <str id="jta-service" txt="jta-service"/>
+   <str id="jta-service.description" txt="The JTA service"/>
+
+   <str id="usertx-service" txt="usertx-service"/>
+   <str id="usertx-service.description" txt="The UserTransaction service"/>
+
+   <str id="mail-service" txt="mail-service"/>
+   <str id="mail-service.description" txt="The JavaMail integration service"/>
+
+   <str id="mail-inflow-adaptor" txt="mail-inflow-adaptor"/>
+   <str id="mail-inflow-adaptor.description" txt="A JavaMail inflow resource adaptor for mail to MDB msgs"/>
+
+   <str id="mc-naming" txt="mc-naming"/>
+   <str id="mc-naming.description" txt="The JNDI naming services"/>
+
+   <str id="naming" txt="naming"/>
+   <str id="naming.description" txt="The JNDI naming services"/>
+
+   <str id="properties-service" txt="properties-service"/>
+   <str id="properties-service.description" txt="PropertyEditor registration and system property services"/>
+
+   <str id="scheduler-service" txt="scheduler-service"/>
+   <str id="scheduler-service.description" txt="JMX based scheduler services"/>
+
+   <str id="security" txt="security"/>
+   <str id="security.description" txt="The JAAS security services"/>
+
+   <str id="jsr88-service" txt="jsr88-service"/>
+   <str id="jsr88-service.description" txt="JSR88 Deployment Service"/>
+
+   <str id="uuid-key-generator" txt="uuid-key-generator"/>
+   <str id="uuid-key-generator.description" txt="Key generator services"/>
+
+   <str id="juddi-service" txt="juddi-service"/>
+   <str id="juddi-service.description" txt="UDDI registry to provide JAXR compliance"/>
+
+   <str id="war-deployer" txt="war-deployer"/>
+   <str id="war-deployer.description" txt="The Servlet 2.4 WAR Deployer"/>
+
+   <str id="jboss-cache" txt="jboss-cache"/>
+   <str id="jboss-cache.description" txt="JBossCache jars"/>
+
+   <str id="jgroups" txt="jgroups"/>
+   <str id="jgroups.description" txt="JGroups jars"/>
+
+   <str id="web-cluster" txt="web-cluster"/>
+   <str id="web-cluster.description" txt="HTTP Session replication using JBoss Cache"/>
+
+   <str id="web-console" txt="web-console"/>
+   <str id="web-console.description" txt="An applet console for the JMX server"/>
+
+   <str id="web-console-jdk50" txt="web-console-jdk50"/>
+   <str id="web-console-jdk50.description" txt="An applet console for the JMX server"/>
+
+   <str id="hibernate" txt="hibernate"/>
+   <str id="hibernate.description" txt="The Hibernate jars for the HAR deployer and standalone hibernate usage. "/>
+
+   <str id="jboss-remoting" txt="jboss-remoting"/>
+   <str id="jboss-remoting.description" txt="The jars for JBoss Remoting "/>
+
+   <str id="quartz-rar" txt="quartz-rar"/>
+   <str id="quartz-rar.description" txt="A JCA inflow adaptor based on the Quartz timer"/>
+
+   <str id="clustering" txt="clustering"/>
+   <str id="clustering.description" txt="Base clustering services"/>
+
+   <str id="hasingleton" txt="hasingleton"/>
+   <str id="hasingleton.description" txt="HASingleton deployer service"/>
+
+   <str id="farmdeployer" txt="farmdeployer"/>
+   <str id="farmdeployer.description" txt="Cluster farm deployer service"/>
+
+   <str id="jbossmq-service-ha" txt="jbossmq-service-ha"/>
+   <str id="jbossmq-service-ha.description" txt="JMS 1.1 core services (High Availability)"/>
+
+   <str id="default-jms-destintations-ha" txt="default-jms-destintations-ha"/>
+   <str id="default-jms-destintations-ha.description" txt="Optional JMS destintation definitions (High Availability)"/>
+
+   <str id="jms-asf-rar-ha" txt="jms-asf-rar-ha"/>
+   <str id="jms-asf-rar-ha.description" txt="JMS resource adaptor and app server integration layer (High Availability)"/>
+
+   <str id="jms-http-invoker-ha" txt="jms-http-invoker-ha"/>
+   <str id="jms-http-invoker-ha.description" txt="Optional JMS invoker using HTTP for transport (High Availability)"/>
+
+   <str id="jms-injvm-invoker-ha" txt="jms-injvm-invoker-ha"/>
+   <str id="jms-injvm-invoker-ha.description" txt="Default JMS in memory invoker (High Availability)"/>
+
+   <str id="jms-socket-invoker-ha" txt="jms-socket-invoker-ha"/>
+   <str id="jms-socket-invoker-ha.description" txt="Default JMS socket based invoker (High Availability)"/>
+
+   <str id="portal" txt="portal"/>
+   <str id="portal.description" txt="The JBossPortal Service"/>
+
+<!-- JBoss Rules packs -->
+
+   <str id="jboss-rules-bin.description" txt="JBoss Rules binaries"/>
+   <str id="jboss-rules-bin" txt="jboss-rules-bin"/>
+   
+   <str id="jboss-rules-bin-dep.description" txt="JBoss Rules binary dependencies"/>
+   <str id="jboss-rules-bin-dep" txt="jboss-rules-bin-dep"/>
+   
+   <str id="jboss-rules-doc.description" txt="JBoss Rules documentation"/>
+   <str id="jboss-rules-doc" txt="jboss-rules-doc"/>
+   
+   <str id="jboss-rules-examples.description" txt="JBoss Rules Examples"/>
+   <str id="jboss-rules-examples" txt="jboss-rules-examples"/>
+   
+   <str id="jboss-rules-ide.description"   txt="JBoss Rules IDE (Eclipse plug-in)"/>
+   <str id="jboss-rules-ide"   txt="jboss-rules-ide"/>
+   
+   <str id="jboss-rules-src.description" txt="JBoss Rules Source code"/>
+   <str id="jboss-rules-src" txt="jboss-rules-src"/>
+
+<!-- JBoss jBPM packs -->
+
+   <str id="jbpm.description" txt="Stand alone jBPM"/>
+   <str id="jbpm" txt="jbpm"/>
+   
+   <str id="jbpm-bpel.description"  txt="JBoss jBPM BPEL extension "/>
+   <str id="jbpm-bpel"  txt="jbpm-bpel"/>
+   
+   <str id="jbpm-db.description" txt="JBoss jBPM db Module"/>
+   <str id="jbpm-db" txt="jbpm-db"/>
+   
+   <str id="jbpm-designer.description" txt="JBoss jBPM Designer Installation"/>
+   <str id="jbpm-designer" txt="jbpm-designer"/>
+   
+   <str id="jbpm-server.description" txt="JBoss jBPM Server"/>
+   <str id="jbpm-server" txt="jbpm-server"/>
+   
+   <str id="admin.passerror" txt="please enter password"/>
+   <str id="combo.db2-400" txt="DB2-400"/>
+   <str id="combo.db2-ds" txt="DB2"/>
+   <str id="combo.derby" txt="Derby"/>
+   <str id="combo.hsqldb" txt="HSQLDB"/>
+   <str id="combo.hsqldb-encrypted" txt="HSQLDB Encrypted"/>
+   <str id="combo.informix" txt="Informix"/>
+   <str id="combo.jdatastore" txt="Jdatastore"/>
+   <str id="combo.jsql" txt="Jsql"/>
+   <str id="combo.mimer" txt="Mimer"/>
+   <str id="combo.msaccess" txt="Msaccess"/>
+   <str id="combo.mssql" txt="Mssql"/>
+   <str id="combo.mysql" txt="Mysql"/>
+   <str id="combo.oracle" txt="Oracle"/>
+   <str id="combo.other" txt="Other"/>
+   <str id="combo.pointbase" txt="Pointbase"/>
+   <str id="combo.postgress" txt="Postgress"/>
+   <str id="combo.progress" txt="Progress"/>
+   <str id="combo.sapdb" txt="Sapdb"/>
+   <str id="combo.solid" txt="Solid"/>
+   <str id="combo.sybase" txt="Sybase"/>
+   <str id="installConfigName" txt="Standard - Advanced Option"/>
+   <str id="installConfig.text" txt="Select Standard installation or select Advanced to make changes"/>
+   <str id="installConfig.radio.standard" txt="Standard"/>
+   <str id="installConfig.radio.advanced" txt="Advanced"/>
+   <str id="installConfig.note" txt="Selecting Advanced option allows you to chnage various configurations like DataSource, Security, Isolation and Call by Value Semantics etc"/>   
+   <str id="configName" txt=" Configuration Name"/>
+   <str id="database.text" txt="Select Databse"/>
+   <str id="datasource.instruct" txt="By default HSQLDB database is used. If you select Default above, the Database selection below is ignored"/>
+   <str id="datasource.note" txt="Note: You need to copy the driver libraries to jboss-4.x\server\default\lib. HSQLDB drivers hsqldb-plugin.jar and hsqldb.jar are included by default."/>
+   <str id="datasource.note2" txt="You may want to edit jboss-4.x\server\default\deploy\jboss-ds.xml depending on DataBase you choose. Pre-configured *-ds.xml file are available in jboss-4.x\docs\examples\jca. You also need to copy the driver libraries to jboss-4.x\server\default\lib. HSQLDB drivers hsqldb-plugin.jar and hsqldb.jar are included by default."/>
+   <str id="dsConfig" txt=" DataSource Configuration"/>
+   <str id="dsConfig.connectionUrl" txt="Connection URL:"/>
+   <str id="dsConfig.datasourceName" txt="Datasource Name:"/>
+   <str id="dsConfig.driverClass" txt="Driver Class:"/>
+   <str id="dsConfig.maxPoolSize" txt="Max Pool Size:"/>
+   <str id="dsConfig.minPoolSize" txt="Min Pool Size:"/>
+   <str id="dsType.option" txt="Local or XA Database"/>
+   <str id="dsConfig.option" txt="Configure DataSource or use Default"/>
+   <str id="dsConfig.radio.configure" txt="Configure"/>
+   <str id="dsConfig.radio.default" txt="Default"/>
+   <str id="dsConfig.radio.local" txt="Local"/>
+   <str id="dsConfig.radio.xa" txt="XA"/>
+   <str id="dsConfig.forXA" txt="For XA Datasource: COM.ibm.db2.jdbc.DB2XADataSource"/>
+   <str id="dsConfig.userName" txt="User Name:"/>
+   <str id="enableIsolation" txt="Enable deployment isolation/call by value"/>
+   <str id="enableIsolationText" txt="Enable deployment isolation/call by value as the default deployment mode. See http://wiki.jboss.org/wiki/Wiki.jsp?page=ClassLoadingConfiguration and http://wiki.jboss.org/wiki/Wiki.jsp?page=JBossClassLoadingUseCases for a discussion of related class loading issues."/>
+   <str id="isolation" txt="Isolation and Call by Value Semantics"/>
+   <str id="jmxConsoleDomain.text" txt="The JAAS security domain name for the jmx access points"/>
+   <str id="jmxSecurity" txt=" JMX Security"/>
+   <str id="jmxSecurityText" txt="This section allows you to control whether the JMX interfaces are secured. See http://wiki.jboss.org/wiki/Wiki.jsp?page=SecureJBoss for additional security configuration."/>
+   <str id="keystore.city.locality" txt="City/Locality"/>
+   <str id="keystore.company.org" txt="Company/Organization Unit"/>
+   <str id="keystore.country" txt="Country (2 letter)"/>
+   <str id="keystore.division.organization" txt="Division/Organization"/>
+   <str id="keystore.hostname" txt="Hostname"/>
+   <str id="keystore.instructions" txt="Answer the following only if we are generating a keystore for you."/>
+   <str id="keystore.mainlabel" txt="If you've specified any SSL services, we will need the location of your keystore. If you do not have a keystore, we can create the keystore for you. If you do not let us generate it, you will need to copy it into the JBOSS_HOME/server/CONFIG/conf directory"/>
+   <str id="keystore.name.of.server" txt="name of keystore in server/CONFIG/conf"/>
+   <str id="keystore.password.instruct" txt="Keystore password (must be at least 6 letters)"/>
+   <str id="keystore.state.province" txt="State/Province"/>
+   <str id="password.label" txt="Password"/>
+   <str id="secureJmxConnector" txt="Secure jmx-invoker-service"/>
+   <str id="secureJmxConsole" txt="Secure jmx-console.war"/>
+   <str id="secureRmiHttpConnector" txt="Secure http invoker"/>
+   <str id="secureWebConsole" txt="Secure web-console.war"/>
+   <str id="serverConfigName.text" txt="The jboss server/xxx configuration name, e.g., default, all"/>
+   <str id="serverconf.note" txt="Note: Using a configuration name other than 'default' will require use of -c name to select the configuration"/>
+   <str id="text.genkeystore" txt="Generate Keystore"/>
+   <str id="text.namelabel" txt="Name:"/>
+   <str id="text.passwordLabel" txt="Enter admin password:"/>
+   <str id="text.securitydomain" txt="Enter security-domain:"/>
+   <str id="text.userLabel" txt="Enter admin username:"/>
+   <!-- Messaging panel -->
+   <str id="messaging.title" txt="Messaging configuration"/>
+   <str id="messagingConfigSelect.text" txt="Select server node (port set) configuration"/>
+   <str id="messagingConfig.nonclustered" txt="Non-clustered server"/>
+   <str id="messagingConfig.ports-default" txt="Clustered - default ports"/>
+   <str id="messagingConfig.ports-01" txt="Clustered - port configuration 'ports-01'"/>
+   <str id="messagingConfig.ports-02" txt="Clustered - port configuration 'ports-02'"/>
+   <str id="messagingConfig.ports-03" txt="Clustered - port configuration 'ports-03'"/>
+   <str id="messagingConfig.nodeid" txt="Cluster node ID"/>
+   <str id="messagingConfig.securitydomain" txt="Messaging service security domain"/>
+   <str id="messagingConfig.note" txt="Clustered port configurations help running multiple instances of the application server on a single machine using different ports for all services. This way the ports used by the different instances do not collide. If you choose a non clustered configuration, you can ignore the node ID setting."/>
+</langpack>
