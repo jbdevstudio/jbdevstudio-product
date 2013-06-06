@@ -14,7 +14,6 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>com.jboss.jbds.product.feature</module>
-		<module>com.jboss.jbds.m2e.feature</module>
 		<module>com.jboss.jbds.product.feature.source</module>
 	</modules>
 </project>
