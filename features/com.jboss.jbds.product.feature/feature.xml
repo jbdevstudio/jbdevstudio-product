@@ -9,6 +9,7 @@
   <plugin id="com.jboss.jbds.usage.branding" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="com.jboss.jbds.central" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
+  <includes id="org.jboss.tools.foundation.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.stacks.core.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.runtime.seam.detector.feature" version="0.0.0"/> 
