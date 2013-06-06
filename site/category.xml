@@ -274,14 +274,11 @@
   <feature id="org.jboss.tools.common.mylyn.feature.source"/>
   <feature id="org.jboss.tools.foundation.feature.source"/>
   <feature id="org.jboss.tools.stacks.core.feature.source"/>
-
-  <!-- include but do not categorize -->
   <feature id="org.jboss.tools.common.feature.source"/>
   <feature id="org.jboss.tools.common.core.feature.source"/>
   <feature id="org.jboss.tools.common.text.ext.feature.source"/>
   <feature id="org.jboss.tools.common.ui.feature.source"/>
   <feature id="org.jboss.tools.common.verification.feature.source"/>
-
   <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/>
   <feature id="org.jboss.tools.maven.gwt.feature.source"/>
 
