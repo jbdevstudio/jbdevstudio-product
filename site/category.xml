@@ -211,13 +211,17 @@
 
   <!-- only in JBDS -->
   <feature id="com.jboss.jbds.product.feature" patch="false"><category name="BringYourOwnEclipse" /><category name="CoreTools" /></feature>
-  <feature id="com.jboss.jbds.m2e.feature"><category name="CoreTools"/><category name="MavenTools" /></feature>
   <feature id="org.eclipse.egit"/>
   <feature id="org.eclipse.jgit"/>
   <feature id="org.eclipse.m2e.feature"/>
   <feature id="org.eclipse.m2e.wtp.feature"/>
+  <feature id="org.eclipse.m2e.wtp.jaxrs.feature"/>
+  <feature id="org.eclipse.m2e.wtp.jpa.feature"/>
+  <feature id="org.eclipse.m2e.wtp.jsf.feature"/>
+  <feature id="org.jboss.tools.maven.apt.feature"/>
+  <feature id="org.jboss.tools.m2e.jdt.feature"/>
+  <feature id="org.sonatype.m2e.buildhelper.feature"/>
   <feature id="org.sonatype.m2e.mavenarchiver.feature"/>
-
 
   <!-- ####### -->
   <!-- SOURCES : DO NOT CATEGORIZE -->
