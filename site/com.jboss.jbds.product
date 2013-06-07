@@ -27,11 +27,13 @@ Red Hat, Inc. - Initial implementation.
       Xms40m
       Xmx512m
 
-   * Platform Runtime Binary sets a lower max mem limit of Xmx384m
+   * - Platform Runtime Binary sets a lower max mem limit of Xmx384m
 
    If launcher.XXMaxPermSize=256m is not set, I get tons of 'java.lang.OutOfMemoryError: PermGen space' errors on launch, especially if I've updated JBDS installer w/ stuff from Central. So while this is already set in Eclipse SDK/PRB/JEE Bundles, it's NOT set in the installer unless we specify it here. Better to see it in jbdevstudio.ini twice than not at all. ~nickboldt
 
    launcher.defaultAction=openFile gets dropped when building installer; used to associate Eclipse executable w/ File > Open as default action. http://help.eclipse.org/juno/index.jsp?topic=%2Forg.eclipse.platform.doc.isv%2Freference%2Fmisc%2Fruntime-options.html
+
+   Be sure to remove anything added there via com.jboss.jbds.p2.inf file when uninstalling the product, or you will leave Eclipse in an unusable state (JBDS-2389).
 -->
    <launcherArgs>
       <programArgs>-product
