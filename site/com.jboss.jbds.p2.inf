@@ -13,9 +13,9 @@ units.1.requires.1.name=com.jboss.jbds.all
 units.1.requires.1.range=[$version$,$version$]
 units.1.requires.1.greedy=true
 
-# JBDS-2389 - make it easier to uninstall JBDS Product Feature
-instructions.install=\
-org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/eclipse.ini,target:${installFolder}/eclipse.ini_BEFORE_JBDS,overwrite:true);
+# JBDS-2389 - make it easier to uninstall JBDS Product Feature :: REMOVE -- this prevents updating JBDS from installer to new version, as there's no eclipse.ini file there
+#instructions.install=\
+#org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/eclipse.ini,target:${installFolder}/eclipse.#ini_BEFORE_JBDS,overwrite:true);
 instructions.unconfigure=\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-product);\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:com.jboss.jbds.product.product);\
