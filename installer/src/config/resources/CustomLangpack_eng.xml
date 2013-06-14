@@ -5,7 +5,7 @@
     <str id="PathInputPanel.fileDialog.title" txt="Select Target Folder"/>
     <str id="JREPathPanel.fileDialog.title" txt="Select Java VM Home Folder"/>
     <str id="JREPathPanel.headline.jre" txt="Select Java VM"/>
-	<str id="JREPathPanel.intro" txt="JBoss Developer Studio works with Java 6 and has been tested with OpenJDK, Sun and Apple JDK."/>
+	<str id="JREPathPanel.intro" txt="JBoss Developer Studio works with Java 6 and has been tested with OpenJDK, Oracle and Apple JDK."/>
 	<str id="JREPathPanel.java6.warning" txt="Please note that JBoss EAP 6 requires Java 6 or higher." />
 	<str id="JREPathPanel.dataModel.title" txt="Installation type:" />
 	<str id="JREPathPanel.dataModel32.title" txt="32-bit" />
