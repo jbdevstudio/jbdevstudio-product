@@ -281,10 +281,21 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 		Properties properties = new Properties();
 		int status = verifyVersion(properties);
 
-		if("universal".equals(idata.getVariable("PACK_NAME")) && idata.getVariable(DATA_MODEL_VAR)==null) {
+		if("universal".equals(idata.getVariable("PACK_NAME"))) {
 			String dataArch = properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL);
 			option1.setSelected("32".equals(dataArch));
 			option2.setSelected("64".equals(dataArch));
+			if(OsVersion.IS_OSX) {
+				if("32".equals(dataArch)) {
+					boolean b = isArchSupported("64");
+					option1.setEnabled(b);
+					option2.setEnabled(b);
+				}else {
+					boolean b = isArchSupported("32");
+					option1.setEnabled(b);
+					option2.setEnabled(b);
+				}
+			}
 		}
 		return status;
     }
@@ -333,6 +344,19 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         return 0;
     }
 
+	private int verifyArchSupported(Properties props, String arch) {
+		String[] output = new String[2];
+		Properties jvmInfo = getJavaPlatformProperties(output);
+		props.putAll(jvmInfo);
+		detectedVersion = jvmInfo.getProperty(SYSPN_JAVA_VERSION);
+		if (isGnuVersion(output))
+			return -1;
+		if (detectedVersion.indexOf(minVersion) < 0
+				&& detectedVersion.indexOf(maxVersion) < 0)
+			return -2;
+		return 0;
+	}
+
 	public Properties getJavaPlatformProperties(String[] output) {
 		String jarPath = P2DirectorStarterListener.findPathJar(JREPathPanel.class);
 		Debug.trace(jarPath);
@@ -359,6 +383,37 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 		return jvmInfo;
 	}
 
+	public boolean isArchSupported(String arch) {
+		String[] output = new String[2];
+		String jarPath = P2DirectorStarterListener
+				.findPathJar(JREPathPanel.class);
+		Debug.trace(jarPath);
+
+		String[] params = {
+				pathSelectionPanel.getPath() + File.separator + "bin"
+						+ File.separator + "java",
+				"-Djava.awt.headless=true",
+				"-showversion",
+				"-d" + arch,
+				"-classpath",
+				jarPath + File.pathSeparator
+						+ System.getProperty("java.class.path"),
+				JREPathPanel.class.getName() };
+
+		FileExecutor fe = new FileExecutor();
+		Debug.trace(params[0] + " " + params[1]);
+		fe.executeCommand(params, output);
+		Debug.trace(output[0]);
+		Properties jvmInfo = new Properties();
+		try {
+			jvmInfo.load(new StringInputStream(output[0]));
+			return arch.equals(jvmInfo.get(SYSPN_SUN_ARCH_DATA_MODEL));
+		} catch (IOException e) {
+			jvmInfo = new Properties();
+			return false;
+		}
+	}
+	
     public static void main(String[] args) {
     	final String pattern = "{0} = {1}";
 		System.out.println(MessageFormat.format(pattern, SYSPN_JAVA_VERSION, System.getProperties().get(SYSPN_JAVA_VERSION)));			
@@ -382,7 +437,6 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 		}
 		@Override
 		public int read() throws IOException {
-			// TODO Auto-generated method stub
 			return reader.read();
 		}	
     }
