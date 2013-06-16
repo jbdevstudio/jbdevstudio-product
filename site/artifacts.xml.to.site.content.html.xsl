@@ -99,7 +99,6 @@
 					<a href="plugins/" style="font-size:x-small">plugins</a>
 					::
 					<a href="features/" style="font-size:x-small">features</a>
-					@DIRECTORY.XML@
 				</td>
 				<td class="rowLine" colspan="1">
 					<a href="category.xml" style="font-size:x-small">category.xml</a>
