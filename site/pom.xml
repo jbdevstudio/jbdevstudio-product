@@ -8,7 +8,7 @@
 		<version>7.0.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.jboss.jbds.site</groupId>
-	<artifactId>com.jboss.jbds.site.product</artifactId>
+	<artifactId>com.jboss.jbds.site.all</artifactId>
 	<packaging>eclipse-repository</packaging>
 
 	<build>
@@ -112,6 +112,52 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-dependency-plugin</artifactId>
+			    <version>2.5</version>
+			    <executions>
+			      <execution>
+			        <id>get-product-site</id>
+			        <phase>generate-resources</phase>
+			        <goals>
+			          <goal>unpack</goal>
+			        </goals>
+			        <configuration>
+			          <artifactItems>
+			            <artifactItem>
+			              <groupId>${project.groupId}</groupId>
+			              <artifactId>com.jboss.jbds.site.product</artifactId>
+			              <version>${project.version}</version>
+			              <type>zip</type>
+			              <outputDirectory>${project.build.directory}/repository</outputDirectory>
+			            </artifactItem>
+			          </artifactItems>
+			        </configuration>
+			      </execution>
+			    </executions>
+			</plugin>
+<!--  			<plugin> -->
+<!--  				<groupId>org.eclipse.tycho.extras</groupId> -->
+<!-- 				<artifactId>tycho-p2-extras-plugin</artifactId> -->
+<!-- 				<version>${tychoVersion}</version> -->
+<!-- 				<executions> -->
+<!-- 				    <execution> -->
+<!-- 				        <id>add-product-site</id> -->
+<!-- 				        <goals> -->
+<!-- 				            <goal>mirror</goal> -->
+<!-- 				        </goals> -->
+<!-- 				        <phase>prepare-package</phase> -->
+<!-- 				        <configuration> -->
+<!-- 				          <source> -->
+<!-- 				            <repository>file:${basedir}/../product-site/target/repository</repository> -->
+<!-- 				            <layout>p2</layout> -->
+<!-- 				          </source> -->
+<!-- 				          <destination>${project.build.directory}/repository</destination> -->
+<!-- 				        </configuration> -->
+<!-- 				    </execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 </project>
