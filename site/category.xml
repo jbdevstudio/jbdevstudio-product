@@ -150,6 +150,11 @@
     <category name="CoreTools" />
     <category name="GeneralTools"/>
   </feature>
+  <feature id="org.jboss.tools.foundation.security.linux.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools"/>
+  </feature>
+
 
   <feature id="org.jboss.tools.stacks.core.feature">
     <category name="CoreTools" />
@@ -273,6 +278,7 @@
   <feature id="org.jboss.tools.common.jdt.feature.source"/>
   <feature id="org.jboss.tools.common.mylyn.feature.source"/>
   <feature id="org.jboss.tools.foundation.feature.source"/>
+  <feature id="org.jboss.tools.foundation.security.linux.feature.source"/>
   <feature id="org.jboss.tools.stacks.core.feature.source"/>
 
   <!-- include but do not categorize -->
