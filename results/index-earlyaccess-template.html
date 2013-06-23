@@ -127,10 +127,15 @@
     
     <h2>Update Site Zip</h2>
     <ul>
-      <li class="multiplatform">You can now use the installer jar as an update site archive. Launch Eclipse or JBDS, then select:</li>
+      <!-- JBDS-2649 still needed because the installer may contain different content than the update site some day -->
+      <!-- <li class="multiplatform">You can now use the installer jar as an update site archive. Launch Eclipse or JBDS, then select:</li>
       <li class="note">&nbsp;&nbsp;&nbsp; <b>H</b>elp &gt; <b>I</b>nstall New Software... &gt; <b>A</b>dd... &gt; <b>A</b>rchive... &gt; <b>B</b>rowse for the JBDS installer jar &gt; <b>OK</b> &gt; 
           <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>W</b>ork with: jar:file:/path/to/jbdevstudio-product-*.jar!/ &gt; <b>I</b>nstall the JBDS feature(s) &gt;
-            <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>R</b>estart when prompted.</li>
+            <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>R</b>estart when prompted.</li> -->
+      <li class="multiplatform"><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)]);"
+            href="${PREFIX}/${jbds-update-file-name}">Update Site Zip</a><span class="multispec">&nbsp;${jbds-update-file-size}M (<a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)]);"
+            href="${PREFIX}/${jbds-update-file-name}.MD5">MD5</a>)</span></li>
+        <li class="note"><a name="sourcesnote"></a>Includes some third-party code.</li>
     </ul>
 </div>
 <p style="clear:both">&nbsp;</p>
