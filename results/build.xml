@@ -66,14 +66,15 @@ $java.home = ${java.home}</echo>
     </if>
 
     <!-- special case: copy the site_assembly.zip to target folder; the rest need not be moved -->
-    <!-- JBDS-2556 no longer need this zip because installer is an update site archive too! 
+    <!-- JBDS-2556 no longer need this zip because installer is an update site archive too! -->
+    <!-- JBDS-2649 still needed because the installer may contain different content than the update site some day -->
     <property name="jbds-update-file" value="${basedir}/target/jbdevstudio-product-Update-${update.site.version}.${update.site.qualifier}.zip"/>
     <if>
       <available file="../site/target/site_assembly.zip" type="file"/>
       <then>
         <copy file="../site/target/site_assembly.zip" tofile="${jbds-update-file}" preservelastmodified="true" overwrite="true"/>
       </then>
-    </if> -->
+    </if>
 
     <antcall target="create.jbds.results.html">
       <param name="update.site.qualifier" value="${update.site.qualifier}"/>
