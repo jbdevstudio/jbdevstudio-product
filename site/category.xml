@@ -315,10 +315,8 @@
   -->
 
   <!-- only in JBDS -->
-  <category-def name="BringYourOwnEclipse" label="* JBoss Developer Studio 7.0 - Bring Your Own Eclipse [Technology Preview]">
-    <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Kepler 4.3. 
-
-Note: this is a Technology Preview. It is provided for users and customers to try out and to provide the developers with feedback.</description>
+  <category-def name="BringYourOwnEclipse" label="* JBoss Developer Studio 7.0 - Bring Your Own Eclipse">
+    <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Kepler 4.3.</description>
   </category-def>
   <category-def name="CoreTools" label="* JBoss Developer Studio 7.0 - Core">
     <description>Contains most of the JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web and Seam Development.</description>
