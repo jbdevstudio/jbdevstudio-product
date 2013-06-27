@@ -7,7 +7,14 @@
         <url>http://download.jboss.org/jbosstools/examples/project-examples-jbds70.xml</url>
         <experimental>false</experimental>
    </extension>
-   
+
+   <extension
+        point="org.jboss.tools.project.examples.projectExamplesXml"
+        name="%JBoss_Developer_Studio70_Portal_Examples">
+        <url>http://download.jboss.org/gatein/quickstarts/jpp-6.1/project-examples-jpp6.1-jbds7.0-001.xml</url>
+        <experimental>false</experimental>
+   </extension>
+
    <extension
         point="org.jboss.tools.project.examples.categories"
         name="Project Examples Categories">
