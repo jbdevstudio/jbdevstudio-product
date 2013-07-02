@@ -270,7 +270,6 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
     private int updateJava(boolean setPath){
         if(setPath){
         	String chosenPath="";
-            
             chosenPath = idata.getVariable(getVariableName());
             if(chosenPath == null || "".equals(chosenPath))
             	chosenPath = new File(idata.getVariable("JAVA_HOME")).getPath();
@@ -461,6 +460,12 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));
         		messageLabel.setForeground(Color.red);
         	}
+    		// Verify if selected runtime is jre and show warning
+    		File javacLocation = new File(idata.getVariable(getVariableName()),"bin/javac" + (OsVersion.IS_WINDOWS? ".exe":""));
+    		if(!javacLocation.canRead()) {
+    			messageLabel.setText("<html><p>Chosen Java VM is a Java Runtime only, it will run Developer Studio but it is recommended to use a Java SDK.</p></html>");
+    			messageLabel.setForeground(Color.black);
+    		}
     	} else {
     		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("notValid", "PathInputPanel")));
     		messageLabel.setForeground(Color.red);
