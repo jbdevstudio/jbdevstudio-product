@@ -259,6 +259,36 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
     public void panelActivate()
     {
         super.panelActivate();
+        String chosenPath = idata.getVariable(getVariableName());
+        if (chosenPath == null || "".equals(chosenPath)) {
+        	File javaHome = new File(idata.getVariable("JAVA_HOME"));
+        	// This case is for starting installer with jdk/bin/java under any platform
+        	if("jre".equals(javaHome.getName())) {
+        		File parentFolder = javaHome.getParentFile();
+        		File bin = new File(parentFolder,"bin");
+        		String ext = OsVersion.IS_WINDOWS ? ".exe" : "";
+        		File java = new File(bin,"java" + ext);
+        		File javac = new File(bin,"javac" + ext);
+        		if(javac.canRead() && java.canRead()) {
+        			idata.setVariable("JAVA_HOME",parentFolder.getAbsolutePath());
+        		}
+        	} else if(OsVersion.IS_WINDOWS && javaHome.getName().matches("jre\\d")) {
+        		// try to discover windows jdk
+        		// c:\Program Files\Java\jdk${java_version}
+        		Properties props = getJavaPlatformProperties(javaHome.getAbsolutePath(), new String[2]);
+        		String javaVersion = (String) props.get(SYSPN_JAVA_VERSION);
+        		if(javaVersion != null) {
+            		File parentFolder = javaHome.getParentFile();
+            		File jdkLocation = new File(parentFolder,"jdk" + javaVersion);
+            		File bin = new File(jdkLocation,"bin");
+            		File java = new File(bin,"java.exe");
+            		File javac = new File(bin,"javac.exe");
+            		if(java.canRead() && javac.canRead()) {
+            			idata.setVariable("JAVA_HOME",jdkLocation.getAbsolutePath());
+            		}
+        		}
+        	}
+        }
         updateJava(true);
     }
     
@@ -357,11 +387,15 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 	}
 
 	public Properties getJavaPlatformProperties(String[] output) {
+		return getJavaPlatformProperties(pathSelectionPanel.getPath(), output);
+	}
+
+	public Properties getJavaPlatformProperties(String location, String[] output) {
 		String jarPath = P2DirectorStarterListener.findPathJar(JREPathPanel.class);
 		Debug.trace(jarPath);
         
      	String[] params = {
-                pathSelectionPanel.getPath() + File.separator + "bin" + File.separator + "java",
+                location + File.separator + "bin" + File.separator + "java",
                 "-Djava.awt.headless=true",
                 "-showversion",
                 "-classpath",
