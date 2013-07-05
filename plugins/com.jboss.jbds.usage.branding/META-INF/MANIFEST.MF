@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %BundleName
 Bundle-SymbolicName: com.jboss.jbds.usage.branding
-Bundle-Version: 7.0.0.qualifier
+Bundle-Version: 7.1.0.qualifier
 Bundle-Localization: plugin
 Bundle-Vendor: %BundleVendor
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
