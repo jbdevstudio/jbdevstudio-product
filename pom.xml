@@ -16,6 +16,7 @@
   <modules>
     <module>plugins</module>
     <module>features</module>
+    <module>product-site</module>
     <module>site</module>
     <module>p2-director</module>
     <module>installer</module>
