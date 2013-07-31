@@ -42,7 +42,7 @@
     <str id="JBossAsSelectPanel.VersionColumn" txt="Version"/>
     <str id="JBossAsSelectPanel.LocationColumn" txt="Location"/>
     <str id="JBossAsSelectPanel.FileChooserTitle" txt="Select Location to scan for Platforms and Servers"/>
-    <str id="JBossAsSelectPanel.FileChooserButton" txt="Ok"/>
+    <str id="JBossAsSelectPanel.FileChooserButton" txt="OK"/>
     <str id="JBossAsSelectPanel.EditDialogTitle" txt="Edit Location"/>
     <str id="JBossAsSelectPanel.AddDialogTitle" txt="Add Location"/>
     <str id="JBossAsSelectPanel.EditDialogName" txt="Location"/>
@@ -57,7 +57,7 @@
 	<str id="JBossAsSelectPanel.Type5" txt="Enterprise Web Platform"/>	
 	<str id="JBossAsSelectPanel.Type6" txt="Enterprise Portal Platform"/>
     <str id="JBossAsSelectPanel.Type3" txt="Application Server"/>
-    <str id="JBossAsSelectPanel.Ok" txt="Ok"/>
+    <str id="JBossAsSelectPanel.Ok" txt="OK"/>
     <str id="JBossAsSelectPanel.Cancel" txt="Cancel"/>
     <str id="JBossAsSelectPanel.ScannEveryStartup" txt="Scan every start"/>
 
