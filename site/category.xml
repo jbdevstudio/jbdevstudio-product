@@ -340,7 +340,7 @@
     <description>Tools for general application development.</description>
   </category-def>
 
-  <category-def name="DataTools" label="JBoss Data Services">
+  <category-def name="DataTools" label="JBoss Data Services Development">
     <description>Tools related to data services such as persistence and transformation.</description>
   </category-def>
 
