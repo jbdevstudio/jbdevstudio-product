@@ -27,6 +27,7 @@
     <tpc.group>jbdevstudio</tpc.group>
     <tpc.targetKind>unified</tpc.targetKind>
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
+    <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
   </properties>
 
   <repositories>
