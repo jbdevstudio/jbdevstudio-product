@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-  <description>JBoss Developer Studio 7.0 Updates - Core</description>
+  <description>JBoss Developer Studio 7.x Updates - Core</description>
 
   <!-- PLEASE NOTE!
     When updating this file, please be sure that it parses as valid XML before committing it.
@@ -321,10 +321,10 @@
   -->
 
   <!-- only in JBDS -->
-  <category-def name="BringYourOwnEclipse" label="* JBoss Developer Studio 7.0 - Bring Your Own Eclipse">
+  <category-def name="BringYourOwnEclipse" label="* JBoss Developer Studio 7.x - Bring Your Own Eclipse">
     <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Kepler 4.3.</description>
   </category-def>
-  <category-def name="CoreTools" label="* JBoss Developer Studio 7.0 - Core">
+  <category-def name="CoreTools" label="* JBoss Developer Studio 7.x - Core">
     <description>Contains most of the JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web and Seam Development.</description>
   </category-def>
   
