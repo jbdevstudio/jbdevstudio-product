@@ -2,43 +2,43 @@
 
 # dev milestone version:
 instructions.configure=\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0/,name:JBoss Developer Studio 7.0 Updates);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0/,name:JBoss Developer Studio 7.0 Updates);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0-development/,name:JBoss Developer Studio 7.0 Updates);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0-development/,name:JBoss Developer Studio 7.0 Updates);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0/,name:JBoss Developer Studio 8.0 Updates);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0/,name:JBoss Developer Studio 8.0 Updates);\
+org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0-development/,name:JBoss Developer Studio 8.0 Updates);\
+org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0-development/,name:JBoss Developer Studio 8.0 Updates);\
 org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Xms512m);\
 org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Xmx1024m);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/7.0/devstudio-directory.xml);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/7.0-development/devstudio-directory.xml);
+org.eclipse.equinox.p2.touchpoint.eclipse.removeJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/8.0/devstudio-directory.xml);\
+org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/8.0-development/devstudio-directory.xml);
 
 # GA version:
 #instructions.configure=\
-#org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0-development/,name:JBoss Developer Studio 7.0 Updates);\
-#org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0-development/,name:JBoss Developer Studio 7.0 Updates);\
-#org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0/,name:JBoss Developer Studio 7.0 Updates);\
-#org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0/,name:JBoss Developer Studio 7.0 Updates);\
+#org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0-development/,name:JBoss Developer Studio 8.0 Updates);\
+#org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0-development/,name:JBoss Developer Studio 8.0 Updates);\
+#org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0/,name:JBoss Developer Studio 8.0 Updates);\
+#org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0/,name:JBoss Developer Studio 8.0 Updates);\
 #org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Xms512m);\
 #org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Xmx1024m);\
-#org.eclipse.equinox.p2.touchpoint.eclipse.removeJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/7.0-development/devstudio-directory.xml);\
-#org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/7.0/devstudio-directory.xml);
+#org.eclipse.equinox.p2.touchpoint.eclipse.removeJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/8.0-development/devstudio-directory.xml);\
+#org.eclipse.equinox.p2.touchpoint.eclipse.addJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/8.0/devstudio-directory.xml);
 
 # dev milestone / GA 
 instructions.unconfigure=\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0-development/,name:JBoss Developer Studio 7.0 Updates);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0-development/,name:JBoss Developer Studio 7.0 Updates);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0-development/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0-development/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0/,name:JBoss Developer Studio 7.0 Updates);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0/,name:JBoss Developer Studio 7.0 Updates);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0-development/central/core/,name:JBoss Developer Studio Central Update Site - Core);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0-development/central/core/,name:JBoss Developer Studio Central Update Site - Core);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0-development/central/core/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0-development/central/core/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0/central/core/,name:JBoss Developer Studio Central Update Site - Core);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0/central/core/,name:JBoss Developer Studio Central Update Site - Core);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/7.0/central/core/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/7.0/central/core/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/7.0-development/devstudio-directory.xml);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/7.0/devstudio-directory.xml);
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0-development/,name:JBoss Developer Studio 8.0 Updates);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0-development/,name:JBoss Developer Studio 8.0 Updates);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0-development/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0-development/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0/,name:JBoss Developer Studio 8.0 Updates);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0/,name:JBoss Developer Studio 8.0 Updates);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0-development/central/core/,name:JBoss Developer Studio Central Update Site - Core);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0-development/central/core/,name:JBoss Developer Studio Central Update Site - Core);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0-development/central/core/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0-development/central/core/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0/central/core/,name:JBoss Developer Studio Central Update Site - Core);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0/central/core/,name:JBoss Developer Studio Central Update Site - Core);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.jboss.com/updates/8.0/central/core/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.jboss.com/updates/8.0/central/core/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/8.0-development/devstudio-directory.xml);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeJvmArg(jvmArg:-Djboss.discovery.directory.url=https://devstudio.jboss.com/updates/8.0/devstudio-directory.xml);
