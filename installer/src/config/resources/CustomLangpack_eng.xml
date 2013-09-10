@@ -5,8 +5,7 @@
     <str id="PathInputPanel.fileDialog.title" txt="Select Target Folder"/>
     <str id="JREPathPanel.fileDialog.title" txt="Select Java VM Home Folder"/>
     <str id="JREPathPanel.headline.jre" txt="Select Java VM"/>
-	<str id="JREPathPanel.intro" txt="JBoss Developer Studio works with Java 6 and has been tested with OpenJDK, Oracle and Apple JDK."/>
-	<str id="JREPathPanel.java6.warning" txt="Please note that JBoss EAP 6 requires Java 6 or higher." />
+	<str id="JREPathPanel.intro" txt="JBoss Developer Studio works with Java 6 and Java 7 and has been tested with OpenJDK, Oracle and Apple JDK."/>
 	<str id="JREPathPanel.dataModel.title" txt="Installation type:" />
 	<str id="JREPathPanel.dataModel32.title" txt="32-bit" />
 	<str id="JREPathPanel.dataModel64.title" txt="64-bit" />
@@ -29,9 +28,9 @@
     <str id="installer.of" txt="of"/>
     <str id="installer.cannotInstallOver" txt="You can't upgrade by installing over the top"/>
     <str id="UpdatePacksPanel.summaryCaption" txt="Following components will be installed:"/>
-    <str id="JBossAsSelectPanel.question" txt="Developer Studio includes JBoss Enterprise Application Platform. Would you like to install it?"/>
+    <str id="JBossAsSelectPanel.question" txt="Developer Studio includes Red Hat JBoss Enterprise Application Platform. Would you like to install it?"/>
     <str id="JBossAsSelectPanel.question1" txt="Add Locations you want to be scanned to discover Platforms and Servers you have"/>
-    <str id="JBossAsSelectPanel.YesOption" txt="Yes, and have it ready for use in Developer Studio (Java 6 is required to run JBoss EAP 6)"/>
+    <str id="JBossAsSelectPanel.YesOption" txt="Yes, and have it ready for use in Developer Studio"/>
     <str id="JBossAsSelectPanel.NoOption" txt="No"/>
     <str id="JBossAsSelectPanel.FindButton" txt="Find..."/>
     <str id="JBossAsSelectPanel.AddButton" txt="Add..."/>
