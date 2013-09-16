@@ -25,8 +25,9 @@
   <!-- Should you want to build one locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.30.x/ -->
   <properties>
     <tpc.group>jbdevstudio</tpc.group>
-    <tpc.targetKind>multiple</tpc.targetKind>
+    <tpc.targetKind>unified</tpc.targetKind>
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
+    <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
   </properties>
 
   <repositories>
@@ -85,7 +86,7 @@ Build product features, site, and installers like this:
 
 To replicate a Jenkins CI build, run like this (unified.target and hudson profile require VPN access):
 
-  mvn clean install -P hudson,eap,pack200 -DBUILD_ALIAS=GA -Dtpc.targetKind=unified -DTARGET_PLATFORM_VERSION=4.30.5.CR1 -DTARGET_PLATFORM_VERSION_MAXIMUM=4.30.5.CR1 -DBUILD_NUMBER=1234 -DJOB_NAME=devstudio.product_trunk -Dupdate.site.description="Development Milestone"
+  mvn clean install -P hudson,eap,pack200 -Dtpc.targetKind=unified -DTARGET_PLATFORM_VERSION=4.30.5.Final -DTARGET_PLATFORM_VERSION_MAXIMUM=4.31.0.Alpha1 -DBUILD_NUMBER=1234 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone"
 
 See README.md for information building, installing, contributing, generated artifacts, and more.
 
