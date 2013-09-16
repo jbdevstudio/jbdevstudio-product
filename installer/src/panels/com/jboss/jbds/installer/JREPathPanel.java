@@ -92,8 +92,6 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         String introText = getI18nStringForClass("intro", "PathInputPanel");
         
         add(new JLabel(introText), NEXT_LINE);
-        introText = getI18nStringForClass("java6.warning", "PathInputPanel");
-        add(new JLabel(introText), NEXT_LINE);
         
         
         rb1 = new JRadioButton("Default Java VM", true);
