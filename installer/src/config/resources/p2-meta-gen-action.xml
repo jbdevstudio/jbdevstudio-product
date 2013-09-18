@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <antactions>
-	<pack name="JBoss Developer Studio @specification.version.presentstring@">
+	<pack name="Red Hat JBoss Developer Studio @specification.version.presentstring@">
 		<antcall order="afterpacks" buildfile="$INSTALL_PATH/Uninstaller/p2-meta-gen-script.xml">
 			<property name="install-root" value="$INSTALL_PATH"/>
 			<property name="java.home" value="$JREPath"/>

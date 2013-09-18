@@ -212,7 +212,7 @@ class encode
     <str id="ProcessPanel.heading" txt="cat:Processing" />
 
     <!-- Strings for the summary of panels - START -->
-    <str id="SummaryPanel.info" txt="cat:Ready to install. Important data are listed below. Press &quot;Next&quot; to start installation, "/>
+    <str id="SummaryPanel.info" txt="cat:Ready to install. Review details below then press 'Next' to start installation. "/>
     <str id="TargetPanel.summaryCaption" txt="cat:Installation path"/>
     <str id="JDKPathPanel.summaryCaption" txt="cat:JDK path"/>
     <str id="PacksPanel.summaryCaption" txt="cat:Chosen installation packs"/>
