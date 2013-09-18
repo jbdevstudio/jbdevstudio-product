@@ -1,4 +1,4 @@
-JBoss Developer Studio
+Red Hat JBoss Developer Studio
 ======================
 version @full_version@, @buildDate@
 
@@ -27,7 +27,7 @@ jbdevstudio -vm <path to java executable>
 Latest Documentation, Release Notes, and News:
 ------------------------------
 
-   https://access.redhat.com/knowledge/docs/JBoss_Developer_Studio/
+   https://access.redhat.com/knowledge/docs/Red_Hat_JBoss_Developer_Studio/
    http://www.jboss.com/products/devstudio
 
 Bug Reports:

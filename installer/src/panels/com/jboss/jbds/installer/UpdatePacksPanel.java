@@ -50,9 +50,9 @@ public class UpdatePacksPanel extends IzPanel{
 		String group = idata.getVariable("INSTALL_GROUP");
 		String version = idata.getVariable("VERSION");
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("JBoss Developer Studio "+version+"<br>");
+		buffer.append("Red Hat JBoss Developer Studio "+version+"<br>");
 		if("jbosseap".equals(group))
-			buffer.append("JBoss Enterprise Application Platform<br>");
+			buffer.append("Red Hat JBoss Enterprise Application Platform<br>");
 		
         return buffer.toString();
     }

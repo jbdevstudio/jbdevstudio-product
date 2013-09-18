@@ -5,7 +5,7 @@
   <packs>
     <pack name="P2 Director Application" id="jbds-universal" installGroups="jbds,jbosseap" required="yes">
       <description>
-        P2 Director to install JBoss Developer Studio @{specification.version.presentstring}
+        P2 Director to install Red Hat JBoss Developer Studio @{specification.version.presentstring}
       </description>
 
       <singlefile src="config/resources/EULA/JBoss-EULA.html" target="$INSTALL_PATH/JBoss-EULA.html" />
@@ -27,20 +27,20 @@
       <singlefile src="config/resources/runtimes-readme.txt" target="$INSTALL_PATH/runtimes/readme.txt" />
 
     </pack>
-    <pack name="JBoss Developer Studio @{specification.version.presentstring}" id="jbds.update" installGroups="jbosseap,jbds" required="no">
+    <pack name="Red Hat JBoss Developer Studio @{specification.version.presentstring}" id="jbds.update" installGroups="jbosseap,jbds" required="no">
       <description>
-        JBoss Developer Studio @{specification.version.presentstring} Update
+        Red Hat JBoss Developer Studio @{specification.version.presentstring} Update
       </description>
     </pack>
-    <pack name="JBoss Developer Studio @{specification.version.presentstring} Metadata Generation" id="jbds.generate" installGroups="jbosseap,jbds" required="no">
+    <pack name="Red Hat JBoss Developer Studio @{specification.version.presentstring} Metadata Generation" id="jbds.generate" installGroups="jbosseap,jbds" required="no">
       <description>
-        JBoss Developer Studio @{specification.version.presentstring} Metadata Generation
+        Red Hat JBoss Developer Studio @{specification.version.presentstring} Metadata Generation
       </description>
     </pack>
 
-    <pack name="JBoss Developer Studio @{specification.version.presentstring} Metadata Generation" id="jbds.plist" installGroups="jbosseap,jbds" required="no">
+    <pack name="Red Hat JBoss Developer Studio @{specification.version.presentstring} Metadata Generation" id="jbds.plist" installGroups="jbosseap,jbds" required="no">
       <description>
-        JBoss Developer Studio @{specification.version.presentstring} Mac OSX Package Properties Update
+        Red Hat JBoss Developer Studio @{specification.version.presentstring} Mac OSX Package Properties Update
       </description>
       <singlefile src="config/resources/JBoss Developer Studio.app/Contents/Info.plist" target="$INSTALL_PATH/studio/jbdevstudio.app/Contents/Info.plist" override="true" os="mac" />
     </pack>
