@@ -41,7 +41,7 @@ public class ErrorUtils {
 		JScrollPane scroll = new JScrollPane(area);
 		scroll.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
-		JButton ok = new JButton("Ok");
+		JButton ok = new JButton("OK");
 		ok.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent arg0) {

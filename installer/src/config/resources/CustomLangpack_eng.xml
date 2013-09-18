@@ -5,19 +5,19 @@
     <str id="PathInputPanel.fileDialog.title" txt="Select Target Folder"/>
     <str id="JREPathPanel.fileDialog.title" txt="Select Java VM Home Folder"/>
     <str id="JREPathPanel.headline.jre" txt="Select Java VM"/>
-	<str id="JREPathPanel.intro" txt="Red Hat JBoss Developer Studio works with Java 6 and Java 7 and has been tested with OpenJDK, Oracle and Apple JDK."/>
-	<str id="JREPathPanel.dataModel.title" txt="Installation type:" />
-	<str id="JREPathPanel.dataModel32.title" txt="32-bit" />
-	<str id="JREPathPanel.dataModel64.title" txt="64-bit" />
-	<str id="JREPathPanel.VPEdoesNotSupportJava64.title" txt="Visual Page Editor is not supported for selected Installation Type" />
-	<str id="JREPathPanel.wrongPath.title" txt="The directory {0} does not exist." />	
-	<str id="PathInputPanel.notValid" txt="The chosen directory does not contain a Java VM."/>
-	<str id="PathInputPanel.badVersion" txt="The chosen directory contains an incorrect version of Java."/>
-	<str id="PathInputPanel.badVersion2" txt="JBoss Developer Studio does not work with gij java."/>
-	<str id="PathInputPanel.empty" txt="You must select a Java VM home directory."/>
-	<str id="PathInputPanel.summaryCaption" txt="Installation path:" />	
-	<str id="JREPathPanel.summaryCaption" txt="Java VM path:"/>
-	<str id="DiskSpaceCheckPanel.summaryCaption" txt="Disk Space:"/>
+    <str id="JREPathPanel.intro" txt="Red Hat JBoss Developer Studio works with Java 6 and Java 7 and has been tested with OpenJDK, Oracle and Apple JDK."/>
+    <str id="JREPathPanel.dataModel.title" txt="Installation type:" />
+    <str id="JREPathPanel.dataModel32.title" txt="32-bit" />
+    <str id="JREPathPanel.dataModel64.title" txt="64-bit" />
+    <str id="JREPathPanel.VPEdoesNotSupportJava64.title" txt="Visual Page Editor is not supported for selected Installation Type" />
+    <str id="JREPathPanel.wrongPath.title" txt="The directory {0} does not exist." />    
+    <str id="PathInputPanel.notValid" txt="The chosen directory does not contain a Java VM."/>
+    <str id="PathInputPanel.badVersion" txt="The chosen directory contains an incorrect version of Java."/>
+    <str id="PathInputPanel.badVersion2" txt="JBoss Developer Studio does not work with gij java."/>
+    <str id="PathInputPanel.empty" txt="You must select a Java VM home directory."/>
+    <str id="PathInputPanel.summaryCaption" txt="Installation path:" />    
+    <str id="JREPathPanel.summaryCaption" txt="Java VM path:"/>
+    <str id="DiskSpaceCheckPanel.summaryCaption" txt="Disk Space:"/>
     <str id="JBossAsSelectPanel.headline.as" txt="Select Platforms and Servers"/>
     <str id="SummaryPanel.headline.summary" txt="Summary Information"/>
     <str id="InstallPanel.headline.install" txt="Installation"/>
@@ -41,7 +41,7 @@
     <str id="JBossAsSelectPanel.VersionColumn" txt="Version"/>
     <str id="JBossAsSelectPanel.LocationColumn" txt="Location"/>
     <str id="JBossAsSelectPanel.FileChooserTitle" txt="Select Location to scan for Platforms and Servers"/>
-    <str id="JBossAsSelectPanel.FileChooserButton" txt="Ok"/>
+    <str id="JBossAsSelectPanel.FileChooserButton" txt="OK"/>
     <str id="JBossAsSelectPanel.EditDialogTitle" txt="Edit Location"/>
     <str id="JBossAsSelectPanel.AddDialogTitle" txt="Add Location"/>
     <str id="JBossAsSelectPanel.EditDialogName" txt="Location"/>
@@ -52,33 +52,33 @@
     <str id="JBossAsSelectPanel.Browse" txt="Browse..."/>
     <str id="JBossAsSelectPanel.Type1" txt="Enterprise Application Platform"/>
     <str id="JBossAsSelectPanel.Type2" txt="SOA Platform"/>
-	<str id="JBossAsSelectPanel.Type4" txt="SOA Platform Standalone"/>    
-	<str id="JBossAsSelectPanel.Type5" txt="Enterprise Web Platform"/>	
-	<str id="JBossAsSelectPanel.Type6" txt="Enterprise Portal Platform"/>
+    <str id="JBossAsSelectPanel.Type4" txt="SOA Platform Standalone"/>    
+    <str id="JBossAsSelectPanel.Type5" txt="Enterprise Web Platform"/>    
+    <str id="JBossAsSelectPanel.Type6" txt="Enterprise Portal Platform"/>
     <str id="JBossAsSelectPanel.Type3" txt="Application Server"/>
-    <str id="JBossAsSelectPanel.Ok" txt="Ok"/>
+    <str id="JBossAsSelectPanel.Ok" txt="OK"/>
     <str id="JBossAsSelectPanel.Cancel" txt="Cancel"/>
     <str id="JBossAsSelectPanel.ScannEveryStartup" txt="Scan every start"/>
 
-	<str id="ServerDialog_DefaultNewServerMessage" txt="Define parameters for new Location"/>
-	<str id="ServerDialog_DefaultEditServerMessage" txt="Edit Location parameters"/>
-	
+    <str id="ServerDialog_DefaultNewServerMessage" txt="Define parameters for new Location"/>
+    <str id="ServerDialog_DefaultEditServerMessage" txt="Edit Location parameters"/>
+    
     <str id="ServerDialog_ErrLocationDoesntExist" txt="Selected Location doesn't exist"/>
-	<str id="ServerDialog_ErrLocationIsEmpty" txt="Location cannot be empty"/>
-	<str id="ServerDialog_ErrNameIsEmpty" txt="Name cannot be empty"/>
-	<str id="ServerDialog_ErrNameIsNotCorrect" txt="Name can contain the characters 'a-A','0-9','-','_','.',' ','(' and ')'"/>
-	<str id="ServerDialog_ErrServerTypeDoesntSelected" txt="Type is not selected"/>
-	<str id="ServerDialog_ErrVersionIsNotSelected" txt="Version is not selected"/>
-	<str id="ServerDialog_ErrVersionIsNotSupported" txt="Version is not valid for selected Type "/>
-	<str id="ServerDialog_ErrNameIsAlreadyUsed" txt="Location is already added"/>
-	<str id="ServerDialog_WarnUnknownServerSelected" txt="Selected Location doesn't look like Platform/Server installation root folder"/>
-	<str id="ServerDialog_ServerTypeVersionDoesntMatch" txt="Version and Type are different from Platform/Server in selected location"/>
-	<str id="ServerDialog_ServerVersionDoesntMatch" txt="Version is different from Platform/Server in selected location"/>
-	<str id="ServerDialog_ServerTypeDoesntMatch" txt="Type is different from Platform/Server in selected location"/>
+    <str id="ServerDialog_ErrLocationIsEmpty" txt="Location cannot be empty"/>
+    <str id="ServerDialog_ErrNameIsEmpty" txt="Name cannot be empty"/>
+    <str id="ServerDialog_ErrNameIsNotCorrect" txt="Name can contain the characters 'a-A','0-9','-','_','.',' ','(' and ')'"/>
+    <str id="ServerDialog_ErrServerTypeDoesntSelected" txt="Type is not selected"/>
+    <str id="ServerDialog_ErrVersionIsNotSelected" txt="Version is not selected"/>
+    <str id="ServerDialog_ErrVersionIsNotSupported" txt="Version is not valid for selected Type "/>
+    <str id="ServerDialog_ErrNameIsAlreadyUsed" txt="Location is already added"/>
+    <str id="ServerDialog_WarnUnknownServerSelected" txt="Selected Location doesn't look like Platform/Server installation root folder"/>
+    <str id="ServerDialog_ServerTypeVersionDoesntMatch" txt="Version and Type are different from Platform/Server in selected location"/>
+    <str id="ServerDialog_ServerVersionDoesntMatch" txt="Version is different from Platform/Server in selected location"/>
+    <str id="ServerDialog_ServerTypeDoesntMatch" txt="Type is different from Platform/Server in selected location"/>
     <str id="ServerDialog_TypeAndVersionCannotBeDefined" txt="Type and Version cannot be defined for Platform/Server in selected location, you need to fill them manually"/>
     <str id="ServerDialog_VersionCannotBeDefined" txt="Version cannot be defined for Platform/Server in selected location, You need to fill it manually"/>
-	<str id="ServerDialog_MsgASInsideEAPSelected" txt="Location you''ve selected contains Application Server that is part of {0}.{1}Selected location is adjusted to {0} to let JBoss Developer Studio{1}configure all runtimes available in it after first start on a new workspace" />
-	<str id="ServerDialog_ErrASInsideEAPSelected" txt="Selected JBoss Application Server is part of {0}" />
+    <str id="ServerDialog_MsgASInsideEAPSelected" txt="Location you''ve selected contains Application Server that is part of {0}.{1}Selected location is adjusted to {0} to let JBoss Developer Studio{1}configure all runtimes available in it after first start on a new workspace" />
+    <str id="ServerDialog_ErrASInsideEAPSelected" txt="Selected JBoss Application Server is part of {0}" />
     <str id="ServerSearchDailog_Title" txt="Platform/Server Search"/>
     <str id="ServerSearchDailog_StatusMessage" txt="Platform/Server Search in Progress ..."/>
     <str id="HTMLInfoPanelWithRootWarning.rootUserWarning" txt="You're running installer as root user" />
