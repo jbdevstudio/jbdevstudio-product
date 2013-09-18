@@ -131,7 +131,7 @@
 			<group style-id="content-group" id="content-group">
 				<group>
 				<link style-id="content-link" label="$introLink1Title-gettingstarted$" 
-						url="https://access.redhat.com/knowledge/docs/JBoss_Developer_Studio/" id="weblink">
+						url="https://access.redhat.com/site/documentation/Red_Hat_JBoss_Developer_Studio/" id="weblink">
 					<text>$introLink1Description-gettingstarted$</text>
 				</link>
 				</group>
@@ -145,7 +145,7 @@
 				<group id="level2">
 					<group>
 					<link style-id="content-link" label="$introLink21Title-gettingstarted$" 
-							url="https://access.redhat.com/knowledge/docs/en-US/JBoss_Enterprise_Application_Platform/5/html-single/Seam_Reference_Guide/index.html#tutorial" id="weblink2">
+							url="https://access.redhat.com/site/documentation/en-US/JBoss_Enterprise_Application_Platform/5/html-single/Seam_Reference_Guide/index.html#tutorial" id="weblink2">
 						<text>$introLink21Description-gettingstarted$</text>
 					</link>
 					</group>

@@ -4,7 +4,7 @@
 <!DOCTYPE installation PUBLIC "//IzPack/4.3.4" "resources/installation.dtd">
 <installation version="1.0">
 	<info>
-		<appname>JBoss Developer Studio @{specification.version.presentstring}</appname>
+		<appname>Red Hat JBoss Developer Studio @{specification.version.presentstring}</appname>
 		<appversion>
 			@{specification.version}, JBoss AS @{jboss.version}
 		</appversion>
