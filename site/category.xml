@@ -155,7 +155,6 @@
     <category name="GeneralTools"/>
   </feature>
 
-
   <feature id="org.jboss.tools.stacks.core.feature">
     <category name="CoreTools" />
     <category name="GeneralTools"/>
@@ -181,17 +180,20 @@
 
   <!-- only in JBT
   <feature id="org.jboss.tools.aerogear.hybrid.feature">
-     <category name="MobileTools"/>
+    <category name="AdditionalTools" />
+    <category name="MobileTools"/>
   </feature>
   <feature id="org.jboss.tools.arquillian.feature">
+    <category name="AdditionalTools" />
     <category name="WebTools" />
     <category name="GeneralTools"/>
   </feature>
   <feature id="org.jboss.tools.birt.feature">
+    <category name="AdditionalTools" />
     <category name="ReportTools" />
   </feature>
   <feature id="org.jboss.tools.central.themes.feature">
-    <category name="OtherTools" />
+    <category name="AdditionalTools" />
   </feature>
   <feature id="org.jboss.tools.community.central.feature">
     <category name="CoreTools" />
@@ -203,12 +205,15 @@
   </feature>
   <feature id="org.jboss.tools.forge.ext.feature">
     --><!-- JBIDE-13691 don't put in CoreTools category yet <category name="CoreTools"/> --><!--
+    <category name="AdditionalTools" />
     <category name="WebTools"/>
   </feature>
   <feature id="org.jboss.tools.gwt.feature">
+    <category name="AdditionalTools" />
     <category name="GeneralTools" />
   </feature>
   <feature id="org.jboss.tools.vpe.cordovasim.feature">
+    <category name="AdditionalTools" />
     <category name="MobileTools"/>
   </feature>
   -->
@@ -312,8 +317,8 @@
   <category-def name="CoreTools" label="* Abridged JBoss Tools">
     <description>Contains most of the JBoss Tools features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web and Seam Development.</description>
   </category-def>
-  <category-def name="OtherTools" label="Other Tools">
-    <description>Miscellaneous other features, including incubating features. See individual feature descriptions for details.</description>
+  <category-def name="AdditionalTools" label="* Additional JBoss Tools">
+    <description>Contains the rest of the JBoss Tools features, not included in Abridged JBoss Tools category. This category includes miscellaneous, new, experimental and incubating features. See individual feature descriptions for details.</description>
   </category-def>
   <category-def name="ReportTools" label="JBoss Business Intelligence, Reporting and Charting">
     <description>Business Intelligence, Reporting and Charting. Use these if you plan to integrate Hibernate or Seam with Eclipse BIRT.</description>
