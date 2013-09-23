@@ -6,11 +6,11 @@
   <parent>
     <groupId>org.jboss.tools</groupId>
     <artifactId>parent</artifactId>
-    <version>4.1.1.Alpha2-SNAPSHOT</version>
+    <version>4.1.0.Final-SNAPSHOT</version>
   </parent>
   <groupId>com.jboss.jbds</groupId>
   <artifactId>product</artifactId>
-  <version>7.1.0-SNAPSHOT</version>
+  <version>7.0.1-SNAPSHOT</version>
   <name>JBDS - Product, Installers</name>
   <packaging>pom</packaging>
   <modules>
@@ -31,6 +31,15 @@
   </properties>
 
   <repositories>
+    <!-- JBIDE-15464 - add JBoss Tools Central-Maven-Examples 4.1.0.x site to build JBDS 7.0.1 without having to build JBT 4.1.0.1 -->
+    <repository>
+      <id>jbosstools-central-410x</id>
+      <url>http://download.jboss.org/jbosstools/builds/staging/jbosstools-central_410/all/repo/</url>
+      <!-- TODO: release the above build so it won't be overwritten accidentally, and use release URL instead
+        <url>http://download.jboss.org/jbosstools/updates/stable/kepler/core/central-maven-examples/4.1.0.1.Final</url> -->
+      <layout>p2</layout>
+    </repository>
+
     <repository>
       <id>jboss-releases</id>
       <name>JBoss Releases Maven Repository</name>
