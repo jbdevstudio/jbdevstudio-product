@@ -31,15 +31,6 @@
   </properties>
 
   <repositories>
-    <!-- JBIDE-15464 - add JBoss Tools Central-Maven-Examples 4.1.0.x site to build JBDS 7.0.1 without having to build JBT 4.1.0.1 -->
-    <repository>
-      <id>jbosstools-central-410x</id>
-      <url>http://download.jboss.org/jbosstools/builds/staging/jbosstools-central_410/all/repo/</url>
-      <!-- TODO: release the above build so it won't be overwritten accidentally, and use release URL instead
-        <url>http://download.jboss.org/jbosstools/updates/stable/kepler/core/central-maven-examples/4.1.0.1.Final</url> -->
-      <layout>p2</layout>
-    </repository>
-
     <repository>
       <id>jboss-releases</id>
       <name>JBoss Releases Maven Repository</name>
@@ -95,7 +86,11 @@ Build product features, site, and installers like this:
 
 To replicate a Jenkins CI build, run like this (unified.target and hudson profile require VPN access):
 
-  mvn clean install -P hudson,eap,pack200 -Dtpc.targetKind=unified -DTARGET_PLATFORM_VERSION=4.30.5.Final -DTARGET_PLATFORM_VERSION_MAXIMUM=4.31.0.Alpha1 -DBUILD_NUMBER=1234 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone"
+  mvn clean install -P hudson,eap -Dtpc.targetKind=unified -DTARGET_PLATFORM_VERSION=4.30.5.Final -DTARGET_PLATFORM_VERSION_MAXIMUM=4.31.0.Alpha1 \
+    -DBUILD_NUMBER=1234 -DJOB_NAME=devstudio.product_70 -Dupdate.site.description="Development Milestone" \
+    -DBUILD_ALIAS=GA \
+    -Djbosstools-nightly-staging-composite>http://download.jboss.org/jbosstools/builds/staging/_composite_/core/4.1.0.kepler/ \
+    -Djbosstools-nightly=http://download.jboss.org/jbosstools/updates/nightly/core/4.1.0.kepler/
 
 See README.md for information building, installing, contributing, generated artifacts, and more.
 
