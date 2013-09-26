@@ -49,7 +49,7 @@
                 <!-- back up a copy of the latest about.mappings because we're about to replace it -->
                 <copy file="${basedir}/about.mappings" tofile="${basedir}/about.mappings_UNMERGED" overwrite="true"/>
 
-                <!-- [echo] buildQualifier = Beta2-v20130528-2036, project.version = 7.1.0-SNAPSHOT, BUILD_ALIAS=Beta2 -->
+                <!-- [echo] buildQualifier = Beta2-v20130528-2036, project.version = 7.0.1-SNAPSHOT, BUILD_ALIAS=Beta2 -->
                 <echo level="debug">buildQualifier = ${buildQualifier}, project.version = ${project.version}, BUILD_ALIAS=${BUILD_ALIAS}</echo>
 
                 <taskdef resource="net/sf/antcontrib/antlib.xml" />
