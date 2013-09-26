@@ -167,6 +167,10 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
+  <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
 
   <!-- include but do not categorize -->
   <feature id="org.jboss.tools.central.feature"/>
