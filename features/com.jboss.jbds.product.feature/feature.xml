@@ -14,7 +14,7 @@
   <includes id="org.jboss.tools.stacks.core.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.runtime.seam.detector.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.wtp.runtimes.tomcat.detector.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/> 
   <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.jmx.feature" version="0.0.0"/> 
   <includes id="org.jboss.ide.eclipse.archives.feature" version="0.0.0"/> 
