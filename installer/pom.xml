@@ -71,9 +71,9 @@
 
   <repositories>
     <repository>
-      <!-- use TestNG mirror instead jboss-requirements-composite-extras-mirror site, because of partial IUs from non-p2-enabled sites, which fail to resolve when building with Tycho 0.18.0 -->
-      <id>TestNG</id>
-      <url>https://devstudio.jboss.com/updates/requirements/testng/6.8.1.20130330_0839/</url>
+      <!-- JBDS-2623 use Central TP instead of TestNG mirror -->
+      <id>jboss-central-target-platform-site</id>
+      <url>${jboss-central-target-platform-site}</url>
       <layout>p2</layout>
       <snapshots>
         <enabled>true</enabled>
