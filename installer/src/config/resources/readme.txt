@@ -14,7 +14,7 @@ On Linux that would be:
 cd <install-path>
 ./jbdevstudio
 
-For OS X the application is as <install-path>/JBoss Developer Studio.app
+For OS X the application is as <install-path>/jbdevstudio.app
 
 For Windows use <install-path>/jbdevstudio.bat
 

@@ -38,13 +38,6 @@
       </description>
     </pack>
 
-    <pack name="JBoss Developer Studio @{specification.version.presentstring} Metadata Generation" id="jbds.plist" installGroups="jbosseap,jbds" required="no">
-      <description>
-        JBoss Developer Studio @{specification.version.presentstring} Mac OSX Package Properties Update
-      </description>
-      <singlefile src="config/resources/JBoss Developer Studio.app/Contents/Info.plist" target="$INSTALL_PATH/studio/jbdevstudio.app/Contents/Info.plist" override="true" os="mac" />
-    </pack>
-
     <pack name="JBoss Enterprise Application Platform" id="jbosseap" installGroups="jbosseap" required="no">
       <description>
         JBoss Enterprise Application Platform
