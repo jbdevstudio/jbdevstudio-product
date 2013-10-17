@@ -52,9 +52,6 @@ public class CreateLinkPanel extends IzPanel {
 		File install = new File(idata.getVariable("INSTALL_PATH"));
 		File studio = new File(install , "studio");
 		File app = new File(studio,"jbdevstudio.app");
-		if(app.exists()) {
-			app.renameTo(new File(studio,"JBoss Developer Studio.app"));
-		}
 		createSoftLink();
 		writeProperty("runtime_locations.properties");
 		addJREPath();
@@ -71,16 +68,8 @@ public class CreateLinkPanel extends IzPanel {
 		if(isUnixLikeSystem()) {
 
 			StringBuffer cmd = new StringBuffer();
-			String launcherLocation = installPath+File.separator+"studio";
-			String launcherName = "jbdevstudio";
-			if(OsVersion.IS_OSX) {
-				File oldLauncher = new File(launcherLocation,"JBoss Developer Studio.app");
-				if(oldLauncher.exists()) {
-					 launcherName = "JBoss Developer Studio.app";
-				} else {
-					launcherName = "jbdevstudio.app";
-				}
-			} 
+			String launcherName = OsVersion.IS_OSX ? "jbdevstudio.app" : "jbdevstudio";
+			 
 			cmd.append("cd \"").append(installPath).append("\"\n")
 				.append("ln -s \"." + File.separator + "studio" + File.separator)
 				.append(launcherName + "\"")
@@ -148,7 +137,7 @@ public class CreateLinkPanel extends IzPanel {
 			FileOutputStream stream = new FileOutputStream(file);
 			stream.write(str.getBytes());
 			stream.close();
-		} catch (Exception ex) {
+		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 	}
@@ -164,34 +153,16 @@ public class CreateLinkPanel extends IzPanel {
 	}
 
 	public static void addJREPath(String installPath, String execPath) {
-		File pathOld = new File(installPath + File.separator + "eclipse" + File.separator
-				+ "eclipse.ini");
-		File pathNew1 = new File(installPath + File.separator + "studio" + File.separator
+		File pathLinuxWindows = new File(installPath + File.separator + "studio" + File.separator
 				+ "jbdevstudio.ini");
-		File pathNew2 = new File(installPath + File.separator + "studio" + File.separator  
-				+ "JBoss Developer Studio.app" + File.separator + "Contents" + File.separator +"MacOS" + File.separator
-				+ "JBoss Developer Studio.ini");
-		File pathNew3 = new File(installPath + File.separator + "studio" + File.separator  
+		File pathMacosx = new File(installPath + File.separator + "studio" + File.separator  
 				+ "jbdevstudio.app" + File.separator + "Contents" + File.separator +"MacOS" + File.separator
 				+ "jbdevstudio.ini");
-		File pathNew4 = new File(installPath + File.separator + "studio" + File.separator  
-				+ "JBoss Developer Studio.app" + File.separator + "Contents" + File.separator +"MacOS" + File.separator
-				+ "jbdevstudio.ini");
-		if(pathOld.exists() ) {
-			addJVM(execPath, pathOld);
-		} else if(pathNew1.exists()) {
-			addJVM(execPath, pathNew1);
-		} else if(pathNew2.exists()) {
-			addJVM(execPath, pathNew2);
-			if(pathNew3.exists()) {
-				addJVM(execPath, pathNew3);
-			}
-		} else if(pathNew3.exists()) {
-			addJVM(execPath, pathNew3);
-		} else if(pathNew4.exists()) {
-			addJVM(execPath, pathNew4);
+		if(pathLinuxWindows.exists()) {
+			addJVM(execPath, pathLinuxWindows);
+		} else if(pathMacosx.exists()) {
+			addJVM(execPath, pathMacosx);
 		} 
-		
 	}
 
 	public static void addJVM(String execPath, File path) {
