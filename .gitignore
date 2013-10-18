@@ -1,3 +1,4 @@
 workspace
 jbds-echoproperties.txt
 target*/
+bin
