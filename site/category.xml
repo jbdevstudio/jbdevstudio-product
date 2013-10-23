@@ -183,10 +183,6 @@
   <feature id="org.mozilla.xulrunner.feature"/>
 
   <!-- only in JBT
-  <feature id="org.jboss.tools.aerogear.hybrid.feature">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
   <feature id="org.jboss.tools.arquillian.feature">
     <category name="AdditionalTools" />
     <category name="WebTools" />
@@ -216,17 +212,15 @@
     <category name="AdditionalTools" />
     <category name="GeneralTools" />
   </feature>
-  <feature id="org.jboss.tools.vpe.cordovasim.feature">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
   -->
 
   <!-- categorized in JBT; uncategorized in JBDS -->
+  <feature id="org.jboss.tools.aerogear.hybrid.feature"/>
   <feature id="org.jboss.tools.maven.jbosspackaging.feature"/>
   <feature id="org.jboss.tools.maven.gwt.feature"/>
   <feature id="org.jboss.tools.common.mylyn.feature"/>
   <feature id="org.jboss.tools.usage.feature"/>
+  <feature id="org.jboss.tools.vpe.cordovasim.feature"/>
 
   <!-- only in JBDS -->
   <feature id="com.jboss.jbds.product.feature" patch="false"><category name="BringYourOwnEclipse" /><category name="CoreTools" /></feature>
