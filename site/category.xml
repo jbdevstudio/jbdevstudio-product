@@ -11,6 +11,14 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
+  <feature id="org.jboss.tools.aerogear.hybrid.feature">
+    <category name="AdditionalTools" />
+    <category name="MobileTools"/>
+  </feature>
+  <feature id="org.jboss.tools.vpe.cordovasim.feature">
+    <category name="AdditionalTools" />
+    <category name="MobileTools"/>
+  </feature>
   <feature id="org.jboss.tools.vpe.browsersim.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
@@ -183,10 +191,6 @@
   <feature id="org.mozilla.xulrunner.feature"/>
 
   <!-- only in JBT
-  <feature id="org.jboss.tools.aerogear.hybrid.feature">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
   <feature id="org.jboss.tools.arquillian.feature">
     <category name="AdditionalTools" />
     <category name="WebTools" />
@@ -216,10 +220,6 @@
     <category name="AdditionalTools" />
     <category name="GeneralTools" />
   </feature>
-  <feature id="org.jboss.tools.vpe.cordovasim.feature">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
   -->
 
   <!-- categorized in JBT; uncategorized in JBDS -->
@@ -248,6 +248,8 @@
 
   <feature id="org.jboss.tools.central.feature.source"/>
   <feature id="org.jboss.tools.richfaces.feature.source"/>
+  <feature id="org.jboss.tools.aerogear.hybrid.feature.source"/>
+  <feature id="org.jboss.tools.vpe.cordovasim.feature.source"/>
   <feature id="org.jboss.tools.vpe.browsersim.feature.source"/>
   <feature id="org.jboss.tools.jst.feature.source"/>
   <feature id="org.jboss.tools.vpe.feature.source"/>
@@ -296,9 +298,9 @@
   <feature id="org.jboss.tools.common.verification.feature.source"/>
   <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/>
   <feature id="org.jboss.tools.maven.gwt.feature.source"/>
+  <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature.source"/>
 
   <!-- only in JBT
-  <feature id="org.jboss.tools.aerogear.hybrid.feature.source"/>
   <feature id="org.jboss.tools.arquillian.feature.source"/>
   <feature id="org.jboss.tools.central.themes.feature.source"/>
   <feature id="org.jboss.tools.community.central.feature.source"/>
@@ -306,7 +308,6 @@
   <feature id="org.jboss.tools.birt.feature.source"/>
   <feature id="org.jboss.tools.forge.ext.feature.source"/>
   <feature id="org.jboss.tools.gwt.feature.source"/>
-  <feature id="org.jboss.tools.vpe.cordovasim.feature.source"/>
   -->
 
   <!-- only in JBDS -->
@@ -331,10 +332,15 @@
 
   <!-- only in JBDS -->
   <category-def name="BringYourOwnEclipse" label="* JBoss Developer Studio 7.x - Bring Your Own Eclipse">
-    <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Kepler 4.3.</description>
+    <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Kepler 4.3. 
+
+Note: this is a Technology Preview. It is provided for users and customers to try out and to provide the developers with feedback.</description>
   </category-def>
   <category-def name="CoreTools" label="* JBoss Developer Studio 7.x - Core">
     <description>Contains most of the JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web and Seam Development.</description>
+  </category-def>
+  <category-def name="AdditionalTools" label="* JBoss Developer Studio 7.x - Extras">
+    <description>Contains the rest of the JBoss Developer Studio features, not included in Core category. This category includes miscellaneous, new, experimental and incubating features. See individual feature descriptions for details.</description>
   </category-def>
   
   <category-def name="WebTools" label="JBoss Web and Java EE Development">
