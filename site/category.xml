@@ -223,10 +223,12 @@
   -->
 
   <!-- categorized in JBT; uncategorized in JBDS -->
+  <feature id="org.jboss.tools.aerogear.hybrid.feature"/>
   <feature id="org.jboss.tools.maven.jbosspackaging.feature"/>
   <feature id="org.jboss.tools.maven.gwt.feature"/>
   <feature id="org.jboss.tools.common.mylyn.feature"/>
   <feature id="org.jboss.tools.usage.feature"/>
+  <feature id="org.jboss.tools.vpe.cordovasim.feature"/>
 
   <!-- only in JBDS -->
   <feature id="com.jboss.jbds.product.feature" patch="false"><category name="BringYourOwnEclipse" /><category name="CoreTools" /></feature>
