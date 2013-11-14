@@ -37,6 +37,7 @@
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
                   <property name="TARGET_PLATFORM_VERSION" value="${TARGET_PLATFORM_VERSION}"/>
                   <property name="TARGET_PLATFORM_VERSION_MAXIMUM" value="${TARGET_PLATFORM_VERSION_MAXIMUM}"/>
+                  <property name="JBOSS_CENTRAL_ZIP" value="${JBOSS_CENTRAL_ZIP}"/>
                 </ant>
               </tasks>
             </configuration>
@@ -89,5 +90,5 @@
 </project>
 <!--
 To build locally
-  mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk
+  mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.31.0.CR1-SNAPSHOT/jbtcentraltarget-4.31.0.CR1-SNAPSHOT.zip
 -->
