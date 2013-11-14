@@ -190,6 +190,9 @@
   <feature id="org.jboss.tools.xulrunner.feature"/>
   <feature id="org.mozilla.xulrunner.feature"/>
 
+  <!-- JBIDE-15945 we will deprecate this feature eventually from JBT (not in JBDS), so for now just uncategorize it -->
+  <!-- <feature id="org.jboss.tools.gwt.feature"/> -->
+
   <!-- only in JBT
   <feature id="org.jboss.tools.arquillian.feature">
     <category name="AdditionalTools" />
@@ -215,10 +218,6 @@
     --><!-- JBIDE-13691 don't put in CoreTools category yet <category name="CoreTools"/> --><!--
     <category name="AdditionalTools" />
     <category name="WebTools"/>
-  </feature>
-  <feature id="org.jboss.tools.gwt.feature">
-    <category name="AdditionalTools" />
-    <category name="GeneralTools" />
   </feature>
   -->
 
