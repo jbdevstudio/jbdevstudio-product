@@ -69,21 +69,6 @@
     </profile>
   </profiles>
 
-  <repositories>
-    <repository>
-      <!-- JBDS-2623 use Central TP instead of TestNG mirror -->
-      <id>jboss-central-target-platform-site</id>
-      <url>${jboss-central-target-platform-site}</url>
-      <layout>p2</layout>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-    </repository>
-  </repositories>
-
   <build>
     <plugins>
       <plugin>

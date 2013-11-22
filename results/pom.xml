@@ -37,6 +37,7 @@
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
                   <property name="TARGET_PLATFORM_VERSION" value="${TARGET_PLATFORM_VERSION}"/>
                   <property name="TARGET_PLATFORM_VERSION_MAXIMUM" value="${TARGET_PLATFORM_VERSION_MAXIMUM}"/>
+                  <!-- JBDS-2805 see ../pom.xml for default value if not passed in from Jenkins -->
                   <property name="JBOSS_CENTRAL_ZIP" value="${JBOSS_CENTRAL_ZIP}"/>
                 </ant>
               </tasks>
