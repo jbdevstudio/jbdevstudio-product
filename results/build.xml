@@ -213,7 +213,7 @@ $java.home = ${java.home}</echo>
         <propertyregex property="STREAM_SUFFIX" defaultvalue="_master" input="${JOB_NAME}" regexp=".+(_[^_]+)" replace="\1" override="true"/>
         <propertyregex property="STREAM_SUFFIX" defaultvalue="_master" input="${STREAM_SUFFIX}" regexp="_trunk" replace="_master" override="true"/>
 
-        <propertyregex property="STREAM_NAME" defaultvalue="Trunk" input="${inputRepo}" regexp=".+[^/]+/([^/]+)/*" replace="\1" override="true"/>
+        <propertyregex property="STREAM_NAME" defaultvalue="Master" input="${inputRepo}" regexp=".+[^/]+/([^/]+)/*" replace="\1" override="true"/>
         <propertyregex property="STREAM_NAME" defaultvalue="${STREAM_NAME}" input="${STREAM_NAME}" regexp="trunk" replace="Trunk" override="true"/>
 
         <echo level="verbose">For JOB_NAME = ${JOB_NAME} and ${inputRepo} got stream = ${STREAM_SUFFIX} and ${STREAM_NAME}</echo>
