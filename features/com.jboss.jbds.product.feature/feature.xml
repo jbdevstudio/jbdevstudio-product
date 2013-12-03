@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="com.jboss.jbds.product.feature" label="%featureName" version="7.1.0.qualifier" provider-name="%providerName" plugin="com.jboss.jbds.product">
+<feature id="com.jboss.jbds.product.feature" label="%featureName" version="7.1.1.qualifier" provider-name="%providerName" plugin="com.jboss.jbds.product">
   <description url="http://www.redhat.com/developer_studio/Getting_Started_Single/">%description</description>
   <copyright>%copyright</copyright>
   <license url="%licenseURL">%license</license>
