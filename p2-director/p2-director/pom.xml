@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.jboss.jbds.installer</groupId>
 		<artifactId>p2-director</artifactId>
-		<version>7.1.0-SNAPSHOT</version>
+		<version>7.1.1-SNAPSHOT</version>
 	</parent>
 	<groupId>com.jboss.jbds.installer.p2-director</groupId>
 	<artifactId>p2-director</artifactId>
