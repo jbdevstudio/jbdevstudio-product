@@ -26,7 +26,7 @@
 
   <profiles>
     <!-- 
-      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.1.1, which is not a public URL (unlike 6.1.0.Alpha).
+      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.2, which is not a public URL (unlike 6.1.0.Alpha).
     -->
     <profile>
       <id>hudson</id>
@@ -34,6 +34,7 @@
         <eapVersion>6.2.0</eapVersion>
         <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.2.0/jboss-eap-6.2.0.zip</eapURL>
         <eapMD5>03ec01654cf4aee8c8e26313fae68c16</eapMD5>
+        <eapRootFolder>jboss-eap-6.2</eapRootFolder>
       </properties>
     </profile>
 
