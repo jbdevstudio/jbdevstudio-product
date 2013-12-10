@@ -3,6 +3,7 @@
     <str id="HTMLLicencePanel.headline.licence" txt="End User License Agreement"/>
     <str id="PathInputPanel.headline.target" txt="Select Target Folder"/>
     <str id="PathInputPanel.fileDialog.title" txt="Select Target Folder"/>
+    <str id="PathInputPanel.fileDialog.approve" txt="Select"/>
     <str id="JREPathPanel.fileDialog.title" txt="Select Java VM Home Folder"/>
     <str id="JREPathPanel.headline.jre" txt="Select Java VM"/>
     <str id="JREPathPanel.intro" txt="JBoss Developer Studio works with Java 6 and 7 and has been tested with OpenJDK, Oracle and Apple JDK."/>
