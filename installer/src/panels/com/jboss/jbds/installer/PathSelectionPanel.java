@@ -54,6 +54,8 @@ public class PathSelectionPanel extends JPanel implements ActionListener, Layout
     private InstallData idata;
 
 	private String dialogTitleId;
+	
+	private static String selectKey = "PathInputPanel.fileDialog.approve";
 
     /**
      * The constructor. Be aware, parent is the parent IzPanel, not the installer frame.
@@ -165,9 +167,9 @@ public class PathSelectionPanel extends JPanel implements ActionListener, Layout
             fc.setMultiSelectionEnabled(false);
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             fc.addChoosableFileFilter(fc.getAcceptAllFileFilter());
-
+            final String action = parent.getInstallerFrame().langpack.getString(selectKey);
             // Shows it
-            if (fc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION)
+            if (fc.showDialog(this,action) == JFileChooser.APPROVE_OPTION)
             {
                 String path = fc.getSelectedFile().getAbsolutePath();
                 textField.setText(path);
