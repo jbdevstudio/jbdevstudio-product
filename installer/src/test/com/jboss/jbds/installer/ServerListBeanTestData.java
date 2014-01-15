@@ -1,10 +1,10 @@
-package com.jboss.jbds.installer;
+package com.jboss.devstudio.core.installer;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import com.jboss.jbds.installer.bean.RuntimePath;
+import com.jboss.devstudio.core.installer.bean.RuntimePath;
 
 public class ServerListBeanTestData {
 	private static List<RuntimePath> testList = Collections.unmodifiableList(Arrays.asList(

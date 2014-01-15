@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.jboss.devstudio.core</groupId>
+    <artifactId>plugins</artifactId>
+    <version>8.0.0-SNAPSHOT</version>
+  </parent>
+  <groupId>com.jboss.devstudio.core.plugins</groupId>
+  <artifactId>com.jboss.devstudio.core</artifactId>
+  <version>8.0.0-SNAPSHOT</version>
+  <packaging>eclipse-plugin</packaging>
+  <properties>
+    <ant.regexp.regexpimpl>org.apache.tools.ant.util.regexp.JakartaOroRegexp</ant.regexp.regexpimpl>
+  </properties>
+  <build>
+    <plugins>
+      <plugin>
+        <dependencies>
+          <dependency>
+            <groupId>ant-contrib</groupId>
+            <artifactId>ant-contrib</artifactId>
+            <version>1.0b3</version>
+            <exclusions>
+              <exclusion>
+                <groupId>ant</groupId>
+                <artifactId>ant</artifactId>
+              </exclusion>
+            </exclusions>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.ant</groupId>
+            <artifactId>ant-apache-oro</artifactId>
+            <version>1.7.1</version>
+          </dependency>
+        </dependencies>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <version>${maven.antrun.plugin.version}</version>
+        <executions>
+          <execution>
+            <id>process-about-mapping</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <!-- back up a copy of the latest about.mappings because we're about to replace it -->
+                <copy file="${basedir}/about.mappings" tofile="${basedir}/about.mappings_UNMERGED" overwrite="true"/>
+
+                <!-- [echo] buildQualifier = Beta2-v20130528-2036, project.version = 8.0.0-SNAPSHOT, BUILD_ALIAS=Beta2 -->
+                <echo level="debug">buildQualifier = ${buildQualifier}, project.version = ${project.version}, BUILD_ALIAS=${BUILD_ALIAS}</echo>
+
+                <taskdef resource="net/sf/antcontrib/antlib.xml" />
+                <propertyregex override="true" property="product.releaseNumber" input="${project.version}.${BUILD_ALIAS}" regexp="-SNAPSHOT" replace="" />
+                <echo level="info">product.releaseNumber = ${product.releaseNumber}</echo>
+
+                <echo level="info">buildQualifier = ${buildQualifier}</echo>
+
+                <propertyregex override="true" property="product.buildTimeStamp" input="${buildQualifier}" regexp=".+-v([0-9]+-[0-9]+).*" select="\1" />
+                <echo level="info">product.buildTimeStamp = ${product.buildTimeStamp}</echo>
+
+                <copy file="${basedir}/about.mappings" tofile="${basedir}/about.mappings_MERGED" filtering="true">
+                  <filterset>
+                    <filter token="product.releaseNumber" value="${product.releaseNumber}" />
+                    <filter token="product.buildQualifier" value="${buildQualifier}" />
+                    <filter token="product.buildTimeStamp" value="${product.buildTimeStamp}" />
+                  </filterset>
+                </copy>
+                <move file="${basedir}/about.mappings_MERGED" tofile="${basedir}/about.mappings" overwrite="true"/>
+              </tasks>
+            </configuration>
+          </execution>
+          <execution>
+            <id>revert-about-mapping</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <move file="${basedir}/about.mappings_UNMERGED" tofile="${basedir}/about.mappings" overwrite="true"/>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

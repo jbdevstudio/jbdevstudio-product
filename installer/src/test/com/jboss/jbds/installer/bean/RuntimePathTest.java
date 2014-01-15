@@ -1,4 +1,6 @@
-package com.jboss.jbds.installer.bean;
+package com.jboss.devstudio.core.installer.bean;
+
+import com.jboss.devstudio.core.installer.bean.RuntimePath;
 
 import junit.framework.TestCase;
 

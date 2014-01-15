@@ -1,9 +1,0 @@
-# about.mappings
-# contains fill-ins for about.properties
-# java.io.Properties file (ISO 8859-1 with "\" escapes)
-# This file does not need to be translated.
-# This file is generated. See pom.xml.
-
-0=@product.releaseNumber@
-1=@product.buildQualifier@
-2=@product.buildTimeStamp@
