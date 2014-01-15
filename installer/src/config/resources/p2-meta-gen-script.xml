@@ -17,7 +17,7 @@
 		</condition>
 		<exec executable="${install-root}/studio/${jbdevstudio}" taskname="p2">
 			<arg value="-application" />
-			<arg value="com.jboss.jbds.product.EclipseGenerator" />
+			<arg value="com.jboss.devstudio.core.EclipseGenerator" />
 			<arg value="-noSplash" />
 			<arg value="-clean" />
 		</exec>

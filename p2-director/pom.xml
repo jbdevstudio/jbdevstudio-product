@@ -3,16 +3,16 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.jboss.jbds</groupId>
+    <groupId>com.jboss.devstudio</groupId>
     <artifactId>product</artifactId>
     <version>8.0.0-SNAPSHOT</version>
   </parent>
-  <groupId>com.jboss.jbds.installer</groupId>
+  <groupId>com.jboss.devstudio.core.installer</groupId>
   <artifactId>p2-director</artifactId>
   <packaging>pom</packaging>
 
   <modules>
-      <module>com.jboss.jbds.p2.director</module>
+      <module>com.jboss.devstudio.core.p2.director</module>
       <module>p2-director</module>
   </modules>
 

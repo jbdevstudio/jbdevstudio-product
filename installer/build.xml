@@ -90,14 +90,14 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 
     <jar destfile="${build.installer.dir}/bin/panels/CreateLinkPanel.jar" basedir="${build.dir}/classes" includes="**/CreateLinkPanel.class" />
 
-    <jar destfile="${build.installer.dir}/bin/panels/com.jboss.jbds.installer.JBossAsSelectPanel.jar">
+    <jar destfile="${build.installer.dir}/bin/panels/com.jboss.devstudio.core.installer.JBossAsSelectPanel.jar">
       <fileset dir="${build.dir}/classes">
         <include name="**/JBossAsSelectPanel*.class" />
         <include name="**/Server*.class" />
       </fileset>
     </jar>
 
-    <jar destfile="${build.installer.dir}/bin/panels/com.jboss.jbds.installer.PathInputPanel.jar">
+    <jar destfile="${build.installer.dir}/bin/panels/com.jboss.devstudio.core.installer.PathInputPanel.jar">
       <fileset dir="${build.dir}/classes">
         <include name="**/PathInputPanel*.class" />
       </fileset>

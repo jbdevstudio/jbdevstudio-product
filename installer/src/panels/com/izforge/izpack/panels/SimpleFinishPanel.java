@@ -37,7 +37,7 @@ import com.izforge.izpack.util.Housekeeper;
 import com.izforge.izpack.util.Log;
 import com.izforge.izpack.util.OsVersion;
 import com.izforge.izpack.util.VariableSubstitutor;
-import com.jboss.jbds.installer.RunAfterAction;
+import com.jboss.devstudio.core.installer.RunAfterAction;
 
 
 /**

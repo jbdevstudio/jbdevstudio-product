@@ -9,12 +9,12 @@
  * Red Hat, Inc. - initial API and implementation 
  ******************************************************************************/ 
 
-package com.jboss.jbds.installer;
+package com.jboss.devstudio.core.installer;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import com.jboss.jbds.installer.bean.RuntimePathTest;
+import com.jboss.devstudio.core.installer.bean.RuntimePathTest;
 
 /**
  * @author eskimo

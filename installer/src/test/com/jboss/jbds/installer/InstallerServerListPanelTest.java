@@ -9,12 +9,14 @@
  * Red Hat, Inc. - initial API and implementation 
  ******************************************************************************/ 
 
-package com.jboss.jbds.installer;
+package com.jboss.devstudio.core.installer;
 
 import java.awt.BorderLayout;
 import java.io.FileNotFoundException;
 
 import javax.swing.JFrame;
+
+import com.jboss.devstudio.core.installer.ServerListPanel;
 
 /**
  * @author eskimo

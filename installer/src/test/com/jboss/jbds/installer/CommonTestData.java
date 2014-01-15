@@ -1,4 +1,4 @@
-package com.jboss.jbds.installer;
+package com.jboss.devstudio.core.installer;
 
 import java.io.BufferedInputStream;
 import java.io.File;

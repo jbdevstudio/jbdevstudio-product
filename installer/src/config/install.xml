@@ -114,13 +114,13 @@
 		<panel classname="HTMLLicencePanel" id="licence"/>
 		
 		<!-- Display an installation location panel -->
-		<panel classname="com.jboss.jbds.installer.PathInputPanel" id="target" />
+		<panel classname="com.jboss.devstudio.core.installer.PathInputPanel" id="target" />
 		
 		<!-- Display an jre location panel -->
 		<panel classname="JREPathPanel" id="jre" />
 		
 		<!-- This panel asks about JBoss Application Server installation -->
-		<panel classname="com.jboss.jbds.installer.JBossAsSelectPanel" id="as" />
+		<panel classname="com.jboss.devstudio.core.installer.JBossAsSelectPanel" id="as" />
 		
 		<!-- This panel updates idata.selectedPacks list -->
 		<panel classname="UpdatePacksPanel" id="updatepacks"/>

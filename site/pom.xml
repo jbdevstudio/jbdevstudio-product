@@ -3,12 +3,12 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.jboss.jbds</groupId>
+		<groupId>com.jboss.devstudio</groupId>
 		<artifactId>product</artifactId>
 		<version>8.0.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.jboss.jbds.site</groupId>
-	<artifactId>com.jboss.jbds.site.product</artifactId>
+	<groupId>com.jboss.devstudio.core</groupId>
+	<artifactId>com.jboss.devstudio.core.site</artifactId>
 	<packaging>eclipse-repository</packaging>
 
 	<build>
@@ -36,7 +36,7 @@
 				<configuration>
 					<products>
 						<product>
-							<id>com.jboss.jbds.all</id>
+							<id>com.jboss.devstudio.core.package</id>
 						</product>
 					</products>
 				</configuration>

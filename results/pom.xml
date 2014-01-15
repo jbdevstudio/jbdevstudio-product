@@ -3,12 +3,12 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <groupId>com.jboss.jbds</groupId>
+    <groupId>com.jboss.devstudio</groupId>
     <artifactId>product</artifactId>
     <version>8.0.0-SNAPSHOT</version>
   </parent>
-  <groupId>com.jboss.jbds</groupId>
-  <artifactId>com.jboss.jbds.buildresults</artifactId>
+  <groupId>com.jboss.devstudio</groupId>
+  <artifactId>com.jboss.devstudio.core.buildresults</artifactId>
   <name>JBoss Developer Studio Build Results</name>
   <description>
     Generates index.html linking to jars and zips, plus provides other metadata

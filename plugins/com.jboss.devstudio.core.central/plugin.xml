@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+	<extension
+         point="org.jboss.tools.project.examples.configurators">
+      <configurator
+            class="com.jboss.devstudio.core.central.JbdsConfigurator"
+            id="com.jboss.devstudio.core.central.jbdsConfigurator">
+      </configurator>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+      		defaultHandler="com.jboss.devstudio.core.central.actions.OpenDevstudioHomeHandler"
+            name="JBoss Developer Studio Home"
+            id="com.jboss.devstudio.core.central.openDevstudioHome">
+      </command>
+         
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.commandImages">
+      <image
+            commandId="com.jboss.devstudio.core.central.openDevstudioHome"
+            icon="icons/ico_16_jbds.png">
+      </image>
+   </extension>
+   
+</plugin>

@@ -1,4 +1,4 @@
-package com.jboss.jbds.installer;
+package com.jboss.devstudio.core.installer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,9 +10,9 @@ import javax.swing.table.TableModel;
 
 import junit.framework.TestCase;
 
-import com.jboss.jbds.installer.ServerListPanel.ServerListTableModel;
-import com.jboss.jbds.installer.bean.RuntimePath;
-import com.jboss.jbds.installer.bean.ServerListBean;
+import com.jboss.devstudio.core.installer.ServerListPanel.ServerListTableModel;
+import com.jboss.devstudio.core.installer.bean.RuntimePath;
+import com.jboss.devstudio.core.installer.bean.ServerListBean;
 
 public class ServerListTableModelTest extends TestCase {
 

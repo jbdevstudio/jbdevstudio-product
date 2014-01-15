@@ -9,7 +9,7 @@
  * Red Hat, Inc. - initial API and implementation 
  ******************************************************************************/ 
 
-package com.jboss.jbds.installer;
+package com.jboss.devstudio.core.installer;
 
 import java.beans.IndexedPropertyChangeEvent;
 import java.beans.PropertyChangeEvent;
@@ -19,8 +19,8 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-import com.jboss.jbds.installer.bean.RuntimePath;
-import com.jboss.jbds.installer.bean.ServerListBean;
+import com.jboss.devstudio.core.installer.bean.RuntimePath;
+import com.jboss.devstudio.core.installer.bean.ServerListBean;
 
 /**
  * @author eskimo
@@ -31,8 +31,8 @@ public class ServerListBeanTest extends TestCase {
 	
 	List<RuntimePath> data = ServerListBeanTestData.getTestList();
 	/**
-	 * Test method for {@link com.jboss.jbds.installer.bean.ServerListBean#getServers()} 
-	 * and {@link com.jboss.jbds.installer.bean.ServerListBean#setServers(java.util.List)}.
+	 * Test method for {@link com.jboss.devstudio.core.installer.bean.ServerListBean#getServers()} 
+	 * and {@link com.jboss.devstudio.core.installer.bean.ServerListBean#setServers(java.util.List)}.
 	 */
 	public void testGetSetServers() {
 		ServerListBean bean = new ServerListBean();
@@ -48,7 +48,7 @@ public class ServerListBeanTest extends TestCase {
 	}
 
 	/**
-	 * Test method for {@link com.jboss.jbds.installer.bean.ServerListBean#getServers(int)}.
+	 * Test method for {@link com.jboss.devstudio.core.installer.bean.ServerListBean#getServers(int)}.
 	 */
 	public void testGetServersInt() {
 		ServerListBean bean = new ServerListBean();
@@ -72,7 +72,7 @@ public class ServerListBeanTest extends TestCase {
 	}
 
 	/**
-	 * Test method for {@link com.jboss.jbds.installer.bean.ServerListBean#setServers(int, com.jboss.jbds.installer.bean.RuntimePath)}.
+	 * Test method for {@link com.jboss.devstudio.core.installer.bean.ServerListBean#setServers(int, com.jboss.devstudio.core.installer.bean.RuntimePath)}.
 	 */
 	public void testSetServersIntServerBean() {
 		ServerListBean bean = new ServerListBean();
@@ -87,7 +87,7 @@ public class ServerListBeanTest extends TestCase {
 	}
 
 	/**
-	 * Test method for {@link com.jboss.jbds.installer.bean.ServerListBean#addPropertyChangeListener(java.beans.PropertyChangeListener)}.
+	 * Test method for {@link com.jboss.devstudio.core.installer.bean.ServerListBean#addPropertyChangeListener(java.beans.PropertyChangeListener)}.
 	 */
 	public void testAddRemovePropertyChangeListener() {
 		ServerListBean bean = new ServerListBean();
@@ -116,7 +116,7 @@ public class ServerListBeanTest extends TestCase {
 	}
 
 	/**
-	 * Test method for {@link com.jboss.jbds.installer.bean.ServerListBean#remove(int)}.
+	 * Test method for {@link com.jboss.devstudio.core.installer.bean.ServerListBean#remove(int)}.
 	 */
 	public void testRemove() {
 		ServerListBean bean = new ServerListBean();

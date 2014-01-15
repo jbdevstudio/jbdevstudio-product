@@ -52,12 +52,12 @@ import com.izforge.izpack.util.FileExecutor;
 import com.izforge.izpack.util.Housekeeper;
 import com.izforge.izpack.util.IoHelper;
 import com.izforge.izpack.util.OsConstraint;
-import com.jboss.jbds.installer.ConsoleCommandException;
-import com.jboss.jbds.installer.ErrorUtils;
-import com.jboss.jbds.installer.P2DirectorStarterListener;
-import com.jboss.jbds.installer.P2DirectorStarterListener.BundleListConsoleCommand;
-import com.jboss.jbds.installer.P2DirectorStarterListener.FeatureInstallConsoleCommand;
-import com.jboss.jbds.installer.P2DirectorStarterListener.MetadataGenerationConsoleCommand;
+import com.jboss.devstudio.core.installer.ConsoleCommandException;
+import com.jboss.devstudio.core.installer.ErrorUtils;
+import com.jboss.devstudio.core.installer.P2DirectorStarterListener;
+import com.jboss.devstudio.core.installer.P2DirectorStarterListener.BundleListConsoleCommand;
+import com.jboss.devstudio.core.installer.P2DirectorStarterListener.FeatureInstallConsoleCommand;
+import com.jboss.devstudio.core.installer.P2DirectorStarterListener.MetadataGenerationConsoleCommand;
 
 /**
  * Unpacker class.

@@ -3,18 +3,18 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.jboss.jbds</groupId>
+		<groupId>com.jboss.devstudio</groupId>
 		<artifactId>product</artifactId>
 		<version>8.0.0-SNAPSHOT</version>
 	</parent>
-	<groupId>com.jboss.jbds.product</groupId>
+	<groupId>com.jboss.devstudio.core</groupId>
 	<artifactId>features</artifactId>
 	<version>8.0.0-SNAPSHOT</version>
 	<name>JBDS - Product Features - Core</name>
 	<packaging>pom</packaging>
 	<modules>
-		<module>com.jboss.jbds.product.feature</module>
-		<module>com.jboss.jbds.product.feature.source</module>
+		<module>com.jboss.devstudio.core.feature</module>
+		<module>com.jboss.devstudio.core.feature.source</module>
 	</modules>
 </project>
 	

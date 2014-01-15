@@ -1,15 +1,15 @@
 # This part defines category that contains feature generated based on product file
-units.1.id=com.jboss.jbds.all.category
+units.1.id=com.jboss.devstudio.core.package.category
 units.1.version=$version$
 units.1.provides.1.namespace=org.eclipse.equinox.p2.iu
-units.1.provides.1.name=com.jboss.jbds.all.category
+units.1.provides.1.name=com.jboss.devstudio.core.package.category
 units.1.provides.1.version=$version$
 units.1.properties.1.name=org.eclipse.equinox.p2.type.category
 units.1.properties.1.value=true
 units.1.properties.2.name=org.eclipse.equinox.p2.name
 units.1.properties.2.value=JBoss Developer Studio
 units.1.requires.1.namespace=org.eclipse.equinox.p2.iu
-units.1.requires.1.name=com.jboss.jbds.all
+units.1.requires.1.name=com.jboss.devstudio.core.package
 units.1.requires.1.range=[$version$,$version$]
 units.1.requires.1.greedy=true
 
@@ -18,9 +18,9 @@ units.1.requires.1.greedy=true
 #org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/eclipse.ini,target:${installFolder}/eclipse.#ini_BEFORE_JBDS,overwrite:true);
 instructions.unconfigure=\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-product);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:com.jboss.jbds.product.product);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:com.jboss.devstudio.core.product);\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-showsplash);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:platform${#58}/base/plugins/com.jboss.jbds.product);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:platform${#58}/base/plugins/com.jboss.devstudio.core);\
 org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:-application);\
 org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:org.eclipse.ui.ide.workbench);\
 org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:-showsplash);\

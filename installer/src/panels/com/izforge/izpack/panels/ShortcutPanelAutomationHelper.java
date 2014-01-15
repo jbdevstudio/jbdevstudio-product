@@ -29,7 +29,7 @@ import com.izforge.izpack.util.*;
 import com.izforge.izpack.util.os.Shortcut;
 import com.izforge.izpack.util.xml.XMLHelper;
 import com.izforge.izpack.adaptator.IXMLElement;
-import com.jboss.jbds.installer.ShortcutData;
+import com.jboss.devstudio.core.installer.ShortcutData;
 
 import java.io.File;
 import java.util.ArrayList;

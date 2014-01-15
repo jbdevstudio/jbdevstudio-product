@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: com.jboss.devstudio.core.central;singleton:=true
+Bundle-Version: 8.0.0.qualifier
+Bundle-Activator: com.jboss.devstudio.core.central.JbdsCentralActivator
+Bundle-Vendor: %Bundle-Vendor
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.jboss.tools.central;bundle-version="1.0.0",
+ org.jboss.tools.project.examples
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
