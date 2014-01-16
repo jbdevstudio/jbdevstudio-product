@@ -28,6 +28,7 @@
     <tpc.targetKind>unified</tpc.targetKind>
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
+    <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
     <!-- JBDS-2805 used in installer/pom.xml to resolve 3rd party content that's installed OOTB (eg., TestNG) -->
     <JBOSS_CENTRAL_URL>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Alpha1-SNAPSHOT/REPO/</JBOSS_CENTRAL_URL>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
@@ -52,6 +53,11 @@
       </snapshots>
     </repository>
     <!-- JBDS-2805 used in installer/pom.xml to resolve 3rd party content that's installed OOTB (eg., TestNG) -->
+    <repository>
+      <id>jbosstools</id>
+      <layout>p2</layout>
+      <url>${jbosstools-site}</url>
+    </repository>
     <repository>
       <id>JBOSS_CENTRAL_URL</id>
       <url>${JBOSS_CENTRAL_URL}</url>
