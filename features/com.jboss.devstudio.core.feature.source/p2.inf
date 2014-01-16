@@ -1,0 +1,6 @@
+# JBDS-2669 support name change from com.jboss.jbds.product.feature.source to com.jboss.devstudio.core.feature.source
+update.id = com.jboss.jbds.product.feature.source.feature.group
+update.range = 0.0.0
+update.severity = 0
+update.description = Update JBoss Developer Studio (Core Features) from old feature ID
+
