@@ -34,7 +34,7 @@
                   <!-- pass in URL of current published jbosstools-nightly URL, eg.,
                      http://download.jboss.org/jbosstools/updates/nightly/core/trunk/ or 
                      http://download.jboss.org/jbosstools/updates/nightly/core/4.1.kepler/ -->
-                  <property name="inputRepo" value="${jbosstools-nightly}"/>
+                  <property name="inputRepo" value="${jbosstools-site}"/>
                   <property name="project.version" value="${project.version}" />
                   <property name="update.site.qualifier" value="${maven.build.timestamp}"/>
                 </ant>
