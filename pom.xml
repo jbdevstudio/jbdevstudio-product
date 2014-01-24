@@ -32,6 +32,9 @@
     <JBOSS_CENTRAL_URL>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Alpha1-SNAPSHOT/REPO/</JBOSS_CENTRAL_URL>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Alpha1-SNAPSHOT/jbtcentraltarget-4.40.0.Alpha1-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
+    <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
+    <jbosstools-site-stream>master</jbosstools-site-stream>
+    <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
   </properties>
 
   <repositories>
@@ -51,17 +54,17 @@
         <enabled>true</enabled>
       </snapshots>
     </repository>
+    <!-- since JBT site is no longer set in parent pom, must explicitly define it here -->
+    <repository>
+      <id>jbosstools-site</id>
+      <layout>p2</layout>
+      <url>${jbosstools-site}</url>
+    </repository>    
     <!-- JBDS-2805 used in installer/pom.xml to resolve 3rd party content that's installed OOTB (eg., TestNG) -->
     <repository>
       <id>JBOSS_CENTRAL_URL</id>
       <url>${JBOSS_CENTRAL_URL}</url>
       <layout>p2</layout>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
     </repository>
   </repositories>
 
