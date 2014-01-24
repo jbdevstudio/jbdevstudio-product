@@ -221,9 +221,19 @@ public class Unpacker extends UnpackerBase
 	                } else if(pack.id.equals("jbds.generate")){
 	                	handler.nextStep(pack.name, i + 1, 1);
 	                	try {
+	                		File studioPluginsFolder = new File(installLocation + File.separator +
+	    							"studio" + File.separator +
+	    							"plugins" + File.separator);
+	    					File[] studioLaunchers = studioPluginsFolder.listFiles(new FilenameFilter() {
+	    						@Override
+	    						public boolean accept(File dir, String name) {
+	    							return name.startsWith("org.eclipse.equinox.launcher") && name.endsWith(".jar");
+	    						}
+	    					});
+	    					String studioLauncherLocation = studioLaunchers[0].getAbsolutePath();
 		                	new MetadataGenerationConsoleCommand()
 		                	.setParameter(jvmLocation)
-		            		.setParameter(launcherLocation)
+		            		.setParameter(studioLauncherLocation)
 		            		.execute();
 	                	} catch (ConsoleCommandException ex) {
 	                		// for some reason MetaGenerator app returns error codr 13
