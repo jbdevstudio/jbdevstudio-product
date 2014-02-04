@@ -7,6 +7,9 @@
       <product
             application="com.jboss.jbds.product.application"
             name="JBoss Developer Studio">
+         <property 
+               name="appName" 
+               value="JBoss Developer Studio"/> 
          <property
                name="startupProgressRect"
                value="29,232,397,15"/>
@@ -27,7 +30,7 @@
          		value="Sans-bold-9"/>
          <property
                name="windowImages"
-               value="48-jbds_icon.png,ico_32_jbds.png,ico_16_jbds.png"/>
+               value="128_jbds_icon.png,48-jbds_icon.png,ico_32_jbds.png,ico_16_jbds.png"/>
          <property
                name="aboutText"
                value="%aboutText"/>
