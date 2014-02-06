@@ -86,7 +86,9 @@
 		<res id="JBossAsSelectPanel.create.image"
 			src="config/resources/images/jbeap_new_wiz.png" />
 		<res id="JBossAsSelectPanel.edit.image"
-			src="config/resources/images/jbeap_edit_wiz.png" />
+ 			src="config/resources/images/jbeap_edit_wiz.png" />			
+		<res id="Error.image"
+			src="config/resources/images/message_error.png" />
 			
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
 		<!-- Licencees in different languages -->  

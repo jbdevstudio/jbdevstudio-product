@@ -37,6 +37,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.jar.Pack200;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import com.izforge.izpack.ExecutableFile;
@@ -48,6 +49,7 @@ import com.izforge.izpack.event.InstallerListener;
 import com.izforge.izpack.panels.InstallPanel;
 import com.izforge.izpack.util.AbstractUIHandler;
 import com.izforge.izpack.util.AbstractUIProgressHandler;
+import com.izforge.izpack.util.Debug;
 import com.izforge.izpack.util.FileExecutor;
 import com.izforge.izpack.util.Housekeeper;
 import com.izforge.izpack.util.IoHelper;
@@ -597,12 +599,20 @@ public class Unpacker extends UnpackerBase
             handler.stopAction();
         }
         catch (ConsoleCommandException ex) {
+            ImageIcon image = null;
+            try{
+    			image = ResourceManager.getInstance().getImageIconResource("Error.image");
+      		} catch(ResourceNotFoundException exc) {
+      			Debug.trace(exc);
+      		} catch (IOException e) {
+      			Debug.trace(e);
+      		}
         	handler.stopAction();
         	JFrame frame = null;
         	if(handler instanceof InstallPanel) {
         		frame = (JFrame)((InstallPanel)handler).getInstallerFrame();
         	}
-        	ErrorUtils.showError(frame, "Installer Error", "Internal error occured", ex.getMessage());
+        	ErrorUtils.showError(frame, image,"Installer Error", "Internal error occured", ex.getMessage());
         	this.result = false;
             Housekeeper.getInstance().shutDown(4);
      	}
