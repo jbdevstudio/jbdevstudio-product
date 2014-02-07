@@ -1,7 +1,6 @@
 package com.jboss.devstudio.core.installer;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,8 +8,6 @@ import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
 import com.izforge.izpack.util.Debug;
-import com.izforge.izpack.util.Log;
-import com.sun.org.apache.bcel.internal.generic.ISUB;
 
 public class JavaVersionReader {
 	private static final String CMD_COMMAND = "cmd /K chcp 1252"; //$NON-NLS-1$

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -18,19 +18,16 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
-import sun.swing.DefaultLookup;
-
 public class ErrorUtils {
 	 
-	public static void showError(JFrame owner, String title, String message, String text){
+	public static void showError(JFrame owner, ImageIcon image, String title, String message, String text){
 		final JDialog frame = new JDialog(owner,true);
 		frame.setTitle(title);
 		frame.setLayout(new BorderLayout());
 		//frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		
-		JLabel label = new JLabel(message, SwingConstants.LEFT);
-		Icon icon = (Icon)DefaultLookup.get(label, label.getUI(), "OptionPane.errorIcon");
-		label.setIcon(icon);
+		JLabel label = new JLabel(message,image, SwingConstants.LEFT);
+
 		label.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 		
 		JTextArea area = new JTextArea(text);
@@ -62,7 +59,5 @@ public class ErrorUtils {
 		frame.setSize(new Dimension(350,200));
 		frame.setLocationRelativeTo(null);
 		frame.setVisible(true);
-		
 	}
-
 }
