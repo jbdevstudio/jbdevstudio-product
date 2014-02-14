@@ -30,7 +30,7 @@
          		value="Sans-bold-9"/>
          <property
                name="windowImages"
-               value="128_jbds_icon.png,48-jbds_icon.png,ico_32_jbds.png,ico_16_jbds.png"/>
+               value="ico_16_jbds.png,ico_32_jbds.png,48-jbds_icon.png,128_jbds_icon.png"/>
          <property
                name="aboutText"
                value="%aboutText"/>
