@@ -89,7 +89,10 @@
  			src="config/resources/images/jbeap_edit_wiz.png" />			
 		<res id="Error.image"
 			src="config/resources/images/message_error.png" />
-			
+		<res id="128-jbds_icon.png"
+			src="config/resources/icons/128-jbds_icon.png" />
+		<res id="32-jbds_icon.png"
+			src="config/resources/icons/32-jbds_icon.png" />
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
 		<!-- Licencees in different languages -->  
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
