@@ -437,7 +437,20 @@ public class InstallerFrame extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE); // patch 06/07/2005,
         // Fabrice Mirabile
         // Sets the frame icon
-        setIconImage(icons.getImageIcon("JFrameIcon").getImage());
+        try {
+        	if(OsVersion.IS_WINDOWS) {
+        		setIconImage(loadIcon("32-jbds_icon.png", 0, true).getImage());
+        	} else {
+	        	setIconImage(loadIcon("128-jbds_icon.png", 0, true).getImage());
+	        	Toolkit xToolkit = Toolkit.getDefaultToolkit();
+	        	  java.lang.reflect.Field awtAppClassNameField =
+	        	      xToolkit.getClass().getDeclaredField("awtAppClassName");
+	        	  awtAppClassNameField.setAccessible(true);
+	        	  awtAppClassNameField.set(xToolkit, this.getTitle());
+        	}
+        } catch(Exception ignore) {
+        	ignore.printStackTrace();
+        }
 
         // Prepares the glass pane to block the gui interaction when needed
         JPanel glassPane = (JPanel) getGlassPane();
