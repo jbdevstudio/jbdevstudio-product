@@ -98,37 +98,44 @@ $java.home = ${java.home}</echo>
 
     <!-- given http://download.jboss.org/jbosstools/updates/nightly/core/4.1.kepler/, want http://download.jboss.org/jbosstools/builds/nightly/core/4.1.kepler/ -->
     <propertyregex property="inputBuild" input="${inputRepo}" regexp="updates/nightly" replace="builds/nightly" />
-
-    <antcallback target="get.list" return="ALL_ZIPS" />
-    <for list="${ALL_ZIPS}" param="zip" delimiter=", 
-">
-      <sequential>
-        <if>
-          <contains string="@{zip}" substring=".aggregate-Sources-" />
-          <then>
-            <propertyregex input="@{zip}" defaultvalue="@{zip}" property="zip" regexp=".+/(.+.zip)" replace="\1" casesensitive="false" />
-            <echo level="error">get ${inputBuild}/latest/@{zip} to ${tmpdir}/${zip}</echo>
-            <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/@{zip}" dest="${tmpdir}/${zip}" />
-            <zip destfile="${sourcesZip}" update="true">
-              <zipfileset src="${tmpdir}/${zip}" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
-            </zip>
-            <var name="zip" unset="true" />
-          </then>
-        </if>
-        <if>
-          <contains string="@{zip}" substring=".aggregate-Additional-Sources-" />
-          <then>
-            <propertyregex input="@{zip}" defaultvalue="@{zip}" property="zip" regexp=".+/(.+.zip)" replace="\1" casesensitive="false" />
-            <echo level="error">get ${inputBuild}/latest/@{zip} to ${tmpdir}/${zip}</echo>
-            <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/@{zip}" dest="${tmpdir}/${zip}" />
-            <zip destfile="${sourcesZip}" update="true">
-              <zipfileset src="${tmpdir}/${zip}" prefix="build/" />
-            </zip>
-            <var name="zip" unset="true" />
-          </then>
-        </if>
-      </sequential>
-    </for>
+    <if>
+      <isset property="inputBuild"/>
+      <then>
+        <antcallback target="get.list" return="ALL_ZIPS" />
+        <for list="${ALL_ZIPS}" param="zip" delimiter=", 
+    ">
+          <sequential>
+            <if>
+              <contains string="@{zip}" substring=".aggregate-Sources-" />
+              <then>
+                <propertyregex input="@{zip}" defaultvalue="@{zip}" property="zip" regexp=".+/(.+.zip)" replace="\1" casesensitive="false" />
+                <echo level="error">get ${inputBuild}/latest/@{zip} to ${tmpdir}/${zip}</echo>
+                <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/@{zip}" dest="${tmpdir}/${zip}" />
+                <zip destfile="${sourcesZip}" update="true">
+                  <zipfileset src="${tmpdir}/${zip}" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
+                </zip>
+                <var name="zip" unset="true" />
+              </then>
+            </if>
+            <if>
+              <contains string="@{zip}" substring=".aggregate-Additional-Sources-" />
+              <then>
+                <propertyregex input="@{zip}" defaultvalue="@{zip}" property="zip" regexp=".+/(.+.zip)" replace="\1" casesensitive="false" />
+                <echo level="error">get ${inputBuild}/latest/@{zip} to ${tmpdir}/${zip}</echo>
+                <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/@{zip}" dest="${tmpdir}/${zip}" />
+                <zip destfile="${sourcesZip}" update="true">
+                  <zipfileset src="${tmpdir}/${zip}" prefix="build/" />
+                </zip>
+                <var name="zip" unset="true" />
+              </then>
+            </if>
+          </sequential>
+        </for>
+      </then>
+      <else>
+        <echo>No nightly build folder could be found from which to fetch sources for inputRepo (jbosstools-site) = ${inputRepo}</echo>
+      </else>
+    </if>
   </target>
 
   <target name="cleanup">
