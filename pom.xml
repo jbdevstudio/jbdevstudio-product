@@ -37,6 +37,30 @@
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
   </properties>
 
+  <!-- 
+      This profile is used to optionally enable a target platform site instead of (or in addition to) the default target platform. 
+      Use -Dno-target-platform if you want to disable the default target platform in favour of a specified target platform site
+        mvn clean install -Dno-target-platform \
+        -Djbosstools-target-site=file:///path/to/jbosstools-target-platforms/jbdevstudio/multiple/target/jbdevstudio-multiple.target.repo/
+  -->
+  <profiles>
+    <profile>
+      <id>target-site</id>
+      <activation>
+        <property>
+          <name>jbosstools-target-site</name>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <id>jbosstools-target-site</id>
+          <layout>p2</layout>
+          <url>${jbosstools-target-site}</url>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
   <repositories>
     <repository>
       <id>jboss-releases</id>
