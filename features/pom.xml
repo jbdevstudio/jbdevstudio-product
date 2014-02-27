@@ -9,7 +9,6 @@
 	</parent>
 	<groupId>com.jboss.jbds.product</groupId>
 	<artifactId>features</artifactId>
-	<version>7.1.1-SNAPSHOT</version>
 	<name>JBDS - Product Features - Core</name>
 	<packaging>pom</packaging>
 	<modules>
