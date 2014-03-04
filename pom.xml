@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.jboss.tools</groupId>
     <artifactId>parent</artifactId>
-    <version>4.2.0.Alpha2-SNAPSHOT</version>
+    <version>4.2.0.Beta1-SNAPSHOT</version>
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>product</artifactId>
@@ -29,12 +29,13 @@
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in installer/pom.xml to resolve 3rd party content that's installed OOTB (eg., TestNG) -->
-    <JBOSS_CENTRAL_URL>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Alpha1-SNAPSHOT/REPO/</JBOSS_CENTRAL_URL>
+    <JBOSS_CENTRAL_URL>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta1-SNAPSHOT/REPO/</JBOSS_CENTRAL_URL>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
-    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Alpha1-SNAPSHOT/jbtcentraltarget-4.40.0.Alpha1-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
+    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta1-SNAPSHOT/jbtcentraltarget-4.40.0.Beta1-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
     <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
     <jbosstools-site-stream>master</jbosstools-site-stream>
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
+    <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/luna/</jbosstools-target-site>
   </properties>
 
   <!-- 
