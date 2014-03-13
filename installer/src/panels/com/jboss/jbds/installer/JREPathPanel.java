@@ -233,8 +233,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
             return false;
         }else {
         	int status = verifyVersion(new Properties()); 
-        	if (status == 0)
-            {
+        	if (status == 0 || status == -2) {
         		if(rb1.isSelected()) {
             		idata.setVariable(getVariableName(), new File(idata.getVariable("JAVA_HOME")).getPath());
         		} else {
@@ -242,10 +241,6 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         		}
                 return true;
             }
-        	if(status == -2){
-        		emitError(parent.langpack.getString("installer.error"),
-        				"The directory "+chosenPath+"\ncontains Java VM version "+detectedVersion+". Please specify a Java 6 compatible VM directory.");
-        	}
         	if(status == -1){
         		emitError(parent.langpack.getString("installer.error"), parent.langpack
         				.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));
@@ -485,8 +480,8 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
             		messageLabel.setForeground(Color.black);
        		}
         	if(status == -2){
-        		messageLabel.setText("<html><p>The directory "+pathSelectionPanel.getPath()+"\ncontains Java VM version "+detectedVersion+". Please specify a Java 6 compatible VM directory.</p></html>");
-        		messageLabel.setForeground(Color.red);
+        		messageLabel.setText("<html><p>This JVM (version "+detectedVersion+") was not tested to work with Developer Studio.<br>It is not guaranteed to work.</p></html>");
+        		messageLabel.setForeground(Color.black);
         	}
         	if(status == -1){
         		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));
