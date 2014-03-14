@@ -298,7 +298,7 @@ public class InstallerDirectorApplication extends  DirectorApplication {
 	private IProvisioningAgent targetAgent;
 	private boolean noArtifactRepositorySpecified = false;
 
-	private ProfileChangeRequest buildProvisioningRequest(IProfile profile, Collection<IInstallableUnit> installs, Collection<IInstallableUnit> uninstalls) {
+	protected ProfileChangeRequest buildProvisioningRequest(IProfile profile, Collection<IInstallableUnit> installs, Collection<IInstallableUnit> uninstalls) {
 		ProfileChangeRequest request = new ProfileChangeRequest(profile);
 		markRoots(request, installs);
 		markRoots(request, uninstalls);
