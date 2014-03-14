@@ -129,10 +129,6 @@
     <category name="CoreTools" />
     <category name="MavenTools" />
   </feature>
-  <feature id="org.jboss.tools.maven.profiles.feature">
-    <category name="CoreTools" />
-    <category name="MavenTools" />
-  </feature>
   <feature id="org.jboss.tools.maven.project.examples.feature">
     <category name="CoreTools" />
     <category name="MavenTools" />
@@ -277,7 +273,6 @@
   <feature id="org.jboss.tools.maven.hibernate.feature.source"/>
   <feature id="org.jboss.tools.maven.jdt.feature.source"/>
   <feature id="org.jboss.tools.maven.portlet.feature.source"/>
-  <feature id="org.jboss.tools.maven.profiles.feature.source"/>
   <feature id="org.jboss.tools.maven.project.examples.feature.source"/>
   <feature id="org.jboss.tools.maven.seam.feature.source"/>
   <feature id="org.jboss.tools.maven.sourcelookup.feature.source"/>
