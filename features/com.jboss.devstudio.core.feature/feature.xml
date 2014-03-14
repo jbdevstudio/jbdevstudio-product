@@ -69,7 +69,6 @@
     <!-- JBDS-1938 not ready for JBDS yet <import feature="org.jboss.tools.maven.jbosspackaging.feature"/> -->
     <import feature="org.jboss.tools.maven.jdt.feature"/>
     <import feature="org.jboss.tools.maven.portlet.feature"/>
-    <import feature="org.jboss.tools.maven.profiles.feature"/>
     <import feature="org.jboss.tools.maven.project.examples.feature"/>
     <import feature="org.jboss.tools.maven.seam.feature"/>
     <import feature="org.jboss.tools.maven.sourcelookup.feature"/>
