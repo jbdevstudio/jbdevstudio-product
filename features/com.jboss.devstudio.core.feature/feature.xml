@@ -60,6 +60,7 @@
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.m2e.jdt.feature"/>
     <import feature="org.sonatype.m2e.buildhelper.feature"/>
+    <import feature="org.sonatype.m2e.egit.feature"/>
     <import feature="org.sonatype.m2e.mavenarchiver.feature"/>
 
     <import feature="org.jboss.tools.maven.feature"/>
