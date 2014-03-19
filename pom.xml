@@ -35,7 +35,7 @@
     <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
     <jbosstools-site-stream>master</jbosstools-site-stream>
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
-    <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/luna/</jbosstools-target-site>
+    <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta1-SNAPSHOT/REPO/</jbosstools-target-site>
   </properties>
 
   <!-- 
