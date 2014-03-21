@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Tweaked P2 Director application" uid="com.jboss.devstudio.core.p2.director.product" id="org.eclipse.equinox.p2.director.product" application="com.jboss.devstudio.core.p2.director" version="8.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="Tweaked P2 Director application" uid="com.jboss.devstudio.core.p2.director.product" id="org.eclipse.equinox.p2.director.product" application="com.jboss.devstudio.core.p2.director" version="8.0.0.qualifier" useFeatures="false" includeLaunchers="false">
 
    <configIni use="default">
    </configIni>
 
    <launcherArgs>
-      <programArgs>--launcher.XXMaxPermSize
-256m
---launcher.defaultAction
-openFile</programArgs>
-      <vmArgs>-Xms512m
--Xmx1024m
--Dosgi.instance.area.default=@user.home/workspace</vmArgs>
-      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts -XX:MaxPermSize=256m</vmArgsMac>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
@@ -76,12 +69,7 @@ openFile</programArgs>
 
    <configurations>
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="3" />
-      <plugin id="org.eclipse.equinox.p2.reconciler.dropins" autoStart="true" startLevel="4" />
-      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
-      <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
-      <property name="org.eclipse.update.reconcile" value="false" />
    </configurations>
 
 </product>
