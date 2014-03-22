@@ -33,19 +33,19 @@
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta1-SNAPSHOT/jbtcentraltarget-4.40.0.Beta1-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
     <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
-    <jbosstools-site-stream>master</jbosstools-site-stream>
+    <!-- <jbosstools-site-stream>master</jbosstools-site-stream> -->
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
-    <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta1-SNAPSHOT/REPO/</jbosstools-target-site>
+    <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta2-SNAPSHOT/REPO/</jbosstools-target-site> -->
   </properties>
 
   <!-- 
-      This profile is used to optionally enable a target platform site instead of (or in addition to) the default target platform. 
+      Uncomment this profile to optionally enable a target platform site instead of (or in addition to) the default target platform. 
       Use -Dno-target-platform if you want to disable the default target platform in favour of a specified target platform site
         mvn clean install -Dno-target-platform \
         -Djbosstools-target-site=file:///path/to/jbosstools-target-platforms/jbdevstudio/multiple/target/jbdevstudio-multiple.target.repo/
   -->
   <profiles>
-    <profile>
+    <!-- <profile>
       <id>target-site</id>
       <activation>
         <property>
@@ -59,7 +59,7 @@
           <url>${jbosstools-target-site}</url>
         </repository>
       </repositories>
-    </profile>
+    </profile> -->
   </profiles>
 
   <repositories>
