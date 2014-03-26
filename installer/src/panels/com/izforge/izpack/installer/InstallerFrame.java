@@ -437,20 +437,32 @@ public class InstallerFrame extends JFrame {
         this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE); // patch 06/07/2005,
         // Fabrice Mirabile
         // Sets the frame icon
-        try {
-        	if(OsVersion.IS_WINDOWS) {
-        		setIconImage(loadIcon("32-jbds_icon.png", 0, true).getImage());
-        	} else {
-	        	setIconImage(loadIcon("128-jbds_icon.png", 0, true).getImage());
-	        	Toolkit xToolkit = Toolkit.getDefaultToolkit();
-	        	  java.lang.reflect.Field awtAppClassNameField =
-	        	      xToolkit.getClass().getDeclaredField("awtAppClassName");
-	        	  awtAppClassNameField.setAccessible(true);
-	        	  awtAppClassNameField.set(xToolkit, this.getTitle());
-        	}
-        } catch(Exception ignore) {
-        	ignore.printStackTrace();
-        }
+		try {
+			if (OsVersion.IS_WINDOWS) {
+				setIconImage(loadIcon("32-jbds_icon.png", 0, true).getImage());
+			} else {
+				setIconImage(loadIcon("128-jbds_icon.png", 0, true).getImage());
+				try {
+					Toolkit xToolkit = Toolkit.getDefaultToolkit();
+					java.lang.reflect.Field awtAppClassNameField = xToolkit
+							.getClass().getDeclaredField("awtAppClassName");
+					awtAppClassNameField.setAccessible(true);
+					awtAppClassNameField.set(xToolkit, this.getTitle());
+				} catch (NoSuchFieldException ignore1) {
+					// This exception can be ignored.
+					// The application name in application switcher will stay
+					// default depending on JVM implementation
+				} catch (IllegalAccessException ignore2) {
+					// Ignored for the same reason explained above
+				}
+			}
+		} catch (ResourceNotFoundException ignore3) {
+			// This exception can be ignored, if it happens
+			// default IzPack icon is going to be used
+		} catch (IOException ignore4) {
+			// Ignored for the same reason explained above for
+			// ResourceNotFoundException
+		}
 
         // Prepares the glass pane to block the gui interaction when needed
         JPanel glassPane = (JPanel) getGlassPane();
