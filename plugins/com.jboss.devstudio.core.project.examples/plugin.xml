@@ -4,7 +4,7 @@
    <extension
         point="org.jboss.tools.project.examples.projectExamplesXml"
         name="%JBoss_Developer_Studio80_Examples">
-        <url>http://download.jboss.org/jbosstools/examples/project-examples-jbds71.xml</url>
+        <url>http://download.jboss.org/jbosstools/examples/project-examples-jbds80.xml</url>
         <experimental>false</experimental>
    </extension>
 
@@ -18,6 +18,6 @@
    <extension
         point="org.jboss.tools.project.examples.categories"
         name="Project Examples Categories">
-        <url>http://download.jboss.org/jbosstools/examples/project-examples-category-jbds-7.0.xml</url>
+        <url>http://download.jboss.org/jbosstools/examples/project-examples-category-jbds-8.0.xml</url>
     </extension>
 </plugin>
