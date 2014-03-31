@@ -35,6 +35,7 @@
 		<variable name="PACK_NAME" value="universal" />
 		<variable name="INSTALL_GROUP" value="@{install.group}"/>
 		<variable name="VERSION" value="@{specification.version.presentstring}"/>
+		<variable name="EAP_VERSION" value="@{eapVersion}"/>
 		<variable name="jboss.logname" value="jbdevstudio-install-"/>
 		<variable name="DESKTOP_SHORTCUT_NAME" 
 			value="JBoss-Developer-Studio-@{version.presentstring}@{nightly_build_qualifier}" />

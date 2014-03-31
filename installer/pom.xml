@@ -222,6 +222,7 @@
                   <property name="artifacts.jbosseap"
                     location="${project.build.directory}/requirements/jboss-eap-${eapVersion}.zip" />
                   <property name="eapRootFolder" value="${eapRootFolder}"/>
+                  <property name="eapVersion" value="${eapVersion}" />
                   <property name="destination.dir" value="${project.build.directory}" />
                   <property name="izpack.home"
                     value="${project.build.directory}/IzPack-${IzPackVersion}" />
