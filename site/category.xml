@@ -186,9 +186,6 @@
   <feature id="org.jboss.tools.xulrunner.feature"/>
   <feature id="org.mozilla.xulrunner.feature"/>
 
-  <!-- JBIDE-15945 we will deprecate this feature eventually from JBT (not in JBDS), so for now just uncategorize it -->
-  <!-- <feature id="org.jboss.tools.gwt.feature"/> -->
-
   <!-- only in JBT
   <feature id="org.jboss.tools.arquillian.feature">
     <category name="AdditionalTools" />
@@ -302,7 +299,6 @@
   <feature id="org.jboss.tools.community.project.examples.feature.source"/>
   <feature id="org.jboss.tools.birt.feature.source"/>
   <feature id="org.jboss.tools.forge.ext.feature.source"/>
-  <feature id="org.jboss.tools.gwt.feature.source"/>
   -->
 
   <!-- only in JBDS -->
