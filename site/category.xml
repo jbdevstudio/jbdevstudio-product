@@ -216,7 +216,7 @@
 
   <!-- categorized in JBT; uncategorized in JBDS -->
   <feature id="org.jboss.tools.maven.jbosspackaging.feature"/>
-  <feature id="org.jboss.tools.maven.gwt.feature"/>
+  <!-- JBIDE-16960 remove <feature id="org.jboss.tools.maven.gwt.feature"/> -->
   <feature id="org.jboss.tools.common.mylyn.feature"/>
   <feature id="org.jboss.tools.usage.feature"/>
 
@@ -289,7 +289,7 @@
   <feature id="org.jboss.tools.common.ui.feature.source"/>
   <feature id="org.jboss.tools.common.verification.feature.source"/>
   <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/>
-  <feature id="org.jboss.tools.maven.gwt.feature.source"/>
+  <!-- JBIDE-16960 remove <feature id="org.jboss.tools.maven.gwt.feature.source"/> -->
   <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature.source"/>
 
   <!-- only in JBT
