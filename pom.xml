@@ -25,11 +25,8 @@
   <!-- Should you want to build one locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.40.x/ -->
   <properties>
     <tpc.group>jbdevstudio</tpc.group>
-    <tpc.targetKind>unified</tpc.targetKind>
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
-    <!-- JBDS-2805 used in installer/pom.xml to resolve 3rd party content that's installed OOTB (eg., TestNG) -->
-    <JBOSS_CENTRAL_URL>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta1-SNAPSHOT/REPO/</JBOSS_CENTRAL_URL>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta1-SNAPSHOT/jbtcentraltarget-4.40.0.Beta1-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
     <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
@@ -85,12 +82,6 @@
       <layout>p2</layout>
       <url>${jbosstools-site}</url>
     </repository>    
-    <!-- JBDS-2805 used in installer/pom.xml to resolve 3rd party content that's installed OOTB (eg., TestNG) -->
-    <repository>
-      <id>JBOSS_CENTRAL_URL</id>
-      <url>${JBOSS_CENTRAL_URL}</url>
-      <layout>p2</layout>
-    </repository>
   </repositories>
 
   <!-- Additional m2 repos to resolve things like org.eclipse.tycho:tycho-maven-plugin:0.16.0-SNAPSHOT -->
