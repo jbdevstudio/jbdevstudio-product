@@ -1,3 +1,20 @@
+/*******************************************************************************
+ * Copyright (c) 2007-2014 IBM Corporation and others.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     IBM Corporation - initial API and implementation
+ *     Cloudsmith - https://bugs.eclipse.org/bugs/show_bug.cgi?id=226401
+ *     EclipseSource - ongoing development
+ *     Sonatype, Inc. - ongoing development
+ *     Pascal Rapicault - Support for bundled macosx http://bugs.eclipse.org/57349
+ *     Red Hat, Inc. - support repositories passed via fragments (see bug 378329).
+ *     SAP AG - list formatting (bug 423538)
+ *     Red Hat, Inc. - merge getTrustInfo method from latest p2 (see bug 340345).
+ *******************************************************************************/
 package com.jboss.devstudio.core.internal.p2.director;
 
 import java.io.BufferedInputStream;
@@ -90,8 +107,17 @@ public class InstallerDirectorApplication extends  DirectorApplication {
 		}
 
 		@Override
-		public TrustInfo getTrustInfo(Certificate[][] untrustedChain, String[] unsignedDetail) {
-			return new TrustInfo(null, false, true);
+		public TrustInfo getTrustInfo(Certificate[][] untrustedChains, String[] unsignedDetail) {
+			final Certificate[] trusted;
+			if (untrustedChains == null) {
+				trusted = null;
+			} else {
+				trusted = new Certificate[untrustedChains.length];
+				for (int i = 0; i < untrustedChains.length; i++) {
+					trusted[i] = untrustedChains[i][0];
+				}
+			}
+			return new TrustInfo(trusted, false, true);
 		}
 	}
 
