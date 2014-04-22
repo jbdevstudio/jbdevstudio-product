@@ -4,20 +4,23 @@
    <extension
         point="org.jboss.tools.project.examples.projectExamplesXml"
         name="%JBoss_Developer_Studio80_Examples">
-        <url>http://download.jboss.org/jbosstools/examples/project-examples-jbds80.xml</url>
+        <!-- Key for URL in download.jboss.org/jbosstools/configuration/ide-config.properties -->
+        <urlKey>maven.examples.url</urlKey>
         <experimental>false</experimental>
    </extension>
 
    <extension
         point="org.jboss.tools.project.examples.projectExamplesXml"
         name="%JBoss_Developer_Studio80_Portal_Examples">
-        <url>http://download.jboss.org/gatein/quickstarts/jpp-6.1/project-examples-jpp6.1-jbds7.0-001.xml</url>
+        <!-- Key for URL in download.jboss.org/jbosstools/configuration/ide-config.properties -->
+        <urlKey>portal.examples.url</urlKey>
         <experimental>false</experimental>
    </extension>
 
    <extension
         point="org.jboss.tools.project.examples.categories"
         name="Project Examples Categories">
-        <url>http://download.jboss.org/jbosstools/examples/project-examples-category-jbds-8.0.xml</url>
+        <!-- Key for URL in download.jboss.org/jbosstools/configuration/ide-config.properties -->
+        <urlKey>examples.categories.url</urlKey>
     </extension>
 </plugin>

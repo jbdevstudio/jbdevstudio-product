@@ -27,5 +27,14 @@
             icon="icons/ico_16_jbds.png">
       </image>
    </extension>
-   
+
+   <extension
+         point="org.jboss.tools.foundation.core.propertiesProviders">
+         <propertiesProvider
+            id="devstudio.properties.provider"
+            context="devstudio"
+            class="com.jboss.devstudio.core.internal.properties.DevStudioPropertiesProvider"
+            priority="500">
+         </propertiesProvider>
+   </extension>   
 </plugin>
