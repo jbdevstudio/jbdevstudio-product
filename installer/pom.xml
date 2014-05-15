@@ -166,6 +166,7 @@
               <goal>wget</goal>
             </goals>
             <configuration>
+              <skip>false</skip>
               <url>http://dist.codehaus.org/izpack/releases/${IzPackVersion}/IzPack-install-${IzPackVersion}.jar</url>
               <md5>719267e4d0c2380447e671e6ccb8a0d3</md5>
             </configuration>

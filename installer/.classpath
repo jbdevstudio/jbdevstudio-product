@@ -5,9 +5,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
 	<classpathentry kind="var" path="IZPACK_HOME/lib/installer.jar" sourcepath="/IZPACK_HOME/src/lib"/>
-	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/ShortcutPanel.jar"/>
-	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/HTMLInfoPanel.jar"/>
-	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/InstallationGroupPanel.jar"/>
 	<classpathentry kind="var" path="IZPACK_HOME/lib/uninstaller.jar"/>
 	<classpathentry kind="output" path="build/eclipse"/>
 </classpath>

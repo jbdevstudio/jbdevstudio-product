@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 import com.izforge.izpack.LocaleDatabase;
 
 public class CommonTestData {
-	public static final String LANGPACK_XML_PATH = "src/config/resources/CustomLangpack_eng.xml";
+	public static final String LANGPACK_XML_PATH = "../config/resources/CustomLangpack_eng.xml";
 	public static final String PROJECT_ROOT = System.getProperty("devstudio-installer.project.root.dir");
 
 	public static LocaleDatabase langpack = null;
