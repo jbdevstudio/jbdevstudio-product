@@ -28,7 +28,7 @@
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
-    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta1-SNAPSHOT/jbtcentraltarget-4.40.0.Beta1-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
+    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta3-SNAPSHOT/jbtcentraltarget-4.40.0.Beta3-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
     <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
     <!-- <jbosstools-site-stream>master</jbosstools-site-stream> -->
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
@@ -121,7 +121,7 @@ Build product features, site, and installers like this:
 
 To replicate a Jenkins CI build, run like this (unified.target and hudson profile require VPN access):
 
-  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.40.0.Beta1-SNAPSHOT -DBUILD_NUMBER=440002 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone"
+  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.40.0.Beta3-SNAPSHOT -DBUILD_NUMBER=440003 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone"
 
 See README.md for information building, installing, contributing, generated artifacts, and more.
 
