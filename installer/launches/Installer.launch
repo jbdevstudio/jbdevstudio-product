@@ -8,5 +8,5 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.izforge.izpack.installer.Installer"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="IzPack-4.3.2"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DTRACE=TRUE1 -Dpack.name=pack-universal"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DTRACE=TRUE1 -Dpack.name=pack-installer"/>
 </launchConfiguration>

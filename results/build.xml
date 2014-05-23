@@ -48,19 +48,19 @@ $java.home = ${java.home}</echo>
 
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
 
-    <path id="jbds-installer-universal-file-id"><fileset dir="../installer/target"><include name="jbdevstudio-product-universal-*.jar"/></fileset></path><property name="jbds-installer-universal-file" refid="jbds-installer-universal-file-id"/>
-    <path id="jbds-installer-eap-universal-file-id"><fileset dir="../installer/target"><include name="jbdevstudio-product-eap-universal-*.jar"/></fileset></path><property name="jbds-installer-eap-universal-file" refid="jbds-installer-eap-universal-file-id"/>
+    <path id="jboss-devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-standalone.jar"/></fileset></path><property name="jboss-devstudio-installer-standalone-file" refid="jboss-devstudio-installer-standalone-file-id"/>
+    <path id="jboss-devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-eap.jar"/></fileset></path><property name="jboss-devstudio-installer-eap-file" refid="jboss-devstudio-installer-eap-file-id"/>
 
     <echo level="verbose">update.site.version = ${update.site.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
     <!-- no longer needed; just copy the file to the right folder -->
-    <path id="jbds-all-sources-file-id"><fileset dir="../sources/target"><include name="jbdevstudio-product-sources-*.zip"/></fileset></path><property name="jbds-all-sources-file" refid="jbds-all-sources-file-id"/>
+    <path id="jbds-all-sources-file-id"><fileset dir="../sources/target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path><property name="jbds-all-sources-file" refid="jbds-all-sources-file-id"/>
     <if>
       <available file="${jbds-all-sources-file}" type="file"/>
       <then>
-        <copy verbose="false" file="${jbds-all-sources-file}" tofile="${project.build.directory}/jbdevstudio-product-sources-${update.site.version}.${update.site.qualifier}.zip" preservelastmodified="true"/>
+        <copy verbose="false" file="${jbds-all-sources-file}" tofile="${project.build.directory}/jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src.zip" preservelastmodified="true"/>
         <var name="jbds-all-sources-file" unset="true"/>
-        <path id="jbds-all-sources-file-id2"><fileset dir="target"><include name="jbdevstudio-product-sources-*.zip"/></fileset></path>
+        <path id="jbds-all-sources-file-id2"><fileset dir="target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path>
         <property name="jbds-all-sources-file" refid="jbds-all-sources-file-id2"/>
       </then>
     </if>
@@ -68,7 +68,7 @@ $java.home = ${java.home}</echo>
     <!-- special case: copy the site_assembly.zip to target folder; the rest need not be moved -->
     <!-- JBDS-2556 no longer need this zip because installer is an update site archive too! -->
     <!-- JBDS-2649 still needed because the installer may contain different content than the update site some day -->
-    <property name="jbds-update-file" value="${basedir}/target/jbdevstudio-product-Update-${update.site.version}.${update.site.qualifier}.zip"/>
+    <property name="jbds-update-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-core.zip"/>
     <if>
       <available file="../site/target/site_assembly.zip" type="file"/>
       <then>
@@ -80,7 +80,7 @@ $java.home = ${java.home}</echo>
          so that this will have a value, eg.,
          http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.31.0.CR1-SNAPSHOT/jbtcentraltarget-4.31.0.CR1-SNAPSHOT.zip 
     -->
-    <property name="jbds-central-file" value="${basedir}/target/jbdevstudio-product-Central-${update.site.version}.${update.site.qualifier}.zip"/>
+    <property name="jbds-central-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-central.zip"/>
     <if>
       <isset property="JBOSS_CENTRAL_ZIP"/>
       <then>
@@ -139,7 +139,7 @@ $java.home = ${java.home}</echo>
   </macrodef>  
 
   <target name="create.jbds.results.html">
-    <for list="jbds-installer-universal-file,jbds-installer-eap-universal-file,jbds-all-sources-file,jbds-update-file,jbds-central-file" param="this">
+    <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jbds-all-sources-file,jbds-update-file,jbds-central-file" param="this">
       <sequential>
         <if>
           <available file="${@{this}}" type="file"/>

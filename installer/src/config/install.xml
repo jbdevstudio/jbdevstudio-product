@@ -32,7 +32,7 @@
 		<os arch="x86" />
 	</native>
 	<variables>
-		<variable name="PACK_NAME" value="universal" />
+		<variable name="PACK_NAME" value="installer" />
 		<variable name="INSTALL_GROUP" value="@{install.group}"/>
 		<variable name="VERSION" value="@{specification.version.presentstring}"/>
 		<variable name="EAP_VERSION" value="@{eapVersion}"/>
@@ -179,7 +179,7 @@
 	</conditions>
 
 	<packs>
-		<refpack file="config/install-pack-universal.xml" />
+		<refpack file="config/install-pack-installer.xml" />
 	</packs>
 	
 	<jar src="@{izpack.home}/lib/izevent.jar" />

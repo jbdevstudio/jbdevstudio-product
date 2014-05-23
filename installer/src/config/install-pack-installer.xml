@@ -3,7 +3,7 @@
 <!DOCTYPE installation PUBLIC "//IzPack/4.3.3" "resources/installation.dtd">
 <installation version="1.0">
   <packs>
-    <pack name="P2 Director Application" id="jbds-universal" installGroups="jbds,jbosseap" required="yes">
+    <pack name="P2 Director Application" id="jbds-installer" installGroups="jbds,jbosseap" required="yes">
       <description>
         P2 Director to install Red Hat JBoss Developer Studio @{specification.version.presentstring}
       </description>

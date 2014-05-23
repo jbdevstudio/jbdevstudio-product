@@ -123,7 +123,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 		headPanel.setLayout(new GridLayout(3,1));
 		pathSelectionPanel.addChangeListener(this);
 		 
-		if("universal".equals(idata.getVariable("PACK_NAME"))) {
+		if("installer".equals(idata.getVariable("PACK_NAME"))) {
 			JLabel label = new JLabel(parent.langpack.getString("JREPathPanel.dataModel.title"));
 			
 			headPanel.add(label);
@@ -304,7 +304,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 		Properties properties = new Properties();
 		int status = verifyVersion(properties);
 
-		if("universal".equals(idata.getVariable("PACK_NAME"))) {
+		if("installer".equals(idata.getVariable("PACK_NAME"))) {
 			String dataArch = properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL);
 			option1.setSelected("32".equals(dataArch));
 			option2.setSelected("64".equals(dataArch));
