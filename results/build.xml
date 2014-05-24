@@ -156,26 +156,26 @@ $java.home = ${java.home}</echo>
     </for>
 
     <!-- use locally built files with relative paths -->
-    <antcall target="create.results.html">
+    <!-- <antcall target="create.results.html">
       <param name="update.site.qualifier" value="${update.site.qualifier}"/>
       <param name="PREFIX" value="../../installer/target"/>
       <param name="input" value="index-local-template.html"/>
       <param name="output" value="local.html"/>
-    </antcall>
+    </antcall> -->
     <!-- flatten paths and use filename instead of file; instead of absolute path, use simply .  -->
     <antcall target="create.results.html">
       <param name="update.site.qualifier" value="${update.site.qualifier}"/>
       <param name="PREFIX" value="."/>
       <param name="input" value="index-internal-template.html"/>
-      <param name="output" value="index.html"/>
+      <param name="output" value="build-info.html"/>
     </antcall>
     <!-- flatten paths and use filename instead of file -->
-    <antcall target="create.results.html">
+    <!-- <antcall target="create.results.html">
       <param name="update.site.qualifier" value="${update.site.qualifier}"/>
       <param name="PREFIX" value="/earlyaccess/builds/development/${update.site.version}.${BUILD_ALIAS}"/>
       <param name="input" value="index-earlyaccess-template.html"/>
       <param name="output" value="${update.site.version}.${BUILD_ALIAS}.html"/>
-    </antcall>
+    </antcall> -->
   </target>
 
   <!-- this method is the same in jbosstools-build-sites/aggregate/build.xml and in devstudio/product/site/build.xml -->
