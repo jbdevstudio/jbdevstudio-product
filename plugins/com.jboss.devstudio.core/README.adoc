@@ -1,0 +1,5 @@
+Source files can be found here:
+
+* https://github.com/jbdevstudio/jbdevstudio-artwork or 
+* link:../../../jbdevstudio-artwork/README.adoc[]
+
