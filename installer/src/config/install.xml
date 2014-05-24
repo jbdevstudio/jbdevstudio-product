@@ -55,13 +55,12 @@
 		<modifier key="useFlags" value="no" />
 		<modifier key="langDisplayType" value="native" />
 		<modifier key="useHeadingPanel" value="yes" />
-		<modifier key="headingFontSize" value="1.5"/>
-  		<modifier key="headingBackgroundColor" value="0x002e0200"/>
-  		<modifier key="headingForegroundColor" value="0x00ffffff"/>
-  		<modifier key="headingImageBorderSize" value="0"/>
-  		<modifier key="headingPanelCounter" value="text"/>
-  		<modifier key="headingPanelCounterPos" value="inHeading"/>
-		
+		<modifier key="headingFontSize" value="1.5" />
+		<modifier key="headingBackgroundColor" value="0x00ffffff" />
+		<modifier key="headingForegroundColor" value="0x005a5a5a" />
+		<modifier key="headingImageBorderSize" value="0" />
+		<modifier key="headingPanelCounter" value="text" />
+		<modifier key="headingPanelCounterPos" value="inHeading" />
 	</guiprefs>
 	<locale>
 		<langpack iso3="eng" />
@@ -95,21 +94,21 @@
 		<res id="32-jbds_icon.png"
 			src="config/resources/icons/32-jbds_icon.png" />
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
-		<!-- Licencees in different languages -->  
+		<!-- Licencees in different languages -->	
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
 
-	    <res id="HTMLLicencePanel.licence_chn" src="config/resources/EULA/JBoss-EULA.html"/>
-	    <res id="HTMLLicencePanel.licence_fra" src="config/resources/EULA/JBoss-EULA.html"/>
-	    <res id="HTMLLicencePanel.licence_deu" src="config/resources/EULA/JBoss-EULA.html"/>
-	    <res id="HTMLLicencePanel.licence_jpn" src="config/resources/EULA/JBoss-EULA.html"/>
-	    <res id="HTMLLicencePanel.licence_spa" src="config/resources/EULA/JBoss-EULA.html"/>
-	    <res id="CustomLangpack.xml_eng" src="config/resources/CustomLangpack_eng.xml"/>
-	    <res id="TargetPanel.dir.windows" src="config/resources/target-windows.txt"/>
-	    
-    	<res id="AntActionsSpec.xml@{skip.ant.actions}"
-    		src="config/resources/p2-meta-gen-action.xml" />
-    	<res id="RegistrySpec.xml"
-    		 src="config/resources/RegistrySpec.xml" />
+			<res id="HTMLLicencePanel.licence_chn" src="config/resources/EULA/JBoss-EULA.html"/>
+			<res id="HTMLLicencePanel.licence_fra" src="config/resources/EULA/JBoss-EULA.html"/>
+			<res id="HTMLLicencePanel.licence_deu" src="config/resources/EULA/JBoss-EULA.html"/>
+			<res id="HTMLLicencePanel.licence_jpn" src="config/resources/EULA/JBoss-EULA.html"/>
+			<res id="HTMLLicencePanel.licence_spa" src="config/resources/EULA/JBoss-EULA.html"/>
+			<res id="CustomLangpack.xml_eng" src="config/resources/CustomLangpack_eng.xml"/>
+			<res id="TargetPanel.dir.windows" src="config/resources/target-windows.txt"/>
+			
+			<res id="AntActionsSpec.xml@{skip.ant.actions}"
+				src="config/resources/p2-meta-gen-action.xml" />
+			<res id="RegistrySpec.xml"
+				 src="config/resources/RegistrySpec.xml" />
 	</resources>
 
 	<panels>
@@ -157,10 +156,10 @@
 		<listener installer="AntActionInstallerListener" >
 			<os family="unix"/>
 		</listener>
-		<!-- disabled to fix issue with windows  -->
+		<!-- disabled to fix issue with windows	-->
 		<!-- installer on windows vista is not asking 
-		     for privilege lifting which leads to errors 
-		     during addin JBDS installation to the registry-->
+				 for privilege lifting which leads to errors 
+				 during addin JBDS installation to the registry-->
 		<!-- listener installer="RegistryInstallerListener"
 			uninstaller="RegistryUninstallerListener" >
 			<os name="Windows 7"/>
@@ -172,10 +171,10 @@
 	</listeners>
 	
 	<conditions>
-	   <condition type="variable" id="jbeap-selected">
-	      <name>INSTALL_GROUP</name>
-	      <value>jbosseap</value>
-	   </condition>
+		 <condition type="variable" id="jbeap-selected">
+				<name>INSTALL_GROUP</name>
+				<value>jbosseap</value>
+		 </condition>
 	</conditions>
 
 	<packs>
