@@ -70,7 +70,7 @@ $java.home = ${java.home}</echo>
 
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
     
-    <property name="sourcesZip" value="target/jbdevstudio-product-sources-${update.site.version}.${update.site.qualifier}.zip" />
+    <property name="sourcesZip" value="target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src.zip" />
 
     <antcall target="get.local.sources" />
     <antcallback target="get.zips" return="ALL_ZIPS" />
