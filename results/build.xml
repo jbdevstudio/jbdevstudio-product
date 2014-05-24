@@ -167,7 +167,7 @@ $java.home = ${java.home}</echo>
       <param name="update.site.qualifier" value="${update.site.qualifier}"/>
       <param name="PREFIX" value="."/>
       <param name="input" value="index-internal-template.html"/>
-      <param name="output" value="index.html"/>
+      <param name="output" value="build-info.html"/>
     </antcall>
     <!-- flatten paths and use filename instead of file -->
     <!-- <antcall target="create.results.html">
