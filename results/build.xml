@@ -26,7 +26,7 @@ $java.home = ${java.home}</echo>
   <target name="build" depends="init">
 
     <!-- should be set already by Jenkins, but for local builds set a default -->
-    <property name="JOB_NAME" value="devstudio.product_trunk"/>
+    <property name="JOB_NAME" value="devstudio.product_master"/>
     <property name="update.site.description" value="Local Build"/>
 
     <!-- get timestamp from upstream installer build (units.unit.id = Alpha2-v20130326-1416-B6969.jbds) instead of maven since tycho and pure maven don't use the same value -->
@@ -54,25 +54,25 @@ $java.home = ${java.home}</echo>
     <echo level="verbose">update.site.version = ${update.site.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
     <!-- no longer needed; just copy the file to the right folder -->
-    <path id="jbds-all-sources-file-id"><fileset dir="../sources/target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path><property name="jbds-all-sources-file" refid="jbds-all-sources-file-id"/>
+    <path id="jboss-devstudio-installer-src-file-id"><fileset dir="../sources/target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path><property name="jboss-devstudio-installer-src-file" refid="jboss-devstudio-installer-src-file-id"/>
     <if>
-      <available file="${jbds-all-sources-file}" type="file"/>
+      <available file="${jboss-devstudio-installer-src-file}" type="file"/>
       <then>
-        <copy verbose="false" file="${jbds-all-sources-file}" tofile="${project.build.directory}/jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src.zip" preservelastmodified="true"/>
-        <var name="jbds-all-sources-file" unset="true"/>
-        <path id="jbds-all-sources-file-id2"><fileset dir="target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path>
-        <property name="jbds-all-sources-file" refid="jbds-all-sources-file-id2"/>
+        <copy verbose="false" file="${jboss-devstudio-installer-src-file}" tofile="${project.build.directory}/jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src.zip" preservelastmodified="true"/>
+        <var name="jboss-devstudio-installer-src-file" unset="true"/>
+        <path id="jboss-devstudio-installer-src-file-id2"><fileset dir="target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path>
+        <property name="jboss-devstudio-installer-src-file" refid="jboss-devstudio-installer-src-file-id2"/>
       </then>
     </if>
 
     <!-- special case: copy the site_assembly.zip to target folder; the rest need not be moved -->
     <!-- JBDS-2556 no longer need this zip because installer is an update site archive too! -->
     <!-- JBDS-2649 still needed because the installer may contain different content than the update site some day -->
-    <property name="jbds-update-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-core.zip"/>
+    <property name="jboss-devstudio-updatesite-core-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-core.zip"/>
     <if>
       <available file="../site/target/site_assembly.zip" type="file"/>
       <then>
-        <copy file="../site/target/site_assembly.zip" tofile="${jbds-update-file}" preservelastmodified="true" overwrite="true"/>
+        <copy file="../site/target/site_assembly.zip" tofile="${jboss-devstudio-updatesite-core-file}" preservelastmodified="true" overwrite="true"/>
       </then>
     </if>
 
@@ -80,11 +80,11 @@ $java.home = ${java.home}</echo>
          so that this will have a value, eg.,
          http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.31.0.CR1-SNAPSHOT/jbtcentraltarget-4.31.0.CR1-SNAPSHOT.zip 
     -->
-    <property name="jbds-central-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-central.zip"/>
+    <property name="jboss-devstudio-updatesite-central-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-central.zip"/>
     <if>
       <isset property="JBOSS_CENTRAL_ZIP"/>
       <then>
-        <get src="${JBOSS_CENTRAL_ZIP}" dest="${jbds-central-file}" usetimestamp="true"/>
+        <get src="${JBOSS_CENTRAL_ZIP}" dest="${jboss-devstudio-updatesite-central-file}" usetimestamp="true"/>
       </then>
     </if>
 
@@ -139,7 +139,7 @@ $java.home = ${java.home}</echo>
   </macrodef>  
 
   <target name="create.jbds.results.html">
-    <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jbds-all-sources-file,jbds-update-file,jbds-central-file" param="this">
+    <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-installer-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
       <sequential>
         <if>
           <available file="${@{this}}" type="file"/>
@@ -209,14 +209,21 @@ $java.home = ${java.home}</echo>
         <echo level="verbose">Using target platform versions = ${TARGET_PLATFORM_VERSION}, ${TARGET_PLATFORM_VERSION_MAXIMUM}
     From github branches = ${TARGET_PLATFORM_BRANCH}, ${TARGET_PLATFORM_BRANCH_MAXIMUM}</echo>
 
+        <property name="JBT_STREAM_SUFFIX" value="${jbosstools-site-stream}"/>
         <!-- replace links to jobs w/ correct stream (eg., _41, _master, _70, _trunk) -->
-        <propertyregex property="STREAM_SUFFIX" defaultvalue="_master" input="${JOB_NAME}" regexp=".+(_[^_]+)" replace="\1" override="true"/>
-        <propertyregex property="STREAM_SUFFIX" defaultvalue="_master" input="${STREAM_SUFFIX}" regexp="_trunk" replace="_master" override="true"/>
+        <propertyregex property="JBDS_STREAM_SUFFIX" defaultvalue="master" input="${JOB_NAME}" regexp=".+_([^_]+)" replace="\1" override="true"/>
+        <propertyregex property="JBDS_STREAM_SUFFIX" defaultvalue="${JBDS_STREAM_SUFFIX}" input="${JBDS_STREAM_SUFFIX}" regexp="trunk" replace="master" override="true"/>
 
-        <propertyregex property="STREAM_NAME" defaultvalue="Master" input="${inputRepo}" regexp=".+[^/]+/([^/]+)/*" replace="\1" override="true"/>
-        <propertyregex property="STREAM_NAME" defaultvalue="${STREAM_NAME}" input="${STREAM_NAME}" regexp="trunk" replace="Trunk" override="true"/>
+        <!-- get JBT_VIEW_NAME from jbosstools-site-stream, but use Master instead of master -->
+        <propertyregex property="JBT_VIEW_NAME" defaultvalue="${jbosstools-site-stream}" input="${jbosstools-site-stream}" regexp="master" replace="Master" override="true"/>
+        <!-- get JBDS_VIEW_NAME from the above job name suffix, but use Master instead of master -->
+        <propertyregex property="JBDS_VIEW_NAME" defaultvalue="${JBDS_STREAM_SUFFIX}" input="${JBDS_STREAM_SUFFIX}" regexp="master" replace="Master" override="true"/>
 
-        <echo level="verbose">For JOB_NAME = ${JOB_NAME} and ${inputRepo} got stream = ${STREAM_SUFFIX} and ${STREAM_NAME}</echo>
+        <echo level="verbose">For JOB_NAME = ${JOB_NAME} and jbosstools-site-stream=${jbosstools-site-stream} got:
+JBT_STREAM_SUFFIX = ${JBT_STREAM_SUFFIX}
+JBDS_STREAM_SUFFIX = ${JBDS_STREAM_SUFFIX}
+JBT_VIEW_NAME = ${JBT_VIEW_NAME}
+JBDS_VIEW_NAME = ${JBDS_VIEW_NAME}</echo>
 
         <condition property="update.site.description_STRING" value="Nightly Build" else="${update.site.description}">
           <contains string="${update.site.description}" substring="update.site.description" />

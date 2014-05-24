@@ -26,7 +26,7 @@
           </td>
           <td align="right"><small>
             <a id="buildName" href="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/job/${JOB_NAME}/${BUILD_NUMBER_STRING}/">
-            <span style="font-size: x-small;">Build ${update.site.qualifier}</span>
+            <span style="font-size: x-small;">Build ${update.site.version}.${update.site.qualifier}</span>
             </a>
           </td>
         </tr>
@@ -47,55 +47,32 @@
 </div>
 
 <div style="background-color:#eeeecc; width:580px;padding:10px;margin:0px;padding-top:0px;margin-top:0px;border:1px #aaaaaa solid;z-index:1;position:relative;float:left">
-    <h2><a name="download"></a>
-  Latest Build:&nbsp;&nbsp;<span class="build">
-  ${update.site.version}.${update.site.qualifier}
-  </span></h2>
+    <h2>Installers</h2>
+    <ul>    
+      <li class="multiplatform"><a 
+          href="${PREFIX}/${jboss-devstudio-installer-standalone-file-name}">Stand Alone Installer</a><span class="multispec">&nbsp;${jboss-devstudio-installer-standalone-file-size}M (<a
+          href="${PREFIX}/${jboss-devstudio-installer-standalone-file-name}.MD5">MD5</a>)</li>
+      <li class="multiplatform"><a 
+          href="${PREFIX}/${jboss-devstudio-installer-eap-file-name}">Installer With EAP</a><span class="multispec">&nbsp;${jboss-devstudio-installer-eap-file-size}M (<a
+          href="${PREFIX}/${jboss-devstudio-installer-eap-file-name}.MD5">MD5</a>)</li>
+      <li class="note"><a name="64bnote"></a>The Visual Page Editor in JBoss Developer Studio does not run with 64-bit JVMs on Windows and OS X operating systems. If you require this, please use a 32-bit JVM instead. Details at right.</li>
+    </ul>
 
-      <ul>    
-        <li class="multiplatform"><a style="font-size: 18px;"
-            href="${PREFIX}/${jboss-devstudio-installer-standalone-file-name}">Stand Alone Installer</a><span class="multispec">&nbsp;${jboss-devstudio-installer-standalone-file-size}M (<a
-            href="${PREFIX}/${jboss-devstudio-installer-standalone-file-name}.MD5">MD5</a>)</li>
-        <li class="multiplatform"><a style="font-size: 18px;"
-            href="${PREFIX}/${jboss-devstudio-installer-eap-file-name}">Installer With EAP</a><span class="multispec">&nbsp;${jboss-devstudio-installer-eap-file-size}M (<a
-            href="${PREFIX}/${jboss-devstudio-installer-eap-file-name}.MD5">MD5</a>)</li>
-        <li class="note"><a name="64bnote"></a>The Visual Page Editor in JBoss Developer Studio does not run with 64-bit JVMs on Windows and OS X operating systems. If you require this, please use a 32-bit JVM instead. Details at right.</li>
-      </ul>
-</div>
-<p style="clear:both">&nbsp;</p>
-
-<hr/>
-
-
-      <h2 class="prime">Other Downloads</h2>
+    <h2>Update Site Zips</h2>
+    <ul>
+      <li class="multiplatform"><a
+            href="${PREFIX}/${jboss-devstudio-updatesite-core-file-name}">Update Site Zip</a><span class="multispec">&nbsp;${jboss-devstudio-updatesite-core-file-size}M (<a
+            href="${PREFIX}/${jboss-devstudio-updatesite-core-file-name}.MD5">MD5</a>)</li>
+      <li class="multiplatform"><a
+            href="${jboss-devstudio-updatesite-central-file-name}">Central Site Zip</a><span class="multispec">&nbsp;${jboss-devstudio-updatesite-central-file-size}M (<a
+            href="${jboss-devstudio-updatesite-central-file-name}.MD5">MD5</a>)</li>
+    </ul>
 
     <h2>Sources</h2>
     <ul>
       <li class="multiplatform"><a
-            href="${PREFIX}/${jbds-all-sources-file-name}">Sources Zip</a><span class="multispec">&nbsp;${jbds-all-sources-file-size}M (<a
-            href="${PREFIX}/${jbds-all-sources-file-name}.MD5">MD5</a>)</li>
-        <li class="note"><a name="sourcesnote"></a>Does not include third-party code.</li>
-    </ul>
-    
-    <h2>Update Site Zip</h2>
-    <ul>
-      <!-- JBDS-2649 still needed because the installer may contain different content than the update site some day -->
-      <!-- <li class="multiplatform">You can now use the installer jar as an update site archive. Launch Eclipse or JBDS, then select:</li>
-      <li class="note">&nbsp;&nbsp;&nbsp; <b>H</b>elp &gt; <b>I</b>nstall New Software... &gt; <b>A</b>dd... &gt; <b>A</b>rchive... &gt; <b>B</b>rowse for the JBDS installer jar &gt; <b>OK</b> &gt; 
-          <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>W</b>ork with: jar:file:/path/to/jbdevstudio-product-*.jar!/ &gt; <b>I</b>nstall the JBDS feature(s) &gt;
-            <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>R</b>estart when prompted.</li> -->
-      <li class="multiplatform"><a
-            href="${PREFIX}/${jbds-update-file-name}">Update Site Zip</a><span class="multispec">&nbsp;${jbds-update-file-size}M (<a
-            href="${PREFIX}/${jbds-update-file-name}.MD5">MD5</a>)</li>
-        <li class="note"><a name="sourcesnote"></a>Includes some third-party code.</li>
-    </ul>
-
-    <h2>Central Site Zip</h2>
-    <ul>
-      <li class="multiplatform"><a
-            href="${jbds-central-file-name}">Central Site Zip</a><span class="multispec">&nbsp;${jbds-central-file-size}M (<a
-            href="${jbds-central-file-name}.MD5">MD5</a>)</li>
-        <li class="note"><a name="sourcesnote"></a>Includes third-party code.</li>
+            href="${PREFIX}/${jboss-devstudio-installer-src-file-name}">Sources Zip</a><span class="multispec">&nbsp;${jboss-devstudio-installer-src-file-size}M (<a
+            href="${PREFIX}/${jboss-devstudio-installer-src-file-name}.MD5">MD5</a>)</li>
     </ul>
 </div>
 <p style="clear:both">&nbsp;</p>
@@ -123,7 +100,10 @@
 
     <h4>Revisions</h4>
     <div align="right">
-      <a class="blue" style="align: right;" href="http://download.jboss.org/jbosstools/builds/staging/jbosstools-build-sites.aggregate.site${STREAM_SUFFIX}/logs/">Git Revisions</a>
+      <a class="blue" style="align: right;" href="../logs/">JBDS Git Revisions</a>
+    </div>
+    <div align="right">
+      <a class="blue" style="align: right;" href="http://download.jboss.org/jbosstools/builds/staging/jbosstools-build-sites.aggregate.site_${JBT_STREAM_SUFFIX}/logs/">JBT Git Revisions</a>
     </div>
 
     <h4>Target Platforms</h4>
@@ -153,14 +133,15 @@
     <h4>Test Results</h4>
     <p>
       <small>
-Test results <b style="font-weight:bold;font-size:12px">below</b> are cumulative across all jobs in the <a href="http://hudson.jboss.org/hudson/view/JBossTools/view/JBossTools_${STREAM_NAME}">JBossTools_${STREAM_NAME}</a> view</i>.<br/>
-Results are live, not specific to this build. 
+Test results are live &amp; cumulative across all current jobs.
       </small>
+    <div align="right">
+      <a class="blue" style="align: right;" href="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_${JBDS_VIEW_NAME}/#tests">JBDS Test Results</a> (!)
+    </div>
+    <div align="right">
+      <a class="blue" style="align: right;" href="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/JBossTools/view/JBossTools_${JBT_VIEW_NAME}/#tests">JBT Test Results</a> (!)
+    </div>
     </p>
-
-<p align="center">
-  <a href="http://hudson.jboss.org/hudson/view/JBossTools/view/JBossTools_${STREAM_NAME}/"><img border="0" src="http://hudson.jboss.org/hudson/view/JBossTools/view/JBossTools_${STREAM_NAME}/portlet/dashboard_portlet_${PORTLET.1}/summaryGraph/png?width=600&height=450"/></a>&nbsp;<a href="http://hudson.jboss.org/hudson/view/JBossTools/view/JBossTools_${STREAM_NAME}/"><img border="0" src="http://hudson.jboss.org/hudson/view/JBossTools/view/JBossTools_${STREAM_NAME}/portlet/dashboard_portlet_${PORTLET.2}/summaryGraph/png?width=300&height=450"/></a>
-</p>
 
     <h4>WARNING</h4>
 
@@ -169,7 +150,7 @@ Results are live, not specific to this build.
     <p>Any suggestions/issues should be posted on the relevant product forums and should clearly indicate that you are using a <b>${update.site.description_STRING}</b>. Please take care in making sure that your issue hasn't already been addressed when posting on forums or opening new JIRA issues.</p>
 
     <small>
-      <i>Note: Links tagged with (!) are live and will change with subsequent builds to show the latest results. See also <a style="color:#FF9933" href="http://download.jboss.org/jbosstools/builds/cascade/trunk.html">Build Job Cascade &amp; Results</a>
+      <i>Note: Links tagged with (!) are live and will change with subsequent builds to show the latest results. See also <a style="color:#FF9933" href="http://download.jboss.org/jbosstools/builds/cascade/${JBT_STREAM_SUFFIX}.html">Build Job Cascade &amp; Results</a>
       </i>
     </small>
 <p>&nbsp;</p>
