@@ -35,6 +35,7 @@
                   <property name="update.site.qualifier" value="${maven.build.timestamp}"/>
                   <property name="update.site.description" value="${update.site.description}"/>
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
+                  <property name="jbosstools-site-stream" value="${jbosstools-site-stream}"/>
                   <property name="TARGET_PLATFORM_VERSION" value="${TARGET_PLATFORM_VERSION}"/>
                   <property name="TARGET_PLATFORM_VERSION_MAXIMUM" value="${TARGET_PLATFORM_VERSION_MAXIMUM}"/>
                   <!-- JBDS-2805 see ../pom.xml for default value if not passed in from Jenkins -->

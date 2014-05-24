@@ -60,11 +60,6 @@
 
     <h2>Update Site Zips</h2>
     <ul>
-      <!-- JBDS-2649 still needed because the installer may contain different content than the update site some day -->
-      <!-- <li class="multiplatform">You can now use the installer jar as an update site archive. Launch Eclipse or JBDS, then select:</li>
-      <li class="note">&nbsp;&nbsp;&nbsp; <b>H</b>elp &gt; <b>I</b>nstall New Software... &gt; <b>A</b>dd... &gt; <b>A</b>rchive... &gt; <b>B</b>rowse for the JBDS installer jar &gt; <b>OK</b> &gt; 
-          <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>W</b>ork with: jar:file:/path/to/jbdevstudio-product-*.jar!/ &gt; <b>I</b>nstall the JBDS feature(s) &gt;
-            <br>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; <b>R</b>estart when prompted.</li> -->
       <li class="multiplatform"><a
             href="${PREFIX}/${jboss-devstudio-updatesite-core-file-name}">Update Site Zip</a><span class="multispec">&nbsp;${jboss-devstudio-updatesite-core-file-size}M (<a
             href="${PREFIX}/${jboss-devstudio-updatesite-core-file-name}.MD5">MD5</a>)</li>
@@ -79,7 +74,6 @@
             href="${PREFIX}/${jboss-devstudio-installer-src-file-name}">Sources Zip</a><span class="multispec">&nbsp;${jboss-devstudio-installer-src-file-size}M (<a
             href="${PREFIX}/${jboss-devstudio-installer-src-file-name}.MD5">MD5</a>)</li>
     </ul>
-    
 </div>
 <p style="clear:both">&nbsp;</p>
 
@@ -109,7 +103,7 @@
       <a class="blue" style="align: right;" href="../logs/">JBDS Git Revisions</a>
     </div>
     <div align="right">
-      <a class="blue" style="align: right;" href="http://download.jboss.org/jbosstools/builds/staging/jbosstools-build-sites.aggregate.site${STREAM_SUFFIX}/logs/">JBT Git Revisions</a>
+      <a class="blue" style="align: right;" href="http://download.jboss.org/jbosstools/builds/staging/jbosstools-build-sites.aggregate.site_${JBT_STREAM_SUFFIX}/logs/">JBT Git Revisions</a>
     </div>
 
     <h4>Target Platforms</h4>
@@ -139,8 +133,14 @@
     <h4>Test Results</h4>
     <p>
       <small>
-For live, cumulative test results across all jobs in the <a href="http://hudson.jboss.org/hudson/view/JBossTools/view/JBossTools_${STREAM_NAME}">JBossTools_${STREAM_NAME}</a> view</i>, <b><a href="http://hudson.jboss.org/hudson/view/JBossTools/view/JBossTools_${STREAM_NAME}">click here</a></b>, then scroll down to see the charts.<br/>
+Test results are live &amp; cumulative across all current jobs.
       </small>
+    <div align="right">
+      <a class="blue" style="align: right;" href="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/DevStudio/view/DevStudio_${JBDS_VIEW_NAME}/#tests">JBDS Test Results</a> (!)
+    </div>
+    <div align="right">
+      <a class="blue" style="align: right;" href="https://jenkins.mw.lab.eng.bos.redhat.com/hudson/view/JBossTools/view/JBossTools_${JBT_VIEW_NAME}/#tests">JBT Test Results</a> (!)
+    </div>
     </p>
 
     <h4>WARNING</h4>

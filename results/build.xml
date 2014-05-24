@@ -26,7 +26,7 @@ $java.home = ${java.home}</echo>
   <target name="build" depends="init">
 
     <!-- should be set already by Jenkins, but for local builds set a default -->
-    <property name="JOB_NAME" value="devstudio.product_trunk"/>
+    <property name="JOB_NAME" value="devstudio.product_master"/>
     <property name="update.site.description" value="Local Build"/>
 
     <!-- get timestamp from upstream installer build (units.unit.id = Alpha2-v20130326-1416-B6969.jbds) instead of maven since tycho and pure maven don't use the same value -->
@@ -209,14 +209,21 @@ $java.home = ${java.home}</echo>
         <echo level="verbose">Using target platform versions = ${TARGET_PLATFORM_VERSION}, ${TARGET_PLATFORM_VERSION_MAXIMUM}
     From github branches = ${TARGET_PLATFORM_BRANCH}, ${TARGET_PLATFORM_BRANCH_MAXIMUM}</echo>
 
+        <property name="JBT_STREAM_SUFFIX" value="${jbosstools-site-stream}"/>
         <!-- replace links to jobs w/ correct stream (eg., _41, _master, _70, _trunk) -->
-        <propertyregex property="STREAM_SUFFIX" defaultvalue="_master" input="${JOB_NAME}" regexp=".+(_[^_]+)" replace="\1" override="true"/>
-        <propertyregex property="STREAM_SUFFIX" defaultvalue="_master" input="${STREAM_SUFFIX}" regexp="_trunk" replace="_master" override="true"/>
+        <propertyregex property="JBDS_STREAM_SUFFIX" defaultvalue="master" input="${JOB_NAME}" regexp=".+_([^_]+)" replace="\1" override="true"/>
+        <propertyregex property="JBDS_STREAM_SUFFIX" defaultvalue="${JBDS_STREAM_SUFFIX}" input="${JBDS_STREAM_SUFFIX}" regexp="trunk" replace="master" override="true"/>
 
-        <propertyregex property="STREAM_NAME" defaultvalue="Master" input="${inputRepo}" regexp=".+[^/]+/([^/]+)/*" replace="\1" override="true"/>
-        <propertyregex property="STREAM_NAME" defaultvalue="${STREAM_NAME}" input="${STREAM_NAME}" regexp="trunk" replace="Trunk" override="true"/>
+        <!-- get JBT_VIEW_NAME from jbosstools-site-stream, but use Master instead of master -->
+        <propertyregex property="JBT_VIEW_NAME" defaultvalue="${jbosstools-site-stream}" input="${jbosstools-site-stream}" regexp="master" replace="Master" override="true"/>
+        <!-- get JBDS_VIEW_NAME from the above job name suffix, but use Master instead of master -->
+        <propertyregex property="JBDS_VIEW_NAME" defaultvalue="${JBDS_STREAM_SUFFIX}" input="${JBDS_STREAM_SUFFIX}" regexp="master" replace="Master" override="true"/>
 
-        <echo level="verbose">For JOB_NAME = ${JOB_NAME} and ${inputRepo} got stream = ${STREAM_SUFFIX} and ${STREAM_NAME}</echo>
+        <echo level="verbose">For JOB_NAME = ${JOB_NAME} and jbosstools-site-stream=${jbosstools-site-stream} got:
+JBT_STREAM_SUFFIX = ${JBT_STREAM_SUFFIX}
+JBDS_STREAM_SUFFIX = ${JBDS_STREAM_SUFFIX}
+JBT_VIEW_NAME = ${JBT_VIEW_NAME}
+JBDS_VIEW_NAME = ${JBDS_VIEW_NAME}</echo>
 
         <condition property="update.site.description_STRING" value="Nightly Build" else="${update.site.description}">
           <contains string="${update.site.description}" substring="update.site.description" />
