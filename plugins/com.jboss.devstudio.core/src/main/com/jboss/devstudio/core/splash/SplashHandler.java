@@ -73,12 +73,12 @@ public class SplashHandler extends BasicSplashHandler {
 			foregroundColorInteger = Integer
 					.parseInt(foregroundColorString, 16);
 		} catch (Exception ex) {
-			foregroundColorInteger = 0xD2D7FF; // off white
+			foregroundColorInteger = 0x5A5A5A; // dark grey, based on new JBDS 8 splash screen (with white background)
 		}
 
-		setForeground(new RGB((foregroundColorInteger & 0xFF0000) >> 16,
-				(foregroundColorInteger & 0xFF00) >> 8,
-				foregroundColorInteger & 0xFF));
+		setForeground(new RGB((foregroundColorInteger & 0x5A0000) >> 16,
+				(foregroundColorInteger & 0x5A00) >> 8,
+				foregroundColorInteger & 0x5A));
 		
 		final String versionString = getVersionString(); // System.out.println("versionString = " + versionString); 
 		
