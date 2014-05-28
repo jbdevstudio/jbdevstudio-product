@@ -33,8 +33,6 @@
     <!-- <jbosstools-site-stream>master</jbosstools-site-stream> -->
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta2-SNAPSHOT/REPO/</jbosstools-target-site> -->
-    <!-- JBDS-3034 workaround for missing tern deps, which need to be added to the JBDS target platform -->
-    <tern-site>http://download.jboss.org/jbosstools/updates/requirements/tern/0.2.0.201405210810-SNAPSHOT/</tern-site>
   </properties>
 
   <!-- 
@@ -83,14 +81,7 @@
       <id>jbosstools-site</id>
       <layout>p2</layout>
       <url>${jbosstools-site}</url>
-    </repository>
-    <!-- JBDS-3034 workaround for missing tern deps, which need to be added to the JBDS target platform -->
-    <repository>
-      <id>tern-site</id>
-      <layout>p2</layout>
-      <url>${tern-site}</url>
-    </repository>
-
+    </repository>    
   </repositories>
 
   <!-- Additional m2 repos to resolve things like org.eclipse.tycho:tycho-maven-plugin:0.16.0-SNAPSHOT -->
