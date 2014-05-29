@@ -43,8 +43,8 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
     private static final String linTestFiles[];
     private String variableName;
     private static final String gnuVersion = "gij ";
-    private static final String minVersion = "1.6.";
-    private static final String maxVersion = "1.7.";
+    private static final int minVersion = 7;
+    private static final int maxVersion = minVersion;
     
     private String detectedVersion;
     
@@ -79,6 +79,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 	private JRadioButton option1, option2;
 	private ButtonGroup archGroup;
 	private JLabel messageLabel;
+	private JLabel messageLabelJdk;
 
     
     public JREPathPanel(InstallerFrame parent, InstallData idata)
@@ -182,6 +183,22 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 		messageLabel.setHorizontalAlignment(LEFT);
 		add(messageLabel, NEXT_LINE);
 		
+		messageLabelJdk = new JLabel(""){
+			public Dimension getPreferredSize() {
+                return new Dimension(500, 50);
+            }
+            public Dimension getMinimumSize() {
+                return new Dimension(500, 50);
+            }
+            public Dimension getMaximumSize() {
+                return new Dimension(500, 50);
+            }
+		};
+		messageLabelJdk.setVerticalAlignment(TOP);
+		messageLabelJdk.setHorizontalAlignment(LEFT);
+		add(messageLabelJdk, NEXT_LINE);
+
+		
         createLayoutBottom();
         getLayoutHelper().completeLayout();
     	// // //
@@ -232,7 +249,10 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
                     .getString(getI18nStringForClass("notValid", "PathInputPanel")));
             return false;
         }else {
-        	int status = verifyVersion(new Properties()); 
+        	Properties jvmProps = new Properties();
+        	int status = verifyVersion(pathSelectionPanel.getPath(), new Properties());
+        	detectedVersion = jvmProps.getProperty(SYSPN_JAVA_VERSION);
+        	
         	if (status == 0 || status == -2)
             {
         		if(rb1.isSelected()) {
@@ -257,6 +277,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         if (chosenPath == null || "".equals(chosenPath)) {
         	File javaHome = new File(idata.getVariable("JAVA_HOME"));
         	// This case is for starting installer with jdk/bin/java under any platform
+        	Properties props = getJavaPlatformProperties(javaHome.getAbsolutePath(), new String[2]);
         	if("jre".equals(javaHome.getName())) {
         		File parentFolder = javaHome.getParentFile();
         		File bin = new File(parentFolder,"bin");
@@ -269,7 +290,6 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         	} else if(OsVersion.IS_WINDOWS && javaHome.getName().matches("jre\\d")) {
         		// try to discover windows jdk
         		// c:\Program Files\Java\jdk${java_version}
-        		Properties props = getJavaPlatformProperties(javaHome.getAbsolutePath(), new String[2]);
         		String javaVersion = (String) props.get(SYSPN_JAVA_VERSION);
         		if(javaVersion != null) {
             		File parentFolder = javaHome.getParentFile();
@@ -302,8 +322,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         
         idata.setVariable(getVariableName(),pathSelectionPanel.getPath());
 		Properties properties = new Properties();
-		int status = verifyVersion(properties);
-
+		int status = verifyVersion(pathSelectionPanel.getPath(),properties);
 		if("installer".equals(idata.getVariable("PACK_NAME"))) {
 			String dataArch = properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL);
 			option1.setSelected("32".equals(dataArch));
@@ -348,43 +367,49 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
     		return idata.getVariable(getVariableName());
     }
 
-    private boolean isGnuVersion(String[] output)
+    private static boolean isGnuVersion(String[] output)
     {
         // "My" VM writes the version on stderr :-(
         String vs = (output[0].length() > 0) ? output[0] : output[1];
         return vs.indexOf(gnuVersion) >= 0;
     }
     
-    private int verifyVersion(Properties props)
+    public static  int verifyVersion(String jvmLocation, Properties props)
     {
     	String[] output = new String[2];
         
-    	Properties jvmInfo = getJavaPlatformProperties(output);
+    	Properties jvmInfo = getJavaPlatformProperties(jvmLocation,output);
         props.putAll(jvmInfo);
-        detectedVersion = jvmInfo.getProperty(SYSPN_JAVA_VERSION);
+        String detectedVersion = jvmInfo.getProperty(SYSPN_JAVA_VERSION);
         if(isGnuVersion(output)) return -1;
-        if(detectedVersion.indexOf(minVersion) < 0 && detectedVersion.indexOf(maxVersion) < 0) return -2;
-        return 0;
+        return verifyVersionRange(detectedVersion);
     }
 
-	private int verifyArchSupported(Properties props, String arch) {
-		String[] output = new String[2];
-		Properties jvmInfo = getJavaPlatformProperties(output);
-		props.putAll(jvmInfo);
-		detectedVersion = jvmInfo.getProperty(SYSPN_JAVA_VERSION);
-		if (isGnuVersion(output))
-			return -1;
-		if (detectedVersion.indexOf(minVersion) < 0
-				&& detectedVersion.indexOf(maxVersion) < 0)
-			return -2;
-		return 0;
+	public static int verifyVersionRange(String detectedVersion) {
+		// Java versions cold be 1.1..1.9 considering early access for java 9
+        // So we accept the pattern for java version 1\.[1-9] and 
+        // check 3d char for >6 and return new error code -3 for none supported
+        // java version
+		if(detectedVersion == null) {
+			return -5;
+		}
+		
+        if(! detectedVersion.matches("1\\.[1-9]\\.[0-9][_\\-].*")) {
+        	return -4; // Unknown version
+        }
+        int versionNumber = Integer.parseInt(detectedVersion.substring(2,3)); 
+        
+        if (versionNumber < minVersion) {
+        	return -3; // Version is less that minimum version
+        }
+        
+        if (versionNumber > maxVersion ) {
+        	return -2;
+        }
+        return 0;
 	}
 
-	public Properties getJavaPlatformProperties(String[] output) {
-		return getJavaPlatformProperties(pathSelectionPanel.getPath(), output);
-	}
-
-	public Properties getJavaPlatformProperties(String location, String[] output) {
+	public static Properties getJavaPlatformProperties(String location, String[] output) {
 		String jarPath = P2DirectorStarterListener.findPathJar(JREPathPanel.class);
 		Debug.trace(jarPath);
         
@@ -471,38 +496,47 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
     public void change(){
     	pathSelectionPanel.removeChangeListener();
     	messageLabel.setText("");
+    	messageLabelJdk.setText("");
     	if(!pathExists()) {
     		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("wrongPath.title", "JREPathPanel"),new String[]{pathSelectionPanel.getPath()}));
     		messageLabel.setForeground(Color.red);
+        	parent.lockNextButton();
     	} else if(pathIsValid()){
     		int status = updateJava(false);
     		if (status == 0 && (OsVersion.IS_WINDOWS || OsVersion.IS_OSX) && option2.isSelected()) {
-        			messageLabel.setText(parent.langpack.getString("JREPathPanel.VPEdoesNotSupportJava64.title"));
-            		messageLabel.setForeground(Color.black);
-       		}
-        	if(status == -2){
-        		messageLabel.setText("<html><p>This JVM (version "+detectedVersion+") was not tested with JBoss Developer Studio.<br>It is not guaranteed to work.</p></html>");
-			messageLabel.setForeground(Color.black);
-        	}
-        	if(status == -1){
+        		messageLabel.setText(parent.langpack.getString("JREPathPanel.VPEdoesNotSupportJava64.title"));
+            	messageLabel.setForeground(Color.black);
+            	parent.unlockNextButton();
+    		} else if(status == 0) {
+    			parent.unlockNextButton();
+       		} else if(status == -2){
+        		messageLabel.setText("<html><p>This JVM was not tested with JBoss Developer Studio.<br>It is not guaranteed to work.</p></html>");
+        		messageLabel.setForeground(Color.black);
+        		parent.unlockNextButton();
+        	} else if(status == -1){
         		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));
         		messageLabel.setForeground(Color.red);
+        		parent.lockNextButton();
+        	} else if(status == -3 || status == -4 || status == -5){
+        		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion3", "PathInputPanel")));
+        		messageLabel.setForeground(Color.red);
+        		parent.lockNextButton();
         	}
     		// Verify if selected runtime is jre and show warning
     		File javacLocation = new File(idata.getVariable(getVariableName()),"bin/javac" + (OsVersion.IS_WINDOWS? ".exe":""));
     		if(!javacLocation.canRead()) {
-    			messageLabel.setText("<html><p>Chosen Java VM is a Java Runtime only, it will run Developer Studio but it is recommended to use a Java SDK.</p></html>");
-    			messageLabel.setForeground(Color.black);
+    			messageLabelJdk.setText("<html><p>Chosen Java VM is a Java Runtime only, it will run Developer Studio but it is recommended to use a Java SDK.</p></html>");
+    			messageLabelJdk.setForeground(Color.black);
     		}
     	} else {
     		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("notValid", "PathInputPanel")));
     		messageLabel.setForeground(Color.red);
     	}
     	pathSelectionPanel.addChangeListener(this);
+
     }
 
 	private boolean pathExists() {
-		// TODO Auto-generated method stub
 		return new File(pathSelectionPanel.getPath()).canRead();
 	}
 }
