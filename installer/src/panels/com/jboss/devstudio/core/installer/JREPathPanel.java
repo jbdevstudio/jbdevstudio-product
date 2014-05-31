@@ -239,7 +239,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         if (!path.exists())
         {
         	String message = parent.langpack
-                    .getString(getI18nStringForClass("wrongPath.title", "JREPathPanel"),new String[]{path.getAbsolutePath()});
+                    .getString(getI18nStringForClass("wrongPath.title", "JREPathPanel"));
             emitError(parent.langpack.getString("installer.error"), message);
             return false;
         }
@@ -498,7 +498,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
     	messageLabel.setText("");
     	messageLabelJdk.setText("");
     	if(!pathExists()) {
-    		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("wrongPath.title", "JREPathPanel"),new String[]{pathSelectionPanel.getPath()}));
+    		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("wrongPath.title", "JREPathPanel")));
     		messageLabel.setForeground(Color.red);
         	parent.lockNextButton();
     	} else if(pathIsValid()){
