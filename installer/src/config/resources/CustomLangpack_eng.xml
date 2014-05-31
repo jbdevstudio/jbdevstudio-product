@@ -11,7 +11,7 @@
     <str id="JREPathPanel.dataModel32.title" txt="32-bit" />
     <str id="JREPathPanel.dataModel64.title" txt="64-bit" />
     <str id="JREPathPanel.VPEdoesNotSupportJava64.title" txt="Visual Page Editor is not supported for selected Installation Type" />
-    <str id="JREPathPanel.wrongPath.title" txt="The chosen does not exist." />    
+    <str id="JREPathPanel.wrongPath.title" txt="The chosen directory does not exist." />    
     <str id="PathInputPanel.notValid" txt="The chosen directory does not contain a Java VM."/>
     <str id="PathInputPanel.badVersion" txt="The chosen directory contains an unsupported version of Java."/>
     <str id="PathInputPanel.badVersion2" txt="JBoss Developer Studio does not work with gij java."/>
