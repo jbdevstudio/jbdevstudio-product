@@ -48,7 +48,6 @@
     <import plugin="org.eclipse.wst.sse.core" />
     <import plugin="org.eclipse.wst.xml.core" />
     <import plugin="org.eclipse.jem.util" />
-    <import plugin="org.eclipse.core.runtime.compatibility.auth" />
     <import feature="org.eclipse.platform" />
     <import feature="org.eclipse.rcp" />
     <import feature="org.eclipse.jdt" />
