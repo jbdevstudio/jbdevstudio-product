@@ -21,9 +21,26 @@
 				<filtering>true</filtering>
 			</resource>
 		</resources>
+		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>default-resources</id>
+						<!-- Need to execute resource filtering AFTER tycho-compiler-plugin 
+							is executed -->
+						<phase>process-classes</phase>
+						<goals>
+							<goal>resources</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>    
 	</build>
 	<properties>
 		<devstudio.version>8.0.0.${BUILD_ALIAS}</devstudio.version>
 	</properties>
-</project>	
+</project>
 </project>
