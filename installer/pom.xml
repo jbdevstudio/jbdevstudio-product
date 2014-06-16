@@ -124,7 +124,7 @@
               <artifactItems>
                 <artifactItem>
                   <groupId>com.jboss.devstudio.core</groupId>
-                  <artifactId>com.jboss.devstudio.core.site</artifactId>
+                  <artifactId>com.jboss.devstudio.core.site.no.sources</artifactId>
                   <version>${project.version}</version>
                   <type>zip</type>
                 </artifactItem>

@@ -150,10 +150,10 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
       <patternset>
         <exclude name="**/Unpacker.class" />
         <exclude name="**/InstallerFrame*.class" />
-	<exclude name="**/Librarian.class" />
-	<exclude name="**/LibraryRemover.class" />
-	<exclude name="**/ProcessHelper.class" />
-	<exclude name="**/RunnableReader.class" />
+        <exclude name="**/Librarian.class" />
+        <exclude name="**/LibraryRemover.class" />
+        <exclude name="**/ProcessHelper.class" />
+        <exclude name="**/RunnableReader.class" />
       </patternset>
     </unjar>
     
@@ -164,8 +164,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     </jar>
 
     <unjar src="${izpack.home}/lib/uninstaller.jar" dest="${build.dir}/uninstaller-classes" />
-    
-    
+
     <copy todir="${build.dir}/uninstaller-classes" overwrite="true">
       <fileset dir="${build.dir}/classes">
         <include name="**/PrivilegedRunner.class" />
