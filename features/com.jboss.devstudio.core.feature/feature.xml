@@ -58,7 +58,7 @@
     <import feature="org.eclipse.m2e.wtp.jpa.feature"/>
     <import feature="org.eclipse.m2e.wtp.jsf.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
-    <!-- JBIDE-16757 remove from default install - now only in Central <import feature="org.jboss.tools.m2e.jdt.feature"/> -->
+    <import feature="org.jboss.tools.m2e.jdt.feature"/>
     <import feature="org.sonatype.m2e.buildhelper.feature"/>
     <import feature="org.sonatype.m2e.egit.feature"/>
     <import feature="org.sonatype.m2e.mavenarchiver.feature"/>
