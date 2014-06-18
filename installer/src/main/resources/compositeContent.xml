@@ -6,9 +6,9 @@
 	<properties size='2'>
 		<property name='p2.compressed' value='true' />
 		<!-- get new time w/ date +%s000 -->
-		<property name='p2.timestamp' value='1306350337000' />
+		<property name='p2.timestamp' value='1403103366000' />
 	</properties>
-	<children size='31'>
+	<children size='2'>
 		<child location='jbds/' />
 		<child location='testng/' />
 	</children>
