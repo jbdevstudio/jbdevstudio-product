@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.io.StringReader;
 import java.text.MessageFormat;
 import java.util.Properties;
-import java.util.Set;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
@@ -31,28 +30,22 @@ import com.izforge.izpack.util.OsVersion;
 // Referenced classes of package com.izforge.izpack.panels:
 //            PathInputPanel, PathSelectionPanel
 
+public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
-
-public class JREPathPanel extends PathInputPanel implements IChangeListener
-{
-	private static final String SYSPN_JAVA_VERSION        = "java.version";
-	private static final String SYSPN_SUN_ARCH_DATA_MODEL = "sun.arch.data.model";
-	public static final String DATA_MODEL_VAR = "DATA_MODEL";
 	private static final long serialVersionUID = 1256443616359329172L;
+
+	public static final String DATA_MODEL_VAR = "DATA_MODEL";
+	
+	private static final String SYSPN_JAVA_VERSION = "java.version";
+	private static final String SYSPN_SUN_ARCH_DATA_MODEL = "sun.arch.data.model";
     private static final String winTestFiles[];
     private static final String linTestFiles[];
     private String variableName;
     private static final String gnuVersion = "gij ";
     private static final int minVersion = 7;
     private static final int maxVersion = minVersion;
-    
-    private String detectedVersion;
-    
-    
-    protected JRadioButton rb1,rb2;
 
-    static 
-    {
+    static {
         winTestFiles = (new String[] {
                 "bin" + File.separator + "javaw.exe",
                 "jre" + File.separator + "bin" + File.separator + "javaw.exe"
@@ -63,8 +56,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
             });
     }
     
-    protected boolean pathIsValid()
-    {
+    protected boolean pathIsValid() {
         if (existFiles == null) return true;
         for (int i = 0; i < existFiles.length; ++i)
         {
@@ -74,134 +66,79 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         return false;
     }
 
-    
-	JPanel headPanel = new JPanel();
+	private JPanel headPanel = new JPanel();
+    private JRadioButton rb1,rb2;
 	private JRadioButton option1, option2;
 	private ButtonGroup archGroup;
 	private JLabel messageLabel;
 	private JLabel messageLabelJdk;
 
-    
-    public JREPathPanel(InstallerFrame parent, InstallData idata)
-    {
-        //super(parent, idata);
-    	super(parent, idata, new IzPanelLayout());
-        // Set default values
-        emptyTargetMsg = getI18nStringForClass("empty_target", "TargetPanel");
-        warnMsg = getI18nStringForClass("warn", "TargetPanel");
-         
-        String introText = getI18nStringForClass("intro", "PathInputPanel");
-        
-        add(new JLabel(introText), NEXT_LINE);
-        
-        
-        rb1 = new JRadioButton("Default Java VM", true);
-        rb1.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent event){
+	public JREPathPanel(InstallerFrame parent, InstallData idata) {
+		super(parent, idata, new IzPanelLayout());
+		// Set default values
+		emptyTargetMsg = getI18nStringForClass("empty_target", "TargetPanel");
+		warnMsg = getI18nStringForClass("warn", "TargetPanel");
+
+		String introText = getI18nStringForClass("intro", "PathInputPanel");
+
+		add(new JLabel(introText), NEXT_LINE);
+
+		rb1 = new JRadioButton("Default Java VM", true);
+		rb1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
 				clearJava();
 			}
 		});
-        rb2 = new JRadioButton("Specific Java VM", false);
-        add(rb1, NEXT_LINE);
-        add(rb2, NEXT_LINE);
-        
-        ButtonGroup group = new ButtonGroup();
-        group.add(rb1);
-        group.add(rb2);
+		
+		rb2 = new JRadioButton("Specific Java VM", false);
+		add(rb1, NEXT_LINE);
+		add(rb2, NEXT_LINE);
 
-        pathSelectionPanel = new PathSelectionPanel(this, idata, "JREPathPanel.fileDialog.title");
-        add(pathSelectionPanel, NEXT_LINE);
-        pathSelectionPanel.setEnabled(false);
-        rb1.addChangeListener(new ChangeListener(){
-        	public void stateChanged(ChangeEvent e){
-        		if(rb1.isSelected()){
-        			pathSelectionPanel.setEnabled(false);
-        		}else{
-        			pathSelectionPanel.setEnabled(true);
-        		}
-        	}
-        });
+		ButtonGroup group = new ButtonGroup();
+		group.add(rb1);
+		group.add(rb2);
+
+		pathSelectionPanel = new PathSelectionPanel(this, idata,
+				"JREPathPanel.fileDialog.title");
+		add(pathSelectionPanel, NEXT_LINE);
+		pathSelectionPanel.setEnabled(false);
+		rb1.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				if (rb1.isSelected()) {
+					pathSelectionPanel.setEnabled(false);
+				} else {
+					pathSelectionPanel.setEnabled(true);
+				}
+			}
+		});
+
 		headPanel.setLayout(new GridLayout(3,1));
 		pathSelectionPanel.addChangeListener(this);
-		 
-		if("installer".equals(idata.getVariable("PACK_NAME"))) {
-			JLabel label = new JLabel(parent.langpack.getString("JREPathPanel.dataModel.title"));
-			
-			headPanel.add(label);
-			
-			option1 = new JRadioButton(parent.langpack.getString("JREPathPanel.dataModel32.title"));
-			option1.setSelected(true);
-			option1.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent event){
-					JREPathPanel.this.idata.setVariable(DATA_MODEL_VAR, "32");
-					if(OsVersion.IS_WINDOWS || OsVersion.IS_OSX) {
-	        			messageLabel.setText("");
-	            		messageLabel.setForeground(Color.black);
-					}
-				}
-			});
-			
-			headPanel.add(option1);
-			
-			option2 = new JRadioButton(parent.langpack.getString("JREPathPanel.dataModel64.title"));
-			option2.addActionListener(new ActionListener(){
-				public void actionPerformed(ActionEvent event){
-					JREPathPanel.this.idata.setVariable(DATA_MODEL_VAR, "64");
-					if(OsVersion.IS_WINDOWS || OsVersion.IS_OSX) {
-	        			messageLabel.setText(JREPathPanel.this.parent.langpack.getString("JREPathPanel.VPEdoesNotSupportJava64.title"));
-	            		messageLabel.setForeground(Color.black);
-					}
-
-				}
-			});
-			
-			headPanel.add(option2);
-			
-			archGroup = new ButtonGroup();
-			archGroup.add(option1);
-			archGroup.add(option2);
-			
-			if(!OsVersion.IS_OSX){
-				option1.setEnabled(false);
-				option2.setEnabled(false);
-			}
-		}
+		
+		JLabel label = new JLabel(parent.langpack.getString("JREPathPanel.dataModel.title"));
+		headPanel.add(label);
+		
+		option1 = new JRadioButton(parent.langpack.getString("JREPathPanel.dataModel32.title"));
+		headPanel.add(option1);
+		option2 = new JRadioButton(parent.langpack.getString("JREPathPanel.dataModel64.title"));
+		headPanel.add(option2);
+		
+		archGroup = new ButtonGroup();
+		archGroup.add(option1);
+		archGroup.add(option2);
+		
+		option1.setEnabled(false);
+		option2.setEnabled(false);
 		add(headPanel, NEXT_LINE);
-		
-		messageLabel = new JLabel(""){
-			public Dimension getPreferredSize() {
-                return new Dimension(500, 50);
-            }
-            public Dimension getMinimumSize() {
-                return new Dimension(500, 50);
-            }
-            public Dimension getMaximumSize() {
-                return new Dimension(500, 50);
-            }
-		};
-		messageLabel.setVerticalAlignment(TOP);
-		messageLabel.setHorizontalAlignment(LEFT);
+
+		messageLabel = createLabel();
 		add(messageLabel, NEXT_LINE);
-		
-		messageLabelJdk = new JLabel(""){
-			public Dimension getPreferredSize() {
-                return new Dimension(500, 50);
-            }
-            public Dimension getMinimumSize() {
-                return new Dimension(500, 50);
-            }
-            public Dimension getMaximumSize() {
-                return new Dimension(500, 50);
-            }
-		};
-		messageLabelJdk.setVerticalAlignment(TOP);
-		messageLabelJdk.setHorizontalAlignment(LEFT);
+		messageLabelJdk = createLabel();
 		add(messageLabelJdk, NEXT_LINE);
 
-		
         createLayoutBottom();
         getLayoutHelper().completeLayout();
-    	// // //
+
         setMustExist(true);
         if(OsVersion.IS_WINDOWS) {
             setExistFiles(winTestFiles);
@@ -211,67 +148,29 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
         setVariableName("JREPath");
     }
 
-    public boolean isValidated()
-    {
-        if(idata.getVariable("PANEL_LAYOUT_TEST") != null)
-            return true;
-        
-        if(rb1.isSelected()){
-    		//idata.setVariable(getVariableName(), "");
-    		//return (true);
-            pathSelectionPanel.setPath((new File(idata.getVariable("JAVA_HOME"))).getPath());
-        }
-        
-        String chosenPath = pathSelectionPanel.getPath();
-        boolean ok = true;
+	private JLabel createLabel() {
+		JLabel temp = new JLabel(""){
+			public Dimension getPreferredSize() {
+				return new Dimension(500, 50);
+			}
+			public Dimension getMinimumSize() {
+				return new Dimension(500, 50);
+			}
+			public Dimension getMaximumSize() {
+				return new Dimension(500, 50);
+			}
+		};
+		temp.setVerticalAlignment(TOP);
+		temp.setHorizontalAlignment(LEFT);
+		return temp;
+	}
 
-        // We put a warning if the specified target is nameless
-        if (chosenPath.length() == 0)
-        {
-        	emitError(parent.langpack.getString("installer.error"), parent.langpack
-                    .getString(getI18nStringForClass("empty", "PathInputPanel")));
-            return false;
-        }
-        
-        File path = new File(chosenPath).getAbsoluteFile();
-        chosenPath = path.toString();
-        pathSelectionPanel.setPath(chosenPath);
-        if (!path.exists())
-        {
-        	String message = parent.langpack
-                    .getString(getI18nStringForClass("wrongPath.title", "JREPathPanel"));
-            emitError(parent.langpack.getString("installer.error"), message);
-            return false;
-        }
-        if (!pathIsValid())
-        {
-            emitError(parent.langpack.getString("installer.error"), parent.langpack
-                    .getString(getI18nStringForClass("notValid", "PathInputPanel")));
-            return false;
-        }else {
-        	Properties jvmProps = new Properties();
-        	int status = verifyVersion(pathSelectionPanel.getPath(), new Properties());
-        	detectedVersion = jvmProps.getProperty(SYSPN_JAVA_VERSION);
-        	
-        	if (status == 0 || status == -2)
-            {
-        		if(rb1.isSelected()) {
-            		idata.setVariable(getVariableName(), new File(idata.getVariable("JAVA_HOME")).getPath());
-        		} else {
-                	idata.setVariable(getVariableName(), pathSelectionPanel.getPath());
-        		}
-                return true;
-            }
-        	if(status == -1){
-        		emitError(parent.langpack.getString("installer.error"), parent.langpack
-        				.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));
-        	}
-        	return (false);
-        }
-    }
+	public boolean isValidated() {
+		//Next button is enabled only when JVM configuration is correct 
+		return true;
+	}
 
-    public void panelActivate()
-    {
+    public void panelActivate() {
         super.panelActivate();
         String chosenPath = idata.getVariable(getVariableName());
         if (chosenPath == null || "".equals(chosenPath)) {
@@ -327,17 +226,6 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
 			String dataArch = properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL);
 			option1.setSelected("32".equals(dataArch));
 			option2.setSelected("64".equals(dataArch));
-			if(OsVersion.IS_OSX) {
-				if("32".equals(dataArch)) {
-					boolean b = isArchSupported("64");
-					option1.setEnabled(b);
-					option2.setEnabled(b);
-				}else {
-					boolean b = isArchSupported("32");
-					option1.setEnabled(b);
-					option2.setEnabled(b);
-				}
-			}
 		}
 		return status;
     }
