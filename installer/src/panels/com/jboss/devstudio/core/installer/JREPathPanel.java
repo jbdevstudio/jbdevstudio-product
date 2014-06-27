@@ -44,7 +44,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener
     private String variableName;
     private static final String gnuVersion = "gij ";
     private static final int minVersion = 7;
-    private static final int maxVersion = minVersion;
+    private static final int maxVersion = 8;
     
     private String detectedVersion;
     
