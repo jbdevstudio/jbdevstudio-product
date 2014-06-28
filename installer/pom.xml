@@ -129,7 +129,7 @@
                   <type>zip</type>
                 </artifactItem>
               </artifactItems>
-              <outputDirectory>${project.build.directory}/update/jbds</outputDirectory>
+              <outputDirectory>${project.build.directory}/jbds-repo-with-sources</outputDirectory>
               <excludes>**/*.pack.gz</excludes>
             </configuration>
           </execution>
@@ -153,6 +153,40 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+       <groupId>org.eclipse.tycho.extras</groupId>
+       <artifactId>tycho-p2-extras-plugin</artifactId>
+       <version>${tychoVersion}</version>
+       <executions>
+        <execution>
+         <phase>prepare-package</phase>
+         <goals>
+          <goal>mirror</goal>
+         </goals>
+        </execution>
+       </executions>
+       <configuration>
+        <source>
+         <repository>
+          <url>file://${project.build.directory}/jbds-repo-with-sources</url>
+          <layout>p2</layout>
+         </repository>
+        </source>
+        <ius>
+          <iu>
+            <id>com.jboss.devstudio.core.package</id>
+          </iu> 
+        </ius>
+        <!-- The destination directory to mirror to. -->
+        <destination>${project.build.directory}/update/jbds</destination>
+        <includeNonGreedy>false</includeNonGreedy>
+        <includeFeatures>true</includeFeatures>
+        <latestVersionOnly>false</latestVersionOnly>
+        <mirrorMetadataOnly>false</mirrorMetadataOnly>
+        <compress>true</compress>
+        <append>false</append>
+       </configuration>
       </plugin>
       <plugin>
         <groupId>com.googlecode.maven-download-plugin</groupId>
