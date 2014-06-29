@@ -11,32 +11,10 @@
   <artifactId>installer</artifactId>
   <packaging>eclipse-repository</packaging>
   <properties>
-    <!--
-      By default, use EAP 6.1.0.Alpha, which is publically available. This allows JBDS to be build locally w/o needing access to devel.redhat.com
-      To build the EAP bundled installer, use the "eap" profile: `mvn install -Peap`
-     -->
-    <eapVersion>6.1.0.Alpha</eapVersion>
-    <eapURL>http://download.jboss.org/jbosseap/6/jboss-eap-6.1.0.Alpha/jboss-eap-6.1.0.Alpha.zip</eapURL>
-    <eapMD5>21ab4c71230ca9fd311c265be24b6505</eapMD5>
-    <eapRootFolder>jboss-eap-6.1</eapRootFolder>
-    <buildEAPBundle>false</buildEAPBundle>
-
     <IzPackVersion>4.3.5</IzPackVersion>
   </properties>
 
   <profiles>
-    <!-- 
-      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.3.0.Beta, which is not a public URL (unlike 6.1.0.Alpha).
-    -->
-    <profile>
-      <id>hudson</id>
-      <properties>
-        <eapVersion>6.3.0.Beta</eapVersion>
-        <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.3.0-Beta/jboss-eap-6.3.0.Beta.zip</eapURL>
-        <eapMD5>5968fb7ae4b3b6b21f526d69d56e5229</eapMD5>
-        <eapRootFolder>jboss-eap-6.3</eapRootFolder>
-      </properties>
-    </profile>
 
     <!-- 
       Profile to optionally build an installer bundled w/ EAP as well as a Standalone one.

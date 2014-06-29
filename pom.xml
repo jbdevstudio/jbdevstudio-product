@@ -28,20 +28,43 @@
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
-    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta3-SNAPSHOT/jbtcentraltarget-4.40.0.Beta3-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
+    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.40.0.Beta4-SNAPSHOT/jbtcentraltarget-4.40.0.Beta4-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
     <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
     <!-- <jbosstools-site-stream>master</jbosstools-site-stream> -->
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools-site-stream}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta2-SNAPSHOT/REPO/</jbosstools-target-site> -->
+
+    <!--
+      By default, use EAP 6.1.0.Alpha, which is publically available. This allows JBDS to be build locally w/o needing access to devel.redhat.com
+      To build the EAP bundled installer, use the "eap" profile: `mvn install -Peap`
+     -->
+    <eapVersion>6.1.0.Alpha</eapVersion>
+    <eapURL>http://download.jboss.org/jbosseap/6/jboss-eap-6.1.0.Alpha/jboss-eap-6.1.0.Alpha.zip</eapURL>
+    <eapMD5>21ab4c71230ca9fd311c265be24b6505</eapMD5>
+    <eapRootFolder>jboss-eap-6.1</eapRootFolder>
+    <buildEAPBundle>false</buildEAPBundle>
   </properties>
 
-  <!-- 
-      Uncomment this profile to optionally enable a target platform site instead of (or in addition to) the default target platform. 
-      Use -Dno-target-platform if you want to disable the default target platform in favour of a specified target platform site
-        mvn clean install -Dno-target-platform \
-        -Djbosstools-target-site=file:///path/to/jbosstools-target-platforms/jbdevstudio/multiple/target/jbdevstudio-multiple.target.repo/
-  -->
   <profiles>
+    <!-- 
+      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.3.0.Beta, which is not a public URL (unlike 6.1.0.Alpha).
+    -->
+    <profile>
+      <id>hudson</id>
+      <properties>
+        <eapVersion>6.3.0.Beta</eapVersion>
+        <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.3.0-Beta/jboss-eap-6.3.0.Beta.zip</eapURL>
+        <eapMD5>5968fb7ae4b3b6b21f526d69d56e5229</eapMD5>
+        <eapRootFolder>jboss-eap-6.3</eapRootFolder>
+      </properties>
+    </profile>
+
+    <!-- 
+        Uncomment this profile to optionally enable a target platform site instead of (or in addition to) the default target platform. 
+        Use -Dno-target-platform if you want to disable the default target platform in favour of a specified target platform site
+          mvn clean install -Dno-target-platform \
+          -Djbosstools-target-site=file:///path/to/jbosstools-target-platforms/jbdevstudio/multiple/target/jbdevstudio-multiple.target.repo/
+    -->
     <!-- <profile>
       <id>target-site</id>
       <activation>
