@@ -1,0 +1,6 @@
+1. If you don't already have one installed, you will need to download and install Oracle or Open JDK 7 or 8.
+
+2. Download the installer jar.
+
+3. Double-click the installer file to run it, or open a terminal and type `java -jar /path/to/jboss-devstudio-*.jar`
+
