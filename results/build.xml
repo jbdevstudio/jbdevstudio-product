@@ -7,6 +7,7 @@
   <property name="tmpdir" value="${java.io.tmpdir}/jbds-results-build" />
 
   <property name="project.build.directory" value="${output.dir}/target"/>
+  <property name="requirements.dir" value="${output.dir}/requirements"/>
 
   <target name="init">
     <echo level="verbose">
@@ -24,7 +25,6 @@ $java.home = ${java.home}</echo>
   </target>
 
   <target name="build" depends="init">
-
     <!-- should be set already by Jenkins, but for local builds set a default -->
     <property name="JOB_NAME" value="devstudio.product_master"/>
     <property name="update.site.description" value="Local Build"/>
@@ -84,7 +84,10 @@ $java.home = ${java.home}</echo>
     <if>
       <isset property="JBOSS_CENTRAL_ZIP"/>
       <then>
-        <get src="${JBOSS_CENTRAL_ZIP}" dest="${jboss-devstudio-updatesite-central-file}" usetimestamp="true"/>
+        <basename property="JBOSS_CENTRAL_ZIP_FILENAME" file="${JBOSS_CENTRAL_ZIP}"/>
+        <mkdir dir="${requirements.dir}"/>
+        <get-and-checksum src="${JBOSS_CENTRAL_ZIP}" dest="${requirements.dir}/${JBOSS_CENTRAL_ZIP_FILENAME}"/>
+        <copy file="${requirements.dir}/${JBOSS_CENTRAL_ZIP_FILENAME}" tofile="${jboss-devstudio-updatesite-central-file}"/>
       </then>
     </if>
 
@@ -102,6 +105,20 @@ $java.home = ${java.home}</echo>
   </target>
 
 <!-- macros -->
+
+  <macrodef name="get-and-checksum">
+    <attribute name="src"/>
+    <attribute name="dest"/>
+    <sequential>
+      <get src="@{src}.MD5" dest="@{dest}.MD5" usetimestamp="true"/>
+      <get src="@{src}" dest="@{dest}" usetimestamp="true"/>
+      <checksum file="@{dest}" algorithm="MD5" fileext=".MD5" verifyproperty="checksum.matches"/>
+      <condition property="checksum.matches.fail"><equals arg1="${checksum.matches}" arg2="false"/></condition>
+      <fail if="checksum.matches.fail">Checksum error</fail>
+      <var name="checksum.matches" unset="true"/>
+      <var name="checksum.matches.fail" unset="true"/>
+    </sequential>
+  </macrodef>
 
   <macrodef name="get.size">
     <attribute name="file" />
@@ -139,6 +156,15 @@ $java.home = ${java.home}</echo>
   </macrodef>  
 
   <target name="create.jbds.results.html">
+
+    <propertyregex property="qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="GA.*" replace="GA" override="true" />
+    <!-- <propertyregex property="qualifier" defaultvalue="${qualifier}" input="${qualifier}" regexp=".*null" replace="LOCAL" override="true" /> -->
+
+    <property name="eap.version" value="${eap.version}"/>
+    <property name="eclipse.version" value="${eclipse.version}"/>
+    <property name="jbds.version" value="${update.site.version}.${qualifier}"/>
+    <property name="jbds.update.site" value="${jbds.update.site}"/>
+
     <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-installer-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
       <sequential>
         <if>
@@ -148,8 +174,32 @@ $java.home = ${java.home}</echo>
             <loadfile srcfile="${@{this}}.MD5" property="@{this}-md5" failonerror="true" />
             <get.size file="${@{this}}" property="@{this}-size" />
             <basename file="${@{this}}" property="@{this}-name" />
+            <propertyregex property="templatename" defaultvalue="@{this}" input="@{this}" regexp="jboss-devstudio-(.+)-file" replace="\1" override="true" />
+            <propertyregex property="templatename-alternate" defaultvalue="${templatename}" input="${templatename}" regexp="(.+)-(.+)" replace="\1" override="true" />
+
             <echo level="verbose">@{this} = ${@{this}}
-  :: ${@{this}-name}, ${@{this}-size}M, ${@{this}-md5}</echo>
+  :: ${@{this}-name}, ${@{this}-size}M, ${@{this}-md5}
+  :: ${templatename}, ${templatename-alternate}</echo>
+
+            <!-- generate manual-instructions.txt file for each artifact -->
+            <var name="templatefile" unset="true"/>
+            <condition property="templatefile" value="customer-portal/${templatename}.manual-instructions.txt" else="customer-portal/${templatename-alternate}.manual-instructions.txt">
+              <available file="customer-portal/${templatename}.manual-instructions.txt" />
+            </condition>
+            <antcall target="generate.file.from.template">
+              <param name="input" value="${templatefile}"/>
+              <param name="output" value="${@{this}-name}.manual-instructions.txt"/>
+            </antcall>
+
+            <!-- generate detailed-description.html file for each artifact -->
+            <var name="templatefile" unset="true"/>
+            <condition property="templatefile" value="customer-portal/${templatename}.detailed-description.html" else="customer-portal/${templatename-alternate}.detailed-description.html">
+              <available file="customer-portal/${templatename}.detailed-description.html" />
+            </condition>
+            <antcall target="generate.file.from.template">
+              <param name="input" value="${templatefile}"/>
+              <param name="output" value="${@{this}-name}.detailed-description.html"/>
+            </antcall>
           </then>
         </if>
       </sequential>
@@ -228,35 +278,32 @@ JBDS_VIEW_NAME = ${JBDS_VIEW_NAME}</echo>
         <condition property="update.site.description_STRING" value="Nightly Build" else="${update.site.description}">
           <contains string="${update.site.description}" substring="update.site.description" />
         </condition>
-        <condition property="WARNING" value="This nightly build is a direct build from SVN/CVS and is provided as-is with no guarantees. Be advised that while there is no prior proof, if this build sets fire to your computer, you were sufficiently warned!" else="This build has been deemed by the JBossTools team to be in good working condition. Please note that this build may be a developer release, and if so should be treated with slightly more understanding and care than a stable release. Please see the release notes on JIRA and/or Sourceforge for further information.">
+        <condition property="WARNING" value="This nightly build is a direct build from Git and is provided as-is with no guarantees. Be advised that while there is no prior proof, if this build sets fire to your computer, you were sufficiently warned!" else="This build has been deemed by the JBossTools team to be in good working condition. Please note that this build may be a developer release, and if so should be treated with slightly more understanding and care than a stable release. Please see the release notes on JIRA and/or Sourceforge for further information.">
           <contains string="${update.site.description_STRING}" substring="Nightly"/>
         </condition>
 
-        <!-- set IDs for the chart widgets from the views -->
-        <!-- tests trend chart -->
-        <condition property="PORTLET.1" value="20174" else="27842">
-          <contains string="${JOB_NAME}" substring="_41" />
-        </condition>
-        <!-- tests pie chart -->
-        <condition property="PORTLET.2" value="25688" else="23303">
-          <contains string="${JOB_NAME}" substring="_41" />
-        </condition>
-
-        <!-- use locally built files with relative paths -->
-        <echo level="verbose">Generate ${project.build.directory}/${output} from ${input}</echo>
-        <copy todir="${project.build.directory}" overwrite="true">
-          <fileset file="${input}" />
-          <mapper type="merge" to="${output}" />
-          <filterchain>
-            <expandproperties />
-          </filterchain>
-        </copy>
-
+        <antcall target="generate.file.from.template">
+          <param name="input" value="${input}"/>
+          <param name="output" value="${output}"/>
+        </antcall>
       </then>
       <else>
         <echo level="verbose">Skip generating results.html: update.site.description, JBOSS_CENTRAL_ZIP and TARGET_PLATFORM_VERSION_MAXIMUM are not set, and JOB_NAME does not contain .aggregate or .product.</echo>
       </else>
     </if>
+  </target>
+
+  <!-- JBDS-3047 produce text/html fragments for each artifact -->
+  <target name="generate.file.from.template">
+    <!-- use locally built files with relative paths -->
+    <echo level="verbose">Generate ${project.build.directory}/${output} from ${input}</echo>
+    <copy todir="${project.build.directory}" overwrite="true">
+      <fileset file="${input}" />
+      <mapper type="merge" to="${output}" />
+      <filterchain>
+        <expandproperties />
+      </filterchain>
+    </copy>
   </target>
 
 </project>
