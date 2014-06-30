@@ -15,10 +15,10 @@
     <category name="AdditionalTools" />
     <category name="MobileTools"/>
   </feature>
-  <feature id="org.jboss.tools.vpe.cordovasim.feature">
+  <!-- JBDS-3071 remove from update site because not included in installer <feature id="org.jboss.tools.vpe.cordovasim.feature">
     <category name="AdditionalTools" />
     <category name="MobileTools"/>
-  </feature>
+  </feature> -->
   <feature id="org.jboss.tools.vpe.browsersim.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
@@ -215,9 +215,9 @@
   -->
 
   <!-- categorized in JBT; uncategorized in JBDS -->
-  <feature id="org.jboss.tools.maven.jbosspackaging.feature"/>
+  <!-- JBDS-1938 not ready for JBDS yet <feature id="org.jboss.tools.maven.jbosspackaging.feature"/> -->
   <!-- JBIDE-16960 remove <feature id="org.jboss.tools.maven.gwt.feature"/> -->
-  <feature id="org.jboss.tools.common.mylyn.feature"/>
+  <!-- JBDS-3071 remove from update site because not included in installer <feature id="org.jboss.tools.common.mylyn.feature"/> -->
   <feature id="org.jboss.tools.usage.feature"/>
 
   <!-- only in JBDS -->
@@ -242,7 +242,7 @@
   <feature id="org.jboss.tools.central.feature.source"/>
   <feature id="org.jboss.tools.richfaces.feature.source"/>
   <feature id="org.jboss.tools.aerogear.hybrid.feature.source"/>
-  <feature id="org.jboss.tools.vpe.cordovasim.feature.source"/>
+  <!-- JBDS-3071 remove from update site because not included in installer <feature id="org.jboss.tools.vpe.cordovasim.feature.source"/> -->
   <feature id="org.jboss.tools.vpe.browsersim.feature.source"/>
   <feature id="org.jboss.tools.jst.feature.source"/>
   <feature id="org.jboss.tools.vpe.feature.source"/>
@@ -279,7 +279,7 @@
   <feature id="org.jboss.tools.livereload.feature.source"/>
   <feature id="org.jboss.tools.usage.feature.source"/>
   <feature id="org.jboss.tools.common.jdt.feature.source"/>
-  <feature id="org.jboss.tools.common.mylyn.feature.source"/>
+  <!-- JBDS-3071 remove from update site because not included in installer <feature id="org.jboss.tools.common.mylyn.feature.source"/> -->
   <feature id="org.jboss.tools.foundation.feature.source"/>
   <feature id="org.jboss.tools.foundation.security.linux.feature.source"/>
   <feature id="org.jboss.tools.stacks.core.feature.source"/>
@@ -288,7 +288,7 @@
   <feature id="org.jboss.tools.common.text.ext.feature.source"/>
   <feature id="org.jboss.tools.common.ui.feature.source"/>
   <feature id="org.jboss.tools.common.verification.feature.source"/>
-  <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/>
+  <!-- JBDS-1938 not ready for JBDS yet <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/> -->
   <!-- JBIDE-16960 remove <feature id="org.jboss.tools.maven.gwt.feature.source"/> -->
   <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature.source"/>
 
