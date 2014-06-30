@@ -215,7 +215,7 @@
   -->
 
   <!-- categorized in JBT; uncategorized in JBDS -->
-  <feature id="org.jboss.tools.maven.jbosspackaging.feature"/>
+  <!-- JBDS-1938 not ready for JBDS yet <feature id="org.jboss.tools.maven.jbosspackaging.feature"/> -->
   <!-- JBIDE-16960 remove <feature id="org.jboss.tools.maven.gwt.feature"/> -->
   <feature id="org.jboss.tools.common.mylyn.feature"/>
   <feature id="org.jboss.tools.usage.feature"/>
@@ -288,7 +288,7 @@
   <feature id="org.jboss.tools.common.text.ext.feature.source"/>
   <feature id="org.jboss.tools.common.ui.feature.source"/>
   <feature id="org.jboss.tools.common.verification.feature.source"/>
-  <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/>
+  <!-- JBDS-1938 not ready for JBDS yet <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/> -->
   <!-- JBIDE-16960 remove <feature id="org.jboss.tools.maven.gwt.feature.source"/> -->
   <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature.source"/>
 
