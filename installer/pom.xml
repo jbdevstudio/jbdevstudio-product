@@ -153,10 +153,6 @@
         </source>
         <ius>
           <iu><id>com.jboss.devstudio.core.package</id></iu>
-          <!-- JBDS-3071 include these three features because they're needed for Central but aren't in Central as they come from JBT -->
-          <iu><id>org.jboss.tools.vpe.cordovasim.feature.feature.group</id></iu>
-          <iu><id>org.jboss.tools.maven.jbosspackaging.feature.feature.group</id></iu>
-          <iu><id>org.jboss.tools.common.mylyn.feature.feature.group</id></iu>
         </ius>
         <destination>${project.build.directory}/update/jbds</destination>
         <includeNonGreedy>false</includeNonGreedy>
