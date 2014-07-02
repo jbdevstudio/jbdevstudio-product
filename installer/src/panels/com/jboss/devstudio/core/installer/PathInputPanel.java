@@ -175,7 +175,7 @@ public class PathInputPanel extends IzPanel implements ActionListener
             }
             // We put a warning if the directory exists else we warn
             // that it will be created
-            File jbdsBrandidngPlugin = new File(chosenPath, "eclipse/48-jbds_icon.png");
+            File jbdsBrandidngPlugin = new File(chosenPath, "studio/48-jbds_icon.png");
             if (path.exists() && !jbdsBrandidngPlugin.exists())
             {
                 int res = askQuestion(parent.langpack.getString("installer.warning"), warnMsg,
