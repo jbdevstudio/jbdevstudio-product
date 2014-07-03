@@ -265,28 +265,28 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         // "My" VM writes the version on stderr :-(
         String vs = (output[0].length() > 0) ? output[0] : output[1];
         return vs.indexOf(gnuVersion) >= 0;
-    }
-    
-    public static  int verifyVersion(String jvmLocation, Properties props)
-    {
-    	String[] output = new String[2];
-        
-    	Properties jvmInfo = getJavaPlatformProperties(jvmLocation,output);
-        props.putAll(jvmInfo);
-        String detectedVersion = jvmInfo.getProperty(SYSPN_JAVA_VERSION);
-        if(isGnuVersion(output)) return -1;
-        return verifyVersionRange(detectedVersion);
-    }
+	}
+
+	public static int verifyVersion(String jvmLocation, Properties props) {
+		String[] output = new String[2];
+		props.putAll(getJavaPlatformProperties(jvmLocation,output));
+		if (OsVersion.IS_OSX && jvmLocation.contains("JavaAppletPlugin.plugin")) {
+			return -6;
+		} else if (isGnuVersion(output)) {
+			return -1;
+		}
+		return verifyVersionRange(props.getProperty(SYSPN_JAVA_VERSION));
+	}
 
 	public static int verifyVersionRange(String detectedVersion) {
 		// Java versions cold be 1.1..1.9 considering early access for java 9
-        // So we accept the pattern for java version 1\.[1-9] and 
-        // check 3d char for >6 and return new error code -3 for none supported
-        // java version
+		// So we accept the pattern for java version 1\.[1-9] and 
+		// check 3d char for >6 and return new error code -3 for none supported
+		// java version
 		if(detectedVersion == null) {
 			return -5;
 		}
-		
+
         if(!detectedVersion.matches("1\\.[1-9]\\.[0-9].*")) {
         	return -4; // Unknown version
         }
@@ -410,7 +410,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));
         		messageLabel.setForeground(Color.red);
         		parent.lockNextButton();
-        	} else if(status == -3 || status == -4 || status == -5){
+        	} else if(status == -3 || status == -4 || status == -5 || status == -6){
         		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion3", "PathInputPanel")));
         		messageLabel.setForeground(Color.red);
         		parent.lockNextButton();
