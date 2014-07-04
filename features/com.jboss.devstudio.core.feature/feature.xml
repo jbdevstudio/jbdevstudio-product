@@ -21,7 +21,6 @@
   <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/> 
   <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/> 
   <includes id="org.hibernate.eclipse.feature" version="0.0.0"/> 
-  <!-- JBIDE-13618 remove struts <includes id="org.jboss.tools.struts.feature" version="0.0.0"/> -->
   <includes id="org.jboss.tools.seam.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.seam.feature" version="0.0.0"/>
@@ -30,7 +29,6 @@
   <includes id="org.jboss.tools.ws.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.portlet.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.central.feature" version="0.0.0"/> 
-  <!-- JBDS-2790 removed in JBDS 7.1.1.Beta1 <includes id="org.jboss.tools.central.themes.feature" version="0.0.0"/> -->
   <includes id="org.jboss.tools.forge.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.vpe.browsersim.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.openshift.express.feature" version="0.0.0"/> 
@@ -67,7 +65,6 @@
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.cdi.feature"/>
     <import feature="org.jboss.tools.maven.hibernate.feature"/>
-    <!-- JBDS-1938 not ready for JBDS yet <import feature="org.jboss.tools.maven.jbosspackaging.feature"/> -->
     <import feature="org.jboss.tools.maven.jdt.feature"/>
     <import feature="org.jboss.tools.maven.portlet.feature"/>
     <import feature="org.jboss.tools.maven.project.examples.feature"/>
