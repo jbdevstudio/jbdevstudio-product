@@ -150,6 +150,10 @@
           <url>file://${project.build.directory}/jbds-repo-with-sources</url>
           <layout>p2</layout>
          </repository>
+         <repository>
+          <url>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/${tpc.version}/REPO/</url>
+          <layout>p2</layout>
+         </repository>
         </source>
         <ius>
           <iu><id>com.jboss.devstudio.core.package</id></iu>
