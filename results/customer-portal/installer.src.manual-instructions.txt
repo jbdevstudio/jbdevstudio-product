@@ -6,3 +6,7 @@
 
 4. Unpack the zip, then from within the folder into which you unpacked, run `mvn clean install` to build JBoss Developer Studio.
 
+5. For additional commandline flag options when building, look in the root pom.xml file.
+
+6. Once built, look for `target/` folders, such as `product/installer/target` or `product/site/target` for the resulting built content.
+
