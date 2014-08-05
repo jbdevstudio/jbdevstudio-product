@@ -11,7 +11,7 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <feature id="org.jboss.tools.aerogear.hybrid.feature">
+  <feature id="org.jboss.tools.aerogear.thym.feature">
     <category name="AdditionalTools" />
     <category name="MobileTools"/>
   </feature>
@@ -238,7 +238,7 @@
 
   <feature id="org.jboss.tools.central.feature.source"/>
   <feature id="org.jboss.tools.richfaces.feature.source"/>
-  <feature id="org.jboss.tools.aerogear.hybrid.feature.source"/>
+  <feature id="org.jboss.tools.aerogear.thym.feature.source"/>
   <!-- JBDS-3079 remove <feature id="org.jboss.tools.vpe.cordovasim.feature.source"/> -->
   <feature id="org.jboss.tools.vpe.browsersim.feature.source"/>
   <feature id="org.jboss.tools.jst.feature.source"/>
