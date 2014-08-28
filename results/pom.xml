@@ -35,8 +35,8 @@
                 <ant antfile="build.xml" target="build" dir="./">
                   <!-- TODO: change this to newer version of Eclipse when appropriate -->
                   <property name="eclipse.version" value="Eclipse 4.4.0 (Luna R)"/>
-                  <!-- TODO: change this to https://devstudio.jboss.com/updates/8.0/ -->
-                  <property name="jbds.update.site" value="https://devstudio.jboss.com/updates/8.0-development/"/>
+                  <!-- TODO: change this to https://devstudio.redhat.com/updates/8.0/ -->
+                  <property name="jbds.update.site" value="https://devstudio.redhat.com/updates/8.0-development/"/>
                   <property name="eap.version" value="${eapVersion}"/>
 
                   <property name="project.version" value="${project.version}" />

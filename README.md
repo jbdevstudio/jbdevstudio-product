@@ -20,9 +20,9 @@ _Red Hat JBoss Developer Studio_ uses a parent pom, target platform, and Central
 
 _Red Hat JBoss Developer Studio_ is the productization project for [JBoss Tools](http://jboss.org/tools). It can be downloaded in binary form from here: 
 
-* https://devstudio.jboss.com/download/ (current releases)
-* https://devstudio.jboss.com/earlyaccess/ (future releases)
-* https://devstudio.jboss.com/updates/ (update sites)
+* https://devstudio.redhat.com/download/ (current releases)
+* https://devstudio.redhat.com/earlyaccess/ (future releases)
+* https://devstudio.redhat.com/updates/ (update sites)
 
 
 ## Build Red Hat JBoss Developer Studio 

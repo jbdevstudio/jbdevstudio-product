@@ -21,7 +21,7 @@ public class OpenDevstudioHomeHandler extends OpenWithBrowserHandler {
 
 	@Override
 	public String getLocation() {
-		return "http://devstudio.jboss.com";
+		return "http://devstudio.redhat.com";
 	}
 
 }
