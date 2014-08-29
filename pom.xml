@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.jboss.tools</groupId>
     <artifactId>parent</artifactId>
-    <version>4.2.0.CR1-SNAPSHOT</version>
+    <version>4.2.0.CR2-SNAPSHOT</version>
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>product</artifactId>
@@ -144,7 +144,7 @@ Build product features, site, and installers like this:
 
 To replicate a Jenkins CI build, run like this (unified.target and hudson profile require VPN access):
 
-  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.40.0.Beta4-SNAPSHOT -DBUILD_NUMBER=440004 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Djbosstools-site-stream=master
+  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.40.0.CR2-SNAPSHOT -DBUILD_NUMBER=440004 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Djbosstools-site-stream=master
 
 See README.md for information building, installing, contributing, generated artifacts, and more.
 
