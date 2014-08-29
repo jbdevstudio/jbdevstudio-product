@@ -36,5 +36,16 @@
             class="com.jboss.devstudio.core.internal.properties.DevStudioPropertiesProvider"
             priority="500">
          </propertiesProvider>
-   </extension>   
+   </extension>
+
+    <extension
+          point="org.jboss.tools.central.iuFamilies">
+       <iuFamily
+             familyId="earlyaccess"
+             label="Early Access"
+             listingFile="earlyaccess.properties"
+             urlKey="jboss.discovery.earlyaccess.list.url">
+       </iuFamily>
+    </extension>
+
 </plugin>
