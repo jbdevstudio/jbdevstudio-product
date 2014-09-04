@@ -36,6 +36,8 @@
   <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.common.jdt.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>  
   
   <requires>
     <import plugin="org.eclipse.emf.ecore" />

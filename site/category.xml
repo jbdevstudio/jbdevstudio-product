@@ -15,6 +15,10 @@
     <category name="AdditionalTools" />
     <category name="MobileTools"/>
   </feature>
+  <feature id="org.jboss.tools.jst.jsdt.feature">
+    <category name="WebTools" />
+    <category name="MobileTools"/>
+  </feature>
   <!-- JBDS-3079 move to Central TP <feature id="org.jboss.tools.vpe.cordovasim.feature"><category name="AdditionalTools" /><category name="MobileTools"/></feature> -->
   <feature id="org.jboss.tools.vpe.browsersim.feature">
     <category name="CoreTools" />
