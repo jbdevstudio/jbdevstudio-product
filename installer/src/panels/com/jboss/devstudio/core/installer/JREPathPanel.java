@@ -32,6 +32,10 @@ import com.izforge.izpack.util.OsVersion;
 
 public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
+	private static final String VARN_JAVA_HOME = "JAVA_HOME";
+
+	private static final String JAVA_APPLET_PLUGIN = "JavaAppletPlugin.plugin";
+
 	private static final long serialVersionUID = 1256443616359329172L;
 
 	public static final String DATA_MODEL_VAR = "DATA_MODEL";
@@ -167,7 +171,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
 	public boolean isValidated() {
 		if(rb1.isSelected()) {
- 			idata.setVariable(getVariableName(), new File(idata.getVariable("JAVA_HOME")).getPath());
+ 			idata.setVariable(getVariableName(), new File(idata.getVariable(VARN_JAVA_HOME)).getPath());
        		} else {
                 	idata.setVariable(getVariableName(), pathSelectionPanel.getPath());
       		}
@@ -179,7 +183,8 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         super.panelActivate();
         String chosenPath = idata.getVariable(getVariableName());
         if (chosenPath == null || "".equals(chosenPath)) {
-        	File javaHome = new File(idata.getVariable("JAVA_HOME"));
+        	File javaHome = getDefaultJava7Location(idata.getVariable(VARN_JAVA_HOME));
+        	idata.setVariable(VARN_JAVA_HOME,javaHome.getAbsolutePath());
         	// This case is for starting installer with jdk/bin/java under any platform
         	Properties props = getJavaPlatformProperties(javaHome.getAbsolutePath(), new String[2]);
         	if("jre".equals(javaHome.getName())) {
@@ -189,7 +194,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         		File java = new File(bin,"java" + ext);
         		File javac = new File(bin,"javac" + ext);
         		if(javac.canRead() && java.canRead()) {
-        			idata.setVariable("JAVA_HOME",parentFolder.getAbsolutePath());
+        			idata.setVariable(VARN_JAVA_HOME,parentFolder.getAbsolutePath());
         		}
         	} else if(OsVersion.IS_WINDOWS && javaHome.getName().matches("jre\\d")) {
         		// try to discover windows jdk
@@ -202,7 +207,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
             		File java = new File(bin,"java.exe");
             		File javac = new File(bin,"javac.exe");
             		if(java.canRead() && javac.canRead()) {
-            			idata.setVariable("JAVA_HOME",jdkLocation.getAbsolutePath());
+            			idata.setVariable(VARN_JAVA_HOME,jdkLocation.getAbsolutePath());
             		}
         		}
         	}
@@ -220,7 +225,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         	String chosenPath="";
             chosenPath = idata.getVariable(getVariableName());
             if(chosenPath == null || "".equals(chosenPath))
-            	chosenPath = new File(idata.getVariable("JAVA_HOME")).getPath();
+            	chosenPath = new File(idata.getVariable(VARN_JAVA_HOME)).getPath();
         	pathSelectionPanel.setPath(chosenPath);
         }
         
@@ -270,7 +275,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 	public static int verifyVersion(String jvmLocation, Properties props) {
 		String[] output = new String[2];
 		props.putAll(getJavaPlatformProperties(jvmLocation,output));
-		if (OsVersion.IS_OSX && jvmLocation.contains("JavaAppletPlugin.plugin")) {
+		if (OsVersion.IS_OSX && jvmLocation.contains(JAVA_APPLET_PLUGIN)) {
 			return -6;
 		} else if (isGnuVersion(output)) {
 			return -1;
@@ -326,6 +331,24 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 			jvmInfo = new Properties();
 		}
 		return jvmInfo;
+	}
+	
+	public static File getDefaultJava7Location(String izPackDefaultJVM) {
+		if (OsVersion.IS_OSX && izPackDefaultJVM.contains(JAVA_APPLET_PLUGIN)) {
+			String[] params = { "/usr/libexec/java_home", "-v",
+					"1." + JREPathPanel.minVersion };
+			String[] output = new String[2];
+			FileExecutor fe = new FileExecutor();
+			Debug.trace(params[0] + " " + params[1]);
+			fe.executeCommand(params, output);
+			Debug.trace(output[0]);
+			File location = new File(output[0].trim());
+			if (location.canRead()) {
+				return location;
+			}
+		}
+
+		return new File(izPackDefaultJVM);
 	}
 
 	public boolean isArchSupported(String arch) {
