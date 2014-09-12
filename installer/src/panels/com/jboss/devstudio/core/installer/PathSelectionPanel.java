@@ -19,7 +19,6 @@ import com.izforge.izpack.gui.LayoutConstants;
 import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.IzPanel;
 import com.izforge.izpack.installer.LayoutHelper;
-import com.izforge.izpack.util.OsVersion;
 
 /**
  * This is a sub panel which contains a text field and a browse button for path selection. This is
@@ -171,8 +170,11 @@ public class PathSelectionPanel extends JPanel implements ActionListener, Layout
             final String action = parent.getInstallerFrame().langpack.getString(selectKey);
             // Shows it
             if (fc.showDialog(this,action) == JFileChooser.APPROVE_OPTION) {
-                String path = OsVersion.IS_OSX ? fc.getCurrentDirectory().getAbsolutePath() 
-                		: fc.getSelectedFile().getAbsolutePath();
+            	File selectedFile = fc.getSelectedFile();
+            	if(!selectedFile.exists()) {
+					selectedFile = selectedFile.getParentFile();
+				}
+                String path = selectedFile.getAbsolutePath();
                 textField.setText(path);
             }
 
