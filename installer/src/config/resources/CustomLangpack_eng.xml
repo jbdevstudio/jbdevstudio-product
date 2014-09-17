@@ -16,6 +16,7 @@
     <str id="PathInputPanel.badVersion" txt="The chosen directory contains an unsupported version of Java."/>
     <str id="PathInputPanel.badVersion2" txt="JBoss Developer Studio does not work with gij java."/>
     <str id="PathInputPanel.badVersion3" txt="JBoss Developer Studio does not work with selected version of Java."/>
+    <str id="PathInputPanel.badVersion4" txt="JBoss Developer Studio does not work with Java Applet Plug-in."/>
     <str id="PathInputPanel.empty" txt="You must select a Java VM home directory."/>
     <str id="PathInputPanel.summaryCaption" txt="Installation path:" />    
     <str id="JREPathPanel.summaryCaption" txt="Java VM path:"/>

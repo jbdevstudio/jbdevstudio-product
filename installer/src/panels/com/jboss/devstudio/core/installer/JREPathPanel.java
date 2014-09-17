@@ -412,6 +412,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
     public void change(){
     	pathSelectionPanel.removeChangeListener();
     	messageLabel.setText("");
+		messageLabel.setForeground(Color.black);
     	messageLabelJdk.setText("");
     	if(!pathExists()) {
     		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("wrongPath.title", "JREPathPanel")));
@@ -421,26 +422,28 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
     		int status = updateJava(false);
     		if (status == 0 && (OsVersion.IS_WINDOWS || OsVersion.IS_OSX) && option2.isSelected()) {
         		messageLabel.setText(parent.langpack.getString("JREPathPanel.VPEdoesNotSupportJava64.title"));
-            	messageLabel.setForeground(Color.black);
             	parent.unlockNextButton();
     		} else if(status == 0) {
     			parent.unlockNextButton();
        		} else if(status == -2){
         		messageLabel.setText("<html><p>This JVM was not tested with JBoss Developer Studio.<br>It is not guaranteed to work.</p></html>");
-        		messageLabel.setForeground(Color.black);
         		parent.unlockNextButton();
         	} else if(status == -1){
         		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));
         		messageLabel.setForeground(Color.red);
         		parent.lockNextButton();
-        	} else if(status == -3 || status == -4 || status == -5 || status == -6){
+        	} else if(status == -3 || status == -4 || status == -5){
         		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion3", "PathInputPanel")));
+        		messageLabel.setForeground(Color.red);
+        		parent.lockNextButton();
+        	} else if (status == -6) {
+        		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion4", "PathInputPanel")));
         		messageLabel.setForeground(Color.red);
         		parent.lockNextButton();
         	}
     		// Verify if selected runtime is jre and show warning
     		File javacLocation = new File(idata.getVariable(getVariableName()),"bin/javac" + (OsVersion.IS_WINDOWS? ".exe":""));
-    		if(!javacLocation.canRead()) {
+    		if(!javacLocation.canRead() && !messageLabel.getForeground().equals(Color.red)) {
     			messageLabelJdk.setText("<html><p>Chosen Java VM is a Java Runtime only, it will run Developer Studio but it is recommended to use a Java SDK.</p></html>");
     			messageLabelJdk.setForeground(Color.black);
     		}
