@@ -20,12 +20,12 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>custom-rule</groupId>
-	<artifactId>custom-rule-sample</artifactId>
+	<groupId>com.jboss.devstudio</groupId>
+	<artifactId>ParentPomVersionCheckRule</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0</version>
-	<name>My Custom Rule</name>
-	<description>This is my custom rule.</description>
+	<version>0.1</version>
+	<name>ParentPomVersionCheckRule</name>
+	<description>Checks if JBT upstream parent pom is Final and fails if no -DBUILD_ALIAS=GA override provided.</description>
 	<properties>
 	  <api.version>1.0-beta-1</api.version>
 	  <maven.version>2.0.9</maven.version>

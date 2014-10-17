@@ -20,10 +20,17 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-enforcer-plugin-sample-usage</artifactId>
-    <version>1</version>
+    <groupId>com.jboss.devstudio</groupId>
+    <artifactId>ParentPomVersionCheck</artifactId>
+    <version>0.1</version>
     <packaging>jar</packaging>
+
+   <parent>
+    <groupId>org.jboss.tools</groupId>
+    <artifactId>parent</artifactId>
+    <version>4.2.0.Final-SNAPSHOT</version>
+  </parent>
+
     <build>
         <plugins>
             <plugin>
@@ -32,9 +39,9 @@
                 <version>1.0-beta-1</version>
                 <dependencies>
                     <dependency>
-                        <groupId>custom-rule</groupId>
-                        <artifactId>custom-rule-sample</artifactId>
-                        <version>1.0</version>
+                        <groupId>com.jboss.devstudio</groupId>
+                        <artifactId>ParentPomVersionCheckRule</artifactId>
+                        <version>0.1</version>
                     </dependency>
                 </dependencies>
                 <executions>
@@ -42,9 +49,9 @@
                         <id>enforce</id>
                         <configuration>
                             <rules>
-                                <myCustomRule implementation="org.apache.maven.enforcer.rule.MyCustomRule">
-                                    <shouldIfail>false</shouldIfail>
-                                </myCustomRule>
+                                <ParentPomVersionCheckRule implementation="com.jboss.devstudio.enforcer.rule.ParentPomVersionCheckRule">
+                                    <shouldIfail>true</shouldIfail>
+                                </ParentPomVersionCheckRule>
                             </rules>
                         </configuration>
                         <goals>

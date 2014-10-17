@@ -1,4 +1,4 @@
-package org.apache.maven.enforcer.rule;
+package com.jboss.devstudio.enforcer.rule;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -33,7 +33,7 @@ import org.codehaus.plexus.component.repository.exception.ComponentLookupExcepti
 /**
  * @author <a href="mailto:brianf@apache.org">Brian Fox</a>
  */
-public class MyCustomRule
+public class ParentPomVersionCheckRule
     implements EnforcerRule
 {
     /**
@@ -65,9 +65,13 @@ public class MyCustomRule
             log.info( "Retrieved Session: " + session );
             log.info( "Retrieved Resolver: " + resolver );
 
-            if ( this.shouldIfail )
+            // retrieve the version of the parent pom; if it contains .Final then JBDS builds need to override with -DBUILD_ALIAS=GA
+            String parentVersion = (String) helper.evaluate( "${project.parent.version}" );
+            String BUILD_ALIAS = (String) helper.evaluate( "${BUILD_ALIAS}" );
+
+            if ( this.shouldIfail && parentVersion.indexOf(".Final")>0 && BUILD_ALIAS.equals("Final"))
             {
-                throw new EnforcerRuleException( "Failing because my param said so." );
+                throw new EnforcerRuleException( " ** Parent pom version ("+parentVersion+") contains .Final; must set -DBUILD_ALIAS=GA **");
             }
         }
         catch ( ComponentLookupException e )
