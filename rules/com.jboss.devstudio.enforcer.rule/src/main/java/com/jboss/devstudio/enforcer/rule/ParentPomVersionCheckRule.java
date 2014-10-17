@@ -69,7 +69,7 @@ public class ParentPomVersionCheckRule
             String parentVersion = (String) helper.evaluate( "${project.parent.version}" );
             String BUILD_ALIAS = (String) helper.evaluate( "${BUILD_ALIAS}" );
 
-            if ( this.shouldIfail && parentVersion.indexOf(".Final")>0 && BUILD_ALIAS.equals("Final"))
+            if ( this.shouldIfail && parentVersion.indexOf(".Final")>0 && !BUILD_ALIAS.equals("GA"))
             {
                 throw new EnforcerRuleException( " ** Parent pom version ("+parentVersion+") contains .Final; must set -DBUILD_ALIAS=GA **");
             }

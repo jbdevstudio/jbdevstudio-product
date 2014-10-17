@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  * Licensed to the Apache Software Foundation (ASF) under one
+  * or more contributor license agreements.  See the NOTICE file
+  * distributed with this work for additional information
+  * regarding copyright ownership.  The ASF licenses this file
+  * to you under the Apache License, Version 2.0 (the
+  * "License"); you may not use this file except in compliance
+  * with the License.  You may obtain a copy of the License at
+  *
+  * http://www.apache.org/licenses/LICENSE-2.0
+  *
+  * Unless required by applicable law or agreed to in writing,
+  * software distributed under the License is distributed on an
+  * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  * KIND, either express or implied.  See the License for the
+  * specific language governing permissions and limitations
+  * under the License. 
+  *
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jboss.devstudio</groupId>
+    <artifactId>ParentPomVersionCheck</artifactId>
+    <version>0.1</version>
+    <packaging>jar</packaging>
+
+   <parent>
+    <groupId>org.jboss.tools</groupId>
+    <artifactId>parent</artifactId>
+    <version>4.2.0.Final-SNAPSHOT</version>
+  </parent>
+
+  <build>
+    <plugins>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-enforcer-plugin</artifactId>
+          <version>1.0-beta-1</version>
+          <dependencies>
+              <dependency>
+                  <groupId>com.jboss.devstudio</groupId>
+                  <artifactId>ParentPomVersionCheckRule</artifactId>
+                  <version>0.1</version>
+              </dependency>
+          </dependencies>
+          <executions>
+              <execution>
+                  <id>enforce</id>
+                  <configuration><rules>
+                        <ParentPomVersionCheckRule implementation="com.jboss.devstudio.enforcer.rule.ParentPomVersionCheckRule"><shouldIfail>true</shouldIfail></ParentPomVersionCheckRule>
+                  </rules></configuration>
+                  <goals>
+                      <goal>enforce</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <!-- 
+      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.3.0, which is not a public URL (unlike 6.1.0.Alpha).
+    -->
+    <profile>
+      <id>hudson</id>
+      <properties>
+        <eapVersion>6.3.0</eapVersion>
+        <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.3.0/jboss-eap-6.3.0.zip</eapURL>
+        <eapMD5>f1ce6b83cd117bc612e9d15ff64575dd</eapMD5>
+        <eapRootFolder>jboss-eap-6.3</eapRootFolder>
+      </properties>
+    </profile>
+
+    <!-- 
+        Uncomment this profile to optionally enable a target platform site instead of (or in addition to) the default target platform. 
+        Use -Dno-target-platform if you want to disable the default target platform in favour of a specified target platform site
+          mvn clean install -Dno-target-platform \
+          -Djbosstools-target-site=file:///path/to/jbosstools-target-platforms/jbdevstudio/multiple/target/jbdevstudio-multiple.target.repo/
+    -->
+    <!-- <profile>
+      <id>target-site</id>
+      <activation>
+        <property>
+          <name>jbosstools-target-site</name>
+        </property>
+      </activation>
+      <repositories>
+        <repository>
+          <id>jbosstools-target-site</id>
+          <layout>p2</layout>
+          <url>${jbosstools-target-site}</url>
+        </repository>
+      </repositories>
+    </profile> -->
+  </profiles>
+
+  <repositories>
+    <repository>
+      <id>jboss-releases</id>
+      <name>JBoss Releases Maven Repository</name>
+      <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+    <repository>
+      <id>jboss-snapshots-repository</id>
+      <name>JBoss Snapshots Repository</name>
+      <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <!-- since JBT site is no longer set in parent pom, must explicitly define it here -->
+    <repository>
+      <id>jbosstools-site</id>
+      <layout>p2</layout>
+      <url>${jbosstools-site}</url>
+    </repository>    
+  </repositories>
+
+  <!-- Additional m2 repos to resolve things like org.eclipse.tycho:tycho-maven-plugin:0.16.0-SNAPSHOT -->
+  <!-- JBoss Nexus repos are also added, but in settings.xml -->
+  <pluginRepositories>
+    <pluginRepository>
+      <id>sonatype-public-grid</id>
+      <url>https://repository.sonatype.org/content/groups/sonatype-public-grid</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>sonatype-public-repository</id>
+      <url>https://oss.sonatype.org/content/groups/public</url>
+    </pluginRepository>
+     <pluginRepository>
+      <id>jboss-releases</id>
+      <name>JBoss Releases Maven Repository</name>
+      <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </pluginRepository>
+    <pluginRepository>
+      <id>jboss-snapshots-repository</id>
+      <name>JBoss Snapshots Repository</name>
+      <url>https://repository.jboss.org/nexus/content/repositories/snapshots/</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
+</project>
