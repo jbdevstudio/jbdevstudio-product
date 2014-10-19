@@ -14,7 +14,6 @@
   <name>JBDS - Product, Installers</name>
   <packaging>pom</packaging>
   <modules>
-    <module>rules</module>
     <module>plugins</module>
     <module>features</module>
     <module>site</module>
@@ -51,23 +50,24 @@
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <version>1.0-beta-1</version>
-          <dependencies>
-              <dependency>
-                  <groupId>com.jboss.devstudio</groupId>
-                  <artifactId>ParentPomVersionCheckRule</artifactId>
-                  <version>0.1</version>
-              </dependency>
-          </dependencies>
+          <version>1.3.1</version>
           <executions>
               <execution>
-                  <id>enforce</id>
-                  <configuration><rules>
-                        <ParentPomVersionCheckRule implementation="com.jboss.devstudio.enforcer.rule.ParentPomVersionCheckRule"><shouldIfail>true</shouldIfail></ParentPomVersionCheckRule>
-                  </rules></configuration>
-                  <goals>
-                      <goal>enforce</goal>
-                  </goals>
+                  <id>enforce-properversion</id>
+		  <goals>
+		    <goal>enforce</goal>
+		  </goals>
+                  <configuration>
+		    <rules>
+                        <requireProperty>
+			  <property>BUILD_ALIAS</property>
+			  <message>BUILD_ALIAS is missing, it must be specificed.</message>
+			  <regex>.*(Alpha|Beta|CR|GA)\d?[a-z]?</regex>
+			  <regexMessage>The BUILD_ALIAS (${BUILD_ALIAS}) is invalid. Must contain either Alpha, Beta, CR or GA + optional postfix.</regexMessage>
+			</requireProperty>
+                  </rules>
+		  <fail>true</fail>
+		  </configuration>
               </execution>
           </executions>
       </plugin>
