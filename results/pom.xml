@@ -15,6 +15,7 @@
   </description>
   <packaging>pom</packaging>
 
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
   <properties>
     <maven.build.timestamp.format>'${BUILD_ALIAS}-v'yyyyMMdd-HHmm</maven.build.timestamp.format>
   </properties>
@@ -34,9 +35,11 @@
               <target>
                 <ant antfile="build.xml" target="build" dir="./">
                   <!-- TODO: change this to newer version of Eclipse when appropriate -->
-                  <property name="eclipse.version" value="Eclipse 4.4.0 (Luna R)"/>
-                  <!-- TODO: change this to https://devstudio.redhat.com/updates/8.0/ -->
-                  <property name="jbds.update.site" value="https://devstudio.redhat.com/updates/8.0-development/"/>
+                  <property name="eclipse.version" value="Eclipse 4.4.1 (Luna SR1)"/>
+                  <!-- GA -->
+                  <property name="jbds.update.site" value="https://devstudio.redhat.com/updates/8.0/"/>
+                  <!-- Not GA -->
+                  <!-- <property name="jbds.update.site" value="https://devstudio.redhat.com/updates/8.0-development/"/> -->
                   <property name="eap.version" value="${eapVersion}"/>
 
                   <property name="project.version" value="${project.version}" />
