@@ -15,7 +15,6 @@
   </description>
   <packaging>pom</packaging>
 
-		<nature>org.eclipse.m2e.core.maven2Nature</nature>
   <properties>
     <maven.build.timestamp.format>'${BUILD_ALIAS}-v'yyyyMMdd-HHmm</maven.build.timestamp.format>
   </properties>
