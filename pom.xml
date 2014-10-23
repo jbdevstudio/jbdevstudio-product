@@ -61,8 +61,8 @@
 		    <rules>
                         <requireProperty>
 			  <property>BUILD_ALIAS</property>
-			  <message>BUILD_ALIAS is missing, it must be specificed.</message>
-			  <regex>.*(Alpha|Beta|CR|GA)\d?[a-z]?</regex>
+			  <message>BUILD_ALIAS is missing, it must be specified.</message>
+			  <regex>.*((Alpha|Beta|CR)\d+[a-z]?)|GA</regex>
 			  <regexMessage>The BUILD_ALIAS (${BUILD_ALIAS}) is invalid. Must contain either Alpha, Beta, CR or GA + optional postfix.</regexMessage>
 			</requireProperty>
                   </rules>
