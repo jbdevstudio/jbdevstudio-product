@@ -6,7 +6,7 @@
       provider-name="%providerName"
       plugin="com.jboss.devstudio.core">
 
-   <description url="http://www.redhat.com/developer_studio/Getting_Started_Single/">
+   <description url="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Developer_Studio/">
       %description
    </description>
 
