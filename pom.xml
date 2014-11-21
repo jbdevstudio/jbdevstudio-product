@@ -24,6 +24,7 @@
   </modules>
   <!-- Should you want to build one locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.40.x/ -->
   <properties>
+    <devstudio.version>8.0.1.${BUILD_ALIAS}</devstudio.version>
     <tpc.group>jbdevstudio</tpc.group>
     <!-- Do not hardcode this value, or we'll get GA-named bits when we do CRx maintenance builds. Instead set this flag in the job config for GA builds ONLY
       <BUILD_ALIAS>GA</BUILD_ALIAS> 
@@ -57,20 +58,20 @@
           <executions>
               <execution>
                   <id>enforce-properversion</id>
-		  <goals>
-		    <goal>enforce</goal>
-		  </goals>
+                  <goals>
+                    <goal>enforce</goal>
+                  </goals>
                   <configuration>
-		    <rules>
-                        <requireProperty>
-			  <property>BUILD_ALIAS</property>
-			  <message>BUILD_ALIAS is missing, it must be specified.</message>
-			  <regex>.*((Alpha|Beta|CR)\d+[a-z]?)|GA</regex>
-			  <regexMessage>The BUILD_ALIAS (${BUILD_ALIAS}) is invalid. Must contain either Alpha, Beta, CR or GA + optional postfix.</regexMessage>
-			</requireProperty>
-                  </rules>
-		  <fail>true</fail>
-		  </configuration>
+                    <rules>
+                      <requireProperty>
+                        <property>BUILD_ALIAS</property>
+                        <message>BUILD_ALIAS is missing, it must be specified.</message>
+                        <regex>.*((Alpha|Beta|CR)\d+[a-z]?)|GA</regex>
+                        <regexMessage>The BUILD_ALIAS (${BUILD_ALIAS}) is invalid. Must contain either Alpha, Beta or CR with postfix, or be GA.</regexMessage>
+                      </requireProperty>
+                    </rules>
+                    <fail>true</fail>
+                  </configuration>
               </execution>
           </executions>
       </plugin>
