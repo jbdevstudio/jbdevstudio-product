@@ -46,10 +46,29 @@
     <eapMD5>21ab4c71230ca9fd311c265be24b6505</eapMD5>
     <eapRootFolder>jboss-eap-6.1</eapRootFolder>
     <buildEAPBundle>false</buildEAPBundle>
+    <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
   </properties>
 
   <build>
     <plugins>
+      <!-- get major.minor.incremental from root pom, then use devstudio.version = ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS} -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.9.1</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <id>parse-version</id>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+            <configuration>
+              <versionString>${project.version}</versionString>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
