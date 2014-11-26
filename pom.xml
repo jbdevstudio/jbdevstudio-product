@@ -25,6 +25,9 @@
   <!-- Should you want to build one locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.40.x/ -->
   <properties>
     <tpc.group>jbdevstudio</tpc.group>
+    <!-- Do not hardcode this value, or we'll get GA-named bits when we do CRx maintenance builds. Instead set this flag in the job config for GA builds ONLY
+      <BUILD_ALIAS>GA</BUILD_ALIAS> 
+    -->
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
@@ -43,10 +46,29 @@
     <eapMD5>21ab4c71230ca9fd311c265be24b6505</eapMD5>
     <eapRootFolder>jboss-eap-6.1</eapRootFolder>
     <buildEAPBundle>false</buildEAPBundle>
+    <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
   </properties>
 
   <build>
     <plugins>
+      <!-- get major.minor.incremental from root pom, then use devstudio.version = ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS} -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.9.1</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <id>parse-version</id>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+            <configuration>
+              <versionString>${project.version}</versionString>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
