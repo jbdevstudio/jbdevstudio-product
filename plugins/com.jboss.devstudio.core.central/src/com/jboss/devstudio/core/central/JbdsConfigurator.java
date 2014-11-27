@@ -10,7 +10,7 @@
  ************************************************************************************/
 package com.jboss.devstudio.core.central;
 
-import org.jboss.tools.project.examples.configurators.DefaultJBossCentralConfigurator;
+import org.jboss.tools.central.internal.DefaultJBossCentralConfigurator;
 
 /**
  * 
