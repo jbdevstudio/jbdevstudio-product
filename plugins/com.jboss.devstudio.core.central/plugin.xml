@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.4"?>
 <plugin>
-
 	<extension
-         point="org.jboss.tools.project.examples.configurators">
+         point="org.jboss.tools.central.configurators">
       <configurator
             class="com.jboss.devstudio.core.central.JbdsConfigurator"
             id="com.jboss.devstudio.core.central.jbdsConfigurator">

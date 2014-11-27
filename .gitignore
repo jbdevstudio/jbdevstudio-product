@@ -1,5 +1,6 @@
 workspace
 jbds-echoproperties.txt
+.DS_Store
 target*/
 bin
 .settings
