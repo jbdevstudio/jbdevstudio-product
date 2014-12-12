@@ -13,7 +13,6 @@
   <includes id="org.jboss.tools.foundation.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.stacks.core.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.runtime.seam.detector.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/> 
   <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.jmx.feature" version="0.0.0"/> 
@@ -21,9 +20,7 @@
   <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/> 
   <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/> 
   <includes id="org.hibernate.eclipse.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.seam.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.cdi.seam.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.ws.feature" version="0.0.0"/> 
@@ -71,7 +68,6 @@
     <import feature="org.jboss.tools.maven.jdt.feature"/>
     <import feature="org.jboss.tools.maven.portlet.feature"/>
     <import feature="org.jboss.tools.maven.project.examples.feature"/>
-    <import feature="org.jboss.tools.maven.seam.feature"/>
     <import feature="org.jboss.tools.maven.sourcelookup.feature"/>
 
     <import plugin="org.eclipse.jdt.doc.user"/>
