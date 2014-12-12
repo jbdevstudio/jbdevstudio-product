@@ -37,16 +37,7 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <feature id="org.jboss.tools.seam.feature">
-    <category name="CoreTools" />
-    <category name="WebTools" />
-  </feature>
   <feature id="org.jboss.tools.cdi.feature">
-    <category name="CoreTools" />
-    <category name="WebTools" />
-    <category name="GeneralTools" />
-  </feature>
-  <feature id="org.jboss.tools.cdi.seam.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
     <category name="GeneralTools" />
@@ -134,10 +125,6 @@
     <category name="CoreTools" />
     <category name="MavenTools" />
   </feature>
-  <feature id="org.jboss.tools.maven.seam.feature">
-    <category name="CoreTools" />
-    <category name="MavenTools"/>
-  </feature>
   <feature id="org.jboss.tools.maven.sourcelookup.feature">
     <category name="CoreTools" />
     <category name="MavenTools" />
@@ -167,10 +154,6 @@
 
   <feature id="org.jboss.tools.runtime.core.feature">
     <category name="CoreTools" />
-  </feature>
-  <feature id="org.jboss.tools.runtime.seam.detector.feature">
-    <category name="CoreTools" />
-    <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature">
     <category name="CoreTools" />
@@ -236,6 +219,16 @@
   <feature id="org.sonatype.m2e.egit.feature"/>
   <feature id="org.sonatype.m2e.mavenarchiver.feature"/>
 
+  <!-- JBDS-3286 remove seam from JBDS default install but leave it UNCATEGORIZED in the update site so it's accessible from Central -->
+  <feature id="org.jboss.tools.seam.feature"/>
+  <feature id="org.jboss.tools.cdi.seam.feature"/>
+  <feature id="org.jboss.tools.maven.seam.feature"/>
+  <feature id="org.jboss.tools.runtime.seam.detector.feature"/>
+  <feature id="org.jboss.tools.seam.feature.source"/>
+  <feature id="org.jboss.tools.cdi.seam.feature.source"/>
+  <feature id="org.jboss.tools.maven.seam.feature.source"/>
+  <feature id="org.jboss.tools.runtime.seam.detector.feature.source"/>
+
   <!-- ####### -->
   <!-- SOURCES : DO NOT CATEGORIZE -->
   <!-- ####### -->
@@ -250,9 +243,7 @@
   <feature id="org.jboss.tools.jsf.feature.source"/>
   <feature id="org.jboss.tools.xulrunner.feature.source"/>
   <feature id="org.mozilla.xulrunner.feature.source"/>
-  <feature id="org.jboss.tools.seam.feature.source"/>
   <feature id="org.jboss.tools.cdi.feature.source"/>
-  <feature id="org.jboss.tools.cdi.seam.feature.source"/>
   <feature id="org.jboss.tools.cdi.deltaspike.feature.source"/>
   <feature id="org.jboss.tools.jmx.feature.source"/>
   <feature id="org.jboss.ide.eclipse.as.feature.source"/>
@@ -273,10 +264,8 @@
   <feature id="org.jboss.tools.maven.jdt.feature.source"/>
   <feature id="org.jboss.tools.maven.portlet.feature.source"/>
   <feature id="org.jboss.tools.maven.project.examples.feature.source"/>
-  <feature id="org.jboss.tools.maven.seam.feature.source"/>
   <feature id="org.jboss.tools.maven.sourcelookup.feature.source"/>
   <feature id="org.jboss.tools.runtime.core.feature.source"/>
-  <feature id="org.jboss.tools.runtime.seam.detector.feature.source"/>
   <feature id="org.jboss.tools.livereload.feature.source"/>
   <feature id="org.jboss.tools.usage.feature.source"/>
   <feature id="org.jboss.tools.common.jdt.feature.source"/>
@@ -312,13 +301,13 @@
 
   <!-- only in JBT
   <category-def name="CoreTools" label="* Abridged JBoss Tools">
-    <description>Contains most of the JBoss Tools features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web and Seam Development.</description>
+    <description>Contains most of the JBoss Tools features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web Development.</description>
   </category-def>
   <category-def name="AdditionalTools" label="* Additional JBoss Tools">
     <description>Contains the rest of the JBoss Tools features, not included in Abridged JBoss Tools category. This category includes miscellaneous, new, experimental and incubating features. See individual feature descriptions for details.</description>
   </category-def>
   <category-def name="ReportTools" label="JBoss Business Intelligence, Reporting and Charting">
-    <description>Business Intelligence, Reporting and Charting. Use these if you plan to integrate Hibernate or Seam with Eclipse BIRT.</description>
+    <description>Business Intelligence, Reporting and Charting. Use these if you plan to integrate Hibernate with Eclipse BIRT.</description>
   </category-def>
   -->
 
@@ -327,14 +316,14 @@
     <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Luna 4.4.</description>
   </category-def>
   <category-def name="CoreTools" label="* JBoss Developer Studio 8.0 - Core">
-    <description>Contains most of the JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web and Seam Development.</description>
+    <description>Contains most of the JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web Development.</description>
   </category-def>
   <category-def name="AdditionalTools" label="* JBoss Developer Studio 8.0 - Extras">
     <description>Contains the rest of the JBoss Developer Studio features, not included in Core category. This category includes miscellaneous, new, experimental and incubating features. See individual feature descriptions for details.</description>
   </category-def>
   
   <category-def name="WebTools" label="JBoss Web and Java EE Development">
-    <description>Tools to help create web and enterprise applications, using JSF, Facelets, Seam, Hibernate/JPA, CSS, Webservices and more.</description>
+    <description>Tools to help create web and enterprise applications, using JSF, Facelets, Hibernate/JPA, CSS, Webservices and more.</description>
   </category-def>
 
   <category-def name="MobileTools" label="JBoss Mobile Development">
