@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<feature id="com.jboss.devstudio.core.feature" label="%featureName" version="8.0.1.qualifier" provider-name="%providerName" plugin="com.jboss.devstudio.core">
+<feature id="com.jboss.devstudio.core.feature" label="%featureName" version="8.0.2.qualifier" provider-name="%providerName" plugin="com.jboss.devstudio.core">
   <description url="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Developer_Studio/">%description</description>
   <copyright>%copyright</copyright>
   <license url="%licenseURL">%license</license>
