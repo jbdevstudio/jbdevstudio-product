@@ -41,6 +41,10 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
+  <feature id="org.jboss.tools.batch.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools" />
+  </feature>
   <feature id="org.jboss.tools.cdi.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
@@ -251,6 +255,7 @@
   <feature id="org.jboss.tools.xulrunner.feature.source"/>
   <feature id="org.mozilla.xulrunner.feature.source"/>
   <feature id="org.jboss.tools.seam.feature.source"/>
+  <feature id="org.jboss.tools.batch.feature.source"/>
   <feature id="org.jboss.tools.cdi.feature.source"/>
   <feature id="org.jboss.tools.cdi.seam.feature.source"/>
   <feature id="org.jboss.tools.cdi.deltaspike.feature.source"/>

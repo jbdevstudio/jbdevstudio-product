@@ -20,6 +20,7 @@
   <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/> 
   <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/> 
   <includes id="org.hibernate.eclipse.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/> 
