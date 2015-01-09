@@ -33,7 +33,9 @@
     
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <central.tpc.version>4.41.1.Final</central.tpc.version>
-    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/${central.tpc.version}/jbtcentraltarget-${central.tpc.version}.zip</JBOSS_CENTRAL_ZIP>
+    <!-- note: sometimes the URL needs to include /static/ and sometimes it includes -SNAPSHOT, too 
+    eg., http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.41.1.Final/jbtcentraltarget-4.41.1.Final-SNAPSHOT.zip -->
+    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/${central.tpc.version}/jbtcentraltarget-${central.tpc.version}-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
 
     <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
     <!-- <jbosstools-site-stream>master</jbosstools-site-stream> -->
