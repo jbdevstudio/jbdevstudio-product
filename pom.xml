@@ -35,7 +35,7 @@
     <central.tpc.version>4.41.2.Final-SNAPSHOT</central.tpc.version>
     <!-- note: sometimes the URL needs to include /static/ and sometimes it includes -SNAPSHOT, too 
     eg., http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.41.1.Final/jbtcentraltarget-4.41.1.Final-SNAPSHOT.zip -->
-    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/${central.tpc.version}/jbtcentraltarget-${central.tpc.version}-SNAPSHOT.zip</JBOSS_CENTRAL_ZIP>
+    <JBOSS_CENTRAL_ZIP>http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/${central.tpc.version}/jbtcentraltarget-${central.tpc.version}.zip</JBOSS_CENTRAL_ZIP>
 
     <!-- jbosstools-site-stream is set in parent pom = 4.2.luna / master -->
     <!-- <jbosstools-site-stream>master</jbosstools-site-stream> -->
