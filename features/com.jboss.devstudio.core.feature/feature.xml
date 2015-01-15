@@ -35,8 +35,10 @@
   <includes id="org.jboss.tools.common.jdt.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>  
-  
+  <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>
+
+  <plugin id="org.jboss.tools.discovery.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+
   <requires>
     <import plugin="org.eclipse.emf.ecore" />
     <import plugin="org.eclipse.emf.ecore.xmi" />

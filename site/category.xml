@@ -110,6 +110,9 @@
     <category name="CoreTools" />
     <category name="GeneralTools" />
   </feature>
+  <feature id="org.jboss.tools.project.examples.seam.feature">
+    <category name="GeneralTools" />
+  </feature>
   <feature id="org.jboss.tools.maven.feature">
     <category name="CoreTools" />
     <category name="MavenTools" />
@@ -191,6 +194,8 @@
   <feature id="org.jboss.tools.xulrunner.feature"/>
   <feature id="org.mozilla.xulrunner.feature"/>
 
+  <bundle id="org.jboss.tools.discovery.core"/>
+
   <!-- only in JBT
   <feature id="org.jboss.tools.arquillian.feature">
     <category name="AdditionalTools" />
@@ -271,6 +276,7 @@
   <feature id="org.jboss.tools.portlet.feature.source"/>
   <feature id="org.jboss.tools.forge.feature.source"/>
   <feature id="org.jboss.tools.project.examples.feature.source"/>
+  <feature id="org.jboss.tools.project.examples.seam.feature.source"/>
   <feature id="org.jboss.tools.maven.feature.source"/>
   <!-- JBIDE-13926, JBIDE-13928 Do not include source feature <feature id="org.jboss.tools.maven.apt.feature.source"/> -->
   <feature id="org.jboss.tools.maven.cdi.feature.source"/>
@@ -297,6 +303,8 @@
   <!-- JBDS-3079 remove <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/> -->
   <!-- JBIDE-16960 remove <feature id="org.jboss.tools.maven.gwt.feature.source"/> -->
   <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature.source"/>
+
+  <bundle id="org.jboss.tools.discovery.core.source"/>
 
   <!-- only in JBT
   <feature id="org.jboss.tools.arquillian.feature.source"/>
