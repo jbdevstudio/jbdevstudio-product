@@ -62,7 +62,8 @@ public class DiskSpaceCheckPanel extends IzPanel
          Pack p = (Pack) iter.next();
          totalSize += p.nbytes;
       }
-      return totalSize;
+      // JBDS-3319 because packed size is less than expanded size on disk, add a 400M buffer to the size of the install
+      return totalSize + (400 * 1024 * 1024);
    }
 
    public String getSummaryBody()
