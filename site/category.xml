@@ -111,6 +111,10 @@
     <category name="CoreTools"/>
     <category name="WebTools" />
   </feature>
+  <feature id="org.jboss.tools.forge.m2e.feature">
+    <category name="CoreTools"/>
+    <category name="WebTools" />
+  </feature>
   <feature id="org.jboss.tools.project.examples.feature">
     <category name="CoreTools" />
     <category name="GeneralTools" />
@@ -280,6 +284,7 @@
   <feature id="org.jboss.tools.ws.jaxrs.feature.source"/>
   <feature id="org.jboss.tools.portlet.feature.source"/>
   <feature id="org.jboss.tools.forge.feature.source"/>
+  <feature id="org.jboss.tools.forge.m2e.feature.source"/>
   <feature id="org.jboss.tools.project.examples.feature.source"/>
   <feature id="org.jboss.tools.project.examples.seam.feature.source"/>
   <feature id="org.jboss.tools.maven.feature.source"/>
