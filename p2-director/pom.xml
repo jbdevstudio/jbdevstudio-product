@@ -21,7 +21,7 @@
          <plugin>
            <groupId>org.jboss.tools.tycho-plugins</groupId>
            <artifactId>repository-utils</artifactId>
-           <version>${JBossTychoPluginsVersion}</version>
+           <version>${jbossTychoPluginsVersion}</version>
          </plugin>
        </plugins>
   </build>
