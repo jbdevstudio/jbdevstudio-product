@@ -11,22 +11,22 @@
 	<artifactId>com.jboss.devstudio.core.site</artifactId>
 	<packaging>eclipse-repository</packaging>
 
-<build>
-  <plugins>
-    <plugin>
-      <groupId>org.jboss.tools.tycho-plugins</groupId>
-      <artifactId>repository-utils</artifactId>
-      <executions>
-        <execution>
-          <id>generate-full-site</id>
-          <phase>package</phase>
-          <goals>
-            <goal>create-full-site</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
-		<plugin>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.jboss.tools.tycho-plugins</groupId>
+				<artifactId>repository-utils</artifactId>
+				<executions>
+					<execution>
+						<id>generate-full-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>create-full-site</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-publisher-plugin</artifactId>
 				<version>${tychoVersion}</version>
@@ -67,13 +67,13 @@
 							<tasks>
 								<!-- called AFTER generating update site + zip to tweak content -->
 								<ant antfile="build.xml">
-                  <property name="project.version" value="${project.version}" />
-                  <property name="update.site.qualifier" value="${buildQualifier}"/>
-                  <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
-                  <!-- these are needed for generating results.xml -->
-                  <property name="update.site.description" value="${update.site.description}"/>
-                  <property name="TARGET_PLATFORM_VERSION" value="${TARGET_PLATFORM_VERSION}"/>
-                  <property name="TARGET_PLATFORM_VERSION_MAXIMUM" value="${TARGET_PLATFORM_VERSION_MAXIMUM}"/>
+									<property name="project.version" value="${project.version}" />
+									<property name="update.site.qualifier" value="${buildQualifier}"/>
+									<property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
+									<!-- these are needed for generating results.xml -->
+									<property name="update.site.description" value="${update.site.description}"/>
+									<property name="TARGET_PLATFORM_VERSION" value="${TARGET_PLATFORM_VERSION}"/>
+									<property name="TARGET_PLATFORM_VERSION_MAXIMUM" value="${TARGET_PLATFORM_VERSION_MAXIMUM}"/>
 								</ant>
 							</tasks>
 						</configuration>
@@ -119,9 +119,9 @@
 						<version>1.0b2</version>
 					</dependency>
 					<dependency>
-					    <groupId>net.sf.saxon</groupId>
-					    <artifactId>Saxon-HE</artifactId>
-					    <version>9.4</version>
+							<groupId>net.sf.saxon</groupId>
+							<artifactId>Saxon-HE</artifactId>
+							<version>9.4</version>
 					</dependency>
 				</dependencies>
 			</plugin>
