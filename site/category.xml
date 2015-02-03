@@ -30,6 +30,15 @@
     <category name="WebTools" />
     <category name="MobileTools"/>
   </feature>
+
+  <!-- JBIDE-19045 include Tern -->
+  <bundle id="minimal-json"/>
+  <feature id="tern-feature"/>
+  <feature id="tern-jsdt-feature"/>
+  <feature id="tern-server-nodejs-feature"/>
+  <feature id="tern.eclipse.ide.server.nodejs.embed"/>
+  <feature id="tern.eclipse.ide.tools.feature"/>
+
   <feature id="org.jboss.tools.jst.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
