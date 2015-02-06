@@ -11,12 +11,10 @@ import com.izforge.izpack.installer.IzPanel;
 public class UpdatePacksPanel extends IzPanel{
 
 	private static final long serialVersionUID = 1256443616359329170L;
-	   // fix for
-	   //       JBDS-2010 jbdevstudio-product-universal-5.0.0.v201202062217N-H926-Beta1 - during install, 
-	   //                 incorrect disk space requirement displayed
-	   // FIXME: Calculate real size by artifacts.xml is required to have exact number
-	   static final long STUDIO_SIZE = 420*1024L*1024;
 
+	// FIXME: Calculate real size by artifacts.xml to have exact number
+	// JBDS-3319 use a larger default size of 660M instead of 420M (JBDS-2010)
+	static final long STUDIO_SIZE = 660*1024L*1024;
 	
 	public UpdatePacksPanel(InstallerFrame parent, InstallData idata) {
 		super(parent, idata);
