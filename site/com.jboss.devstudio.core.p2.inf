@@ -13,15 +13,6 @@ units.1.requires.1.name=com.jboss.devstudio.core.package
 units.1.requires.1.range=[$version$,$version$]
 units.1.requires.1.greedy=true
 
-# JBDS-2669 support name change from com.jboss.jbds.all to com.jboss.devstudio.core.package :: REMOVE -- this prevents updating JBDS Beta1 to newer version as there's no com.jboss.jbds.all anymore
-#update.id = com.jboss.jbds.all.feature.group
-#update.range = 0.0.0
-#update.severity = 0
-#update.description = Update JBoss Developer Studio (Branded Product) from old feature ID
-
-# JBDS-2389 - make it easier to uninstall JBDS Product Feature :: REMOVE -- this prevents updating JBDS from installer to new version, as there's no eclipse.ini file there
-#instructions.install=\
-#org.eclipse.equinox.p2.touchpoint.natives.copy(source:${installFolder}/eclipse.ini,target:${installFolder}/eclipse.#ini_BEFORE_JBDS,overwrite:true);
 instructions.unconfigure=\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-product);\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:com.jboss.devstudio.core.product);\
@@ -32,7 +23,3 @@ org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:org.eclipse.u
 org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:-showsplash);\
 org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:org.eclipse.platform);
 
-# JBDS-2874 (proposed change, commented out for now) this allows us to update a JBDS product via BYOE feature w/o updating the product (package definition) itself
-#requires.1.namespace = org.eclipse.equinox.p2.iu
-#requires.1.name = com.jboss.devstudio.core.feature.feature.group
-#requires.1.range = [8.0.0, 9.0.0)
