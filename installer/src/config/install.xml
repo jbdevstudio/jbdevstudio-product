@@ -73,8 +73,8 @@
 			src="config/resources/EULA/JBoss-EULA.html" />
 		<res id="HTMLInfoPanel.info"
 			src="config/resources/readme.html" />
-		<res id="installer.langsel.img"
-			src="config/resources/images/logo.png" />
+		<!-- JBDS-3347 this image is never used because the lang selection panel is not used res id="installer.langsel.img"
+			src="config/resources/images/logo.png" /> -->
 		<!--res id="userInputSpec.xml"
 			src="config/resources/userInputSpec.xml" />
 		<res id="userInputLang.xml_eng"
