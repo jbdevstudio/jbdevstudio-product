@@ -73,6 +73,9 @@
     <import feature="org.jboss.tools.maven.project.examples.feature"/>
     <import feature="org.jboss.tools.maven.sourcelookup.feature"/>
 
+    <!-- JBDS-3259 add Mylyn Docs Wikitext feature to enable support for Markdown -->
+    <import feature="org.eclipse.mylyn.wikitext_feature"/>
+
     <import plugin="org.eclipse.jdt.doc.user"/>
     <import plugin="org.eclipse.jst.server.tomcat.core"/>
     <import plugin="org.eclipse.jst.server.tomcat.ui"/>
