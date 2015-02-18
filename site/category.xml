@@ -243,6 +243,10 @@
     <category name="AdditionalTools" />
     <category name="WebTools"/>
   </feature>
+  <feature id="org.jboss.tools.forge.m2e.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools"/>
+  </feature>
   -->
 
   <!-- categorized in JBT; uncategorized in JBDS -->
