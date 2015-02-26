@@ -73,15 +73,8 @@ $java.home = ${java.home}</echo>
     <property name="sourcesZip" value="target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src.zip" />
 
     <antcall target="get.local.sources" />
-    <antcallback target="get.zips" return="ALL_ZIPS" />
+    <antcallback target="get.jbosstools-src.zip" return="jbosstools-src.zip.filename" />
     <antcall target="cleanup" />
-  </target>
-
-  <target name="get.list">
-    <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/logs/zip.list.txt" dest="${tmpdir}/zip.list.txt" />
-    <property file="${tmpdir}/zip.list.txt" />
-    <echo level="verbose">Loaded list of zips to aggregate from ${java.io.tmpdir}/zip.list.txt</echo>
-    <delete file="${tmpdir}/zip.list.txt" quiet="true" />
   </target>
 
   <target name="get.local.sources">
@@ -94,43 +87,35 @@ $java.home = ${java.home}</echo>
     </zip>
   </target>
 
-  <target name="get.zips">
-
+  <target name="get.jbosstools-src.zip">
     <!-- given http://download.jboss.org/jbosstools/updates/nightly/core/4.1.kepler/, want http://download.jboss.org/jbosstools/builds/nightly/core/4.1.kepler/ -->
-    <propertyregex property="inputBuild" input="${inputRepo}" regexp="updates/nightly" replace="builds/nightly" />
+    <propertyregex property="inputBuild" input="${inputRepo}" regexp="updates/" replace="builds/" />
+    <echo level="verbose">inputBuild = ${inputBuild}</echo>
     <if>
       <isset property="inputBuild"/>
       <then>
-        <antcallback target="get.list" return="ALL_ZIPS" />
-        <for list="${ALL_ZIPS}" param="zip" delimiter=", 
-    ">
-          <sequential>
-            <if>
-              <contains string="@{zip}" substring=".aggregate-Sources-" />
-              <then>
-                <propertyregex input="@{zip}" defaultvalue="@{zip}" property="zip" regexp=".+/(.+.zip)" replace="\1" casesensitive="false" />
-                <echo level="error">get ${inputBuild}/latest/@{zip} to ${tmpdir}/${zip}</echo>
-                <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/@{zip}" dest="${tmpdir}/${zip}" />
-                <zip destfile="${sourcesZip}" update="true">
-                  <zipfileset src="${tmpdir}/${zip}" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
-                </zip>
-                <var name="zip" unset="true" />
-              </then>
-            </if>
-            <if>
-              <contains string="@{zip}" substring=".aggregate-Additional-Sources-" />
-              <then>
-                <propertyregex input="@{zip}" defaultvalue="@{zip}" property="zip" regexp=".+/(.+.zip)" replace="\1" casesensitive="false" />
-                <echo level="error">get ${inputBuild}/latest/@{zip} to ${tmpdir}/${zip}</echo>
-                <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/@{zip}" dest="${tmpdir}/${zip}" />
-                <zip destfile="${sourcesZip}" update="true">
-                  <zipfileset src="${tmpdir}/${zip}" prefix="build/" />
-                </zip>
-                <var name="zip" unset="true" />
-              </then>
-            </if>
-          </sequential>
-        </for>
+        <!-- get the source zip filename from apache dir listing of http://download.jboss.org/jbosstools/builds/nightly/core/master/latest/all/ -->
+        <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/all/" dest="${tmpdir}/zip.list.html" />
+        <!-- get the line of XML from the listing -->
+        <loadfile property="jbosstools-src.zip.filename" srcfile="${tmpdir}/zip.list.html">
+          <filterchain>
+            <linecontains>
+              <!-- extract only the line of HTML for the src.zip, not the MD5 file -->
+              <contains value="-src.zip&quot;"></contains>
+            </linecontains>
+            <tokenfilter>
+              <!-- extract ...href="jbosstools-build-sites.aggregate.site_master-SNAPSHOT-src.zip"... to jbosstools-build-sites.aggregate.site_master-SNAPSHOT-src.zip -->
+              <replaceregex pattern=".+href=&quot;([^&quot;]+)&quot;.+" replace="\1" flags="gi"/>
+            </tokenfilter>
+            <!-- remove newline from the filename -->
+            <striplinebreaks/>
+          </filterchain>
+        </loadfile>
+        <echo level="verbose" message="JBT Source zip in ${inputBuild}/latest/all/ :: ${jbosstools-src.zip.filename}"/>
+        <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/all/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}" />
+        <zip destfile="${sourcesZip}" update="true">
+          <zipfileset src="${tmpdir}/${jbosstools-src.zip.filename}" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
+        </zip>
       </then>
       <else>
         <echo>No nightly build folder could be found from which to fetch sources for inputRepo (jbosstools-site) = ${inputRepo}</echo>
