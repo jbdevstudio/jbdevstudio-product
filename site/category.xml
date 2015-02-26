@@ -134,10 +134,6 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <feature id="org.jboss.tools.portlet.feature">
-    <category name="CoreTools" />
-    <category name="WebTools" />
-  </feature>
   <feature id="org.jboss.tools.forge.feature">
     <category name="CoreTools"/>
     <category name="WebTools" />
