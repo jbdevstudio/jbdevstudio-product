@@ -4,10 +4,7 @@
     $ mvn install -Dupdate.site.description="Stable Milestone"
   -->
 
-  <!-- if ${WORKSPACE}/site folder exists, target that folder; else generate here. -->
-  <condition property="output.dir" value="${WORKSPACE}/results" else="${basedir}">
-    <available file="${WORKSPACE}/results" />
-  </condition>
+  <property name="output.dir" value="${basedir}"/>
 
   <condition property="COMMON_TOOLS" value="/home/hudson/static_build_env/jbds/tools" else="${java.io.tmpdir}">
     <available file="/home/hudson/static_build_env/jbds" type="dir" />
@@ -15,6 +12,7 @@
   <mkdir dir="${COMMON_TOOLS}" />
 
   <property name="project.build.directory" value="${output.dir}/target"/>
+  <echo>project.build.directory = ${project.build.directory}</echo>
 
   <!-- look for target/repository (new) or target/site (old) -->
   <condition property="update.site.source.dir" value="${project.build.directory}/site" else="${project.build.directory}/repository">
