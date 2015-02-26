@@ -135,7 +135,7 @@
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.portlet.feature">
-    <category name="CoreTools" />
+    <!-- removed from JBDS CoreTools but still there for JBT -->
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.forge.feature">
