@@ -1,4 +1,4 @@
-<project default="build" name="jbdss aggregate sources build.xml">
+<project default="build" name="jbds aggregate sources build.xml">
   <!-- if ${WORKSPACE}/site folder exists, target that folder; else generate here. -->
   <condition property="output.dir" value="${WORKSPACE}/results" else="${basedir}">
     <available file="${WORKSPACE}/results" />
@@ -10,6 +10,11 @@
   <mkdir dir="${COMMON_TOOLS}" />
 
   <property name="tmpdir" value="${java.io.tmpdir}/jbds-sources-build" />
+
+  <!-- 
+      test to ensure we're unpacking the correct # of project source folders.
+      number of source folders expected is derived from https://github.com/jbosstools/jbosstools-build-sites/blob/master/aggregate/site/pom.xml#L138-L157 -->
+  <property name="expected.num.project.source.folders" value="17"/>
 
   <!-- TODO: ensure this list of excludes is accurate
     Need to exclude stuff that's only in JBT but not in JBDS.
@@ -78,7 +83,7 @@ $java.home = ${java.home}</echo>
   </target>
 
   <target name="get.local.sources">
-    <zip destfile="${sourcesZip}" duplicate="preserve">
+    <zip destfile="${sourcesZip}" duplicate="preserve"  whenempty="fail">
       <zipfileset dir="${basedir}/../" prefix="devstudio/product/" excludes="**/installer/src/**, **/installer/tools/lib/**, **/workspace/**, **/target*/**, **/build/**, **/*.class, **/*.zip, **/.jar, **/jbds-echoproperties.txt" />
       <!-- JBDS-2456 in order to make JBDS buildable, need to include p2-director.zip -->
       <zipfileset dir="${basedir}/../installer" prefix="devstudio/product/installer" includes="p2-director.zip" />
@@ -87,15 +92,18 @@ $java.home = ${java.home}</echo>
     </zip>
   </target>
 
+  <!-- NOTE: after staging a build, latest/all/ folder no longer exists so need to override to find upstream or build fails.
+  mvn install -Djbosstools-site=http://download.jboss.org/jbosstools/builds/staging/jbosstools-4.2.3.Beta1-build-core/2015-03-01_13-40-40-B357/all/
+  -->
   <target name="get.jbosstools-src.zip">
     <!-- given http://download.jboss.org/jbosstools/updates/nightly/core/4.1.kepler/, want http://download.jboss.org/jbosstools/builds/nightly/core/4.1.kepler/ -->
-    <propertyregex property="inputBuild" input="${inputRepo}" regexp="updates/" replace="builds/" />
+    <propertyregex property="inputBuild" input="${inputRepo}" regexp="updates/(.+)" replace="builds/\1/latest/all" defaultValue="${inputRepo}"/>
     <echo level="verbose">inputBuild = ${inputBuild}</echo>
     <if>
       <isset property="inputBuild"/>
       <then>
         <!-- get the source zip filename from apache dir listing of http://download.jboss.org/jbosstools/builds/nightly/core/master/latest/all/ -->
-        <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/all/" dest="${tmpdir}/zip.list.html" />
+        <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}" dest="${tmpdir}/zip.list.html" />
         <!-- get the line of XML from the listing -->
         <loadfile property="jbosstools-src.zip.filename" srcfile="${tmpdir}/zip.list.html">
           <filterchain>
@@ -111,14 +119,42 @@ $java.home = ${java.home}</echo>
             <striplinebreaks/>
           </filterchain>
         </loadfile>
-        <echo level="verbose" message="JBT Source zip in ${inputBuild}/latest/all/ :: ${jbosstools-src.zip.filename}"/>
-        <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/latest/all/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}" />
-        <zip destfile="${sourcesZip}" update="true">
-          <zipfileset src="${tmpdir}/${jbosstools-src.zip.filename}" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
+        <!-- this should fail if the zip can't be downloaded or if the zipfileset is empty -->
+        <echo level="verbose" message="JBT Source zip in ${inputBuild} :: ${jbosstools-src.zip.filename}"/>
+        <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}" />
+
+        <var name="num.project.source.folders" unset="true"/>
+        <unzip src="${tmpdir}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" overwrite="true"/>
+        <resourcecount property="num.project.source.folders">
+           <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="*_*" id="source-folders"/>
+        </resourcecount>
+        <if>
+          <not><equals arg1="${expected.num.project.source.folders}" arg2="${num.project.source.folders}"/></not>
+          <then>
+            <echo message="Found these project source folders in ${jbosstools-src.zip.filename}:"/>
+            <for param="subdir">
+              <path>
+               <dirset refid="source-folders"/>
+              </path>
+              <sequential>
+                 <var name="name" unset="true"/>
+                 <basename file="@{subdir}" property="name" />
+                 <echo message="${name}"/>
+              </sequential>
+            </for>
+            <fail message="Error: expected ${expected.num.project.source.folders} source folders but found ${num.project.source.folders}. See details above."/>
+          </then>
+          <else>
+            <echo level="verbose" message="Found ${num.project.source.folders} project source folders, as expected."/>
+          </else>
+        </if>
+
+        <zip destfile="${sourcesZip}" update="true" whenempty="fail">
+          <zipfileset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
         </zip>
       </then>
       <else>
-        <echo>No nightly build folder could be found from which to fetch sources for inputRepo (jbosstools-site) = ${inputRepo}</echo>
+        <fail>No nightly build folder could be found from which to fetch sources for -Djbosstools-site=${inputRepo}</fail>
       </else>
     </if>
   </target>

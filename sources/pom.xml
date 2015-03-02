@@ -37,6 +37,8 @@
                   <property name="inputRepo" value="${jbosstools-site}"/>
                   <property name="project.version" value="${project.version}" />
                   <property name="update.site.qualifier" value="${maven.build.timestamp}"/>
+                  <!-- expected number of source folders expected is derived from https://github.com/jbosstools/jbosstools-build-sites/blob/master/aggregate/site/pom.xml#L138-L157 -->
+                  <property name="expected.num.project.source.folders" value="17"/>
                 </ant>
               </tasks>
             </configuration>
