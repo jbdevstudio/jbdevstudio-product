@@ -34,7 +34,7 @@
               <target>
                 <ant antfile="build.xml" target="build" dir="./">
                   <!-- TODO: change this to newer version of Eclipse when appropriate -->
-                  <property name="eclipse.version" value="Eclipse 4.4.1 (Luna SR1)"/>
+                  <property name="eclipse.version" value="Eclipse 4.4.2 (Luna SR2)"/>
                   <!-- GA -->
                   <property name="jbds.update.site" value="https://devstudio.redhat.com/updates/8.0/"/>
                   <!-- Not GA -->
