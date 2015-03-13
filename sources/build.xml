@@ -128,9 +128,6 @@ $java.home = ${java.home}</echo>
         <resourcecount property="num.project.source.folders">
            <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="*_*" id="source-folders"/>
         </resourcecount>
-        <if>
-          <not><equals arg1="${expected.num.project.source.folders}" arg2="${num.project.source.folders}"/></not>
-          <then>
             <echo message="Found these project source folders in ${jbosstools-src.zip.filename}:"/>
             <for param="subdir">
               <path>
@@ -142,10 +139,16 @@ $java.home = ${java.home}</echo>
                  <echo message="${name}"/>
               </sequential>
             </for>
-            <fail message="Error: expected ${expected.num.project.source.folders} source folders but found ${num.project.source.folders}. See details above."/>
+        <if>
+          <or>
+            <equals arg1="${num.project.source.folders}" arg2="${expected.num.project.source.folders}"/>
+            <isgreaterthan arg1="${num.project.source.folders}" arg2="${expected.num.project.source.folders}"/>
+          </or>
+          <then>
+            <echo message="Warning: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
           </then>
           <else>
-            <echo level="verbose" message="Found ${num.project.source.folders} project source folders, as expected."/>
+            <fail message="Error: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
           </else>
         </if>
 
