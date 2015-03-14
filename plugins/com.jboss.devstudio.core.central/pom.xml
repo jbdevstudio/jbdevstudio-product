@@ -49,7 +49,10 @@
             </goals>
             <configuration>
               <skip>false</skip>
+              <!-- server is not responding today so comment out and pull from a more up to date location 
               <url>http://www.qa.jboss.com/binaries/RHDS/discovery/nightly/core/${jbosstools-site-stream}/devstudio-earlyaccess.properties</url>
+            	-->
+              <url>https://devstudio.jboss.com/updates/8.0-staging/devstudio-earlyaccess.properties</url>
               <overwrite>true</overwrite>
               <skipCache>true</skipCache>
               <outputDirectory>${project.basedir}</outputDirectory>
