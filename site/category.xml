@@ -68,7 +68,7 @@
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.seam.feature">
-    <!-- removed from JBDS CoreTools but still there for JBT -->
+    <!-- removed from JBDS & JBT CoreTools -->
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.batch.feature">
@@ -135,7 +135,7 @@
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.portlet.feature">
-    <!-- removed from JBDS CoreTools but still there for JBT -->
+    <!-- removed from JBDS & JBT CoreTools -->
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.forge.feature">
