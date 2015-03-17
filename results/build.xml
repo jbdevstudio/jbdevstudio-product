@@ -259,17 +259,17 @@ $java.home = ${java.home}</echo>
         <echo level="verbose">Using target platform versions = ${TARGET_PLATFORM_VERSION}, ${TARGET_PLATFORM_VERSION_MAXIMUM}
     From github branches = ${TARGET_PLATFORM_BRANCH}, ${TARGET_PLATFORM_BRANCH_MAXIMUM}</echo>
 
-        <property name="JBT_STREAM_SUFFIX" value="${jbosstools_stream}"/>
+        <property name="JBT_STREAM_SUFFIX" value="${jbosstools_site_stream}"/>
         <!-- replace links to jobs w/ correct stream (eg., _41, _master, _70, _trunk) -->
         <propertyregex property="JBDS_STREAM_SUFFIX" defaultvalue="master" input="${JOB_NAME}" regexp=".+_([^_]+)" replace="\1" override="true"/>
         <propertyregex property="JBDS_STREAM_SUFFIX" defaultvalue="${JBDS_STREAM_SUFFIX}" input="${JBDS_STREAM_SUFFIX}" regexp="trunk" replace="master" override="true"/>
 
-        <!-- get JBT_VIEW_NAME from jbosstools_stream, but use Master instead of master -->
-        <propertyregex property="JBT_VIEW_NAME" defaultvalue="${jbosstools_stream}" input="${jbosstools_stream}" regexp="master" replace="Master" override="true"/>
+        <!-- get JBT_VIEW_NAME from jbosstools_site_stream, but use Master instead of master -->
+        <propertyregex property="JBT_VIEW_NAME" defaultvalue="${jbosstools_site_stream}" input="${jbosstools_site_stream}" regexp="master" replace="Master" override="true"/>
         <!-- get JBDS_VIEW_NAME from the above job name suffix, but use Master instead of master -->
         <propertyregex property="JBDS_VIEW_NAME" defaultvalue="${JBDS_STREAM_SUFFIX}" input="${JBDS_STREAM_SUFFIX}" regexp="master" replace="Master" override="true"/>
 
-        <echo level="verbose">For JOB_NAME = ${JOB_NAME} and jbosstools_stream=${jbosstools_stream} got:
+        <echo level="verbose">For JOB_NAME = ${JOB_NAME} and jbosstools_site_stream=${jbosstools_site_stream} got:
 JBT_STREAM_SUFFIX = ${JBT_STREAM_SUFFIX}
 JBDS_STREAM_SUFFIX = ${JBDS_STREAM_SUFFIX}
 JBT_VIEW_NAME = ${JBT_VIEW_NAME}
