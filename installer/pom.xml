@@ -9,6 +9,7 @@
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>installer</artifactId>
+  <name>JBoss Developer Studio Installer</name>
   <packaging>eclipse-repository</packaging>
   <properties>
     <IzPackVersion>4.3.5</IzPackVersion>
@@ -136,13 +137,20 @@
        <configuration>
         <source>
          <repository>
-          <url>file://${project.build.directory}/jbds-repo-with-sources</url>
+          <url>file://${project.build.directory}/jbds-repo-with-sources/</url>
           <layout>p2</layout>
          </repository>
+         <!-- include target platform from locally sourced copy, already on disk. see ../targetplatform/pom.xml -->
+         <repository>
+          <url>file://${project.parent.basedir}/targetplatform/target/</url>
+          <layout>p2</layout>
+         </repository>
+         <!-- old way: fetch from internet
          <repository>
           <url>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/${tpc.version}/REPO/</url>
           <layout>p2</layout>
          </repository>
+         -->
         </source>
         <ius>
           <iu><id>com.jboss.devstudio.core.package</id></iu>

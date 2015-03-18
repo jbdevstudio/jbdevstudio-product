@@ -1,0 +1,15 @@
+<?compositeArtifactRepository version='1.0.0'?>
+<repository name="JBoss Developer Studio - Integration Stack Root" type="org.eclipse.equinox.internal.p2.artifact.repository.CompositeArtifactRepository"
+  version="1.0.0">
+  <properties size="2">
+    <property name="p2.compressed" value="true" /><!--
+      get new time w/
+      date +%s000
+    -->
+    <property name="p2.timestamp" value="1374501649000" />
+  </properties>
+  <children size="2">
+    <child location="jbdevstudio" />
+    <child location="targetplatform" />
+  </children>
+</repository>
