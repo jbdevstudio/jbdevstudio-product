@@ -137,15 +137,14 @@
        <configuration>
         <source>
          <repository>
-          <url>file://${project.build.directory}/jbds-repo-with-sources/</url>
+          <url>file://${project.build.directory}/jbds-repo-with-sources/jbdevstudio/</url>
           <layout>p2</layout>
          </repository>
-         <!-- include target platform from locally sourced copy, already on disk. see ../targetplatform/pom.xml -->
          <repository>
-          <url>file://${project.parent.basedir}/targetplatform/target/</url>
+          <url>file://${project.build.directory}/jbds-repo-with-sources/targetplatform/</url>
           <layout>p2</layout>
          </repository>
-         <!-- old way: fetch from internet
+         <!-- old way: fetch TP from internet
          <repository>
           <url>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/${tpc.version}/REPO/</url>
           <layout>p2</layout>
