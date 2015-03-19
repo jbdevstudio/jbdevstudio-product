@@ -92,7 +92,10 @@
   </target>
 
   <target name="pack.zip">
-    <zip destfile="${target.zip}" update="true" basedir="${update.site.source.dir}" includes="content.*, ${web.content.files}" />
+    <zip destfile="${target.zip}" update="true">
+      <zipfileset dir="${update.site.source.dir}" includes="${web.content.files}" />
+      <zipfileset dir="${update.site.source.dir}" includes="content.jar" fullpath="jbdevstudio/content.jar" />
+    </zip>
   </target>
 
   <target name="check.target">
@@ -108,11 +111,22 @@
     <if>
       <not><available file="${project.build.directory}/site_assembly.zip" type="file"/></not>
       <then>
-        <move tofile="${project.build.directory}/site_assembly.zip">
-          <fileset dir="${project.build.directory}" includes="*.zip" excludes="site.zip, site_assembly.zip"/>
-        </move>
+        <copy tofile="${project.build.directory}/site_assembly.zip" overwrite="true">
+          <fileset dir="${project.build.directory}" includes="**/com.jboss.devstudio.core.site-*SNAPSHOT.zip" />
+        </copy>
       </then>
     </if>
+
+    <!-- ensure that the new fullSite/all/repository.zip contains the target platform & updated dir structure -->
+    <if>
+      <not><available file="${project.build.directory}/fullSite/all" type="dir"/></not>
+      <then>
+        <mkdir dir="${project.build.directory}/fullSite/all"/>
+      </then>
+    </if>
+    <copy tofile="${project.build.directory}/fullSite/all/repository.zip" overwrite="true">
+      <fileset dir="${project.build.directory}" includes="**/com.jboss.devstudio.core.site-*SNAPSHOT.zip" />
+    </copy>
 
     <if>
       <not>

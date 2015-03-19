@@ -1,0 +1,25 @@
+<assembly xmlns="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2 http://maven.apache.org/xsd/assembly-1.1.2.xsd">
+  <!-- leave <id> blank so that the generated composite zip (targetplatform + repo) will overwrite existing
+       site-8.0.0-SNAPSHOT.zip instead of creating site-8.0.0-SNAPSHOT-<id>.zip -->
+  <id></id>
+  <formats>
+    <format>zip</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <directory>src/main/structure</directory>
+      <outputDirectory>/</outputDirectory>
+      <filtered>true</filtered>
+    </fileSet>
+    <fileSet>
+      <directory>${project.parent.basedir}/targetplatform/target</directory>
+      <outputDirectory>targetplatform</outputDirectory>
+    </fileSet>
+    <fileSet>
+      <directory>${project.build.directory}/repository</directory>
+      <outputDirectory>jbdevstudio</outputDirectory>
+    </fileSet>
+  </fileSets>
+</assembly>

@@ -14,6 +14,7 @@
   <name>JBDS - Product, Installers</name>
   <packaging>pom</packaging>
   <modules>
+    <module>targetplatform</module>
     <module>plugins</module>
     <module>features</module>
     <module>site</module>
@@ -38,6 +39,7 @@
 
     <!-- jbosstools_site_stream is set in parent pom = 4.3.mars / master -->
     <!-- <jbosstools_site_stream>master</jbosstools_site_stream> -->
+    <jbosstools-site>http://download.jboss.org/jbosstools/static/releases/jbosstools-4.3.0.Alpha1-updatesite-core/</jbosstools-site>
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools_site_stream}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.Beta2-SNAPSHOT/REPO/</jbosstools-target-site> -->
 
@@ -199,7 +201,7 @@ Build product features, site, and installers like this:
 
 To replicate a Jenkins CI build, run like this (unified.target and hudson profile require VPN access):
 
-  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.50.0.Alpha2-SNAPSHOT -DBUILD_NUMBER=450000 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Djbosstools_site_stream=master
+  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.50.0.Alpha2-SNAPSHOT -DBUILD_NUMBER=450012 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Djbosstools_site_stream=master
 
 See README.md for information building, installing, contributing, generated artifacts, and more.
 
