@@ -76,9 +76,9 @@ $java.home = ${java.home}</echo>
       </then>
     </if>
 
-    <!-- TOOLSDOC-426 link to Central zip. Job parameter JBOSS_CENTRAL_ZIP is passed from jbosstools-centraltarget_41 job to devstudio.product_71 job 
+    <!-- TOOLSDOC-426 link to Central zip. Job parameter JBOSS_CENTRAL_ZIP is passed from jbosstools-centraltarget_4.2.luna job to devstudio.product_8.0.luna job 
          so that this will have a value, eg.,
-         http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.31.0.CR1-SNAPSHOT/jbtcentraltarget-4.31.0.CR1-SNAPSHOT.zip 
+         http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.42.0.Final-SNAPSHOT/jbtcentraltarget-4.42.0.Final-SNAPSHOT.zip 
     -->
     <property name="jboss-devstudio-updatesite-central-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-central.zip"/>
     <if>

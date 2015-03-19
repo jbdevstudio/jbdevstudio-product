@@ -293,7 +293,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   <target name="init-properties">
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
 
-    <!-- 7.0.0.Beta1-v20130425-0428-H1234 -->
+    <!-- 8.1.0.GA-v20150401-0428-B1234 -->
     <property name="specification.version"
               value="${update.site.version}.${buildQualifier}" />
 
