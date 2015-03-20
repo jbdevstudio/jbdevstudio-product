@@ -98,7 +98,8 @@ $java.home = ${java.home}</echo>
   <target name="get.jbosstools-src.zip">
     <!-- given http://download.jboss.org/jbosstools/updates/nightly/core/4.1.kepler/, want http://download.jboss.org/jbosstools/builds/nightly/core/4.1.kepler/ -->
     <propertyregex property="inputBuild" input="${inputRepo}" regexp="updates/(.+)" replace="builds/\1/latest/all" defaultValue="${inputRepo}"/>
-    <echo level="verbose">inputBuild = ${inputBuild}</echo>
+    <echo level="verbose">[INFO] inputRepo = ${inputRepo}</echo>
+    <echo>[INFO] Searching for *-src.zip in ${inputBuild} ...</echo>
     <if>
       <isset property="inputBuild"/>
       <then>
@@ -119,15 +120,18 @@ $java.home = ${java.home}</echo>
             <striplinebreaks/>
           </filterchain>
         </loadfile>
-        <!-- this should fail if the zip can't be downloaded or if the zipfileset is empty -->
-        <echo level="verbose" message="JBT Source zip in ${inputBuild} :: ${jbosstools-src.zip.filename}"/>
-        <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}" />
+        <!-- this should warn if the zip can't be downloaded or if the zipfileset is empty -->
+        <if>
+          <isset property="jbosstools-src.zip.filename"/>
+          <then>
+            <echo message="[INFO] JBT Source zip: ${jbosstools-src.zip.filename}"/>
+            <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}" />
 
-        <var name="num.project.source.folders" unset="true"/>
-        <unzip src="${tmpdir}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" overwrite="true"/>
-        <resourcecount property="num.project.source.folders">
-           <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="*_*" id="source-folders"/>
-        </resourcecount>
+            <var name="num.project.source.folders" unset="true"/>
+            <unzip src="${tmpdir}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" overwrite="true"/>
+            <resourcecount property="num.project.source.folders">
+               <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="*_*" id="source-folders"/>
+            </resourcecount>
             <echo message="Found these project source folders in ${jbosstools-src.zip.filename}:"/>
             <for param="subdir">
               <path>
@@ -139,26 +143,28 @@ $java.home = ${java.home}</echo>
                  <echo message="${name}"/>
               </sequential>
             </for>
-        <if>
-          <or>
-            <equals arg1="${num.project.source.folders}" arg2="${expected.num.project.source.folders}"/>
-            <isgreaterthan arg1="${num.project.source.folders}" arg2="${expected.num.project.source.folders}"/>
-          </or>
-          <then>
-            <echo message="Warning: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
+            <if>
+              <or>
+                <equals arg1="${num.project.source.folders}" arg2="${expected.num.project.source.folders}"/>
+                <isgreaterthan arg1="${num.project.source.folders}" arg2="${expected.num.project.source.folders}"/>
+              </or>
+              <then>
+                <echo message="Warning: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
+              </then>
+              <else>
+                <fail message="Error: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
+              </else>
+            </if>
+
+            <zip destfile="${sourcesZip}" update="true" whenempty="fail">
+              <zipfileset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
+            </zip>
           </then>
           <else>
-            <fail message="Error: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
+            <echo>[WARNING] No nightly build folder could be found from which to fetch sources for -Djbosstools-site=${inputRepo}</echo>
           </else>
         </if>
-
-        <zip destfile="${sourcesZip}" update="true" whenempty="fail">
-          <zipfileset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
-        </zip>
       </then>
-      <else>
-        <fail>No nightly build folder could be found from which to fetch sources for -Djbosstools-site=${inputRepo}</fail>
-      </else>
     </if>
   </target>
 
