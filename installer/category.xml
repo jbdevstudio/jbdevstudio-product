@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-	<description>TestNG p2 repository</description>
-	<feature url="features/org.testng.eclipse_0.0.0.jar" id="org.testng.eclipse" version="0.0.0" >
-		<category name="jbds" />
-	</feature>
+	<description>Red Hat JBoss Developer Studio Installer P2 Repository</description>
 	<category-def name="jbds" label="Red Hat JBoss Developer Studio">
 		<description>Red Hat JBoss Developer Studio Features</description>
 	</category-def>
+	<bundle id="com.jboss.devstudio.core.package">
+		<category name="jbds" />
+	</bundle>
+	<feature id="org.testng.eclipse">
+		<category name="jbds" />
+	</feature>
 </site>

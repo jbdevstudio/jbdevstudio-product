@@ -51,30 +51,12 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-        <version>2.5</version>
-        <executions>
-          <execution>
-            <id>copy-metadata</id>
-            <!-- here the phase you need -->
-            <phase>process-resources</phase>
-            <goals>
-              <goal>copy-resources</goal>
-            </goals>
-            <configuration>
-          		<resources>
-		            <resource>
-    		          <directory>src/main/resources</directory>
-        		      <includes>
-            		    <include>*.xml</include>
-		              </includes>
-		            </resource>
-		          </resources>
-              <outputDirectory>${project.build.directory}/update</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-p2-repository-plugin</artifactId>
+        <version>${tychoVersion}</version>
+        <configuration>
+          <includeAllDependencies>true</includeAllDependencies>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -82,31 +64,13 @@
         <version>2.4</version>
         <executions>
           <execution>
-            <id>unpack</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>unpack</goal>
-            </goals>
-            <configuration>
-              <artifactItems>
-                <artifactItem>
-                  <groupId>com.jboss.devstudio.core</groupId>
-                  <artifactId>com.jboss.devstudio.core.site</artifactId>
-                  <version>${project.version}</version>
-                  <type>zip</type>
-                </artifactItem>
-              </artifactItems>
-              <outputDirectory>${project.build.directory}/jbds-repo-with-sources</outputDirectory>
-              <excludes>**/*.pack.gz</excludes>
-            </configuration>
-          </execution>
-          <execution>
-            <id>copy-director</id>
+            <id>copy-p2-director</id>
             <phase>prepare-package</phase>
             <goals>
               <goal>copy</goal>
             </goals>
             <configuration>
+              <skip>false</skip>
               <artifactItems>
                 <artifactItem>
                   <groupId>com.jboss.devstudio.core.installer.p2-director</groupId>
@@ -120,43 +84,6 @@
             </configuration>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-       <groupId>org.eclipse.tycho.extras</groupId>
-       <artifactId>tycho-p2-extras-plugin</artifactId>
-       <version>${tychoVersion}</version>
-       <executions>
-        <execution>
-         <phase>prepare-package</phase>
-         <goals>
-          <goal>mirror</goal>
-         </goals>
-        </execution>
-       </executions>
-       <configuration>
-        <source>
-         <repository>
-          <url>file://${project.build.directory}/jbds-repo-with-sources</url>
-          <layout>p2</layout>
-         </repository>
-         <repository>
-          <url>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/${tpc.version}/REPO/</url>
-          <layout>p2</layout>
-         </repository>
-        </source>
-        <ius>
-          <iu><id>com.jboss.devstudio.core.package</id></iu>
-        </ius>
-        <destination>${project.build.directory}/update/jbds</destination>
-        <includeNonGreedy>false</includeNonGreedy>
-        <includeFeatures>true</includeFeatures>
-        <latestVersionOnly>false</latestVersionOnly>
-        <mirrorMetadataOnly>false</mirrorMetadataOnly>
-        <!-- exclude pack.gz artifacts when mirroring -->
-        <includePacked>false</includePacked>
-        <compress>true</compress>
-        <append>false</append>
-       </configuration>
       </plugin>
       <plugin>
         <groupId>com.googlecode.maven-download-plugin</groupId>
@@ -205,18 +132,10 @@
 
                 <!-- this update site zip is only used to produce the installer -->
                 <echo>Prepare update site zip </echo>
-                <move todir="${project.build.directory}/update/testng">
-                  <fileset dir="${project.build.directory}/repository" />
-                </move>
                 <zip
                   destfile="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip"
                   whenempty="fail">
-                  <fileset dir="${project.build.directory}/update" includes="*.xml"
-                    excludes="category.xml" />
-                  <zipfileset dir="${project.build.directory}/update/jbds"
-                    prefix="jbds" />
-                  <zipfileset dir="${project.build.directory}/update/testng"
-                    prefix="testng" />
+                  <zipfileset dir="${project.build.directory}/repository" />
                 </zip>
 
                 <ant antfile="build.xml">
