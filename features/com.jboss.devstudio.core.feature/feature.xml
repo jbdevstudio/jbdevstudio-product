@@ -80,7 +80,6 @@
     <import plugin="org.eclipse.jst.server.tomcat.ui"/>
     <!-- JBDS-2630 remove <import plugin="org.eclipse.jst.server.websphere.core"/> -->
     <import plugin="org.eclipse.jst.server.generic.jonas"/>
-    <import feature="org.eclipse.cvs"/>
     <import feature="org.eclipse.help"/>
     <import feature="org.eclipse.jdt"/>
     <import feature="org.eclipse.rse"/>
