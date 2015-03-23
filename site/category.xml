@@ -207,6 +207,11 @@
     <category name="WebTools" />
   </feature>
 
+  <!-- JBDS-3383 add WTP feature patch to JBT so it's in the Marketplace Connector; depends on target platform -->
+  <feature id="org.eclipse.wst.jsdt.feature.patch">
+    <category name="CoreTools" />
+  </feature>
+
   <!-- include but do not categorize -->
   <feature id="org.jboss.tools.central.feature"/>
   <feature id="org.jboss.tools.common.feature"/>
