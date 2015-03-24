@@ -175,7 +175,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 					URL_SURROUND_CHAR + "jar:file://{2}!/" + URL_SURROUND_CHAR + " " +
 					"-d \"{3}" + File.separator + "studio\" " +
 					"-p jbds " +
-					"-i com.jboss.devstudio.core.package,org.testng.eclipse.feature.group " +
+					"-i com.jboss.devstudio.core.package,org.testng.eclipse.feature.group,org.eclipse.wst.jsdt.feature.patch.feature.group " +
 					"-profileProperties org.eclipse.update.install.features=true";
 			if(OsVersion.IS_OSX && installerData.getVariable(JREPathPanel.DATA_MODEL_VAR)!=null) {
 				// this is required to force director to install selected architecture
