@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-	<description>TestNG p2 repository</description>
-	<feature url="features/org.testng.eclipse_0.0.0.jar" id="org.testng.eclipse" version="0.0.0" >
+	<description>Red Hat JBoss Developer Studio repository, including TestNG and WTP 3.6.3 feature patch</description>
+	<feature id="org.testng.eclipse">
+		<category name="jbds" />
+	</feature>
+	<feature id="org.eclipse.wst.jsdt.feature">
+		<category name="jbds" />
+	</feature>
+	<feature id="org.eclipse.wst.jsdt.feature.patch">
 		<category name="jbds" />
 	</feature>
 	<category-def name="jbds" label="Red Hat JBoss Developer Studio">

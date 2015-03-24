@@ -10,6 +10,6 @@
 	</properties>
 	<children size='2'>
 		<child location='jbds/' />
-		<child location='testng/' />
+		<child location='central/' />
 	</children>
 </repository>

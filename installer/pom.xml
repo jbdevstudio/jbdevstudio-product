@@ -208,7 +208,7 @@
 
                 <!-- this update site zip is only used to produce the installer -->
                 <echo>Prepare update site zip </echo>
-                <move todir="${project.build.directory}/update/testng">
+                <move todir="${project.build.directory}/update/central">
                   <fileset dir="${project.build.directory}/repository" />
                 </move>
                 <zip
@@ -218,8 +218,8 @@
                     excludes="category.xml" />
                   <zipfileset dir="${project.build.directory}/update/jbds"
                     prefix="jbds" />
-                  <zipfileset dir="${project.build.directory}/update/testng"
-                    prefix="testng" />
+                  <zipfileset dir="${project.build.directory}/update/central"
+                    prefix="central" />
                 </zip>
 
                 <ant antfile="build.xml">
