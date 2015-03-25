@@ -231,6 +231,7 @@
   <feature id="org.mozilla.xulrunner.feature"/>
 
   <bundle id="org.jboss.tools.discovery.core"/>
+  <bundle id="org.jboss.tools.foundation.help.ui"/>
 
   <!-- only in JBT
   <feature id="org.jboss.tools.arquillian.feature">
