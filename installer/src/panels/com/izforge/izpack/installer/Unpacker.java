@@ -60,6 +60,7 @@ import com.jboss.devstudio.core.installer.P2DirectorStarterListener;
 import com.jboss.devstudio.core.installer.P2DirectorStarterListener.BundleListConsoleCommand;
 import com.jboss.devstudio.core.installer.P2DirectorStarterListener.FeatureInstallConsoleCommand;
 import com.jboss.devstudio.core.installer.P2DirectorStarterListener.MetadataGenerationConsoleCommand;
+import com.jboss.devstudio.core.installer.bean.P2IU;
 
 /**
  * Unpacker class.
@@ -69,7 +70,11 @@ import com.jboss.devstudio.core.installer.P2DirectorStarterListener.MetadataGene
  */
 public class Unpacker extends UnpackerBase
 {
-    private static final String tempSubPath = "/IzpackWebTemp";
+    public static final String INSTALL_P2_LOCATIONS_VAR = "INSTALL_P2_LOCATIONS";
+
+	public static final String INSTALL_IUS_VAR = "INSTALL_IUS";
+
+	private static final String tempSubPath = "/IzpackWebTemp";
 
     private Pack200.Unpacker unpacker;
 
@@ -166,6 +171,8 @@ public class Unpacker extends UnpackerBase
                 	String jvmLocation = this.idata.getVariable("JREPath");
                 	jvmLocation = jvmLocation==null || "".equals(jvmLocation.trim())? this.idata.getVariable("JAVA_HOME"): jvmLocation;
 					String installLocation = this.idata.getVariable("INSTALL_PATH");
+					String installIUs = resolveIUs(this.idata.getVariable(INSTALL_IUS_VAR));
+					String p2Locations = resolveLocations(this.idata.getVariable(INSTALL_P2_LOCATIONS_VAR));
 					File pluginsFolder = new File(installLocation + File.separator +
 							"studio" + File.separator +
 							"p2" + File.separator +
@@ -179,7 +186,6 @@ public class Unpacker extends UnpackerBase
 					});
 					String launcherLocation = launchers[0].getAbsolutePath();
 
-					String jarLocation = P2DirectorStarterListener.findPathJar(Unpacker.class);
                 	if(pack.id.equals("jbds.update")) {
 	                	// get list of IU's and size
 	                	// nfiles = request(-l) from director
@@ -188,7 +194,7 @@ public class Unpacker extends UnpackerBase
 						listCmd
 	                		.setParameter(jvmLocation)
 	                		.setParameter(launcherLocation)
-	                		.setParameter(jarLocation)
+	                		.setParameter(p2Locations)
 	                		.setParameter(installLocation)
 	                		.execute();
 	                	nfiles=listCmd.getBundles().size();
@@ -213,8 +219,9 @@ public class Unpacker extends UnpackerBase
 
 	                	featureInstallCmd.setParameter(jvmLocation)
 	                	 .setParameter(launcherLocation)
-	                	 .setParameter(jarLocation)
+	                	 .setParameter(p2Locations)
 	                	 .setParameter(installLocation)
+	                	 .setParameter(installIUs)
 	                	 .execute();
 
 //	                	handler.stopAction();
@@ -653,7 +660,34 @@ public class Unpacker extends UnpackerBase
         }
     }
 
-    private Pack200.Unpacker getPack200Unpacker()
+	public static String resolveIUs(String ius) {
+		if(ius == null || "".equals(ius.trim())) {
+			ius = "com.jboss.devstudio.core.package,org.testng.eclipse.feature.group";
+		}
+		return ius;
+	}
+
+	public static String resolveLocations(String locations) {
+		if(locations==null || "".equals(locations.trim())) {
+			locations = "jbds";
+		} 
+		String[] l = locations.split(",");
+		StringBuilder result = new StringBuilder();
+		String jarLocation = P2DirectorStarterListener.findPathJar(Unpacker.class);
+		for (int i = 0; i < l.length; i++) {
+			if(!l[i].startsWith("http://") && !l[i].startsWith("https://")) {
+				result.append("jar:file://").append(jarLocation).append("!/").append(l[i]);
+			} else {
+				result.append(l[i]);
+			}
+			if(i < l.length-1) {
+				result.append(",");
+			}
+		}
+		return result.toString();
+	}
+
+	private Pack200.Unpacker getPack200Unpacker()
     {
         if (unpacker == null)
         {

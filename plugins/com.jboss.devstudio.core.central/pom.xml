@@ -48,7 +48,7 @@
               <goal>wget</goal>
             </goals>
             <configuration>
-              <skip>false</skip>
+              <skip>true</skip>
               <url>http://www.qa.jboss.com/binaries/RHDS/discovery/nightly/core/${jbosstools_site_stream}/devstudio-earlyaccess.properties</url>
               <overwrite>true</overwrite>
               <skipCache>true</skipCache>
