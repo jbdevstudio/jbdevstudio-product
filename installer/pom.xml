@@ -7,7 +7,6 @@
     <artifactId>product</artifactId>
     <version>9.0.0-SNAPSHOT</version>
   </parent>
-  <groupId>com.jboss.devstudio</groupId>
   <artifactId>installer</artifactId>
   <packaging>eclipse-repository</packaging>
   <properties>
@@ -61,7 +60,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.4</version>
         <executions>
           <execution>
             <id>copy-p2-director</id>
@@ -83,7 +81,24 @@
               </artifactItems>
             </configuration>
           </execution>
-        </executions>
+               <execution>
+                    <id>get-gson</id>
+                    <goals>
+                        <goal>copy</goal>
+                    </goals>
+                    <phase>generate-resources</phase>
+                    <configuration>
+                        <artifactItems>
+                            <artifactItem>
+                                <groupId>com.google.code.gson</groupId>
+                                <artifactId>gson</artifactId>
+                                <version>2.3.1</version>
+                            </artifactItem>
+                        </artifactItems>
+                        <outputDirectory>${basedir}/tools/lib</outputDirectory>
+                    </configuration>
+               </execution>
+          </executions>
       </plugin>
       <plugin>
         <groupId>com.googlecode.maven-download-plugin</groupId>
@@ -135,7 +150,7 @@
                 <zip
                   destfile="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip"
                   whenempty="fail">
-                  <zipfileset dir="${project.build.directory}/repository" />
+                  <zipfileset dir="${project.build.directory}/repository" prefix="jbds"/>
                 </zip>
 
                 <ant antfile="build.xml">
@@ -220,5 +235,40 @@
         </dependencies>
       </plugin>
     </plugins>
+    <pluginManagement>
+    	<plugins>
+    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    		<plugin>
+    			<groupId>org.eclipse.m2e</groupId>
+    			<artifactId>lifecycle-mapping</artifactId>
+    			<version>1.0.0</version>
+    			<configuration>
+    				<lifecycleMappingMetadata>
+    					<pluginExecutions>
+    						<pluginExecution>
+    							<pluginExecutionFilter>
+    								<groupId>
+    									com.googlecode.maven-download-plugin
+    								</groupId>
+    								<artifactId>
+    									maven-download-plugin
+    								</artifactId>
+    								<versionRange>
+    									[1.1.0,)
+    								</versionRange>
+    								<goals>
+    									<goal>wget</goal>
+    								</goals>
+    							</pluginExecutionFilter>
+    							<action>
+    								<ignore></ignore>
+    							</action>
+    						</pluginExecution>
+    					</pluginExecutions>
+    				</lifecycleMappingMetadata>
+    			</configuration>
+    		</plugin>
+    	</plugins>
+    </pluginManagement>
   </build>
 </project>

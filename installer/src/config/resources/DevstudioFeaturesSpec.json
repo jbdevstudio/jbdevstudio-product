@@ -1,0 +1,16 @@
+[
+	{
+		"id"         :"com.jboss.devstudio.core.package",
+		"path"       :"jbds",
+		"label"      :"Red Hat JBoss Developer Studio Product",
+		"description":"",
+		"selected"   :"true"
+	},
+	{
+		"id"         :"org.testng.eclipse.feature.group",
+		"path"       :"jbds",
+		"label"      :"TestNG",
+		"description":"",
+		"selected"   :"true"
+	}
+]

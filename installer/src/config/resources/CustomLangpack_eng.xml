@@ -22,6 +22,7 @@
     <str id="JREPathPanel.summaryCaption" txt="Java VM path:"/>
     <str id="DiskSpaceCheckPanel.summaryCaption" txt="Disk Space:"/>
     <str id="JBossAsSelectPanel.headline.as" txt="Select Platforms and Servers"/>
+    <str id="InstallAdditionalFeaturesPanel.headline.features" txt="Select Additional Features to Install"/>
     <str id="SummaryPanel.headline.summary" txt="Summary Information"/>
     <str id="InstallPanel.headline.install" txt="Installation"/>
     <str id="JBDSShortcutPanel.headline.shortcut" txt="Shortcuts"/>

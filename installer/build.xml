@@ -40,6 +40,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   <path id="izpack.classpath">
     <pathelement location="etc/local-izpack" />
     <pathelement location="tools/lib/looks.jar" />
+    <pathelement location="tools/lib/gson-2.3.1.jar" />
     <pathelement location="${build.installer.dir}" />
     <pathelement location="${izpack.home}/lib/standalone-compiler.jar" />
     <pathelement location="${izpack.home}/lib/izevent.jar" />
@@ -150,6 +151,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
       <patternset>
         <exclude name="**/Unpacker.class" />
         <exclude name="**/InstallerFrame*.class" />
+      	<exclude name="**/AutomatedInstaller.class" />
 	<exclude name="**/Librarian.class" />
 	<exclude name="**/LibraryRemover.class" />
 	<exclude name="**/ProcessHelper.class" />

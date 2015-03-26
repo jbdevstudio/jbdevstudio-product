@@ -95,18 +95,19 @@ public class P2DirectorStarterListener implements InstallerListener {
 			execute(this);
 		}
 
-		public void execute(ResponseListener listener) throws ConsoleCommandException { 
-			
-			if(cmd.length()>0) {
-				String result = rt.executeJava(parameters.get(0) + File.separator + "bin", MessageFormat.format(cmd, parameters.toArray(new Object[parameters.size()])),listener);
+		public void execute(ResponseListener listener) throws ConsoleCommandException {
+
+			if (cmd.length() > 0) {
+				String result = rt.executeJava(parameters.get(0) + File.separator + "bin",
+						MessageFormat.format(cmd, parameters.toArray(new Object[parameters.size()])), listener);
 				Debug.trace(result);
-				if(rt.getErrCode()!=0) {
-					throw new ConsoleCommandException(rt.getErrCode(),result);
+				if (rt.getErrCode() != 0) {
+					throw new ConsoleCommandException(rt.getErrCode(), result);
 				}
 			} else {
 				throw new IllegalArgumentException("Command line template is not initialized");
 			}
-			
+
 		}
 
 		public ConsoleCommand setParameter(String param) {
@@ -144,7 +145,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 		
 		private List<String> bundles = new ArrayList<String>(256);
 		public BundleListConsoleCommand() {
-			cmd="-jar \"{1}\" -l -r " + URL_SURROUND_CHAR + "jar:file://{2}!/" + URL_SURROUND_CHAR + " -d \"{3}/studio\"";
+			cmd="-jar \"{1}\" -l -r " + URL_SURROUND_CHAR + "{2}" + URL_SURROUND_CHAR + " -d \"{3}/studio\"";
 		}
 
 		@Override
@@ -172,10 +173,10 @@ public class P2DirectorStarterListener implements InstallerListener {
 					"-roaming " +
 					"-vm \"{0}\" " +
 					"-r " +
-					URL_SURROUND_CHAR + "jar:file://{2}!/" + URL_SURROUND_CHAR + " " +
+					URL_SURROUND_CHAR + "{2}" + URL_SURROUND_CHAR + " " +
 					"-d \"{3}" + File.separator + "studio\" " +
 					"-p jbds " +
-					"-i com.jboss.devstudio.core.package,org.testng.eclipse.feature.group " +
+					"-i {4} " +
 					"-profileProperties org.eclipse.update.install.features=true";
 			if(OsVersion.IS_OSX && installerData.getVariable(JREPathPanel.DATA_MODEL_VAR)!=null) {
 				// this is required to force director to install selected architecture
@@ -210,4 +211,5 @@ public class P2DirectorStarterListener implements InstallerListener {
 			cmd="-jar \"{1}\" -vm \"{0}\" -application com.jboss.devstudio.core.EclipseGenerator -noSplash -clean";
 		}
 	}
+	
 }
