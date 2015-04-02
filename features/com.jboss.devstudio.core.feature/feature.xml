@@ -17,7 +17,8 @@
   <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.jmx.feature" version="0.0.0"/> 
   <includes id="org.jboss.ide.eclipse.archives.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.vpe.preview.feature" version="0.0.0"/> 
   <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/> 
   <includes id="org.hibernate.eclipse.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
