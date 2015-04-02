@@ -108,7 +108,11 @@
 			<res id="AntActionsSpec.xml@{skip.ant.actions}"
 				src="config/resources/p2-meta-gen-action.xml" />
 			<res id="RegistrySpec.xml"
-				 src="config/resources/RegistrySpec.xml" />
+				src="config/resources/RegistrySpec.xml" />
+			<res id="AdditionalFeaturesSpec.json"
+				src="config/resources/AdditionalFeaturesSpec.json" />
+			<res id="DevstudioFeaturesSpec.json"
+				src="config/resources/DevstudioFeaturesSpec.json" />
 	</resources>
 
 	<panels>
@@ -126,6 +130,8 @@
 		
 		<!-- This panel asks about JBoss Application Server installation -->
 		<panel classname="com.jboss.devstudio.core.installer.JBossAsSelectPanel" id="as" />
+		
+		<panel classname="com.jboss.devstudio.core.installer.InstallAdditionalFeaturesPanel" id="features" />
 		
 		<!-- This panel updates idata.selectedPacks list -->
 		<panel classname="UpdatePacksPanel" id="updatepacks"/>
@@ -184,5 +190,6 @@
 	<jar src="@{izpack.home}/lib/izevent.jar" />
 	<jar src="../../tools/lib/ant.jar" />
 	<jar src="../../tools/lib/ant-launcher.jar" />
+	<jar src="../../tools/lib/gson-2.3.1.jar" />
 	<jar src="@{artifacts.jbds.update}" />
 </installation>

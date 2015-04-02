@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/panels"/>
+	<classpathentry kind="src" path="src/config"/>
 	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
@@ -9,5 +10,6 @@
 	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/HTMLHelloPanel.jar" sourcepath="/IZPACK_HOME/src/lib"/>
 	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/ShortcutPanel.jar" sourcepath="/IZPACK_HOME/src/lib"/>
 	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/InstallationGroupPanel.jar" sourcepath="/IZPACK_HOME/src/lib"/>
+	<classpathentry kind="lib" path="tools/lib/gson-2.3.1.jar"/>
 	<classpathentry kind="output" path="build/eclipse"/>
 </classpath>

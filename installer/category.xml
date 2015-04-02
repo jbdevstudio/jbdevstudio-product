@@ -4,6 +4,9 @@
 	<feature url="features/org.testng.eclipse_0.0.0.jar" id="org.testng.eclipse" version="0.0.0" >
 		<category name="jbds" />
 	</feature>
+	<bundle id="com.jboss.devstudio.core.package">
+		<category name="jbds" />
+	</bundle>
 	<category-def name="jbds" label="Red Hat JBoss Developer Studio">
 		<description>Red Hat JBoss Developer Studio Features</description>
 	</category-def>
