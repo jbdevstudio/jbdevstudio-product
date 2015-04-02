@@ -59,7 +59,7 @@
     <category name="WebTools" />
   </feature>
   -->
-  <feature id="org.jboss.tools.vpe.feature">
+  <feature id="org.jboss.tools.vpe.preview.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
@@ -227,8 +227,6 @@
   <feature id="org.jboss.tools.common.text.ext.feature"/>
   <feature id="org.jboss.tools.common.ui.feature"/>
   <feature id="org.jboss.tools.common.verification.feature"/>
-  <feature id="org.jboss.tools.xulrunner.feature"/>
-  <feature id="org.mozilla.xulrunner.feature"/>
 
   <bundle id="org.jboss.tools.discovery.core"/>
 
@@ -299,10 +297,8 @@
   <feature id="org.jboss.tools.jst.feature.source"/>
   <feature id="org.jboss.tools.jst.jsdt.feature.source"/>
   <!-- not in JBDS yet <feature id="org.jboss.tools.jst.angularjs.feature.source"/> -->
-  <feature id="org.jboss.tools.vpe.feature.source"/>
+  <feature id="org.jboss.tools.vpe.preview.feature.source"/>
   <feature id="org.jboss.tools.jsf.feature.source"/>
-  <feature id="org.jboss.tools.xulrunner.feature.source"/>
-  <feature id="org.mozilla.xulrunner.feature.source"/>
   <feature id="org.jboss.tools.seam.feature.source"/>
   <feature id="org.jboss.tools.batch.feature.source"/>
   <feature id="org.jboss.tools.cdi.feature.source"/>

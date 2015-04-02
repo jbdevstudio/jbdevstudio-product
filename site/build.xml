@@ -217,7 +217,7 @@ To run this build, use Tycho. Try `mvn3 clean install -U -B -fae -q -e`
           </provides>
           <requires size="18">
             <required namespace="org.eclipse.equinox.p2.iu" name="org.jboss.tools.ws.feature.feature.group" range="[1.2.2.v20120601-1328-H130-CR1,1.2.2.v20120601-1328-H130-CR1]"/>
-            <required namespace="org.eclipse.equinox.p2.iu" name="org.jboss.tools.vpe.feature.feature.group" range="[3.3.0.v20120601-1757-H99-CR1,3.3.0.v20120601-1757-H99-CR1]"/>
+            <required namespace="org.eclipse.equinox.p2.iu" name="org.jboss.tools.vpe.preview.feature.feature.group" range="[3.3.0.v20120601-1757-H99-CR1,3.3.0.v20120601-1757-H99-CR1]"/>
     get 
     org.jboss.tools.ws.feature.categories = AbridgedTools,WebTools
   -->
