@@ -420,10 +420,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         	parent.lockNextButton();
     	} else if(pathIsValid()){
     		int status = updateJava(false);
-    		if (status == 0 && (OsVersion.IS_WINDOWS || OsVersion.IS_OSX) && option2.isSelected()) {
-        		messageLabel.setText(parent.langpack.getString("JREPathPanel.VPEdoesNotSupportJava64.title"));
-            	parent.unlockNextButton();
-    		} else if(status == 0) {
+    		if(status == 0) {
     			parent.unlockNextButton();
        		} else if(status == -2){
         		messageLabel.setText("<html><p>This JVM was not tested with JBoss Developer Studio.<br>It is not guaranteed to work.</p></html>");
