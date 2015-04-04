@@ -1,7 +1,10 @@
 package com.jboss.devstudio.core.installer;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,10 +15,14 @@ import java.io.StringReader;
 import java.text.MessageFormat;
 import java.util.Properties;
 
+import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JViewport;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -40,8 +47,10 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
 	public static final String DATA_MODEL_VAR = "DATA_MODEL";
 	
+	private static final String SYSPN_JAVA_VENDOR = "java.vendor";
 	private static final String SYSPN_JAVA_VERSION = "java.version";
 	private static final String SYSPN_SUN_ARCH_DATA_MODEL = "sun.arch.data.model";
+	
     private static final String winTestFiles[];
     private static final String linTestFiles[];
     private String variableName;
@@ -76,6 +85,9 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 	private ButtonGroup archGroup;
 	private JLabel messageLabel;
 	private JLabel messageLabelJdk;
+	private JLabel vendor;
+	private JLabel version;
+	private JLabel arch;
 
 	public JREPathPanel(InstallerFrame parent, InstallData idata) {
 		super(parent, idata, new IzPanelLayout());
@@ -116,24 +128,51 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 			}
 		});
 
-		headPanel.setLayout(new GridLayout(3,1));
 		pathSelectionPanel.addChangeListener(this);
 		
-		JLabel label = new JLabel(parent.langpack.getString("JREPathPanel.dataModel.title"));
-		headPanel.add(label);
+		JPanel jvmInfo = new JPanel();
+		Border border2 = BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder((EtchedBorder.LOWERED)), "JVM Information");
+		jvmInfo.setBorder(border2);
+		jvmInfo.setLayout(new GridBagLayout());
 		
-		option1 = new JRadioButton(parent.langpack.getString("JREPathPanel.dataModel32.title"));
-		headPanel.add(option1);
-		option2 = new JRadioButton(parent.langpack.getString("JREPathPanel.dataModel64.title"));
-		headPanel.add(option2);
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;
 		
-		archGroup = new ButtonGroup();
-		archGroup.add(option1);
-		archGroup.add(option2);
+		c.anchor = GridBagConstraints.LINE_START;
+		jvmInfo.add(new JLabel("Vendor:",LEFT),c);
 		
-		option1.setEnabled(false);
-		option2.setEnabled(false);
-		add(headPanel, NEXT_LINE);
+		c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 1;
+		c.anchor = GridBagConstraints.LINE_START;		
+		jvmInfo.add(new JLabel("Version:",LEFT),c);
+
+		c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 2;
+		c.anchor = GridBagConstraints.LINE_START;
+		jvmInfo.add(new JLabel("Architecture:",LEFT),c);
+
+		c = new GridBagConstraints();
+		c.gridx = 1;
+		c.gridy = 0;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		jvmInfo.add(vendor = new JLabel(""),c);
+		
+		c = new GridBagConstraints();
+		c.gridx = 1;
+		c.gridy = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		jvmInfo.add(version = new JLabel(""),c);
+
+		c = new GridBagConstraints();
+		c.gridx = 1;
+		c.gridy = 2;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		jvmInfo.add(arch = new JLabel(""),c);
+		
+		add(jvmInfo, NEXT_LINE);
 
 		messageLabel = createLabel();
 		add(messageLabel, NEXT_LINE);
@@ -153,7 +192,11 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
     }
 
 	private JLabel createLabel() {
-		JLabel temp = new JLabel(""){
+		return createLabel("");
+	}
+
+	private JLabel createLabel(String title) {
+		JLabel temp = new JLabel(title){
 			public Dimension getPreferredSize() {
 				return new Dimension(500, 50);
 			}
@@ -233,9 +276,10 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 		Properties properties = new Properties();
 		int status = verifyVersion(pathSelectionPanel.getPath(),properties);
 		if("installer".equals(idata.getVariable("PACK_NAME"))) {
-			String dataArch = properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL);
-			option1.setSelected("32".equals(dataArch));
-			option2.setSelected("64".equals(dataArch));
+			vendor.setText(properties.getProperty(SYSPN_JAVA_VENDOR));
+			version.setText(properties.getProperty(SYSPN_JAVA_VERSION));
+			arch.setText(properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL));
+			arch.getParent().doLayout();
 		}
 		return status;
     }
@@ -384,7 +428,8 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 	
     public static void main(String[] args) {
     	final String pattern = "{0} = {1}";
-		System.out.println(MessageFormat.format(pattern, SYSPN_JAVA_VERSION, System.getProperties().get(SYSPN_JAVA_VERSION)));			
+    	System.out.println(MessageFormat.format(pattern, SYSPN_JAVA_VENDOR, System.getProperty(SYSPN_JAVA_VENDOR,"Unknown")));
+    	System.out.println(MessageFormat.format(pattern, SYSPN_JAVA_VERSION, System.getProperties().get(SYSPN_JAVA_VERSION)));			
 		System.out.println(MessageFormat.format(pattern, SYSPN_SUN_ARCH_DATA_MODEL, System.getProperties().get(SYSPN_SUN_ARCH_DATA_MODEL)));
 	}
     
