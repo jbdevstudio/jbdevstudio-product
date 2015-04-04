@@ -93,17 +93,14 @@ public class PathSelectionPanel extends JPanel implements ActionListener, Layout
         textField.addActionListener(this);
         textField.getDocument().addDocumentListener(new DocumentListener(){
 
-			@Override
 			public void changedUpdate(DocumentEvent arg0) {
 				fireChange();
 			}
 
-			@Override
 			public void insertUpdate(DocumentEvent arg0) {
 				fireChange();
 			}
 
-			@Override
 			public void removeUpdate(DocumentEvent arg0) {
 				fireChange();
 			}

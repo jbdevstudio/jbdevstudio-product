@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -130,45 +131,59 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
 		pathSelectionPanel.addChangeListener(this);
 		
-		JPanel jvmInfo = new JPanel();
-		Border border2 = BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder((EtchedBorder.LOWERED)), "JVM Information");
+		JPanel jvmInfo = new JPanel() {
+			@Override
+			public int getWidth() {
+				return pathSelectionPanel.getWidth();
+			}
+		};
+		Border border2 = BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder((EtchedBorder.LOWERED)), "VM Information");
 		jvmInfo.setBorder(border2);
 		jvmInfo.setLayout(new GridBagLayout());
 		
 		GridBagConstraints c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 0;
-		
+		c.insets = new Insets(4,4,2,4);
+		c.weightx = 0;
 		c.anchor = GridBagConstraints.LINE_START;
 		jvmInfo.add(new JLabel("Vendor:",LEFT),c);
 		
 		c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 1;
+		c.insets = new Insets(2,4,2,4);
+		c.weightx = 0;
 		c.anchor = GridBagConstraints.LINE_START;		
 		jvmInfo.add(new JLabel("Version:",LEFT),c);
 
 		c = new GridBagConstraints();
 		c.gridx = 0;
 		c.gridy = 2;
+		c.insets = new Insets(2,4,4,4);
+		c.weightx = 0;
 		c.anchor = GridBagConstraints.LINE_START;
 		jvmInfo.add(new JLabel("Architecture:",LEFT),c);
 
 		c = new GridBagConstraints();
 		c.gridx = 1;
 		c.gridy = 0;
+		c.insets = new Insets(4,2,2,4);
+		c.weightx = 1;
 		c.fill = GridBagConstraints.HORIZONTAL;
 		jvmInfo.add(vendor = new JLabel(""),c);
 		
 		c = new GridBagConstraints();
 		c.gridx = 1;
 		c.gridy = 1;
+		c.insets = new Insets(2,2,2,4);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		jvmInfo.add(version = new JLabel(""),c);
 
 		c = new GridBagConstraints();
 		c.gridx = 1;
 		c.gridy = 2;
+		c.insets = new Insets(2,2,4,4);
 		c.fill = GridBagConstraints.HORIZONTAL;
 		jvmInfo.add(arch = new JLabel(""),c);
 		
@@ -276,9 +291,9 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 		Properties properties = new Properties();
 		int status = verifyVersion(pathSelectionPanel.getPath(),properties);
 		if("installer".equals(idata.getVariable("PACK_NAME"))) {
-			vendor.setText(properties.getProperty(SYSPN_JAVA_VENDOR));
-			version.setText(properties.getProperty(SYSPN_JAVA_VERSION));
-			arch.setText(properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL));
+			vendor.setText(properties.getProperty(SYSPN_JAVA_VENDOR,"Unknown"));
+			version.setText(properties.getProperty(SYSPN_JAVA_VERSION,"Unknown"));
+			arch.setText(properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL) == null ? "Unknown" : properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL) +"-bit");
 			arch.getParent().doLayout();
 		}
 		return status;

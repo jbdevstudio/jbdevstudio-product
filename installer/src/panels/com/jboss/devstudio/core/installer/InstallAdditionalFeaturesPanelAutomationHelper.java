@@ -19,7 +19,6 @@ public class InstallAdditionalFeaturesPanelAutomationHelper implements PanelAuto
 	public static final String LOCATIONS_NODE_NAME = "locations";
 	public static final String IUS_NODE_NAME = "ius";
 
-	@Override
 	public void makeXMLData(AutomatedInstallData installData, IXMLElement panelRoot) {
 		IXMLElement ius = new XMLElementImpl(IUS_NODE_NAME,panelRoot);
 		IXMLElement locations = new XMLElementImpl(LOCATIONS_NODE_NAME,panelRoot);
@@ -29,7 +28,6 @@ public class InstallAdditionalFeaturesPanelAutomationHelper implements PanelAuto
 		panelRoot.addChild(locations);
 	}
 
-	@Override
 	public void runAutomated(AutomatedInstallData idata, IXMLElement panelRoot) throws InstallerException {
 		IXMLElement ius = panelRoot.getFirstChildNamed(IUS_NODE_NAME);
 		IXMLElement locations = panelRoot.getFirstChildNamed(LOCATIONS_NODE_NAME);

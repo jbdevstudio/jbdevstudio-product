@@ -43,7 +43,6 @@ public class ErrorUtils {
 			
 			JButton ok = new JButton("OK");
 			ok.addActionListener(new ActionListener(){
-				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					frame.dispose();
 				}

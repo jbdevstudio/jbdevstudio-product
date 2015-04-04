@@ -179,7 +179,6 @@ public class Unpacker extends UnpackerBase
 							"director" + File.separator +
 							"plugins" + File.separator);
 					File[] launchers = pluginsFolder.listFiles(new FilenameFilter() {
-						@Override
 						public boolean accept(File dir, String name) {
 							return name.startsWith("org.eclipse.equinox.launcher") && name.endsWith(".jar");
 						}
@@ -232,7 +231,6 @@ public class Unpacker extends UnpackerBase
 	    							"studio" + File.separator +
 	    							"plugins" + File.separator);
 	    					File[] studioLaunchers = studioPluginsFolder.listFiles(new FilenameFilter() {
-	    						@Override
 	    						public boolean accept(File dir, String name) {
 	    							return name.startsWith("org.eclipse.equinox.launcher") && name.endsWith(".jar");
 	    						}

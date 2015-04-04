@@ -108,7 +108,6 @@ public class SimpleFinishPanel extends IzPanel {
 
 			final JCheckBox runAfterCheckbox = new JCheckBox(parent.langpack.getString("SimpleFinishPanel.headline.run_after"), true);
 			runAfterCheckbox.addItemListener(new ItemListener() {
-				@Override
 				public void itemStateChanged(ItemEvent e) {
 					SimpleFinishPanel.this.runAfterAction.setRunAfter(runAfterCheckbox.isSelected());
 				}

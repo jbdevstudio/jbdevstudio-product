@@ -17,7 +17,6 @@ public class RunAfterAction implements com.izforge.izpack.util.CleanupClient {
 		this.installData = installData;
 	}
 
-	@Override
     public void cleanUp() {
     	if (this.runAfter && this.installData.installSuccess) {
     		this.panel.runAfter();

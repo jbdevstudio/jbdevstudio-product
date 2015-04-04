@@ -125,7 +125,6 @@ public class P2IUListPanel extends JPanel {
 		SelectAllAction() {
 			super("Select All");
 		}
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			selectAll();
 		}
@@ -136,7 +135,6 @@ public class P2IUListPanel extends JPanel {
 		DeselectAllAction() {
 			super("Deselect All");
 		}
-		@Override
 		public void actionPerformed(ActionEvent e) {
 			deselectAll();
 		}
