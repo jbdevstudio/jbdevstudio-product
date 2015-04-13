@@ -86,7 +86,7 @@
     <import feature="org.eclipse.help"/>
     <import feature="org.eclipse.jdt"/>
     <import feature="org.eclipse.rse"/>
-    <import feature="org.eclipse.tm.terminal"/>
+    <import feature="org.eclipse.tm.terminal.feature"/>
     <import feature="org.eclipse.datatools.modelbase.feature"/>
     <import feature="org.eclipse.datatools.connectivity.feature"/>
     <import feature="org.eclipse.datatools.sqldevtools.feature"/>
