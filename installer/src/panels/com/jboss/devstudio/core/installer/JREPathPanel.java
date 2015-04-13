@@ -40,6 +40,8 @@ import com.izforge.izpack.util.OsVersion;
 
 public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
+	private static final String VPE_NOT_SUPPORTED_ARCH = "64";
+
 	private static final String VARN_JAVA_HOME = "JAVA_HOME";
 
 	private static final String JAVA_APPLET_PLUGIN = "JavaAppletPlugin.plugin";
@@ -80,15 +82,14 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         return false;
     }
 
-	private JPanel headPanel = new JPanel();
     private JRadioButton rb1,rb2;
-	private JRadioButton option1, option2;
-	private ButtonGroup archGroup;
 	private JLabel messageLabel;
 	private JLabel messageLabelJdk;
 	private JLabel vendor;
 	private JLabel version;
 	private JLabel arch;
+
+	private Properties jvmProperties;
 
 	public JREPathPanel(InstallerFrame parent, InstallData idata) {
 		super(parent, idata, new IzPanelLayout());
@@ -288,12 +289,12 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         }
         
         idata.setVariable(getVariableName(),pathSelectionPanel.getPath());
-		Properties properties = new Properties();
-		int status = verifyVersion(pathSelectionPanel.getPath(),properties);
+		jvmProperties = new Properties();
+		int status = verifyVersion(pathSelectionPanel.getPath(),jvmProperties);
 		if("installer".equals(idata.getVariable("PACK_NAME"))) {
-			vendor.setText(properties.getProperty(SYSPN_JAVA_VENDOR,"Unknown"));
-			version.setText(properties.getProperty(SYSPN_JAVA_VERSION,"Unknown"));
-			arch.setText(properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL) == null ? "Unknown" : properties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL) +"-bit");
+			vendor.setText(jvmProperties.getProperty(SYSPN_JAVA_VENDOR,"Unknown"));
+			version.setText(jvmProperties.getProperty(SYSPN_JAVA_VERSION,"Unknown"));
+			arch.setText(jvmProperties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL) == null ? "Unknown" : jvmProperties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL) +"-bit");
 			arch.getParent().doLayout();
 		}
 		return status;
@@ -480,7 +481,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         	parent.lockNextButton();
     	} else if(pathIsValid()){
     		int status = updateJava(false);
-    		if (status == 0 && (OsVersion.IS_WINDOWS || OsVersion.IS_OSX) && option2.isSelected()) {
+    		if (status == 0 && (OsVersion.IS_WINDOWS || OsVersion.IS_OSX) && VPE_NOT_SUPPORTED_ARCH.equals(jvmProperties.getProperty(SYSPN_SUN_ARCH_DATA_MODEL))) {
         		messageLabel.setText(parent.langpack.getString("JREPathPanel.VPEdoesNotSupportJava64.title"));
             	parent.unlockNextButton();
     		} else if(status == 0) {
