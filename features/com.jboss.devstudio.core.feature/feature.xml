@@ -70,7 +70,6 @@
     <import feature="org.jboss.tools.maven.cdi.feature"/>
     <import feature="org.jboss.tools.maven.hibernate.feature"/>
     <import feature="org.jboss.tools.maven.jdt.feature"/>
-    <import feature="org.jboss.tools.maven.portlet.feature"/>
     <import feature="org.jboss.tools.maven.project.examples.feature"/>
     <import feature="org.jboss.tools.maven.sourcelookup.feature"/>
 
