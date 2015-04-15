@@ -49,7 +49,10 @@
 				<configuration>
 					<products>
 						<product>
-							<id>com.jboss.devstudio.core.package</id>
+						  <id>com.jboss.devstudio.core.package</id>
+						  <rootFolders>
+						    <macosx>jbdevstudio.app</macosx>
+						  </rootFolders>
 						</product>
 					</products>
 				</configuration>
