@@ -16,6 +16,10 @@
     <category name="AdditionalTools" />
     <category name="MobileTools"/>
   </feature>
+  <feature id="org.jboss.tools.aerogear.easymport.feature">
+    <category name="AdditionalTools" />
+    <category name="MobileTools"/>
+  </feature>
   <feature id="org.jboss.tools.aerogear.thym.feature">
     <category name="AdditionalTools" />
     <category name="MobileTools"/>
@@ -219,6 +223,9 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
+  <feature id="org.jboss.tools.central.easymport.feature">
+    <category name="CoreTools" />
+  </feature>
 
   <!-- include but do not categorize -->
   <feature id="org.jboss.tools.central.feature"/>
@@ -293,6 +300,7 @@
 
   <feature id="org.jboss.tools.central.feature.source"/>
   <feature id="org.jboss.tools.richfaces.feature.source"/>
+  <feature id="org.jboss.tools.aerogear.easymport.feature.source"/>
   <feature id="org.jboss.tools.aerogear.thym.feature.source"/>
   <feature id="org.jboss.tools.feedhenry.source"/> 
   <!-- JBDS-3079 remove <feature id="org.jboss.tools.cordovasim.feature.source"/> -->
@@ -347,7 +355,6 @@
   <feature id="org.jboss.tools.common.ui.feature.source"/>
   <feature id="org.jboss.tools.common.verification.feature.source"/>
   <!-- JBDS-3079 remove <feature id="org.jboss.tools.maven.jbosspackaging.feature.source"/> -->
-  <!-- JBIDE-16960 remove <feature id="org.jboss.tools.maven.gwt.feature.source"/> -->
   <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature.source"/>
 
   <bundle id="org.jboss.tools.discovery.core.source"/>
