@@ -93,6 +93,13 @@
 
   <target name="pack.zip">
     <zip destfile="${target.zip}" update="true" basedir="${update.site.source.dir}" includes="content.*, ${web.content.files}" />
+    <!-- overwrite the generated fullSite/all/repository.zip with the modified site_assembly.zip -->
+    <if>
+      <available file="${project.build.directory}/fullSite/all/repository.zip" type="file"/>
+      <then>
+        <copy tofile="${project.build.directory}/fullSite/all/repository.zip" file="${target.zip}"/>
+      </then>
+    </if>
   </target>
 
   <target name="check.target">
@@ -202,6 +209,16 @@ To run this build, use Tycho. Try `mvn3 clean install -U -B -fae -q -e`
 
     <!-- replace template version w/ xslt-generated version -->
     <move file="${output.dir}/category.out.xml" tofile="${update.site.source.dir}/category.xml" overwrite="true"/>
+
+    <!-- copy web content & tweaked update site zip (with associate sites) into fullSite/all/repo if it exists -->
+    <if>
+      <available file="${project.build.directory}/fullSite/all/repo" type="dir"/>
+      <then>
+        <copy todir="${project.build.directory}/fullSite/all/repo">
+          <fileset dir="${output.dir}" includes="${web.content.files}" />
+        </copy>
+      </then>
+    </if>
   </target>
 
   <!-- given content.xml
