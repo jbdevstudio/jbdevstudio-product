@@ -107,7 +107,7 @@
     <profile>
       <id>hudson</id>
       <properties>
-        <eapVersion>6.3.0</eapVersion>
+        <eapVersion>6.4.0</eapVersion>
         <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.4.0/jboss-eap-6.4.0.zip</eapURL>
         <eapMD5>9a5d37631919a111ddf42ceda1a9f0b5</eapMD5>
         <eapRootFolder>jboss-eap-6.4</eapRootFolder>
