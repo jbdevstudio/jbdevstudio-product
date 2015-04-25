@@ -19,22 +19,23 @@ public class ShortcutPanelPatch extends IzPanel {
 	 * Should we also keep runtimes/ folder? If so will need a way to REMOVE files in uninstallData as it currently only supports add()
 	 */
 	protected String[] additionalUninstallableFiles = {
+		
 		/* files/folders in studio folder */
-		"studio" + System.getProperty("file.separator") + "readme",
-		"studio" + System.getProperty("file.separator") + "features",
-		"studio" + System.getProperty("file.separator") + "plugins",
-		"studio" + System.getProperty("file.separator") + "p2",
-		"studio" + System.getProperty("file.separator") + "artifacts.xml",
-		"studio" + System.getProperty("file.separator") + ".eclipseproduct",
-		"studio" + System.getProperty("file.separator") + "epl-v10.html",
-		"studio" + System.getProperty("file.separator") + "icon.xpm",
-		"studio" + System.getProperty("file.separator") + "jbdevstudio",
-		"studio" + System.getProperty("file.separator") + "notice.html",
-		"studio" + System.getProperty("file.separator") + "runtime_locations.properties",
-		"studio" + System.getProperty("file.separator") + "48-jbds_icon.png",
-		"studio" + System.getProperty("file.separator") + "48-jbds_uninstall_icon.png",
-		"studio" + System.getProperty("file.separator") + "jbds.ico",
-		"studio" + System.getProperty("file.separator") + "jbds_uninstall.ico",
+		"studio" + File.separator + "readme",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "features",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "plugins",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "p2",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "artifacts.xml",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + ".eclipseproduct",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "epl-v10.html",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "icon.xpm",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "jbdevstudio",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "notice.html",
+		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "runtime_locations.properties",
+		"studio" + File.separator + "48-jbds_icon.png",
+		"studio" + File.separator + "48-jbds_uninstall_icon.png",
+		"studio" + File.separator + "jbds.ico",
+		"studio" + File.separator + "jbds_uninstall.ico",
 
 		/* files/folders in root folder */
 		"Uninstaller",

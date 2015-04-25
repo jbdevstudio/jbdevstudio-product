@@ -54,6 +54,7 @@ import com.izforge.izpack.util.FileExecutor;
 import com.izforge.izpack.util.Housekeeper;
 import com.izforge.izpack.util.IoHelper;
 import com.izforge.izpack.util.OsConstraint;
+import com.izforge.izpack.util.OsVersion;
 import com.jboss.devstudio.core.installer.ConsoleCommandException;
 import com.jboss.devstudio.core.installer.ErrorUtils;
 import com.jboss.devstudio.core.installer.P2DirectorStarterListener;
@@ -228,7 +229,7 @@ public class Unpacker extends UnpackerBase
 	                	handler.nextStep(pack.name, i + 1, 1);
 	                	try {
 	                		File studioPluginsFolder = new File(installLocation + File.separator +
-	    							"studio" + File.separator +
+	                				P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator +
 	    							"plugins" + File.separator);
 	    					File[] studioLaunchers = studioPluginsFolder.listFiles(new FilenameFilter() {
 	    						public boolean accept(File dir, String name) {

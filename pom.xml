@@ -51,6 +51,7 @@
     <eapRootFolder>jboss-eap-6.1</eapRootFolder>
     <buildEAPBundle>false</buildEAPBundle>
     <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
+    <tychoVersion>0.23.0-SNAPSHOT</tychoVersion>
   </properties>
 
   <build>
@@ -188,6 +189,10 @@
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
+    </pluginRepository>
+    <pluginRepository>
+      <id>tycho-snapshots</id>
+      <url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
     </pluginRepository>
   </pluginRepositories>
 </project>

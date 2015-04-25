@@ -21,6 +21,8 @@ import com.jboss.devstudio.core.installer.JavaVersionReader.ResponseListener;
 
 public class P2DirectorStarterListener implements InstallerListener {
 
+	public static final String JBDEVSTUDIO_LOCATION =  "studio" + (OsVersion.IS_OSX ? File.separator + "jbdevstudio.app" + File.separator + "Contents" + File.separator + "Eclipse" : "");
+	
 	private String installLocation;
 	private String selectedJvm;
 	
@@ -124,7 +126,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 		}
 		
 		public void close() {
-			File studioLocation = new File(parameters.get(3),"studio");
+			File studioLocation = new File(parameters.get(3), JBDEVSTUDIO_LOCATION);
 			File cancelLocation = new File(studioLocation, "cancel");
 			Debug.trace(cancelLocation);
 			try {
@@ -146,7 +148,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 		
 		private List<String> bundles = new ArrayList<String>(256);
 		public BundleListConsoleCommand() {
-			cmd="-jar \"{1}\" -l -r " + URL_SURROUND_CHAR + "{2}" + URL_SURROUND_CHAR + " -d \"{3}/studio\"";
+			cmd="-jar \"{1}\" -l -r " + URL_SURROUND_CHAR + "{2}" + URL_SURROUND_CHAR + " -d \"{3}" + File.separator + JBDEVSTUDIO_LOCATION + "\" ";
 		}
 
 		@Override
@@ -175,7 +177,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 					"-vm \"{0}\" " +
 					"-r " +
 					URL_SURROUND_CHAR + "{2}" + URL_SURROUND_CHAR + " " +
-					"-d \"{3}" + File.separator + "studio\" " +
+					"-d \"{3}" + File.separator + JBDEVSTUDIO_LOCATION + "\" " +
 					"-p jbds " +
 					"-i {4} " +
 					"-profileProperties org.eclipse.update.install.features=true";

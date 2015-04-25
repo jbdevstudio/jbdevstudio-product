@@ -51,6 +51,9 @@
 						<product>
 							<id>com.jboss.devstudio.core.package</id>
 						</product>
+						<rootFolders>
+							<macosx>jbdevstudio.app</macosx>
+						</rootFolders>
 					</products>
 				</configuration>
 			</plugin>

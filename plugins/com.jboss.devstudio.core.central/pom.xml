@@ -10,7 +10,11 @@
 	<groupId>com.jboss.devstudio.core.plugins</groupId>
 	<artifactId>com.jboss.devstudio.core.central</artifactId>
 	<packaging>eclipse-plugin</packaging>
-	
+
+	<properties>
+		<noVpn>false</noVpn>
+	</properties>
+
 	<build>
 		<resources>
 			<resource>
@@ -48,7 +52,7 @@
               <goal>wget</goal>
             </goals>
             <configuration>
-              <skip>false</skip>
+              <skip>${noVpn}</skip>
               <url>http://www.qa.jboss.com/binaries/RHDS/discovery/nightly/core/${jbosstools_site_stream}/devstudio-earlyaccess.properties</url>
               <overwrite>true</overwrite>
               <skipCache>true</skipCache>

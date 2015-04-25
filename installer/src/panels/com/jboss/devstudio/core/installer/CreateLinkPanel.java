@@ -13,6 +13,7 @@ import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.InstallerFrame;
 import com.izforge.izpack.installer.IzPanel;
 import com.izforge.izpack.installer.PanelAutomation;
+import com.izforge.izpack.util.Debug;
 import com.izforge.izpack.util.OsVersion;
 import com.izforge.izpack.util.os.unix.ShellScript;
 
@@ -23,6 +24,7 @@ public class CreateLinkPanel extends IzPanel {
 			"jre" + File.separator + "bin" + File.separator + "javaw.exe" };
 	private static final String linTestFiles[] = new String[] { "bin" + File.separator + "java",
 		"jre" + File.separator + "bin" + File.separator + "java" };
+	private String installPath = "";
 
 	public CreateLinkPanel(InstallerFrame parent, InstallData idata) {
 		super(parent, idata);
@@ -49,9 +51,7 @@ public class CreateLinkPanel extends IzPanel {
 	}
 
 	public void panelActivate() {
-		File install = new File(idata.getVariable("INSTALL_PATH"));
-		File studio = new File(install , "studio");
-		File app = new File(studio,"jbdevstudio.app");
+		installPath = idata.getVariable("INSTALL_PATH");
 		createSoftLink();
 		writeProperty("runtime_locations.properties");
 		addJREPath();
@@ -91,9 +91,8 @@ public class CreateLinkPanel extends IzPanel {
 	}
 	
 	public void writeProperty(String fileName) {
-		String installPath = idata.getVariable("INSTALL_PATH");
 
-		File folder = new File(installPath, "studio");
+		File folder = new File(installPath, P2DirectorStarterListener.JBDEVSTUDIO_LOCATION);
 
 		Properties servers = (Properties) idata.getAttribute("AS_SERVERS");
 		if (!servers.isEmpty()) {
@@ -109,21 +108,21 @@ public class CreateLinkPanel extends IzPanel {
 				stream.flush();
 				stream.close();
 			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
 				if (stream != null) {
 					try {
 						stream.close();
 					} catch (IOException e1) {
+						Debug.trace(e1);
 					}
 				}
-				e.printStackTrace();
 			}
 		}
 	}
 
 	public void createLink(String fileName, String folderName) {
-		String installPath = idata.getVariable("INSTALL_PATH");
-		String path;
-		path = installPath + File.separator + "eclipse" + File.separator
+		String path = installPath + File.separator + "eclipse" + File.separator
 				+ "links";
 
 		File folder = new File(path);
@@ -155,8 +154,7 @@ public class CreateLinkPanel extends IzPanel {
 	public static void addJREPath(String installPath, String execPath) {
 		File pathLinuxWindows = new File(installPath + File.separator + "studio" + File.separator
 				+ "jbdevstudio.ini");
-		File pathMacosx = new File(installPath + File.separator + "studio" + File.separator  
-				+ "jbdevstudio.app" + File.separator + "Contents" + File.separator +"MacOS" + File.separator
+		File pathMacosx = new File(installPath + File.separator + "studio" + File.separator + P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator
 				+ "jbdevstudio.ini");
 		if(pathLinuxWindows.exists()) {
 			addJVM(execPath, pathLinuxWindows);
@@ -180,7 +178,7 @@ public class CreateLinkPanel extends IzPanel {
 				try {
 					is.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					Debug.trace(e);  
 				}
 			}
 		}
@@ -198,7 +196,7 @@ public class CreateLinkPanel extends IzPanel {
 				try {
 					stream.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					Debug.trace(e);
 				}
 			}
 		}
