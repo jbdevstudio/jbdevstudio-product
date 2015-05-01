@@ -172,12 +172,17 @@
                   <!-- properties previously included in version.properties -->
                   <property name="project.version" value="${project.version}" />
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
+                  <property name="project.build.directory" value="${project.build.directory}" />
+                  <property name="basedir" value="${basedir}" />
                 </ant>
                 <!-- clean up build-time artifacts so they won't be published -->
                 <delete includeEmptyDirs="true" quiet="true">
                   <fileset dir="${project.build.directory}/update"/>
                   <fileset file="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip"/>
                 </delete>
+
+                <!-- test installer jar -->
+
               </tasks>
             </configuration>
             <goals>

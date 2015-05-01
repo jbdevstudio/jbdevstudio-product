@@ -1,0 +1,17 @@
+/* AUTOMATICALLY GENERATED ON Thu Apr 30 22:27:42 PDT 2015*/
+/* DO NOT EDIT */
+
+grant {
+  permission java.lang.RuntimePermission "getenv.izpack.mode";
+  permission java.io.FilePermission "<<ALL FILES>>", "read,write,execute,delete";
+  permission java.util.PropertyPermission "*", "read,write";
+  permission java.lang.RuntimePermission "*";
+  permission org.osgi.framework.AdminPermission "*";
+  permission org.osgi.framework.ServicePermission "*", "register,get";
+  permission java.net.NetPermission "*";
+  permission org.osgi.framework.AdaptPermission "*", "adapt";
+  permission org.eclipse.equinox.log.LogPermission "*", "log";
+  permission java.lang.reflect.ReflectPermission "*";
+  permission org.osgi.service.application.ApplicationAdminPermission "*", "lifecycle";
+};
+

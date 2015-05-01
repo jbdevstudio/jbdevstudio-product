@@ -87,6 +87,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 	}
 	
 	public static class BaseConsoleCommand implements ConsoleCommand, ResponseListener {
+		protected static final String EOL = System.getProperty("line.separator");
 		private final JavaVersionReader rt = new JavaVersionReader();
 		protected String cmd = "";
 		private List<String> parameters = new ArrayList<String>();
@@ -150,7 +151,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 
 		@Override
 		public void stdout(String line) {
-			Debug.trace(line);
+			Debug.trace(line.replace(EOL,""));
 			if(!completePattern.matcher(line).matches() && line.contains("=")) {
 				bundles.add(line.substring(0,line.indexOf('=')));
 			}
@@ -188,7 +189,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 
 		@Override
 		public void stdout(String line) {
-			Debug.trace(line);
+			Debug.trace(line.replace(EOL,""));
 			if(line.contains("Downloading")) {
 				downloadProgress(counter+=DOWNLOADING_WEIGHT,"Fetching " + line.substring(line.indexOf(' ')));
 			} else if(line.contains("Configuring") || line.contains("Installing")) {

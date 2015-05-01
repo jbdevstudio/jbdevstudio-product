@@ -10,6 +10,9 @@ import java.io.UnsupportedEncodingException;
 import com.izforge.izpack.util.Debug;
 
 public class JavaVersionReader {
+	private static final String SPACE = " ";
+	private static final String JAVA_SECURITY_POLICY_SYSPROP = "java.security.policy";
+	private static final String JAVA_SECURITY_MANAGER_SYSPROP = "java.security.manager";
 	private static final String CMD_COMMAND = "cmd /K chcp 1252"; //$NON-NLS-1$
 	private static final String SH_COMMAND = "sh"; //$NON-NLS-1$
 	private static final byte NEWLINE = 0xA;
@@ -211,6 +214,7 @@ public class JavaVersionReader {
 	 * Sends the given string and a newline to the server.
 	 */
 	public void writeLine(String s) throws IOException {
+		Debug.trace("[ Command ] " + s);
 		if (isUnixLikeSystem()) {
 			write(s.getBytes(),true);
 		} else {
@@ -313,36 +317,52 @@ public class JavaVersionReader {
 	}
 
 	public String getJavaVersion(String path) {
-		String result = null;
-		try {
-			open();
-			executeRequest(path+File.separator+"java -version");
-			result = getErrorText();
-			if("".equals(result))
-				result = getOutputText();
-		} catch (IOException e) {
-			result = "";
-		} finally {
-			close();
-		}
-		return result;
+		return executeJava(path, " -version");
 	}
-	
+
 	public String executeJava(String path, String command) {
+		return executeJava(path, command, true);
+	}
+
+	public String executeJava(String path, String command,boolean headless) {
 		String result = null;
 		try {
 			open();
-			Debug.trace(command);
-			executeRequest("\"" + path+File.separator+"java\" -Djava.awt.headless=true " + command);
+			StringBuilder request = new StringBuilder();
+			request
+				.append("\"")
+				.append(path)
+				.append(File.separator)
+				.append("java\" ")
+				.append(headless?"-Djava.awt.headless=true":"")
+				.append(SPACE)
+				.append(getSecurityProperties())
+				.append(SPACE)
+				.append(command);
+
+			executeRequest(request.toString());
 			result = getErrorText();
 		} catch (IOException e) {
+			Debug.trace(e);
 			result = "";
 		} finally {
 			close();
 		}
 		return result;
 	}
+
 	
+	private Object getSecurityProperties() {
+		StringBuilder sp = new StringBuilder();
+		String manager = System.getProperty(JAVA_SECURITY_MANAGER_SYSPROP);
+		String policy = System.getProperty(JAVA_SECURITY_POLICY_SYSPROP);
+		if(manager!=null && policy!=null) {
+			sp.append("-D").append(JAVA_SECURITY_MANAGER_SYSPROP).append(manager).append(SPACE);
+			sp.append("-D").append(JAVA_SECURITY_POLICY_SYSPROP).append("=\"").append(policy).append("\"");
+		}
+		return sp.toString();
+	}
+
 	public String executeJava(String path, String command, ResponseListener listener) {
 		this.responseListener = listener;
 		return executeJava(path, command);
@@ -357,8 +377,7 @@ public class JavaVersionReader {
 		try {
 			return File.createTempFile("izpack", ".bat");
 		} catch (IOException e) {
-			// TODO add exception processing
-			e.printStackTrace();
+			Debug.trace(e);
 		}
 		return null;
 	}
@@ -368,9 +387,8 @@ public class JavaVersionReader {
 			FileWriter writer = new FileWriter(batch);
 			writer.append(string);
 			writer.close();
-		} catch (IOException exception) {
-			// TODO add exception processing
-			exception.printStackTrace();
+		} catch (IOException e) {
+			Debug.trace(e);
 		}
 	}
 }

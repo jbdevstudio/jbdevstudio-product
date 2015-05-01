@@ -356,6 +356,24 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     </izpack>
 
     <checksum file="${destination.dir}/${installer.name}.jar" />
+	
+  	<if>
+  		<not>
+  			<isset property="skipTests" />
+  		</not>
+  		<then>
+			<loadfile srcfile="${basedir}/jbdevstudio-test-install.xml" property="jbdevstudio-test-install.xml.updated">
+				<filterchain>
+					<expandproperties/>
+				</filterchain>
+			</loadfile>
+			<echo file="${project.build.directory}/jbdevstudio-test-install.xml">${jbdevstudio-test-install.xml.updated}</echo>
+		
+			<java jar="${destination.dir}/${installer.name}.jar" fork="true" failonerror="true" maxmemory="512m" jvmargs="-DTRACE=true -Djava.security.manager -Djava.security.policy=${basedir}/java.policy">
+				<arg line="${project.build.directory}/jbdevstudio-test-install.xml"/>
+			</java>
+  		</then>
+  	</if>
   </target>
 
   <target name="clean">
