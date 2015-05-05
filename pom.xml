@@ -51,7 +51,8 @@
     <eapRootFolder>jboss-eap-6.1</eapRootFolder>
     <buildEAPBundle>false</buildEAPBundle>
     <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
-    <tychoVersion>0.23.0-SNAPSHOT</tychoVersion>
+    <p2StatsUrl>https://devstudio.redhat.com/usage/installs/local/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
+    <tychoVersion>0.23.0</tychoVersion>
   </properties>
 
   <build>
@@ -112,6 +113,7 @@
         <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.4.0/jboss-eap-6.4.0.zip</eapURL>
         <eapMD5>9a5d37631919a111ddf42ceda1a9f0b5</eapMD5>
         <eapRootFolder>jboss-eap-6.4</eapRootFolder>
+        <p2StatsUrl>https://devstudio.redhat.com/usage/installs/${JOB_NAME}/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
       </properties>
     </profile>
 
@@ -189,10 +191,6 @@
       <snapshots>
         <enabled>true</enabled>
       </snapshots>
-    </pluginRepository>
-    <pluginRepository>
-      <id>tycho-snapshots</id>
-      <url>https://repo.eclipse.org/content/repositories/tycho-snapshots/</url>
     </pluginRepository>
   </pluginRepositories>
 </project>
