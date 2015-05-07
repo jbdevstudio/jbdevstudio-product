@@ -1,11 +1,13 @@
 package com.jboss.devstudio.core.installer;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 
 import com.izforge.izpack.util.Debug;
 
@@ -15,19 +17,16 @@ public class JavaVersionReader {
 	private static final String JAVA_SECURITY_MANAGER_SYSPROP = "java.security.manager";
 	private static final String CMD_COMMAND = "cmd /K chcp 1252"; //$NON-NLS-1$
 	private static final String SH_COMMAND = "sh"; //$NON-NLS-1$
-	private static final byte NEWLINE = 0xA;
 	private static final String RESPONSE_STRING_WITH_NO_CODE = "REQUEST_FINISHED";
 	private static final String RESPONSE_STRING_PART_WITH_CODE = "REQUEST_FINISHED_";
 	private static final String ERROUT_FINISHED_STRING = "ERROUTPUT_FINISHED";
 
 	private Process executable;
-	private InputStream inputStream;
-	private OutputStream outputStream;
-	private InputStream errorStream;
+	private BufferedReader inputStream;
+	private BufferedWriter outputStream;
+	private BufferedReader errorStream;
 	private StringBuffer fResponseText = new StringBuffer(0);
 	private StringBuffer fErrorText = new StringBuffer(0);
-	private byte[] readLineBuffer = new byte[256];
-	private byte[] readErrorLineBuffer = new byte[256];
 	private ResponseListener responseListener;
 	
 	int errCode = 0;
@@ -71,9 +70,9 @@ public class JavaVersionReader {
 	private void open() throws IOException {
 		executable = Runtime.getRuntime().exec(getCommand());
 		if (executable != null) {
-			inputStream = executable.getInputStream();
-			outputStream = executable.getOutputStream();
-			errorStream = executable.getErrorStream();
+			inputStream = new BufferedReader(new InputStreamReader(executable.getInputStream()));
+			outputStream = new BufferedWriter(new OutputStreamWriter(executable.getOutputStream()));
+			errorStream = new BufferedReader(new InputStreamReader(executable.getErrorStream()));
 		}
 	}
 
@@ -154,29 +153,21 @@ public class JavaVersionReader {
 
 			// retrieve a response line
 			String response = readLine();
-			if (response == null || response.trim().length() == 0) {
-				try {
-					Thread.sleep(10);
-				} catch (InterruptedException e) {
-					// Just awake.
-				}
-
-				continue;
+			if (response != null && response.trim().length() > 0) {
+				// handle completion responses
+				if (response.trim().equalsIgnoreCase(RESPONSE_STRING_WITH_NO_CODE)) { //$NON-NLS-1$
+					break;
+				} else if (response.trim().toUpperCase().startsWith(RESPONSE_STRING_PART_WITH_CODE)) { //$NON-NLS-1$
+					try {
+						errCode = Integer.parseInt(response.trim().substring(RESPONSE_STRING_PART_WITH_CODE.length()));
+					} catch (NumberFormatException x) {
+						errCode = 0;
+					}
+					break;
+				} 
+				fResponseText.append(response);
+				responseListener.stdout(response);
 			}
-			
-			// handle completion responses
-			if (response.trim().equalsIgnoreCase(RESPONSE_STRING_WITH_NO_CODE)) { //$NON-NLS-1$
-				break;
-			} else if (response.trim().toUpperCase().startsWith(RESPONSE_STRING_PART_WITH_CODE)) { //$NON-NLS-1$
-				try {
-					errCode = Integer.parseInt(response.trim().substring(RESPONSE_STRING_PART_WITH_CODE.length()));
-				} catch (NumberFormatException x) {
-					errCode = 0;
-				}
-				break;
-			} 
-			fResponseText.append(response);
-			responseListener.stdout(response);
 		}
 
 		for (int i = 0; i < 10 && !bErrOutputFinished; i++) {
@@ -215,85 +206,26 @@ public class JavaVersionReader {
 	 */
 	public void writeLine(String s) throws IOException {
 		Debug.trace("[ Command ] " + s);
-		if (isUnixLikeSystem()) {
-			write(s.getBytes(),true);
-		} else {
-			write(s.getBytes(getEncoding()), true);
-		}
-	}
-
-	void write(byte[] bytes, boolean newLine) throws IOException {
-		write(bytes, 0, bytes.length, newLine);
-	}
-
-	/**
-	 * Low level method to write a string to the server. All write* methods are
-	 * funneled through this method.
-	 */
-	void write(byte[] b, int off, int len, boolean newline) throws IOException {
-		OutputStream out = outputStream;
-		out.write(b, off, len);
-		if (newline)
-			out.write(NEWLINE);
-	}
-
-	/**
-	 * @param buffer
-	 * @param index
-	 * @param b
-	 * @return
-	 */
-	private static byte[] append(byte[] buffer, int index, byte b) {
-		if (index >= buffer.length) {
-			byte[] newBuffer = new byte[index * 2];
-			System.arraycopy(buffer, 0, newBuffer, 0, buffer.length);
-			buffer = newBuffer;
-		}
-		buffer[index] = b;
-		return buffer;
+		outputStream.write(s);
+		outputStream.newLine();;
 	}
 
 	/**
 	 * Reads a line from the response stream.
 	 */
 	public String readLine() throws IOException {
-		InputStream in = inputStream;
-		int index = 0;
-		int r;
-		while ((in.available() > 0) && (r = in.read()) != -1) {
-			
-			readLineBuffer = append(readLineBuffer, index++, (byte) r);
-			if (r == NEWLINE)
-				break;
-		}
-
-		return createString(readLineBuffer,index);
-	}
-
-	private String createString(byte[] buffer, int index) throws UnsupportedEncodingException {
-		if(isUnixLikeSystem()) {
-			return new String(buffer, 0, index); 
-		} else {
-			return new String(buffer, 0, index, getEncoding());
-		}
-		
+		return inputStream.readLine();
 	}
 
 	/**
 	 * Reads a error line from the response error stream.
 	 */
 	public String readErrorLine() throws IOException {
-			InputStream in = errorStream;
-			int index = 0;
-			int r;
-
-			while ((in.available() > 0) && (r = in.read()) != -1) {	
-				readErrorLineBuffer = append(readErrorLineBuffer, index++,(byte) r);
-				if (r == NEWLINE)
-					break;
-			}
-
-			return (index == 0 ? null : createString(readErrorLineBuffer,index));
+		String result = null;
+		if (executable.getErrorStream().available() > 0) {
+			result = errorStream.readLine();
+		}
+		return result;
 	}
 
 	/**
@@ -304,16 +236,7 @@ public class JavaVersionReader {
 	 * @throws IOException
 	 */
 	String readLine(InputStream in) throws IOException {
-		byte[] buffer = new byte[256];
-		int index = 0;
-		int r;
-		while ((in.available() > 0) && (r = in.read()) != -1) {
-			buffer = append(buffer, index++, (byte) r);
-			if (r == NEWLINE)
-				break;
-		}
-
-		return createString(buffer, index);
+		return inputStream.readLine();
 	}
 
 	public String getJavaVersion(String path) {
