@@ -152,14 +152,10 @@ public class CreateLinkPanel extends IzPanel {
 	}
 
 	public static void addJREPath(String installPath, String execPath) {
-		File pathLinuxWindows = new File(installPath + File.separator + "studio" + File.separator
+		File pathToIni = new File(installPath + File.separator + P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator
 				+ "jbdevstudio.ini");
-		File pathMacosx = new File(installPath + File.separator + "studio" + File.separator + P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator
-				+ "jbdevstudio.ini");
-		if(pathLinuxWindows.exists()) {
-			addJVM(execPath, pathLinuxWindows);
-		} else if(pathMacosx.exists()) {
-			addJVM(execPath, pathMacosx);
+		if(pathToIni.exists()) {
+			addJVM(execPath, pathToIni);
 		} 
 	}
 
