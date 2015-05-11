@@ -101,11 +101,9 @@
 					<a href="features/" style="font-size:x-small">features</a>
 				</td>
 				<td class="rowLine" colspan="1">
-					<a href="buildinfo.json" style="font-size:x-small">buildinfo.json</a>
-					::
 					<a href="category.xml" style="font-size:x-small">category.xml</a>
 					::
-					<a href="site.xml" style="font-size:x-small">site.xml</a>
+					<a href="buildinfo.json" style="font-size:x-small">buildinfo.json</a>
 					::
 					<a href="site.properties" style="font-size:x-small">site.properties</a>
 				</td>
