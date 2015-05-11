@@ -96,8 +96,10 @@ $java.home = ${java.home}</echo>
   mvn install -Djbosstools-site=http://download.jboss.org/jbosstools/builds/staging/jbosstools-4.2.3.Final-build-core/2015-03-01_13-40-40-B357/all/
   -->
   <target name="get.jbosstools-src.zip">
-    <!-- given http://download.jboss.org/jbosstools/updates/nightly/core/4.1.kepler/, want http://download.jboss.org/jbosstools/builds/nightly/core/4.1.kepler/ -->
-    <propertyregex property="inputBuild" input="${inputRepo}" regexp="updates/(.+)" replace="builds/\1/latest/all" defaultValue="${inputRepo}"/>
+    <!-- given http://download.jboss.org/jbosstools/updates/nightly/core/4.3.mars/, want http://download.jboss.org/jbosstools/builds/nightly/core/4.3.mars/latest/all/ -->
+    <propertyregex property="inputBuild" input="${inputRepo}" regexp="updates/(.+)" replace="builds/\1/latest/all/" defaultValue="${inputRepo}"/>
+    <!-- given http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.site_master/latest/all/repo/ want  http://download.jboss.org/jbosstools/mars/snapshots/builds/jbosstools-build-sites.aggregate.site_master/latest/all/ -->
+    <propertyregex property="inputBuild" input="${inputBuild}" regexp="(.+)/repo/+" replace="\1" defaultValue="${inputBuild}" override="true"/>
     <echo level="verbose">[INFO] inputRepo = ${inputRepo}</echo>
     <echo>[INFO] Searching for *-src.zip in ${inputBuild} ...</echo>
     <if>
