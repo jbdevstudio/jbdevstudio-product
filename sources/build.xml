@@ -75,20 +75,105 @@ $java.home = ${java.home}</echo>
 
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
     
-    <property name="sourcesZip" value="target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src.zip" />
+    <property name="sourcesZipRootFolder" value="jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src"/>
+    <property name="sourcesZip" value="target/${sourcesZipRootFolder}.zip" />
+
+    <antcallback target="getSourcesSHA" return="sourcesSHA"/>
 
     <antcall target="get.local.sources" />
     <antcallback target="get.jbosstools-src.zip" return="jbosstools-src.zip.filename" />
     <antcall target="cleanup" />
   </target>
 
+<!--
+    From: http://stackoverflow.com/questions/5313438/ant-read-existing-manifest-version-and-append-to-it
+
+    Loads entries from a manifest file.
+
+    @jar     The jar from where to read
+    @file    A manifest file to read
+    @prefix  A prefix to prepend
+    @section The name of the manifest section to load
+-->
+<scriptdef name="loadmf" language="javascript" loaderRef="sharedbuild-loaderRef">
+    <attribute name="jar" />
+    <attribute name="file" />
+    <attribute name="prefix" />
+    <attribute name="section" />
+    <![CDATA[
+        var jarname = attributes.get("jar");
+        var filename = attributes.get("file");
+        if (jarname != null && filename != null) {
+            self.fail("Only one of jar or file is required");
+        }
+        var prefix = attributes.get("prefix");
+        if (prefix == null) {
+            prefix = "";
+        }
+        var section = attributes.get("section");
+
+        var manifest;
+        if (jarname != null) {
+            var jarfile = new java.util.jar.JarFile(new java.io.File(jarname));
+            manifest = jarfile.getManifest();
+        } else if (filename != null) {
+            manifest = new java.util.jar.Manifest(new java.io.FileInputStream(new java.io.File(filename)));
+        } else {
+            self.fail("One of jar or file is required");
+        }
+
+        if (manifest == null) {
+            self.log("No manifest in " + jar);
+        } else {
+            var attributes = (section == null) ? manifest.getMainAttributes() : manifest.getAttributes(section);
+            if (attributes != null) {
+                var iter = attributes.entrySet().iterator();
+                while (iter.hasNext()) {
+                    var entry = iter.next();
+                    project.setProperty(prefix + entry.getKey(), entry.getValue());
+                }
+            }
+        }
+    ]]>
+</scriptdef>
+
+  <target name="getSourcesSHA">
+    <!-- 
+      $➔ unzip -d /tmp/ ../site/target/repository/plugins/com.jboss.devstudio.core_9.0.0.Beta1-v20150511-1448.jar META-INF/MANIFEST.MF
+      Archive:  ../site/target/repository/plugins/com.jboss.devstudio.core_9.0.0.Beta1-v20150511-1448.jar
+      inflating: /tmp/META-INF/MANIFEST.MF  
+    $➔ cat /tmp/META-INF/MANIFEST.MF | grep Eclipse-SourceReferences -A3
+    Eclipse-SourceReferences: scm:git:https://github.com/jbdevstudio/jbdev
+     studio-product.git;path="plugins/com.jboss.devstudio.core";commitId=4
+     0da994ce9f35dbf0f08b146cd924e83ebf49ab3
+
+     return: 40da994ce9f35dbf0f08b146cd924e83ebf49ab3
+    -->
+    <var name="sourcesSHA" value="SHAZAM"/>
+    <resourcecount property="num.MANIFEST.MFs">
+       <fileset dir="../site/target/repository/plugins/" includes="**/com.jboss.devstudio.core_*.jar" id="core_MANIFEST.MF"/>
+    </resourcecount>
+    <for param="jar">
+      <path>
+       <fileset refid="core_MANIFEST.MF"/>
+      </path>
+      <sequential>
+        <!-- <echo>@{jar}</echo> -->
+        <loadmf jar="@{jar}" prefix="com.jboss.devstudio.core."/>
+        <!-- <echoproperties prefix="com.jboss.devstudio.core.Eclipse-SourceReferences"/> -->
+      </sequential>
+    </for>
+    <propertyregex property="sourcesSHA" input="${com.jboss.devstudio.core.Eclipse-SourceReferences}" regexp=".+;commitId=(.+)" replace="\1" defaultValue="00000000" override="true"/>
+    <!-- <echo>${sourcesSHA}</echo> -->
+  </target>
+
   <target name="get.local.sources">
     <zip destfile="${sourcesZip}" duplicate="preserve"  whenempty="fail">
-      <zipfileset dir="${basedir}/../" prefix="devstudio/product/" excludes="**/installer/src/**, **/installer/tools/lib/**, **/workspace/**, **/target*/**, **/build/**, **/*.class, **/*.zip, **/.jar, **/jbds-echoproperties.txt" />
+      <zipfileset dir="${basedir}/../" prefix="${sourcesZipRootFolder}/jbdevstudio-product-${sourcesSHA}" excludes="**/installer/src/**, **/installer/tools/lib/**, **/workspace/**, **/target*/**, **/build/**, **/*.class, **/*.zip, **/.jar, **/jbds-echoproperties.txt" />
       <!-- JBDS-2456 in order to make JBDS buildable, need to include p2-director.zip -->
-      <zipfileset dir="${basedir}/../installer" prefix="devstudio/product/installer" includes="p2-director.zip" />
-      <zipfileset dir="${basedir}/../installer/src" prefix="devstudio/product/installer/src" includes="**" />
-      <zipfileset dir="${basedir}/../installer/tools/lib" prefix="devstudio/product/installer/tools/lib" includes="**" />
+      <zipfileset dir="${basedir}/../installer" prefix="${sourcesZipRootFolder}/jbdevstudio-product-${sourcesSHA}/installer" includes="p2-director.zip" />
+      <zipfileset dir="${basedir}/../installer/src" prefix="${sourcesZipRootFolder}/jbdevstudio-product-${sourcesSHA}/installer/src" includes="**" />
+      <zipfileset dir="${basedir}/../installer/tools/lib" prefix="${sourcesZipRootFolder}/jbdevstudio-product-${sourcesSHA}/installer/tools/lib" includes="**" />
     </zip>
   </target>
 
@@ -131,10 +216,26 @@ $java.home = ${java.home}</echo>
               <fileset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" />
             </delete>
             <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}" />
-            <var name="num.project.source.folders" unset="true"/>
             <unzip src="${tmpdir}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" overwrite="true"/>
+            
+            <resourcecount property="num.project.source.root.folders">
+               <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="jbosstools-*-src" id="source-root-folder"/>
+            </resourcecount>
+            <echo level="verbose" message="Found this source root folder in ${jbosstools-src.zip.filename}:"/>
+            <for param="subdir">
+              <path>
+               <dirset refid="source-root-folder"/>
+              </path>
+              <sequential>
+                <var name="jbosstoolsSourcesZipRootFolder" unset="true"/>
+                <basename file="@{subdir}" property="jbosstoolsSourcesZipRootFolder" />
+                <echo level="verbose" message="${jbosstoolsSourcesZipRootFolder}"/>
+              </sequential>
+            </for>
+
+            <var name="num.project.source.folders" unset="true"/>
             <resourcecount property="num.project.source.folders">
-               <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="**/jbosstools-*-*" id="source-folders"/>
+               <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="${jbosstoolsSourcesZipRootFolder}/jbosstools-*-*" id="source-folders"/>
             </resourcecount>
             <echo message="Found these project source folders in ${jbosstools-src.zip.filename}:"/>
             <for param="subdir">
@@ -142,26 +243,28 @@ $java.home = ${java.home}</echo>
                <dirset refid="source-folders"/>
               </path>
               <sequential>
-                 <var name="name" unset="true"/>
-                 <basename file="@{subdir}" property="name" />
-                 <echo message="${name}"/>
+                <var name="name" unset="true"/>
+                <basename file="@{subdir}" property="name" />
+                <echo message="${name}"/>
               </sequential>
             </for>
             <if>
-              <or>
-                <equals arg1="${num.project.source.folders}" arg2="${expected.num.project.source.folders}"/>
                 <isgreaterthan arg1="${num.project.source.folders}" arg2="${expected.num.project.source.folders}"/>
-              </or>
               <then>
                 <echo message="Warning: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
               </then>
               <else>
-                <fail message="Error: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
+                <if>
+                  <isgreaterthan arg2="${num.project.source.folders}" arg1="${expected.num.project.source.folders}"/>
+                  <then>
+                    <fail message="Error: Found ${num.project.source.folders} project source folders, expected ${expected.num.project.source.folders}."/>
+                  </then>
+                </if>
               </else>
             </if>
 
             <zip destfile="${sourcesZip}" update="true" whenempty="fail">
-              <zipfileset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" prefix="jbosstools/" excludes="${jbosstools.excludes}"/>
+              <zipfileset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked/${jbosstoolsSourcesZipRootFolder}/" prefix="${sourcesZipRootFolder}/" excludes="${jbosstools.excludes}"/>
             </zip>
           </then>
           <else>
