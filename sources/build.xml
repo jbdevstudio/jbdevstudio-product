@@ -127,12 +127,14 @@ $java.home = ${java.home}</echo>
           <isset property="jbosstools-src.zip.filename"/>
           <then>
             <echo message="[INFO] JBT Source zip: ${jbosstools-src.zip.filename}"/>
+            <delete includeemptydirs="true" quiet="true">
+              <fileset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" />
+            </delete>
             <get usetimestamp="true" ignoreerrors="true" src="${inputBuild}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}" />
-
             <var name="num.project.source.folders" unset="true"/>
             <unzip src="${tmpdir}/${jbosstools-src.zip.filename}" dest="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" overwrite="true"/>
             <resourcecount property="num.project.source.folders">
-               <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="*_*" id="source-folders"/>
+               <dirset dir="${tmpdir}/${jbosstools-src.zip.filename}.unpacked" includes="**/jbosstools-*-*" id="source-folders"/>
             </resourcecount>
             <echo message="Found these project source folders in ${jbosstools-src.zip.filename}:"/>
             <for param="subdir">
