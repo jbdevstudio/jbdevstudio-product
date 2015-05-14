@@ -74,12 +74,10 @@ $java.home = ${java.home}</echo>
     </if>
 
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
-    
-    <property name="sourcesZipRootFolder" value="jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src"/>
+    <property name="sourcesZipRootFolder" value="jboss-devstudio-${update.site.version}.${BUILD_ALIAS}-installer-src"/>
     <property name="sourcesZip" value="target/${sourcesZipRootFolder}.zip" />
 
     <antcallback target="getSourcesSHA" return="sourcesSHA"/>
-
     <antcall target="get.local.sources" />
     <antcallback target="get.jbosstools-src.zip" return="jbosstools-src.zip.filename" />
     <antcall target="cleanup" />
