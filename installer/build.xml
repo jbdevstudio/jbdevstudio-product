@@ -333,7 +333,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
           <property name="STACKTRACE" value="true" />
         </izpack>
 
-        <checksum file="${destination.dir}/${installer.eap.name}.jar" />
+        <!-- JBIDE-19800 generate this with maven <checksum file="${destination.dir}/${installer.eap.name}.jar"/>; could also use algorithm="SHA-1" fileext="sha1" -->
 
         <delete>
           <fileset dir="${jbosseap.dist}">
@@ -355,7 +355,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
       <property name="STACKTRACE" value="true" />
     </izpack>
 
-    <checksum file="${destination.dir}/${installer.name}.jar" />
+    <!-- JBIDE-19800 generate this with maven <checksum file="${destination.dir}/${installer.name}.jar"/>; could also use algorithm="SHA-1" fileext="sha1" -->
 	
   	<if>
   		<not>

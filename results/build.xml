@@ -106,15 +106,16 @@ $java.home = ${java.home}</echo>
 
 <!-- macros -->
 
+  <!-- JBIDE-19800 - use .sha1 instead of .MD5 -->
   <macrodef name="get-and-checksum">
     <attribute name="src"/>
     <attribute name="dest"/>
     <sequential>
-      <get src="@{src}.MD5" dest="@{dest}.MD5" usetimestamp="true"/>
+      <get src="@{src}.sha1" dest="@{dest}.sha1" usetimestamp="true"/>
       <get src="@{src}" dest="@{dest}" usetimestamp="true"/>
-      <checksum file="@{dest}" algorithm="MD5" fileext=".MD5" verifyproperty="checksum.matches"/>
+      <checksum file="@{dest}" algorithm="SHA-1" fileext=".sha1" verifyproperty="checksum.matches"/>
       <condition property="checksum.matches.fail"><equals arg1="${checksum.matches}" arg2="false"/></condition>
-      <fail if="checksum.matches.fail">Checksum error</fail>
+      <fail if="checksum.matches.fail">Checksum error reading @{src} => @{dest}</fail>
       <var name="checksum.matches" unset="true"/>
       <var name="checksum.matches.fail" unset="true"/>
     </sequential>
@@ -170,15 +171,15 @@ $java.home = ${java.home}</echo>
         <if>
           <available file="${@{this}}" type="file"/>
           <then>
-            <checksum file="${@{this}}"/>
-            <loadfile srcfile="${@{this}}.MD5" property="@{this}-md5" failonerror="true" />
+            <checksum file="${@{this}}" algorithm="SHA-1" fileext=".sha1"/>
+            <loadfile srcfile="${@{this}}.sha1" property="@{this}-sha1" failonerror="true" />
             <get.size file="${@{this}}" property="@{this}-size" />
             <basename file="${@{this}}" property="@{this}-name" />
             <propertyregex property="templatename" defaultvalue="@{this}" input="@{this}" regexp="jboss-devstudio-(.+)-file" replace="\1" override="true" />
             <propertyregex property="templatename-alternate" defaultvalue="${templatename}" input="${templatename}" regexp="(.+)-(.+)" replace="\1" override="true" />
 
             <echo level="verbose">@{this} = ${@{this}}
-  :: ${@{this}-name}, ${@{this}-size}M, ${@{this}-md5}
+  :: ${@{this}-name}, ${@{this}-size}M, ${@{this}-sha1}
   :: ${templatename}, ${templatename-alternate}</echo>
 
             <!-- generate manual-instructions.txt file for each artifact -->

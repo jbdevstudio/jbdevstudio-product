@@ -300,12 +300,21 @@
                   <goal>pack</goal>
                 </goals>
                 <phase>package</phase>
-		<configuration>
-		    <skip>true</skip>
-		</configuration>
+            		<configuration>
+      		        <skip>true</skip>
+      		      </configuration>
               </execution>
             </executions>
-          </plugin>
+        </plugin>
+      <plugin>
+        <groupId>net.ju-n.maven.plugins</groupId>
+        <artifactId>checksum-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>install</phase>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
     <pluginManagement>
     	<plugins>
