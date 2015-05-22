@@ -51,6 +51,7 @@
               <url>https://devstudio.redhat.com/9.0/snapshots/updates/earlyaccess.properties/${jbosstools_site_stream}/devstudio-earlyaccess.properties</url>
               <overwrite>true</overwrite>
               <skipCache>true</skipCache>
+              <skip>fasle</skip>
               <outputDirectory>${project.basedir}</outputDirectory>
               <outputFileName>earlyaccess.properties</outputFileName>
             </configuration>
