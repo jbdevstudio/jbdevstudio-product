@@ -163,5 +163,6 @@
     <import feature="org.eclipse.tm.terminal.connector.ssh.feature" version="4.0.0" match="greaterOrEqual"/>
     <import feature="org.eclipse.tm.terminal.connector.telnet.feature" version="4.0.0" match="greaterOrEqual"/>
 
+		<import feature="org.eclipse.linuxtools.docker.feature"/>
   </requires>
 </feature>
