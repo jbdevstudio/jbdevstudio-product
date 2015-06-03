@@ -5,6 +5,7 @@
 	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="var" path="IZPACK_HOME" sourcepath="target/IzPack-4.3.5"/>
 	<classpathentry kind="var" path="IZPACK_HOME/lib/installer.jar" sourcepath="/IZPACK_HOME/src/lib"/>
 	<classpathentry kind="var" path="IZPACK_HOME/lib/uninstaller.jar" sourcepath="/IZPACK_HOME/src/lib"/>
 	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/HTMLHelloPanel.jar" sourcepath="/IZPACK_HOME/src/lib"/>
