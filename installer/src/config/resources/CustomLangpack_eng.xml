@@ -6,7 +6,7 @@
     <str id="PathInputPanel.fileDialog.approve" txt="Select"/>
     <str id="JREPathPanel.fileDialog.title" txt="Select Java VM Home Folder"/>
     <str id="JREPathPanel.headline.jre" txt="Select Java VM"/>
-    <str id="JREPathPanel.intro" txt="JBoss Developer Studio works with Java 7 and 8 and has been tested with OpenJDK and Oracle JDK."/>
+    <str id="JREPathPanel.intro" txt="JBoss Developer Studio works with Java 8 and has been tested with OpenJDK and Oracle JDK."/>
     <str id="JREPathPanel.dataModel.title" txt="Installation type:" />
     <str id="JREPathPanel.dataModel32.title" txt="32-bit" />
     <str id="JREPathPanel.dataModel64.title" txt="64-bit" />
