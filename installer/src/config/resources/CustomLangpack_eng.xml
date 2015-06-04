@@ -30,7 +30,7 @@
     <str id="SimpleFinishPanel.headline.run_after" txt="Run JBoss Developer Studio after installation"/>
     <str id="installer.step" txt="Step"/>
     <str id="installer.of" txt="of"/>
-    <str id="installer.cannotInstallOver" txt="You can't upgrade by installing over the top"/>
+    <str id="installer.cannotInstallOver" txt="&lt;html&gt;&lt;p&gt;Specified folder already contains a JBoss Developer Studio installation.&lt;br&gt;One does not simply install into an existing install folder.&lt;br&gt;Choose another folder or cancel this installer and run&lt;/p&gt;JBoss Developer Studio to perform an update.&lt;/p&gt;&lt;/html&gt;"/>
     <str id="UpdatePacksPanel.summaryCaption" txt="Components to install:"/>
     <str id="JBossAsSelectPanel.question" txt="JBoss Developer Studio includes Red Hat JBoss Enterprise Application Platform. Install it now?"/>
     <str id="JBossAsSelectPanel.question1" txt="Add locations you want to be scanned to discover platforms and servers you have:"/>
