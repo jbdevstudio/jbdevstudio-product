@@ -16,6 +16,8 @@
 
       <singlefile src="config/resources/jbdevstudio-unity" target="$INSTALL_PATH/jbdevstudio-unity" condition="izpack.linuxinstall" />
       <executable targetfile="$INSTALL_PATH/jbdevstudio-unity" condition="izpack.linuxinstall" />
+      <singlefile src="config/resources/icons/48-jbds_icon.png" target="$INSTALL_PATH/studio/48-jbds_icon.png" condition="izpack.linuxinstall" />
+      <singlefile src="config/resources/icons/48-jbds_uninstall_icon.png" target="$INSTALL_PATH/studio/48-jbds_uninstall_icon.png" condition="izpack.linuxinstall" />
       <singlefile src="config/resources/icons/jbds.ico" target="$INSTALL_PATH/studio/jbds.ico" os="windows" />
       <singlefile src="config/resources/icons/jbds_uninstall.ico" target="$INSTALL_PATH/studio/jbds_uninstall.ico" os="windows" />
 
