@@ -25,6 +25,8 @@
   <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.ws.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.websockets.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.central.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.central.easymport.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.forge.feature" version="0.0.0"/> 
@@ -32,7 +34,6 @@
   <includes id="org.jboss.tools.openshift.express.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.openshift.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.common.jdt.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>

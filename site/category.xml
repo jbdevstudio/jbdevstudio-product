@@ -138,6 +138,10 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
+  <feature id="org.jboss.tools.websockets.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
   <feature id="org.jboss.tools.portlet.feature">
     <!-- removed from JBDS & JBT CoreTools -->
     <category name="WebTools" />
@@ -325,6 +329,7 @@
   <feature id="org.jboss.ide.eclipse.freemarker.feature.source"/>
   <feature id="org.jboss.tools.ws.feature.source"/>
   <feature id="org.jboss.tools.ws.jaxrs.feature.source"/>
+  <feature id="org.jboss.tools.websockets.feature.source"/>
   <feature id="org.jboss.tools.portlet.feature.source"/>
   <feature id="org.jboss.tools.forge.feature.source"/>
   <feature id="org.jboss.tools.project.examples.feature.source"/>
