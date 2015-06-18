@@ -1,4 +1,4 @@
-The easiest way to install this update is to select 'Help > Check for Updates' from within a running JBDS 8 instance. 
+The easiest way to install this update is to select 'Help > Check for Updates' from within a running JBDS 9 instance. 
 Doing so will provide you with a list of all the available updates found at ${jbds.update.site}
 
 To use this zip for offline update (or if blocked by firewall or proxy when doing searching for updates from the sites above):

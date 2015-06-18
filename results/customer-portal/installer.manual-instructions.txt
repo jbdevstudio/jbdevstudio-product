@@ -1,4 +1,4 @@
-1. If you don't already have one installed, you will need to download and install Oracle or Open JDK 7 or 8.
+1. If you don't already have one installed, you will need to download and install Oracle or Open JDK 8.
 
 2. Download the installer jar.
 
