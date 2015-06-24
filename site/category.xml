@@ -395,7 +395,7 @@
 
   <!-- only in JBDS -->
   <category-def name="BringYourOwnEclipse" label="* JBoss Developer Studio 9 - Bring Your Own Eclipse">
-    <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Luna 4.4.</description>
+    <description>Select this feature if you want to install all of the JBoss Developer Studio (Core Features) into your own Eclipse Mars 4.5.</description>
   </category-def>
   <category-def name="CoreTools" label="* JBoss Developer Studio 9 - Core">
     <description>Contains most of the JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web Development.</description>
