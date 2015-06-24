@@ -51,7 +51,7 @@ $java.home = ${java.home}</echo>
     <path id="jboss-devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-standalone.jar"/></fileset></path><property name="jboss-devstudio-installer-standalone-file" refid="jboss-devstudio-installer-standalone-file-id"/>
     <path id="jboss-devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-eap.jar"/></fileset></path><property name="jboss-devstudio-installer-eap-file" refid="jboss-devstudio-installer-eap-file-id"/>
 
-    <echo level="verbose">update.site.version = ${update.site.version}, update.site.qualifier = ${update.site.qualifier}</echo>
+    <echo level="info">update.site.version = ${update.site.version}, JBT.version = ${JBT.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
     <!-- no longer needed; just copy the file to the right folder -->
     <path id="jboss-devstudio-installer-src-file-id"><fileset dir="../sources/target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path><property name="jboss-devstudio-installer-src-file" refid="jboss-devstudio-installer-src-file-id"/>
@@ -206,13 +206,6 @@ $java.home = ${java.home}</echo>
       </sequential>
     </for>
 
-    <!-- use locally built files with relative paths -->
-    <!-- <antcall target="create.results.html">
-      <param name="update.site.qualifier" value="${update.site.qualifier}"/>
-      <param name="PREFIX" value="../../installer/target"/>
-      <param name="input" value="index-local-template.html"/>
-      <param name="output" value="local.html"/>
-    </antcall> -->
     <!-- flatten paths and use filename instead of file; instead of absolute path, use simply .  -->
     <antcall target="create.results.html">
       <param name="update.site.qualifier" value="${update.site.qualifier}"/>
@@ -220,13 +213,6 @@ $java.home = ${java.home}</echo>
       <param name="input" value="index-internal-template.html"/>
       <param name="output" value="build-info.html"/>
     </antcall>
-    <!-- flatten paths and use filename instead of file -->
-    <!-- <antcall target="create.results.html">
-      <param name="update.site.qualifier" value="${update.site.qualifier}"/>
-      <param name="PREFIX" value="/earlyaccess/builds/development/${update.site.version}.${BUILD_ALIAS}"/>
-      <param name="input" value="index-earlyaccess-template.html"/>
-      <param name="output" value="${update.site.version}.${BUILD_ALIAS}.html"/>
-    </antcall> -->
   </target>
 
   <!-- this method is the same in jbosstools-build-sites/aggregate/build.xml and in devstudio/product/site/build.xml -->

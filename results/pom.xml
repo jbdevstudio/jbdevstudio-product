@@ -20,6 +20,24 @@
   </properties>
   <build>
     <plugins>
+      <!-- get major.minor.incremental from root pom, then use devstudio.version = ${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS} -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.9.1</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <id>parse-version</id>
+            <goals>
+              <goal>parse-version</goal>
+            </goals>
+            <configuration>
+              <versionString>${project.parent.parent.version}</versionString>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <version>1.7</version>
@@ -39,6 +57,7 @@
                   <property name="eap.version" value="${eapVersion}"/>
 
                   <property name="project.version" value="${project.version}" />
+                  <property name="JBT.version" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}" />
                   <property name="update.site.qualifier" value="${maven.build.timestamp}"/>
                   <property name="update.site.description" value="${update.site.description}"/>
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
