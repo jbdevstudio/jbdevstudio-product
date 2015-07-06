@@ -204,6 +204,10 @@
     <category name="CoreTools" />
     <category name="GeneralTools"/>
   </feature>
+  <feature id="org.jboss.tools.foundation.license.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools"/>
+  </feature>
   <feature id="org.jboss.tools.foundation.security.linux.feature">
     <category name="CoreTools" />
     <category name="GeneralTools"/>
