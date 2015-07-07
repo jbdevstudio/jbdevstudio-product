@@ -204,10 +204,6 @@
     <category name="CoreTools" />
     <category name="GeneralTools"/>
   </feature>
-  <feature id="org.jboss.tools.foundation.license.feature">
-    <category name="CoreTools" />
-    <category name="GeneralTools"/>
-  </feature>
   <feature id="org.jboss.tools.foundation.security.linux.feature">
     <category name="CoreTools" />
     <category name="GeneralTools"/>
@@ -240,6 +236,7 @@
   <feature id="org.jboss.tools.common.text.ext.feature"/>
   <feature id="org.jboss.tools.common.ui.feature"/>
   <feature id="org.jboss.tools.common.verification.feature"/>
+  <feature id="org.jboss.tools.foundation.license.feature"/>
   <feature id="org.jboss.tools.xulrunner.feature"/>
   <feature id="org.mozilla.xulrunner.feature"/>
 
