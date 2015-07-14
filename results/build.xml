@@ -54,14 +54,14 @@ $java.home = ${java.home}</echo>
     <echo level="info">update.site.version = ${update.site.version}, JBT.version = ${JBT.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
     <!-- no longer needed; just copy the file to the right folder -->
-    <path id="jboss-devstudio-installer-src-file-id"><fileset dir="../sources/target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path><property name="jboss-devstudio-installer-src-file" refid="jboss-devstudio-installer-src-file-id"/>
+    <path id="jboss-devstudio-src-file-id"><fileset dir="../site/target/fullSite/all"><include name="jboss-devstudio-*-src.zip"/></fileset></path><property name="jboss-devstudio-src-file" refid="jboss-devstudio-src-file-id"/>
     <if>
-      <available file="${jboss-devstudio-installer-src-file}" type="file"/>
+      <available file="${jboss-devstudio-src-file}" type="file"/>
       <then>
-        <copy verbose="false" file="${jboss-devstudio-installer-src-file}" tofile="${project.build.directory}/jboss-devstudio-${update.site.version}.${update.site.qualifier}-installer-src.zip" preservelastmodified="true"/>
-        <var name="jboss-devstudio-installer-src-file" unset="true"/>
-        <path id="jboss-devstudio-installer-src-file-id2"><fileset dir="target"><include name="jboss-devstudio-*-installer-src.zip"/></fileset></path>
-        <property name="jboss-devstudio-installer-src-file" refid="jboss-devstudio-installer-src-file-id2"/>
+        <copy verbose="false" file="${jboss-devstudio-src-file}" tofile="${project.build.directory}/jboss-devstudio-${update.site.version}.${update.site.qualifier}-src.zip" preservelastmodified="true"/>
+        <var name="jboss-devstudio-src-file" unset="true"/>
+        <path id="jboss-devstudio-src-file-id2"><fileset dir="target"><include name="jboss-devstudio-*-src.zip"/></fileset></path>
+        <property name="jboss-devstudio-src-file" refid="jboss-devstudio-src-file-id2"/>
       </then>
     </if>
 
@@ -166,7 +166,7 @@ $java.home = ${java.home}</echo>
     <property name="jbds.version" value="${update.site.version}.${qualifier}"/>
     <property name="jbds.update.site" value="${jbds.update.site}"/>
 
-    <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-installer-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
+    <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
       <sequential>
         <if>
           <available file="${@{this}}" type="file"/>
