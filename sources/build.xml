@@ -14,7 +14,7 @@
   <!-- 
       test to ensure we're unpacking the correct # of project source folders.
       number of source folders expected is derived from https://github.com/jbosstools/jbosstools-build-sites/blob/master/aggregate/site/pom.xml#L138-L157 -->
-  <property name="expected.num.project.source.folders" value="17"/>
+  <property name="expected.num.project.source.folders" value="19"/>
 
   <!-- TODO: ensure this list of excludes is accurate
     Need to exclude stuff that's only in JBT but not in JBDS.

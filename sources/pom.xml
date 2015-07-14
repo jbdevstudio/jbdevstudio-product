@@ -15,6 +15,8 @@
   </description>
   <packaging>pom</packaging>
 
+  <!-- NOTE: this pom is deprecated; you can now build sources via ../site/pom.xml -->
+
   <properties>
     <maven.build.timestamp.format>'${BUILD_ALIAS}-v'yyyyMMdd-HHmm</maven.build.timestamp.format>
   </properties>
@@ -39,7 +41,7 @@
                   <property name="update.site.qualifier" value="${maven.build.timestamp}"/>
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
                   <!-- expected number of source folders expected is derived from https://github.com/jbosstools/jbosstools-build-sites/blob/master/aggregate/site/pom.xml#L138-L157 -->
-                  <property name="expected.num.project.source.folders" value="17"/>
+                  <property name="expected.num.project.source.folders" value="19"/>
                 </ant>
               </tasks>
             </configuration>
