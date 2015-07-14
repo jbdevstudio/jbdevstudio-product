@@ -167,7 +167,7 @@ $java.home = ${java.home}</echo>
 
   <target name="get.local.sources">
     <zip destfile="${sourcesZip}" duplicate="preserve"  whenempty="fail">
-      <zipfileset dir="${basedir}/../" prefix="${sourcesZipRootFolder}/jbdevstudio-product-${sourcesSHA}" excludes="**/.git, **/installer/src/**, **/installer/tools/lib/**, **/workspace/**, **/target*/**, **/build/**, **/*.class, **/*.zip, **/.jar, **/jbds-echoproperties.txt" />
+      <zipfileset dir="${basedir}/../" prefix="${sourcesZipRootFolder}/jbdevstudio-product-${sourcesSHA}" excludes="**/.git, **/.git/**, **/installer/src/**, **/installer/tools/lib/**, **/workspace/**, **/target*/**, **/build/**, **/*.class, **/*.zip, **/.jar, **/jbds-echoproperties.txt" />
       <!-- JBDS-2456 in order to make JBDS buildable, need to include p2-director.zip -->
       <zipfileset dir="${basedir}/../installer" prefix="${sourcesZipRootFolder}/jbdevstudio-product-${sourcesSHA}/installer" includes="p2-director.zip" />
       <zipfileset dir="${basedir}/../installer/src" prefix="${sourcesZipRootFolder}/jbdevstudio-product-${sourcesSHA}/installer/src" includes="**" />
