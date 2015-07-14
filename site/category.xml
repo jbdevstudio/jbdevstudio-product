@@ -229,6 +229,15 @@
     <category name="CoreTools" />
   </feature>
 
+  <!-- JBIDE-20216 add wikitext asciidoc editor to Core Tools category -->  
+  <feature id="org.eclipse.mylyn.wikitext_feature"/>
+  <bundle id="org.eclipse.mylyn.wikitext.asciidoc.core">
+    <category name="CoreTools" />
+  </bundle>
+  <bundle id="org.eclipse.mylyn.wikitext.asciidoc.ui">
+    <category name="CoreTools" />
+  </bundle>
+
   <!-- include but do not categorize -->
   <feature id="org.jboss.tools.central.feature"/>
   <feature id="org.jboss.tools.common.feature"/>
