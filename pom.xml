@@ -19,7 +19,6 @@
     <module>site</module>
     <module>p2-director</module>
     <module>installer</module>
-    <!-- no longer needed; sources are created while producing the update site <module>sources</module> -->
     <module>results</module>
   </modules>
   <!-- Should you want to build one locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.40.x/ -->
