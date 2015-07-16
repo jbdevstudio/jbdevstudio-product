@@ -170,7 +170,7 @@
                     <arg>-t</arg>
                     <arg>9.0/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
                     <arg>-e</arg>
-                    <arg>\*eap.jar</arg>
+                    <arg>*eap.jar</arg>
                   </arguments>
                 </configuration>
               </execution>
