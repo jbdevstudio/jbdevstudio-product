@@ -17,6 +17,7 @@
 
   <properties>
     <maven.build.timestamp.format>'${BUILD_ALIAS}-v'yyyyMMdd-HHmm</maven.build.timestamp.format>
+    <snapshotLocation>core</snapshotLocation>
   </properties>
   <build>
     <plugins>
@@ -52,7 +53,6 @@
                 <ant antfile="build.xml" target="build" dir="./">
                   <!-- TODO: change this to newer version of Eclipse when appropriate -->
                   <property name="eclipse.version" value="Eclipse 4.5.0 (Mars R)"/>
-                  <!-- TODO: change this to /stable/ when we have a stable site populated -->
                   <property name="jbds.update.site" value="https://devstudio.redhat.com/9.0/stable/updates/"/>
                   <property name="eap.version" value="${eapVersion}"/>
 
@@ -124,8 +124,86 @@
     </plugins>
   </build>
 
+  <!-- JBDS publishes to www.qa & to devstudio.redhat.com -->
+  <profiles>
+    <profile>
+      <id>deploy-to-jboss.org</id>
+      <properties>
+        <!-- Skip publishing to Nexus, since we don't use it and it takes a lot of time -->
+        <maven.deploy.skip>true</maven.deploy.skip>
+      </properties>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>exec-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>deploy-snapshot-build-internal</id>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <phase>deploy</phase>
+                <configuration>
+                  <arguments>
+                    <arg>-DESTINATION</arg>
+                    <arg>hudson@dev01.mw.lab.eng.bos.redhat.com:/qa/services/http/binaries/RHDS</arg>
+                    <arg>-s</arg>
+                    <arg>${project.build.directory}</arg>
+                    <arg>-t</arg>
+                    <arg>9.0/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
+                  </arguments>
+                </configuration>
+              </execution>
+              <execution>
+                <id>deploy-snapshot-build-devstudio</id>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <phase>deploy</phase>
+                <configuration>
+                  <arguments>
+                    <arg>-DESTINATION</arg>
+                    <arg>devstudio@filemgmt.jboss.org:/www_htdocs/devstudio</arg>
+                    <arg>-s</arg>
+                    <arg>${project.build.directory}</arg>
+                    <arg>-t</arg>
+                    <arg>9.0/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
+                    <arg>-e</arg>
+                    <arg>\*eap.jar</arg>
+                  </arguments>
+                </configuration>
+              </execution>
+              <execution>
+                <id>deploy-snapshot-updatesite-devstudio</id>
+                <goals>
+                  <goal>exec</goal>
+                </goals>
+                <phase>deploy</phase>
+                <configuration>
+                  <arguments>
+                    <arg>--del</arg>
+                    <arg>-DESTINATION</arg>
+                    <arg>devstudio@filemgmt.jboss.org:/www_htdocs/devstudio</arg>
+                    <arg>-s</arg>
+                    <arg>${project.build.directory}/repo</arg>
+                    <arg>-t</arg>
+                    <arg>9.0/snapshots/updates/${snapshotLocation}/${jbosstools_site_stream}</arg>
+                  </arguments>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
 </project>
 <!--
 To build locally
   mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.31.0.CR1-SNAPSHOT/jbtcentraltarget-4.31.0.CR1-SNAPSHOT.zip
+
+To deploy 
+  mvn deploy -Pdeploy-to-jboss.org
 -->

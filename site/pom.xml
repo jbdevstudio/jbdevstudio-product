@@ -11,6 +11,13 @@
 	<artifactId>com.jboss.devstudio.core.site</artifactId>
 	<packaging>eclipse-repository</packaging>
 
+	<properties>
+		<update.site.name>Red Hat JBoss Developer Studio</update.site.name>
+		<update.site.description>Nightly Build</update.site.description>
+		<siteTemplateFolder>siteTemplateFolder</siteTemplateFolder>
+		<associateSite>https://devstudio.redhat.com/9.0/stable/updates/</associateSite>
+	</properties>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -39,7 +46,7 @@
 							<goal>parse-version</goal>
 						</goals>
 						<configuration>
-							<versionString>${project.parent.parent.version}</versionString>
+							<versionString>${project.parent.version}</versionString>
 						</configuration>
 					</execution>
 				</executions>
@@ -68,11 +75,23 @@
 				<artifactId>repository-utils</artifactId>
 				<executions>
 					<execution>
-						<id>generate-full-site</id>
+						<id>generate-facade</id>
 						<phase>package</phase>
 						<goals>
-							<goal>create-full-site</goal>
+							<goal>generate-repository-facade</goal>
 						</goals>
+							<configuration>
+								<associateSites>
+									<site>${associateSite}</site>
+								</associateSites>
+							<siteTemplateFolder>${siteTemplateFolder}</siteTemplateFolder>
+							<symbols>
+								<update.site.name>${update.site.name}</update.site.name>
+								<update.site.description>${update.site.description}</update.site.description>
+							</symbols>
+							<p2StatsUrl>${p2StatsUrl}</p2StatsUrl>
+							<removeDefaultCategory>true</removeDefaultCategory>
+						</configuration>
 					</execution>
 					<execution>
 						<id>fetch-sources</id>
@@ -84,7 +103,7 @@
 							<!-- <zipCacheFolder>${basedir}/cache</zipCacheFolder> -->
 							<!-- <outputFolder>${project.build.directory}/fullSite</outputFolder> -->
 							<!-- <fallbackToChild>latest/all/repo</fallbackToChild> -->
-							<sourcesZip>${project.build.directory}/fullSite/all/jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src.zip</sourcesZip>
+							<sourcesZip>${project.build.directory}/jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src.zip</sourcesZip>
 							<sourcesZipRootFolder>jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src</sourcesZipRootFolder>
 							<sourceFetchMap>
 								<!-- pick a plugin available in the project's update site from which we can deduce the Eclipse-SourceReference -->
@@ -142,77 +161,6 @@
 						</rootFolders>
 					</products>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>${maven.antrun.plugin.version}</version>
-				<executions>
-					<execution>
-						<id>install</id>
-						<phase>install</phase>
-						<configuration>
-							<quiet>true</quiet>
-							<tasks>
-								<!-- called AFTER generating update site + zip to tweak content -->
-								<ant antfile="build.xml">
-									<property name="project.version" value="${project.version}" />
-									<property name="update.site.qualifier" value="${buildQualifier}"/>
-									<property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
-									<!-- these are needed for generating results.xml -->
-									<property name="update.site.description" value="${update.site.description}"/>
-									<property name="TARGET_PLATFORM_VERSION" value="${TARGET_PLATFORM_VERSION}"/>
-									<property name="TARGET_PLATFORM_VERSION_MAXIMUM" value="${TARGET_PLATFORM_VERSION_MAXIMUM}"/>
-								</ant>
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>commons-net</groupId>
-						<artifactId>commons-net</artifactId>
-						<version>1.4.1</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant</artifactId>
-						<version>1.7.1</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant-nodeps</artifactId>
-						<version>1.7.1</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant-trax</artifactId>
-						<version>1.7.1</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant-commons-net</artifactId>
-						<version>1.7.1</version>
-					</dependency>
-					<dependency>
-						<groupId>org.apache.ant</groupId>
-						<artifactId>ant-apache-regexp</artifactId>
-						<version>1.7.1</version>
-					</dependency>
-					<dependency>
-						<groupId>ant-contrib</groupId>
-						<artifactId>ant-contrib</artifactId>
-						<version>1.0b2</version>
-					</dependency>
-					<dependency>
-							<groupId>net.sf.saxon</groupId>
-							<artifactId>Saxon-HE</artifactId>
-							<version>9.4</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 			<plugin>
 				<groupId>net.ju-n.maven.plugins</groupId>

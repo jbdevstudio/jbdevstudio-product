@@ -47,51 +47,55 @@ $java.home = ${java.home}</echo>
     </if>
 
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
-
-    <path id="jboss-devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-standalone.jar"/></fileset></path><property name="jboss-devstudio-installer-standalone-file" refid="jboss-devstudio-installer-standalone-file-id"/>
-    <path id="jboss-devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-eap.jar"/></fileset></path><property name="jboss-devstudio-installer-eap-file" refid="jboss-devstudio-installer-eap-file-id"/>
-
     <echo level="info">update.site.version = ${update.site.version}, JBT.version = ${JBT.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
-    <!-- no longer needed; just copy the file to the right folder -->
-    <path id="jboss-devstudio-src-file-id"><fileset dir="../site/target/fullSite/all"><include name="jboss-devstudio-*-src.zip"/></fileset></path><property name="jboss-devstudio-src-file" refid="jboss-devstudio-src-file-id"/>
-    <if>
-      <available file="${jboss-devstudio-src-file}" type="file"/>
-      <then>
-        <copy verbose="false" file="${jboss-devstudio-src-file}" tofile="${project.build.directory}/jboss-devstudio-${update.site.version}.${update.site.qualifier}-src.zip" preservelastmodified="true"/>
-        <var name="jboss-devstudio-src-file" unset="true"/>
-        <path id="jboss-devstudio-src-file-id2"><fileset dir="target"><include name="jboss-devstudio-*-src.zip"/></fileset></path>
-        <property name="jboss-devstudio-src-file" refid="jboss-devstudio-src-file-id2"/>
-      </then>
-    </if>
+    <path id="jboss-devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-standalone.jar"/></fileset></path><property name="jboss-devstudio-installer-standalone-file" refid="jboss-devstudio-installer-standalone-file-id"/>
 
-    <!-- special case: copy the site_assembly.zip to target folder; the rest need not be moved -->
-    <!-- JBDS-2556 no longer need this zip because installer is an update site archive too! -->
-    <!-- JBDS-2649 still needed because the installer may contain different content than the update site some day -->
-    <property name="jboss-devstudio-updatesite-core-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-core.zip"/>
-    <if>
-      <available file="../site/target/site_assembly.zip" type="file"/>
-      <then>
-        <copy file="../site/target/site_assembly.zip" tofile="${jboss-devstudio-updatesite-core-file}" preservelastmodified="true" overwrite="true"/>
-      </then>
-    </if>
+    <path id="jboss-devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-eap.jar"/></fileset></path><property name="jboss-devstudio-installer-eap-file" refid="jboss-devstudio-installer-eap-file-id"/>
 
-    <!-- TOOLSDOC-426 link to Central zip. Job parameter JBOSS_CENTRAL_ZIP is passed from jbosstools-centraltarget_41 job to devstudio.product_71 job 
-         so that this will have a value, eg.,
-         http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.31.0.CR1-SNAPSHOT/jbtcentraltarget-4.31.0.CR1-SNAPSHOT.zip 
-    -->
-    <property name="jboss-devstudio-updatesite-central-file" value="${basedir}/target/jboss-devstudio-${update.site.version}.${update.site.qualifier}-updatesite-central.zip"/>
+    <path id="jboss-devstudio-src-file-id"><fileset dir="../site/target"><include name="jboss-devstudio-*-src.zip"/></fileset></path><property name="jboss-devstudio-src-file" refid="jboss-devstudio-src-file-id"/>
+
+    <path id="jboss-devstudio-updatesite-core-file-id"><fileset dir="../site/target"><include name="com.jboss.devstudio.core.site-*.zip"/></fileset></path><property name="jboss-devstudio-updatesite-core-file" refid="jboss-devstudio-updatesite-core-file-id"/>
+
     <if>
       <isset property="JBOSS_CENTRAL_ZIP"/>
       <then>
         <basename property="JBOSS_CENTRAL_ZIP_FILENAME" file="${JBOSS_CENTRAL_ZIP}"/>
         <mkdir dir="${requirements.dir}"/>
         <get-and-checksum src="${JBOSS_CENTRAL_ZIP}" dest="${requirements.dir}/${JBOSS_CENTRAL_ZIP_FILENAME}"/>
-        <copy file="${requirements.dir}/${JBOSS_CENTRAL_ZIP_FILENAME}" tofile="${jboss-devstudio-updatesite-central-file}"/>
+        <property name="jboss-devstudio-updatesite-central-file" value="${requirements.dir}/${JBOSS_CENTRAL_ZIP_FILENAME}"/>
       </then>
     </if>
 
-    <antcall target="create.jbds.results.html">
+    <!-- move all the bits from other places into results/target/ folder -->
+    <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
+      <sequential>
+        <if>
+          <available file="${@{this}}" type="file"/>
+          <then>
+            <var name="thisfile" unset="true"/>
+            <!-- get updatesite-core from from jboss-devstudio-updatesite-core-file -->
+            <propertyregex property="filedesc" defaultvalue="@{this}" input="@{this}" regexp="jboss-devstudio-(.+)-file" replace="\1" override="true" /> 
+
+            <!-- get "jar" or "zip" from jboss-devstudio-9.0.0.Beta2-v20150715-1358-B450000-installer-eap.jar or com.jboss.devstudio.core.site-*.zip -->
+            <propertyregex property="filetype" defaultvalue="${@{this}}" input="${@{this}}" regexp=".+\.(.+)" replace="\1" override="true" /> 
+            <var name="destfile" value="jboss-devstudio-${update.site.version}.${update.site.qualifier}-${filedesc}.${filetype}"/>
+            <echo>Copy ${@{this}} to ${project.build.directory}/${destfile}</echo>
+            <copy verbose="false" file="${@{this}}" tofile="${project.build.directory}/${destfile}" preservelastmodified="true"/>
+            <var name="@{this}" unset="true"/>
+            <property name="@{this}" value="${project.build.directory}/${destfile}"/>
+          </then>
+        </if>
+      </sequential>
+    </for>
+
+    <echo>Copy ../site/target/repository to ${project.build.directory}/repo</echo>
+    <copy todir="${project.build.directory}/repo">
+        <fileset dir="../site/target/repository"/>
+    </copy>
+
+    <!-- TODO delete this? -->
+    <antcall target="create.customer-portal.metadata">
       <param name="update.site.qualifier" value="${update.site.qualifier}"/>
     </antcall>
 
@@ -156,7 +160,7 @@ $java.home = ${java.home}</echo>
     </sequential>
   </macrodef>  
 
-  <target name="create.jbds.results.html">
+  <target name="create.customer-portal.metadata">
 
     <propertyregex property="qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="GA.*" replace="GA" override="true" />
     <!-- <propertyregex property="qualifier" defaultvalue="${qualifier}" input="${qualifier}" regexp=".*null" replace="LOCAL" override="true" /> -->
