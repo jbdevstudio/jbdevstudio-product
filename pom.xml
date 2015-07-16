@@ -19,7 +19,7 @@
     <module>site</module>
     <module>p2-director</module>
     <module>installer</module>
-    <module>results</module>
+    <!-- JBIDE-20158 since results/ is the folder from which we publish, no need to run this unless we're deploying too <module>results</module> -->
   </modules>
   <!-- Should you want to build one locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.40.x/ -->
   <properties>
