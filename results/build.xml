@@ -67,6 +67,9 @@ $java.home = ${java.home}</echo>
       </then>
     </if>
 
+    <property name="destdir" value="${project.build.directory}/all"/>
+    <mkdir dir="${destdir}"/>
+
     <!-- move all the bits from other places into results/target/ folder -->
     <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
       <sequential>
@@ -80,17 +83,17 @@ $java.home = ${java.home}</echo>
             <!-- get "jar" or "zip" from jboss-devstudio-9.0.0.Beta2-v20150715-1358-B450000-installer-eap.jar or com.jboss.devstudio.core.site-*.zip -->
             <propertyregex property="filetype" defaultvalue="${@{this}}" input="${@{this}}" regexp=".+\.(.+)" replace="\1" override="true" /> 
             <var name="destfile" value="jboss-devstudio-${update.site.version}.${update.site.qualifier}-${filedesc}.${filetype}"/>
-            <echo>Copy ${@{this}} to ${project.build.directory}/${destfile}</echo>
-            <copy verbose="false" file="${@{this}}" tofile="${project.build.directory}/${destfile}" preservelastmodified="true"/>
+            <echo>Copy ${@{this}} to ${project.build.directory}/$all/{destfile}</echo>
+            <copy verbose="false" file="${@{this}}" tofile="${destdir}/${destfile}" preservelastmodified="true"/>
             <var name="@{this}" unset="true"/>
-            <property name="@{this}" value="${project.build.directory}/${destfile}"/>
+            <property name="@{this}" value="${destdir}/${destfile}"/>
           </then>
         </if>
       </sequential>
     </for>
 
-    <echo>Copy ../site/target/repository to ${project.build.directory}/repo</echo>
-    <copy todir="${project.build.directory}/repo">
+    <echo>Copy ../site/target/repository to ${destdir}/repo</echo>
+    <copy todir="${destdir}/repo">
         <fileset dir="../site/target/repository"/>
     </copy>
 
@@ -214,8 +217,8 @@ $java.home = ${java.home}</echo>
   <!-- JBDS-3047 produce text/html fragments for each artifact -->
   <target name="generate.file.from.template">
     <!-- use locally built files with relative paths -->
-    <echo level="verbose">Generate ${project.build.directory}/${output} from ${input}</echo>
-    <copy todir="${project.build.directory}" overwrite="true">
+    <echo level="verbose">Generate ${destdir}/${output} from ${input}</echo>
+    <copy todir="${destdir}" overwrite="true">
       <fileset file="${input}" />
       <mapper type="merge" to="${output}" />
       <filterchain>

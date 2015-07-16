@@ -149,7 +149,7 @@
                     <arg>-DESTINATION</arg>
                     <arg>hudson@dev01.mw.lab.eng.bos.redhat.com:/qa/services/http/binaries/RHDS</arg>
                     <arg>-s</arg>
-                    <arg>${project.build.directory}</arg>
+                    <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
                     <arg>9.0/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
                   </arguments>
@@ -166,7 +166,7 @@
                     <arg>-DESTINATION</arg>
                     <arg>devstudio@filemgmt.jboss.org:/www_htdocs/devstudio</arg>
                     <arg>-s</arg>
-                    <arg>${project.build.directory}</arg>
+                    <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
                     <arg>9.0/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
                     <arg>-e</arg>
@@ -186,7 +186,7 @@
                     <arg>-DESTINATION</arg>
                     <arg>devstudio@filemgmt.jboss.org:/www_htdocs/devstudio</arg>
                     <arg>-s</arg>
-                    <arg>${project.build.directory}/repo</arg>
+                    <arg>${project.build.directory}/all/repo</arg>
                     <arg>-t</arg>
                     <arg>9.0/snapshots/updates/${snapshotLocation}/${jbosstools_site_stream}</arg>
                   </arguments>
