@@ -17,4 +17,3 @@ Require-Bundle: org.eclipse.ui,
  org.jboss.tools.central
 Eclipse-LazyStart: true
 Bundle-ClassPath: jbds-product.jar
-Export-Package: com.jboss.devstudio.core.intro.action
