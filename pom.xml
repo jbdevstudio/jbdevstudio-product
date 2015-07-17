@@ -52,6 +52,7 @@
     <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
     <p2StatsUrl>https://devstudio.redhat.com/usage/installs/local/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
     <tychoVersion>0.23.0</tychoVersion>
+    <jbosstoolsRelengPublishVersion>4.3.0.CR1-SNAPSHOT</jbosstoolsRelengPublishVersion>
   </properties>
 
   <build>
