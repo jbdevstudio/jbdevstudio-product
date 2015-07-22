@@ -10,5 +10,5 @@
 
 6. For additional commandline flag options when building, look in the pom.xml file in the `jbdevstudio-product-*` folder.
 
-7. Once built, look for `target/` folders, such as `product/installer/target` or `product/site/target` for the resulting built content.
+7. Once built, look for `target/` folders, such as `installer/target` or `site/target` for the resulting built content.
 
