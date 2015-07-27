@@ -4,6 +4,8 @@
   <copyright>%copyright</copyright>
   <license url="%licenseURL">%license</license>
 
+  <url><update label="%updateSiteName" url="https://devstudio.redhat.com/9.0/stable/updates/"/></url>
+
   <plugin id="com.jboss.devstudio.core" download-size="0" install-size="0" version="0.0.0"/> 
   <plugin id="com.jboss.devstudio.core.project.examples" download-size="0" install-size="0" version="0.0.0"/> 
   <plugin id="com.jboss.devstudio.core.usage.branding" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
