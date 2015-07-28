@@ -1,25 +1,3 @@
-# This part defines category that contains feature generated based on product file
-units.1.id=com.jboss.devstudio.core.package.category
-units.1.version=$version$
-units.1.provides.1.namespace=org.eclipse.equinox.p2.iu
-units.1.provides.1.name=com.jboss.devstudio.core.package.category
-units.1.provides.1.version=$version$
-units.1.properties.1.name=org.eclipse.equinox.p2.type.category
-units.1.properties.1.value=true
-units.1.properties.2.name=org.eclipse.equinox.p2.name
-units.1.properties.2.value=JBoss Developer Studio
-units.1.requires.1.namespace=org.eclipse.equinox.p2.iu
-units.1.requires.1.name=com.jboss.devstudio.core.package
-units.1.requires.1.range=[$version$,$version$]
-units.1.requires.1.greedy=true
-
-requires.0.namespace=org.eclipse.equinox.p2.iu
-requires.0.name=a.jre.javase
-requires.0.range=[1.7.0,1.7.0]
-requires.1.namespace=org.eclipse.equinox.p2.iu
-requires.1.name=config.a.jre.javase
-requires.1.range=[1.7.0,1.7.0]
-
 # JBDS-3494 add JBDS update site
 # JBDS-3495 remove Docker nightly site
 instructions.configure=\
@@ -35,12 +13,3 @@ org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https
 org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/,name:Red Hat JBoss Developer Studio - Core + Central Update Site);\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/);\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-product);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:com.jboss.devstudio.core.product);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-showsplash);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:platform${#58}/base/plugins/com.jboss.devstudio.core);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:-application);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:org.eclipse.ui.ide.workbench);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:-showsplash);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:org.eclipse.platform);
-
