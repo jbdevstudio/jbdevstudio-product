@@ -202,7 +202,7 @@
 </project>
 <!--
 To build locally
-  mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=http://download.jboss.org/jbosstools/targetplatforms/jbtcentraltarget/4.31.0.CR1-SNAPSHOT/jbtcentraltarget-4.31.0.CR1-SNAPSHOT.zip
+  mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=https://devstudio.redhat.com/9.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_master/latest/all/repository.zip
 
 To deploy 
   mvn deploy -Pdeploy-to-jboss.org

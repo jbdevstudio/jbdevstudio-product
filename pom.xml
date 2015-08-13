@@ -31,8 +31,6 @@
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <central.tpc.version>4.50.0.CR1-SNAPSHOT</central.tpc.version>
-    <!-- note: sometimes the URL needs to include /static/ and sometimes it includes -SNAPSHOT, too 
-    eg., http://download.jboss.org/jbosstools/static/targetplatforms/jbtcentraltarget/4.41.1.Final/jbtcentraltarget-4.41.1.Final-SNAPSHOT.zip -->
     <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/9.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${jbosstools_site_stream}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
 
     <!-- jbosstools_site_stream is set in parent pom = 4.3.mars / master -->
