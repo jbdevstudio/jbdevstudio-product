@@ -16,6 +16,7 @@
 		<module>com.jboss.devstudio.core.project.examples</module>
 		<module>com.jboss.devstudio.core.usage.branding</module>
 		<module>com.jboss.devstudio.core.central</module>
+		<module>com.jboss.devstudio.core.capabilities</module>
 	</modules>
 </project>
 	

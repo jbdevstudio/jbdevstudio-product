@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+    <extension
+        point="org.eclipse.ui.preferencePages">
+        <page
+            category="org.eclipse.ui.preferencePages.Workbench"
+            name="%PreferencePages.Capabilities"
+            id="com.jboss.devstudio.core.capabilities">
+            <class
+                class="org.eclipse.ui.activities.ActivityCategoryPreferencePage">
+                <parameter
+                    name="allowAdvanced"
+                    value="true"/>
+                <parameter
+                    name="captionMessage"
+                    value="%PreferencePages.Capabilities.captionMessage"/>
+                <parameter
+                    name="activityName"
+                    value="%PreferencePages.Capabilities.activityName"/>
+                <parameter
+                    name="categoryName"
+                    value="%PreferencePages.Capabilities.categoryName"/>
+                <parameter
+                    name="activityPromptButton"
+                    value="%PreferencePages.Capabilities.activityPromptButton"/>
+                <parameter
+                    name="activityPromptButtonTooltip"
+                    value="%PreferencePages.Capabilities.activityPromptButtonTooltip"/>
+            </class>
+        </page>
+    </extension>
+</plugin>

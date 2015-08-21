@@ -296,7 +296,11 @@
   <feature id="org.jboss.tools.usage.feature"/>
 
   <!-- only in JBDS -->
-  <feature id="com.jboss.devstudio.core.feature" patch="false"><category name="BringYourOwnEclipse" /><category name="CoreTools" /></feature>
+  <feature id="com.jboss.devstudio.core.feature" patch="false">
+    <category name="BringYourOwnEclipse" />
+    <category name="CoreTools" />
+  </feature>
+  <feature id="com.jboss.devstudio.core.capabilities.feature"/>
   <feature id="org.eclipse.egit"/>
   <feature id="org.eclipse.jgit"/>
   <feature id="org.eclipse.m2e.feature"/>
@@ -386,7 +390,7 @@
 
   <!-- only in JBDS -->
   <feature id="com.jboss.devstudio.core.feature.source" patch="false"/>
-
+  <feature id="com.jboss.devstudio.core.capabilities.feature.source" patch="false"/>
 
   <!-- ########## -->
   <!-- CATEGORIES -->
