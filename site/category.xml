@@ -297,6 +297,7 @@
 
   <!-- only in JBDS -->
   <feature id="com.jboss.devstudio.core.feature" patch="false"><category name="BringYourOwnEclipse" /><category name="CoreTools" /></feature>
+  <bundle id="com.jboss.devstudio.capabilities"/>
   <feature id="org.eclipse.egit"/>
   <feature id="org.eclipse.jgit"/>
   <feature id="org.eclipse.m2e.feature"/>
