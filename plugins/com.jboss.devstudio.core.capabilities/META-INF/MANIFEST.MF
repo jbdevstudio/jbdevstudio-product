@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %BundleName
+Bundle-SymbolicName: com.jboss.devstudio.core.capabilities;singleton:=true
+Bundle-Version: 9.0.0.qualifier
+Bundle-Vendor: %BundleVendor
+Bundle-Localization: plugin
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.ui.workbench;bundle-version="3.107.0"

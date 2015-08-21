@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="com.jboss.devstudio.core.capabilities.feature"
+      label="%featureName"
+      version="9.0.0.qualifier"
+      provider-name="%providerName"
+      plugin="com.jboss.devstudio.core"
+      license-feature="org.jboss.tools.foundation.license.feature"
+      license-feature-version="0.0.0">
+
+   <description url="https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Developer_Studio/">
+      %description
+   </description>
+
+   <copyright>
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <requires>
+   </requires>
+
+   <plugin
+         id="com.jboss.devstudio.core.capabilities"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

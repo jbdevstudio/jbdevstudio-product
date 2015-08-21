@@ -58,11 +58,9 @@ openFile</programArgs>
          </text>
    </license>
 
-   <plugins>
-   </plugins>
-
    <features>
       <feature id="com.jboss.devstudio.core.feature"/>
+      <feature id="com.jboss.devstudio.core.capabilities.feature"/>
    </features>
 
    <configurations>
