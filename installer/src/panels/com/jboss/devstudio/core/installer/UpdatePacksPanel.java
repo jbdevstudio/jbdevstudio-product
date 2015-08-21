@@ -1,14 +1,13 @@
 package com.jboss.devstudio.core.installer;
 
 
-import java.util.Iterator;
-
-import com.izforge.izpack.Pack;
 import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.InstallerFrame;
 import com.izforge.izpack.installer.IzPanel;
 
 public class UpdatePacksPanel extends IzPanel{
+	
+	UpdatePacksPanelConsoleHelper helper = new UpdatePacksPanelConsoleHelper();
 
 	private static final long serialVersionUID = 1256443616359329170L;
 
@@ -22,24 +21,7 @@ public class UpdatePacksPanel extends IzPanel{
 	}
 	
 	public void panelActivate() {
-		String group = idata.getVariable("INSTALL_GROUP");
-		
-		idata.selectedPacks.clear();
-        idata.selectedPacks.addAll(idata.availablePacks);
-        Iterator iter = idata.selectedPacks.iterator();
-        while( iter.hasNext() )
-        {
-            Pack p = (Pack) iter.next();
-
-            p.revDependencies = null;
-            if(!p.installGroups.contains(group))
-            {
-                iter.remove();
-            }
-            if("jbds.update".equals(p.id)) {
-            	p.nbytes = STUDIO_SIZE;
-            }
-        }
+		helper.runConsole(idata);
 		parent.skipPanel();
 	}
 	
