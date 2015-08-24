@@ -1,0 +1,10 @@
+# JBDS-3494 add JBDS update site
+instructions.configure=\
+org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:0,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/,name:Red Hat JBoss Developer Studio - Core + Central Update Site);\
+org.eclipse.equinox.p2.touchpoint.eclipse.addRepository(type:1,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/,name:Red Hat JBoss Developer Studio - Core + Central Update Site);\
+
+instructions.unconfigure=\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/,name:Red Hat JBoss Developer Studio - Core + Central Update Site);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/,name:Red Hat JBoss Developer Studio - Core + Central Update Site);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:0,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeRepository(type:1,location:https${#58}//devstudio.redhat.com/9.0/stable/updates/);\
