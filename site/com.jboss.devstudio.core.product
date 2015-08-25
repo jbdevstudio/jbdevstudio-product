@@ -75,4 +75,8 @@ openFile</programArgs>
       <property name="org.eclipse.update.reconcile" value="false" />
    </configurations>
 
+   <repositories>
+      <repository location="https://devstudio.redhat.com/9.0/stable/updates/" enabled="true" />
+   </repositories>
+
 </product>
