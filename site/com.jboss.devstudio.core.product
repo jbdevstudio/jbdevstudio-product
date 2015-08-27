@@ -59,6 +59,7 @@ openFile</programArgs>
    </license>
 
    <plugins>
+      <plugin id="com.jboss.devstudio.capabilities"/>
    </plugins>
 
    <features>
@@ -66,6 +67,7 @@ openFile</programArgs>
    </features>
 
    <configurations>
+      <plugin id="com.jboss.devstudio.capabilities" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="4" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
