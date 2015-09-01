@@ -42,7 +42,8 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
 	private static final String VPE_NOT_SUPPORTED_ARCH = "64";
 
-	private static final String VARN_JAVA_HOME = "JAVA_HOME";
+	static final String VAR_JAVA_HOME = "JAVA_HOME";
+	static final String VAR_SELECTED_JAVA_PATH = "JREPath";
 
 	private static final String JAVA_APPLET_PLUGIN = "JavaAppletPlugin.plugin";
 
@@ -51,7 +52,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 	public static final String DATA_MODEL_VAR = "DATA_MODEL";
 	
 	private static final String SYSPN_JAVA_VENDOR = "java.vendor";
-	private static final String SYSPN_JAVA_VERSION = "java.version";
+	static final String SYSPN_JAVA_VERSION = "java.version";
 	private static final String SYSPN_SUN_ARCH_DATA_MODEL = "sun.arch.data.model";
 	
     private static final String winTestFiles[];
@@ -230,7 +231,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
 	public boolean isValidated() {
 		if(rb1.isSelected()) {
- 			idata.setVariable(getVariableName(), new File(idata.getVariable(VARN_JAVA_HOME)).getPath());
+ 			idata.setVariable(getVariableName(), new File(idata.getVariable(VAR_JAVA_HOME)).getPath());
        		} else {
                 	idata.setVariable(getVariableName(), pathSelectionPanel.getPath());
       		}
@@ -242,8 +243,8 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         super.panelActivate();
         String chosenPath = idata.getVariable(getVariableName());
         if (chosenPath == null || "".equals(chosenPath)) {
-        	File javaHome = getDefaultJava7Location(idata.getVariable(VARN_JAVA_HOME));
-        	idata.setVariable(VARN_JAVA_HOME,javaHome.getAbsolutePath());
+        	File javaHome = getDefaultJava7Location(idata.getVariable(VAR_JAVA_HOME));
+        	idata.setVariable(VAR_JAVA_HOME,javaHome.getAbsolutePath());
         	// This case is for starting installer with jdk/bin/java under any platform
         	Properties props = getJavaPlatformProperties(javaHome.getAbsolutePath(), new String[2]);
         	if("jre".equals(javaHome.getName())) {
@@ -253,7 +254,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         		File java = new File(bin,"java" + ext);
         		File javac = new File(bin,"javac" + ext);
         		if(javac.canRead() && java.canRead()) {
-        			idata.setVariable(VARN_JAVA_HOME,parentFolder.getAbsolutePath());
+        			idata.setVariable(VAR_JAVA_HOME,parentFolder.getAbsolutePath());
         		}
         	} else if(OsVersion.IS_WINDOWS && javaHome.getName().matches("jre\\d")) {
         		// try to discover windows jdk
@@ -266,7 +267,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
             		File java = new File(bin,"java.exe");
             		File javac = new File(bin,"javac.exe");
             		if(java.canRead() && javac.canRead()) {
-            			idata.setVariable(VARN_JAVA_HOME,jdkLocation.getAbsolutePath());
+            			idata.setVariable(VAR_JAVA_HOME,jdkLocation.getAbsolutePath());
             		}
         		}
         	}
@@ -284,7 +285,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
         	String chosenPath="";
             chosenPath = idata.getVariable(getVariableName());
             if(chosenPath == null || "".equals(chosenPath))
-            	chosenPath = new File(idata.getVariable(VARN_JAVA_HOME)).getPath();
+            	chosenPath = new File(idata.getVariable(VAR_JAVA_HOME)).getPath();
         	pathSelectionPanel.setPath(chosenPath);
         }
         

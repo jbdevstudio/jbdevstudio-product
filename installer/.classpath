@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src/panels"/>
+	<classpathentry kind="src" path="src/test-resources"/>
 	<classpathentry kind="src" path="src/config"/>
 	<classpathentry kind="src" path="src/test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="var" path="IZPACK_HOME" sourcepath="target/IzPack-4.3.5"/>
 	<classpathentry kind="var" path="IZPACK_HOME/lib/installer.jar" sourcepath="/IZPACK_HOME/src/lib"/>
 	<classpathentry kind="var" path="IZPACK_HOME/lib/uninstaller.jar" sourcepath="/IZPACK_HOME/src/lib"/>
@@ -12,5 +13,6 @@
 	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/ShortcutPanel.jar" sourcepath="/IZPACK_HOME/src/lib"/>
 	<classpathentry kind="var" path="IZPACK_HOME/bin/panels/InstallationGroupPanel.jar" sourcepath="/IZPACK_HOME/src/lib"/>
 	<classpathentry kind="lib" path="tools/lib/gson-2.3.1.jar"/>
-	<classpathentry kind="output" path="build/eclipse"/>
+	<classpathentry kind="lib" path="tools/lib/mockito-all-2.0.2-beta.jar"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>

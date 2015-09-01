@@ -95,6 +95,11 @@
                                 <artifactId>gson</artifactId>
                                 <version>2.3.1</version>
                             </artifactItem>
+                            <artifactItem>
+                                <groupId>org.mockito</groupId>
+                                <artifactId>mockito-all</artifactId>
+                                <version>2.0.2-beta</version>
+                            </artifactItem>
                         </artifactItems>
                         <outputDirectory>${basedir}/tools/lib</outputDirectory>
                     </configuration>
