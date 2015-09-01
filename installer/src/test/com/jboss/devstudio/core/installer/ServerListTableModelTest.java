@@ -22,8 +22,8 @@ public class ServerListTableModelTest extends TestCase {
 		ServerListTableModel model = new ServerListTableModel(bean, CommonTestData.langpack);
 		for (RuntimePath serBean : bean.getServers()) {
 			int index = bean.getServers().indexOf(serBean);
-			assertEquals(serBean.getLocation(), model.getValueAt(index, 0));
-			assertEquals(Boolean.valueOf(serBean.isScannedOnStartup()), model.getValueAt(index, 1));
+			assertEquals(serBean.getLocation(), model.getValueAt(index, 1));
+			assertEquals(Boolean.valueOf(serBean.isScannedOnStartup()), model.getValueAt(index, 0));
 		}
 		RuntimePath updateBean = new RuntimePath("/home/user/server4",true);
 		TestTableModelListener testListener = new TestTableModelListener(model, TableModelEvent.UPDATE,1, 1, TableModelEvent.ALL_COLUMNS);
@@ -33,8 +33,8 @@ public class ServerListTableModelTest extends TestCase {
 		testListener.reset();
 		int index = 1;
 		assertEquals(model.getRowCount(), bean.getServers().size());
-		assertEquals(updateBean.getLocation(), model.getValueAt(index, 0));
-		assertEquals(Boolean.valueOf(updateBean.isScannedOnStartup()), model.getValueAt(index, 1));
+		assertEquals(updateBean.getLocation(), model.getValueAt(index, 1));
+		assertEquals(Boolean.valueOf(updateBean.isScannedOnStartup()), model.getValueAt(index, 0));
 		List<RuntimePath> newServers = new ArrayList<RuntimePath>(Arrays.asList(new RuntimePath("/home/user/server5",true)));
 		testListener = new TestTableModelListener(model, TableModelEvent.UPDATE, 0, Integer.MAX_VALUE, TableModelEvent.ALL_COLUMNS);
 		model.addTableModelListener(testListener);
