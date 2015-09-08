@@ -42,6 +42,7 @@
 
   <!-- JBIDE-19045 include Tern -->
   <bundle id="minimal-json"/>
+  <bundle id="minimatch.java" />
   <feature id="tern-feature"/>
   <feature id="tern-jsdt-feature"/>
   <feature id="tern-server-nodejs-feature"/>
