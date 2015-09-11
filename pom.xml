@@ -2,7 +2,7 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
   xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <!-- Should you want to build it locally, parent pom source is here: https://github.com/jbosstools/jbosstools-build/blob/master/parent/ -->
+  <!-- Should you want to build it locally, parent pom source is here: https://github.com/jbosstools/jbosstools-build/tree/jbosstools-4.3.x/parent -->
   <parent>
     <groupId>org.jboss.tools</groupId>
     <artifactId>parent</artifactId>
@@ -34,7 +34,7 @@
     <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/9.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${jbosstools_site_stream}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
 
     <!-- jbosstools_site_stream is set in parent pom = 4.3.mars / master -->
-    <!-- <jbosstools_site_stream>master</jbosstools_site_stream> -->
+    <!-- <jbosstools_site_stream>4.3.mars</jbosstools_site_stream> -->
     <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools_site_stream}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.CR1-SNAPSHOT/REPO/</jbosstools-target-site> -->
 
@@ -199,7 +199,7 @@ Build product features, site, and installers like this:
 
 To replicate a Jenkins CI build, run like this (unified.target and hudson profile require VPN access):
 
-  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.50.0.CR1-SNAPSHOT -DBUILD_NUMBER=450000 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Djbosstools_site_stream=master
+  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.50.0.CR1-SNAPSHOT -DBUILD_NUMBER=450000 -DJOB_NAME=devstudio.product_9.0.mars -Dupdate.site.description="Development Milestone" -Djbosstools_site_stream=4.3.mars
 
 See README.md for information building, installing, contributing, generated artifacts, and more.
 
