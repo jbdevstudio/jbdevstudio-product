@@ -32,7 +32,7 @@ public class GsonSerializationTest extends TestCase {
 	
 	public void testIULoadFromFile() throws FileNotFoundException {
 		
-		InputStream features = new FileInputStream("/home/eskimo/Projects/jbdevstudio/4.3.x/fork/jbds-releng/jbdevstudio-product/installer/src/config/resources/DevstudioFeaturesSpec.json");
+		InputStream features = new FileInputStream("/home/eskimo/Projects/jbdevstudio/4.4.x/fork/jbds-releng/jbdevstudio-product/installer/src/config/resources/DevstudioFeaturesSpec.json");
 		JsonParser parser = new JsonParser();
 		JsonArray array = parser.parse(new InputStreamReader(features)).getAsJsonArray();
 		Gson gson = new Gson();
