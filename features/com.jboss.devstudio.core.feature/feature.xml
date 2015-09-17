@@ -181,6 +181,10 @@
     <import feature="org.eclipse.tm.terminal.connector.ssh.feature" version="4.0.0" match="greaterOrEqual"/>
     <import feature="org.eclipse.tm.terminal.connector.telnet.feature" version="4.0.0" match="greaterOrEqual"/>
 
-		<import feature="org.eclipse.linuxtools.docker.feature"/>
+    <!-- JBDS-3495 add plugins instead of feature to avoid p2.inf instruction which forces JBDS to include Docker nightly update site in disabled state -->
+    <import plugin="org.eclipse.linuxtools.docker.core" version="1.1.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.linuxtools.docker.ui" version="1.1.0" match="greaterOrEqual"/>
+    <!-- do we actually need this? -->
+    <import plugin="org.eclipse.linuxtools.docker.docs" version="1.1.0" match="greaterOrEqual"/>
   </requires>
 </feature>
