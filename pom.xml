@@ -35,7 +35,7 @@
 
     <!-- jbosstools_site_stream is set in parent pom = 4.3.mars / master -->
     <!-- <jbosstools_site_stream>4.3.mars</jbosstools_site_stream> -->
-    <jbosstools-site>http://download.jboss.org/jbosstools/updates/nightly/core/${jbosstools_site_stream}/</jbosstools-site>
+    <jbosstools-site>http://download.jboss.org/jbosstools/mars/snapshots/updates/core/${jbosstools_site_stream}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.51.0.Final/REPO/</jbosstools-target-site> -->
 
     <!--
