@@ -11,10 +11,10 @@
       <directory>${project.build.directory}/repository.mirrored</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
-        <include>artifacts.jar</include>
-        <include>content.jar</include>
-        <include>plugins/*.jar*</include>
-        <include>features/*.jar*</include>
+        <include>**/artifacts.jar</include>
+        <include>**/content.jar</include>
+        <include>**/plugins/*.jar*</include>
+        <include>**/features/*.jar*</include>
       </includes>
     </fileSet>
   </fileSets>
