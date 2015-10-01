@@ -132,8 +132,6 @@
 				</executions>
 			</plugin>
 
-
-			<!-- TODO: JBDS-3532 why isn't this mirroring? -->
 			<plugin>
 				<groupId>org.eclipse.tycho.extras</groupId>
 				<artifactId>tycho-p2-extras-plugin</artifactId>
@@ -145,25 +143,41 @@
 							<goal>mirror</goal>
 						</goals>
 						<configuration>
-							<source>${project.build.directory}/repository</source>
-							<destination>${project.build.directory}/repository-without-packgz</destination>
+							<source>
+								<repository>
+									<url>file://${project.build.directory}/repository</url>
+									<layout>p2</layout>
+								</repository>
+							</source>
+							<destination>${project.build.directory}/repository-nopackgz</destination>
 							<includePacked>false</includePacked>
 							<name>JBoss Developer Studio Update Site Zip</name>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-
-			<!-- TODO: JBDS-3532 why can't this find the above mirror? -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.5.5</version>
-				<configuration>
-					<descriptors>
-						<descriptor>repo-no-pack200-jars-assembly.xml</descriptor>
-					</descriptors>
-				</configuration>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${maven.antrun.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>repository-nopackgz.zip</id>
+						<phase>install</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+						<configuration>
+							<quiet>true</quiet>
+							<tasks>
+								<echo>Create zip: ${project.build.directory}/${project.artifactId}-${buildQualifier}-nopackgz.zip from ${project.build.directory}/repository-nopackgz</echo>
+								<zip destfile="${project.build.directory}/${project.artifactId}-${buildQualifier}-nopackgz.zip" whenempty="fail">
+									<zipfileset dir="${project.build.directory}/repository-nopackgz" prefix=""/>
+								</zip>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<plugin>
