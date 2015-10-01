@@ -8,7 +8,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <fileSets>
     <fileSet>
-      <directory>${project.build.directory}/repository.mirrored</directory>
+      <directory>${project.build.directory}/repository-without-packgz</directory>
       <outputDirectory>/</outputDirectory>
       <includes>
         <include>**/artifacts.jar</include>

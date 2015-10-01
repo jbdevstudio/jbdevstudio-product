@@ -138,12 +138,20 @@
 				<groupId>org.eclipse.tycho.extras</groupId>
 				<artifactId>tycho-p2-extras-plugin</artifactId>
 				<version>0.23.0</version>
-				<configuration>
-					<source>${project.build.directory}/repository</source>
-					<destination>${project.build.directory}/repository.mirrored</destination>
-					<includePacked>false</includePacked>
-					<name>JBoss Developer Studio Update Site Zip</name>
-				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>mirror</goal>
+						</goals>
+						<configuration>
+							<source>${project.build.directory}/repository</source>
+							<destination>${project.build.directory}/repository-without-packgz</destination>
+							<includePacked>false</includePacked>
+							<name>JBoss Developer Studio Update Site Zip</name>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 			<!-- TODO: JBDS-3532 why can't this find the above mirror? -->
