@@ -131,6 +131,60 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.eclipse.tycho.extras</groupId>
+				<artifactId>tycho-p2-extras-plugin</artifactId>
+				<version>0.23.0</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>mirror</goal>
+						</goals>
+						<configuration>
+							<source>
+								<repository>
+									<url>file://${project.build.directory}/repository</url>
+									<layout>p2</layout>
+								</repository>
+							</source>
+							<destination>${project.build.directory}/repository-nopackgz</destination>
+							<includePacked>false</includePacked>
+							<name>JBoss Developer Studio Update Site Zip</name>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>${maven.antrun.plugin.version}</version>
+				<executions>
+					<execution>
+						<id>zip-repository-nopackgz</id>
+						<phase>package</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+						<configuration>
+							<quiet>true</quiet>
+							<tasks>
+								<echo>Replace zip: ${project.build.directory}/${project.artifactId}-${project.version}.zip</echo>
+								<!-- TODO in 10.0: use jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-updatesite-core.zip -->
+								<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.zip" whenempty="fail">
+									<zipfileset dir="${project.build.directory}/repository/web" includes="site.css" prefix="web"/>
+									<zipfileset dir="${project.build.directory}/repository" includes="buildinfo.json, index.html, site.properties, category.xml" prefix=""/>
+									<zipfileset dir="${project.build.directory}/repository-nopackgz" prefix=""/>
+								</zip>
+								<!-- cleanup mirror -->
+								<delete dir="${project.build.directory}/repository-nopackgz" quiet="true" failonerror="false"/>
+							</tasks>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-p2-publisher-plugin</artifactId>
