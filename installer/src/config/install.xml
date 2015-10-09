@@ -177,11 +177,15 @@
 	</listeners>
 	
 	<conditions>
-		 <condition type="variable" id="jbeap-selected">
-				<name>INSTALL_GROUP</name>
-				<value>jbosseap</value>
-		 </condition>
+		<condition type="variable" id="jbeap-selected">
+			<name>INSTALL_GROUP</name>
+			<value>jbosseap</value>
+		</condition>
 	</conditions>
+
+	<installerrequirements>
+		<installerrequirement condition="izpack.windowsinstall|izpack.macinstall|izpack.linuxinstall" message="&lt;html&gt;&lt;p&gt;This installer contains JBoss Developer Studio&lt;br&gt;for Winodws, Mac OS X and Linux operating systems.&lt;br&gt;Current operating system is not supported.&lt;/p&gt;&lt;/html&gt;"/>
+	</installerrequirements>
 
 	<packs>
 		<refpack file="config/install-pack-installer.xml" />
