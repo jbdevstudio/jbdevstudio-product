@@ -53,7 +53,7 @@
                 <ant antfile="build.xml" target="build" dir="./">
                   <!-- TODO: change this to newer version of Eclipse when appropriate -->
                   <property name="eclipse.version" value="Eclipse 4.6 (Neon)"/>
-                  <property name="jbds.update.site" value="https://devstudio.redhat.com/10.0/stable/updates/"/>
+                  <property name="jbds.update.site" value="https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/"/>
                   <property name="eap.version" value="${eapVersion}"/>
 
                   <property name="project.version" value="${project.version}" />
@@ -151,7 +151,7 @@
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
-                    <arg>10.0/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
+                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
                   </arguments>
                 </configuration>
               </execution>
@@ -168,7 +168,7 @@
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
-                    <arg>10.0/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
+                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
                     <arg>-e</arg>
                     <arg>*eap.jar*</arg>
                   </arguments>
@@ -188,7 +188,7 @@
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all/repo</arg>
                     <arg>-t</arg>
-                    <arg>10.0/snapshots/updates/${snapshotLocation}/${jbosstools_site_stream}</arg>
+                    <arg>${devstudioReleaseVersion}/snapshots/updates/${snapshotLocation}/${jbosstools_site_stream}</arg>
                   </arguments>
                 </configuration>
               </execution>

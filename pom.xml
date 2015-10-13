@@ -23,6 +23,8 @@
   </modules>
   <!-- Should you want to build one locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.40.x/ -->
   <properties>
+    <!-- this is the equivalent to eclipseReleaseName (defined in parent pom), so we can use it for paths -->
+    <devstudioReleaseVersion>10.0</devstudioReleaseVersion>
     <tpc.group>jbdevstudio</tpc.group>
     <!-- Do not hardcode this value, or we'll get GA-named bits when we do CRx maintenance builds. Instead set this flag in the job config for GA builds ONLY
       <BUILD_ALIAS>GA</BUILD_ALIAS> 
@@ -31,7 +33,7 @@
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <central.tpc.version>4.60.0.Alpha1-SNAPSHOT</central.tpc.version>
-    <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${jbosstools_site_stream}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
+    <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${jbosstools_site_stream}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
 
     <!-- jbosstools_site_stream is set in parent pom = 4.4.neon / master -->
     <!-- <jbosstools_site_stream>master</jbosstools_site_stream> -->
