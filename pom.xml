@@ -23,6 +23,7 @@
   </modules>
   <!-- Should you want to build one locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.40.x/ -->
   <properties>
+    <jbossTychoPluginsVersion>0.23.3-SNAPSHOT</jbossTychoPluginsVersion>
     <!-- this is the equivalent to eclipseReleaseName (defined in parent pom), so we can use it for paths -->
     <devstudioReleaseVersion>10.0</devstudioReleaseVersion>
     <tpc.group>jbdevstudio</tpc.group>
