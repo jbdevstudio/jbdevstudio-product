@@ -27,6 +27,8 @@ import com.izforge.izpack.installer.IzPanel;
 import com.izforge.izpack.util.AbstractUIProgressHandler;
 
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicProgressBarUI;
+
 import java.awt.*;
 
 /**
@@ -98,6 +100,9 @@ public class InstallPanel extends IzPanel implements AbstractUIProgressHandler
         packProgressBar.setStringPainted(true);
         packProgressBar.setString(parent.langpack.getString("InstallPanel.begin"));
         packProgressBar.setValue(0);
+        packProgressBar.setUI(new InstallerProgressBarUI());
+        packProgressBar.setForeground(new Color(0x3f, 0x9b, 0xfe));
+
         add(packProgressBar, IzPanelLayout.getDefaultConstraint(FULL_LINE_CONTROL_CONSTRAINT));
         // make sure there is some space between the progress bars
         add(IzPanelLayout.createVerticalStrut(5));
@@ -115,6 +120,8 @@ public class InstallPanel extends IzPanel implements AbstractUIProgressHandler
         }
         overallProgressBar.setString("");
         overallProgressBar.setValue(0);
+        overallProgressBar.setUI(new InstallerProgressBarUI());
+        overallProgressBar.setForeground(new Color(0x3f, 0x9b, 0xfe));
         add(this.overallProgressBar, IzPanelLayout.getDefaultConstraint(FULL_LINE_CONTROL_CONSTRAINT));
         getLayoutHelper().completeLayout();
 
@@ -280,5 +287,22 @@ public class InstallPanel extends IzPanel implements AbstractUIProgressHandler
         parent.lockPrevButton();
         parent.install(this);
     }
+    
+    static class InstallerProgressBarUI extends BasicProgressBarUI{
+		/**
+	     * The "selectionForeground" is the color of the text when it is painted
+	     * over a filled area of the progress bar.
+	     */
+	    protected Color getSelectionForeground() {
+	        return Color.black;
+	    }
 
+	    /**
+	     * The "selectionBackground" is the color of the text when it is painted
+	     * over an unfilled area of the progress bar.
+	     */
+	    protected Color getSelectionBackground() {
+	        return Color.black;
+	    }
+	}
 }
