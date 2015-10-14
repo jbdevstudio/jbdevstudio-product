@@ -2,6 +2,20 @@
 <!-- $Id: install.xml,v 1.1.2.70 2006/04/01 01:39:05 starksm Exp $ -->
 <!DOCTYPE installation PUBLIC "//IzPack/4.3.3" "resources/installation.dtd">
 <installation version="1.0">
+  <conditions>
+    <!-- VariableExistence is replaced by exists in IZPACK 5: https://izpack.atlassian.net/wiki/display/IZPACK/Exists+Condition -->
+    <condition type="com.izforge.izpack.rules.VariableExistenceCondition" id="jbosseap-dist-exists">
+        <name>jbosseap.dist</name>
+    </condition>
+    <condition type="com.izforge.izpack.rules.PackselectionCondition" id="jbosseap-pack-selected">
+        <name>jbosseap</name>
+    </condition>
+    <condition type="or" id="jbosseap-exists">
+        <condition type="ref" refid="jbosseap-dist-exists"/>
+        <condition type="ref" refid="jbosseap-pack-selected"/>
+    </condition>
+  </conditions>
+
   <packs>
     <pack name="P2 Director Application" id="jbds-installer" installGroups="jbds,jbosseap" required="yes">
       <description>
@@ -48,20 +62,20 @@
       </fileset>
       <!-- https://jira.jboss.org/browse/JBDS-1250 is there a better way to `chmod +x *.sh` ? -->
       <!-- EAP 6.0.1 -->
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/init.d/jboss-as-standalone.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/add-user.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/appclient.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/domain.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jboss-cli.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jconsole.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jdr.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/run.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/standalone.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/vault.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/wsconsume.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/wsprovide.sh" os="unix"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/init.d/jboss-as-standalone.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/add-user.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/appclient.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/domain.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jboss-cli.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jconsole.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jdr.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/run.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/standalone.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/vault.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/wsconsume.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/wsprovide.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
       <!-- new in EAP 6.1 -->
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/init.d/jboss-as-domain.sh" os="unix"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/init.d/jboss-as-domain.sh" os="unix" failure="warn" condition="jbosseap-exists"/>
     </pack>
   </packs>
 </installation>
