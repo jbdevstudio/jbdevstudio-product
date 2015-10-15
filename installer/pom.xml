@@ -89,6 +89,7 @@
                     </goals>
                     <phase>generate-resources</phase>
                     <configuration>
+			 <skip>false</skip>
                         <artifactItems>
                             <artifactItem>
                                 <groupId>com.google.code.gson</groupId>
