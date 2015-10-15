@@ -80,7 +80,7 @@ $java.home = ${java.home}</echo>
             <!-- get updatesite-core from from jboss-devstudio-updatesite-core-file -->
             <propertyregex property="filedesc" defaultvalue="@{this}" input="@{this}" regexp="jboss-devstudio-(.+)-file" replace="\1" override="true" /> 
 
-            <!-- get "jar" or "zip" from jboss-devstudio-9.0.0.Beta2-v20150715-1358-B450000-installer-eap.jar or com.jboss.devstudio.core.site-*.zip -->
+            <!-- get "jar" or "zip" from jboss-devstudio-9.0.1.Beta2-v20150715-1358-B450000-installer-eap.jar or com.jboss.devstudio.core.site-*.zip -->
             <propertyregex property="filetype" defaultvalue="${@{this}}" input="${@{this}}" regexp=".+\.(.+)" replace="\1" override="true" /> 
             <var name="destfile" value="jboss-devstudio-${update.site.version}.${update.site.qualifier}-${filedesc}.${filetype}"/>
             <echo>Copy ${@{this}} to ${project.build.directory}/$all/{destfile}</echo>

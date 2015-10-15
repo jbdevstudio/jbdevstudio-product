@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: com.jboss.devstudio.core;singleton:=true
-Bundle-Version: 9.0.0.qualifier
+Bundle-Version: 9.0.1.qualifier
 Bundle-Activator: com.jboss.devstudio.core.Activator
 Bundle-Vendor: %Bundle-Vendor.0
 Bundle-Localization: plugin
