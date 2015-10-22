@@ -156,7 +156,7 @@
                 </configuration>
               </execution>
               <execution>
-                <id>deploy-snapshot-build-devstudio</id>
+                <id>deploy-snapshot-build</id>
                 <goals>
                   <goal>exec</goal>
                 </goals>
@@ -175,7 +175,7 @@
                 </configuration>
               </execution>
               <execution>
-                <id>deploy-snapshot-updatesite-devstudio</id>
+                <id>deploy-snapshot-updatesite</id>
                 <goals>
                   <goal>exec</goal>
                 </goals>
