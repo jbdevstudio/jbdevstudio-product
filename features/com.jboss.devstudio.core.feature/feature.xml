@@ -73,6 +73,7 @@
     <import feature="org.eclipse.platform" />
     <import feature="org.eclipse.rcp" />
     <import feature="org.eclipse.jdt" />
+		<import feature="org.eclipse.recommenders.rcp.feature"/>
 
     <import feature="org.eclipse.m2e.feature"/>
     <import feature="org.eclipse.m2e.wtp.feature"/>
