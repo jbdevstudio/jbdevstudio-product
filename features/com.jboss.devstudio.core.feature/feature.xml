@@ -99,6 +99,7 @@
     <import feature="org.eclipse.platform" />
     <import feature="org.eclipse.platform"/>
     <import feature="org.eclipse.rcp" />
+    <import feature="org.eclipse.recommenders.rcp.feature"/>
     <import feature="org.eclipse.wst.common.fproj"/>
     <import feature="org.eclipse.wst.jsdt.feature"/>
     <import feature="org.eclipse.wst.server_adapters.feature"/>
