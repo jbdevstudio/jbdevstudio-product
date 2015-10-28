@@ -61,94 +61,87 @@
   <plugin id="org.jboss.tools.foundation.help.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   
   <requires>
-    <import plugin="org.eclipse.emf.ecore" />
-    <import plugin="org.eclipse.emf.ecore.xmi" />
-    <import plugin="org.eclipse.emf.edit" />
-    <import plugin="org.eclipse.emf.ecore.edit" />
-    <import plugin="org.eclipse.wst.common.emf" />
-    <import plugin="org.eclipse.wst.sse.core" />
-    <import plugin="org.eclipse.wst.xml.core" />
-    <import plugin="org.eclipse.jem.util" />
-    <import plugin="org.eclipse.core.runtime.compatibility.auth" />
-    <import feature="org.eclipse.platform" />
-    <import feature="org.eclipse.rcp" />
+    <import feature="org.eclipse.cvs"/>
+    <import feature="org.eclipse.datatools.common.doc.user"/>
+    <import feature="org.eclipse.datatools.connectivity.doc.user"/>
+    <import feature="org.eclipse.datatools.connectivity.feature"/>
+    <import feature="org.eclipse.datatools.doc.user"/>
+    <import feature="org.eclipse.datatools.enablement.feature"/>
+    <import feature="org.eclipse.datatools.intro"/>
+    <import feature="org.eclipse.datatools.modelbase.feature"/>
+    <import feature="org.eclipse.datatools.sqldevtools.feature"/>
+    <import feature="org.eclipse.datatools.sqltools.doc.user"/>
+    <import feature="org.eclipse.egit"/>
+    <import feature="org.eclipse.equinox.p2.core.feature"/>
+    <import feature="org.eclipse.help"/>
     <import feature="org.eclipse.jdt" />
-
+    <import feature="org.eclipse.jdt"/>
+    <import feature="org.eclipse.jgit"/>
+    <import feature="org.eclipse.jpt.jaxb.feature"/>
+    <import feature="org.eclipse.jpt.jpa.feature"/>
+    <import feature="org.eclipse.jsf.feature"/>
+    <import feature="org.eclipse.jst.common.fproj.enablement.jdt"/>
+    <import feature="org.eclipse.jst.enterprise_ui.feature"/>
+    <import feature="org.eclipse.jst.server_adapters.feature"/>
+    <import feature="org.eclipse.jst.server_ui.feature"/>
+    <import feature="org.eclipse.jst.web_ui.feature"/>
+    <import feature="org.eclipse.jst.webpageeditor.feature"/>
+    <import feature="org.eclipse.jst.ws.axis2tools.feature"/>
+    <import feature="org.eclipse.jst.ws.cxf.feature"/>
+    <import feature="org.eclipse.jst.ws.jaxws.dom.feature"/>
+    <import feature="org.eclipse.jst.ws.jaxws.feature"/>
     <import feature="org.eclipse.m2e.feature"/>
     <import feature="org.eclipse.m2e.wtp.feature"/>
     <import feature="org.eclipse.m2e.wtp.jaxrs.feature"/>
     <import feature="org.eclipse.m2e.wtp.jpa.feature"/>
     <import feature="org.eclipse.m2e.wtp.jsf.feature"/>
-    <import feature="org.jboss.tools.maven.apt.feature"/>
+    <import feature="org.eclipse.mylyn.wikitext_feature"/>
+    <import feature="org.eclipse.platform" />
+    <import feature="org.eclipse.platform"/>
+    <import feature="org.eclipse.rcp" />
+    <import feature="org.eclipse.wst.common.fproj"/>
+    <import feature="org.eclipse.wst.jsdt.feature"/>
+    <import feature="org.eclipse.wst.server_adapters.feature"/>
+    <import feature="org.eclipse.wst.web_ui.feature"/>
+    <import feature="org.eclipse.wst.xml_ui.feature"/>
+    <import feature="org.eclipse.wst.xsl.feature"/>
     <import feature="org.jboss.tools.m2e.jdt.feature"/>
-    <import feature="org.sonatype.m2e.buildhelper.feature"/>
-    <import feature="org.sonatype.m2e.egit.feature"/>
-    <import feature="org.sonatype.m2e.mavenarchiver.feature"/>
-
-    <import feature="org.jboss.tools.maven.feature"/>
+    <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.cdi.feature"/>
+    <import feature="org.jboss.tools.maven.feature"/>
     <import feature="org.jboss.tools.maven.hibernate.feature"/>
     <import feature="org.jboss.tools.maven.jdt.feature"/>
     <import feature="org.jboss.tools.maven.project.examples.feature"/>
     <import feature="org.jboss.tools.maven.sourcelookup.feature"/>
-
-    <!-- JBDS-3259 add Mylyn Docs Wikitext feature to enable support for Markdown -->
-    <import feature="org.eclipse.mylyn.wikitext_feature"/>
-
+    <import feature="org.sonatype.m2e.buildhelper.feature"/>
+    <import feature="org.sonatype.m2e.egit.feature"/>
+    <import feature="org.sonatype.m2e.mavenarchiver.feature"/>
+    <import plugin="org.eclipse.core.runtime.compatibility.auth" />
+    <import plugin="org.eclipse.emf.ecore" />
+    <import plugin="org.eclipse.emf.ecore.edit" />
+    <import plugin="org.eclipse.emf.ecore.xmi" />
+    <import plugin="org.eclipse.emf.edit" />
     <import plugin="org.eclipse.jdt.doc.user"/>
+    <import plugin="org.eclipse.jem.util" />
     <import plugin="org.eclipse.jst.server.tomcat.core"/>
     <import plugin="org.eclipse.jst.server.tomcat.ui"/>
-    <!-- JBDS-2630 remove <import plugin="org.eclipse.jst.server.websphere.core"/> -->
-    <!-- JBDS-3373 remove <import plugin="org.eclipse.jst.server.generic.jonas"/> -->
-    <import feature="org.eclipse.cvs"/>
-    <import feature="org.eclipse.help"/>
-    <import feature="org.eclipse.jdt"/>
-    <import feature="org.eclipse.datatools.modelbase.feature"/>
-    <import feature="org.eclipse.datatools.connectivity.feature"/>
-    <import feature="org.eclipse.datatools.sqldevtools.feature"/>
-    <import feature="org.eclipse.datatools.doc.user"/>
-    <import feature="org.eclipse.datatools.common.doc.user"/>
-    <import feature="org.eclipse.datatools.connectivity.doc.user"/>
-    <import feature="org.eclipse.datatools.sqltools.doc.user"/>
-    <import feature="org.eclipse.datatools.enablement.feature"/>
-    <import feature="org.eclipse.datatools.intro"/>
-    <import feature="org.eclipse.wst.common.fproj"/>
-    <import feature="org.eclipse.wst.jsdt.feature"/>
-    <import feature="org.eclipse.wst.xml_ui.feature"/>
-    <import feature="org.eclipse.wst.web_ui.feature"/>
-    <import feature="org.eclipse.wst.server_adapters.feature"/>
-    <import feature="org.eclipse.wst.xsl.feature"/>
-    <import feature="org.eclipse.jst.common.fproj.enablement.jdt"/>
-    <import feature="org.eclipse.jst.server_ui.feature"/>
-    <import feature="org.eclipse.jst.server_adapters.feature"/>
-    <import feature="org.eclipse.jst.web_ui.feature"/>
-    <import feature="org.eclipse.jst.enterprise_ui.feature"/>
-    <import feature="org.eclipse.jst.webpageeditor.feature"/>
-    <import feature="org.eclipse.jst.ws.axis2tools.feature"/>
-    <import feature="org.eclipse.jpt.jpa.feature"/>
-    <import feature="org.eclipse.jpt.jaxb.feature"/> <!-- JBDS-2353 -->
-    <import feature="org.eclipse.jsf.feature"/>
-    <import feature="org.eclipse.jst.ws.jaxws.feature"/>
-    <import feature="org.eclipse.jst.ws.cxf.feature"/>
-    <import feature="org.eclipse.jst.ws.jaxws.dom.feature"/>
-    <import feature="org.eclipse.equinox.p2.core.feature"/>
-    <import feature="org.eclipse.jgit"/>
-    <import feature="org.eclipse.egit"/>
-    <import feature="org.eclipse.platform"/> <!-- JBDS-2253: no need to both import AND include org.eclipse.platform feature -->
-
     <import plugin="org.eclipse.rse.core" version="3.3.100" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.subsystems.files.core" version="3.3.1" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.files.ui" version="3.2.0" match="greaterOrEqual" />
     <import plugin="org.eclipse.rse.services" version="3.2.100" match="greaterOrEqual" />
     <import plugin="org.eclipse.rse.services.files.ftp" version="3.0.300" match="greaterOrEqual" />
     <import plugin="org.eclipse.rse.services.local" version="2.1.300" match="greaterOrEqual" />
     <import plugin="org.eclipse.rse.services.ssh" version="3.1.0" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.subsystems.files.core" version="3.3.1" match="greaterOrEqual" />
     <import plugin="org.eclipse.rse.subsystems.shells.core" version="3.1.200" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.files.ui" version="3.2.0" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.ui" version="3.3.100" match="greaterOrEqual"/>
     <import plugin="org.eclipse.rse.subsystems.shells.local" version="2.1.300" match="greaterOrEqual" />
     <import plugin="org.eclipse.rse.subsystems.shells.ssh" version="2.1.300" match="greaterOrEqual" />
     <import plugin="org.eclipse.rse.subsystems.shells.telnet" version="1.2.200" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.ui" version="3.3.100" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.wst.common.emf" />
+    <import plugin="org.eclipse.wst.sse.core" />
+    <import plugin="org.eclipse.wst.xml.core" />
+
     <!-- 
        The following plugins are required for completeness and usability of product only. 
        We have no compilation requirements against them, nor any critical outstanding bugs
@@ -170,7 +163,7 @@
     <import plugin="org.eclipse.rse.subsystems.terminals.ssh"/>
     <import plugin="org.eclipse.rse.terminals.ui"/>
 
-    <!-- new for Mars M7 -->
+    <!-- new for Mars -->
     <import plugin="org.eclipse.core.expressions" version="3.4.400" match="greaterOrEqual"/>
     <import plugin="org.eclipse.tm.terminal.control" version="4.0.0" match="greaterOrEqual"/>
     <import plugin="org.eclipse.tm.terminal.view.core" version="4.0.0" match="greaterOrEqual"/>
