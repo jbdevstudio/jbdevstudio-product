@@ -36,6 +36,7 @@
     <str id="UpdatePacksPanel.summaryCaption" txt="Components to install:"/>
     <str id="JBossAsSelectPanel.question" txt="JBoss Developer Studio includes Red Hat JBoss Enterprise Application Platform. Install it now?"/>
     <str id="JBossAsSelectPanel.question1" txt="Add locations you want to be scanned to discover platforms and servers you have:"/>
+    <str id="JBossAsSelectPanel.statement1" txt="Select the additional features you would like to install:"/>
     <str id="JBossAsSelectPanel.YesOption" txt="Yes, and have it ready for use in JBoss Developer Studio"/>
     <str id="JBossAsSelectPanel.NoOption" txt="No"/>
     <str id="JBossAsSelectPanel.FindButton" txt="Find..."/>

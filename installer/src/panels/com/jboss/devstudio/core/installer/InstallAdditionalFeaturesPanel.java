@@ -51,7 +51,7 @@ public class InstallAdditionalFeaturesPanel extends IzPanel {
 	private List<P2IU> additionalIUs = loadIUs("AdditionalFeaturesSpec.json");
 	public InstallAdditionalFeaturesPanel(InstallerFrame parent, InstallData idata) {
 		super(parent, idata,new IzPanelLayout());
-		JLabel label = new JLabel(parent.langpack.getString("JBossAsSelectPanel.question1"));
+		JLabel label = new JLabel(parent.langpack.getString("JBossAsSelectPanel.statement1"));
 		add(label, NEXT_LINE);
 		iuList = new P2IUListPanel(parent.langpack,defaultIUs,additionalIUs);
 		add(iuList,NEXT_LINE);
