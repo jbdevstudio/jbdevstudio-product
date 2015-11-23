@@ -25,7 +25,7 @@
   <properties>
     <jbossTychoPluginsVersion>0.23.3-SNAPSHOT</jbossTychoPluginsVersion>
     <!-- this is the equivalent to eclipseReleaseName (defined in parent pom), so we can use it for paths -->
-    <devstudioReleaseVersion>10.0</devstudioReleaseVersion>
+    <!-- set in parent pom <devstudioReleaseVersion>10.0</devstudioReleaseVersion> -->
     <tpc.group>jbdevstudio</tpc.group>
     <!-- Do not hardcode this value, or we'll get GA-named bits when we do CRx maintenance builds. Instead set this flag in the job config for GA builds ONLY
       <BUILD_ALIAS>GA</BUILD_ALIAS> 
