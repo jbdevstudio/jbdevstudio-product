@@ -166,7 +166,7 @@
                   <property name="artifacts.jbds.update"
                     value="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip" />
                   <property name="artifacts.jbosseap"
-                    location="${project.build.directory}/requirements/jboss-eap-${eapVersion}.zip" />
+                    location="${project.build.directory}/requirements/${eapFilename}" />
                   <property name="eapRootFolder" value="${eapRootFolder}"/>
                   <property name="eapVersion" value="${eapVersion}" />
                   <property name="destination.dir" value="${project.build.directory}" />
