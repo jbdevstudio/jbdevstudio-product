@@ -49,7 +49,7 @@
     <buildEAPBundle>false</buildEAPBundle>
     <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
     <p2StatsUrl>https://devstudio.redhat.com/usage/installs/local/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
-    <!-- inherit from JBT parent pom <tychoVersion>0.24.0</tychoVersion> -->
+    <!-- inherit from JBT parent pom <tychoVersion>0.23.1</tychoVersion> -->
   </properties>
 
   <build>
