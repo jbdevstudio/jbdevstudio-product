@@ -101,14 +101,14 @@
 
   <profiles>
     <!-- 
-      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.4.0, which is not a public URL (unlike 6.1.0.Alpha).
+      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.4.5, which is not a public URL (unlike 6.1.0.Alpha).
     -->
     <profile>
       <id>hudson</id>
       <properties>
-        <eapVersion>6.4.0</eapVersion>
-        <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.4.0/jboss-eap-6.4.0.zip</eapURL>
-        <eapMD5>9a5d37631919a111ddf42ceda1a9f0b5</eapMD5>
+        <eapVersion>6.4.5</eapVersion>
+        <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.4.5/jboss-eap-6.4.5-full-build.zip</eapURL>
+        <eapMD5>b0338fac3af4510492fdbdcc41f03072</eapMD5>
         <eapRootFolder>jboss-eap-6.4</eapRootFolder>
         <p2StatsUrl>https://devstudio.redhat.com/usage/installs/${JOB_NAME}/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
       </properties>
