@@ -18,6 +18,7 @@
   <properties>
     <maven.build.timestamp.format>'${BUILD_ALIAS}-v'yyyyMMdd-HHmm</maven.build.timestamp.format>
     <snapshotLocation>core</snapshotLocation>
+    <snapshotUpdateSitePath>9.0/snapshots/updates/${snapshotLocation}/${jbosstools_site_stream}</snapshotUpdateSitePath>
   </properties>
   <build>
     <plugins>
@@ -188,7 +189,7 @@
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all/repo</arg>
                     <arg>-t</arg>
-                    <arg>9.0/snapshots/updates/${snapshotLocation}/${jbosstools_site_stream}</arg>
+                    <arg>${snapshotUpdateSitePath}</arg>
                   </arguments>
                 </configuration>
               </execution>
