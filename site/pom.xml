@@ -13,9 +13,9 @@
 
 	<properties>
 		<update.site.name>Red Hat JBoss Developer Studio</update.site.name>
-		<update.site.description>Nightly Build</update.site.description>
+		<update.site.description>Snapshot Build</update.site.description>
 		<siteTemplateFolder>siteTemplateFolder</siteTemplateFolder>
-		<associateSite>https://devstudio.redhat.com/9.0/stable/updates/</associateSite>
+		<associateSite>https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/</associateSite>
 	</properties>
 
 	<build>
@@ -135,7 +135,7 @@
 			<plugin>
 				<groupId>org.eclipse.tycho.extras</groupId>
 				<artifactId>tycho-p2-extras-plugin</artifactId>
-				<version>${tychoVersion}</version>
+				<version>${tychoExtrasVersion}</version>
 				<executions>
 					<execution>
 						<phase>package</phase>
