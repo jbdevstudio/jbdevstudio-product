@@ -111,7 +111,7 @@
       <properties>
         <eapVersion>6.4.5</eapVersion>
         <eapURL>http://download.devel.redhat.com/released/JBEAP-6/6.4.5/jboss-eap-6.4.5-full-build.zip</eapURL>
-        <eapMD5>2cbde61485dcd2faabd3305ba351817abf9f3cdeee63f675a80870190e52d9e9</eapMD5>
+        <eapMD5>b0338fac3af4510492fdbdcc41f03072</eapMD5>
         <eapRootFolder>jboss-eap-6.4</eapRootFolder>
         <p2StatsUrl>https://devstudio.redhat.com/usage/installs/${JOB_NAME}/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
       </properties>
