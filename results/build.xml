@@ -87,8 +87,8 @@ $java.home = ${java.home}</echo>
             <copy verbose="false" file="${@{this}}" tofile="${destdir}/${destfile}" preservelastmodified="true"/>
             <var name="@{this}" unset="true"/>
             <property name="@{this}" value="${destdir}/${destfile}"/>
-            <echo>Symlink jboss-devstudio-${update.site.version}.latest-${filedesc}.${filetype} to ${destdir}/${destfile}</echo>
-            <symlink link="${destdir}/jboss-devstudio-${update.site.version}.latest-${filedesc}.${filetype}" resource="${destdir}/${destfile}"/>
+            <echo>Symlink jboss-devstudio-${update.site.version}.latest-${filedesc}.${filetype} to ./${destfile} (in destdir = ${destdir})</echo>
+            <symlink link="${destdir}/jboss-devstudio-${update.site.version}.latest-${filedesc}.${filetype}" resource="./${destfile}"/>
           </then>
         </if>
       </sequential>
