@@ -83,10 +83,12 @@ $java.home = ${java.home}</echo>
             <!-- get "jar" or "zip" from jboss-devstudio-9.0.1.Beta2-v20150715-1358-B450000-installer-eap.jar or com.jboss.devstudio.core.site-*.zip -->
             <propertyregex property="filetype" defaultvalue="${@{this}}" input="${@{this}}" regexp=".+\.(.+)" replace="\1" override="true" /> 
             <var name="destfile" value="jboss-devstudio-${update.site.version}.${update.site.qualifier}-${filedesc}.${filetype}"/>
-            <echo>Copy ${@{this}} to ${project.build.directory}/$all/{destfile}</echo>
+            <echo>Copy ${@{this}} to ${destdir}/${destfile}</echo>
             <copy verbose="false" file="${@{this}}" tofile="${destdir}/${destfile}" preservelastmodified="true"/>
             <var name="@{this}" unset="true"/>
             <property name="@{this}" value="${destdir}/${destfile}"/>
+            <echo>Symlink jboss-devstudio-${update.site.version}.latest-${filedesc}.${filetype} to ${destdir}/${destfile}</echo>
+            <symlink link="${destdir}/jboss-devstudio-${update.site.version}.latest-${filedesc}.${filetype}" resource="${destdir}/${destfile}"/>
           </then>
         </if>
       </sequential>
