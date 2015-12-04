@@ -118,7 +118,11 @@
   </feature>
   <!-- openshift v3 -->
   <feature id="org.jboss.tools.openshift.feature">
-    <!-- JBDS-3511 OS v3 support is Tech Preview now; remove from default install <category name="CoreTools" /> -->
+    <category name="CoreTools" />
+    <category name="CloudTools" />
+  </feature>
+  <feature id="org.jboss.tools.openshift.cdk.feature">
+    <category name="CoreTools" />
     <category name="CloudTools" />
   </feature>
   <feature id="org.jboss.ide.eclipse.archives.feature">
