@@ -2,362 +2,362 @@
 $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 -->
 <project name="JBDS Installer" default="installer">
-  <taskdef resource="net/sf/antcontrib/antlib.xml" />
+	<taskdef resource="net/sf/antcontrib/antlib.xml" />
 
-  <property file="local.properties" />
-  <property file="version.properties" />
+	<property file="local.properties" />
+	<property file="version.properties" />
 
-  <!-- Setup the build timestamp & build identifer properties -->
-  <tstamp>
-    <format property="build.number" pattern="yyyyMMddHHmm" />
-    <format property="YEAR" pattern="yyyy" />
-  </tstamp>
-  <property name="build.id" value="${build.number}" />
+	<!-- Setup the build timestamp & build identifer properties -->
+	<tstamp>
+		<format property="build.number" pattern="yyyyMMddHHmm" />
+		<format property="YEAR" pattern="yyyy" />
+	</tstamp>
+	<property name="build.id" value="${build.number}" />
 
-  <!-- Manifest version info -->
-  <property name="specification.title" value="JBDS Installer" />
+	<!-- Manifest version info -->
+	<property name="specification.title" value="JBDS Installer" />
 
-  <property name="implementation.vendor" value="JBoss by Red Hat (http://www.jboss.com/)" />
-  <property name="implementation.vendor.id" value="${implementation.url}" />
+	<property name="implementation.vendor" value="JBoss by Red Hat (http://www.jboss.com/)" />
+	<property name="implementation.vendor.id" value="${implementation.url}" />
 
-  <property name="src.dir" location="src" />
-  <property name="build.dir" location="target" />
-  <property name="build.installer.dir" location="${build.dir}/izpack" />
+	<property name="src.dir" location="src" />
+	<property name="build.dir" location="target" />
+	<property name="build.installer.dir" location="${build.dir}/izpack" />
 
-  <property name="thirdparty.licenses" value="${basedir}/../thirdparty/licenses" />
-  <property name="thirdparty.root" value="${basedir}/../thirdparty" />
+	<property name="thirdparty.licenses" value="${basedir}/../thirdparty/licenses" />
+	<property name="thirdparty.root" value="${basedir}/../thirdparty" />
 
-  <property name="project.root" value="${basedir}/" />
-  <property name="izpack.home" value="${project.root}/../releng/jbds-build/IzPack-4.3.4" />
-  <property name="izpack.langpacks" value="${basedir}/etc/local-izpack/bin/langpacks/installer" />
+	<property name="project.root" value="${basedir}/" />
+	<property name="izpack.home" value="${project.root}/../releng/jbds-build/IzPack-4.3.4" />
+	<property name="izpack.langpacks" value="${basedir}/etc/local-izpack/bin/langpacks/installer" />
 
-  <property name="distribution.dir" location="${build.dir}/distribution" />
-  <property name="jbosseap.dist" value="${distribution.dir}/${eapRootFolder}" />
-  <property name="studio.dist" value="${distribution.dir}/studio" />
+	<property name="distribution.dir" location="${build.dir}/distribution" />
+	<property name="jbosseap.dist" value="${distribution.dir}/${eapRootFolder}" />
+	<property name="studio.dist" value="${distribution.dir}/studio" />
 
-  <!-- <property name="jbossas.dist.server_default" value="${jbossas.dist}/${eap.dir}/server/default"/> -->
+	<!-- <property name="jbossas.dist.server_default" value="${jbossas.dist}/${eap.dir}/server/default"/> -->
 
-  <path id="izpack.classpath">
-    <pathelement location="etc/local-izpack" />
-    <pathelement location="tools/lib/looks.jar" />
-    <pathelement location="tools/lib/gson-2.3.1.jar" />
-    <pathelement location="${build.installer.dir}" />
-    <pathelement location="${izpack.home}/lib/standalone-compiler.jar" />
-    <pathelement location="${izpack.home}/lib/izevent.jar" />
-  </path>
+	<path id="izpack.classpath">
+		<pathelement location="etc/local-izpack" />
+		<pathelement location="tools/lib/looks.jar" />
+		<pathelement location="tools/lib/gson-2.3.1.jar" />
+		<pathelement location="${build.installer.dir}" />
+		<pathelement location="${izpack.home}/lib/standalone-compiler.jar" />
+		<pathelement location="${izpack.home}/lib/izevent.jar" />
+	</path>
 
-  <path id="installer.classpath">
-    <pathelement location="${build.dir}/classes" />
-    <path refid="izpack.classpath" />
-  </path>
+	<path id="installer.classpath">
+		<pathelement location="${build.dir}/classes" />
+		<path refid="izpack.classpath" />
+	</path>
 
-  <target name="buildcustompanels">
-    <echo message="Building panels ..." />
-    <echoproperties destfile="${build.dir}/../../jbds-echoproperties.txt" />
-    <echo>Build properties written to ${build.dir}/../../jbds-echoproperties.txt</echo>
-    <mkdir dir="${build.dir}/classes" />
-    <mkdir dir="${build.dir}/izpack-panels" />
+	<target name="buildcustompanels">
+		<echo message="Building panels ..." />
+		<echoproperties destfile="${build.dir}/../../jbds-echoproperties.txt" />
+		<echo>Build properties written to ${build.dir}/../../jbds-echoproperties.txt</echo>
+		<mkdir dir="${build.dir}/classes" />
+		<mkdir dir="${build.dir}/izpack-panels" />
 
-    <unjar src="${izpack.home}/lib/standalone-compiler.jar" dest="${build.dir}/izpack-panels">
-      <patternset>
-        <include name="**/panels/*.jar" />
-      </patternset>
-    </unjar>
+		<unjar src="${izpack.home}/lib/standalone-compiler.jar" dest="${build.dir}/izpack-panels">
+			<patternset>
+				<include name="**/panels/*.jar" />
+			</patternset>
+		</unjar>
 
-    <path id="izpack.panels.classpath">
-      <path refid="izpack.classpath" />
-      <fileset dir="${build.dir}/izpack-panels/bin/panels">
-        <include name="*.jar" />
-      </fileset>
-    </path>
+		<path id="izpack.panels.classpath">
+			<path refid="izpack.classpath" />
+			<fileset dir="${build.dir}/izpack-panels/bin/panels">
+				<include name="*.jar" />
+			</fileset>
+		</path>
 
-    <javac srcdir="${src.dir}/panels/"
-           destdir="${build.dir}/classes"
-           classpathref="izpack.panels.classpath"
-           debug="on"
-           source="1.5"
-           target="1.5"
-           verbose="false" 
-         executable="${env.JAVA_HOME}/bin/javac">
-    </javac>
+		<javac srcdir="${src.dir}/panels/"
+					 destdir="${build.dir}/classes"
+					 classpathref="izpack.panels.classpath"
+					 debug="on"
+					 source="1.5"
+					 target="1.5"
+					 verbose="false" 
+				 executable="${env.JAVA_HOME}/bin/javac">
+		</javac>
 
-    <unjar src="${izpack.home}/lib/installer.jar" dest="${build.dir}/classes">
-      <patternset>
-        <include name="**/XMLHelper.class" />
-      </patternset>
-    </unjar>
+		<unjar src="${izpack.home}/lib/installer.jar" dest="${build.dir}/classes">
+			<patternset>
+				<include name="**/XMLHelper.class" />
+			</patternset>
+		</unjar>
 
-    <mkdir dir="${build.installer.dir}/bin/panels" />
+		<mkdir dir="${build.installer.dir}/bin/panels" />
 
-    <jar destfile="${build.installer.dir}/bin/panels/CreateLinkPanel.jar" basedir="${build.dir}/classes" includes="**/CreateLinkPanel.class" />
+		<jar destfile="${build.installer.dir}/bin/panels/CreateLinkPanel.jar" basedir="${build.dir}/classes" includes="**/CreateLinkPanel.class" />
 
-    <jar destfile="${build.installer.dir}/bin/panels/com.jboss.devstudio.core.installer.JBossAsSelectPanel.jar">
-      <fileset dir="${build.dir}/classes">
-        <include name="**/JBossAsSelectPanel*.class" />
-        <include name="**/Server*.class" />
-      </fileset>
-    </jar>
+		<jar destfile="${build.installer.dir}/bin/panels/com.jboss.devstudio.core.installer.JBossAsSelectPanel.jar">
+			<fileset dir="${build.dir}/classes">
+				<include name="**/JBossAsSelectPanel*.class" />
+				<include name="**/Server*.class" />
+			</fileset>
+		</jar>
 
-    <jar destfile="${build.installer.dir}/bin/panels/com.jboss.devstudio.core.installer.PathInputPanel.jar">
-      <fileset dir="${build.dir}/classes">
-        <include name="**/PathInputPanel*.class" />
-      </fileset>
-    </jar>
+		<jar destfile="${build.installer.dir}/bin/panels/com.jboss.devstudio.core.installer.PathInputPanel.jar">
+			<fileset dir="${build.dir}/classes">
+				<include name="**/PathInputPanel*.class" />
+			</fileset>
+		</jar>
 
-    <jar destfile="${build.installer.dir}/bin/panels/UpdatePacksPanel.jar" basedir="${build.dir}/classes" includes="**/UpdatePacksPanel.class" />
+		<jar destfile="${build.installer.dir}/bin/panels/UpdatePacksPanel.jar" basedir="${build.dir}/classes" includes="**/UpdatePacksPanel.class" />
 
-    <jar destfile="${build.installer.dir}/bin/panels/DiskSpaceCheckPanel.jar" basedir="${build.dir}/classes" includes="**/DiskSpaceCheckPanel.class" />
+		<jar destfile="${build.installer.dir}/bin/panels/DiskSpaceCheckPanel.jar" basedir="${build.dir}/classes" includes="**/DiskSpaceCheckPanel.class" />
 
-    <jar destfile="${build.installer.dir}/bin/panels/JREPathPanel.jar">
-      <fileset dir="${build.dir}/classes">
-        <include name="**/JREPathPanel*.class" />
-        <include name="**/PathSelectionPanel.class" />
-        <include name="**/PathInputPanel.class" />
-        <include name="**/JavaVersionReader.class" />
-      </fileset>
-    </jar>
+		<jar destfile="${build.installer.dir}/bin/panels/JREPathPanel.jar">
+			<fileset dir="${build.dir}/classes">
+				<include name="**/JREPathPanel*.class" />
+				<include name="**/PathSelectionPanel.class" />
+				<include name="**/PathInputPanel.class" />
+				<include name="**/JavaVersionReader.class" />
+			</fileset>
+		</jar>
 
-    <jar destfile="${build.installer.dir}/bin/panels/ShortcutPanelPatch.jar">
-      <fileset dir="${build.dir}/classes">
-        <include name="**/ShortcutPanelPatch.class" />
-      </fileset>
-    </jar>
+		<jar destfile="${build.installer.dir}/bin/panels/ShortcutPanelPatch.jar">
+			<fileset dir="${build.dir}/classes">
+				<include name="**/ShortcutPanelPatch.class" />
+			</fileset>
+		</jar>
 
-    <jar destfile="${build.installer.dir}/bin/panels/JBDSShortcutPanel.jar">
-      <fileset dir="${build.dir}/classes">
-        <include name="**/JBDSShortcutPanel.class" />
-        <include name="**/Unix_Shortcut.class" />
-        <include name="**/ShortcutData.class" />
-        <include name="**/XMLHelper.class" />
-      </fileset>
-    </jar>
+		<jar destfile="${build.installer.dir}/bin/panels/JBDSShortcutPanel.jar">
+			<fileset dir="${build.dir}/classes">
+				<include name="**/JBDSShortcutPanel.class" />
+				<include name="**/Unix_Shortcut.class" />
+				<include name="**/ShortcutData.class" />
+				<include name="**/XMLHelper.class" />
+			</fileset>
+		</jar>
 
-    <unjar src="${build.dir}/izpack-panels/bin/panels/HTMLInfoPanel.jar" dest="${build.dir}/classes">
-      <patternset>
-        <include name="**/*.class" />
-      </patternset>
-    </unjar>
+		<unjar src="${build.dir}/izpack-panels/bin/panels/HTMLInfoPanel.jar" dest="${build.dir}/classes">
+			<patternset>
+				<include name="**/*.class" />
+			</patternset>
+		</unjar>
 
-    <jar destfile="${build.installer.dir}/bin/panels/HTMLInfoPanelWithRootWarning.jar">
-      <fileset dir="${build.dir}/classes">
-        <include name="**/HTMLInfoPanelWithRootWarning.class" />
-        <include name="**/HTMLInfoPanel*.class" />
-      </fileset>
-    </jar>
-    
-    <unjar src="${izpack.home}/bin/panels/InstallationGroupPanel.jar" dest="${build.dir}/classes" />    
-    
-    <unjar src="${izpack.home}/lib/installer.jar" dest="${build.dir}/classes" >
-      <patternset>
-        <exclude name="**/Unpacker.class" />
-        <exclude name="**/InstallerFrame*.class" />
-      	<exclude name="**/AutomatedInstaller.class" />
+		<jar destfile="${build.installer.dir}/bin/panels/HTMLInfoPanelWithRootWarning.jar">
+			<fileset dir="${build.dir}/classes">
+				<include name="**/HTMLInfoPanelWithRootWarning.class" />
+				<include name="**/HTMLInfoPanel*.class" />
+			</fileset>
+		</jar>
+		
+		<unjar src="${izpack.home}/bin/panels/InstallationGroupPanel.jar" dest="${build.dir}/classes" />		
+		
+		<unjar src="${izpack.home}/lib/installer.jar" dest="${build.dir}/classes" >
+			<patternset>
+				<exclude name="**/Unpacker.class" />
+				<exclude name="**/InstallerFrame*.class" />
+				<exclude name="**/AutomatedInstaller.class" />
 	<exclude name="**/Librarian.class" />
 	<exclude name="**/LibraryRemover.class" />
 	<exclude name="**/ProcessHelper.class" />
 	<exclude name="**/RunnableReader.class" />
-      </patternset>
-    </unjar>
-    
-    <mkdir dir="${build.installer.dir}/lib" />
-    
-    <jar destfile="${build.installer.dir}/lib/installer.jar" manifest="${build.dir}/classes/META-INF/MANIFEST.MF">
-      <fileset dir="${build.dir}/classes" />
-    </jar>
+			</patternset>
+		</unjar>
+		
+		<mkdir dir="${build.installer.dir}/lib" />
+		
+		<jar destfile="${build.installer.dir}/lib/installer.jar" manifest="${build.dir}/classes/META-INF/MANIFEST.MF">
+			<fileset dir="${build.dir}/classes" />
+		</jar>
 
-    <unjar src="${izpack.home}/lib/uninstaller.jar" dest="${build.dir}/uninstaller-classes" />
-    
-    
-    <copy todir="${build.dir}/uninstaller-classes" overwrite="true">
-      <fileset dir="${build.dir}/classes">
-        <include name="**/PrivilegedRunner.class" />
-      </fileset>
-    </copy>
-    
-    <jar destfile="${build.installer.dir}/lib/uninstaller.jar"  manifest="${build.dir}/uninstaller-classes/META-INF/MANIFEST.MF">
-      <fileset dir="${build.dir}/uninstaller-classes" />
-    </jar>
-    
-    <copy todir="${izpack.home}/lib" overwrite="true" file="${build.installer.dir}/lib/uninstaller.jar" />
-  </target>
+		<unjar src="${izpack.home}/lib/uninstaller.jar" dest="${build.dir}/uninstaller-classes" />
+		
+		
+		<copy todir="${build.dir}/uninstaller-classes" overwrite="true">
+			<fileset dir="${build.dir}/classes">
+				<include name="**/PrivilegedRunner.class" />
+			</fileset>
+		</copy>
+		
+		<jar destfile="${build.installer.dir}/lib/uninstaller.jar"	manifest="${build.dir}/uninstaller-classes/META-INF/MANIFEST.MF">
+			<fileset dir="${build.dir}/uninstaller-classes" />
+		</jar>
+		
+		<copy todir="${izpack.home}/lib" overwrite="true" file="${build.installer.dir}/lib/uninstaller.jar" />
+	</target>
 
-  <target name="prepare-distribution-properties">
-    <property name="artifacts.dir" value="/qa/services/http/binaries/RHDS/builds/requirements"/>
-    <!-- the following property must be set in the pom.xml that calls this script -->
-    <property name="artifacts.jbosseap" location="${artifacts.dir}/jbeap-6/jboss-eap-6.0.0.ER8.zip" />
-    <mkdir dir="${distribution.dir}" />
-  </target>
+	<target name="prepare-distribution-properties">
+		<property name="artifacts.dir" value="/qa/services/http/binaries/RHDS/builds/requirements"/>
+		<!-- the following property must be set in the pom.xml that calls this script -->
+		<property name="artifacts.jbosseap" location="${artifacts.dir}/jbeap-6/jboss-eap-6.0.0.ER8.zip" />
+		<mkdir dir="${distribution.dir}" />
+	</target>
 
-  <target name="prepare-jbosseap" depends="prepare-distribution-properties">
-    <if>
-      <equals arg1="${buildEAPBundle}" arg2="true"/>
-      <then>
-        <delete includeemptydirs="true" defaultexcludes="false" failonerror="false">
-          <fileset dir="${jbosseap.dist}" />
-        </delete>
-        <mkdir dir="${jbosseap.dist}" />
-        <unzip dest="${distribution.dir}" src="${artifacts.jbosseap}" overwrite="true" />
-      </then>
-      <else>
-        <mkdir dir="${jbosseap.dist}"/>
-      </else>
-    </if>
-  </target>
+	<target name="prepare-jbosseap" depends="prepare-distribution-properties">
+		<if>
+			<equals arg1="${buildEAPBundle}" arg2="true"/>
+			<then>
+				<delete includeemptydirs="true" defaultexcludes="false" failonerror="false">
+					<fileset dir="${jbosseap.dist}" />
+				</delete>
+				<mkdir dir="${jbosseap.dist}" />
+				<unzip dest="${distribution.dir}" src="${artifacts.jbosseap}" overwrite="true" />
+			</then>
+			<else>
+				<mkdir dir="${jbosseap.dist}"/>
+			</else>
+		</if>
+	</target>
 
-  <target name="prepare-jbds" depends="prepare-distribution-properties">
-    <delete includeemptydirs="true" defaultexcludes="false" failonerror="false">
-      <fileset dir="${studio.dist}" />
-    </delete>
-    <mkdir dir="${studio.dist}/p2/director" />
-    <unzip dest="${studio.dist}/p2/director" src="${artifacts.p2-director}" />
-  </target>
+	<target name="prepare-jbds" depends="prepare-distribution-properties">
+		<delete includeemptydirs="true" defaultexcludes="false" failonerror="false">
+			<fileset dir="${studio.dist}" />
+		</delete>
+		<mkdir dir="${studio.dist}/p2/director" />
+		<unzip dest="${studio.dist}/p2/director" src="${artifacts.p2-director}" />
+	</target>
 
-  <macrodef name="expandproperties">
-    <attribute name="file" />
-    <sequential>
-      <move file="@{file}" tofile="__tmp">
-        <filterchain>
-          <expandproperties />
-        </filterchain>
-      </move>
-      <move file="__tmp" tofile="@{file}" />
-    </sequential>
-  </macrodef>
+	<macrodef name="expandproperties">
+		<attribute name="file" />
+		<sequential>
+			<move file="@{file}" tofile="__tmp">
+				<filterchain>
+					<expandproperties />
+				</filterchain>
+			</move>
+			<move file="__tmp" tofile="@{file}" />
+		</sequential>
+	</macrodef>
 
-  <macrodef name="unjarElement">
-    <attribute name="element" />
-    <attribute name="version" />
-    <attribute name="path" default="${java.io.tmpdir}/plugins" />
-    <attribute name="destPath" default="${studio.dist}/eclipse/plugins" />
+	<macrodef name="unjarElement">
+		<attribute name="element" />
+		<attribute name="version" />
+		<attribute name="path" default="${java.io.tmpdir}/plugins" />
+		<attribute name="destPath" default="${studio.dist}/eclipse/plugins" />
 
-    <sequential>
-      <mkdir dir="@{destPath}/@{element}_@{version}" />
-      <unzip src="@{path}/@{element}_@{version}.jar" dest="@{destPath}/@{element}_@{version}" />
-    </sequential>
-  </macrodef>
+		<sequential>
+			<mkdir dir="@{destPath}/@{element}_@{version}" />
+			<unzip src="@{path}/@{element}_@{version}.jar" dest="@{destPath}/@{element}_@{version}" />
+		</sequential>
+	</macrodef>
 
-  <target name="prepare-distribution"
-    depends="prepare-distribution-properties, prepare-jbosseap, prepare-jbds"
-    description="Copies the needed files into the distribution dir as needed by install.xml">
+	<target name="prepare-distribution"
+		depends="prepare-distribution-properties, prepare-jbosseap, prepare-jbds"
+		description="Copies the needed files into the distribution dir as needed by install.xml">
 
-    <condition property="nightly_build_qualifier" value="" else="-${buildQualifier}">
-      <or>
-        <equals arg1="${product.buildType}" arg2="R" />
-        <equals arg1="${product.buildType}" arg2="M" />
-      </or>
-    </condition>
+		<condition property="nightly_build_qualifier" value="" else="-${buildQualifier}">
+			<or>
+				<equals arg1="${product.buildType}" arg2="R" />
+				<equals arg1="${product.buildType}" arg2="M" />
+			</or>
+		</condition>
 
-    <tstamp>
-      <format property="buildDate" pattern="MMMM d, yyyy" locale="en,UK"/>
-    </tstamp>
+		<tstamp>
+			<format property="buildDate" pattern="MMMM d, yyyy" locale="en,UK"/>
+		</tstamp>
 
-    <!-- given 7.0.0, return 7 -->
-    <propertyregex property="version.major" input="${update.site.version}" regexp="([0-9]+)\.([0-9]+)\.([0-9]+)" select="\1" casesensitive="false" />
+		<!-- given 7.0.0, return 7 -->
+		<propertyregex property="version.major" input="${update.site.version}" regexp="([0-9]+)\.([0-9]+)\.([0-9]+)" select="\1" casesensitive="false" />
 
-    <copy todir="${distribution.dir}/config" filtering="true" >
-      <fileset dir="${src.dir}/config">
-        <exclude name="**/*.png" />
-        <exclude name="**/MacOS/eclipse" />
-        <exclude name="**/*.icns" />
-        <exclude name="**/*.ico" />
-        <exclude name="**/readme*.txt" />
-      </fileset>
-      <filterset id="resources.filterset">
-        <!-- [JBIDE-4200] full_version is now just x.y.z; for R builds get x.y.z.GA; all others get x.y.z.vYYYYMMDDhhmmN-H123-M4 -->
-        <filter token="full_version" value="${update.site.version}" />
-        <filter token="version_name" value="${update.site.version}.${BUILD_ALIAS}" />
-        <filter token="major_version" value="${version.major}" />
-        <filter token="version_string" value="${update.site.version}.${BUILD_ALIAS}" />
-        <filter token="nightly_build_qualifier" value="${nightly_build_qualifier}" />
-        <filter token="specification.version.presentstring" value="${update.site.version}.${BUILD_ALIAS}"/>
-        <filter token="buildDate" value="${buildDate}" />
-      </filterset>
-    </copy>
+		<copy todir="${distribution.dir}/config" filtering="true" >
+			<fileset dir="${src.dir}/config">
+				<exclude name="**/*.png" />
+				<exclude name="**/MacOS/eclipse" />
+				<exclude name="**/*.icns" />
+				<exclude name="**/*.ico" />
+				<exclude name="**/readme*.txt" />
+			</fileset>
+			<filterset id="resources.filterset">
+				<!-- [JBIDE-4200] full_version is now just x.y.z; for R builds get x.y.z.GA; all others get x.y.z.vYYYYMMDDhhmmN-H123-M4 -->
+				<filter token="full_version" value="${update.site.version}" />
+				<filter token="version_name" value="${update.site.version}.${BUILD_ALIAS}" />
+				<filter token="major_version" value="${version.major}" />
+				<filter token="version_string" value="${update.site.version}.${BUILD_ALIAS}" />
+				<filter token="nightly_build_qualifier" value="${nightly_build_qualifier}" />
+				<filter token="specification.version.presentstring" value="${update.site.version}.${BUILD_ALIAS}"/>
+				<filter token="buildDate" value="${buildDate}" />
+			</filterset>
+		</copy>
 
-    <copy file="${src.dir}/config/resources/readme.txt" tofile="${distribution.dir}/config/resources/readme.txt" filtering="true">
-      <filterset refid="resources.filterset"/>
-    </copy>
+		<copy file="${src.dir}/config/resources/readme.txt" tofile="${distribution.dir}/config/resources/readme.txt" filtering="true">
+			<filterset refid="resources.filterset"/>
+		</copy>
 
-    <copy todir="${distribution.dir}/config">
-      <fileset dir="${src.dir}/config">
-        <include name="**/*.png" />
-        <include name="**/MacOS/eclipse" />
-        <include name="**/*.icns" />
-        <include name="**/*.ico" />
-      </fileset>
-    </copy>
+		<copy todir="${distribution.dir}/config">
+			<fileset dir="${src.dir}/config">
+				<include name="**/*.png" />
+				<include name="**/MacOS/eclipse" />
+				<include name="**/*.icns" />
+				<include name="**/*.ico" />
+			</fileset>
+		</copy>
 
-    <copy todir="${distribution.dir}/config/resources/images">
-      <fileset dir="${src.dir}/config/resources/images" />
-    </copy>
-  </target>
+		<copy todir="${distribution.dir}/config/resources/images">
+			<fileset dir="${src.dir}/config/resources/images" />
+		</copy>
+	</target>
 
-  <target name="init-properties">
-    <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
+	<target name="init-properties">
+		<propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
 
-    <!-- 7.0.0.Beta1-v20130425-0428-H1234 -->
-    <property name="specification.version"
-              value="${update.site.version}.${buildQualifier}" />
+		<!-- 7.0.0.Beta1-v20130425-0428-H1234 -->
+		<property name="specification.version"
+							value="${update.site.version}.${buildQualifier}" />
 
-    <property name="installer.name" value="jboss-devstudio-${specification.version}-installer-standalone" />
-    <property name="installer.eap.name" value="jboss-devstudio-${specification.version}-installer-eap" />
+		<property name="installer.name" value="jboss-devstudio-${specification.version}-installer-standalone" />
+		<property name="installer.eap.name" value="jboss-devstudio-${specification.version}-installer-eap" />
 
-    <property name="specification.vendor" value="JBoss by Red Hat (http://www.jboss.com/)" />
-    <property name="specification.version.presentstring" value="${update.site.version}.${BUILD_ALIAS}" />
-    <property name="implementation.title" value="JBDS Installer [${update.site.version}]" />
-    <property name="implementation.url" value="http://www.jboss.org/" />
-    <property name="implementation.version"
-              value="${update.site.version}.${buildQualifier}" />
-  </target>
+		<property name="specification.vendor" value="JBoss by Red Hat (http://www.jboss.com/)" />
+		<property name="specification.version.presentstring" value="${update.site.version}.${BUILD_ALIAS}" />
+		<property name="implementation.title" value="JBDS Installer [${update.site.version}]" />
+		<property name="implementation.url" value="http://www.jboss.org/" />
+		<property name="implementation.version"
+							value="${update.site.version}.${buildQualifier}" />
+	</target>
 
-  <target name="installer" depends="init-properties, buildcustompanels, prepare-distribution">
+	<target name="installer" depends="init-properties, buildcustompanels, prepare-distribution">
 
-    <echo message="Building JBDS Installers with nightly_build_qualifier=${nightly_build_qualifier}"/>
-    <taskdef name="izpack" classname="com.izforge.izpack.ant.IzPackTask" classpathref="izpack.classpath" />
+		<echo message="Building JBDS Installers with nightly_build_qualifier=${nightly_build_qualifier}"/>
+		<taskdef name="izpack" classname="com.izforge.izpack.ant.IzPackTask" classpathref="izpack.classpath" />
 
-    <mkdir dir="${build.dir}" />
+		<mkdir dir="${build.dir}" />
 
-    <property name="eclipse" value="${distribution.dir}/config" />
-    <if>
-      <equals arg1="${buildEAPBundle}" arg2="true"/>
-      <then>
-        <var name="install.group" value="jbosseap" />
-        <!-- Now call the izpack compiler -->
-        <echo message="Building JBDS Installer (EAP Bundle): ${installer.eap.name}.jar"/>
-        <izpack input="${src.dir}/config/install.xml"
-                output="${destination.dir}/${installer.eap.name}.jar"
-                installerType="standard"
-                basedir="${distribution.dir}"
-                inheritAll="true"
-                izPackDir="${izpack.home}">
-          <property name="STACKTRACE" value="true" />
-        </izpack>
+		<property name="eclipse" value="${distribution.dir}/config" />
+		<if>
+			<equals arg1="${buildEAPBundle}" arg2="true"/>
+			<then>
+				<var name="install.group" value="jbosseap" />
+				<!-- Now call the izpack compiler -->
+				<echo message="Building JBDS Installer (EAP Bundle): ${installer.eap.name}.jar"/>
+				<izpack input="${src.dir}/config/install.xml"
+								output="${destination.dir}/${installer.eap.name}.jar"
+								installerType="standard"
+								basedir="${distribution.dir}"
+								inheritAll="true"
+								izPackDir="${izpack.home}">
+					<property name="STACKTRACE" value="true" />
+				</izpack>
 
-        <delete>
-          <fileset dir="${jbosseap.dist}">
-            <include name="**/*.*" />
-          </fileset>
-        </delete>
-        <var name="install.group" unset="true" />
-      </then>
-    </if>
-    <var name="install.group" value="jbds" />
-    <!-- Now call the izpack compiler -->
-    <echo message="Building JBDS Installer (Standalone): ${installer.name}.jar"/>
-    <izpack input="${src.dir}/config/install.xml"
-            output="${destination.dir}/${installer.name}.jar"
-            installerType="standard"
-            basedir="${distribution.dir}"
-            inheritAll="true"
-            izPackDir="${izpack.home}">
-      <property name="STACKTRACE" value="true" />
-    </izpack>
+				<delete>
+					<fileset dir="${jbosseap.dist}">
+						<include name="**/*.*" />
+					</fileset>
+				</delete>
+				<var name="install.group" unset="true" />
+			</then>
+		</if>
+		<var name="install.group" value="jbds" />
+		<!-- Now call the izpack compiler -->
+		<echo message="Building JBDS Installer (Standalone): ${installer.name}.jar"/>
+		<izpack input="${src.dir}/config/install.xml"
+						output="${destination.dir}/${installer.name}.jar"
+						installerType="standard"
+						basedir="${distribution.dir}"
+						inheritAll="true"
+						izPackDir="${izpack.home}">
+			<property name="STACKTRACE" value="true" />
+		</izpack>
 
-  	<if>
-  		<not>
-  			<isset property="skipTests" />
-  		</not>
-  		<then>
+		<if>
+			<not>
+				<isset property="skipTests" />
+			</not>
+			<then>
 			<loadfile srcfile="${basedir}/jbdevstudio-test-install.xml" property="jbdevstudio-test-install.xml.updated">
 				<filterchain>
 					<expandproperties/>
@@ -368,11 +368,11 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 			<java jar="${destination.dir}/${installer.name}.jar" fork="true" failonerror="true" maxmemory="512m" jvmargs="-DTRACE=true -Djava.security.manager -Djava.security.policy=${basedir}/java.policy">
 				<arg line="${project.build.directory}/jbdevstudio-test-install.xml"/>
 			</java>
-  		</then>
-  	</if>
-  </target>
+			</then>
+		</if>
+	</target>
 
-  <target name="clean">
-    <delete dir="${build.dir}" />
-  </target>
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
 </project>
