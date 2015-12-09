@@ -16,6 +16,7 @@
 		<update.site.description>Snapshot Build</update.site.description>
 		<siteTemplateFolder>siteTemplateFolder</siteTemplateFolder>
 		<associateSite>https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/</associateSite>
+		<targetplatformURL>https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget/${TARGET_PLATFORM_VERSION_MAXIMUM}/REPO</targetplatformURL>
 	</properties>
 
 	<build>
@@ -137,7 +138,26 @@
 				<artifactId>tycho-p2-extras-plugin</artifactId>
 				<version>${tychoExtrasVersion}</version>
 				<executions>
+					<!-- mirror the TP so we can include it in the update site zip -->
 					<execution>
+						<id>mirror-targetplatform</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>mirror</goal>
+						</goals>
+						<configuration>
+							<source>
+								<repository>
+									<url>${targetplatformURL}</url>
+									<layout>p2</layout>
+								</repository>
+							</source>
+						 <destination>${project.build.directory}/targetplatform</destination>
+						</configuration>
+					</execution>
+					<!-- mirror the built repository w/o pack.gz artifacts so we can exclude pack.gz files from the update site zip -->
+					<execution>
+						<id>mirror-repository-nopackgz</id>
 						<phase>package</phase>
 						<goals>
 							<goal>mirror</goal>
@@ -156,6 +176,7 @@
 					</execution>
 				</executions>
 			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
@@ -164,9 +185,9 @@
 					<execution>
 						<id>zip-repository-nopackgz</id>
 						<phase>package</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
+						<goals>
+							<goal>run</goal>
+						</goals>
 						<configuration>
 							<quiet>true</quiet>
 							<tasks>
