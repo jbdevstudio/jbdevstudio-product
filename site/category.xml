@@ -53,10 +53,6 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <feature id="org.jboss.tools.jst.js.feature">
-    <category name="WebTools" />
-    <category name="MobileTools"/>
-  </feature>
   <feature id="org.jboss.tools.jst.jsdt.feature">
     <!-- removed from JBDS CoreTools but still there for JBT -->
     <category name="WebTools" />
