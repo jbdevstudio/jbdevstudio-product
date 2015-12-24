@@ -55,7 +55,8 @@
   <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.jst.js.feature" version="0.0.0"/>
+  <!-- JBIDE-21171 org.eclipse.wst.jsdt.nodejs.feature replaces org.jboss.tools.jst.js.feature -->
+  <includes id="org.eclipse.wst.jsdt.nodejs.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.usage.feature" version="0.0.0"/>
 
   <plugin id="org.jboss.tools.discovery.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>

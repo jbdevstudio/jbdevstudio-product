@@ -53,7 +53,8 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <feature id="org.jboss.tools.jst.js.feature">
+  <!-- JBIDE-21171 org.eclipse.wst.jsdt.nodejs.feature replaces org.jboss.tools.jst.js.feature -->
+  <feature id="org.eclipse.wst.jsdt.nodejs.feature">
     <category name="WebTools" />
     <category name="MobileTools"/>
   </feature>
