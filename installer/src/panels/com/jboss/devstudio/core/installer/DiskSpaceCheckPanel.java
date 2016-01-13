@@ -1,9 +1,13 @@
-/*
- * JBoss, the OpenSource J2EE webOS
+/*************************************************************************************
+ * Copyright (c) 2014-2016 Red Hat, Inc. and others.
+ * All rights reserved. This program and the accompanying materials 
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  * 
- * Distributable under LGPL license.
- * See terms of license at gnu.org.
- */
+ * Contributors:
+ *     JBoss by Red Hat - Initial implementation.
+ ************************************************************************************/
 package com.jboss.devstudio.core.installer;
 
 import java.io.File;
