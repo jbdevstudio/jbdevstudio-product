@@ -353,11 +353,18 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 			return -5;
 		}
 
-        if(!detectedVersion.matches("1\\.[1-9]\\.[0-9].*")) {
-        	return -4; // Unknown version
-        }
-        int versionNumber = Integer.parseInt(detectedVersion.substring(2,3)); 
-        
+		if(!detectedVersion.matches("1\\.[1-9]\\.[0-9].*") && !detectedVersion.matches("[1-9]-.*")) {
+			return -4; // Unknown version
+		}
+
+		int versionNumber = 0;
+
+		if (detectedVersion.matches("1\\.[1-9]\\.[0-9].*")) {
+			 versionNumber = Integer.parseInt(detectedVersion.substring(2, 3));
+		} else {
+			versionNumber = 9;
+		}
+
         if (versionNumber < minVersion) {
         	return -3; // Version is less that minimum version
         }

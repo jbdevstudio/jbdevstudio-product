@@ -1,5 +1,6 @@
 package com.jboss.devstudio.core.installer;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -8,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import junit.framework.TestCase;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.izforge.izpack.installer.Unpacker;
 import com.jboss.devstudio.core.installer.bean.P2IU;
+
+import junit.framework.TestCase;
 
 public class GsonSerializationTest extends TestCase {
 
@@ -32,7 +33,7 @@ public class GsonSerializationTest extends TestCase {
 	
 	public void testIULoadFromFile() throws FileNotFoundException {
 		
-		InputStream features = new FileInputStream("/home/eskimo/Projects/jbdevstudio/4.4.x/fork/jbds-releng/jbdevstudio-product/installer/src/config/resources/DevstudioFeaturesSpec.json");
+		InputStream features = new FileInputStream(new File(CommonTestData.PROJECT_ROOT,"src/config/resources/DevstudioFeaturesSpec.json"));
 		JsonParser parser = new JsonParser();
 		JsonArray array = parser.parse(new InputStreamReader(features)).getAsJsonArray();
 		Gson gson = new Gson();
