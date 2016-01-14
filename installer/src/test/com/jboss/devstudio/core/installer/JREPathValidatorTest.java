@@ -85,7 +85,7 @@ public class JREPathValidatorTest extends TestCase {
 	}
 
 	public void testVerifyVersionJvmNotTested() {
-		ValidationCode result = createValidatorWithVersionOutput("1.9.0_64").runAndVerifyVersion("");
+		ValidationCode result = createValidatorWithVersionOutput("9-ea").runAndVerifyVersion("");
 		assertTrue(result == ValidationCode.WRN_JVM_VERSION_NOT_TESTED);
 	}
 
@@ -214,7 +214,7 @@ public class JREPathValidatorTest extends TestCase {
 				} else if (params[0].endsWith("8/bin/java")) {
 					output[0] = createOut("Oracle","1.8.0_41","64")[0];
 				} else if (params[0].endsWith("9/bin/java")) {
-					output[0] = createOut("Oracle","1.9.0_41","64")[0];
+					output[0] = createOut("Oracle","9-ea","64")[0];
 				} else {
 					output[0] = createOut("Oracle","1.8.0_41","64")[0];
 				}
