@@ -188,5 +188,9 @@
     <import plugin="org.eclipse.linuxtools.docker.ui" version="1.1.0" match="greaterOrEqual"/>
     <!-- do we actually need this? -->
     <import plugin="org.eclipse.linuxtools.docker.docs" version="1.1.0" match="greaterOrEqual"/>
+
+    <!-- JBIDE-21377 -->
+    <import plugin="org.dadacoalition.yedit" version="1.0.18" match="greaterOrEqual"/>
+    <import plugin="org.yaml.snakeyaml" version="1.14.0" match="greaterOrEqual"/>
   </requires>
 </feature>
