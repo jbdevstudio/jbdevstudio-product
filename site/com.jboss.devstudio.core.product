@@ -61,6 +61,8 @@ openFile</programArgs>
    <features>
       <feature id="com.jboss.devstudio.core.feature"/>
       <feature id="com.jboss.devstudio.core.capabilities.feature"/>
+      <!-- JBDS-3566 new for Mars.2 / Neon.M4 -->
+      <feature id="org.eclipse.epp.logging.aeri.feature"/>
    </features>
 
    <configurations>
