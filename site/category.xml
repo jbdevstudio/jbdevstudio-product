@@ -40,6 +40,12 @@
     <category name="MobileTools"/>
   </feature>
 
+  <!-- JBIDE-21377 -->
+  <bundle id="org.dadacoalition.yedit">
+    <category name="CoreTools" />
+  </bundle>
+  <bundle id="org.yaml.snakeyaml"/>
+
   <!-- JBIDE-19045 include Tern -->
   <bundle id="minimal-json"/>
   <bundle id="minimatch.java" />
