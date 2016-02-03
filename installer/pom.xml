@@ -136,59 +136,23 @@
             <configuration>
               <quiet>true</quiet>
               <tasks>
-                <echo>Basedir: ${basedir}</echo>
-                <!-- regenerate IzPack auto-install.xml script to set correct target folder -->
-                <echo>Prepare IzPack auto-install script</echo>
-                <loadfile srcfile="${basedir}/IzPack-auto-install.xml" property="IzPack-auto-install.xml.updated">
-                  <filterchain>
-                    <expandproperties/>
-                  </filterchain>
-                </loadfile>
-                <echo file="${project.build.directory}/IzPack-${IzPackVersion}-auto-install.xml">${IzPack-auto-install.xml.updated}</echo>
-
-                <!-- install IzPack if not already present -->
-                <echo>Install IzPack from auto-install script</echo>
-                <java jar="${project.build.directory}/requirements/IzPack-install-${IzPackVersion}.jar" fork="true" failonerror="true" maxmemory="128m">
-                  <arg line="${project.build.directory}/IzPack-${IzPackVersion}-auto-install.xml"/>
-                </java>
-
-                <!-- this update site zip is only used to produce the installer -->
-                <echo>Prepare update site zip </echo>
-                <zip
-                  destfile="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip"
-                  whenempty="fail">
-                  <zipfileset dir="${project.build.directory}/repository" prefix="jbds"/>
-                </zip>
-
                 <ant antfile="build.xml">
+                  <property name="basedir" value="${basedir}" />
+                  <property name="project.build.directory" value="${project.build.directory}" />
+                  <property name="IzPackVersion" value="${IzPackVersion}"/>
                   <property name="buildEAPBundle" value="${buildEAPBundle}"/>
                   <property name="artifacts.p2-director" value="${project.build.directory}/requirements/p2-director.zip" />
-                  <property name="artifacts.jbds.update"
-                    value="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip" />
-                  <property name="artifacts.jbosseap"
-                    location="${project.build.directory}/requirements/${eapFilename}" />
+                  <property name="artifacts.jbosseap" location="${project.build.directory}/requirements/${eapFilename}" />
                   <property name="eapRootFolder" value="${eapRootFolder}"/>
                   <property name="eapVersion" value="${eapVersion}" />
                   <property name="destination.dir" value="${project.build.directory}" />
-                  <property name="izpack.home"
-                    value="${project.build.directory}/IzPack-${IzPackVersion}" />
+                  <property name="izpack.home" value="${project.build.directory}/IzPack-${IzPackVersion}" />
                   <property name="skip.ant.actions" value="true" />
                   <property name="buildQualifier" value="${buildQualifier}" />
                   <property name="product.buildType" value="R" />
-                  <!-- properties previously included in version.properties -->
                   <property name="project.version" value="${project.version}" />
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
-                  <property name="project.build.directory" value="${project.build.directory}" />
-                  <property name="basedir" value="${basedir}" />
                 </ant>
-                <!-- clean up build-time artifacts so they won't be published -->
-                <delete includeEmptyDirs="true" quiet="true">
-                  <fileset dir="${project.build.directory}/update"/>
-                  <fileset file="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip"/>
-                </delete>
-
-                <!-- test installer jar -->
-
               </tasks>
             </configuration>
             <goals>
