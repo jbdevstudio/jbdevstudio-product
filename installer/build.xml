@@ -292,25 +292,51 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     </copy>
   </target>
 
-  <target name="init-properties">
-    <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
+  <target name="init">
+    <echo>Basedir: ${basedir}</echo>
+    <!-- regenerate IzPack auto-install.xml script to set correct target folder -->
+    <echo>Prepare IzPack auto-install script</echo>
+    <loadfile srcfile="${basedir}/IzPack-auto-install.xml" property="IzPack-auto-install.xml.updated">
+      <filterchain>
+        <expandproperties/>
+      </filterchain>
+    </loadfile>
+    <echo file="${project.build.directory}/IzPack-${IzPackVersion}-auto-install.xml">${IzPack-auto-install.xml.updated}</echo>
 
-    <!-- 7.0.0.Beta1-v20130425-0428-H1234 -->
-    <property name="specification.version"
-              value="${update.site.version}.${buildQualifier}" />
+    <!-- install IzPack if not already present -->
+    <echo>Install IzPack from auto-install script</echo>
+    <java jar="${project.build.directory}/requirements/IzPack-install-${IzPackVersion}.jar" fork="true" failonerror="true" maxmemory="128m">
+      <arg line="${project.build.directory}/IzPack-${IzPackVersion}-auto-install.xml"/>
+    </java>
+  </target>
+
+  <target name="init-properties">
+    <!-- 9.1.0-SNAPSHOT becomes 9.1.0 -->
+    <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
+    <!-- eg., 9.1.0.CR1-v20160203-1627 -->
+    <property name="specification.version" value="${update.site.version}.${buildQualifier}" />
+    <property name="specification.vendor" value="JBoss by Red Hat (http://www.jboss.com/)" />
+    <property name="specification.version.presentstring" value="${update.site.version}.${BUILD_ALIAS}" />
 
     <property name="installer.name" value="jboss-devstudio-${specification.version}-installer-standalone" />
     <property name="installer.eap.name" value="jboss-devstudio-${specification.version}-installer-eap" />
 
-    <property name="specification.vendor" value="JBoss by Red Hat (http://www.jboss.com/)" />
-    <property name="specification.version.presentstring" value="${update.site.version}.${BUILD_ALIAS}" />
     <property name="implementation.title" value="JBDS Installer [${update.site.version}]" />
     <property name="implementation.url" value="http://www.jboss.org/" />
-    <property name="implementation.version"
-              value="${update.site.version}.${buildQualifier}" />
+    <property name="implementation.version" value="${update.site.version}.${buildQualifier}" />
+
+    <property name="artifacts.jbds.update" value="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip" />
   </target>
 
-  <target name="installer" depends="init-properties, buildcustompanels, prepare-distribution">
+  <target name="create-temp-update-sites">
+    <!-- this update site zip is only used to produce the installer -->
+    <echo>Prepare update site zip </echo>
+    <zip destfile="${artifacts.jbds.update}" whenempty="fail">
+      <zipfileset dir="${project.build.directory}/repository" prefix="jbds"/>
+    </zip>
+  </target>
+
+  <target name="installer" depends="init, init-properties, create-temp-update-sites, buildcustompanels, prepare-distribution">
 
     <echo message="Building JBDS Installers with nightly_build_qualifier=${nightly_build_qualifier}"/>
     <taskdef name="izpack" classname="com.izforge.izpack.ant.IzPackTask" classpathref="izpack.classpath" />
@@ -333,6 +359,10 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
           <property name="STACKTRACE" value="true" />
         </izpack>
 
+        <antcall target="add-rootfiles">
+          <param name="installerJar" value="${destination.dir}/${installer.eap.name}.jar"/>
+        </antcall>
+
         <delete>
           <fileset dir="${jbosseap.dist}">
             <include name="**/*.*" />
@@ -353,6 +383,10 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
       <property name="STACKTRACE" value="true" />
     </izpack>
 
+    <antcall target="add-rootfiles">
+      <param name="installerJar" value="${destination.dir}/${installer.name}.jar"/>
+    </antcall>
+
   	<if>
   		<not>
   			<isset property="skipTests" />
@@ -370,6 +404,23 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 			</java>
   		</then>
   	</if>
+
+    <antcall target="remove-temp-update-sites"/>
+  </target>
+
+  <target name="add-rootfiles">
+    <!-- inject root files into installer jars -->
+    <zip keepcompression="true" compress="true" update="true" destfile="${installerJar}">
+      <zipfileset dir="${basedir}/rootfiles"/>
+    </zip>
+  </target>
+
+  <target name="remove-temp-update-sites">
+    <!-- clean up build-time artifacts so they won't be published -->
+    <delete includeEmptyDirs="true" quiet="true">
+      <fileset dir="${project.build.directory}/update"/>
+      <fileset file="${artifacts.jbds.update}"/>
+    </delete>
   </target>
 
   <target name="clean">
