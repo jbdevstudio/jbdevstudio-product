@@ -73,6 +73,7 @@ openFile</programArgs>
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <plugin id="org.eclipse.update.configurator" autoStart="true" startLevel="4" />
       <property name="org.eclipse.update.reconcile" value="false" />
+      <property name="eclipse.buildId" value="${unqualifiedVersion}.${buildQualifier}"/>
    </configurations>
 
    <repositories>
