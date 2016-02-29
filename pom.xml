@@ -117,6 +117,78 @@
       </properties>
     </profile>
 
+    <profile>
+      <id>local-sources</id>
+      <properties>
+        <skipBaselineComparison>true</skipBaselineComparison>
+        <mavanagaiata.skip>true</mavanagaiata.skip>
+      </properties>
+      <build>
+        <plugins>
+          <!-- disable git-based source reference generation in MANIFEST.MF -->
+          <plugin>
+            <groupId>org.eclipse.tycho</groupId>
+            <artifactId>tycho-packaging-plugin</artifactId>
+            <version>${tychoVersion}</version>
+            <configuration>
+              <sourceReferences>
+                <generate>false</generate>
+              </sourceReferences>
+            </configuration>
+          </plugin>
+
+          <!-- disable this from the site/pom.xml -->
+          <plugin>
+            <groupId>pl.project13.maven</groupId>
+            <artifactId>git-commit-id-plugin</artifactId>
+            <version>2.1.13</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>revision</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <skip>true</skip>
+            </configuration>
+          </plugin>
+
+	  <!-- disable fetching sources from manifests and creation of HTML facade on update site -->
+          <plugin>
+            <groupId>org.jboss.tools.tycho-plugins</groupId>
+            <artifactId>repository-utils</artifactId>
+            <version>${jbossTychoPluginsVersion}</version>
+            <executions>
+              <execution>
+                <id>generate-facade</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>generate-repository-facade</goal>
+                </goals>
+                <configuration>
+                  <skip>true</skip>
+                  <skipBuildInfo>true</skipBuildInfo>
+                  <skipWebContentGeneration>true</skipWebContentGeneration>
+                  <fetch-sources-from-manifests.skip>true</fetch-sources-from-manifests.skip>
+                </configuration>
+              </execution>
+              <execution>
+                <id>fetch-sources</id>
+                <phase>package</phase>
+                <goals>
+                  <goal>fetch-sources-from-manifests</goal>
+                </goals>
+                <configuration>
+                  <skip>true</skip>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
     <!-- 
         Uncomment this profile to optionally enable a target platform site instead of (or in addition to) the default target platform. 
         Use -Dno-target-platform if you want to disable the default target platform in favour of a specified target platform site
