@@ -52,10 +52,10 @@
               <quiet>true</quiet>
               <target>
                 <ant antfile="build.xml" target="build" dir="./">
-                  <!-- TODO: change this to newer version of Eclipse when appropriate -->
-                  <property name="eclipse.version" value="Eclipse 4.6 (Neon)"/>
+                  <property name="eclipse.version" value="${targetEclipseVersion}"/>
                   <property name="jbds.update.site" value="https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/"/>
                   <property name="eap.version" value="${eapVersion}"/>
+                  <property name="eclipseReleaseName" value="${eclipseReleaseName}"/>
 
                   <property name="project.version" value="${project.version}" />
                   <property name="JBT.version" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}" />

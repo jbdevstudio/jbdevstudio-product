@@ -164,9 +164,9 @@
 					<execution>
 						<id>zip-repository-nopackgz</id>
 						<phase>package</phase>
-            <goals>
-              <goal>run</goal>
-            </goals>
+						<goals>
+							<goal>run</goal>
+						</goals>
 						<configuration>
 							<quiet>true</quiet>
 							<tasks>
@@ -180,6 +180,18 @@
 								</zip>
 								<!-- cleanup mirror -->
 								<delete dir="${project.build.directory}/repository-nopackgz" quiet="true" failonerror="false"/>
+
+								<!-- JBDS-3598 add CSP src zip readme into src zip too -->
+								<copy todir="${project.build.directory}" overwrite="true">
+									<fileset file="${project.basedir}/../results/customer-portal/src.manual-instructions.txt" />
+									<mapper type="merge" to="README.how-to-build-from-sources-zip.txt" />
+									<filterchain>
+										<expandproperties />
+									</filterchain>
+								</copy>
+								<zip destfile="${project.build.directory}/jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src.zip" whenempty="fail" update="true">
+									<zipfileset dir="${project.build.directory}/" includes="README.how-to-build-from-sources-zip.txt"/>
+								</zip>
 							</tasks>
 						</configuration>
 					</execution>
