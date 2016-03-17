@@ -19,7 +19,7 @@ import org.jboss.tools.central.internal.DefaultJBossCentralConfigurator;
  */
 public class JbdsConfigurator extends DefaultJBossCentralConfigurator {
 
-    private static final String DOCUMENTATION_URL = "https://access.redhat.com/site/documentation/Red_Hat_JBoss_Developer_Studio/"; //$NON-NLS-1$
+    private static final String DOCUMENTATION_URL = "https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/"; //$NON-NLS-1$
 
 	@Override
 	public String[] getMainToolbarCommandIds() {

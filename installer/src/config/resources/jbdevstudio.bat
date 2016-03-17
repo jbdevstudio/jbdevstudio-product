@@ -1,1 +1,1 @@
-start "Red Hat JBoss Developer Studio" "%~dp0\studio\jbdevstudio.exe"
+start "Red Hat Developer Studio" "%~dp0\studio\jbdevstudio.exe"

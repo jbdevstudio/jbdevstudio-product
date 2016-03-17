@@ -2,11 +2,11 @@
 	<panel order="0">
 		<field type="radio" variable="INSTALL_GROUP">
 			<description align="left"
-				txt="Do you want to install the Red Hat JBoss Enterprise Application Platform that comes with Red Hat JBoss Developer Studio ?"
+				txt="Do you want to install the Red Hat JBoss Enterprise Application Platform that comes with Red Hat Developer Studio ?"
 				id="description.radio" />
 			<spec>
 				<choice
-					txt="Yes, and have it ready for use in JBoss Developer Studio"
+					txt="Yes, and have it ready for use in Red Hat Developer Studio"
 					id="radio.label.1" value="jbosseap" set="true"/>
 				<choice txt="No" id="radio.label.2" value="jbds"/>
 			</spec>

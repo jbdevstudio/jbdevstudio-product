@@ -14,7 +14,7 @@ package com.jboss.devstudio.core.usage.branding;
 import org.jboss.tools.usage.branding.IUsageBranding;
 
 /**
- * Provides branding to Usage Reporting for JBoss Developer Studio.
+ * Provides branding to Usage Reporting for Red Hat Developer Studio.
  * 
  * @author Andre Dietisheim
  */

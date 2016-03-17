@@ -4,7 +4,7 @@
 <!DOCTYPE installation PUBLIC "//IzPack/4.3.4" "resources/installation.dtd">
 <installation version="1.0">
 	<info>
-		<appname>Red Hat JBoss Developer Studio @{specification.version.presentstring}</appname>
+		<appname>Red Hat Developer Studio @{specification.version.presentstring}</appname>
 		<appversion>
 			@{specification.version}, JBoss AS @{jboss.version}
 		</appversion>
@@ -184,7 +184,7 @@
 	</conditions>
 
 	<installerrequirements>
-		<installerrequirement condition="izpack.windowsinstall|izpack.macinstall|izpack.linuxinstall" message="&lt;html&gt;&lt;p&gt;This installer contains JBoss Developer Studio&lt;br&gt;for Winodws, Mac OS X and Linux operating systems.&lt;br&gt;Current operating system is not supported.&lt;/p&gt;&lt;/html&gt;"/>
+		<installerrequirement condition="izpack.windowsinstall|izpack.macinstall|izpack.linuxinstall" message="&lt;html&gt;&lt;p&gt;This installer contains Red Hat Developer Studio&lt;br&gt;for Winodws, Mac OS X and Linux operating systems.&lt;br&gt;Current operating system is not supported.&lt;/p&gt;&lt;/html&gt;"/>
 	</installerrequirements>
 
 	<packs>

@@ -6,13 +6,13 @@
 <!-- 		
 	<div id="container">
     	<div id="header">
-        	<div id="welcome"><a href="http://www.jboss.com">Welcome to JBoss Developer Studio</a></div>
+        	<div id="welcome"><a href="http://www.jboss.com">Welcome to Red Hat Developer Studio</a></div>
             <div id="workbench"><a href="#"><b>Workbench</b><img src="images/workbench.png" alt="Workbench" /></a></div>
         </div>
 -->        
         <group id="header" filteredFrom="swt">
            <group id="welcome">
-           		<img src="$theme$/graphics/root4page/welcome.png" alt="Welcome to JBoss Developer Studio"/>
+           		<img src="$theme$/graphics/root4page/welcome.png" alt="Welcome to Red Hat Developer Studio"/>
            </group>
            <group id="workbench">
    				<link url="http://org.eclipse.ui.intro/switchToLaunchBar" label="Workbench" />
@@ -89,7 +89,7 @@
     	<group id="header" filteredFrom="swt">
     	
         	<group id="welcome">
-           		<link url="http://www.jboss.com" label="Welcome to JBoss Developer Studio" />
+           		<link url="http://www.jboss.com" label="Welcome to Red Hat Developer Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -131,7 +131,7 @@
 			<group style-id="content-group" id="content-group">
 				<group>
 				<link style-id="content-link" label="$introLink1Title-gettingstarted$" 
-						url="https://access.redhat.com/site/documentation/Red_Hat_JBoss_Developer_Studio/" id="weblink">
+						url="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/" id="weblink">
 					<text>$introLink1Description-gettingstarted$</text>
 				</link>
 				</group>
@@ -178,7 +178,7 @@
     <page id="perspectives" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="http://www.jboss.com/products/devstudio" label="Welcome to JBoss Developer Studio" />
+           		<link url="http://www.jboss.com/products/devstudio" label="Welcome to Red Hat Developer Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -267,7 +267,7 @@
     <page id="createnew" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="http://www.jboss.com" label="Welcome to JBoss Developer Studio" />
+           		<link url="http://www.jboss.com" label="Welcome to Red Hat Developer Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -342,7 +342,7 @@
     <page id="webresources" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="http://www.jboss.com" label="Welcome to JBoss Developer Studio" />
+           		<link url="http://www.jboss.com" label="Welcome to Red Hat Developer Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-	<description>Red Hat JBoss Developer Studio Installer P2 Repository</description>
-	<category-def name="jbds" label="Red Hat JBoss Developer Studio">
-		<description>Red Hat JBoss Developer Studio Features</description>
+	<description>Red Hat Developer Studio Installer P2 Repository</description>
+	<category-def name="jbds" label="Red Hat Developer Studio">
+		<description>Red Hat Developer Studio Features</description>
 	</category-def>
 	<bundle id="com.jboss.devstudio.core.package">
 		<category name="jbds" />

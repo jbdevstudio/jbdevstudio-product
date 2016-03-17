@@ -13,7 +13,7 @@ package com.jboss.devstudio.core.internal.properties;
 import org.jboss.tools.foundation.core.properties.internal.VersionPropertiesProvider;
 
 /**
- * Properties Provider for JBoss Developer Studio
+ * Properties Provider for Red Hat Developer Studio
  *
  * @author Fred Bricon
  * @since 8.0.0

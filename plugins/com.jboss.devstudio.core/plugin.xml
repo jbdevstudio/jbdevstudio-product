@@ -6,10 +6,10 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.jboss.devstudio.core.application"
-            name="JBoss Developer Studio">
+            name="Red Hat Developer Studio">
          <property 
                name="appName" 
-               value="JBoss Developer Studio"/> 
+               value="Red Hat Developer Studio"/> 
          <property
                name="startupProgressRect"
                value="29,232,397,15"/>
