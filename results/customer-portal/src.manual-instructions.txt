@@ -6,7 +6,7 @@
 
 4. If building offline, you will also need the latest (or an equivalent) JBoss Tools update site zip, available from http://tools.jboss.org/downloads/ or http://tools.jboss.org/downloads/overview.html
 
-5. Unpack the sources zip, then from within the folder into which you unpacked it, browse to the `jbdevstudio-product-*` folder.
+5. Unpack the sources zip. If you're on a Linux-like operating system, you may need to `chmod -R 755 *` in the folder into which you unpacked it. Then browse to the `jbdevstudio-product-*` folder. 
 
 6. For an offline build, run `mvn clean install -Plocal-sources -Djbosstools-site=jar:file:///path/to/jbosstools-*-updatesite-core.zip\!/`
 
