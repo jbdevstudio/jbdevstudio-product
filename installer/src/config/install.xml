@@ -56,8 +56,8 @@
 		<modifier key="langDisplayType" value="native" />
 		<modifier key="useHeadingPanel" value="yes" />
 		<modifier key="headingFontSize" value="1.5" />
-		<modifier key="headingBackgroundColor" value="0x00ffffff" />
-		<modifier key="headingForegroundColor" value="0x005a5a5a" />
+		<modifier key="headingBackgroundColor" value="0x00242424" />
+		<modifier key="headingForegroundColor" value="0x00ffffff" />
 		<modifier key="headingImageBorderSize" value="0" />
 		<modifier key="headingPanelCounter" value="text" />
 		<modifier key="headingPanelCounterPos" value="inHeading" />

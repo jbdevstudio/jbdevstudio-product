@@ -1,89 +1,89 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <plugin>
-   <extension
-         id="product"
-         point="org.eclipse.core.runtime.products">
-      <product
-            application="com.jboss.devstudio.core.application"
-            name="Red Hat Developer Studio">
-         <property 
-               name="appName" 
-               value="Red Hat Developer Studio"/> 
-         <property
-               name="startupProgressRect"
-               value="29,232,397,15"/>
+	 <extension
+				 id="product"
+				 point="org.eclipse.core.runtime.products">
+			<product
+							 application="com.jboss.devstudio.core.application"
+							 name="Red Hat Developer Studio">
+				 <property 
+							 name="appName" 
+							 value="Red Hat Developer Studio"/> 
+         <!-- message box is offest 1 px from the x coord of the progress bar, so shift it over by 1 px from the left and shave 1 px off the right -->
          <property
                name="startupMessageRect"
-               value="29,215,417,20"/>
-         <property
-               name="startupForegroundColor"
-               value="ffffff"/>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini"/>
-         <property
-         		name="startupVersionLocation"
-         		value="228,194"/>
-         <property
-         		name="startupVersionFont"
-         		value="Sans-bold-9"/>
-         <property
-               name="windowImages"
-               value="ico_16_jbds.png,ico_32_jbds.png,48-jbds_icon.png,128_jbds_icon.png"/>
-         <property
-               name="aboutText"
-               value="%aboutText"/>
-         <property
-               name="aboutImage"
-               value="about_jbds.jpg"/>
+               value="30,215,393,16"/>
+				 <property
+							 name="startupProgressRect"
+							 value="29,232,395,16"/>
+				 <property
+							 name="startupForegroundColor"
+							 value="ffffff"/>
+				 <property
+							 name="preferenceCustomization"
+							 value="plugin_customization.ini"/>
 
-         <property
-				name="applicationXMI"
-				value="org.eclipse.platform/LegacyIDE.e4xmi">
-		  </property>
-		  <property
-				name="cssTheme"
-				value="org.eclipse.e4.ui.css.theme.e4_default">
-		  </property>
-		  <property
-				name="applicationCSSResources"
-          value="platform:/plugin/org.eclipse.platform/images/">
-		  </property>
-         <!--property
+          <!-- pixel coords of top-right corner of the text (with a 1 px gutter), relative to top-left corner of the splash screen -->
+				 <property
+				 			 name="startupVersionLocation"
+				 			 value="231,200"/>
+				 <property
+				 			 name="startupVersionFont"
+				 			 value="Sans-bold-9"/>
+				 <property
+							 name="windowImages"
+							 value="ico_16_jbds.png,ico_32_jbds.png,48-jbds_icon.png,128_jbds_icon.png"/>
+				 <property
+							 name="aboutText"
+							 value="%aboutText"/>
+				 <property
+							 name="aboutImage"
+							 value="about_jbds.jpg"/>
+				 <property
+							 name="applicationXMI"
+							 value="org.eclipse.platform/LegacyIDE.e4xmi">
+			</property>
+			<property
+							 name="cssTheme"
+							 value="org.eclipse.e4.ui.css.theme.e4_default">
+			</property>
+			<property
+							 name="applicationCSSResources"
+							 value="platform:/plugin/org.eclipse.platform/images/">
+			</property>
+				 <!--property
 				name="cssTheme"
 				value="org.jboss.tools.central.themes.jbds">
-		  </property-->
-      </product>
-   </extension>
+			</property-->
+			</product>
+	 </extension>
 
-   <extension
-         id="application"
-         point="org.eclipse.core.runtime.applications">
-      <application>
-         <run class="org.eclipse.ui.internal.ide.application.IDEApplication"/>
-      </application>
-   </extension>
+	 <extension
+				 id="application"
+				 point="org.eclipse.core.runtime.applications">
+			<application>
+				 <run class="org.eclipse.ui.internal.ide.application.IDEApplication"/>
+			</application>
+	 </extension>
 
-    <extension
-         point="org.eclipse.ui.splashHandlers">
-      <splashHandler
-            class="com.jboss.devstudio.core.splash.SplashHandler"
-            id="com.jboss.devstudio.core.splash">
-      </splashHandler>
-      <splashHandlerProductBinding
-            productId="com.jboss.devstudio.core.product"
-            splashId="com.jboss.devstudio.core.splash">
-      </splashHandlerProductBinding>
-   </extension>
-    <extension
-          id="EclipseGenerator"
-          point="org.eclipse.core.runtime.applications">
-       <application>
-          <run
-                class="com.jboss.devstudio.core.MetaGeneratorApplication">
-          </run>
-       </application>
-    </extension>
+		<extension
+				 point="org.eclipse.ui.splashHandlers">
+			<splashHandler
+							class="com.jboss.devstudio.core.splash.SplashHandler"
+							id="com.jboss.devstudio.core.splash">
+			</splashHandler>
+			<splashHandlerProductBinding
+							productId="com.jboss.devstudio.core.product"
+							splashId="com.jboss.devstudio.core.splash">
+			</splashHandlerProductBinding>
+	 </extension>
+		<extension
+					id="EclipseGenerator"
+					point="org.eclipse.core.runtime.applications">
+			 <application>
+					<run class="com.jboss.devstudio.core.MetaGeneratorApplication"></run>
+			 </application>
+		</extension>
 
 </plugin>
