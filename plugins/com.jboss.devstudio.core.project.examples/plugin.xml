@@ -3,7 +3,7 @@
 <plugin>
    <extension
         point="org.jboss.tools.project.examples.projectExamplesXml"
-        name="%JBoss_Developer_Studio80_Examples">
+        name="%JBoss_Developer_Studio_Examples">
         <!-- Key for URL in download.jboss.org/jbosstools/configuration/ide-config.properties -->
         <urlKey>maven.examples.url</urlKey>
         <experimental>false</experimental>
@@ -11,7 +11,7 @@
 
    <extension
         point="org.jboss.tools.project.examples.projectExamplesXml"
-        name="%JBoss_Developer_Studio80_Portal_Examples">
+        name="%JBoss_Developer_Studio_Portal_Examples">
         <!-- Key for URL in download.jboss.org/jbosstools/configuration/ide-config.properties -->
         <urlKey>portal.examples.url</urlKey>
         <experimental>false</experimental>
