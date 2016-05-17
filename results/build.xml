@@ -22,6 +22,9 @@ $java.home = ${java.home}</echo>
     <mkdir dir="${tmpdir}" />
     <delete dir="target/" quiet="true" />
     <mkdir dir="target/" />
+
+    <mkdir dir="../installer/target"/>
+    <mkdir dir="../site/target/repository"/>
   </target>
 
   <target name="build" depends="init">
@@ -99,10 +102,11 @@ $java.home = ${java.home}</echo>
         <fileset dir="../site/target/repository"/>
     </copy>
 
-    <!-- TODO delete this? -->
     <antcall target="create.customer-portal.metadata">
       <param name="update.site.qualifier" value="${update.site.qualifier}"/>
     </antcall>
+
+    <antcall target="create.content.json"/>
 
     <antcall target="cleanup" />
   </target>
@@ -214,6 +218,47 @@ $java.home = ${java.home}</echo>
         </if>
       </sequential>
     </for>
+  </target>
+
+  <target name="create.content.json">
+    <property name="destdir" value="${project.build.directory}/all"/>
+    <mkdir dir="${destdir}"/>
+    <if>
+      <available file="../installer/target/p2content.xml"/>
+      <then>
+        <xmlproperty file="../installer/target/p2content.xml" collapseAttributes="true"/>
+        <propertyregex property="update.site.qualifier" defaultvalue="${units.unit.id}" input="${units.unit.id}" regexp=".jbds" replace="" override="true" />
+      </then>
+      <else>
+        <if>
+          <isset property="BUILD_NUMBER"/>
+          <then>
+            <var name="update.site.qualifier" value="${update.site.qualifier}-B${BUILD_NUMBER}"/>
+          </then>
+        </if>
+      </else>
+    </if>
+    <propertyregex property="qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="GA.*" replace="GA" override="true" />
+    <property name="jbds.version" value="${update.site.version}.${qualifier}"/>
+    <echo level="info">update.site.version = ${update.site.version}, jbds.version = ${jbds.version}, update.site.qualifier = ${update.site.qualifier}</echo>
+    <if>
+      <not><equals arg1="&amp;shy;" arg2="${update.site.description}"/></not>
+      <then>
+        <var name="update.site.description.json" value=" ${update.site.description}"/>
+      </then>
+      <else>
+        <var name="update.site.description.json" value=""/>
+      </else>
+    </if>
+
+    <!-- https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/jboss-devstudio-10.0.0.Alpha1-v20160517-2010-B5374-installer-standalone.jar -->
+    <echo file="${destdir}/content.json">{
+"name": "Red Hat Developer Studio Installer",
+"description": "Red Hat Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
+"fullVersion": "${jbds.version}",
+"installer": "https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/jboss-devstudio-${jbds.version}-installer-standalone.jar"
+}
+</echo>
   </target>
 
   <!-- JBDS-3047 produce text/html fragments for each artifact -->
