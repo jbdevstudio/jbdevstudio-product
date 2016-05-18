@@ -42,13 +42,13 @@ public class IUListPanelTest extends TestCase{
 		JFrame frame = new JFrame();
 
 		List<P2IU> defaultIUs = Arrays.asList(new P2IU[]{
-				new P2IU(Boolean.TRUE, "id1","Label1","Description1","jbds"),
-				new P2IU(Boolean.TRUE, "id2","Label2","Description2","jbds"),});
+				new P2IU(Boolean.TRUE, "id1","Label1","Description1","devstudio"),
+				new P2IU(Boolean.TRUE, "id2","Label2","Description2","devstudio"),});
 		
 		List<P2IU> additionalIus = Arrays.asList(new P2IU[]{
-				new P2IU("id3","Label3","Description3","jbds-is"),
-				new P2IU("id4","Label4","Description4","jbds-is"),
-				new P2IU("id5","Label5","Description5","jbds-is")});
+				new P2IU("id3","Label3","Description3","devstudio-is"),
+				new P2IU("id4","Label4","Description4","devstudio-is"),
+				new P2IU("id5","Label5","Description5","devstudio-is")});
 		
 		P2IUListPanel panel = new P2IUListPanel(CommonTestData.langpack,defaultIUs,additionalIus);
 		
@@ -59,19 +59,19 @@ public class IUListPanelTest extends TestCase{
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		
 		assertEquals("id1,id2",panel.getIUListBean().getCommaSeparatedIUStringList());
-		assertEquals("jbds",panel.getIUListBean().getCommaSeparatedLocationStringList());
+		assertEquals("devstudio",panel.getIUListBean().getCommaSeparatedLocationStringList());
 		
 		panel.selectIU(0);
 		assertEquals("id1,id2,id3",panel.getIUListBean().getCommaSeparatedIUStringList());
-		assertEquals("jbds,jbds-is",panel.getIUListBean().getCommaSeparatedLocationStringList());
+		assertEquals("devstudio,devstudio-is",panel.getIUListBean().getCommaSeparatedLocationStringList());
 		
 		panel.selectAll();
 		assertEquals("id1,id2,id3,id4,id5",panel.getIUListBean().getCommaSeparatedIUStringList());
-		assertEquals("jbds,jbds-is",panel.getIUListBean().getCommaSeparatedLocationStringList());
+		assertEquals("devstudio,devstudio-is",panel.getIUListBean().getCommaSeparatedLocationStringList());
 		
 		panel.deselectAll();
 		assertEquals("id1,id2",panel.getIUListBean().getCommaSeparatedIUStringList());
-		assertEquals("jbds",panel.getIUListBean().getCommaSeparatedLocationStringList());		
+		assertEquals("devstudio",panel.getIUListBean().getCommaSeparatedLocationStringList());
 	}
 
 }

@@ -16,18 +16,18 @@ import org.osgi.framework.BundleContext;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class JbdsCentralActivator extends AbstractUIPlugin {
+public class CentralActivator extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "com.jboss.devstudio.core.central"; //$NON-NLS-1$
 
 	// The shared instance
-	private static JbdsCentralActivator plugin;
+	private static CentralActivator plugin;
 	
 	/**
 	 * The constructor
 	 */
-	public JbdsCentralActivator() {
+	public CentralActivator() {
 	}
 
 	/*
@@ -53,7 +53,7 @@ public class JbdsCentralActivator extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static JbdsCentralActivator getDefault() {
+	public static CentralActivator getDefault() {
 		return plugin;
 	}
 

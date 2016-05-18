@@ -25,9 +25,9 @@ public class GsonSerializationTest extends TestCase {
 		Gson gs = new Gson();
 		Collection<P2IU> col = new ArrayList<P2IU>();
 		col.addAll(Arrays.asList(new P2IU[] { 
-				new P2IU("id1", "label1", "description1", "jbds"),
-				new P2IU("id1", "label1", "description1", "jbds"),
-				new P2IU("id1", "label1", "description1", "jbds") }));
+				new P2IU("id1", "label1", "description1", "devstudio"),
+				new P2IU("id1", "label1", "description1", "devstudio"),
+				new P2IU("id1", "label1", "description1", "devstudio") }));
 		System.out.println(gs.toJson(col));
 	}
 	

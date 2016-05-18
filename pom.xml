@@ -11,7 +11,7 @@
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>product</artifactId>
   <version>10.0.0-SNAPSHOT</version>
-  <name>JBDS - Product, Installers</name>
+  <name>devstudio - Product, Installers</name>
   <packaging>pom</packaging>
   <modules>
     <module>plugins</module>
@@ -39,7 +39,7 @@
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.CR1-SNAPSHOT/REPO/</jbosstools-target-site> -->
 
     <!--
-      By default, use EAP 6.1.0.Alpha, which is publically available. This allows JBDS to be build locally w/o needing access to devel.redhat.com
+      By default, use EAP 6.1.0.Alpha, which is publically available. This allows devstudio to be build locally w/o needing access to devel.redhat.com
       To build the EAP bundled installer, use the "eap" profile: `mvn install -Peap`
      -->
     <eapVersion>6.1.0.Alpha</eapVersion>

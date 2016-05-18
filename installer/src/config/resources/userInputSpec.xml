@@ -8,7 +8,7 @@
 				<choice
 					txt="Yes, and have it ready for use in Red Hat Developer Studio"
 					id="radio.label.1" value="jbosseap" set="true"/>
-				<choice txt="No" id="radio.label.2" value="jbds"/>
+				<choice txt="No" id="radio.label.2" value="devstudio"/>
 			</spec>
 		</field>
 	</panel>

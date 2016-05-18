@@ -18,41 +18,41 @@ import org.jboss.tools.usage.branding.IUsageBranding;
  * 
  * @author Andre Dietisheim
  */
-public class JBDSUsageBranding implements IUsageBranding {
+public class UsageBranding implements IUsageBranding {
 
 	public String getPreferencesDescription() {
-		return JBDSUsageBrandingMessages.UsageReportPreferencePage_Description;
+		return UsageBrandingMessages.UsageReportPreferencePage_Description;
 	}
 
 	public String getPreferencesAllowReportingCheckboxLabel() {
-		return JBDSUsageBrandingMessages.UsageReportPreferencePage_AllowReporting;
+		return UsageBrandingMessages.UsageReportPreferencePage_AllowReporting;
 	}
 	
 	public String getStartupAllowReportingTitle() {
-		return JBDSUsageBrandingMessages.UsageReport_DialogTitle;
+		return UsageBrandingMessages.UsageReport_DialogTitle;
 	}
 	
 	public String getStartupAllowReportingMessage() {
-		return JBDSUsageBrandingMessages.UsageReport_DialogMessage;
+		return UsageBrandingMessages.UsageReport_DialogMessage;
 	}
 
 	public String getStartupAllowReportingCheckboxLabel() {
-		return JBDSUsageBrandingMessages.UsageReport_Checkbox_Text;
+		return UsageBrandingMessages.UsageReport_Checkbox_Text;
 	}
 	
 	public String getStartupAllowReportingDetailLink() {
-		return JBDSUsageBrandingMessages.UsageReport_ExplanationPage;
+		return UsageBrandingMessages.UsageReport_ExplanationPage;
 	}
 	
 	public String getGlobalRemotePropertiesUrl() {
-		return JBDSUsageBrandingMessages.GlobalUsageSettings_RemoteProps_URL;
+		return UsageBrandingMessages.GlobalUsageSettings_RemoteProps_URL;
 	}
 
 	public String getGoogleAnalyticsAccount() {
-		return JBDSUsageBrandingMessages.UsageReport_GoogleAnalytics_Account;
+		return UsageBrandingMessages.UsageReport_GoogleAnalytics_Account;
 	}
 
 	public String getGoogleAnalyticsReportingHost() {
-		return JBDSUsageBrandingMessages.UsageReport_HostName;
+		return UsageBrandingMessages.UsageReport_HostName;
 	}
 }

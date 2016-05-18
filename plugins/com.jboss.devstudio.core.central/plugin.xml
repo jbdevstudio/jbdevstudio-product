@@ -4,8 +4,8 @@
 	<extension
          point="org.jboss.tools.central.configurators">
       <configurator
-            class="com.jboss.devstudio.core.central.JbdsConfigurator"
-            id="com.jboss.devstudio.core.central.jbdsConfigurator">
+            class="com.jboss.devstudio.core.central.Configurator"
+            id="com.jboss.devstudio.core.central.devstudioConfigurator">
       </configurator>
    </extension>
    

@@ -97,7 +97,7 @@ public class JREPathValidator {
 		} else if (!isPathValid(jvmLocation)) {
 			return ValidationCode.ERR_PATH_IS_NOT_JVM_LOCATION;
 		} else if (jvmLocation.contains(JREPathValidator.JAVA_APPLET_PLUGIN)) {
-				// Prevent running JBDS with JavaAppletPlugin.plugin JVM
+				// Prevent running devstudio with JavaAppletPlugin.plugin JVM
 				return ValidationCode.ERR_PATH_IS_APPLET_PLUGIN_JVM;
 			}
 		return ValidationCode.OK;

@@ -1,14 +1,14 @@
 [
 	{
 		"id"         :"com.jboss.devstudio.core.package",
-		"path"       :"jbds",
+		"path"       :"devstudio",
 		"label"      :"Red Hat Developer Studio Product",
 		"description":"",
 		"selected"   :"true"
 	},
 	{
 		"id"         :"org.testng.eclipse.feature.group",
-		"path"       :"jbds",
+		"path"       :"devstudio",
 		"label"      :"TestNG",
 		"description":"",
 		"selected"   :"true"

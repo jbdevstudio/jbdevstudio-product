@@ -40,7 +40,7 @@ openFile</programArgs>
 
    <splash
       location="com.jboss.devstudio.core" />
-   <launcher name="jbdevstudio">
+   <launcher name="devstudio">
       <macosx icon="macosx/devstudio.icns"/>
       <solaris/>
       <win useIco="true">

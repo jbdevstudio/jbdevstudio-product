@@ -33,7 +33,7 @@ public class UpdatePacksPanelConsoleHelper implements PanelConsole{
             {
                 iter.remove();
             }
-            if("jbds.update".equals(p.id)) {
+            if("devstudio.update".equals(p.id)) {
             	p.nbytes = UpdatePacksPanel.STUDIO_SIZE;
             }
         }

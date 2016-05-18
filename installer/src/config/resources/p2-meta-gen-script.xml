@@ -12,10 +12,10 @@
 	
 	<target name="main" description="description" unless="skipMain">
 		<echo>Run p2 metadata generator</echo>
-		<condition property="jbdevstudio" value="jbdevstudio.app/Contents/MacOS/jbdevstudio" else="jbdevstudio">
+		<condition property="devstudio" value="devstudio.app/Contents/MacOS/devstudio" else="devstudio">
 			<os family="mac" />
 		</condition>
-		<exec executable="${install-root}/studio/${jbdevstudio}" taskname="p2">
+		<exec executable="${install-root}/studio/${devstudio}" taskname="p2">
 			<arg value="-application" />
 			<arg value="com.jboss.devstudio.core.EclipseGenerator" />
 			<arg value="-noSplash" />

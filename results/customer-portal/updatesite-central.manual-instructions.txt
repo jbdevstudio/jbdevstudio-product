@@ -1,10 +1,10 @@
-The easiest way to install this update is to select 'Help > Check for Updates' from within a running JBDS 10 instance. Doing so will provide you with a list of all the available updates found at ${jbds.update.site}
+The easiest way to install this update is to select 'Help > Check for Updates' from within a running devstudio 10 instance. Doing so will provide you with a list of all the available updates found at ${devstudio.update.site}
 
 To use this zip for offline update (or if blocked by firewall or proxy when doing searching for updates from the sites above):
 
 1. Download, but DO NOT unpack, the zip
 
-2. Launch JBDS or ${eclipse.version}
+2. Launch devstudio or ${eclipse.version}
 
 3. Select Help > Install new software
 

@@ -44,7 +44,7 @@ After a successful build, three artifacts are produced:
 * an update site (also known as a p2 repository)
 
 
-Installer jar(s) will be produced in installer/target/ and can be installed using 'java -jar jbdevstudio-*.jar'
+Installer jar(s) will be produced in installer/target/ and can be installed using 'java -jar devstudio-*.jar'
 
 Sources zip can be found in results/target/; you can build from the source zip in there by unpacking it, then using the same instructions above.
 
@@ -53,7 +53,7 @@ An unpacked update site, which can be used to perform an initial install or to i
 The installer jar can be used as an archived update site. Launch Eclipse or Red Hat Developer Studio, then select:
 
   Help > Install New Software... > Add... > Archive... > Browse for the Red Hat Developer Studio installer jar > OK > 
-    Work with: jar:file:/path/to/jbdevstudio-product-*.jar!/ > Install the Red Hat Developer Studio feature(s) > 
+    Work with: jar:file:/path/to/devstudio-product-*.jar!/ > Install the Red Hat Developer Studio feature(s) > 
       Restart when prompted. 
 
 

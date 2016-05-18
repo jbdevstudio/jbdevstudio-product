@@ -175,13 +175,13 @@ public class PathInputPanel extends IzPanel implements ActionListener
             }
             // We put a warning if the directory exists else we warn
             // that it will be created
-            File jbdsBrandidngPlugin = new File(chosenPath, "studio/jbdevstudio.ini");
-            if (path.exists() && !jbdsBrandidngPlugin.exists())
+            File devstudioBrandingPlugin = new File(chosenPath, "studio/devstudio.ini");
+            if (path.exists() && !devstudioBrandingPlugin.exists())
             {
                 int res = askQuestion(parent.langpack.getString("installer.warning"), warnMsg,
                         AbstractUIHandler.CHOICES_YES_NO, AbstractUIHandler.ANSWER_YES);
                 ok = res == AbstractUIHandler.ANSWER_YES;
-            } else if(path.exists() && jbdsBrandidngPlugin.exists()) {
+            } else if(path.exists() && devstudioBrandingPlugin.exists()) {
                 emitError(parent.langpack.getString("installer.error"), 
                 parent.langpack.getString("installer.cannotInstallOver"));
                 return false;

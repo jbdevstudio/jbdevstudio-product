@@ -87,7 +87,7 @@ public class ServerListPanel extends JPanel {
 	String installedASName = "JBoss Application Server 4.2";
 	
 	ServerListBean serverListBean = new ServerListBean();
-	File storedFolder = new File("/home/eskimo/exadel-projects/jbds-ganymede/plugins/devstudio-installer/src/test-resources/servers/jboss-4.0.5.GA");
+	File storedFolder = new File("/home/eskimo/exadel-projects/devstudio-ganymede/plugins/devstudio-installer/src/test-resources/servers/jboss-4.0.5.GA");
 	
 	
 	public ServerListPanel(LocaleDatabase langpack, ServerListBean serverListBean) {

@@ -15,8 +15,8 @@ public class JREPathPanelMessages {
 	private static final String PATH_IS_NOT_JVM_HOME_LOCATION = "PathInputPanel.notValid";
 	private static final String PATH_DOESNT_EXIST = "JREPathPanel.wrongPath.title";
 	private static final String NOT_TESTED_JVM_VERSION = "PathInputPanel.notTestedVesion";
-	private static final String JBDS_DOESNT_WORK_WITH_GNU_JVM = "PathInputPanel.badVersion2";
-	private static final String JBDS_DOESNT_WORK_WITH_SELECTED_VERSION = "PathInputPanel.badVersion3";
+	private static final String DOESNT_WORK_WITH_GNU_JVM = "PathInputPanel.badVersion2";
+	private static final String DOESNT_WORK_WITH_SELECTED_VERSION = "PathInputPanel.badVersion3";
 	private static final String JRE_WARNING = "PathInputPanel.jreWarning";
 	
 	private LocaleDatabase langpack;
@@ -44,10 +44,10 @@ public class JREPathPanelMessages {
 			case ERR_JVM_VERSION_NOT_FOUND:
 			case ERR_JVM_VERSION_NOT_PARSED:
 			case ERR_JVM_VERSION_LESS_THAN_MINIMAL:
-				message = getString(JBDS_DOESNT_WORK_WITH_SELECTED_VERSION);
+				message = getString(DOESNT_WORK_WITH_SELECTED_VERSION);
 				break;
 			case ERR_GNU_JVM:
-				message = getString(JBDS_DOESNT_WORK_WITH_GNU_JVM);
+				message = getString(DOESNT_WORK_WITH_GNU_JVM);
 				break;
 			case WRN_JVM_VERSION_NOT_TESTED:
 				message = getString(NOT_TESTED_JVM_VERSION);

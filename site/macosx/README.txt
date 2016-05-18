@@ -1,6 +1,6 @@
 To compile devstudio.icns use follow commands:
 
-cd jbdevstudio-product/site/macosx
+cd devstudio-product/site/macosx
 
 iconutil -c icns devstudio.iconset
 

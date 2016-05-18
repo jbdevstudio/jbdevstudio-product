@@ -68,14 +68,14 @@ public class CreateLinkPanel extends IzPanel {
 		if(isUnixLikeSystem()) {
 
 			StringBuffer cmd = new StringBuffer();
-			String launcherName = OsVersion.IS_OSX ? "jbdevstudio.app" : "jbdevstudio";
+			String launcherName = OsVersion.IS_OSX ? "devstudio.app" : "devstudio";
 			 
 			cmd.append("cd \"").append(installPath).append("\"\n")
 				.append("ln -s \"." + File.separator + "studio" + File.separator)
 				.append(launcherName + "\"")
 				.append(" \"" + launcherName + "\"");
 			try {
-				ShellScript.execute(cmd, File.createTempFile("jbds-launcher-link-", ".sh").getAbsolutePath());
+				ShellScript.execute(cmd, File.createTempFile("devstudio-launcher-link-", ".sh").getAbsolutePath());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}		
@@ -92,7 +92,7 @@ public class CreateLinkPanel extends IzPanel {
 	
 	public void writeProperty(String fileName) {
 
-		File folder = new File(installPath, P2DirectorStarterListener.JBDEVSTUDIO_LOCATION);
+		File folder = new File(installPath, P2DirectorStarterListener.DEVSTUDIO_LOCATION);
 
 		Properties servers = (Properties) idata.getAttribute("AS_SERVERS");
 		if (!servers.isEmpty()) {
@@ -152,8 +152,8 @@ public class CreateLinkPanel extends IzPanel {
 	}
 
 	public static void addJREPath(String installPath, String execPath) {
-		File pathToIni = new File(installPath + File.separator + P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator
-				+ "jbdevstudio.ini");
+		File pathToIni = new File(installPath + File.separator + P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator
+				+ "devstudio.ini");
 		if(pathToIni.exists()) {
 			addJVM(execPath, pathToIni);
 		} 

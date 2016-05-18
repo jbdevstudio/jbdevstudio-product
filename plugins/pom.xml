@@ -9,7 +9,7 @@
 	</parent>
 	<groupId>com.jboss.devstudio.core</groupId>
 	<artifactId>plugins</artifactId>
-	<name>JBDS - Product Plugins - Core</name>
+	<name>devstudio - Product Plugins - Core</name>
 	<packaging>pom</packaging>
 	<modules>
 		<module>com.jboss.devstudio.core</module>

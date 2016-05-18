@@ -11,7 +11,7 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <!-- JBIDE-18869 add Thym to JBT/JBDS directly -->
+  <!-- JBIDE-18869 add Thym to JBT/devstudio directly -->
   <feature id="org.eclipse.thym.feature">
     <category name="AdditionalTools" />
     <category name="MobileTools"/>
@@ -65,11 +65,11 @@
     <category name="MobileTools"/>
   </feature>
   <feature id="org.jboss.tools.jst.jsdt.feature">
-    <!-- removed from JBDS CoreTools but still there for JBT -->
+    <!-- removed from devstudio CoreTools but still there for JBT -->
     <category name="WebTools" />
     <category name="MobileTools"/>
   </feature>
-  <!-- not in JBDS yet 
+  <!-- not in devstudio yet 
   <feature id="org.jboss.tools.jst.angularjs.feature" >
     <category name="CoreTools" />
     <category name="WebTools" />
@@ -84,7 +84,7 @@
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.seam.feature">
-    <!-- removed from JBDS & JBT CoreTools -->
+    <!-- removed from devstudio & JBT CoreTools -->
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.batch.feature">
@@ -159,7 +159,7 @@
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.portlet.feature">
-    <!-- removed from JBDS & JBT CoreTools -->
+    <!-- removed from devstudio & JBT CoreTools -->
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.forge.feature">
@@ -300,14 +300,14 @@
   </feature>
   -->
 
-  <!-- categorized in JBT; uncategorized in JBDS -->
+  <!-- categorized in JBT; uncategorized in devstudio -->
   <!-- JBDS-3079 move to Central TP 
   <feature id="org.jboss.tools.maven.jbosspackaging.feature"/>
   <feature id="org.jboss.tools.common.mylyn.feature"/>
   -->
   <feature id="org.jboss.tools.usage.feature"/>
 
-  <!-- only in JBDS -->
+  <!-- only in devstudio -->
   <feature id="com.jboss.devstudio.core.feature" patch="false">
     <category name="BringYourOwnEclipse" />
     <category name="CoreTools" />
@@ -338,7 +338,7 @@
   <feature id="org.jboss.tools.browsersim.feature.source"/>
   <feature id="org.jboss.tools.jst.feature.source"/>
   <feature id="org.jboss.tools.jst.jsdt.feature.source"/>
-  <!-- not in JBDS yet <feature id="org.jboss.tools.jst.angularjs.feature.source"/> -->
+  <!-- not in devstudio yet <feature id="org.jboss.tools.jst.angularjs.feature.source"/> -->
   <feature id="org.jboss.tools.vpe.feature.source"/>
   <feature id="org.jboss.tools.jsf.feature.source"/>
   <feature id="org.jboss.tools.xulrunner.feature.source"/>
@@ -400,7 +400,7 @@
   <feature id="org.jboss.tools.forge.ext.feature.source"/>
   -->
 
-  <!-- only in JBDS -->
+  <!-- only in devstudio -->
   <feature id="com.jboss.devstudio.core.feature.source" patch="false"/>
   <feature id="com.jboss.devstudio.core.capabilities.feature.source" patch="false"/>
 
@@ -422,7 +422,7 @@
   </category-def>
   -->
 
-  <!-- only in JBDS -->
+  <!-- only in devstudio -->
   <category-def name="BringYourOwnEclipse" label="* Red Hat Developer Studio 10 - Bring Your Own Eclipse">
     <description>Select this feature if you want to install all of the Red Hat Developer Studio (Core Features) into your own Eclipse 4.6 (Neon).</description>
   </category-def>

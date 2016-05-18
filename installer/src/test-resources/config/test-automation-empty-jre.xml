@@ -6,14 +6,14 @@
 		id="licence" />
 	<com.jboss.devstudio.core.installer.PathInputPanel
 		id="target">
-		<installpath>/home/eskimo/jbdevstudio-install-test
+		<installpath>/home/eskimo/devstudio-install-test
 		</installpath>
 	</com.jboss.devstudio.core.installer.PathInputPanel>
 	<com.jboss.devstudio.core.installer.JREPathPanel
 		id="jre" />
 	<com.jboss.devstudio.core.installer.JBossAsSelectPanel
 		id="as">
-		<installgroup>jbds</installgroup>
+		<installgroup>devstudio</installgroup>
 	</com.jboss.devstudio.core.installer.JBossAsSelectPanel>
 	<com.jboss.devstudio.core.installer.UpdatePacksPanel
 		id="updatepacks" />

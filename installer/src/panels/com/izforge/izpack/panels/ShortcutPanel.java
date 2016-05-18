@@ -1648,7 +1648,7 @@ public class ShortcutPanel extends IzPanel implements ActionListener, ListSelect
 			cmd.append("find \"" + idata.getVariable("INSTALL_PATH") + "\"" + " \"" + getConfiguredDesktopLocation() + "\"" + " -maxdepth 1 -mindepth 1 -type f -name \"" + name + "*.desktop\" -exec chmod +x {} \\;");
 			try {
 				Debug.log("Running script: `" + cmd + "` ...");
-				ShellScript.execute(cmd, File.createTempFile("jbds-chmod-", ".sh").getAbsolutePath());
+				ShellScript.execute(cmd, File.createTempFile("devstudio-chmod-", ".sh").getAbsolutePath());
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -2489,7 +2489,7 @@ public class ShortcutPanel extends IzPanel implements ActionListener, ListSelect
 			StringBuffer script = new StringBuffer();
 			script.append("echo " + desktopLocation + ";");
 			try {
-				result = ShellScript.execAndDelete(script, File.createTempFile("jbds-desktop-location-", ".sh").getAbsolutePath());
+				result = ShellScript.execAndDelete(script, File.createTempFile("devstudio-desktop-location-", ".sh").getAbsolutePath());
 			} catch (IOException e) {
 				// ignore and return empty string
 			}

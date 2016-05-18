@@ -3,11 +3,11 @@
 <com.jboss.devstudio.core.installer.HTMLInfoPanelWithRootWarning id="introduction"/>
 <com.izforge.izpack.panels.HTMLLicencePanel id="licence"/>
 <com.jboss.devstudio.core.installer.PathInputPanel id="target">
-<installpath>${project.build.directory}/jbdevstudio-install-test</installpath>
+<installpath>${project.build.directory}/devstudio-install-test</installpath>
 </com.jboss.devstudio.core.installer.PathInputPanel>
 <com.jboss.devstudio.core.installer.JREPathPanel id="jre"/>
 <com.jboss.devstudio.core.installer.JBossAsSelectPanel id="as">
-<installgroup>jbds</installgroup>
+<installgroup>devstudio</installgroup>
 </com.jboss.devstudio.core.installer.JBossAsSelectPanel>
 <com.jboss.devstudio.core.installer.UpdatePacksPanel id="updatepacks"/>
 <com.jboss.devstudio.core.installer.DiskSpaceCheckPanel id="diskspacecheck"/>

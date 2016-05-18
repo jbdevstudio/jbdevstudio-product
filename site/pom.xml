@@ -109,8 +109,8 @@
 								<!-- pick a plugin available in the project's update site from which we can deduce the Eclipse-SourceReference -->
 								<jbosstools-base>org.jboss.tools.common</jbosstools-base>
 								<jbosstools-aerogear>org.jboss.tools.aerogear.thym</jbosstools-aerogear>
-								<!-- only in JBT, not in JBDS <jbosstools-arquillian>org.jboss.tools.arquillian.core</jbosstools-arquillian> -->
-								<!-- only in JBT, not in JBDS <jbosstools-birt>org.jboss.tools.birt.core</jbosstools-birt> -->
+								<!-- only in JBT, not in devstudio <jbosstools-arquillian>org.jboss.tools.arquillian.core</jbosstools-arquillian> -->
+								<!-- only in JBT, not in devstudio <jbosstools-birt>org.jboss.tools.birt.core</jbosstools-birt> -->
 								<jbosstools-browsersim>org.jboss.tools.browsersim.eclipse</jbosstools-browsersim>
 								<jbosstools-central>org.jboss.tools.central</jbosstools-central>
 								<jbosstools-forge>org.jboss.tools.forge.core</jbosstools-forge>
@@ -224,7 +224,7 @@
 							<id>com.jboss.devstudio.core.package</id>
 						</product>
 						<rootFolders>
-							<macosx>jbdevstudio.app</macosx>
+							<macosx>devstudio.app</macosx>
 						</rootFolders>
 					</products>
 				</configuration>

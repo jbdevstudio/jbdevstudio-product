@@ -53,7 +53,7 @@
               <target>
                 <ant antfile="build.xml" target="build" dir="./">
                   <property name="eclipse.version" value="${targetEclipseVersion}"/>
-                  <property name="jbds.update.site" value="https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/"/>
+                  <property name="devstudio.update.site" value="https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/"/>
                   <property name="eap.version" value="${eapVersion}"/>
                   <property name="eclipseReleaseName" value="${eclipseReleaseName}"/>
 
@@ -125,7 +125,7 @@
     </plugins>
   </build>
 
-  <!-- JBDS publishes to www.qa & to devstudio.redhat.com -->
+  <!-- devstudio publishes to www.qa & to devstudio.redhat.com -->
   <profiles>
     <profile>
       <id>deploy-to-jboss.org</id>

@@ -1,1 +1,0 @@
-start "Red Hat Developer Studio" "%~dp0\studio\jbdevstudio.exe"

@@ -43,7 +43,7 @@ public class JBossAsSelectPanel extends IzPanel  {
 		JPanel headPanel = new JPanel();
 		
 		String installGroup = JBossAsSelectPanel.this.idata.getVariable("INSTALL_GROUP");
-		if(!"jbds".equals(installGroup)) {
+		if(!"devstudio".equals(installGroup)) {
 			headPanel.setLayout(new GridLayout(3,1));
 			JLabel label = new JLabel(parent.langpack.getString("JBossAsSelectPanel.question"));
 			
@@ -62,7 +62,7 @@ public class JBossAsSelectPanel extends IzPanel  {
 			option2 = new JRadioButton(parent.langpack.getString("JBossAsSelectPanel.NoOption"));
 			option2.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent event){
-					JBossAsSelectPanel.this.idata.setVariable("INSTALL_GROUP", "jbds");
+					JBossAsSelectPanel.this.idata.setVariable("INSTALL_GROUP", "devstudio");
 				}
 			});
 			

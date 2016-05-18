@@ -167,7 +167,7 @@ public class Unpacker extends UnpackerBase
                     stepname = "";
                 }
 
-                if(pack.id.equals("jbds.update") || pack.id.equals("jbds.generate")) {
+                if(pack.id.equals("devstudio.update") || pack.id.equals("devstudio.generate")) {
 
                 	String jvmLocation = this.idata.getVariable("JREPath");
                 	jvmLocation = jvmLocation==null || "".equals(jvmLocation.trim())? this.idata.getVariable("JAVA_HOME"): jvmLocation;
@@ -186,7 +186,7 @@ public class Unpacker extends UnpackerBase
 					});
 					String launcherLocation = launchers[0].getAbsolutePath();
 
-                	if(pack.id.equals("jbds.update")) {
+                	if(pack.id.equals("devstudio.update")) {
 	                	// get list of IU's and size
 	                	// nfiles = request(-l) from director
 
@@ -225,11 +225,11 @@ public class Unpacker extends UnpackerBase
 	                	 .execute();
 
 //	                	handler.stopAction();
-	                } else if(pack.id.equals("jbds.generate")){
+	                } else if(pack.id.equals("devstudio.generate")){
 	                	handler.nextStep(pack.name, i + 1, 1);
 	                	try {
 	                		File studioPluginsFolder = new File(installLocation + File.separator +
-	                				P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator +
+	                				P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator +
 	    							"plugins" + File.separator);
 	    					File[] studioLaunchers = studioPluginsFolder.listFiles(new FilenameFilter() {
 	    						public boolean accept(File dir, String name) {
@@ -668,7 +668,7 @@ public class Unpacker extends UnpackerBase
 
 	public static String resolveLocations(String locations) {
 		if(locations==null || "".equals(locations.trim())) {
-			locations = "jbds";
+			locations = "devstudio";
 		} 
 		String[] l = locations.split(",");
 		StringBuilder result = new StringBuilder();

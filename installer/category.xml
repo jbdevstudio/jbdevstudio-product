@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
 	<description>Red Hat Developer Studio Installer P2 Repository</description>
-	<category-def name="jbds" label="Red Hat Developer Studio">
+	<category-def name="devstudio" label="Red Hat Developer Studio">
 		<description>Red Hat Developer Studio Features</description>
 	</category-def>
 	<bundle id="com.jboss.devstudio.core.package">
-		<category name="jbds" />
+		<category name="devstudio" />
 	</bundle>
 	<feature id="org.testng.eclipse">
-		<category name="jbds" />
+		<category name="devstudio" />
 	</feature>
 </site>

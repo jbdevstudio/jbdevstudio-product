@@ -8,7 +8,7 @@
 		<appversion>
 			@{specification.version}, JBoss AS @{jboss.version}
 		</appversion>
-		<appsubpath>jbdevstudio</appsubpath>
+		<appsubpath>devstudio</appsubpath>
 		<authors>
 			<author name="JBoss by Red Hat" email="sales@jboss.com" />
 		</authors>
@@ -145,7 +145,7 @@
 		<!-- Do the install -->
 		<panel classname="InstallPanel" id="install" />
 		
-		<!-- This panel creates links folder in Eclipse home directory and creates jbds.link file -->
+		<!-- This panel creates links folder in Eclipse home directory and creates devstudio.link file -->
 		<panel classname="CreateLinkPanel" id="createlink"/>
 		
 		<!-- This panel creates shortcuts -->
@@ -165,7 +165,7 @@
 		<!-- disabled to fix issue with windows	-->
 		<!-- installer on windows vista is not asking 
 				 for privilege lifting which leads to errors 
-				 during addin JBDS installation to the registry-->
+				 during addin devstudio installation to the registry-->
 		<!-- listener installer="RegistryInstallerListener"
 			uninstaller="RegistryUninstallerListener" >
 			<os name="Windows 7"/>
@@ -195,5 +195,5 @@
 	<jar src="../../tools/lib/ant.jar" />
 	<jar src="../../tools/lib/ant-launcher.jar" />
 	<jar src="../../tools/lib/gson-2.3.1.jar" />
-	<jar src="@{artifacts.jbds.update}" />
+	<jar src="@{artifacts.devstudio.update}" />
 </installation>

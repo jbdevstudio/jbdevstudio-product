@@ -1,10 +1,10 @@
-<project default="build" name="jbds aggregate sources build.xml">
+<project default="build" name="devstudio aggregate sources build.xml">
   <!-- if ${WORKSPACE}/site folder exists, target that folder; else generate here. -->
   <condition property="output.dir" value="${WORKSPACE}/results" else="${basedir}">
     <available file="${WORKSPACE}/results" />
   </condition>
 
-  <property name="tmpdir" value="${java.io.tmpdir}/jbds-results-build" />
+  <property name="tmpdir" value="${java.io.tmpdir}/devstudio-results-build" />
 
   <property name="project.build.directory" value="${output.dir}/target"/>
   <property name="requirements.dir" value="${output.dir}/requirements"/>
@@ -32,12 +32,12 @@ $java.home = ${java.home}</echo>
     <property name="JOB_NAME" value="devstudio.product_master"/>
     <property name="update.site.description" value="Local Build"/>
 
-    <!-- get timestamp from upstream installer build (units.unit.id = Alpha2-v20130326-1416-B6969.jbds) instead of maven since tycho and pure maven don't use the same value -->
+    <!-- get timestamp from upstream installer build (units.unit.id = Alpha2-v20130326-1416-B6969.devstudio) instead of maven since tycho and pure maven don't use the same value -->
     <if>
       <available file="../installer/target/p2content.xml"/>
       <then>
         <xmlproperty file="../installer/target/p2content.xml" collapseAttributes="true"/>
-        <propertyregex property="update.site.qualifier" defaultvalue="${units.unit.id}" input="${units.unit.id}" regexp=".jbds" replace="" override="true" />
+        <propertyregex property="update.site.qualifier" defaultvalue="${units.unit.id}" input="${units.unit.id}" regexp=".devstudio" replace="" override="true" />
       </then>
       <else>
         <if>
@@ -176,8 +176,8 @@ $java.home = ${java.home}</echo>
 
     <property name="eap.version" value="${eap.version}"/>
     <property name="eclipse.version" value="${eclipse.version}"/>
-    <property name="jbds.version" value="${update.site.version}.${qualifier}"/>
-    <property name="jbds.update.site" value="${jbds.update.site}"/>
+    <property name="devstudio.version" value="${update.site.version}.${qualifier}"/>
+    <property name="devstudio.update.site" value="${devstudio.update.site}"/>
 
     <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
       <sequential>
@@ -227,7 +227,7 @@ $java.home = ${java.home}</echo>
       <available file="../installer/target/p2content.xml"/>
       <then>
         <xmlproperty file="../installer/target/p2content.xml" collapseAttributes="true"/>
-        <propertyregex property="update.site.qualifier" defaultvalue="${units.unit.id}" input="${units.unit.id}" regexp=".jbds" replace="" override="true" />
+        <propertyregex property="update.site.qualifier" defaultvalue="${units.unit.id}" input="${units.unit.id}" regexp=".devstudio" replace="" override="true" />
       </then>
       <else>
         <if>
@@ -239,8 +239,8 @@ $java.home = ${java.home}</echo>
       </else>
     </if>
     <propertyregex property="qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="GA.*" replace="GA" override="true" />
-    <property name="jbds.version" value="${update.site.version}.${qualifier}"/>
-    <echo level="info">update.site.version = ${update.site.version}, jbds.version = ${jbds.version}, update.site.qualifier = ${update.site.qualifier}</echo>
+    <property name="devstudio.version" value="${update.site.version}.${qualifier}"/>
+    <echo level="info">update.site.version = ${update.site.version}, devstudio.version = ${devstudio.version}, update.site.qualifier = ${update.site.qualifier}</echo>
     <if>
       <not><equals arg1="&amp;shy;" arg2="${update.site.description}"/></not>
       <then>
@@ -255,8 +255,8 @@ $java.home = ${java.home}</echo>
     <echo file="${destdir}/content.json">{
 "name": "Red Hat Developer Studio Installer",
 "description": "Red Hat Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
-"fullVersion": "${jbds.version}",
-"installer": "https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/jboss-devstudio-${jbds.version}-installer-standalone.jar"
+"fullVersion": "${devstudio.version}",
+"installer": "https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/jboss-devstudio-${devstudio.version}-installer-standalone.jar"
 }
 </echo>
   </target>

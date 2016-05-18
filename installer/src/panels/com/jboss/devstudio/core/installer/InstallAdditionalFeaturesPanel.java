@@ -39,7 +39,7 @@ import com.jboss.devstudio.core.installer.bean.P2IU;
  * ]
  * 
  * How to make sure there are all required dependencies included that is not inside
- * JBDS installer
+ * devstudio installer
  * 
  * @author eskimo
  *

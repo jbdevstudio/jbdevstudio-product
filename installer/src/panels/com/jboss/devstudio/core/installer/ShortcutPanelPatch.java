@@ -22,16 +22,16 @@ public class ShortcutPanelPatch extends IzPanel {
 		
 		/* files/folders in studio folder */
 		"studio" + File.separator + "readme",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "features",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "plugins",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "p2",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "artifacts.xml",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + ".eclipseproduct",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "epl-v10.html",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "icon.xpm",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "jbdevstudio",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "notice.html",
-		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "runtime_locations.properties",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "features",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "plugins",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "p2",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "artifacts.xml",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + ".eclipseproduct",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "epl-v10.html",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "icon.xpm",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "devstudio",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "notice.html",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "runtime_locations.properties",
 		"studio" + File.separator + "48-devstudio.icon.png",
 		"studio" + File.separator + "48-uninstall.icon.png",
 		"studio" + File.separator + "devstudio.ico",
@@ -41,8 +41,8 @@ public class ShortcutPanelPatch extends IzPanel {
 		"Uninstaller",
 		".installationinformation",
 		"InstallConfigRecord.xml",
-		"jbdevstudio",
-		"jbdevstudio-unity",
+		"devstudio",
+		"devstudio-unity",
 		"JBoss-EULA.html",
 		"readme.txt"
 	};
@@ -60,7 +60,7 @@ public class ShortcutPanelPatch extends IzPanel {
 //			{
 //				try {
 //					System.out.println("Running script: `" + cmd + "` ...");
-//					ShellScript.execute(cmd, File.createTempFile("jbds-desktop-chmod-", ".sh").getAbsolutePath());
+//					ShellScript.execute(cmd, File.createTempFile("devstudio-desktop-chmod-", ".sh").getAbsolutePath());
 //				} catch (IOException e) {
 //					e.printStackTrace();
 //				}		
@@ -178,7 +178,7 @@ public class ShortcutPanelPatch extends IzPanel {
 //			StringBuffer script = new StringBuffer();
 //			script.append("echo " + desktopLocation + ";");
 //			try {
-//				result = ShellScript.execAndDelete(script, File.createTempFile("jbds-desktop-location-", ".sh").getAbsolutePath());
+//				result = ShellScript.execAndDelete(script, File.createTempFile("devstudio-desktop-location-", ".sh").getAbsolutePath());
 //			} catch (IOException e) {
 //				// ignore and return empty string
 //			}

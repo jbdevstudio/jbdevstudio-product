@@ -1,7 +1,7 @@
 <!-- A build file to create an IzPack (http://www.izforge.com/izpack/) installer.
 $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 -->
-<project name="JBDS Installer" default="installer">
+<project name="Red Hat Developer Studio Installer" default="installer">
   <taskdef resource="net/sf/antcontrib/antlib.xml" />
 
   <property file="local.properties" />
@@ -15,7 +15,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   <property name="build.id" value="${build.number}" />
 
   <!-- Manifest version info -->
-  <property name="specification.title" value="JBDS Installer" />
+  <property name="specification.title" value="Red Hat Developer Studio Installer" />
 
   <property name="implementation.vendor" value="JBoss by Red Hat (http://www.jboss.com/)" />
   <property name="implementation.vendor.id" value="${implementation.url}" />
@@ -28,7 +28,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   <property name="thirdparty.root" value="${basedir}/../thirdparty" />
 
   <property name="project.root" value="${basedir}/" />
-  <property name="izpack.home" value="${project.root}/../releng/jbds-build/IzPack-4.3.4" />
+  <property name="izpack.home" value="${project.root}/../releng/devstudio-build/IzPack-4.3.4" />
   <property name="izpack.langpacks" value="${basedir}/etc/local-izpack/bin/langpacks/installer" />
 
   <property name="distribution.dir" location="${build.dir}/distribution" />
@@ -53,8 +53,8 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 
   <target name="buildcustompanels">
     <echo message="Building panels ..." />
-    <echoproperties destfile="${build.dir}/../../jbds-echoproperties.txt" />
-    <echo>Build properties written to ${build.dir}/../../jbds-echoproperties.txt</echo>
+    <echoproperties destfile="${build.dir}/../../devstudio-echoproperties.txt" />
+    <echo>Build properties written to ${build.dir}/../../devstudio-echoproperties.txt</echo>
     <mkdir dir="${build.dir}/classes" />
     <mkdir dir="${build.dir}/izpack-panels" />
 
@@ -204,7 +204,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     </if>
   </target>
 
-  <target name="prepare-jbds" depends="prepare-distribution-properties">
+  <target name="prepare-devstudio" depends="prepare-distribution-properties">
     <delete includeemptydirs="true" defaultexcludes="false" failonerror="false">
       <fileset dir="${studio.dist}" />
     </delete>
@@ -237,7 +237,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   </macrodef>
 
   <target name="prepare-distribution"
-    depends="prepare-distribution-properties, prepare-jbosseap, prepare-jbds"
+    depends="prepare-distribution-properties, prepare-jbosseap, prepare-devstudio"
     description="Copies the needed files into the distribution dir as needed by install.xml">
 
     <condition property="nightly_build_qualifier" value="" else="-${buildQualifier}">
@@ -321,24 +321,24 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     <property name="installer.name" value="jboss-devstudio-${specification.version}-installer-standalone" />
     <property name="installer.eap.name" value="jboss-devstudio-${specification.version}-installer-eap" />
 
-    <property name="implementation.title" value="JBDS Installer [${update.site.version}]" />
+    <property name="implementation.title" value="Red Hat Developer Studio Installer [${update.site.version}]" />
     <property name="implementation.url" value="http://www.jboss.org/" />
     <property name="implementation.version" value="${update.site.version}.${buildQualifier}" />
 
-    <property name="artifacts.jbds.update" value="${project.build.directory}/jbdevstudio-product-installer-Update-${buildQualifier}.zip" />
+    <property name="artifacts.devstudio.update" value="${project.build.directory}/devstudio-product-installer-Update-${buildQualifier}.zip" />
   </target>
 
   <target name="create-temp-update-sites">
     <!-- this update site zip is only used to produce the installer -->
     <echo>Prepare update site zip </echo>
-    <zip destfile="${artifacts.jbds.update}" whenempty="fail">
-      <zipfileset dir="${project.build.directory}/repository" prefix="jbds"/>
+    <zip destfile="${artifacts.devstudio.update}" whenempty="fail">
+      <zipfileset dir="${project.build.directory}/repository" prefix="devstudio"/>
     </zip>
   </target>
 
   <target name="installer" depends="init, init-properties, create-temp-update-sites, buildcustompanels, prepare-distribution">
 
-    <echo message="Building JBDS Installers with nightly_build_qualifier=${nightly_build_qualifier}"/>
+    <echo message="Building Red Hat Developer Studio Installers with nightly_build_qualifier=${nightly_build_qualifier}"/>
     <taskdef name="izpack" classname="com.izforge.izpack.ant.IzPackTask" classpathref="izpack.classpath" />
 
     <mkdir dir="${build.dir}" />
@@ -349,7 +349,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
       <then>
         <var name="install.group" value="jbosseap" />
         <!-- Now call the izpack compiler -->
-        <echo message="Building JBDS Installer (EAP Bundle): ${installer.eap.name}.jar"/>
+        <echo message="Building Red Hat Developer Studio Installer (EAP Bundle): ${installer.eap.name}.jar"/>
         <izpack input="${src.dir}/config/install.xml"
                 output="${destination.dir}/${installer.eap.name}.jar"
                 installerType="standard"
@@ -371,9 +371,9 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
         <var name="install.group" unset="true" />
       </then>
     </if>
-    <var name="install.group" value="jbds" />
+    <var name="install.group" value="devstudio" />
     <!-- Now call the izpack compiler -->
-    <echo message="Building JBDS Installer (Standalone): ${installer.name}.jar"/>
+    <echo message="Building Red Hat Developer Studio Installer (Standalone): ${installer.name}.jar"/>
     <izpack input="${src.dir}/config/install.xml"
             output="${destination.dir}/${installer.name}.jar"
             installerType="standard"
@@ -392,15 +392,15 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   			<isset property="skipTests" />
   		</not>
   		<then>
-			<loadfile srcfile="${basedir}/jbdevstudio-test-install.xml" property="jbdevstudio-test-install.xml.updated">
+			<loadfile srcfile="${basedir}/devstudio-test-install.xml" property="devstudio-test-install.xml.updated">
 				<filterchain>
 					<expandproperties/>
 				</filterchain>
 			</loadfile>
-			<echo file="${project.build.directory}/jbdevstudio-test-install.xml">${jbdevstudio-test-install.xml.updated}</echo>
+			<echo file="${project.build.directory}/devstudio-test-install.xml">${devstudio-test-install.xml.updated}</echo>
 		
 			<java jar="${destination.dir}/${installer.name}.jar" fork="true" failonerror="true" maxmemory="512m" jvmargs="-DTRACE=true -Djava.security.manager -Djava.security.policy=${basedir}/java.policy">
-				<arg line="${project.build.directory}/jbdevstudio-test-install.xml"/>
+				<arg line="${project.build.directory}/devstudio-test-install.xml"/>
 			</java>
   		</then>
   	</if>
@@ -419,7 +419,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     <!-- clean up build-time artifacts so they won't be published -->
     <delete includeEmptyDirs="true" quiet="true">
       <fileset dir="${project.build.directory}/update"/>
-      <fileset file="${artifacts.jbds.update}"/>
+      <fileset file="${artifacts.devstudio.update}"/>
     </delete>
   </target>
 

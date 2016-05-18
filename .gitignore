@@ -1,5 +1,5 @@
 workspace
-jbds-echoproperties.txt
+*echoproperties.txt
 .DS_Store
 target*/
 bin

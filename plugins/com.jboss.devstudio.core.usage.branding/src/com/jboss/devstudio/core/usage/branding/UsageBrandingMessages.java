@@ -16,7 +16,7 @@ import org.eclipse.osgi.util.NLS;
  * @author Andre Dietisheim
  *
  */
-public class JBDSUsageBrandingMessages extends NLS {
+public class UsageBrandingMessages extends NLS {
 	private static final String BUNDLE_NAME = "com.jboss.devstudio.core.usage.branding.messages"; //$NON-NLS-1$
 
 	public static String GlobalUsageSettings_RemoteProps_URL;
@@ -31,9 +31,9 @@ public class JBDSUsageBrandingMessages extends NLS {
 
 	static {
 		// initialize resource bundle
-		NLS.initializeMessages(BUNDLE_NAME, JBDSUsageBrandingMessages.class);
+		NLS.initializeMessages(BUNDLE_NAME, UsageBrandingMessages.class);
 	}
 
-	private JBDSUsageBrandingMessages() {
+	private UsageBrandingMessages() {
 	}
 }
