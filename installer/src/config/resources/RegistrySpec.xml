@@ -24,7 +24,7 @@
         <value name="DisplayIcon"
                keypath="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\JBDS @version_string@@nightly_build_qualifier@ $TIMESTAMP"
                root="HKLM"
-               string="$INSTALL_PATH\eclipse\jbds.ico"/>
+               string="$INSTALL_PATH\eclipse\devstudio.ico"/>
         <value name="HelpLink"
                keypath="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\JBDS @version_string@@nightly_build_qualifier@ $TIMESTAMP"
                root="HKLM"

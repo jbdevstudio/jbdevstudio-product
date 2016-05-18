@@ -33,7 +33,7 @@ openFile</programArgs>
 -Xmx1024m
 -Dosgi.instance.area.default=@user.home/workspace</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
--Xdock:icon=../Resources/JBDevStudio.icns -XX:MaxPermSize=256m -Xdock:name=&quot;Red Hat Developer Studio&quot;</vmArgsMac>
+-Xdock:icon=../Resources/devstudio.icns -XX:MaxPermSize=256m -Xdock:name=&quot;Red Hat Developer Studio&quot;</vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
@@ -41,10 +41,10 @@ openFile</programArgs>
    <splash
       location="com.jboss.devstudio.core" />
    <launcher name="jbdevstudio">
-      <macosx icon="macosx/JBDevStudio.icns"/>
+      <macosx icon="macosx/devstudio.icns"/>
       <solaris/>
       <win useIco="true">
-         <ico path="jbds.ico"/>
+         <ico path="devstudio.ico"/>
          <bmp/>
       </win>
    </launcher>

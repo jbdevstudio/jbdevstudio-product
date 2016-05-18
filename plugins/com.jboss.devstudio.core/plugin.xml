@@ -33,13 +33,13 @@
 				 			 value="Sans-bold-9"/>
 				 <property
 							 name="windowImages"
-							 value="ico_16_jbds.png,ico_32_jbds.png,48-jbds_icon.png,128_jbds_icon.png"/>
+							 value="16-devstudio.icon.png,32-devstudio.icon.png,48-devstudio.icon.png,128-devstudio.icon.png"/>
 				 <property
 							 name="aboutText"
 							 value="%aboutText"/>
 				 <property
 							 name="aboutImage"
-							 value="about_jbds.jpg"/>
+							 value="about_devstudio.jpg"/>
 				 <property
 							 name="applicationXMI"
 							 value="org.eclipse.platform/LegacyIDE.e4xmi">
@@ -54,7 +54,7 @@
 			</property>
 				 <!--property
 				name="cssTheme"
-				value="org.jboss.tools.central.themes.jbds">
+				value="org.jboss.tools.central.themes.devstudio">
 			</property-->
 			</product>
 	 </extension>

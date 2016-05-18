@@ -23,7 +23,7 @@
          point="org.eclipse.ui.commandImages">
       <image
             commandId="com.jboss.devstudio.core.central.openDevstudioHome"
-            icon="icons/ico_16_jbds.png">
+            icon="icons/16-devstudio.icon.png">
       </image>
    </extension>
 

@@ -1,8 +1,8 @@
-To compile JBDevStudio.icns use follow commands:
+To compile devstudio.icns use follow commands:
 
 cd jbdevstudio-product/site/macosx
 
-iconutil -c icns JBDevStudio.iconset
+iconutil -c icns devstudio.iconset
 
 For additional info see:
 

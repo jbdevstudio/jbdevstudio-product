@@ -36,7 +36,7 @@
 		<variable name="INSTALL_GROUP" value="@{install.group}"/>
 		<variable name="VERSION" value="@{specification.version.presentstring}"/>
 		<variable name="EAP_VERSION" value="@{eapVersion}"/>
-		<variable name="jboss.logname" value="jbdevstudio-install-"/>
+		<variable name="jboss.logname" value="devstudio.install-"/>
 		<variable name="DESKTOP_SHORTCUT_NAME" 
 			value="JBoss-Developer-Studio-@{version.presentstring}@{nightly_build_qualifier}" />
 	</variables>
@@ -84,15 +84,15 @@
 		<res src="config/resources/unix_shortcut_specification.xml"
 			id="Unix_shortcutSpec.xml" />
 		<res id="JBossAsSelectPanel.create.image"
-			src="config/resources/images/jbeap_new_wiz.png" />
+			src="config/resources/images/runtime_wiz.png" />
 		<res id="JBossAsSelectPanel.edit.image"
- 			src="config/resources/images/jbeap_edit_wiz.png" />			
+ 			src="config/resources/images/runtime_wiz.png" />
 		<res id="Error.image"
 			src="config/resources/images/message_error.png" />
-		<res id="128-jbds_icon.png"
-			src="config/resources/icons/128-jbds_icon.png" />
-		<res id="32-jbds_icon.png"
-			src="config/resources/icons/32-jbds_icon.png" />
+		<res id="128-devstudio.icon.png"
+			src="config/resources/icons/128-devstudio.icon.png" />
+		<res id="32-devstudio.icon.png"
+			src="config/resources/icons/32-devstudio.icon.png" />
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
 		<!-- Licencees in different languages -->	
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 

@@ -2,10 +2,10 @@
 	<defaultCurrentUser/>
 	<programGroup defaultName=""
 		location="applications"
-		iconFile="$INSTALL_PATH/studio/48-jbds_icon.png"
+		iconFile="$INSTALL_PATH/studio/48-devstudio.icon.png"
 		comment="Red Hat Developer Studio @major_version@" />
 	<shortcut name="Red Hat Developer Studio @version_string@@nightly_build_qualifier@" programGroup="yes"
-		iconFile="$INSTALL_PATH/studio/48-jbds_icon.png"
+		iconFile="$INSTALL_PATH/studio/48-devstudio.icon.png"
 		iconIndex="0"
 		desktop="yes" applications="no" startMenu="no" startup="no"
 		target="$INSTALL_PATH/studio/jbdevstudio"
@@ -14,7 +14,7 @@
 		encoding="UTF-8" terminal="false" KdeSubstUID="false"
 		initialState="normal" categories="Applications;Development;" createForAll="true" />
 	<shortcut name="Uninstall Red Hat Developer Studio @version_string@@nightly_build_qualifier@" programGroup="yes" desktop="no"
-		iconFile="$INSTALL_PATH/studio/48-jbds_uninstall_icon.png"
+		iconFile="$INSTALL_PATH/studio/48-uninstall.icon.png"
 		iconIndex="0"
 		applications="no" startMenu="no" startup="no" target="java"
 		commandLine="-jar &quot;$INSTALL_PATH/Uninstaller/uninstaller.jar&quot;"

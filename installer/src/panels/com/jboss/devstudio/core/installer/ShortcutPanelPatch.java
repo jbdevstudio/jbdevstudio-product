@@ -15,7 +15,7 @@ import com.izforge.izpack.installer.UninstallData;
 public class ShortcutPanelPatch extends IzPanel {
 
 	/* JBDS-2458: Files which should be uninstalled. 
-	 * Assume we want to retain studio/jbdevstudio.ini and studio/configuration/, just in case user modified them post-install
+	 * Assume we want to retain studio/devstudio.ini and studio/configuration/, just in case user modified them post-install
 	 * Should we also keep runtimes/ folder? If so will need a way to REMOVE files in uninstallData as it currently only supports add()
 	 */
 	protected String[] additionalUninstallableFiles = {
@@ -32,10 +32,10 @@ public class ShortcutPanelPatch extends IzPanel {
 		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "jbdevstudio",
 		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "notice.html",
 		P2DirectorStarterListener.JBDEVSTUDIO_LOCATION + File.separator + "runtime_locations.properties",
-		"studio" + File.separator + "48-jbds_icon.png",
-		"studio" + File.separator + "48-jbds_uninstall_icon.png",
-		"studio" + File.separator + "jbds.ico",
-		"studio" + File.separator + "jbds_uninstall.ico",
+		"studio" + File.separator + "48-devstudio.icon.png",
+		"studio" + File.separator + "48-uninstall.icon.png",
+		"studio" + File.separator + "devstudio.ico",
+		"studio" + File.separator + "uninstall.ico",
 
 		/* files/folders in root folder */
 		"Uninstaller",
