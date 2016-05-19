@@ -165,7 +165,7 @@
 		<!-- disabled to fix issue with windows	-->
 		<!-- installer on windows vista is not asking 
 				 for privilege lifting which leads to errors 
-				 during addin devstudio installation to the registry-->
+				 while adding devstudio installation to the registry-->
 		<!-- listener installer="RegistryInstallerListener"
 			uninstaller="RegistryUninstallerListener" >
 			<os name="Windows 7"/>
