@@ -46,6 +46,16 @@
   </bundle>
   <bundle id="org.yaml.snakeyaml"/>
 
+  <!-- JBDS-3898 JSON editor -->
+  <feature id="org.eclipse.wst.json_core.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+  <feature id="org.eclipse.wst.json_ui.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+
   <!-- JBIDE-19045 include Tern -->
   <bundle id="minimal-json"/>
   <bundle id="minimatch.java" />

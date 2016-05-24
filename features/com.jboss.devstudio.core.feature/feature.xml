@@ -59,6 +59,9 @@
   <includes id="org.eclipse.wst.jsdt.nodejs.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.usage.feature" version="0.0.0"/>
 
+  <includes id="org.eclipse.wst.json_core.feature" version="0.0.0"/>
+  <includes id="org.eclipse.wst.json_ui.feature" version="0.0.0"/>
+
   <plugin id="org.jboss.tools.discovery.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.jboss.tools.foundation.help.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   
