@@ -59,6 +59,8 @@
   <includes id="org.eclipse.wst.jsdt.nodejs.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.usage.feature" version="0.0.0"/>
 
+  <includes id="org.eclipse.wst.jsdt.chromium.debug.feature" version="0.0.0"/>
+  <includes id="org.eclipse.wst.jsdt.feature" version="0.0.0"/>
   <includes id="org.eclipse.wst.json_core.feature" version="0.0.0"/>
   <includes id="org.eclipse.wst.json_ui.feature" version="0.0.0"/>
 

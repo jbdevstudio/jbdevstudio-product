@@ -71,10 +71,21 @@
   </feature>
   <feature id="org.jboss.tools.jst.jsdt.feature">
     <!-- removed from devstudio CoreTools but still there for JBT -->
+    <category name="GeneralTools" />
     <category name="WebTools" />
     <category name="MobileTools"/>
   </feature>
-  <!-- JBIDE-21171 org.eclipse.wst.jsdt.nodejs.feature replaces org.jboss.tools.jst.js.feature -->
+  <!-- JBDS-3899 JSDT and chromium.debug features -->
+  <feature id="org.eclipse.wst.jsdt.chromium.debug.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+    <category name="MobileTools"/>
+  </feature>
+  <feature id="org.eclipse.wst.jsdt.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+    <category name="MobileTools"/>
+  </feature>
   <feature id="org.eclipse.wst.jsdt.nodejs.feature">
     <category name="WebTools" />
     <category name="MobileTools"/>
