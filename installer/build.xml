@@ -123,9 +123,9 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
       </fileset>
     </jar>
 
-    <jar destfile="${build.installer.dir}/bin/panels/JBDSShortcutPanel.jar">
+    <jar destfile="${build.installer.dir}/bin/panels/DevstudioShortcutPanel.jar">
       <fileset dir="${build.dir}/classes">
-        <include name="**/JBDSShortcutPanel.class" />
+        <include name="**/DevstudioShortcutPanel.class" />
         <include name="**/Unix_Shortcut.class" />
         <include name="**/ShortcutData.class" />
         <include name="**/XMLHelper.class" />

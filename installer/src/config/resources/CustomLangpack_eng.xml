@@ -27,7 +27,7 @@
     <str id="InstallAdditionalFeaturesPanel.headline.features" txt="Select Additional Features to Install"/>
     <str id="SummaryPanel.headline.summary" txt="Summary Information"/>
     <str id="InstallPanel.headline.install" txt="Installation"/>
-    <str id="JBDSShortcutPanel.headline.shortcut" txt="Shortcuts"/>
+    <str id="DevstudioShortcutPanel.headline.shortcut" txt="Shortcuts"/>
     <str id="SimpleFinishPanel.headline.finish" txt="Finish"/>
     <str id="SimpleFinishPanel.headline.run_after" txt="Run Red Hat Developer Studio after installation"/>
     <str id="installer.step" txt="Step"/>
