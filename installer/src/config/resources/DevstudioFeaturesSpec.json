@@ -2,7 +2,7 @@
 	{
 		"id"         :"com.jboss.devstudio.core.package",
 		"path"       :"devstudio",
-		"label"      :"Red Hat Developer Studio Product",
+		"label"      :"Red Hat JBoss Developer Studio Product",
 		"description":"",
 		"selected"   :"true"
 	},

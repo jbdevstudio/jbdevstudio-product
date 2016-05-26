@@ -495,7 +495,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
     		} else if(status == 0) {
     			parent.unlockNextButton();
        		} else if(status == -2){
-        		messageLabel.setText("<html><p>This JVM was not tested with Red Hat Developer Studio.<br>It is not guaranteed to work.</p></html>");
+        		messageLabel.setText("<html><p>This JVM was not tested with Red Hat JBoss Developer Studio.<br>It is not guaranteed to work.</p></html>");
         		parent.unlockNextButton();
         	} else if(status == -1){
         		messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));

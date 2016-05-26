@@ -1,20 +1,20 @@
 <shortcuts>
 	<skipIfNotSupported />
 	<defaultCurrentUser />
-	<programGroup defaultName="Red Hat Developer Studio @major_version@" location="applications" />
+	<programGroup defaultName="Red Hat JBoss Developer Studio @major_version@" location="applications" />
 	<shortcut
-		name="Red Hat Developer Studio @version_string@@nightly_build_qualifier@"
+		name="Red Hat JBoss Developer Studio @version_string@@nightly_build_qualifier@"
 		iconFile="$INSTALL_PATH\studio\devstudio.ico" 
 		target="$INSTALL_PATH\studio\devstudio.exe"
 		workingDirectory="$INSTALL_PATH\studio"
-		description="Start Red Hat Developer Studio @version_string@@nightly_build_qualifier@"
+		description="Start Red Hat JBoss Developer Studio @version_string@@nightly_build_qualifier@"
 		initialState="normal" programGroup="yes" desktop="yes" startMenu="no" />
 	<shortcut
-		name="Uninstall Red Hat Developer Studio @version_string@@nightly_build_qualifier@"
+		name="Uninstall Red Hat JBoss Developer Studio @version_string@@nightly_build_qualifier@"
 		iconFile="$INSTALL_PATH\studio\uninstall.ico" 
 		target="$JAVA_HOME\bin\javaw.exe"
 		workingDirectory=""
 		commandLine="-jar &quot;$INSTALL_PATH\Uninstaller\uninstaller.jar&quot;"
-		description="Uninstall Red Hat Developer Studio @version_string@@nightly_build_qualifier@"
+		description="Uninstall Red Hat JBoss Developer Studio @version_string@@nightly_build_qualifier@"
 		initialState="normal" programGroup="yes" desktop="no" startMenu="no" />
 </shortcuts>

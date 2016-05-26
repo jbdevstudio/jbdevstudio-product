@@ -3,23 +3,23 @@
 	<programGroup defaultName=""
 		location="applications"
 		iconFile="$INSTALL_PATH/studio/48-devstudio.icon.png"
-		comment="Red Hat Developer Studio @major_version@" />
-	<shortcut name="Red Hat Developer Studio @version_string@@nightly_build_qualifier@" programGroup="yes"
+		comment="Red Hat JBoss Developer Studio @major_version@" />
+	<shortcut name="Red Hat JBoss Developer Studio @version_string@@nightly_build_qualifier@" programGroup="yes"
 		iconFile="$INSTALL_PATH/studio/48-devstudio.icon.png"
 		iconIndex="0"
 		desktop="yes" applications="no" startMenu="no" startup="no"
 		target="$INSTALL_PATH/studio/devstudio"
 		workingDirectory="$INSTALL_PATH/studio"
-		description="Runs the Red Hat Developer Studio @version_string@@nightly_build_qualifier@" type="Application"
+		description="Runs the Red Hat JBoss Developer Studio @version_string@@nightly_build_qualifier@" type="Application"
 		encoding="UTF-8" terminal="false" KdeSubstUID="false"
 		initialState="normal" categories="Applications;Development;" createForAll="true" />
-	<shortcut name="Uninstall Red Hat Developer Studio @version_string@@nightly_build_qualifier@" programGroup="yes" desktop="no"
+	<shortcut name="Uninstall Red Hat JBoss Developer Studio @version_string@@nightly_build_qualifier@" programGroup="yes" desktop="no"
 		iconFile="$INSTALL_PATH/studio/48-uninstall.icon.png"
 		iconIndex="0"
 		applications="no" startMenu="no" startup="no" target="java"
 		commandLine="-jar &quot;$INSTALL_PATH/Uninstaller/uninstaller.jar&quot;"
 		workingDirectory="$INSTALL_PATH/Uninstaller"
-		description="Uninstall Red Hat Developer Studio @version_string@@nightly_build_qualifier@" type="Application"
+		description="Uninstall Red Hat JBoss Developer Studio @version_string@@nightly_build_qualifier@" type="Application"
 		encoding="UTF-8" terminal="false" KdeSubstUID="false"
 		initialState="normal" categories="Applications;Development;" createForAll="true" />
 </shortcuts>

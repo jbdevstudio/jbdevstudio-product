@@ -31,7 +31,7 @@ public class UpdatePacksPanel extends IzPanel{
 		String version = idata.getVariable("VERSION");
 		String eapVersion = idata.getVariable("EAP_VERSION");		
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("Red Hat Developer Studio "+version+"<br>");
+		buffer.append("Red Hat JBoss Developer Studio "+version+"<br>");
 		if("jbosseap".equals(group))
 			buffer.append("Red Hat JBoss Enterprise Application Platform " + eapVersion+ "<br>");
 		

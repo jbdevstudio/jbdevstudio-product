@@ -12,7 +12,7 @@
 	<packaging>eclipse-repository</packaging>
 
 	<properties>
-		<update.site.name>Red Hat Developer Studio</update.site.name>
+		<update.site.name>Red Hat JBoss Developer Studio</update.site.name>
 		<update.site.description>Snapshot Build</update.site.description>
 		<siteTemplateFolder>siteTemplateFolder</siteTemplateFolder>
 		<associateSite>https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/</associateSite>
@@ -151,7 +151,7 @@
 							</source>
 							<destination>${project.build.directory}/repository-nopackgz</destination>
 							<includePacked>false</includePacked>
-							<name>Red Hat Developer Studio Update Site Zip</name>
+							<name>Red Hat JBoss Developer Studio Update Site Zip</name>
 						</configuration>
 					</execution>
 				</executions>

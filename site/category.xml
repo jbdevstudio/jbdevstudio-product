@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-  <description>Red Hat Developer Studio 10 Updates - Core</description>
+  <description>Red Hat JBoss Developer Studio 10 Updates - Core</description>
 
   <!-- PLEASE NOTE!
     When updating this file, please be sure that it parses as valid XML before committing it.
@@ -443,14 +443,14 @@
   -->
 
   <!-- only in devstudio -->
-  <category-def name="BringYourOwnEclipse" label="* Red Hat Developer Studio 10 - Bring Your Own Eclipse">
-    <description>Select this feature if you want to install all of the Red Hat Developer Studio (Core Features) into your own Eclipse 4.6 (Neon).</description>
+  <category-def name="BringYourOwnEclipse" label="* Red Hat JBoss Developer Studio 10 - Bring Your Own Eclipse">
+    <description>Select this feature if you want to install all of the Red Hat JBoss Developer Studio (Core Features) into your own Eclipse 4.6 (Neon).</description>
   </category-def>
-  <category-def name="CoreTools" label="* Red Hat Developer Studio 10 - Core">
-    <description>Contains most of the Red Hat Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web Development.</description>
+  <category-def name="CoreTools" label="* Red Hat JBoss Developer Studio 10 - Core">
+    <description>Contains most of the Red Hat JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web Development.</description>
   </category-def>
-  <category-def name="AdditionalTools" label="* Red Hat Developer Studio 10 - Extras">
-    <description>Contains the rest of the Red Hat Developer Studio features, not included in Core category. This category includes miscellaneous, new, experimental and incubating features. See individual feature descriptions for details.</description>
+  <category-def name="AdditionalTools" label="* Red Hat JBoss Developer Studio 10 - Extras">
+    <description>Contains the rest of the Red Hat JBoss Developer Studio features, not included in Core category. This category includes miscellaneous, new, experimental and incubating features. See individual feature descriptions for details.</description>
   </category-def>
   
   <category-def name="WebTools" label="JBoss Web and Java EE Development">

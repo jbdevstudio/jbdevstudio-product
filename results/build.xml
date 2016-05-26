@@ -253,8 +253,8 @@ $java.home = ${java.home}</echo>
 
     <!-- https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/jboss-devstudio-10.0.0.Alpha1-v20160517-2010-B5374-installer-standalone.jar -->
     <echo file="${destdir}/content.json">{
-"name": "Red Hat Developer Studio Installer",
-"description": "Red Hat Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
+"name": "Red Hat JBoss Developer Studio Installer",
+"description": "Red Hat JBoss Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
 "fullVersion": "${devstudio.version}",
 "installer": "https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/jboss-devstudio-${devstudio.version}-installer-standalone.jar"
 }

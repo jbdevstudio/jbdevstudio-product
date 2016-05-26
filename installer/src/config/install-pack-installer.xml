@@ -5,7 +5,7 @@
   <packs>
     <pack name="P2 Director Application" id="devstudio-installer" installGroups="devstudio,jbosseap" required="yes">
       <description>
-        P2 Director to install Red Hat Developer Studio @{specification.version.presentstring}
+        P2 Director to install Red Hat JBoss Developer Studio @{specification.version.presentstring}
       </description>
 
       <singlefile src="config/resources/EULA/JBoss-EULA.html" target="$INSTALL_PATH/JBoss-EULA.html" />
@@ -28,14 +28,14 @@
       <singlefile src="config/resources/runtimes-readme.txt" target="$INSTALL_PATH/runtimes/readme.txt" />
 
     </pack>
-    <pack name="Red Hat Developer Studio @{specification.version.presentstring}" id="devstudio.update" installGroups="jbosseap,devstudio" required="no">
+    <pack name="Red Hat JBoss Developer Studio @{specification.version.presentstring}" id="devstudio.update" installGroups="jbosseap,devstudio" required="no">
       <description>
-        Red Hat Developer Studio @{specification.version.presentstring} Update
+        Red Hat JBoss Developer Studio @{specification.version.presentstring} Update
       </description>
     </pack>
-    <pack name="Red Hat Developer Studio @{specification.version.presentstring} Metadata Generation" id="devstudio.generate" installGroups="jbosseap,devstudio" required="no">
+    <pack name="Red Hat JBoss Developer Studio @{specification.version.presentstring} Metadata Generation" id="devstudio.generate" installGroups="jbosseap,devstudio" required="no">
       <description>
-        Red Hat Developer Studio @{specification.version.presentstring} Metadata Generation
+        Red Hat JBoss Developer Studio @{specification.version.presentstring} Metadata Generation
       </description>
     </pack>
 
