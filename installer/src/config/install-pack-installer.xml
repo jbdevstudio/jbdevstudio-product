@@ -46,22 +46,22 @@
 
       <fileset dir="@{jbosseap.dist}" targetdir="$INSTALL_PATH/runtimes/jboss-eap">
       </fileset>
-      <!-- https://jira.jboss.org/browse/JBDS-1250 is there a better way to `chmod +x *.sh` ? -->
-      <!-- EAP 6.0.1 -->
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/init.d/jboss-as-standalone.sh" os="unix"/>
+      <!-- 
+        wget http://download.eng.rdu2.redhat.com/released/JBEAP-7/7.0.0/jboss-eap-7.0.0.zip
+        unzip jboss-eap-7.0.0.zip; cd jboss-eap-7.0; find . -name "*.sh" | sort | sed "s#./\(.\+.sh\)#<executable targetfile=\"\$INSTALL_PATH/runtimes/jboss-eap/\1\" os=\"unix\"/>#"
+      -->
+
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/add-user.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/appclient.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/domain.sh" os="unix"/>
+      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/init.d/jboss-eap-rhel.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jboss-cli.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jconsole.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/jdr.sh" os="unix"/>
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/run.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/standalone.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/vault.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/wsconsume.sh" os="unix"/>
       <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/wsprovide.sh" os="unix"/>
-      <!-- new in EAP 6.1 -->
-      <executable targetfile="$INSTALL_PATH/runtimes/jboss-eap/bin/init.d/jboss-as-domain.sh" os="unix"/>
     </pack>
   </packs>
 </installation>
