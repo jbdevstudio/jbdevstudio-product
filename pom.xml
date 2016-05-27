@@ -107,12 +107,12 @@
     <profile>
       <id>hudson</id>
       <properties>
-        <eapVersion>6.4</eapVersion>
-        <!-- http://download.devel.redhat.com/released/JBEAP-6/6.4.0-CVE-2015-7501/jboss-eap-6.4-CVE-2015-7501.zip -->
-        <eapFilename>jboss-eap-${eapVersion}-CVE-2015-7501.zip</eapFilename>
-        <eapURL>http://download.devel.redhat.com/released/JBEAP-6/${eapVersion}.0-CVE-2015-7501/${eapFilename}</eapURL>
-        <eapMD5>012ece485885174b7759e86953c50af6</eapMD5>
-        <eapRootFolder>jboss-eap-6.4</eapRootFolder>
+        <eapVersion>7.0.0</eapVersion>
+        <!-- http://download.eng.rdu2.redhat.com/released/JBEAP-7/7.0.0/jboss-eap-7.0.0.zip -->
+        <eapFilename>jboss-eap-${eapVersion}.zip</eapFilename>
+        <eapURL>http://download.devel.redhat.com/released/JBEAP-7/${eapVersion}/${eapFilename}</eapURL>
+        <eapMD5>cd02482daa0398bf5500e1628d28179a</eapMD5>
+        <eapRootFolder>jboss-eap-7.0</eapRootFolder>
         <p2StatsUrl>https://devstudio.redhat.com/usage/installs/${JOB_NAME}/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
       </properties>
     </profile>
