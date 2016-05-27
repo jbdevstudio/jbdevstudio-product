@@ -318,8 +318,8 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     <property name="specification.vendor" value="JBoss by Red Hat (http://www.jboss.com/)" />
     <property name="specification.version.presentstring" value="${update.site.version}.${BUILD_ALIAS}" />
 
-    <property name="installer.name" value="jboss-devstudio-${specification.version}-installer-standalone" />
-    <property name="installer.eap.name" value="jboss-devstudio-${specification.version}-installer-eap" />
+    <property name="installer.name" value="devstudio-${specification.version}-installer-standalone" />
+    <property name="installer.eap.name" value="devstudio-${specification.version}-installer-eap" />
 
     <property name="implementation.title" value="Red Hat JBoss Developer Studio Installer [${update.site.version}]" />
     <property name="implementation.url" value="http://www.jboss.org/" />

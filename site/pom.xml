@@ -103,8 +103,8 @@
 							<!-- <zipCacheFolder>${basedir}/cache</zipCacheFolder> -->
 							<!-- <outputFolder>${project.build.directory}/fullSite</outputFolder> -->
 							<!-- <fallbackToChild>latest/all/repo</fallbackToChild> -->
-							<sourcesZip>${project.build.directory}/jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src.zip</sourcesZip>
-							<sourcesZipRootFolder>jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src</sourcesZipRootFolder>
+							<sourcesZip>${project.build.directory}/devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src.zip</sourcesZip>
+							<sourcesZipRootFolder>devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src</sourcesZipRootFolder>
 							<sourceFetchMap>
 								<!-- pick a plugin available in the project's update site from which we can deduce the Eclipse-SourceReference -->
 								<jbosstools-base>org.jboss.tools.common</jbosstools-base>
@@ -171,7 +171,7 @@
 							<quiet>true</quiet>
 							<tasks>
 								<echo>Replace zip: ${project.build.directory}/${project.artifactId}-${project.version}.zip</echo>
-								<!-- TODO in 10.0: use jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-updatesite-core.zip -->
+								<!-- TODO in 10.0: use devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-updatesite-core.zip -->
 								<mkdir dir="${project.build.directory}/repository/web"/>
 								<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.zip" whenempty="fail">
 									<zipfileset dir="${project.build.directory}/repository/web" includes="site.css" prefix="web"/>
@@ -189,7 +189,7 @@
 										<expandproperties />
 									</filterchain>
 								</copy>
-								<zip destfile="${project.build.directory}/jboss-devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src.zip" whenempty="fail" update="true">
+								<zip destfile="${project.build.directory}/devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-src.zip" whenempty="fail" update="true">
 									<zipfileset dir="${project.build.directory}/" includes="README.how-to-build-from-sources-zip.txt"/>
 								</zip>
 							</tasks>

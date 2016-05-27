@@ -2,5 +2,5 @@
 
 2. Download the installer jar.
 
-3. Double-click the installer file to run it, or open a terminal and type `java -jar /path/to/jboss-devstudio-*.jar`
+3. Double-click the installer file to run it, or open a terminal and type `java -jar /path/to/devstudio-*.jar`
 

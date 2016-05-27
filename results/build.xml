@@ -52,13 +52,13 @@ $java.home = ${java.home}</echo>
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
     <echo level="info">update.site.version = ${update.site.version}, JBT.version = ${JBT.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
-    <path id="jboss-devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-standalone.jar"/></fileset></path><property name="jboss-devstudio-installer-standalone-file" refid="jboss-devstudio-installer-standalone-file-id"/>
+    <path id="devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="devstudio-*-installer-standalone.jar"/></fileset></path><property name="devstudio-installer-standalone-file" refid="devstudio-installer-standalone-file-id"/>
 
-    <path id="jboss-devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="jboss-devstudio-*-installer-eap.jar"/></fileset></path><property name="jboss-devstudio-installer-eap-file" refid="jboss-devstudio-installer-eap-file-id"/>
+    <path id="devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="devstudio-*-installer-eap.jar"/></fileset></path><property name="devstudio-installer-eap-file" refid="devstudio-installer-eap-file-id"/>
 
-    <path id="jboss-devstudio-src-file-id"><fileset dir="../site/target"><include name="jboss-devstudio-*-src.zip"/></fileset></path><property name="jboss-devstudio-src-file" refid="jboss-devstudio-src-file-id"/>
+    <path id="devstudio-src-file-id"><fileset dir="../site/target"><include name="devstudio-*-src.zip"/></fileset></path><property name="devstudio-src-file" refid="devstudio-src-file-id"/>
 
-    <path id="jboss-devstudio-updatesite-core-file-id"><fileset dir="../site/target"><include name="com.jboss.devstudio.core.site-*.zip"/></fileset></path><property name="jboss-devstudio-updatesite-core-file" refid="jboss-devstudio-updatesite-core-file-id"/>
+    <path id="devstudio-updatesite-core-file-id"><fileset dir="../site/target"><include name="com.jboss.devstudio.core.site-*.zip"/></fileset></path><property name="devstudio-updatesite-core-file" refid="devstudio-updatesite-core-file-id"/>
 
     <if>
       <isset property="JBOSS_CENTRAL_ZIP"/>
@@ -66,7 +66,7 @@ $java.home = ${java.home}</echo>
         <basename property="JBOSS_CENTRAL_ZIP_FILENAME" file="${JBOSS_CENTRAL_ZIP}"/>
         <mkdir dir="${requirements.dir}"/>
         <get-and-checksum src="${JBOSS_CENTRAL_ZIP}" dest="${requirements.dir}/${JBOSS_CENTRAL_ZIP_FILENAME}"/>
-        <property name="jboss-devstudio-updatesite-central-file" value="${requirements.dir}/${JBOSS_CENTRAL_ZIP_FILENAME}"/>
+        <property name="devstudio-updatesite-central-file" value="${requirements.dir}/${JBOSS_CENTRAL_ZIP_FILENAME}"/>
       </then>
     </if>
 
@@ -74,24 +74,24 @@ $java.home = ${java.home}</echo>
     <mkdir dir="${destdir}"/>
 
     <!-- move all the bits from other places into results/target/ folder -->
-    <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
+    <for list="devstudio-installer-standalone-file,devstudio-installer-eap-file,devstudio-src-file,devstudio-updatesite-core-file,devstudio-updatesite-central-file" param="this">
       <sequential>
         <if>
           <available file="${@{this}}" type="file"/>
           <then>
             <var name="thisfile" unset="true"/>
-            <!-- get updatesite-core from from jboss-devstudio-updatesite-core-file -->
-            <propertyregex property="filedesc" defaultvalue="@{this}" input="@{this}" regexp="jboss-devstudio-(.+)-file" replace="\1" override="true" /> 
+            <!-- get updatesite-core from from devstudio-updatesite-core-file -->
+            <propertyregex property="filedesc" defaultvalue="@{this}" input="@{this}" regexp="devstudio-(.+)-file" replace="\1" override="true" /> 
 
-            <!-- get "jar" or "zip" from jboss-devstudio-10.0.0.Beta2-v20150715-1358-B450000-installer-eap.jar or com.jboss.devstudio.core.site-*.zip -->
+            <!-- get "jar" or "zip" from devstudio-10.0.0.Beta2-v20150715-1358-B450000-installer-eap.jar or com.jboss.devstudio.core.site-*.zip -->
             <propertyregex property="filetype" defaultvalue="${@{this}}" input="${@{this}}" regexp=".+\.(.+)" replace="\1" override="true" /> 
-            <var name="destfile" value="jboss-devstudio-${update.site.version}.${update.site.qualifier}-${filedesc}.${filetype}"/>
+            <var name="destfile" value="devstudio-${update.site.version}.${update.site.qualifier}-${filedesc}.${filetype}"/>
             <echo>Copy ${@{this}} to ${destdir}/${destfile}</echo>
             <copy verbose="false" file="${@{this}}" tofile="${destdir}/${destfile}" preservelastmodified="true"/>
             <var name="@{this}" unset="true"/>
             <property name="@{this}" value="${destdir}/${destfile}"/>
-            <echo>Symlink jboss-devstudio-${update.site.version}.latest-${filedesc}.${filetype} to ./${destfile} (in destdir = ${destdir})</echo>
-            <symlink link="${destdir}/jboss-devstudio-${update.site.version}.latest-${filedesc}.${filetype}" resource="./${destfile}"/>
+            <echo>Symlink devstudio-${update.site.version}.latest-${filedesc}.${filetype} to ./${destfile} (in destdir = ${destdir})</echo>
+            <symlink link="${destdir}/devstudio-${update.site.version}.latest-${filedesc}.${filetype}" resource="./${destfile}"/>
           </then>
         </if>
       </sequential>
@@ -179,7 +179,7 @@ $java.home = ${java.home}</echo>
     <property name="devstudio.version" value="${update.site.version}.${qualifier}"/>
     <property name="devstudio.update.site" value="${devstudio.update.site}"/>
 
-    <for list="jboss-devstudio-installer-standalone-file,jboss-devstudio-installer-eap-file,jboss-devstudio-src-file,jboss-devstudio-updatesite-core-file,jboss-devstudio-updatesite-central-file" param="this">
+    <for list="devstudio-installer-standalone-file,devstudio-installer-eap-file,devstudio-src-file,devstudio-updatesite-core-file,devstudio-updatesite-central-file" param="this">
       <sequential>
         <if>
           <available file="${@{this}}" type="file"/>
@@ -188,7 +188,7 @@ $java.home = ${java.home}</echo>
             <loadfile srcfile="${@{this}}.sha256" property="@{this}.sha256" failonerror="true" />
             <get.size file="${@{this}}" property="@{this}-size" />
             <basename file="${@{this}}" property="@{this}-name" />
-            <propertyregex property="templatename" defaultvalue="@{this}" input="@{this}" regexp="jboss-devstudio-(.+)-file" replace="\1" override="true" />
+            <propertyregex property="templatename" defaultvalue="@{this}" input="@{this}" regexp="devstudio-(.+)-file" replace="\1" override="true" />
             <propertyregex property="templatename-alternate" defaultvalue="${templatename}" input="${templatename}" regexp="(.+)-(.+)" replace="\1" override="true" />
 
             <echo level="verbose">@{this} = ${@{this}}
@@ -251,12 +251,12 @@ $java.home = ${java.home}</echo>
       </else>
     </if>
 
-    <!-- https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/jboss-devstudio-10.0.0.Alpha1-v20160517-2010-B5374-installer-standalone.jar -->
+    <!-- https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/devstudio-10.0.0.Alpha1-v20160517-2010-B5374-installer-standalone.jar -->
     <echo file="${destdir}/content.json">{
 "name": "Red Hat JBoss Developer Studio Installer",
 "description": "Red Hat JBoss Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
 "fullVersion": "${devstudio.version}",
-"installer": "https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/jboss-devstudio-${devstudio.version}-installer-standalone.jar"
+"installer": "https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/devstudio-${devstudio.version}-installer-standalone.jar"
 }
 </echo>
   </target>
