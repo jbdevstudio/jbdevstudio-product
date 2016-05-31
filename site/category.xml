@@ -275,6 +275,11 @@
     <category name="CoreTools" />
   </bundle>
 
+  <!-- JBIDE-22196 add recomenders snippets -->
+  <feature id="org.eclipse.recommenders.snipmatch.rcp.feature">
+    <category name="CoreTools" />
+  </feature>
+
   <!-- include but do not categorize -->
   <feature id="org.jboss.tools.central.feature"/>
   <feature id="org.jboss.tools.common.feature"/>
