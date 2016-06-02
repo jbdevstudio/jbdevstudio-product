@@ -30,7 +30,7 @@
     <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
-    <central.tpc.version>4.60.0.Alpha1-SNAPSHOT</central.tpc.version>
+    <central.tpc.version>4.60.0.Final-SNAPSHOT</central.tpc.version>
     <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${jbosstools_site_stream}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
 
     <!-- jbosstools_site_stream is set in parent pom = 4.4.neon / master -->
