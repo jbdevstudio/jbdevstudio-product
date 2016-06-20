@@ -31,8 +31,7 @@ Building _Red Hat JBoss Developer Studio_ requires Java 6 and Maven 3. See [How 
 
 Build product features, site, and installers like this:
 
-    $ cd devstudio/product
-    $ mvn clean install
+    $ mvn clean install -DBUILD_ALIAS=GA
 
 
 ## Install Red Hat JBoss Developer Studio
