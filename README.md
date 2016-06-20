@@ -79,3 +79,15 @@ _Red Hat JBoss Developer Studio_ is open source, and we welcome anybody that wan
 If you want to fix a bug or make any changes, please log an issue in the [Red Hat JBoss Developer Studio JIRA](https://issues.jboss.org/browse/Red Hat JBoss Developer Studio) describing the bug or new feature.
 
 After you are happy with your changes and a full build runs successfully, attach a patch to the JIRA. 
+
+
+## License
+
+Red Hat, Inc. licenses these features and plugins to you under
+certain open source licenses (or aggregations of such licenses), which
+in a particular case may include the Eclipse Public License, the GNU
+Lesser General Public License, and/or certain other open source
+licenses. For precise licensing details, consult the corresponding
+source code, or contact Red Hat, Attn: General Counsel,
+100 East Davie St., Raleigh NC 27601 USA.
+
