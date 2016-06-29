@@ -88,8 +88,8 @@
                       <requireProperty>
                         <property>BUILD_ALIAS</property>
                         <message>BUILD_ALIAS is missing, it must be specified.</message>
-                        <regex>.*((Alpha|Beta|CR)\d+[a-z]?)|GA</regex>
-                        <regexMessage>The BUILD_ALIAS (${BUILD_ALIAS}) is invalid. Must contain either Alpha, Beta or CR with postfix, or be GA.</regexMessage>
+                        <regex>.*((AM|Alpha|Beta|CR)\d+[a-z]?)|GA</regex>
+                        <regexMessage>The BUILD_ALIAS (${BUILD_ALIAS}) is invalid. Must contain either AM, Alpha, Beta or CR with postfix, or be GA.</regexMessage>
                       </requireProperty>
                     </rules>
                     <fail>true</fail>
