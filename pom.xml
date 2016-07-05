@@ -37,6 +37,8 @@
     <!-- <jbosstools_site_stream>master</jbosstools_site_stream> -->
     <jbosstools-site>http://download.jboss.org/jbosstools/${eclipseReleaseName}/snapshots/updates/core/${jbosstools_site_stream}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.CR1-SNAPSHOT/REPO/</jbosstools-target-site> -->
+    <stagingBaselineRepository>https://devstudio.redhat.com/10.0/staging/updates/</stagingBaselineRepository>
+
 
     <!--
       By default, use EAP 6.1.0.Alpha, which is publically available. This allows devstudio to be build locally w/o needing access to devel.redhat.com
