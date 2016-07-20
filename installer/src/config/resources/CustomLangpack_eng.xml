@@ -25,6 +25,7 @@
     <str id="DiskSpaceCheckPanel.summaryCaption" txt="Disk Space:"/>
     <str id="JBossAsSelectPanel.headline.as" txt="Select Platforms and Servers"/>
     <str id="InstallAdditionalFeaturesPanel.headline.features" txt="Select Additional Features to Install"/>
+    <str id="InstallAdditionalRuntimesPanel.headline.runtimes" txt="Select Additional Runtimes to Install"/>
     <str id="SummaryPanel.headline.summary" txt="Summary Information"/>
     <str id="InstallPanel.headline.install" txt="Installation"/>
     <str id="DevstudioShortcutPanel.headline.shortcut" txt="Shortcuts"/>
@@ -90,4 +91,5 @@
     <str id="ServerSearchDailog_StatusMessage" txt="Platform/Server Search in Progress ..."/>
     <str id="HTMLInfoPanelWithRootWarning.rootUserWarning" txt="You're running installer as root user" />
     <str id="HTMLInfoPanelWithRootWarning.warning" txt="Warning" />
-</langpack>
+    <str id="RuntimesSelectPanel.statement1" txt="Select the additional runtime servers you would like to install:"/>
+  </langpack>

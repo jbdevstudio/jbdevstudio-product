@@ -23,6 +23,7 @@
 package com.izforge.izpack.installer;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,11 +32,18 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.jar.JarEntry;
 import java.util.jar.Pack200;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -72,13 +80,12 @@ import com.jboss.devstudio.core.installer.bean.P2IU;
 public class Unpacker extends UnpackerBase
 {
     public static final String INSTALL_P2_LOCATIONS_VAR = "INSTALL_P2_LOCATIONS";
-
-	public static final String INSTALL_IUS_VAR = "INSTALL_IUS";
-
+    public static final String INSTALL_RT_LOCATIONS_VAR = "INSTALL_RT_LOCATIONS";
+    public static final String INSTALL_IUS_VAR = "INSTALL_IUS";
+	
 	private static final String tempSubPath = "/IzpackWebTemp";
-
     private Pack200.Unpacker unpacker;
-
+    final int BUFFER_SIZE = 4096;
 
     /**
      * The constructor.
@@ -105,6 +112,8 @@ public class Unpacker extends UnpackerBase
             ArrayList<ParsableFile> parsables = new ArrayList<ParsableFile>();
             ArrayList<ExecutableFile> executables = new ArrayList<ExecutableFile>();
             ArrayList<UpdateCheck> updatechecks = new ArrayList<UpdateCheck>();
+			String installLocation = this.idata.getVariable("INSTALL_PATH");
+			String rtLocations = (this.idata.getVariable(INSTALL_RT_LOCATIONS_VAR)).trim();
             List packs = idata.selectedPacks;
             int npacks = packs.size();
             handler.startAction("Unpacking", npacks);
@@ -115,7 +124,7 @@ public class Unpacker extends UnpackerBase
             informListeners(customActions, InstallerListener.BEFORE_PACKS, idata, npacks, handler);
             packs = idata.selectedPacks;
             npacks = packs.size();
-
+            
             // We unpack the selected packs
             for (int i = 0; i < npacks; i++)
             {
@@ -171,9 +180,9 @@ public class Unpacker extends UnpackerBase
 
                 	String jvmLocation = this.idata.getVariable("JREPath");
                 	jvmLocation = jvmLocation==null || "".equals(jvmLocation.trim())? this.idata.getVariable("JAVA_HOME"): jvmLocation;
-					String installLocation = this.idata.getVariable("INSTALL_PATH");
 					String installIUs = resolveIUs(this.idata.getVariable(INSTALL_IUS_VAR));
 					String p2Locations = resolveLocations(this.idata.getVariable(INSTALL_P2_LOCATIONS_VAR));
+					
 					File pluginsFolder = new File(installLocation + File.separator +
 							"studio" + File.separator +
 							"p2" + File.separator +
@@ -497,6 +506,7 @@ public class Unpacker extends UnpackerBase
 	                    }
 	                }
                 }
+				
                 // Load information about parsable files
                 int numParsables = objIn.readInt();
                 for (int k = 0; k < numParsables; k++)
@@ -568,7 +578,11 @@ public class Unpacker extends UnpackerBase
                 informListeners(customActions, InstallerListener.AFTER_PACK, packs.get(i),
                         i, handler);
             }
-
+			
+            // Check for supplemental runtime servers.
+			if (!rtLocations.isEmpty())
+				processRuntimes(rtLocations, installLocation, this.idata.info.getInstallerBase());
+			
             // We use the scripts parser
             ScriptParser parser = new ScriptParser(parsables, vs);
             parser.parseFiles();
@@ -665,7 +679,7 @@ public class Unpacker extends UnpackerBase
 		}
 		return ius;
 	}
-
+	
 	public static String resolveLocations(String locations) {
 		if(locations==null || "".equals(locations.trim())) {
 			locations = "devstudio";
@@ -779,5 +793,96 @@ public class Unpacker extends UnpackerBase
 
         }
         return in;
+    }
+    
+    /**
+     * Inflate the specified runtime server zip file into the specified location.
+     * 
+     * @param src
+     * @param dest
+     * @throws IOException
+     */
+    void inflateZip(String src, String dest) throws IOException
+    {   	
+    	BufferedOutputStream bufferedOutputStream = null;
+    	FileInputStream fileInputStream = new FileInputStream(src);
+    	ZipInputStream zipInputStream = new ZipInputStream(new BufferedInputStream(fileInputStream));
+    	ZipEntry zipEntry;
+    	      
+    	while ((zipEntry = zipInputStream.getNextEntry()) != null) {   	       
+    		String zipEntryName = zipEntry.getName();
+    	    File file = new File(dest + zipEntryName);
+    	       
+    	    if (!file.exists()) {
+    	        
+    	    	if (zipEntry.isDirectory())
+    	    		file.mkdirs(); 
+
+    	    	else {
+    	    		byte buffer[] = new byte[BUFFER_SIZE];
+    	    		FileOutputStream fileOutputStream = new FileOutputStream(file);
+    	    		bufferedOutputStream = new BufferedOutputStream(fileOutputStream, BUFFER_SIZE);
+    	    		int count;
+
+    	    		while ((count = zipInputStream.read(buffer, 0, BUFFER_SIZE)) != -1) 
+    	    			bufferedOutputStream.write(buffer, 0, count);
+    	    		
+    	    		bufferedOutputStream.flush();
+    	    		bufferedOutputStream.close(); 
+    	    	}
+    	    } 
+    	}
+    	zipInputStream.close();
+    	fileInputStream.close();
+    }	
+  
+    /**
+     * Process any runtime servers detected in the installer.
+     * 
+     * @param rtLocations
+     * @param installLocation
+     * @param installerBase
+     * @throws IOException
+     */
+    void processRuntimes(String rtLocations, String installLocation, String installerBase) throws IOException
+    {
+    	String jarLocation = P2DirectorStarterListener.findPathJar(Unpacker.class);
+    	String[] rtl = rtLocations.split(",");
+    	installLocation += java.io.File.separator + "runtimes" + java.io.File.separator;
+    	Path zipPath = null;
+	
+    	java.util.jar.JarFile jar = new java.util.jar.JarFile(jarLocation);
+    	JarEntry runtimeEntry = null;
+
+		for (int i = 0; i < rtl.length; i++) {			
+			runtimeEntry = jar.getJarEntry(rtl[i]);
+			
+	    	// Standard jar file extraction if an RT server exists.
+	    	if (runtimeEntry != null) {
+	    		String[] rtlComponents = rtl[i].split(java.io.File.separator);
+	    		File entryFile = new File(installLocation, rtlComponents[i]);
+	    	    entryFile.setLastModified(runtimeEntry.getTime());
+	            entryFile.getParentFile().mkdirs();
+	
+	    	    InputStream in = new BufferedInputStream(jar.getInputStream(runtimeEntry));
+	    	    OutputStream out = new BufferedOutputStream(new FileOutputStream(entryFile));
+	    	    byte[] buffer = new byte[BUFFER_SIZE];
+	    	    
+	    	    for (;;) {
+	    	    	int nBytes = in.read(buffer);
+	    	        if (nBytes <= 0) 
+	    	        	break;
+	    	        out.write(buffer, 0, nBytes);
+	    	    }
+	    	    out.flush();
+	    	    out.close();
+	    	    in.close();
+	
+	    	    zipPath = Paths.get(entryFile.getAbsolutePath());
+	    		inflateZip(zipPath.toString(), installLocation);
+	    		Files.delete(zipPath);
+	    	} 
+		}
+		jar.close();
     }
 }
