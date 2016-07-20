@@ -152,7 +152,7 @@
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
-                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
+                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all</arg>
                   </arguments>
                 </configuration>
               </execution>
@@ -169,7 +169,7 @@
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
-                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_ID}-B${BUILD_NUMBER}/all</arg>
+                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all</arg>
                     <arg>-e</arg>
                     <arg>*eap.jar*</arg>
                   </arguments>
