@@ -16,7 +16,6 @@
   <packaging>pom</packaging>
 
   <properties>
-    <maven.build.timestamp.format>'${BUILD_ALIAS}-v'yyyyMMdd-HHmm</maven.build.timestamp.format>
     <snapshotLocation>core</snapshotLocation>
     <snapshotUpdateSitePath>${devstudioReleaseVersion}/snapshots/updates/${snapshotLocation}/${jbosstools_site_stream}</snapshotUpdateSitePath>
   </properties>
@@ -56,10 +55,9 @@
                   <property name="devstudio.update.site" value="https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/"/>
                   <property name="eap.version" value="${eapVersion}"/>
                   <property name="eclipseReleaseName" value="${eclipseReleaseName}"/>
-
                   <property name="project.version" value="${project.version}" />
                   <property name="JBT.version" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}" />
-                  <property name="update.site.qualifier" value="${maven.build.timestamp}"/>
+                  <property name="update.site.qualifier" value="${BUILD_ALIAS}-v${BUILD_TIMESTAMP}"/>
                   <property name="update.site.description" value="${update.site.description}"/>
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
                   <property name="jbosstools_site_stream" value="${jbosstools_site_stream}"/>
