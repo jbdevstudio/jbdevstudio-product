@@ -50,7 +50,10 @@ $java.home = ${java.home}</echo>
     </if>
 
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
-    <echo level="info">update.site.version = ${update.site.version}, JBT.version = ${JBT.version}, update.site.qualifier = ${update.site.qualifier}</echo>
+    <propertyregex property="qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="GA.*" replace="GA" override="true" />
+    <var name="devstudio.version" unset="true"/>
+    <var name="devstudio.version" value="${update.site.version}.${qualifier}"/>
+    <echo level="info">update.site.version = ${update.site.version}, JBT.version = ${JBT.version}, devstudio.version = ${devstudio.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
     <path id="devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="devstudio-*-installer-standalone.jar"/></fileset></path><property name="devstudio-installer-standalone-file" refid="devstudio-installer-standalone-file-id"/>
 
@@ -176,7 +179,6 @@ $java.home = ${java.home}</echo>
 
     <property name="eap.version" value="${eap.version}"/>
     <property name="eclipse.version" value="${eclipse.version}"/>
-    <property name="devstudio.version" value="${update.site.version}.${qualifier}"/>
     <property name="devstudio.update.site" value="${devstudio.update.site}"/>
 
     <for list="devstudio-installer-standalone-file,devstudio-installer-eap-file,devstudio-src-file,devstudio-updatesite-core-file,devstudio-updatesite-central-file" param="this">
@@ -238,9 +240,6 @@ $java.home = ${java.home}</echo>
         </if>
       </else>
     </if>
-    <propertyregex property="qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="GA.*" replace="GA" override="true" />
-    <property name="devstudio.version" value="${update.site.version}.${qualifier}"/>
-    <echo level="info">update.site.version = ${update.site.version}, devstudio.version = ${devstudio.version}, update.site.qualifier = ${update.site.qualifier}</echo>
     <if>
       <not><equals arg1="&amp;shy;" arg2="${update.site.description}"/></not>
       <then>
