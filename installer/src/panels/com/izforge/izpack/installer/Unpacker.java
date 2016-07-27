@@ -113,7 +113,7 @@ public class Unpacker extends UnpackerBase
             ArrayList<ExecutableFile> executables = new ArrayList<ExecutableFile>();
             ArrayList<UpdateCheck> updatechecks = new ArrayList<UpdateCheck>();
 			String installLocation = this.idata.getVariable("INSTALL_PATH");
-			String rtLocations = (this.idata.getVariable(INSTALL_RT_LOCATIONS_VAR)).trim();
+			String rtLocations = this.idata.getVariable(INSTALL_RT_LOCATIONS_VAR);
             List packs = idata.selectedPacks;
             int npacks = packs.size();
             handler.startAction("Unpacking", npacks);
@@ -580,7 +580,7 @@ public class Unpacker extends UnpackerBase
             }
 			
             // Check for supplemental runtime servers.
-			if (!rtLocations.isEmpty())
+			if (rtLocations != null && !rtLocations.isEmpty())
 				processRuntimes(rtLocations, installLocation, this.idata.info.getInstallerBase());
 			
             // We use the scripts parser
