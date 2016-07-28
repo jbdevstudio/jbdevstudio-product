@@ -77,7 +77,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
            debug="on"
            source="1.5"
            target="1.5"
-           verbose="false" 
+           verbose="false"
          executable="${env.JAVA_HOME}/bin/javac">
     </javac>
 
@@ -144,9 +144,9 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
         <include name="**/HTMLInfoPanel*.class" />
       </fileset>
     </jar>
-    
-    <unjar src="${izpack.home}/bin/panels/InstallationGroupPanel.jar" dest="${build.dir}/classes" />    
-    
+
+    <unjar src="${izpack.home}/bin/panels/InstallationGroupPanel.jar" dest="${build.dir}/classes" />
+
     <unjar src="${izpack.home}/lib/installer.jar" dest="${build.dir}/classes" >
       <patternset>
         <exclude name="**/Unpacker.class" />
@@ -158,26 +158,26 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 	<exclude name="**/RunnableReader.class" />
       </patternset>
     </unjar>
-    
+
     <mkdir dir="${build.installer.dir}/lib" />
-    
+
     <jar destfile="${build.installer.dir}/lib/installer.jar" manifest="${build.dir}/classes/META-INF/MANIFEST.MF">
       <fileset dir="${build.dir}/classes" />
     </jar>
 
     <unjar src="${izpack.home}/lib/uninstaller.jar" dest="${build.dir}/uninstaller-classes" />
-    
-    
+
+
     <copy todir="${build.dir}/uninstaller-classes" overwrite="true">
       <fileset dir="${build.dir}/classes">
         <include name="**/PrivilegedRunner.class" />
       </fileset>
     </copy>
-    
+
     <jar destfile="${build.installer.dir}/lib/uninstaller.jar"  manifest="${build.dir}/uninstaller-classes/META-INF/MANIFEST.MF">
       <fileset dir="${build.dir}/uninstaller-classes" />
     </jar>
-    
+
     <copy todir="${izpack.home}/lib" overwrite="true" file="${build.installer.dir}/lib/uninstaller.jar" />
   </target>
 
@@ -392,13 +392,16 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   			<isset property="skipTests" />
   		</not>
   		<then>
+      <condition property="exeExt" value=".exe" else="">
+           <os family="windows"/>
+      </condition>
 			<loadfile srcfile="${basedir}/devstudio-test-install.xml" property="devstudio-test-install.xml.updated">
 				<filterchain>
 					<expandproperties/>
 				</filterchain>
 			</loadfile>
 			<echo file="${project.build.directory}/devstudio-test-install.xml">${devstudio-test-install.xml.updated}</echo>
-		
+
 			<java jar="${destination.dir}/${installer.name}.jar" fork="true" failonerror="true" maxmemory="512m" jvmargs="-DTRACE=true -Djava.security.manager -Djava.security.policy=${basedir}/java.policy">
 				<arg line="${project.build.directory}/devstudio-test-install.xml"/>
 			</java>

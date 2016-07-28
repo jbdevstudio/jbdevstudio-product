@@ -14,7 +14,7 @@
 <com.izforge.izpack.panels.SummaryPanel id="summary"/>
 <com.izforge.izpack.panels.InstallPanel id="install"/>
 <com.jboss.devstudio.core.installer.CreateLinkPanel id="createlink">
-<jrelocation>${java.home}/bin/java</jrelocation>
+<jrelocation>${java.home}/bin/java${exeExt}</jrelocation>
 </com.jboss.devstudio.core.installer.CreateLinkPanel>
 <com.izforge.izpack.panels.ShortcutPanel id="shortcut"/>
 <com.jboss.devstudio.core.installer.ShortcutPanelPatch id="shortcutpatch"/>
