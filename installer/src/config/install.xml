@@ -113,6 +113,10 @@
 				src="config/resources/AdditionalFeaturesSpec.json" />
 			<res id="DevstudioFeaturesSpec.json"
 				src="config/resources/DevstudioFeaturesSpec.json" />
+			<res id="AdditionalRuntimesSpec.json"
+				src="config/resources/AdditionalRuntimesSpec.json" />
+			<res id="DevstudioRuntimesSpec.json"
+				src="config/resources/DevstudioRuntimesSpec.json" />
 	</resources>
 
 	<panels>
@@ -131,7 +135,11 @@
 		<!-- This panel asks about JBoss Application Server installation -->
 		<panel classname="com.jboss.devstudio.core.installer.JBossAsSelectPanel" id="as" />
 		
+		<!-- This panel is enabled if the installer was built with suplemental p2 features. -->
 		<panel classname="com.jboss.devstudio.core.installer.InstallAdditionalFeaturesPanel" id="features" />
+
+		<!-- This panel is enabled if the installer was built with suplemental runtime servers. -->
+		<panel classname="com.jboss.devstudio.core.installer.InstallAdditionalRuntimesPanel" id="runtimes" />
 		
 		<!-- This panel updates idata.selectedPacks list -->
 		<panel classname="UpdatePacksPanel" id="updatepacks"/>

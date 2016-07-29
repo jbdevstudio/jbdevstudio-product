@@ -18,6 +18,7 @@ import com.izforge.izpack.Pack;
 import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.InstallerFrame;
 import com.izforge.izpack.installer.IzPanel;
+import com.izforge.izpack.installer.Unpacker;
 import com.izforge.izpack.util.IoHelper;
 
 public class DiskSpaceCheckPanel extends IzPanel
@@ -59,11 +60,19 @@ public class DiskSpaceCheckPanel extends IzPanel
    private long getInstallationSize()
    {
       long totalSize = 0;
-      Iterator iter = idata.selectedPacks.iterator();
+      Iterator<Pack> iter = idata.selectedPacks.iterator();
       while( iter.hasNext() )
       {
          Pack p = (Pack) iter.next();
          totalSize += p.nbytes;
+      }
+     
+      // Account for any supplemental runtime servers in the total aggregate size.
+      String runtimeSizes = idata.getVariable("INSTALL_RT_SIZES");
+      if (runtimeSizes != null && !runtimeSizes.isEmpty()) {
+    	  String[] rts = runtimeSizes.split(",");
+    	  for (int i = 0; i < rts.length; i++) 
+    		  totalSize += Long.parseLong(rts[i]);
       }
       return totalSize;
    }
