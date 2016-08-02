@@ -2,7 +2,7 @@
 <feature
       id="com.jboss.devstudio.core.capabilities.feature"
       label="%featureName"
-      version="10.0.1.qualifier"
+      version="10.1.0.qualifier"
       provider-name="%providerName"
       plugin="com.jboss.devstudio.core"
       license-feature="org.jboss.tools.foundation.license.feature"

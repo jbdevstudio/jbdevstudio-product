@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.jboss.devstudio</groupId>
 		<artifactId>product</artifactId>
-		<version>10.0.1-SNAPSHOT</version>
+		<version>10.1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.jboss.devstudio.core</groupId>
 	<artifactId>com.jboss.devstudio.core.site</artifactId>
