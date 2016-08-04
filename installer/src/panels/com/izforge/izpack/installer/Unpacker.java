@@ -62,14 +62,12 @@ import com.izforge.izpack.util.FileExecutor;
 import com.izforge.izpack.util.Housekeeper;
 import com.izforge.izpack.util.IoHelper;
 import com.izforge.izpack.util.OsConstraint;
-import com.izforge.izpack.util.OsVersion;
 import com.jboss.devstudio.core.installer.ConsoleCommandException;
 import com.jboss.devstudio.core.installer.ErrorUtils;
 import com.jboss.devstudio.core.installer.P2DirectorStarterListener;
 import com.jboss.devstudio.core.installer.P2DirectorStarterListener.BundleListConsoleCommand;
 import com.jboss.devstudio.core.installer.P2DirectorStarterListener.FeatureInstallConsoleCommand;
 import com.jboss.devstudio.core.installer.P2DirectorStarterListener.MetadataGenerationConsoleCommand;
-import com.jboss.devstudio.core.installer.bean.P2IU;
 
 /**
  * Unpacker class.
@@ -114,9 +112,16 @@ public class Unpacker extends UnpackerBase
             ArrayList<UpdateCheck> updatechecks = new ArrayList<UpdateCheck>();
 			String installLocation = this.idata.getVariable("INSTALL_PATH");
 			String rtLocations = this.idata.getVariable(INSTALL_RT_LOCATIONS_VAR);
+			Boolean supplementalRuntimes = 	(rtLocations != null && !rtLocations.isEmpty());
             List packs = idata.selectedPacks;
             int npacks = packs.size();
-            handler.startAction("Unpacking", npacks);
+            
+            // Account for additional runtimes in the progress handler.
+            if (supplementalRuntimes)
+            	handler.startAction("Unpacking", npacks+1);
+            else
+            	handler.startAction("Unpacking", npacks);
+            
             udata = UninstallData.getInstance();
             // Custom action listener stuff --- load listeners ----
             List[] customActions = getCustomActions();
@@ -580,8 +585,8 @@ public class Unpacker extends UnpackerBase
             }
 			
             // Check for supplemental runtime servers.
-			if (rtLocations != null && !rtLocations.isEmpty())
-				processRuntimes(rtLocations, installLocation, this.idata.info.getInstallerBase());
+			if (supplementalRuntimes)
+				processRuntimes(rtLocations, installLocation, this.idata.info.getInstallerBase(), npacks);
 			
             // We use the scripts parser
             ScriptParser parser = new ScriptParser(parsables, vs);
@@ -844,10 +849,11 @@ public class Unpacker extends UnpackerBase
      * @param installerBase
      * @throws IOException
      */
-    void processRuntimes(String rtLocations, String installLocation, String installerBase) throws IOException
+    void processRuntimes(String rtLocations, String installLocation, String installerBase, int step) throws IOException
     {
     	String jarLocation = P2DirectorStarterListener.findPathJar(Unpacker.class);
     	String[] rtl = rtLocations.split(",");
+    	handler.nextStep("Processing Supplemental Runtimes", step + 1, 1);
     	installLocation += java.io.File.separator + "runtimes" + java.io.File.separator;
     	Path zipPath = null;
 	
@@ -856,11 +862,12 @@ public class Unpacker extends UnpackerBase
 
 		for (int i = 0; i < rtl.length; i++) {			
 			runtimeEntry = jar.getJarEntry(rtl[i]);
-			
+			handler.progress(i + 1, "Runtime " + runtimeEntry.getName());
+	
 	    	// Standard jar file extraction if an RT server exists.
 	    	if (runtimeEntry != null) {
 	    		String[] rtlComponents = rtl[i].split(java.io.File.separator);
-	    		File entryFile = new File(installLocation, rtlComponents[i]);
+	    		File entryFile = new File(installLocation, rtlComponents[0]);
 	    	    entryFile.setLastModified(runtimeEntry.getTime());
 	            entryFile.getParentFile().mkdirs();
 	
