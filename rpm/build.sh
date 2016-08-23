@@ -145,6 +145,10 @@ rm -f ${yum_repo}/*.src.rpm
 time createrepo_c ${yum_repo}
 echo "Yum repository generated in: ${yum_repo}"
 
+# create sha256sum
+rpmfiles=$(find ${yum_repo} -maxdepth 1 -type f -name "*.rpm")
+for z in ${rpmfiles}; do for shasum in $(sha256sum ${z}); do if [[ $shasum != ${z} ]]; then echo $shasum > ${z}.sha256; fi; done; done
+
 # cleanup temp artifacts
 rm -f ${package_name}*.src.rpm ${package_name}.tar.xz ${mock_cfg}.cfg
 
