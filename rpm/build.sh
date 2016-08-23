@@ -9,7 +9,19 @@ https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA
 https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\\
 https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip\""
     echo ""
-    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\"" 
+    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\""
+    echo ""
+    echo "Example 3: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\""
+    echo ""
+    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final-SNAPSHOT/,\\
+https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
+https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
+https://devstudio.jboss.com/10.0/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
+    echo ""
+    echo "Example 5: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final-SNAPSHOT/,\\
+https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
+https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
+file:///path/to/jbdevstudio-product/site/target/repository\"" 
     echo ""
     exit 1;
 }
@@ -21,12 +33,8 @@ fi
 # defaults
 quiet="" # or "" or "-q"
 clean=0
-# TODO: update defaults to use staging site or 10.1.0.GA release
-source_p2_zips="" # or "https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-updatesite-core.zip,\
-#https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform.zip,\
-#https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\
-#https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip"
-source_p2_sites="" # or https://devstudio.redhat.com/10.0/stable/updates/ or https://devstudio.redhat.com/10.0/staging/updates/
+source_p2_zips="" # comma-separated list passed in from commandline
+source_p2_sites="" # comma-separated list passed in from commandline
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
@@ -43,14 +51,15 @@ now=$(date +%s);  (( now = now - 1230786000 ))
 if [ ! $(which mock) ] ; then
   echo "Mock is not installed!"
   echo "Install with:"
-  echo "$ su -c 'dnf install mock'"
+  echo "$ su -c 'rpm -Uvh http://download.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-8.noarch.rpm'"
+  echo "$ su -c 'yum install mock'"
   exit 2
 fi
 
 if [ ! $(which rpmbuild) ] ; then
   echo "rpm-build is not installed!"
   echo "Install with:"
-  echo "$ su -c 'install rpm-build redhat-rpm-config'"
+  echo "$ su -c 'yum install rpm-build redhat-rpm-config'"
   exit 2
 fi
 
@@ -72,7 +81,7 @@ fi
 if [[ $(unzip -tq /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar | egrep "cannot find or open") ]]; then
   echo "Eclipse equinox launcher is not installed!"
   echo "Install with:"
-  echo "$ su -c 'dnf install eclipse-platform'"
+  echo "$ su -c 'yum install eclipse-platform'"
   exit 2
 fi
 
@@ -128,11 +137,93 @@ if [[ ! ${source_p2_sites} ]]; then usage; fi
 
 # TODO: remove features that are installable from upstream eclipse-* rpms
 featurelist=""; for f in $(cat ${package_name}.featurelist.txt | sed -e "s/^#.\+//g"); do featurelist="${featurelist},${f}.feature.group"; done; featurelist=${featurelist:1}
-if [[ ${quiet} != "-q" ]]; then echo ""; echo -n "[INFO] Install these features ..."; for f in ${featurelist//,/, }; do echo $f; done; echo ""; fi
+if [[ ${quiet} != "-q" ]]; then echo ""; echo -n "[INFO] Install these features ... "; for f in ${featurelist//,/, }; do echo $f; done; echo ""; fi
 
 # Download features or other IUs from update sites
 p2extract ${mirror_folder} ${source_p2_sites} ${featurelist}
 # when done, should have 660M in mirror_folder (takes about 1 min when using zipped update sites)
+
+# remove IUs available in the rh-eclipse46-base rpm
+mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
+tot=-2 # omit features and plugins folders from the count
+for iu in ${mirroredIUs}; do
+  tot=$((tot+1))
+done
+if [[ ${quiet} != "-q" ]]; then echo "Initial total IUs in ${mirror_folder}: ${tot}"; fi
+
+cnt=0
+rpmlist="$(rpm -q --requires rh-eclipse46-base | grep -v rpmlib | sed "s#\(rh-[^=]\+\).*#\1#")" # echo $rpmlist
+for iu in ${mirroredIUs}; do 
+  # strip version from the IU
+  iu_name=${iu##*/}; iu_name=${iu_name%.jar}
+  if [[ ${iu_name} ]] && [[ ${iu_name} != "features" ]] && [[ ${iu_name} != "plugins" ]]; then
+    iu_ver=$(echo ${iu_name} | sed -e "s#.\+_\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\).*#\1.\2.\3#")
+    cnt=$((cnt+1))
+    iu_name=${iu_name%%_${iu_ver}*} # trim off version suffix
+    #if [[ ${quiet} != "-q" ]]; then echo "[INFO] [${cnt}/${tot}] ${iu_name} = ${iu_ver}"; fi
+    # check if this IU is in rh-eclipse46-base
+    match=$(rpm -q --provides ${rpmlist} | sed -rn '/rh-eclipse46-osgi\('${iu_name}'\)\ \=\ '${iu_ver}'/p')
+    if [[ ${match} ]]; then
+      #if [[ ${quiet} != "-q" ]]; then echo "[INFO] [${cnt}/${tot}] Remove ${iu_name} ${iu_ver} == ${match}"; fi
+      rm -fr ${iu}
+    fi
+    #if [[ ${quiet} != "-q" ]]; then echo ""; fi
+  fi
+done
+
+mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
+tot=-2 # omit features and plugins folders from the count
+for iu in ${mirroredIUs}; do
+  tot=$((tot+1))
+done
+if [[ ${quiet} != "-q" ]]; then echo "Revised total IUs in ${mirror_folder}: ${tot}"; fi
+
+# remove IUs available in other rpms; depends on rh-eclipse46-devstudio already being installed; otherwise skip this step
+# Generate list of features & plugins provided by rh-eclipse46-devstudio
+productPath=/opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/${package_name}/eclipse
+if [[ -d ${productPath} ]]; then 
+  for iu in ${productPath}/{features,plugins}/*; do
+    productIUs="$productIUs $(basename $iu | rev | cut -d_ -f1 --complement | rev)"
+  done
+
+  # Check for duplicates provided by other packages
+  archful=/opt/rh/rh-eclipse46/root/usr/lib64/eclipse
+  noarch=/opt/rh/rh-eclipse46/root/usr/share/eclipse
+  for IUtype in features plugins; do
+    for iu in $archful/${IUtype}/* {${archful},${noarch}}/droplets/*/eclipse/${IUtype}/*; do
+      if [ -e "$iu" ] ; then
+        # iu_name=$(basename $iu | rev | cut -d_ -f1 --complement | rev)
+        iu_name=${iu##*/}; iu_name=${iu_name%.jar}
+        iu_ver=$(echo ${iu_name} | sed -e "s#.\+_\([0-9]\+\)\.\([0-9]\+\)\.\([0-9]\+\).*#\1.\2.\3#")
+        iu_name=${iu_name%%_${iu_ver}*} # trim off version suffix
+        for productIU in $productIUs ; do
+          if [ "$iu_name" == "$productIU" ] ; then
+            pkg=$(rpm -qf $iu | rev | cut -d- -f1,2 --complement | rev)
+            if [ "$pkg" != "rh-eclipse46-${package_name}" ] ; then
+              #if [[ ${quiet} != "-q" ]]; then echo "[INFO] ${IUtype%s} ${iu_name} is provided by $pkg"; fi
+              match="$(find ${mirror_folder}/${IUtype} -maxdepth 1 -name "${iu_name}_*")"
+              if [[ $match ]]; then 
+                for m in ${match}; do
+                  if [[ "${m/${iu_name}_${iu_ver}/}" != "${m}" ]]; then
+                    #if [[ ${quiet} != "-q" ]]; then echo "[INFO] Remove ${iu_name}_${iu_ver} :: $m"; fi
+                    rm -fr ${m}
+                  fi
+                done
+              fi
+            fi
+          fi
+        done
+      fi
+    done
+  done
+fi
+
+mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
+tot=-2 # omit features and plugins folders from the count
+for iu in ${mirroredIUs}; do
+  tot=$((tot+1))
+done
+if [[ ${quiet} != "-q" ]]; then echo "Revised total IUs in ${mirror_folder}: ${tot}"; fi
 
 echo ""; echo "[INFO] Build devstudio.tar.xz ..."
 time tar caf ${package_name}.tar.xz ${package_name}/

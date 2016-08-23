@@ -9,6 +9,5 @@
 	</parent>
 	<groupId>com.jboss.devstudio.core.features</groupId>
 	<artifactId>com.jboss.devstudio.core.feature</artifactId>
-	<version>10.1.0-SNAPSHOT</version>
 	<packaging>eclipse-feature</packaging>
 </project>

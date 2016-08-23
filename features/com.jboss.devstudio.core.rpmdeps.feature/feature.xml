@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature 
+    id="com.jboss.devstudio.core.rpmdeps.feature" 
+    label="%featureName" 
+    version="10.1.0.qualifier" 
+    provider-name="%providerName" 
+    license-feature="org.jboss.tools.foundation.license.feature"
+    license-feature-version="0.0.0"
+    plugin="com.jboss.devstudio.core">
+
+  <description url="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/">
+    %description
+  </description>
+  
+  <copyright>
+    %copyright
+  </copyright>
+
+  <license url="%licenseURL">
+    %license
+  </license>
+
+  <!-- to remove requirements which are available in an rpm, do this:
+      for iu in $(cat ../com.jboss.devstudio.core.rpm.feature/feature.xml | grep import \
+        | sed "s#<import \(feature\|plugin\)=\"\([^\"]\+\)\".\+#\2#"); do 
+        rpm -q \-\-provides $(rpm -q \-\-requires rh-eclipse46-base | grep -v rpmlib | sed "s#\(rh-[^=]\+\).*#\1#") \
+        | sort | uniq | grep osgi | grep $iu; done
+
+      if nothing reported, no dupes!
+      if output, move those features to the rpmdeps.feature.
+  -->
+  <requires>
+    <!-- these dependencies are available from rpms -->
+    <import feature="org.eclipse.cvs"/>
+    <import feature="org.eclipse.egit"/>
+    <import feature="org.eclipse.equinox.p2.core.feature"/>
+    <import feature="org.eclipse.help"/>
+    <import feature="org.eclipse.jdt"/>
+    <import plugin="org.eclipse.jem.util" />
+    <import feature="org.eclipse.jgit"/>
+    <import feature="org.eclipse.jsf.feature"/>
+    <import feature="org.eclipse.jst.enterprise_ui.feature"/>
+    <import feature="org.eclipse.jst.common.fproj.enablement.jdt"/>
+    <import feature="org.eclipse.jst.server_adapters.feature"/>
+    <import feature="org.eclipse.jst.server_ui.feature"/>
+    <import feature="org.eclipse.jst.web_ui.feature"/>
+    <import feature="org.eclipse.jst.webpageeditor.feature"/>
+    <import feature="org.eclipse.jst.ws.axis2tools.feature"/>
+    <import feature="org.eclipse.jst.ws.cxf.feature"/>
+    <import feature="org.eclipse.jst.ws.jaxws.dom.feature"/>
+    <import feature="org.eclipse.jst.ws.jaxws.feature"/>
+    <import plugin="org.eclipse.linuxtools.docker.core" version="1.1.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.linuxtools.docker.ui" version="1.1.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.linuxtools.docker.docs" version="1.1.0" match="greaterOrEqual"/>
+    <import feature="org.eclipse.mylyn.wikitext_feature"/>
+    <import feature="org.eclipse.platform"/>
+    <import feature="org.eclipse.rcp" />
+    <import feature="org.eclipse.wst.common.fproj"/>
+    <import feature="org.eclipse.wst.jsdt.feature"/>
+    <import feature="org.eclipse.wst.server_adapters.feature"/>
+    <import feature="org.eclipse.wst.web_ui.feature"/>
+    <import feature="org.eclipse.wst.xml_ui.feature"/>
+    <import feature="org.eclipse.wst.xsl.feature"/>
+    <import plugin="org.eclipse.emf.ecore" />
+    <import plugin="org.eclipse.emf.ecore.edit" />
+    <import plugin="org.eclipse.emf.ecore.xmi" />
+    <import plugin="org.eclipse.emf.edit" />
+    <import plugin="org.eclipse.jdt.doc.user"/>
+    <import plugin="org.eclipse.jst.server.tomcat.core"/>
+    <import plugin="org.eclipse.jst.server.tomcat.ui"/>
+    <import plugin="org.eclipse.wst.common.emf" />
+    <import plugin="org.eclipse.wst.sse.core" />
+    <import plugin="org.eclipse.wst.xml.core" />
+    <import plugin="org.eclipse.core.expressions" version="3.4.400" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.tm.terminal.control" version="4.0.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.tm.terminal.view.core" version="4.0.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.tm.terminal.view.ui" version="4.0.0" match="greaterOrEqual"/>
+    <import feature="org.eclipse.tm.terminal.connector.ssh.feature" version="4.0.0" match="greaterOrEqual"/>
+    <import feature="org.eclipse.tm.terminal.connector.telnet.feature" version="4.0.0" match="greaterOrEqual"/>
+  </requires>
+</feature>

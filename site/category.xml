@@ -351,6 +351,8 @@
     <category name="CoreTools" />
   </feature>
   <feature id="com.jboss.devstudio.core.capabilities.feature"/>
+  <feature id="com.jboss.devstudio.core.rpm.feature"/>
+  <feature id="com.jboss.devstudio.core.rpmdeps.feature"/>
   <feature id="org.eclipse.egit"/>
   <feature id="org.eclipse.jgit"/>
   <feature id="org.eclipse.m2e.feature"/>

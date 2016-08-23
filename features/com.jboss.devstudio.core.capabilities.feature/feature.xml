@@ -4,9 +4,9 @@
       label="%featureName"
       version="10.1.0.qualifier"
       provider-name="%providerName"
-      plugin="com.jboss.devstudio.core"
       license-feature="org.jboss.tools.foundation.license.feature"
-      license-feature-version="0.0.0">
+      license-feature-version="0.0.0"
+      plugin="com.jboss.devstudio.core">
 
    <description url="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/">
       %description
