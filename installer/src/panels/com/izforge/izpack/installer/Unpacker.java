@@ -862,10 +862,10 @@ public class Unpacker extends UnpackerBase
 
 		for (int i = 0; i < rtl.length; i++) {			
 			runtimeEntry = jar.getJarEntry(rtl[i]);
-			handler.progress(i + 1, "Runtime " + runtimeEntry.getName());
 	
 	    	// Standard jar file extraction if an RT server exists.
 	    	if (runtimeEntry != null) {
+			handler.progress(i + 1, "Runtime " + runtimeEntry.getName());
 	    		String[] rtlComponents = rtl[i].split(java.io.File.separator);
 	    		File entryFile = new File(installLocation, rtlComponents[0]);
 	    	    entryFile.setLastModified(runtimeEntry.getTime());
