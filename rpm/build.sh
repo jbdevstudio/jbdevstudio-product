@@ -1,5 +1,43 @@
 #!/bin/bash -e
 
+usage ()
+{
+    echo "Usage:     $0 -clean -z \"https://path/to/1.zip,https://path/to/2.zip,...\" -u \"https://path/to/site,...\" "
+    echo ""
+    echo "Example 1: $0 -z \"https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-updatesite-core.zip,\\
+https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform.zip,\\
+https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\\
+https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip\""
+    echo ""
+    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\"" 
+    echo ""
+    exit 1;
+}
+
+if [[ $# -lt 1 ]]; then
+  usage;
+fi
+
+# defaults
+quiet="" # or "" or "-q"
+clean=0
+# TODO: update defaults to use staging site or 10.1.0.GA release
+source_p2_zips="" # or "https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-updatesite-core.zip,\
+#https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform.zip,\
+#https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\
+#https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip"
+source_p2_sites="" # or https://devstudio.redhat.com/10.0/stable/updates/ or https://devstudio.redhat.com/10.0/staging/updates/
+
+while [[ "$#" -gt 0 ]]; do
+  case $1 in
+    '-clean') clean=1; shift 0;;
+    '-z') source_p2_zips=",$2"; shift 1;;
+    '-u') source_p2_sites=",$2"; shift 1;;
+    '-q') quiet="-q"; shift 0;
+  esac
+  shift 1
+done
+
 now=$(date +%s);  (( now = now - 1230786000 ))
 
 if [ ! $(which mock) ] ; then
@@ -56,25 +94,19 @@ function p2extract () {
   -vmargs -Declipse.p2.MD5Check=false
 }
 
-# Download features or other IUs from update sites
 package_name=devstudio
 
 mirror_folder=$(pwd)/${package_name}
 deps_folder=$(pwd)/${package_name}_deps
 
 # clean before building
-if [[ $1 == "clean" ]]; then 
+if [[ ${clean} -gt 0 ]]; then 
   rm -fr ${mirror_folder} ${deps_folder} ${package_name}*.src.rpm ${package_name}.tar.xz
 fi
 mkdir -p ${mirror_folder}
 mkdir -p ${deps_folder}
 
-source_p2_zips="https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-updatesite-core.zip 
-https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform.zip 
-https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip 
-https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip"
-source_p2_sites=""
-for z in ${source_p2_zips}; do
+for z in ${source_p2_zips//,/ }; do
   file=${z##*/}
   if [[ ! -f ${deps_folder}/${file} ]] || [[ $(unzip -tq ${deps_folder}/${file} | egrep "cannot find") ]]; then 
     echo "[INFO] Fetch $z ..."
@@ -91,9 +123,14 @@ source_p2_sites=${source_p2_sites:1}
 
 echo ""; echo -n "[INFO] Using p2 source sites: "; for s in ${source_p2_sites//,/, }; do echo $s; done; echo ""
 
+# error if no sites defined!
+if [[ ! ${source_p2_sites} ]]; then usage; fi
+
 # TODO: remove features that are installable from upstream eclipse-* rpms
 featurelist=""; for f in $(cat ${package_name}.featurelist.txt | sed -e "s/^#.\+//g"); do featurelist="${featurelist},${f}.feature.group"; done; featurelist=${featurelist:1}
-echo ""; echo -n "[INFO] Install these features ..."; for f in ${featurelist//,/, }; do echo $f; done; echo ""
+if [[ ${quiet} != "-q" ]]; then echo ""; echo -n "[INFO] Install these features ..."; for f in ${featurelist//,/, }; do echo $f; done; echo ""; fi
+
+# Download features or other IUs from update sites
 p2extract ${mirror_folder} ${source_p2_sites} ${featurelist}
 # when done, should have 660M in mirror_folder (takes about 1 min when using zipped update sites)
 
