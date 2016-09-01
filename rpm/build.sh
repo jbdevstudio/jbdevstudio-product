@@ -13,12 +13,12 @@ https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0
     echo ""
     echo "Example 3: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\""
     echo ""
-    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final-SNAPSHOT/,\\
+    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
 https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
 https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
 https://devstudio.jboss.com/10.0/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
     echo ""
-    echo "Example 5: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final-SNAPSHOT/,\\
+    echo "Example 5: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
 https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
 https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
 file:///path/to/jbdevstudio-product/site/target/repository\"" 
@@ -135,7 +135,6 @@ echo ""; echo -n "[INFO] Using p2 source sites: "; for s in ${source_p2_sites//,
 # error if no sites defined!
 if [[ ! ${source_p2_sites} ]]; then usage; fi
 
-# TODO: remove features that are installable from upstream eclipse-* rpms
 featurelist=""; for f in $(cat ${package_name}.featurelist.txt | sed -e "s/^#.\+//g"); do featurelist="${featurelist},${f}.feature.group"; done; featurelist=${featurelist:1}
 if [[ ${quiet} != "-q" ]]; then echo ""; echo -n "[INFO] Install these features ... "; for f in ${featurelist//,/, }; do echo $f; done; echo ""; fi
 
@@ -166,6 +165,7 @@ for iu in ${mirroredIUs}; do
     if [[ ${match} ]]; then
       #if [[ ${quiet} != "-q" ]]; then echo "[INFO] [${cnt}/${tot}] Remove ${iu_name} ${iu_ver} == ${match}"; fi
       rm -fr ${iu}
+      echo ${iu_name} >> ${package_name}.removelist.txt
     fi
     #if [[ ${quiet} != "-q" ]]; then echo ""; fi
   fi
@@ -207,6 +207,7 @@ if [[ -d ${productPath} ]]; then
                   if [[ "${m/${iu_name}_${iu_ver}/}" != "${m}" ]]; then
                     #if [[ ${quiet} != "-q" ]]; then echo "[INFO] Remove ${iu_name}_${iu_ver} :: $m"; fi
                     rm -fr ${m}
+                    echo ${iu_name} >> ${package_name}.removelist.txt
                   fi
                 done
               fi
@@ -217,6 +218,16 @@ if [[ -d ${productPath} ]]; then
     done
   done
 fi
+
+# clean up the removelist file
+cat ${package_name}.removelist.txt | sort | uniq > ${package_name}.removelist.txt.2
+mv ${package_name}.removelist.txt.2 ${package_name}.removelist.txt
+
+# manual plugin removals to avoid singleton problems on eclipse startup
+blacklist=""; for iu in $(cat ${package_name}.blacklist.txt | sed -e "s/^#.\+//g"); do blacklist="${blacklist},${iu}"; done; blacklist=${blacklist:1}
+for iu in ${blacklist}; do
+  rm -f ${mirror_folder}/plugins/${iu}_*
+done
 
 mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
 tot=-2 # omit features and plugins folders from the count
