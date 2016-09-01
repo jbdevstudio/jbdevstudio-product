@@ -243,8 +243,8 @@ mv ${package_name}.removelist.txt.2 ${package_name}.removelist.txt
 # manual plugin removals to avoid singleton problems on eclipse startup
 blacklist=""; for iu in $(cat ${package_name}.blacklist.txt | sed -e "s/^#.\+//g"); do blacklist="${blacklist} ${iu}"; done
 for iu in ${blacklist}; do
-  if [[ ${quiet} != "-q" ]]; then echo "Remove ${iu_name} :: ${mirror_folder}/plugins/${iu}"; fi
-  rm -f ${mirror_folder}/plugins/${iu}_*
+  # if [[ ${quiet} != "-q" ]]; then echo "Remove ${iu}_*"; fi
+  rm -f ${mirror_folder}/*/${iu}_*
 done
 
 mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
