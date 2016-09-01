@@ -1,0 +1,34 @@
+# list of IUs to EXCLUDE from rh-eclipse46-devstudio rpm
+# dependencies will NOT be included automatically MUST list them here explicitly
+# lines starting with # will be ignored
+
+#➔ find . -name javax.annotation\*
+#./usr/lib64/eclipse/plugins/javax.annotation-api_1.2.0.jar
+#./usr/share/eclipse/droplets/devstudio/eclipse/plugins/javax.annotation_1.2.0.v201602091430.jar
+javax.annotation
+javax.annotation-api
+
+#➔ find . -name javax.servlet\*
+#./usr/lib64/eclipse/plugins/javax.servlet.jsp_2.2.1.jar
+#./usr/lib64/eclipse/plugins/javax.servlet-api_3.1.0.jar
+#./usr/share/eclipse/droplets/webtools-javaee/eclipse/plugins/javax.servlet_3.0.0.jar
+#./usr/share/eclipse/droplets/devstudio/eclipse/plugins/javax.servlet_3.1.0.v201410161800.jar
+#./usr/share/eclipse/droplets/devstudio/eclipse/plugins/javax.servlet.jsp_2.2.0.v201112011158.jar
+javax.servlet
+javax.servlet-api
+javax.servlet.jsp
+
+#➔ find . -name javax.ws.rs\*
+#./usr/share/eclipse/droplets/linuxtools-docker/eclipse/plugins/javax.ws.rs-api_2.0.99.b01.jar
+#./usr/share/eclipse/droplets/devstudio/eclipse/plugins/javax.ws.rs_2.0.1.v201504171603.jar
+javax.ws.rs
+javax.ws.rs-api
+
+#➔ find . -name org.eclipse.osgi_\*
+# ./usr/lib64/eclipse/plugins/org.eclipse.osgi_3.11.0.v20160819-1000.jar
+org.eclipse.osgi
+
+#➔ find . -name org.glassfish.hk2.utils_\*
+#./usr/share/eclipse/droplets/linuxtools-docker/eclipse/plugins/org.glassfish.hk2.utils_2.4.0.jar
+#./usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.hk2.utils_2.3.0.b10_v201508191500.jar
+org.glassfish.hk2.utils
