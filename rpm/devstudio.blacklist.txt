@@ -1,0 +1,10 @@
+# list of IUs to EXCLUDE from rh-eclipse46-devstudio rpm
+# dependencies will NOT be included automatically MUST list them here explicitly
+# lines starting with # will be ignored
+
+javax.annotation
+org.eclipse.osgi
+javax.ws.rs
+javax.ws.rs-api
+javax.servlet
+javax.servlet-api
