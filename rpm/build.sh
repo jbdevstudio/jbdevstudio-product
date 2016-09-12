@@ -257,7 +257,6 @@ if [[ ${quiet} != "-q" ]]; then echo "Total [3] IUs in ${mirror_folder}: ${tot}"
 echo ""; echo "[INFO] Build devstudio.tar.xz ..."
 time tar caf ${package_name}.tar.xz ${package_name}/
 # when done (~5mins), 450M devstudio-1.0-1.fc24.src.rpm and devstudio.tar.xz created
-# keep src.rpm, do not delete # rm -f ${package_name}*.src.rpm
 
 echo ""; echo "[INFO] Build rpm using ${package_name}.spec ..."
 time rpmbuild \
@@ -307,8 +306,7 @@ rpmfiles=$(find ${yum_repo} -maxdepth 1 -type f -name "*.rpm")
 for z in ${rpmfiles}; do for shasum in $(sha256sum ${z}); do if [[ $shasum != ${z} ]]; then echo $shasum > ${z}.sha256; fi; done; done
 
 # cleanup temp artifacts
-# keep src.rpm, do not delete # rm -f ${package_name}*.src.rpm 
-rm -fr ${package_name}.tar.xz ${mock_cfg}.cfg
+rm -f ${package_name}*.src.rpm ${package_name}.tar.xz ${mock_cfg}.cfg
 
 sec=$(date +%s); (( sec = sec - 1230786000 ))
 (( elapsed = sec - now ))

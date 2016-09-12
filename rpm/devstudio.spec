@@ -13,7 +13,7 @@ URL:            http://developers.redhat.com/products/devstudio/overview/
 Source0: %{pkg_name}.tar.xz
 Source1: build.sh
 
-BuildArch: noarch
+BuildArch: x86_64
 
 BuildRequires: %{?scl_prefix}eclipse-pde
 Requires: %{?scl_prefix}base
