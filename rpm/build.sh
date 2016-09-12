@@ -257,9 +257,9 @@ if [[ ${quiet} != "-q" ]]; then echo "Total [3] IUs in ${mirror_folder}: ${tot}"
 echo ""; echo "[INFO] Build devstudio.tar.xz ..."
 time tar caf ${package_name}.tar.xz ${package_name}/
 # when done (~5mins), 450M devstudio-1.0-1.fc24.src.rpm and devstudio.tar.xz created
+# keep src.rpm, do not delete # rm -f ${package_name}*.src.rpm
 
 echo ""; echo "[INFO] Build rpm using ${package_name}.spec ..."
-rm -f ${package_name}*.src.rpm
 time rpmbuild \
   --define "_sourcedir $(pwd)" \
   --define "_srcrpmdir $(pwd)" \
@@ -298,7 +298,7 @@ yum_repo=$(pwd)/yum_repo
 rm -rf ${yum_repo}
 mkdir ${yum_repo}
 mv /var/lib/mock/$mock_cfg/result/*.rpm ${yum_repo}
-rm -f ${yum_repo}/*.src.rpm
+# keep src.rpm, do not delete # rm -f ${yum_repo}/*.src.rpm
 time createrepo_c ${yum_repo}
 echo "Yum repository generated in: ${yum_repo}"
 
@@ -307,7 +307,8 @@ rpmfiles=$(find ${yum_repo} -maxdepth 1 -type f -name "*.rpm")
 for z in ${rpmfiles}; do for shasum in $(sha256sum ${z}); do if [[ $shasum != ${z} ]]; then echo $shasum > ${z}.sha256; fi; done; done
 
 # cleanup temp artifacts
-rm -f ${package_name}*.src.rpm ${package_name}.tar.xz ${mock_cfg}.cfg
+# keep src.rpm, do not delete # rm -f ${package_name}*.src.rpm 
+rm -fr ${package_name}.tar.xz ${mock_cfg}.cfg
 
 sec=$(date +%s); (( sec = sec - 1230786000 ))
 (( elapsed = sec - now ))
