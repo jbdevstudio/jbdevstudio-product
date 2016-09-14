@@ -298,8 +298,11 @@ org.eclipse.jst.ws.jaxrs.core
 org.eclipse.jst.ws.jaxrs.ui
 org.eclipse.jst.ws.uddiregistry
 org.eclipse.jst.ws.ui
+org.eclipse.linuxtools.docker.core
 org.eclipse.linuxtools.docker.docs
 org.eclipse.linuxtools.docker.editor
+org.eclipse.linuxtools.docker.feature
+org.eclipse.linuxtools.docker.ui
 org.eclipse.ltk.core.refactoring
 org.eclipse.ltk.ui.refactoring
 org.eclipse.osgi

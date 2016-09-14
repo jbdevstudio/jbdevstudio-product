@@ -163,7 +163,7 @@ for iu in ${mirroredIUs}; do
     # check if this IU is in rh-eclipse46-base
     match=$(rpm -q --provides ${rpmlist} | sed -rn '/rh-eclipse46-osgi\('${iu_name}'\)\ \=\ '${iu_ver}'/p')
     if [[ ${match} ]]; then
-      #if [[ ${quiet} != "-q" ]]; then echo "[INFO] [${cnt}/${tot}] Remove ${iu_name} ${iu_ver} == ${match}"; fi
+      #if [[ ${quiet} != "-q" ]]; then echo "[INFO] [1] [${cnt}/${tot}] Remove ${iu_name} ${iu_ver} == ${match}"; fi
       rm -fr ${iu}
       echo ${iu_name} >> ${package_name}.removelist.txt
     fi
@@ -201,11 +201,13 @@ if [[ -d ${productPath} ]]; then
             pkg=$(rpm -qf $iu | rev | cut -d- -f1,2 --complement | rev)
             if [ "$pkg" != "rh-eclipse46-${package_name}" ] ; then
               #if [[ ${quiet} != "-q" ]]; then echo "[INFO] ${IUtype%s} ${iu_name} is provided by $pkg"; fi
+              #if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] match ==> find ${mirror_folder}/${IUtype} -maxdepth 1 -name \"${iu_name}_*\""; fi
               match="$(find ${mirror_folder}/${IUtype} -maxdepth 1 -name "${iu_name}_*")"
               if [[ $match ]]; then 
                 for m in ${match}; do
+                  #if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] Check if "${m/${iu_name}_${iu_ver}/}" != "${m}", for ${iu_name}_${iu_ver}"; fi
                   if [[ "${m/${iu_name}_${iu_ver}/}" != "${m}" ]]; then
-                    #if [[ ${quiet} != "-q" ]]; then echo "[INFO] Remove ${iu_name}_${iu_ver} :: $m"; fi
+                    #if [[ ${quiet} != "-q" ]]; then echo "[INFO] [2] Remove ${iu_name}_${iu_ver} :: $m"; fi
                     rm -fr ${m}
                     echo ${iu_name} >> ${package_name}.removelist.txt
                   fi
