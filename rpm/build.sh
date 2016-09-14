@@ -236,7 +236,7 @@ tot=-2 # omit features and plugins folders from the count
 for iu in ${mirroredIUs}; do
   tot=$((tot+1))
 done
-#if [[ ${quiet} != "-q" ]]; then echo "Total [2] IUs in ${mirror_folder}: ${tot}"; fi
+if [[ ${quiet} != "-q" ]]; then echo "Total [2] IUs in ${mirror_folder}: ${tot}"; fi
 
 # clean up the removelist file
 cat ${package_name}.removelist.txt | sort | uniq > ${package_name}.removelist.txt.2
