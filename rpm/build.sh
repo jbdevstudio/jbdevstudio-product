@@ -4,21 +4,23 @@ usage ()
 {
     echo "Usage:     $0 -clean -z \"https://path/to/1.zip,https://path/to/2.zip,...\" -u \"https://path/to/site,...\" "
     echo ""
-    echo "Example 1: $0 -z \"https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-updatesite-core.zip,\\
+    echo "Example 1a: $0 -z \"https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-updatesite-core.zip,\\
 https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform.zip,\\
 https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\\
 https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip\""
     echo ""
+    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/10.0/stable/updates/\""
+    echo ""
     echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\""
     echo ""
-    echo "Example 3: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\""
+    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\""
     echo ""
-    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
+    echo "Example 3b: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
 https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
 https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
 https://devstudio.jboss.com/10.0/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
     echo ""
-    echo "Example 5: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
+    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
 https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
 https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
 file:///path/to/jbdevstudio-product/site/target/repository\"" 
