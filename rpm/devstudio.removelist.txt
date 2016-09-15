@@ -1,5 +1,12 @@
 com.sun.syndication
+javax.annotation
+javax.annotation-api
 javax.inject
+javax.servlet
+javax.servlet-api
+javax.servlet.jsp
+javax.ws.rs
+javax.ws.rs-api
 javax.xml
 javax.xml.rpc
 jnr.x86asm
@@ -533,6 +540,7 @@ org.eclipse.wst.xsdeditor.doc.user
 org.eclipse.wst.xsd.ui
 org.eclipse.xsd
 org.eclipse.xsd.edit
+org.glassfish.hk2.utils
 org.sat4j.core
 org.sat4j.pb
 org.tukaani.xz

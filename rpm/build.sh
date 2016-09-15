@@ -228,7 +228,7 @@ blacklist=""; for iu in $(cat ${package_name}.blacklist.txt | sed -e "s/^#.\+//g
 for iu in ${blacklist}; do
   # if [[ ${quiet} != "-q" ]]; then echo "Remove ${iu}_*"; fi
   rm -f ${mirror_folder}/*/${iu}_*
-  echo ${iu} >> {package_name}.removelist.txt
+  echo ${iu} >> ${package_name}.removelist.txt
 done
 
 mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
