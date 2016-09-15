@@ -1,7 +1,7 @@
 %{?scl:%scl_package devstudio}
 %{!?scl:%global pkg_name %{name}}
 %{?java_common_find_provides_and_requires}
-%{expand: %%global datetime %(date -u +%Y$m%d-%H%M)}
+%{expand: %%global datetime %(date -u +%Y%m%d-%H%M)}
 
 Name:           %{?scl_prefix}devstudio
 Version:        1.0

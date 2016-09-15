@@ -132,7 +132,7 @@ for z in ${source_p2_zips}; do
 done
 source_p2_sites=${source_p2_sites:1}
 
-echo ""; echo -n "[INFO] Using p2 source sites: "; for s in ${source_p2_sites//,/, }; do echo $s; done; echo ""
+echo ""; echo -n "[INFO] Using p2 source sites: "; for s in ${source_p2_sites//,/, }; do echo $s; done
 
 # error if no sites defined!
 if [[ ! ${source_p2_sites} ]]; then usage; fi
