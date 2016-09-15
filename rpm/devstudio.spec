@@ -6,7 +6,7 @@
 
 Name:           %{?scl_prefix}devstudio
 Version:        1.0
-Release:        2-%{datetime}-%{commitid}%{?dist}
+Release:        2.%{datetime}.%{commitid}%{?dist}
 Summary:        Red Hat Developer Studio
 
 License:        EPL
