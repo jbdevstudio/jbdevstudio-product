@@ -223,14 +223,12 @@ if [[ -d ${productPath} ]]; then
   done
 fi
 
-# clean up the removelist file
-cat ${package_name}.removelist.txt | sort | uniq > ${package_name}.removelist.txt.2
-mv ${package_name}.removelist.txt.2 ${package_name}.removelist.txt
-
-# manual plugin removals to avoid singleton problems on eclipse startup
-blacklist=""; for iu in $(cat ${package_name}.blacklist.txt | sed -e "s/^#.\+//g"); do blacklist="${blacklist},${iu}"; done; blacklist=${blacklist:1}
+# manual IU removals to avoid singleton problems on eclipse startup
+blacklist=""; for iu in $(cat ${package_name}.blacklist.txt | sed -e "s/^#.\+//g"); do blacklist="${blacklist} ${iu}"; done
 for iu in ${blacklist}; do
-  rm -f ${mirror_folder}/plugins/${iu}_*
+  # if [[ ${quiet} != "-q" ]]; then echo "Remove ${iu}_*"; fi
+  rm -f ${mirror_folder}/*/${iu}_*
+  echo ${iu} >> {package_name}.removelist.txt
 done
 
 mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
@@ -243,20 +241,7 @@ if [[ ${quiet} != "-q" ]]; then echo "Total [2] IUs in ${mirror_folder}: ${tot}"
 # clean up the removelist file
 cat ${package_name}.removelist.txt | sort | uniq > ${package_name}.removelist.txt.2
 mv ${package_name}.removelist.txt.2 ${package_name}.removelist.txt
-
-# manual plugin removals to avoid singleton problems on eclipse startup
-blacklist=""; for iu in $(cat ${package_name}.blacklist.txt | sed -e "s/^#.\+//g"); do blacklist="${blacklist} ${iu}"; done
-for iu in ${blacklist}; do
-  # if [[ ${quiet} != "-q" ]]; then echo "Remove ${iu}_*"; fi
-  rm -f ${mirror_folder}/*/${iu}_*
-done
-
-mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
-tot=-2 # omit features and plugins folders from the count
-for iu in ${mirroredIUs}; do
-  tot=$((tot+1))
-done
-if [[ ${quiet} != "-q" ]]; then echo "Total [3] IUs in ${mirror_folder}: ${tot}"; fi
+if [[ ${quiet} != "-q" ]]; then echo "Total [3] IUs in ${package_name}.removelist.txt: "$(cat ${package_name}.removelist.txt | wc -l); fi
 
 echo ""; echo "[INFO] Build devstudio.tar.xz ..."
 time tar caf ${package_name}.tar.xz ${package_name}/
