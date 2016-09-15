@@ -227,7 +227,7 @@ fi
 blacklist=""; for iu in $(cat ${package_name}.blacklist.txt | sed -e "s/^#.\+//g"); do blacklist="${blacklist} ${iu}"; done
 for iu in ${blacklist}; do
   # if [[ ${quiet} != "-q" ]]; then echo "Remove ${iu}_*"; fi
-  rm -f ${mirror_folder}/*/${iu}_*
+  rm -fr ${mirror_folder}/*/${iu}_*
   echo ${iu} >> ${package_name}.removelist.txt
 done
 
