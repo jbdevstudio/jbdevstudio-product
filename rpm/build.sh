@@ -240,7 +240,7 @@ if [[ ${quiet} != "-q" ]]; then echo "Total [2] IUs in ${mirror_folder}: ${tot}"
 
 # clean up the removelist file
 cat ${package_name}.removelist.txt | sort | uniq > ${package_name}.removelist.txt.2
-mv ${package_name}.removelist.txt.2 ${package_name}.removelist.txt
+mv -f ${package_name}.removelist.txt.2 ${package_name}.removelist.txt
 if [[ ${quiet} != "-q" ]]; then echo "Total [3] IUs in ${package_name}.removelist.txt: "$(cat ${package_name}.removelist.txt | wc -l); fi
 
 echo ""; echo "[INFO] Build devstudio.tar.xz ..."
