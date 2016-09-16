@@ -286,6 +286,12 @@ config_opts['macros']['%packager'] = 'Koji'
 EOF
 time /usr/bin/mock -r $(pwd)/${mock_cfg}.cfg --no-clean --rebuild ${package_name}*.src.rpm
 
+# collect mock failure logs, if any
+if [[ -d /var/lib/mock/rh-eclipse46/result ]] && [[ $(ls /var/lib/mock/rh-eclipse46/result/*.log) ]]; then
+  mkdir -p $(pwd)/mock_logs/
+  cp /var/lib/mock/rh-eclipse46/result/*.log $(pwd)/mock_logs/
+fi
+
 # Generate yum repository
 yum_repo=$(pwd)/yum_repo
 rm -rf ${yum_repo}
