@@ -1,12 +1,11 @@
 %{?scl:%scl_package devstudio}
 %{!?scl:%global pkg_name %{name}}
 %{?java_common_find_provides_and_requires}
-%{expand: %%global datetime %(date -u +%Y%m%d.%H%M)}
-%{expand: %%global commitid %(git --no-pager log --pretty=format:'%h' --abbrev-commit -1)}
+%{expand: %%global _datetime %(date -u +%Y%m%d.%H%M)}
 
 Name:           %{?scl_prefix}devstudio
 Version:        1.0
-Release:        2.%{datetime}.%{commitid}%{?dist}
+Release:        2.%{_datetime}%{?dist}
 Summary:        Red Hat Developer Studio
 
 License:        EPL
@@ -63,7 +62,7 @@ rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 
 %changelog
 * Wed Sep 15 2016 Nick Boldt <nboldt@redhat.com> - 1.0-2
-- Add timestamping and github SHA to package name.
+- Add timestamping to package name.
 
 * Wed Aug 03 2016 Mat Booth <mat.booth@redhat.com> - 1.0-1
 - Initial packaging.
