@@ -79,11 +79,16 @@ if [[ ! -f /etc/yum.repos.d/rh-eclipse46.repo ]]; then
   exit 2
 fi
 
+launcher="$(ls /opt/rh/rh-eclipse46/root/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar 2>/dev/null | head -1)"
+#if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] launcher = ${launcher}"; fi
 # dnf whatprovides /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar
-if [[ $(unzip -tq /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar | egrep "cannot find or open") ]]; then
+# dnf whatprovides /opt/rh/rh-eclipse46/root/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar
+if [[ ${launcher} ]]; then
   echo "Eclipse equinox launcher is not installed!"
   echo "Install with:"
   echo "$ su -c 'yum install eclipse-platform'"
+  echo " or "
+  echo "$ su -c 'yum install rh-eclipse46-eclipse-platform'"
   exit 2
 fi
 
@@ -92,7 +97,7 @@ function p2extract () {
   dropletRepo="${1}"
   inputRepos="${2}"
   IUID="${3}"
-  time java -jar /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar \
+  time java -jar ${launcher} \
   -application org.eclipse.equinox.p2.director \
   -clean -nosplash -consoleLog -flavor tooling \
   -profile rh-eclipse-devstudio \
