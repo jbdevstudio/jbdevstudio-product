@@ -83,7 +83,7 @@ launcher="$(ls /opt/rh/rh-eclipse46/root/lib*/eclipse/plugins/org.eclipse.equino
 #if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] launcher = ${launcher}"; fi
 # dnf whatprovides /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar
 # dnf whatprovides /opt/rh/rh-eclipse46/root/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar
-if [[ ${launcher} ]]; then
+if [[ ! ${launcher} ]]; then
   echo "Eclipse equinox launcher is not installed!"
   echo "Install with:"
   echo "$ su -c 'yum install eclipse-platform'"
