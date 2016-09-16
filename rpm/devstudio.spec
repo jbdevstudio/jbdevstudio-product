@@ -34,11 +34,14 @@ set -e -x
 set -e -x
 # Generate p2 repo from bundles
 eclipse -nosplash -consolelog \
+  -configuration /tmp/devstudio-rpm-eclipse-configuration \
   -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
   -metadataRepository file:$(pwd)/p2-repo \
   -artifactRepository file:$(pwd)/p2-repo \
   -source $(pwd)/%{pkg_name} \
   -publishArtifacts -compress -append
+# Remove temporary eclipse config folder
+rm -fr /tmp/devstudio-rpm-eclipse-configuration
 %{?scl:EOF}
 
 
@@ -48,10 +51,13 @@ set -e -x
 # Install droplets
 install -d -m755 %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}
 eclipse -nosplash -consolelog \
+  -configuration /tmp/devstudio-rpm-eclipse-configuration \
   -application org.eclipse.equinox.p2.repository.repo2runnable \
   -createFragments \
   -source $(pwd)/p2-repo \
   -destination %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse
+# Remove temporary eclipse config folder
+rm -fr /tmp/devstudio-rpm-eclipse-configuration
 # Remove unneeded metadata
 rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 %{?scl:EOF}

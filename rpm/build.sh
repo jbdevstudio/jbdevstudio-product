@@ -284,9 +284,15 @@ config_opts['macros']['%_topdir'] = '/builddir/build'
 config_opts['macros']['%_rpmfilename'] = '%%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm'
 config_opts['macros']['%packager'] = 'Koji'
 EOF
+
+# purge old mock logs
+if [[ -d /var/lib/mock/rh-eclipse46/result ]] && [[ $(ls /var/lib/mock/rh-eclipse46/result/*.log) ]]; then
+  rm -f /var/lib/mock/rh-eclipse46/result/*.log
+fi
+
 time /usr/bin/mock -r $(pwd)/${mock_cfg}.cfg --no-clean --rebuild ${package_name}*.src.rpm
 
-# collect mock failure logs, if any
+# collect new mock logs, if any
 if [[ -d /var/lib/mock/rh-eclipse46/result ]] && [[ $(ls /var/lib/mock/rh-eclipse46/result/*.log) ]]; then
   mkdir -p $(pwd)/mock_logs/
   cp /var/lib/mock/rh-eclipse46/result/*.log $(pwd)/mock_logs/
