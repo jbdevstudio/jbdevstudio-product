@@ -229,7 +229,7 @@ if [[ -d ${productPath} ]]; then
 fi
 
 # manual IU removals to avoid singleton problems on eclipse startup
-blacklist=""; for iu in $(cat ${package_name}.blacklist.txt | sed -e "s/^#.\+//g"); do blacklist="${blacklist} ${iu}"; done
+blacklist=""; for iu in $(cat ${package_name}.blacklist.txt ${package_name}.removelist.txt | sed -e "s/^#.\+//g"); do blacklist="${blacklist} ${iu}"; done
 for iu in ${blacklist}; do
   # if [[ ${quiet} != "-q" ]]; then echo "Remove ${iu}_*"; fi
   rm -fr ${mirror_folder}/*/${iu}_*
@@ -284,7 +284,7 @@ config_opts['macros']['%_topdir'] = '/builddir/build'
 config_opts['macros']['%_rpmfilename'] = '%%{NAME}-%%{VERSION}-%%{RELEASE}.%%{ARCH}.rpm'
 config_opts['macros']['%packager'] = 'Koji'
 EOF
-time mock -r $(pwd)/${mock_cfg}.cfg --no-clean --rebuild ${package_name}*.src.rpm
+time /usr/bin/mock -r $(pwd)/${mock_cfg}.cfg --no-clean --rebuild ${package_name}*.src.rpm
 
 # Generate yum repository
 yum_repo=$(pwd)/yum_repo
