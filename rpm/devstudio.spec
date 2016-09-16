@@ -1,10 +1,11 @@
 %{?scl:%scl_package devstudio}
 %{!?scl:%global pkg_name %{name}}
 %{?java_common_find_provides_and_requires}
+%{expand: %%global _datetime %(date -u +%Y%m%d.%H%M)}
 
 Name:           %{?scl_prefix}devstudio
 Version:        1.0
-Release:        1%{?dist}
+Release:        1.%{_datetime}%{?dist}
 Summary:        Red Hat Developer Studio
 
 License:        EPL
@@ -13,7 +14,7 @@ URL:            http://developers.redhat.com/products/devstudio/overview/
 Source0: %{pkg_name}.tar.xz
 Source1: build.sh
 
-BuildArch: noarch
+BuildArch: x86_64
 
 BuildRequires: %{?scl_prefix}eclipse-pde
 Requires: %{?scl_prefix}base
@@ -60,6 +61,9 @@ rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 %{_datadir}/eclipse/droplets/%{pkg_name}
 
 %changelog
-* Wed Aug 03 2016 Mat Booth <mat.booth@redhat.com> - 1.0-1.1
+* Wed Sep 15 2016 Nick Boldt <nboldt@redhat.com> - 1.0-2
+- Add timestamping to package name.
+
+* Wed Aug 03 2016 Mat Booth <mat.booth@redhat.com> - 1.0-1
 - Initial packaging.
 
