@@ -28,17 +28,36 @@ javax.ws.rs-api
 # ./usr/lib64/eclipse/plugins/org.eclipse.osgi_3.11.0.v20160819-1000.jar
 org.eclipse.osgi
 
-#➔ find . -name org.glassfish.hk2.utils_\*
+#➔ find . -name org.glassfish.hk2.\*
+#./usr/share/eclipse/droplets/linuxtools-docker/eclipse/plugins/org.glassfish.hk2.locator_2.4.0.jar
+#./usr/share/eclipse/droplets/linuxtools-docker/eclipse/plugins/org.glassfish.hk2.api_2.4.0.jar
+#./usr/share/eclipse/droplets/linuxtools-docker/eclipse/plugins/org.glassfish.hk2.osgi-resource-locator_2.4.0.jar
 #./usr/share/eclipse/droplets/linuxtools-docker/eclipse/plugins/org.glassfish.hk2.utils_2.4.0.jar
+#./usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.hk2.api_2.3.0.b10_v201508191500.jar
+#./usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.hk2.locator_2.3.0.b10_v201508191500.jar
+#./usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.hk2.osgi-resource-locator_2.3.0.b10_v201508191500.jar
 #./usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.hk2.utils_2.3.0.b10_v201508191500.jar
+org.glassfish.hk2.api
+org.glassfish.hk2.locator
+org.glassfish.hk2.osgi-resource-locator
 org.glassfish.hk2.utils
 
 # removed because available in upstream eclipse-* or rh-eclipse* packages
 # list computed by looking at buildlog and scanning for "[INFO osgi.prov] rh-eclipse46-osgi" lines
+com.ibm.icu
+com.jcraft.jsch
+com.kenai.jffi
+com.spotify.docker.client
 com.sun.syndication
+javax.activation
 javax.inject
 javax.xml.rpc
 javax.xml
+jnr.constants
+jnr.enxio
+jnr.ffi
+jnr.posix
+jnr.unixsocket
 jnr.x86asm
 org.apache.axis
 org.apache.batik.css
@@ -47,6 +66,9 @@ org.apache.batik.util
 org.apache.commons.httpclient
 org.apache.commons.jxpath
 org.apache.commons.lang
+org.apache.felix.gogo.command
+org.apache.felix.gogo.runtime
+org.apache.felix.gogo.shell
 org.apache.httpcomponents.httpclient
 org.apache.httpcomponents.httpcore
 org.apache.wsil4j
@@ -74,3 +96,6 @@ org.eclipse.pde.ui
 org.eclipse.pde
 org.eclipse.ui.trace
 org.eclipse.ui.views.log
+org.w3c.css.sac
+org.w3c.dom.events
+org.w3c.dom.smil
