@@ -4,3 +4,4 @@ rh-eclipse46.cfg
 devstudio-*.src.rpm
 devstudio.tar.xz
 yum_repo/
+mock_logs/
