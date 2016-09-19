@@ -120,23 +120,26 @@ if [[ ${clean} -gt 0 ]]; then
   rm -fr ${mirror_folder} ${deps_folder} ${package_name}*.src.rpm ${package_name}.tar.xz
 fi
 mkdir -p ${mirror_folder}
-mkdir -p ${deps_folder}
 
-for z in ${source_p2_zips//,/ }; do
-  file=${z##*/}
-  if [[ ! -f ${deps_folder}/${file} ]] || [[ $(unzip -tq ${deps_folder}/${file} | egrep "cannot find") ]]; then 
-    echo "[INFO] Fetch $z ..."
-    time curl $z -# > ${deps_folder}/${file} &
-  fi
-done
-wait
-# when done, should have 1.4G in deps_folder
-for z in ${source_p2_zips}; do
-  file=${z##*/}
-  source_p2_sites="${source_p2_sites},jar:file://${deps_folder}/${file}!/"
-done
+# if we're using source ZIPS instead of source sites
+if [[ ${source_p2_zips} ]]; then 
+  mkdir -p ${deps_folder}
+  for z in ${source_p2_zips//,/ }; do
+    file=${z##*/}
+    if [[ ! -f ${deps_folder}/${file} ]] || [[ $(unzip -tq ${deps_folder}/${file} | egrep "cannot find") ]]; then 
+      echo "[INFO] Fetch $z ..."
+      time curl $z -# > ${deps_folder}/${file} &
+    fi
+  done
+  wait
+  # when done, should have 1.4G in deps_folder
+  for z in ${source_p2_zips}; do
+    file=${z##*/}
+    source_p2_sites="${source_p2_sites},jar:file://${deps_folder}/${file}!/"
+  done
+fi
+
 source_p2_sites=${source_p2_sites:1}
-
 echo ""; echo -n "[INFO] Using p2 source sites: "; for s in ${source_p2_sites//,/, }; do echo $s; done
 
 # error if no sites defined!
