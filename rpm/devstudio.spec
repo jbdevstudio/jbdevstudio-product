@@ -3,9 +3,12 @@
 %{?java_common_find_provides_and_requires}
 %{expand: %%global _datetime %(date -u +%Y%m%d.%H%M)}
 
+# Prevent useless debuginfo package generation
+%global debug_package %{nil}
+
 Name:           %{?scl_prefix}devstudio
 Version:        1.0
-Release:        2.%{_datetime}%{?dist}
+Release:        3.%{_datetime}%{?dist}
 Summary:        Red Hat Developer Studio
 
 License:        EPL
@@ -67,6 +70,9 @@ rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 %{_datadir}/eclipse/droplets/%{pkg_name}
 
 %changelog
+* Mon Sep 19 2016 Mat Booth <mat.booth@redhat.com> - 1.0-3
+- Prevent useless debuginfo package generation
+
 * Wed Sep 15 2016 Nick Boldt <nboldt@redhat.com> - 1.0-2
 - Add timestamping to package name.
 
