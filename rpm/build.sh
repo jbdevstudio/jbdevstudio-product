@@ -37,13 +37,15 @@ quiet="" # or "" or "-q"
 clean=0
 source_p2_zips="" # comma-separated list passed in from commandline
 source_p2_sites="" # comma-separated list passed in from commandline
+JOB_NAME=rh-eclipse46-devstudio
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
     '-clean') clean=1; shift 0;;
     '-z') source_p2_zips=",$2"; shift 1;;
     '-u') source_p2_sites=",$2"; shift 1;;
-    '-q') quiet="-q"; shift 0;
+    '-q') quiet="-q"; shift 0;;
+    '-j') JOB_NAME="$2"; shift 1;;
   esac
   shift 1
 done
@@ -269,8 +271,7 @@ time rpmbuild \
 
 # Run the build in a mock chroot containing RHEL 7 and everything needed
 # to build SCL packages
-mock_cfg=rh-eclipse46
-cat <<EOF >${mock_cfg}.cfg
+cat <<EOF >${JOB_NAME}.cfg
 config_opts['chroothome'] = '/builddir'
 config_opts['use_host_resolv'] = False
 config_opts['basedir'] = '/var/lib/mock'
@@ -278,7 +279,7 @@ config_opts['rpmbuild_timeout'] = 86400
 config_opts['yum.conf'] = '[main]\ncachedir=/var/cache/yum\ndebuglevel=2\n\nlogfile=/var/log/yum.log\nreposdir=/dev/null\nretries=20\nobsoletes=1\ngpgcheck=0\nassumeyes=1\nkeepcache=1\ninstall_weak_deps=0\nstrict=0\n\n[build]\nname=build\nbaseurl=http://download.devel.redhat.com/brewroot/repos/rhscl-2.3-rh-eclipse46-rhel-7-build/latest/x86_64\nenabled=1\ngpgcheck=0'
 config_opts['chroot_setup_cmd'] = 'groupinstall build'
 config_opts['target_arch'] = 'x86_64'
-config_opts['root'] = '${mock_cfg}'
+config_opts['root'] = '${JOB_NAME}'
 config_opts['plugin_conf']['root_cache_enable'] = True
 config_opts['plugin_conf']['yum_cache_enable'] = True
 config_opts['plugin_conf']['ccache_enable'] = False
@@ -292,22 +293,22 @@ config_opts['macros']['%packager'] = 'Koji'
 EOF
 
 # purge old mock logs
-if [[ -d /var/lib/mock/rh-eclipse46/result ]] && [[ $(ls /var/lib/mock/rh-eclipse46/result/*.log) ]]; then
-  rm -f /var/lib/mock/rh-eclipse46/result/*.log
+if [[ -d /var/lib/mock/${JOB_NAME}/result ]] && [[ $(ls /var/lib/mock/${JOB_NAME}/result/*.log) ]]; then
+  rm -f /var/lib/mock/${JOB_NAME}/result/*.log
 fi
 
-time /usr/bin/mock -r $(pwd)/${mock_cfg}.cfg --no-clean --rebuild ${package_name}*.src.rpm
+time /usr/bin/mock -r $(pwd)/${JOB_NAME}.cfg --no-clean --rebuild ${package_name}*.src.rpm
 
 # collect new mock logs, if any
-if [[ -d /var/lib/mock/rh-eclipse46/result ]] && [[ $(ls /var/lib/mock/rh-eclipse46/result/*.log) ]]; then
+if [[ -d /var/lib/mock/${JOB_NAME}/result ]] && [[ $(ls /var/lib/mock/${JOB_NAME}/result/*.log) ]]; then
   mkdir -p ${mock_logs}/
-  cp /var/lib/mock/rh-eclipse46/result/*.log ${mock_logs}/
+  cp /var/lib/mock/${JOB_NAME}/result/*.log ${mock_logs}/
 fi
 
 # Generate yum repository
 rm -rf ${yum_repo}
 mkdir ${yum_repo}
-mv /var/lib/mock/$mock_cfg/result/*.rpm ${yum_repo}
+mv /var/lib/mock/${JOB_NAME}/result/*.rpm ${yum_repo}
 # keep src.rpm, do not delete # rm -f ${yum_repo}/*.src.rpm
 time createrepo_c ${yum_repo}
 echo "Yum repository generated in: ${yum_repo}"
@@ -317,7 +318,7 @@ rpmfiles=$(find ${yum_repo} -maxdepth 1 -type f -name "*.rpm")
 for z in ${rpmfiles}; do for shasum in $(sha256sum ${z}); do if [[ $shasum != ${z} ]]; then echo $shasum > ${z}.sha256; fi; done; done
 
 # cleanup temp artifacts
-rm -f ${package_name}*.src.rpm ${package_name}.tar.xz ${mock_cfg}.cfg
+rm -f ${package_name}*.src.rpm ${package_name}.tar.xz ${JOB_NAME}.cfg
 
 sec=$(date +%s); (( sec = sec - 1230786000 ))
 (( elapsed = sec - now ))
