@@ -114,10 +114,13 @@ package_name=devstudio
 
 mirror_folder=$(pwd)/${package_name}
 deps_folder=$(pwd)/${package_name}_deps
+yum_repo=$(pwd)/yum_repo
+mock_logs=$(pwd)/mock_logs
 
 # clean before building
 if [[ ${clean} -gt 0 ]]; then 
-  rm -fr ${mirror_folder} ${deps_folder} ${package_name}*.src.rpm ${package_name}.tar.xz
+  rm -fr ${mirror_folder}/ ${deps_folder}/ ${mock_logs}/ ${yum_repo}/
+  rm -f ${package_name}*.src.rpm ${package_name}.tar.xz 
 fi
 mkdir -p ${mirror_folder}
 
@@ -297,12 +300,11 @@ time /usr/bin/mock -r $(pwd)/${mock_cfg}.cfg --no-clean --rebuild ${package_name
 
 # collect new mock logs, if any
 if [[ -d /var/lib/mock/rh-eclipse46/result ]] && [[ $(ls /var/lib/mock/rh-eclipse46/result/*.log) ]]; then
-  mkdir -p $(pwd)/mock_logs/
-  cp /var/lib/mock/rh-eclipse46/result/*.log $(pwd)/mock_logs/
+  mkdir -p ${mock_logs}/
+  cp /var/lib/mock/rh-eclipse46/result/*.log ${mock_logs}/
 fi
 
 # Generate yum repository
-yum_repo=$(pwd)/yum_repo
 rm -rf ${yum_repo}
 mkdir ${yum_repo}
 mv /var/lib/mock/$mock_cfg/result/*.rpm ${yum_repo}
