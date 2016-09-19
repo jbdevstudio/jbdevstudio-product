@@ -9,11 +9,11 @@ https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA
 https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\\
 https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip\""
     echo ""
-    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/10.0/stable/updates/\""
+    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/10.0/stable/updates/\" -m \"--update\""
     echo ""
-    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\""
+    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\" -m \"--update\""
     echo ""
-    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\""
+    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\" -m \"--no-clean --update\""
     echo ""
     echo "Example 3b: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
 https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
@@ -38,6 +38,7 @@ clean=0
 source_p2_zips="" # comma-separated list passed in from commandline
 source_p2_sites="" # comma-separated list passed in from commandline
 JOB_NAME=rh-eclipse46-devstudio
+mock_opts="" # eg., --no-clean and/or --update flags
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
@@ -46,6 +47,7 @@ while [[ "$#" -gt 0 ]]; do
     '-u') source_p2_sites=",$2"; shift 1;;
     '-q') quiet="-q"; shift 0;;
     '-j') JOB_NAME="$2"; shift 1;;
+    '-m') mock_opts="${mock_opts} $2"; shift 1;;
   esac
   shift 1
 done
@@ -297,7 +299,7 @@ if [[ -d /var/lib/mock/${JOB_NAME}/result ]] && [[ $(ls /var/lib/mock/${JOB_NAME
   rm -f /var/lib/mock/${JOB_NAME}/result/*.log
 fi
 
-time /usr/bin/mock -r $(pwd)/${JOB_NAME}.cfg --no-clean --rebuild ${package_name}*.src.rpm
+time /usr/bin/mock -r $(pwd)/${JOB_NAME}.cfg ${mock_opts} --rebuild ${package_name}*.src.rpm
 
 # collect new mock logs, if any
 if [[ -d /var/lib/mock/${JOB_NAME}/result ]] && [[ $(ls /var/lib/mock/${JOB_NAME}/result/*.log) ]]; then
