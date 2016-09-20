@@ -9,11 +9,11 @@ https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA
 https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\\
 https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip\""
     echo ""
-    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/10.0/stable/updates/\" -m \"--update\""
+    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/10.0/stable/updates/\" -mo \"--update\""
     echo ""
-    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\" -m \"--update\""
+    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\" -mo \"--update\""
     echo ""
-    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\" -m \"--no-clean --update\""
+    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\" -mo \"--no-clean --update\""
     echo ""
     echo "Example 3b: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
 https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
@@ -39,6 +39,7 @@ source_p2_zips="" # comma-separated list passed in from commandline
 source_p2_sites="" # comma-separated list passed in from commandline
 JOB_NAME=rh-eclipse46-devstudio
 mock_opts="" # eg., --no-clean and/or --update flags
+mock_root=/var/lib/mock/ # or /opt/data/mock_root
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
@@ -47,7 +48,8 @@ while [[ "$#" -gt 0 ]]; do
     '-u') source_p2_sites=",$2"; shift 1;;
     '-q') quiet="-q"; shift 0;;
     '-j') JOB_NAME="$2"; shift 1;;
-    '-m') mock_opts="${mock_opts} $2"; shift 1;;
+    '-mo') mock_opts="${mock_opts} $2"; shift 1;;
+    '-mr') mock_root="${mock_root} $2"; shift 1;;
   esac
   shift 1
 done
@@ -276,7 +278,7 @@ time rpmbuild \
 cat <<EOF >${JOB_NAME}.cfg
 config_opts['chroothome'] = '/builddir'
 config_opts['use_host_resolv'] = False
-config_opts['basedir'] = '/var/lib/mock'
+config_opts['basedir'] = '${mock_root}'
 config_opts['rpmbuild_timeout'] = 86400
 config_opts['yum.conf'] = '[main]\ncachedir=/var/cache/yum\ndebuglevel=2\n\nlogfile=/var/log/yum.log\nreposdir=/dev/null\nretries=20\nobsoletes=1\ngpgcheck=0\nassumeyes=1\nkeepcache=1\ninstall_weak_deps=0\nstrict=0\n\n[build]\nname=build\nbaseurl=http://download.devel.redhat.com/brewroot/repos/rhscl-2.3-rh-eclipse46-rhel-7-build/latest/x86_64\nenabled=1\ngpgcheck=0'
 config_opts['chroot_setup_cmd'] = 'groupinstall build'
@@ -295,22 +297,22 @@ config_opts['macros']['%packager'] = 'Koji'
 EOF
 
 # purge old mock logs
-if [[ -d /var/lib/mock/${JOB_NAME}/result ]] && [[ $(ls /var/lib/mock/${JOB_NAME}/result/*.log) ]]; then
-  rm -f /var/lib/mock/${JOB_NAME}/result/*.log
+if [[ -d ${mock_root}/${JOB_NAME}/result ]] && [[ $(ls ${mock_root}/${JOB_NAME}/result/*.log) ]]; then
+  rm -f ${mock_root}/${JOB_NAME}/result/*.log
 fi
 
 time /usr/bin/mock -r $(pwd)/${JOB_NAME}.cfg ${mock_opts} --rebuild ${package_name}*.src.rpm
 
 # collect new mock logs, if any
-if [[ -d /var/lib/mock/${JOB_NAME}/result ]] && [[ $(ls /var/lib/mock/${JOB_NAME}/result/*.log) ]]; then
+if [[ -d ${mock_root}/${JOB_NAME}/result ]] && [[ $(ls ${mock_root}/${JOB_NAME}/result/*.log) ]]; then
   mkdir -p ${mock_logs}/
-  cp /var/lib/mock/${JOB_NAME}/result/*.log ${mock_logs}/
+  cp ${mock_root}/${JOB_NAME}/result/*.log ${mock_logs}/
 fi
 
 # Generate yum repository
 rm -rf ${yum_repo}
 mkdir ${yum_repo}
-mv /var/lib/mock/${JOB_NAME}/result/*.rpm ${yum_repo}
+mv ${mock_root}/${JOB_NAME}/result/*.rpm ${yum_repo}
 # keep src.rpm, do not delete # rm -f ${yum_repo}/*.src.rpm
 time createrepo_c ${yum_repo}
 echo "Yum repository generated in: ${yum_repo}"
