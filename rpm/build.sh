@@ -49,7 +49,7 @@ while [[ "$#" -gt 0 ]]; do
     '-q') quiet="-q"; shift 0;;
     '-j') JOB_NAME="$2"; shift 1;;
     '-mo') mock_opts="${mock_opts} $2"; shift 1;;
-    '-mr') mock_root="${mock_root} $2"; shift 1;;
+    '-mr') mock_root="$2"; shift 1;;
   esac
   shift 1
 done
