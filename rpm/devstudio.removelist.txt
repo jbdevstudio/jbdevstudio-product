@@ -1,4 +1,9 @@
+com.ibm.icu
+com.jcraft.jsch
+com.kenai.jffi
+com.spotify.docker.client
 com.sun.syndication
+javax.activation
 javax.annotation
 javax.annotation-api
 javax.inject
@@ -9,6 +14,11 @@ javax.ws.rs
 javax.ws.rs-api
 javax.xml
 javax.xml.rpc
+jnr.constants
+jnr.enxio
+jnr.ffi
+jnr.posix
+jnr.unixsocket
 jnr.x86asm
 org.apache.ant
 org.apache.axis
@@ -19,6 +29,9 @@ org.apache.commons.httpclient
 org.apache.commons.jxpath
 org.apache.commons.lang
 org.apache.commons.net
+org.apache.felix.gogo.command
+org.apache.felix.gogo.runtime
+org.apache.felix.gogo.shell
 org.apache.httpcomponents.httpclient
 org.apache.httpcomponents.httpcore
 org.apache.wsil4j
@@ -540,9 +553,15 @@ org.eclipse.wst.xsdeditor.doc.user
 org.eclipse.wst.xsd.ui
 org.eclipse.xsd
 org.eclipse.xsd.edit
+org.glassfish.hk2.api
+org.glassfish.hk2.locator
+org.glassfish.hk2.osgi-resource-locator
 org.glassfish.hk2.utils
 org.sat4j.core
 org.sat4j.pb
 org.tukaani.xz
 org.uddi4j
+org.w3c.css.sac
+org.w3c.dom.events
+org.w3c.dom.smil
 org.w3c.dom.svg
