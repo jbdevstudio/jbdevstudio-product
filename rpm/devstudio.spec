@@ -7,8 +7,8 @@
 %global debug_package %{nil}
 
 Name:           %{?scl_prefix}devstudio
-Version:        1.0
-Release:        3.%{_datetime}%{?dist}
+Version:        10.2
+Release:        0.%{_datetime}%{?dist}
 Summary:        Red Hat Developer Studio
 
 License:        EPL
@@ -70,12 +70,14 @@ rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 %{_datadir}/eclipse/droplets/%{pkg_name}
 
 %changelog
+* Tue Sep 20 2016 Nick Boldt <nboldt@redhat.com> 10.2.0.20160920
+- Fix versioning and changelog to align with devstudio (10.x instead of 1.0.x)
+
 * Mon Sep 19 2016 Mat Booth <mat.booth@redhat.com> - 1.0-3
 - Prevent useless debuginfo package generation
 
-* Wed Sep 15 2016 Nick Boldt <nboldt@redhat.com> - 1.0-2
-- Add timestamping to package name.
+* Thu Sep 15 2016 Nick Boldt <nboldt@redhat.com> - 1.0-2
+- Add timestamping to package name
 
 * Wed Aug 03 2016 Mat Booth <mat.booth@redhat.com> - 1.0-1
-- Initial packaging.
-
+- Initial packaging
