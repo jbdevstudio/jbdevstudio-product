@@ -105,7 +105,6 @@ function p2extract () {
   IUID="${3}"
   time java -jar ${launcher} \
   -application org.eclipse.equinox.p2.director \
-  -configuration /tmp/devstudio-rpm-eclipse-configuration \
   -clean -nosplash -consoleLog -flavor tooling \
   -profile rh-eclipse-devstudio \
   -profileProperties org.eclipse.update.install.features=true \
