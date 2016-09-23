@@ -3,17 +3,13 @@
  */
 package com.jboss.devstudio.core.installer;
 
-import java.awt.LayoutManager;
-import java.awt.LayoutManager2;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 import javax.swing.JLabel;
-import javax.xml.namespace.QName;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -25,8 +21,8 @@ import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.InstallerFrame;
 import com.izforge.izpack.installer.IzPanel;
 import com.izforge.izpack.installer.PanelAutomation;
-import com.izforge.izpack.installer.Unpacker;
 import com.jboss.devstudio.core.installer.bean.P2IU;
+import com.jboss.devstudio.core.installer.bean.P2IUListBean;
 
 /**
  * It should be skipped if there are no additional IU's to install
@@ -86,10 +82,11 @@ public class InstallAdditionalFeaturesPanel extends IzPanel {
 	
 	@Override
 	public void panelDeactivate() {
-		idata.setVariable("INSTALL_IUS", 
-				iuList.getIUListBean().getCommaSeparatedIUStringList());
-		idata.setVariable("INSTALL_P2_LOCATIONS", 
-				iuList.getIUListBean().getCommaSeparatedLocationStringList());		
+		P2IUListBean iuLB = iuList.getIUListBean();
+		
+		idata.setVariable("INSTALL_IUS", iuLB.getCommaSeparatedIUStringList());
+		idata.setVariable("INSTALL_P2_LOCATIONS", iuLB.getCommaSeparatedLocationStringList());	
+		idata.setVariable("INSTALL_ADDITIONAL_SIZES", iuLB.getCommaSeparatedSizeStringList());
 	}
 	
 	@Override

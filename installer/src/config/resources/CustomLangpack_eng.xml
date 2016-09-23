@@ -48,6 +48,7 @@
     <str id="JBossAsSelectPanel.TypeColumn" txt="Type"/>
     <str id="JBossAsSelectPanel.VersionColumn" txt="Version"/>
     <str id="JBossAsSelectPanel.LocationColumn" txt="Location"/>
+    <str id="JBossAsSelectPanel.Feature" txt="Feature"/>
     <str id="JBossAsSelectPanel.FileChooserTitle" txt="Select location to scan for platforms and servers"/>
     <str id="JBossAsSelectPanel.FileChooserButton" txt="OK"/>
     <str id="JBossAsSelectPanel.EditDialogTitle" txt="Edit Location"/>

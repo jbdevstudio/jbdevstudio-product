@@ -45,7 +45,7 @@ import com.jboss.devstudio.core.installer.bean.ServerListBean;
 public class P2IUListPanel extends JPanel {
 	
 	private static final long serialVersionUID = 1256443616359329176L;
-	private static final Dimension TABLE_PREF_SIZE = new Dimension(550, 60);
+	private static final Dimension TABLE_PREF_SIZE = new Dimension(550, 65);
 
 	private JTable table;
 	private JScrollPane scrollPane;
@@ -159,7 +159,7 @@ public class P2IUListPanel extends JPanel {
 		public String getColumnName(int columnIndex) {
 			switch (columnIndex) {
 				case 1:
-					return langpack.getString("JBossAsSelectPanel.LocationColumn");
+					return langpack.getString("JBossAsSelectPanel.Feature");
 				case 0:
 					return "Install";
 			}
