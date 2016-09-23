@@ -55,19 +55,19 @@
   <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>
-  <includes id="org.eclipse.wst.jsdt.nodejs.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.usage.feature" version="0.0.0"/>
-
-  <includes id="org.eclipse.wst.jsdt.chromium.debug.feature" version="0.0.0"/>
-  <includes id="org.eclipse.wst.jsdt.feature" version="0.0.0"/>
-  <includes id="org.eclipse.wst.json_core.feature" version="0.0.0"/>
-  <includes id="org.eclipse.wst.json_ui.feature" version="0.0.0"/>
-  <includes id="org.eclipse.recommenders.snipmatch.rcp.feature" version="0.0.0"/>
 
   <plugin id="org.jboss.tools.discovery.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.jboss.tools.foundation.help.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   
    <requires>
+    <import feature="org.eclipse.wst.jsdt.nodejs.feature"/>
+    <import feature="org.eclipse.wst.jsdt.chromium.debug.feature"/>
+    <import feature="org.eclipse.wst.jsdt.feature"/>
+    <import feature="org.eclipse.wst.json_core.feature"/>
+    <import feature="org.eclipse.wst.json_ui.feature"/>
+    <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
+
     <import feature="org.eclipse.datatools.common.doc.user"/>
     <import feature="org.eclipse.datatools.connectivity.doc.user"/>
     <import feature="org.eclipse.datatools.connectivity.feature"/>
