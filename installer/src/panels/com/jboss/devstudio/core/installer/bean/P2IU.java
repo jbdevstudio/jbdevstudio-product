@@ -24,6 +24,10 @@ public class P2IU {
 		this.path = path;
 		this.size = size;
 	}
+	public P2IU(String id, String label, String description, String path) {
+		this(Boolean.FALSE,id,label,description, path, "0");
+	}
+	
 	public P2IU(String id, String label, String description, String path, String size) {
 		this(Boolean.FALSE,id,label,description, path, size);
 	}
