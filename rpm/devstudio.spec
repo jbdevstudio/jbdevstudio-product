@@ -22,6 +22,15 @@ BuildArch: x86_64
 BuildRequires: %{?scl_prefix}eclipse-pde
 Requires: %{?scl_prefix}base
 
+# xulrunner dependencies needed for the Visual Page Editor (VPE) since Fedora Eclipse doesn't ship xulrunner
+Requires: ORBit2
+Requires: gnome-vfs2
+Requires: libnotify
+Requires: libIDL
+
+# note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
+Requires: java-1.8.0-openjdk-devel
+
 %description
 Red Hat Developer Studio.
 
