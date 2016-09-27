@@ -14,16 +14,22 @@ public class P2IU {
 	private String description;
 	private Boolean selected;
 	private String path;
+	private String size;  // estimated size - needed only in summary panel
 	
-	public P2IU(Boolean selected, String id, String label, String description, String path) {
+	public P2IU(Boolean selected, String id, String label, String description, String path, String size) {
 		this.id = id;
 		this.label = label;
 		this.description = description;
 		this.selected = selected;
 		this.path = path;
+		this.size = size;
 	}
 	public P2IU(String id, String label, String description, String path) {
-		this(Boolean.FALSE,id,label,description, path);
+		this(Boolean.FALSE,id,label,description, path, "0");
+	}
+	
+	public P2IU(String id, String label, String description, String path, String size) {
+		this(Boolean.FALSE,id,label,description, path, size);
 	}
 	
 	public String getLabel() {
@@ -66,6 +72,13 @@ public class P2IU {
 		this.path = path;
 	}
 	
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
 	
 	public boolean equals(Object o) {
 		return !super.equals(o) 
@@ -74,6 +87,7 @@ public class P2IU {
 				&& this.label.equals(((P2IU)o).getLabel())
 				&& this.description.equals(((P2IU)o).getDescription())
 				&& this.selected.equals(((P2IU)o).isSelected())
-				&& this.path.equals(((P2IU)o).getPath());
+				&& this.path.equals(((P2IU)o).getPath())
+				&& this.size.equals(((P2IU)o).getSize());
 	}
 }

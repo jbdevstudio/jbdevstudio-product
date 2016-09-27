@@ -42,13 +42,13 @@ public class IUListPanelTest extends TestCase{
 		JFrame frame = new JFrame();
 
 		List<P2IU> defaultIUs = Arrays.asList(new P2IU[]{
-				new P2IU(Boolean.TRUE, "id1","Label1","Description1","devstudio"),
-				new P2IU(Boolean.TRUE, "id2","Label2","Description2","devstudio"),});
+			new P2IU(Boolean.TRUE, "id1","Label1","Description1","devstudio", ""),
+			new P2IU(Boolean.TRUE, "id2","Label2","Description2","devstudio", ""),});
 		
 		List<P2IU> additionalIus = Arrays.asList(new P2IU[]{
-				new P2IU("id3","Label3","Description3","devstudio-is"),
-				new P2IU("id4","Label4","Description4","devstudio-is"),
-				new P2IU("id5","Label5","Description5","devstudio-is")});
+			new P2IU("id3","Label3","Description3","devstudio-is", "100"),
+			new P2IU("id4","Label4","Description4","devstudio-is", "100"),
+			new P2IU("id5","Label5","Description5","devstudio-is", "100")});
 		
 		P2IUListPanel panel = new P2IUListPanel(CommonTestData.langpack,defaultIUs,additionalIus);
 		

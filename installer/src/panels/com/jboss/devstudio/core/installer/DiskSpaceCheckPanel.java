@@ -56,7 +56,30 @@ public class DiskSpaceCheckPanel extends IzPanel
          }
       }
    }
-   
+ 
+   /**
+    * Given a command-separated string of sizes, add then and return the total.
+    * @param sizes
+    * @return
+    */
+   private static long calculateAggregateSize(String sizes)
+   {
+      long totalSize = 0;
+      if (sizes != null && !sizes.isEmpty()) {
+    	  String[] afs = sizes.split(",");
+    	  for (int i = 0; i < afs.length; i++) 
+    		  totalSize += Long.parseLong(afs[i]);
+      }
+      return totalSize;
+   }
+    
+   /**
+    * The installation size is an aggregation of the selected pack sizes, selected additional features
+    * sizes and selected supplemental runtime server sizes.  These sizes are only expected to be a rough
+    * estimate.
+    * 
+    * @return total rough estimated installation size in bytes.
+    */
    private long getInstallationSize()
    {
       long totalSize = 0;
@@ -66,14 +89,13 @@ public class DiskSpaceCheckPanel extends IzPanel
          Pack p = (Pack) iter.next();
          totalSize += p.nbytes;
       }
-     
+      
+      // Account for any additional features in the total aggregate size.
+      totalSize += calculateAggregateSize(idata.getVariable("INSTALL_ADDITIONAL_SIZES"));
+      
       // Account for any supplemental runtime servers in the total aggregate size.
-      String runtimeSizes = idata.getVariable("INSTALL_RT_SIZES");
-      if (runtimeSizes != null && !runtimeSizes.isEmpty()) {
-    	  String[] rts = runtimeSizes.split(",");
-    	  for (int i = 0; i < rts.length; i++) 
-    		  totalSize += Long.parseLong(rts[i]);
-      }
+      totalSize += calculateAggregateSize(idata.getVariable("INSTALL_RT_SIZES"));
+
       return totalSize;
    }
 

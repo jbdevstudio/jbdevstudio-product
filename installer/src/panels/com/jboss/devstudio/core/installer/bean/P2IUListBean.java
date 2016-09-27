@@ -3,7 +3,6 @@ package com.jboss.devstudio.core.installer.bean;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class P2IUListBean {
@@ -88,5 +87,26 @@ public class P2IUListBean {
 			}
 		}
 		return allLocationsList.toString();
+    }
+
+    /**
+     * 
+     * @return a comma-separated list of additional IU sizes (estimated)
+     */
+    public String getCommaSeparatedSizeStringList() {
+		ArrayList<String> uniqueSizes = new ArrayList<String>();
+		for (int i = 0; i < additionalUs.size(); i++) {
+			if (additionalUs.get(i).isSelected()) {
+				uniqueSizes.add(additionalUs.get(i).getSize());
+			}
+		}
+		StringBuilder allSizesList = new StringBuilder();
+		for (int i = 0; i < uniqueSizes.size(); i++) {
+			allSizesList.append(uniqueSizes.get(i));
+			if (i != uniqueSizes.size()-1) {
+				allSizesList.append(",");
+			}
+		}
+		return allSizesList.toString();
     }
 }
