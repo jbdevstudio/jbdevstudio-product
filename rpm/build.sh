@@ -324,6 +324,10 @@ for z in ${rpmfiles}; do for shasum in $(sha256sum ${z}); do if [[ $shasum != ${
 # cleanup temp artifacts
 rm -f ${package_name}*.src.rpm ${package_name}.tar.xz ${JOB_NAME}.cfg
 
+# copy README into yum_repo folder, replacing RPM_VERSION with actual version
+RPM_VERSION=$(find ${yum_repo} -maxdepth 1 -type f -name "*.rpm" | grep -v ".src.rpm" | sort | head -1 | sed -e "s#.\+devstudio-\(.\+\).rpm#\1#")
+cat README.html | sed -e "s#RPM_VERSION#${RPM_VERSION}#g" > ${yum_repo}/README.html
+
 sec=$(date +%s); (( sec = sec - 1230786000 ))
 (( elapsed = sec - now ))
 
