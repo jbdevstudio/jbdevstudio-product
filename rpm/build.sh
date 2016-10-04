@@ -271,6 +271,7 @@ time rpmbuild \
   --define "_builddir $(pwd)" \
   --define "_rpmdir $(pwd)" \
   --define "_specdir $(pwd)" \
+  --define "_datetime $(date -u +%Y%m%d.%H%M)" \
   -bs ${package_name}.spec
 
 # Run the build in a mock chroot containing RHEL 7 and everything needed

@@ -1,7 +1,7 @@
 %{?scl:%scl_package devstudio}
 %{!?scl:%global pkg_name %{name}}
 %{?java_common_find_provides_and_requires}
-%{expand: %%global _datetime %(date -u +%Y%m%d.%H%M)}
+# %{expand: %%global _datetime %(date -u +%Y%m%d.%H%M)}
 
 # Prevent useless debuginfo package generation
 %global debug_package %{nil}
