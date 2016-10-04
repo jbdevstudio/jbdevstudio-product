@@ -1,14 +1,13 @@
 %{?scl:%scl_package devstudio}
 %{!?scl:%global pkg_name %{name}}
 %{?java_common_find_provides_and_requires}
-# %{expand: %%global _datetime %(date -u +%Y%m%d.%H%M)}
 
 # Prevent useless debuginfo package generation
 %global debug_package %{nil}
 
 Name:           %{?scl_prefix}devstudio
-Version:        10.2
-Release:        0.%{_datetime}%{?dist}
+Version:        RPM_VERSION
+Release:        RPM_BUILD_VERSION%{?dist}
 Summary:        Red Hat Developer Studio
 
 License:        EPL

@@ -5,3 +5,4 @@ devstudio-*.src.rpm
 devstudio.tar.xz
 yum_repo/
 mock_logs/
+devstudio.spec
