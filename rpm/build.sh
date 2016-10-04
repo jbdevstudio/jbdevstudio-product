@@ -264,15 +264,22 @@ echo ""; echo "[INFO] Build devstudio.tar.xz ..."
 time tar caf ${package_name}.tar.xz ${package_name}/
 # when done (~5mins), 450M devstudio-1.0-1.fc24.src.rpm and devstudio.tar.xz created
 
+# pass dynamic values into the .spec file
+BUILD_VERSION=$(cat ../pom.xml | grep version | head -2 | tail -1 | sed -e "s#.\+<version>\([0-9.]\+\)-SNAPSHOT<\/version>.*#\1#"); echo BUILD_VERSION = ${BUILD_VERSION}
+RPM_VERSION=${BUILD_VERSION%.*}; echo RPM_VERSION = ${RPM_VERSION} # 10.2
+RPM_BUILD_VERSION=${BUILD_VERSION##*.}.$(date -u +%Y%m%d.%H%M); echo RPM_BUILD_VERSION = ${RPM_BUILD_VERSION} # 0.yyyymmdd.HHMM
+cat ${package_name}.spec.template | sed -e "s#RPM_VERSION#${RPM_VERSION}#g" -e "s#RPM_BUILD_VERSION#${RPM_BUILD_VERSION}#g" > ${package_name}.spec
 echo ""; echo "[INFO] Build rpm using ${package_name}.spec ..."
+
+echo "## BEGIN RPMBUILD ##"
 time rpmbuild \
   --define "_sourcedir $(pwd)" \
   --define "_srcrpmdir $(pwd)" \
   --define "_builddir $(pwd)" \
   --define "_rpmdir $(pwd)" \
   --define "_specdir $(pwd)" \
-  --define "_datetime $(date -u +%Y%m%d.%H%M)" \
   -bs ${package_name}.spec
+echo "## END RPMBUILD ##"
 
 # Run the build in a mock chroot containing RHEL 7 and everything needed
 # to build SCL packages
@@ -302,7 +309,9 @@ if [[ -d ${mock_root}/${JOB_NAME}/result ]] && [[ $(ls ${mock_root}/${JOB_NAME}/
   rm -f ${mock_root}/${JOB_NAME}/result/*.log
 fi
 
+echo "## BEGIN MOCK ##"
 time /usr/bin/mock -r $(pwd)/${JOB_NAME}.cfg ${mock_opts} --rebuild ${package_name}*.src.rpm
+echo "## END MOCK ##"
 
 # collect new mock logs, if any
 if [[ -d ${mock_root}/${JOB_NAME}/result ]] && [[ $(ls ${mock_root}/${JOB_NAME}/result/*.log) ]]; then
