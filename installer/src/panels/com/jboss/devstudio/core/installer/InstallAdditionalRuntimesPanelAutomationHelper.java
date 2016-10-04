@@ -34,7 +34,7 @@ public class InstallAdditionalRuntimesPanelAutomationHelper implements PanelAuto
 
 	public void runAutomated(AutomatedInstallData idata, IXMLElement panelRoot) throws InstallerException {
 		IXMLElement locations = panelRoot.getFirstChildNamed(LOCATIONS_NODE_NAME);
-		if (locations != null) {
+		if (locations != null && locations.getContent() != null) {
 			idata.setVariable(Unpacker.INSTALL_RT_LOCATIONS_VAR, locations.getContent());
 		}
 	}
