@@ -1,4 +1,4 @@
-<project default="build" name="devstudio aggregate sources build.xml">
+<project default="build" name="devstudio results builder">
   <!-- if ${WORKSPACE}/site folder exists, target that folder; else generate here. -->
   <condition property="output.dir" value="${WORKSPACE}/results" else="${basedir}">
     <available file="${WORKSPACE}/results" />
@@ -59,8 +59,6 @@ $java.home = ${java.home}</echo>
 
     <path id="devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="devstudio-*-installer-eap.jar"/></fileset></path><property name="devstudio-installer-eap-file" refid="devstudio-installer-eap-file-id"/>
 
-    <path id="devstudio-src-file-id"><fileset dir="../site/target"><include name="devstudio-*-src.zip"/></fileset></path><property name="devstudio-src-file" refid="devstudio-src-file-id"/>
-
     <path id="devstudio-updatesite-core-file-id"><fileset dir="../site/target"><include name="com.jboss.devstudio.core.site-*.zip"/></fileset></path><property name="devstudio-updatesite-core-file" refid="devstudio-updatesite-core-file-id"/>
 
     <if>
@@ -77,7 +75,7 @@ $java.home = ${java.home}</echo>
     <mkdir dir="${destdir}"/>
 
     <!-- move all the bits from other places into results/target/ folder -->
-    <for list="devstudio-installer-standalone-file,devstudio-installer-eap-file,devstudio-src-file,devstudio-updatesite-core-file,devstudio-updatesite-central-file" param="this">
+    <for list="devstudio-installer-standalone-file,devstudio-installer-eap-file,devstudio-updatesite-core-file,devstudio-updatesite-central-file" param="this">
       <sequential>
         <if>
           <available file="${@{this}}" type="file"/>
@@ -181,7 +179,7 @@ $java.home = ${java.home}</echo>
     <property name="eclipse.version" value="${eclipse.version}"/>
     <property name="devstudio.update.site" value="${devstudio.update.site}"/>
 
-    <for list="devstudio-installer-standalone-file,devstudio-installer-eap-file,devstudio-src-file,devstudio-updatesite-core-file,devstudio-updatesite-central-file" param="this">
+    <for list="devstudio-installer-standalone-file,devstudio-installer-eap-file,devstudio-updatesite-core-file,devstudio-updatesite-central-file" param="this">
       <sequential>
         <if>
           <available file="${@{this}}" type="file"/>
@@ -220,6 +218,16 @@ $java.home = ${java.home}</echo>
         </if>
       </sequential>
     </for>
+
+    <!-- produce src zip instruction files -->
+    <antcall target="generate.file.from.template">
+      <param name="input" value="customer-portal/src.manual-instructions.txt"/>
+      <param name="output" value="devstudio-src.manual-instructions.txt"/>
+    </antcall>
+    <antcall target="generate.file.from.template">
+      <param name="input" value="customer-portal/src.detailed-description.html"/>
+      <param name="output" value="devstudio-src.detailed-description.html"/>
+    </antcall>
   </target>
 
   <target name="create.content.json">

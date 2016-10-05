@@ -2,22 +2,22 @@
 
 2. If you don't already have it installed, you will need to download and install the latest Maven 3.x.
 
-3. Download the sources zip. You can also fetch the latest sources from github: https://github.com/jbdevstudio/jbdevstudio-product
+3. Download the latest sources from github: https://github.com/jbdevstudio/jbdevstudio-product/releases/tag/jbdevstudio-${update.site.version}.${BUILD_ALIAS}
 
 4. If building offline, you will also need the latest (or an equivalent) JBoss Tools update site zip, available from http://tools.jboss.org/downloads/ or http://tools.jboss.org/downloads/overview.html
 
-5. Unpack the sources zip. If you're on a Linux-like operating system, you may need to `chmod -R 755 *` in the folder into which you unpacked it. Then browse to the `jbdevstudio-product-*` folder. 
+5. Unpack the sources zip or tar.gz. If you're on a Linux-like operating system, you may need to `chmod -R 755 *` in the folder into which you unpacked it.
 
 6. For an offline build, run `mvn clean install -Plocal-sources -Djbosstools-site=jar:file:///path/to/jbosstools-*-updatesite-core.zip\!/`
 
 7. For an online build, run `mvn clean install -Plocal-sources -Djbosstools-site=http://download.jboss.org/jbosstools/${eclipseReleaseName}/stable/updates/` 
 
-8. Note that for a GA release, you need to also use a `-DBUILD_ALIAS=GA` flag. For pre-GA releases (eg., Beta1) this is not required. 
+8. Note that for a GA release, you need to also use a `-DBUILD_ALIAS=GA` flag. For pre-GA releases (eg., AM2) this is not required.
 
     mvn clean install -DBUILD_ALIAS=GA -Plocal-sources -Djbosstools-site=jar:file:///path/to/jbosstools-*-updatesite-core.zip\!/
       or
     mvn clean install -DBUILD_ALIAS=GA -Plocal-sources -Djbosstools-site=http://download.jboss.org/jbosstools/${eclipseReleaseName}/stable/updates/
 
-9. For additional commandline flag options when building, look in the pom.xml file in the `jbdevstudio-product-*` folder.
+9. For additional commandline flag options when building, look in the pom.xml file in the `jbdevstudio-product-jbdevstudio-*` folder.
 
 10. Once built, look for `target/` folders, such as `installer/target` or `site/target` for the resulting built content.
