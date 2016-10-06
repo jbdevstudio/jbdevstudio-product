@@ -13,7 +13,7 @@ public class UpdatePacksPanel extends IzPanel{
 
 	// FIXME: Calculate real size by artifacts.xml to have exact number
 	// JBDS-3319 use a larger default size of 660M instead of 420M (JBDS-2010)
-	static final long STUDIO_SIZE = 660*1024L*1024;
+	static final long STUDIO_SIZE = 747*1024L*1024;
 	
 	public UpdatePacksPanel(InstallerFrame parent, InstallData idata) {
 		super(parent, idata);
