@@ -39,13 +39,10 @@ Build product features, site, and installers like this:
 After a successful build, three artifacts are produced:
 
 * an installer jar
-* a sources zip
 * an update site (also known as a p2 repository)
 
 
-Installer jar(s) will be produced in installer/target/ and can be installed using 'java -jar devstudio-*.jar'
-
-Sources zip can be found in results/target/; you can build from the source zip in there by unpacking it, then using the same instructions above.
+Installer jar(s) will be produced in installer/target/ and can be installed using 'java -jar devstudio-*.jar'.
 
 An unpacked update site, which can be used to perform an initial install or to install updates to a previous installation, can be found in site/target/repository/.
 
@@ -75,7 +72,7 @@ To update from one version of Red Hat JBoss Developer Studio on the same stream 
 
 _Red Hat JBoss Developer Studio_ is open source, and we welcome anybody that wants to participate and contribute!
 
-If you want to fix a bug or make any changes, please log an issue in the [Red Hat JBoss Developer Studio JIRA](https://issues.jboss.org/browse/Red Hat JBoss Developer Studio) describing the bug or new feature.
+If you want to fix a bug or make any changes, please log an issue in the [Red Hat JBoss Developer Studio JIRA](https://issues.jboss.org/secure/RapidBoard.jspa?rapidView=3410&projectKey=JBDS) describing the bug or new feature.
 
 After you are happy with your changes and a full build runs successfully, attach a patch to the JIRA. 
 
