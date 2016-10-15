@@ -23,4 +23,8 @@
   <includes id="com.jboss.devstudio.core.rpm.feature" version="0.0.0"/>
   <includes id="com.jboss.devstudio.core.rpmdeps.feature" version="0.0.0"/>
 
+  <!-- features excluded from rpm -->
+  <includes id="org.jboss.tools.vpe.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.jsf.vpe.feature" version="0.0.0"/>
+
  </feature>
