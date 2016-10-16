@@ -163,7 +163,8 @@
                 <configuration>
                   <arguments>
                     <arg>-DESTINATION</arg>
-                    <arg>devstudio@filemgmt.jboss.org:/www_htdocs/devstudio</arg>
+                    <!-- use filemgmt.jboss.org IP instead of 10.5.105.197 because it's 3x faster -->
+                    <arg>devstudio@10.5.105.197:/www_htdocs/devstudio</arg>
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
@@ -183,7 +184,7 @@
                   <arguments>
                     <arg>--del</arg>
                     <arg>-DESTINATION</arg>
-                    <arg>devstudio@filemgmt.jboss.org:/www_htdocs/devstudio</arg>
+                    <arg>devstudio@10.5.105.197:/www_htdocs/devstudio</arg>
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all/repo</arg>
                     <arg>-t</arg>
