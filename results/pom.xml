@@ -17,7 +17,7 @@
 
   <properties>
     <snapshotLocation>core</snapshotLocation>
-    <snapshotUpdateSitePath>${devstudioReleaseVersion}/snapshots/updates/${snapshotLocation}/${jbosstools_site_stream}</snapshotUpdateSitePath>
+    <snapshotUpdateSitePath>${devstudioReleaseVersion}/snapshots/updates/${snapshotLocation}/${stream_jbt}</snapshotUpdateSitePath>
   </properties>
   <build>
     <plugins>
@@ -60,9 +60,9 @@
                   <property name="update.site.qualifier" value="${BUILD_ALIAS}-v${BUILD_TIMESTAMP}"/>
                   <property name="update.site.description" value="${update.site.description}"/>
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
-                  <property name="jbosstools_site_stream" value="${jbosstools_site_stream}"/>
-                  <property name="TARGET_PLATFORM_VERSION" value="${TARGET_PLATFORM_VERSION}"/>
-                  <property name="TARGET_PLATFORM_VERSION_MAXIMUM" value="${TARGET_PLATFORM_VERSION_MAXIMUM}"/>
+                  <property name="stream_jbt" value="${stream_jbt}"/>
+                  <property name="TARGET_PLATFORM_VERSION_MIN" value="${TARGET_PLATFORM_VERSION_MIN}"/>
+                  <property name="TARGET_PLATFORM_VERSION_MAX" value="${TARGET_PLATFORM_VERSION_MAX}"/>
                   <!-- JBDS-2805 see ../pom.xml for default value if not passed in from Jenkins -->
                   <property name="JBOSS_CENTRAL_ZIP" value="${JBOSS_CENTRAL_ZIP}"/>
                 </ant>

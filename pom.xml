@@ -27,15 +27,15 @@
     <!-- Do not hardcode this value, or we'll get GA-named bits when we do CRx maintenance builds. Instead set this flag in the job config for GA builds ONLY
       <BUILD_ALIAS>GA</BUILD_ALIAS> 
     -->
-    <tpc.version>${TARGET_PLATFORM_VERSION_MAXIMUM}</tpc.version>
+    <tpc.version>${TARGET_PLATFORM_VERSION_MAX}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <central.tpc.version>4.60.1.Final-SNAPSHOT</central.tpc.version>
-    <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${jbosstools_site_stream}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
+    <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${stream_jbt}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
 
-    <!-- jbosstools_site_stream is set in parent pom = 4.4.neon / master -->
-    <!-- <jbosstools_site_stream>master</jbosstools_site_stream> -->
-    <jbosstools-site>http://download.jboss.org/jbosstools/${eclipseReleaseName}/snapshots/updates/core/${jbosstools_site_stream}/</jbosstools-site>
+    <!-- stream_jbt is set in parent pom = 4.4.neon / master -->
+    <!-- <stream_jbt>master</stream_jbt> -->
+    <jbosstools-site>http://download.jboss.org/jbosstools/${eclipseReleaseName}/snapshots/updates/core/${stream_jbt}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.CR1-SNAPSHOT/REPO/</jbosstools-target-site> -->
     <stagingBaselineRepository>https://devstudio.redhat.com/10.0/staging/updates/</stagingBaselineRepository>
 
@@ -276,7 +276,7 @@ Build product features, site, and installers like this:
 
 To replicate a Jenkins CI build, run like this (unified.target and hudson profile require VPN access):
 
-  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.60.0.Final-SNAPSHOT -DBUILD_NUMBER=460000 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Djbosstools_site_stream=master -DBUILD_ALIAS=GA
+  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.60.0.Final-SNAPSHOT -DBUILD_NUMBER=460000 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Dstream_jbt=master -DBUILD_ALIAS=GA
 
 See README.md for information building, installing, contributing, generated artifacts, and more.
 
