@@ -14,7 +14,6 @@ javax.annotation-api
 #./usr/share/eclipse/droplets/webtools-javaee/eclipse/plugins/javax.servlet_3.0.0.jar
 #./usr/share/eclipse/droplets/devstudio/eclipse/plugins/javax.servlet_3.1.0.v201410161800.jar
 #./usr/share/eclipse/droplets/devstudio/eclipse/plugins/javax.servlet.jsp_2.2.0.v201112011158.jar
-javax.servlet
 javax.servlet-api
 javax.servlet.jsp
 
@@ -96,7 +95,6 @@ com.ibm.icu
 com.jcraft.jsch
 com.kenai.jffi
 com.spotify.docker.client
-com.sun.syndication
 javax.activation
 javax.inject
 javax.xml.rpc
@@ -112,7 +110,6 @@ org.apache.batik.css
 org.apache.batik.util.gui
 org.apache.batik.util
 org.apache.commons.httpclient
-org.apache.commons.jxpath
 org.apache.commons.lang
 org.apache.felix.gogo.command
 org.apache.felix.gogo.runtime
@@ -121,8 +118,6 @@ org.apache.httpcomponents.httpclient
 org.apache.httpcomponents.httpcore
 org.apache.wsil4j
 org.apache.xalan
-org.apache.xml.resolver
-org.apache.xml.serializer
 org.eclipse.draw2d
 org.eclipse.gef
 org.eclipse.pde.api.tools.annotations

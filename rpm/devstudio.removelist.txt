@@ -8,13 +8,11 @@ com.ibm.icu
 com.jcraft.jsch
 com.kenai.jffi
 com.spotify.docker.client
-com.sun.syndication
 javassist
 javax.activation
 javax.annotation
 javax.annotation-api
 javax.inject
-javax.servlet
 javax.servlet-api
 javax.servlet.jsp
 javax.ws.rs
@@ -33,7 +31,6 @@ org.apache.batik.css
 org.apache.batik.util
 org.apache.batik.util.gui
 org.apache.commons.httpclient
-org.apache.commons.jxpath
 org.apache.commons.lang
 org.apache.commons.net
 org.apache.felix.gogo.command
@@ -43,8 +40,6 @@ org.apache.httpcomponents.httpclient
 org.apache.httpcomponents.httpcore
 org.apache.wsil4j
 org.apache.xalan
-org.apache.xml.resolver
-org.apache.xml.serializer
 org.bouncycastle.bcpkix
 org.bouncycastle.bcprov
 org.eclipse.ant.core
@@ -455,6 +450,7 @@ org.eclipse.wst.dtdeditor.doc.user
 org.eclipse.wst.dtd.ui
 org.eclipse.wst.dtd.ui.infopop
 org.eclipse.wst.html.core
+org.eclipse.wst.html.ui
 org.eclipse.wst.html.ui.infopop
 org.eclipse.wst.internet.cache
 org.eclipse.wst.internet.monitor.core
@@ -463,6 +459,7 @@ org.eclipse.wst.jsdt.chromium
 org.eclipse.wst.jsdt.chromium.debug
 org.eclipse.wst.jsdt.chromium.debug.core
 org.eclipse.wst.jsdt.chromium.debug.feature
+org.eclipse.wst.jsdt.chromium.debug.js
 org.eclipse.wst.jsdt.chromium.debug.jsdtbridge
 org.eclipse.wst.jsdt.chromium.debug.ui
 org.eclipse.wst.jsdt.chromium.wipbackend.dev
@@ -528,6 +525,7 @@ org.eclipse.wst.web
 org.eclipse.wst.web_core.feature
 org.eclipse.wst.webtools.doc.user
 org.eclipse.wst.web.ui
+org.eclipse.wst.web_ui.feature
 org.eclipse.wst.web.ui.infopop
 org.eclipse.wst.web_userdoc.feature
 org.eclipse.wst.ws
