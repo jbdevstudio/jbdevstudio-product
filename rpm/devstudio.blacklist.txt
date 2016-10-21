@@ -68,9 +68,8 @@ org.glassfish.hk2.locator
 org.glassfish.hk2.osgi-resource-locator
 org.glassfish.hk2.utils
 
-#➔ find . -name com.google.guava.\*
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.google.guava_15.0.0.v201403281430.jar
-com.google.guava
+# JBDS-4131 keep com.google.guava 0.15 because o.e.m2e needs it
+# com.google.guava
 
 #➔ find . -name javassist.\*
 # ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/javassist_3.13.0.GA_v201209210905.jar
