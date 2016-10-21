@@ -6,3 +6,4 @@ devstudio.tar.xz
 yum_repo/
 mock_logs/
 devstudio.spec
+*.cfg
