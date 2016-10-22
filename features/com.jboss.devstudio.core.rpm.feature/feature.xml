@@ -20,39 +20,41 @@
     %license
   </license>
 
-  <plugin id="com.jboss.devstudio.core" download-size="0" install-size="0" version="0.0.0"/> 
-  <plugin id="com.jboss.devstudio.core.project.examples" download-size="0" install-size="0" version="0.0.0"/> 
+  <plugin id="com.jboss.devstudio.core" download-size="0" install-size="0" version="0.0.0"/>
+  <plugin id="com.jboss.devstudio.core.project.examples" download-size="0" install-size="0" version="0.0.0"/>
   <plugin id="com.jboss.devstudio.core.usage.branding" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="com.jboss.devstudio.core.central" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
 
   <includes id="org.jboss.tools.foundation.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.foundation.security.linux.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.stacks.core.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/> 
-  <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.jmx.feature" version="0.0.0"/> 
-  <includes id="org.jboss.ide.eclipse.archives.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/> 
-  <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/> 
-  <includes id="org.hibernate.eclipse.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/>
+  <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.jmx.feature" version="0.0.0"/>
+  <includes id="org.jboss.ide.eclipse.archives.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.vpe.preview.feature" version="0.0.0"/>
+  <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/>
+  <includes id="org.hibernate.eclipse.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.ws.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.websockets.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.central.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.central.easymport.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.forge.feature" version="0.0.0"/> 
-  <includes id="org.jboss.tools.browsersim.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.ws.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.websockets.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.central.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.central.easymport.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.forge.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.browsersim.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.cdk.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.openshift.express.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.openshift.express.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/> 
+  <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.common.jdt.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.jsf.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.usage.feature" version="0.0.0"/>
