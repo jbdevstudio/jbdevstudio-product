@@ -9,7 +9,6 @@ com.jcraft.jsch
 com.kenai.jffi
 com.spotify.docker.client
 javassist
-javax.activation
 javax.annotation
 javax.annotation-api
 javax.inject

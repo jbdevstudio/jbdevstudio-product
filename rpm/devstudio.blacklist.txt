@@ -86,7 +86,6 @@ com.ibm.icu
 com.jcraft.jsch
 com.kenai.jffi
 com.spotify.docker.client
-javax.activation
 javax.inject
 javax.xml.rpc
 javax.xml
