@@ -26,6 +26,10 @@ Requires: ORBit2
 Requires: gnome-vfs2
 Requires: libnotify
 Requires: libIDL
+# cdt deps: org.eclipse.cdt.core.native and org.eclipse.cdt.core.utils.pty
+Requires: eclipse-cdt
+# rse deps: org.eclipse.rse.core and org.eclipse.rse.ui
+Requires: eclipse-rse
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
