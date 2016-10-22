@@ -80,15 +80,6 @@ javassist
 org.bouncycastle.bcprov
 org.bouncycastle.bcpkix
 
-#➔ find . -name org.objectweb.asm.\*
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.objectweb.asm.commons_5.0.1.v201404251740.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.objectweb.asm.tree_5.0.1.v201404251740.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.objectweb.asm_5.0.1.v201404251740.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.objectweb.asm_4.0.0.v201302062210.jar
-org.objectweb.asm.commons
-org.objectweb.asm.tree
-org.objectweb.asm
-
 # removed because available in upstream eclipse-* or rh-eclipse* packages
 # list computed by looking at buildlog and scanning for "[INFO osgi.prov] rh-eclipse46-osgi" lines
 com.ibm.icu
