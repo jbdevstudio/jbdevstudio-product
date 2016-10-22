@@ -333,6 +333,12 @@ org.eclipse.osgi
 org.eclipse.osgi.compatibility.state
 org.eclipse.osgi.services
 org.eclipse.osgi.util
+org.eclipse.mylyn.commons.core
+org.eclipse.mylyn.commons.net
+org.eclipse.mylyn.commons.notifications.core
+org.eclipse.mylyn.commons.notifications.ui
+org.eclipse.mylyn.commons.ui
+org.eclipse.mylyn.commons.workbench
 org.eclipse.pde
 org.eclipse.pde.api.tools
 org.eclipse.pde.api.tools.annotations

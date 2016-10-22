@@ -142,3 +142,11 @@ org.eclipse.ui.views.log
 org.w3c.css.sac
 org.w3c.dom.events
 org.w3c.dom.smil
+
+# JBDS-4135 removed to avoid having duplicate singletons
+org.eclipse.mylyn.commons.core
+org.eclipse.mylyn.commons.net
+org.eclipse.mylyn.commons.notifications.core
+org.eclipse.mylyn.commons.notifications.ui
+org.eclipse.mylyn.commons.ui
+org.eclipse.mylyn.commons.workbench
