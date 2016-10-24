@@ -41,6 +41,7 @@ org.apache.httpcomponents.httpclient
 org.apache.httpcomponents.httpcore
 org.apache.lucene.analysis
 org.apache.lucene.core
+org.apache.lucene.corecom.fasterxml.jackson.core.jackson-annotations
 org.apache.wsil4j
 org.apache.xalan
 org.apache.xml.resolver
@@ -338,8 +339,11 @@ org.eclipse.mylyn.commons.core
 org.eclipse.mylyn.commons.net
 org.eclipse.mylyn.commons.notifications.core
 org.eclipse.mylyn.commons.notifications.ui
+org.eclipse.mylyn.commons.screenshots
 org.eclipse.mylyn.commons.ui
 org.eclipse.mylyn.commons.workbench
+org.eclipse.mylyn.discovery.core
+org.eclipse.mylyn.discovery.ui
 org.eclipse.osgi
 org.eclipse.osgi.compatibility.state
 org.eclipse.osgi.services
