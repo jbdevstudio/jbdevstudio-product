@@ -28,6 +28,9 @@ Requires: libnotify
 Requires: libIDL
 # cdt deps: org.eclipse.cdt.core.native and org.eclipse.cdt.core.utils.pty
 Requires: rh-eclipse46-eclipse-cdt-native
+# include freemarker because cdt's org.eclipse.tools.templates.freemarker needs it 
+Requires: rh-eclipse46-freemarker
+
 # rse deps: org.eclipse.rse.core and org.eclipse.rse.ui
 Requires: rh-eclipse46-eclipse-rse
 # tm deps: org.eclipse.tm.terminal.connector.local
