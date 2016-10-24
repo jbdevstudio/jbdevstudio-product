@@ -8,6 +8,7 @@ com.ibm.icu
 com.jcraft.jsch
 com.kenai.jffi
 com.spotify.docker.client
+com.sun.syndication
 javassist
 javax.annotation
 javax.annotation-api
@@ -30,6 +31,7 @@ org.apache.batik.css
 org.apache.batik.util
 org.apache.batik.util.gui
 org.apache.commons.httpclient
+org.apache.commons.jxpath
 org.apache.commons.lang
 org.apache.commons.net
 org.apache.felix.gogo.command
@@ -37,8 +39,12 @@ org.apache.felix.gogo.runtime
 org.apache.felix.gogo.shell
 org.apache.httpcomponents.httpclient
 org.apache.httpcomponents.httpcore
+org.apache.lucene.analysis
+org.apache.lucene.core
 org.apache.wsil4j
 org.apache.xalan
+org.apache.xml.resolver
+org.apache.xml.serializer
 org.bouncycastle.bcpkix
 org.bouncycastle.bcprov
 org.eclipse.ant.core
@@ -395,6 +401,7 @@ org.eclipse.team.ui
 org.eclipse.text
 org.eclipse.tm.terminal.connector.local
 org.eclipse.tm.terminal.connector.local.feature
+org.eclipse.tm.terminal.connector.process
 org.eclipse.tm.terminal.connector.ssh
 org.eclipse.tm.terminal.connector.ssh.feature
 org.eclipse.tm.terminal.connector.telnet
@@ -403,6 +410,7 @@ org.eclipse.tm.terminal.control
 org.eclipse.tm.terminal.control.feature
 org.eclipse.tm.terminal.view.core
 org.eclipse.tm.terminal.view.ui
+org.eclipse.tm.terminal.view.ui.rse
 org.eclipse.ui
 org.eclipse.ui.browser
 org.eclipse.ui.cheatsheets
