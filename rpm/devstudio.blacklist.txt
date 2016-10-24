@@ -157,6 +157,10 @@ org.eclipse.tm.terminal.connector.local.feature
 org.eclipse.tm.terminal.view.ui.rse
 org.eclipse.tm.terminal.connector.process
 
-# JBDS-4133 remove lucene stuff available from rh-java-common-lucene5-analysis and rh-java-common-lucene5
-org.apache.lucene.analysis
-org.apache.lucene.core
+# JBDS-4133 keep lucene stuff though available from rh-java-common-lucene5-analysis and rh-java-common-lucene5
+# because Require-Bundle: org.apache.lucene.core; bundle-version="[3.5.0,4.0.0)"
+#org.apache.lucene.analysis
+#org.apache.lucene.core
+
+# exclude because newer version already installed (jgit, linuxtools-docker, egit-egit, mylyn-versions-git, egit-mylyn: slf4j.api_1.7.4.jar)
+org.slf4j.api
