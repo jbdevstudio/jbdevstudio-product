@@ -397,6 +397,8 @@ org.eclipse.tm.terminal.connector.ssh
 org.eclipse.tm.terminal.connector.ssh.feature
 org.eclipse.tm.terminal.connector.telnet
 org.eclipse.tm.terminal.connector.telnet.feature
+org.eclipse.tm.terminal.connector.local
+org.eclipse.tm.terminal.connector.local.feature
 org.eclipse.tm.terminal.control
 org.eclipse.tm.terminal.control.feature
 org.eclipse.tm.terminal.view.core

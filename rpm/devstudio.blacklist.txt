@@ -140,3 +140,14 @@ org.eclipse.mylyn.commons.notifications.core
 org.eclipse.mylyn.commons.notifications.ui
 org.eclipse.mylyn.commons.ui
 org.eclipse.mylyn.commons.workbench
+
+# JBDS-4134 remove stuff available from rh-eclipse46-eclipse-cdt-native
+org.eclipse.cdt.core.native
+
+# JBDS-4134 remove stuff available from rh-eclipse46-eclipse-rse
+org.eclipse.rse.core
+org.eclipse.rse.ui
+
+# JBDS-4134 remove stuff available from rh-eclipse46-eclipse-tm-terminal-connectors
+org.eclipse.tm.terminal.connector.local
+org.eclipse.tm.terminal.connector.local.feature

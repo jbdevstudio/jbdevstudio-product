@@ -27,9 +27,11 @@ Requires: gnome-vfs2
 Requires: libnotify
 Requires: libIDL
 # cdt deps: org.eclipse.cdt.core.native and org.eclipse.cdt.core.utils.pty
-Requires: eclipse-cdt
+Requires: rh-eclipse46-eclipse-cdt-native
 # rse deps: org.eclipse.rse.core and org.eclipse.rse.ui
-Requires: eclipse-rse
+Requires: rh-eclipse46-eclipse-rse
+# tm deps: org.eclipse.tm.terminal.connector.local
+Requires: rh-eclipse46-eclipse-tm-terminal-connectors
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
