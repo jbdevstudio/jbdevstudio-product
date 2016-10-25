@@ -40,6 +40,8 @@ org.apache.felix.gogo.shell
 org.apache.httpcomponents.httpclient
 org.apache.httpcomponents.httpcore
 org.apache.lucene.corecom.fasterxml.jackson.core.jackson-annotations
+org.apache.lucene.analysis
+org.apache.lucene.core
 org.apache.wsil4j
 org.apache.xalan
 org.apache.xml.resolver
