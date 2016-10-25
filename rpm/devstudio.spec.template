@@ -118,6 +118,9 @@ rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 #cp $(pwd)/eclipse.ini.default %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall
 %{?scl:EOF}
 
+# Usage marker
+install -d -m 755 %{buildroot}%{_libdir}/eclipse/.pkgs
+echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
 %preun
 %{?scl:scl enable %{scl_maven} %{scl} - << "EOF"}
