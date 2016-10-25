@@ -101,11 +101,18 @@ ln -s %{_root_datadir}/java/lucene3/lucene-core-3.jar %{buildroot}%{_datadir}/ec
 ln -s %{_root_datadir}/java/lucene3-contrib/lucene-analyzers-3.jar %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins/org.apache.lucene.analyzers-common_3.6.2.jar
 %{?scl:EOF}
 
+# Usage marker
+install -d -m 755 %{buildroot}%{_libdir}/eclipse/.pkgs
+echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
 %files
+%{_libdir}/eclipse/.pkgs
 %{_datadir}/eclipse/droplets/%{pkg_name}
 
 %changelog
+* Tue Oct 25 2016 Mat Booth <mat.booth@redhat.com> - 10.2.0.20161025
+- Install marker file to be picked up by the usage plugin
+
 * Mon Oct 24 2016 Nick Boldt <nboldt@redhat.com> 10.2.0.20161024
 - Add missing rpm dependencies from cdt, freemarker, rse, tm.terminal, nodejs, lucene
 
