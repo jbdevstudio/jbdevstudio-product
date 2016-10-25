@@ -127,13 +127,20 @@ set -e -x
 #cp -f %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall %{buildroot}/usr/lib64/eclipse/eclipse.ini 
 %{?scl:EOF}
 
+# Usage marker
+install -d -m 755 %{buildroot}%{_libdir}/eclipse/.pkgs
+echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
 %files
+%{_libdir}/eclipse/.pkgs
 %{_datadir}/eclipse/droplets/%{pkg_name}
 # TODO: should we include this or not?
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Tue Oct 25 2016 Mat Booth <mat.booth@redhat.com> - 10.2.0.20161025
+- Install marker file to be picked up by the usage plugin
+
 * Mon Oct 24 2016 Nick Boldt <nboldt@redhat.com> 10.2.0.20161024
 - Add missing rpm dependencies from cdt, freemarker, rse, tm.terminal, nodejs, lucene
 
