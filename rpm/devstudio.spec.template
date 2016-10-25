@@ -42,9 +42,15 @@ Requires: rh-eclipse46-eclipse-tm-terminal-connectors
 Requires: rh-nodejs4-runtime
 Requires: rh-nodejs4-nodejs
 
+# include AERI logging/reporting
+Requires: rh-eclipse46-eclipse-epp-logging
+
 # JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
 Requires: rh-java-common-lucene5
 Requires: rh-java-common-lucene5-analysis
+
+# need lucene 3 for org.eclipse.datatools.sqltools.{core,result,enablement}
+Requires: lucene3
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
@@ -90,6 +96,9 @@ eclipse -nosplash -consolelog \
 rm -fr /tmp/devstudio-rpm-eclipse-configuration
 # Remove unneeded metadata
 rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
+# symlink lucene3
+ln -s %{_root_datadir}/java/lucene3/lucene-core-3.jar %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins/org.apache.lucene.core_3.6.2.jar
+ln -s %{_root_datadir}/java/lucene3-contrib/lucene-analyzers-3.jar %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins/org.apache.lucene.analyzers-common_3.6.2.jar
 %{?scl:EOF}
 
 
