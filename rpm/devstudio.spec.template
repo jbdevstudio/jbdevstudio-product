@@ -106,13 +106,17 @@ ln -s %{_root_datadir}/java/lucene3-contrib/lucene-analyzers-3.jar %{buildroot}%
 # %{buildroot} = /opt/rh/rh-eclipse46/root
 # %{_datadir} = /usr/share/
 # copy /usr/lib64/eclipse/eclipse.ini (or /etc/eclipse.ini) to eclipse.ini.devstudio.uninstall
-cp -f %{buildroot}/usr/lib64/eclipse/eclipse.ini %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall
+# TODO: doesn't work: lib64 is outside the mock root
+#cp -f %{buildroot}/usr/lib64/eclipse/eclipse.ini %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall
 # edit eclipse.ini
-sed -i -e "s#-Xms.\+#-Xms512m#g" %{buildroot}/usr/lib64/eclipse/eclipse.ini
-sed -i -e "s#-Xmx.\+#-Xmx1024m#g" %{buildroot}/usr/lib64/eclipse/eclipse.ini
-echo "-Dosgi.bundles=org.eclipse.equinox.simpleconfigurator@1:start,org.eclipse.equinox.transforms.xslt@1:start,org.jboss.tools.equinox.transforms.xslt@1:start
--Dosgi.framework.extensions=org.eclipse.wst.jsdt.nashorn.extension
--Dosgi.instance.area.default=@user.home/workspace" >> %{buildroot}/usr/lib64/eclipse/eclipse.ini
+#sed -i -e "s#-Xms.\+#-Xms512m#g" %{buildroot}/usr/lib64/eclipse/eclipse.ini
+#sed -i -e "s#-Xmx.\+#-Xmx1024m#g" %{buildroot}/usr/lib64/eclipse/eclipse.ini
+#echo "-Dosgi.bundles=org.eclipse.equinox.simpleconfigurator@1:start,org.eclipse.equinox.transforms.xslt@1:start,org.jboss.tools.equinox.transforms.xslt@1:start
+#-Dosgi.framework.extensions=org.eclipse.wst.jsdt.nashorn.extension
+#-Dosgi.instance.area.default=@user.home/workspace" >> %{buildroot}/usr/lib64/eclipse/eclipse.ini
+# TODO: doesn't work: can't resolve eclipse.ini.devstudio file RIGHT NEXT to this .spec file
+#cp $(pwd)/eclipse.ini.devstudio %{buildroot}/usr/lib64/eclipse/eclipse.ini
+#cp $(pwd)/eclipse.ini.default %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall
 %{?scl:EOF}
 
 
@@ -120,12 +124,15 @@ echo "-Dosgi.bundles=org.eclipse.equinox.simpleconfigurator@1:start,org.eclipse.
 %{?scl:scl enable %{scl_maven} %{scl} - << "EOF"}
 set -e -x
 # revert to old eclipse.ini file
-cp -f %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall %{buildroot}/usr/lib64/eclipse/eclipse.ini 
+# TODO: won't work unless stuff above is fixed
+#cp -f %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall %{buildroot}/usr/lib64/eclipse/eclipse.ini 
 %{?scl:EOF}
 
 
 %files
 %{_datadir}/eclipse/droplets/%{pkg_name}
+# TODO: should we include this or not?
+# %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
 * Mon Oct 24 2016 Nick Boldt <nboldt@redhat.com> 10.2.0.20161024
