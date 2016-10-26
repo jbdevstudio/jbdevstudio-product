@@ -39,18 +39,20 @@ Requires: rh-eclipse46-eclipse-rse
 Requires: rh-eclipse46-eclipse-tm-terminal-connectors
 
 # JBDS-4132 nodejs deps: tern.server.nodejs depends on nodejs
-Requires: rh-nodejs4-runtime
-Requires: rh-nodejs4-nodejs
+Requires: rh-nodejs4-runtime, rh-nodejs4-nodejs
 
 # include AERI logging/reporting
 Requires: rh-eclipse46-eclipse-epp-logging
 
 # JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
-Requires: rh-java-common-lucene5
-Requires: rh-java-common-lucene5-analysis
+Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis
 
 # need lucene 3 for org.eclipse.datatools.sqltools.{core,result,enablement}
-Requires: lucene3
+# TODO: if changing the version here, be sure to also update symlinks in devstudio.spec.template file!
+Requires: lucene3 = 3.6.2
+
+# require m2e and sundry
+Requires: eclipse-m2e-core, eclipse-m2e-buildhelper, eclipse-m2e-egit, eclipse-m2e-mavenarchiver, eclipse-m2e-workspace
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
@@ -96,9 +98,29 @@ eclipse -nosplash -consolelog \
 rm -fr /tmp/devstudio-rpm-eclipse-configuration
 # Remove unneeded metadata
 rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
-# symlink lucene3
+# symlink lucene3 from /usr/share/java/ = %{_root_datadir}/java/
 ln -s %{_root_datadir}/java/lucene3/lucene-core-3.jar %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins/org.apache.lucene.core_3.6.2.jar
 ln -s %{_root_datadir}/java/lucene3-contrib/lucene-analyzers-3.jar %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins/org.apache.lucene.analyzers-common_3.6.2.jar
+
+# edit eclipse.ini settings for devstudio usage
+# %{buildroot} = /opt/rh/rh-eclipse46/root
+# %{_datadir} = /usr/share/
+# copy /usr/lib64/eclipse/eclipse.ini (or /etc/eclipse.ini) to eclipse.ini.devstudio.uninstall
+cp -f %{buildroot}/usr/lib64/eclipse/eclipse.ini %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall
+# edit eclipse.ini
+sed -i -e "s#-Xms.\+#-Xms512m#g" %{buildroot}/usr/lib64/eclipse/eclipse.ini
+sed -i -e "s#-Xmx.\+#-Xmx1024m#g" %{buildroot}/usr/lib64/eclipse/eclipse.ini
+echo "-Dosgi.bundles=org.eclipse.equinox.simpleconfigurator@1:start,org.eclipse.equinox.transforms.xslt@1:start,org.jboss.tools.equinox.transforms.xslt@1:start
+-Dosgi.framework.extensions=org.eclipse.wst.jsdt.nashorn.extension
+-Dosgi.instance.area.default=@user.home/workspace" >> %{buildroot}/usr/lib64/eclipse/eclipse.ini
+%{?scl:EOF}
+
+
+%preun
+%{?scl:scl enable %{scl_maven} %{scl} - << "EOF"}
+set -e -x
+# revert to old eclipse.ini file
+cp -f %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall %{buildroot}/usr/lib64/eclipse/eclipse.ini 
 %{?scl:EOF}
 
 
