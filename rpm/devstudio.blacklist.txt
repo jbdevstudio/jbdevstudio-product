@@ -165,3 +165,7 @@ org.eclipse.tm.terminal.connector.process
 
 # exclude because newer version already installed (jgit, linuxtools-docker, egit-egit, mylyn-versions-git, egit-mylyn: slf4j.api_1.7.4.jar)
 org.slf4j.api
+
+# removed because excluded from devstudio rpm (but included in the devstudio installer/udpate site)
+org.jboss.tools.usage.feature
+org.jboss.tools.usage
