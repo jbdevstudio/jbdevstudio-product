@@ -130,6 +130,9 @@ set -e -x
 #cp -f %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall %{buildroot}/usr/lib64/eclipse/eclipse.ini 
 %{?scl:EOF}
 
+# Usage marker
+install -d -m 755 %{buildroot}%{_libdir}/eclipse/.pkgs
+echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
 %files
 %{_libdir}/eclipse/.pkgs
