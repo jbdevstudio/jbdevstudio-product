@@ -52,7 +52,8 @@ Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis
 # Requires: lucene3 = 3.6.2
 
 # require m2e and sundry
-Requires: eclipse-m2e-core, eclipse-m2e-buildhelper, eclipse-m2e-egit, eclipse-m2e-mavenarchiver, eclipse-m2e-workspace
+# JBDS-4143 however, not available in RHEL (only Fedora)
+# Requires: eclipse-m2e-core, eclipse-m2e-buildhelper, eclipse-m2e-egit, eclipse-m2e-mavenarchiver, eclipse-m2e-workspace
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
@@ -111,9 +112,7 @@ rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 # edit eclipse.ini
 #sed -i -e "s#-Xms.\+#-Xms512m#g" %{buildroot}/usr/lib64/eclipse/eclipse.ini
 #sed -i -e "s#-Xmx.\+#-Xmx1024m#g" %{buildroot}/usr/lib64/eclipse/eclipse.ini
-#echo "-Dosgi.bundles=org.eclipse.equinox.simpleconfigurator@1:start,org.eclipse.equinox.transforms.xslt@1:start,org.jboss.tools.equinox.transforms.xslt@1:start
-#-Dosgi.framework.extensions=org.eclipse.wst.jsdt.nashorn.extension
-#-Dosgi.instance.area.default=@user.home/workspace" >> %{buildroot}/usr/lib64/eclipse/eclipse.ini
+#echo "-Dosgi.framework.extensions=org.eclipse.wst.jsdt.nashorn.extension" >> %{buildroot}/usr/lib64/eclipse/eclipse.ini
 # TODO: doesn't work: can't resolve eclipse.ini.devstudio file RIGHT NEXT to this .spec file
 #cp $(pwd)/eclipse.ini.devstudio %{buildroot}/usr/lib64/eclipse/eclipse.ini
 #cp $(pwd)/eclipse.ini.default %{_datadir}/eclipse/droplets/%{pkg_name}/eclipse.ini.devstudio.uninstall
