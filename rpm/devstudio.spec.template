@@ -45,7 +45,7 @@ Requires: rh-nodejs4-runtime, rh-nodejs4-nodejs
 Requires: rh-eclipse46-eclipse-epp-logging
 
 # JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
-# Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis
+# Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis, rh-java-common-lucene5-queryparser
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
