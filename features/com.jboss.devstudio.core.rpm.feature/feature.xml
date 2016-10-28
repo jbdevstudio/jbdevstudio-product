@@ -48,6 +48,7 @@
   <includes id="org.jboss.tools.forge.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.browsersim.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.openshift.cdk.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.openshift.js.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.express.feature" version="0.0.0"/> 
   <includes id="org.jboss.tools.openshift.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/> 
