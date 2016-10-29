@@ -82,10 +82,10 @@ $java.home = ${java.home}</echo>
           <then>
             <var name="thisfile" unset="true"/>
             <!-- get updatesite-core from from devstudio-updatesite-core-file -->
-            <propertyregex property="filedesc" defaultvalue="@{this}" input="@{this}" regexp="devstudio-(.+)-file" replace="\1" override="true" /> 
+            <propertyregex property="filedesc" defaultvalue="@{this}" input="@{this}" regexp="devstudio-(.+)-file" replace="\1" override="true" />
 
             <!-- get "jar" or "zip" from devstudio-10.0.0.Beta2-v20150715-1358-B450000-installer-eap.jar or com.jboss.devstudio.core.site-*.zip -->
-            <propertyregex property="filetype" defaultvalue="${@{this}}" input="${@{this}}" regexp=".+\.(.+)" replace="\1" override="true" /> 
+            <propertyregex property="filetype" defaultvalue="${@{this}}" input="${@{this}}" regexp=".+\.(.+)" replace="\1" override="true" />
             <var name="destfile" value="devstudio-${update.site.version}.${update.site.qualifier}-${filedesc}.${filetype}"/>
             <echo>Copy ${@{this}} to ${destdir}/${destfile}</echo>
             <copy verbose="false" file="${@{this}}" tofile="${destdir}/${destfile}" preservelastmodified="true"/>
@@ -168,7 +168,7 @@ $java.home = ${java.home}</echo>
         </else>
       </if>
     </sequential>
-  </macrodef>  
+  </macrodef>
 
   <target name="create.customer-portal.metadata">
 
@@ -263,7 +263,7 @@ $java.home = ${java.home}</echo>
 "name": "Red Hat JBoss Developer Studio Installer",
 "description": "Red Hat JBoss Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
 "fullVersion": "${devstudio.version}",
-"installer": "https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/devstudio-${devstudio.version}-installer-standalone.jar"
+"installer": "https://devstudio.redhat.com/${snapshotBuildPath}/devstudio-${devstudio.version}-installer-standalone.jar"
 }
 </echo>
   </target>

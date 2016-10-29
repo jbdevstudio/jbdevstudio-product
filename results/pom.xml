@@ -18,6 +18,7 @@
   <properties>
     <snapshotLocation>core</snapshotLocation>
     <snapshotUpdateSitePath>${devstudioReleaseVersion}/snapshots/updates/${snapshotLocation}/${stream_jbt}</snapshotUpdateSitePath>
+    <snapshotBuildPath>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all<snapshotBuildPath>
   </properties>
   <build>
     <plugins>
@@ -59,7 +60,7 @@
                   <property name="JBT.version" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}" />
                   <property name="update.site.qualifier" value="${BUILD_ALIAS}-v${BUILD_TIMESTAMP}"/>
                   <property name="update.site.description" value="${update.site.description}"/>
-                  <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
+                  <property name="snapshotBuildPath" value="${snapshotBuildPath}"/>
                   <property name="stream_jbt" value="${stream_jbt}"/>
                   <property name="TARGET_PLATFORM_VERSION_MIN" value="${TARGET_PLATFORM_VERSION_MIN}"/>
                   <property name="TARGET_PLATFORM_VERSION_MAX" value="${TARGET_PLATFORM_VERSION_MAX}"/>
@@ -150,7 +151,7 @@
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
-                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all</arg>
+                    <arg>${snapshotBuildPath}</arg>
                   </arguments>
                 </configuration>
               </execution>
@@ -168,7 +169,7 @@
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
-                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all</arg>
+                    <arg>${snapshotBuildPath}</arg>
                     <arg>-e</arg>
                     <arg>*eap.jar*</arg>
                   </arguments>
@@ -204,6 +205,6 @@
 To build locally
   mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_master/latest/all/repository.zip
 
-To deploy 
+To deploy
   mvn deploy -Pdeploy-to-jboss.org
 -->
