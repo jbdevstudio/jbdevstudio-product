@@ -29,8 +29,10 @@ $java.home = ${java.home}</echo>
 
   <target name="build" depends="init">
     <!-- should be set already by Jenkins, but for local builds set a default -->
-    <property name="JOB_NAME" value="devstudio.product_master"/>
     <property name="update.site.description" value="Local Build"/>
+    <property name="JOB_NAME" value="devstudio.product_master"/>
+    <property name="devstudioReleaseVersion" value="10.0"/>
+    <property name="pathToJars" value="${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/latest/all"/>
 
     <!-- get timestamp from upstream installer build (units.unit.id = Alpha2-v20130326-1416-B6969.devstudio) instead of maven since tycho and pure maven don't use the same value -->
     <if>
@@ -263,7 +265,8 @@ $java.home = ${java.home}</echo>
 "name": "Red Hat JBoss Developer Studio Installer",
 "description": "Red Hat JBoss Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
 "fullVersion": "${devstudio.version}",
-"installer": "https://devstudio.redhat.com/10.0/snapshots/builds/devstudio.product_master/latest/all/devstudio-${devstudio.version}-installer-standalone.jar"
+"pathToJars": "${pathToJars}",
+"installer": "https://devstudio.redhat.com/${pathToJars}/devstudio-${devstudio.version}-installer-standalone.jar"
 }
 </echo>
   </target>

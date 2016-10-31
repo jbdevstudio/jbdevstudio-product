@@ -52,12 +52,14 @@
               <target>
                 <ant antfile="build.xml" target="build" dir="./">
                   <property name="eclipse.version" value="${targetEclipseVersion}"/>
+                  <property name="devstudioReleaseVersion" value="${devstudioReleaseVersion}"/>
                   <property name="devstudio.update.site" value="https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/"/>
                   <property name="eap.version" value="${eapVersion}"/>
                   <property name="eclipseReleaseName" value="${eclipseReleaseName}"/>
                   <property name="project.version" value="${project.version}" />
                   <property name="JBT.version" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}" />
                   <property name="update.site.qualifier" value="${BUILD_ALIAS}-v${BUILD_TIMESTAMP}"/>
+                  <property name="pathToJars" value="${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all"/>
                   <property name="update.site.description" value="${update.site.description}"/>
                   <property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
                   <property name="stream_jbt" value="${stream_jbt}"/>
