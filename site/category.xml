@@ -153,10 +153,6 @@
     <category name="CoreTools" />
     <category name="CloudContainerTools" />
   </feature>
-  <feature id="org.jboss.tools.openshift.js.feature">
-    <category name="CoreTools" />
-    <category name="CloudContainerTools" />
-  </feature>
   <feature id="org.jboss.ide.eclipse.archives.feature">
     <category name="CoreTools" />
     <category name="GeneralTools" />
@@ -396,7 +392,6 @@
   <feature id="org.jboss.ide.eclipse.as.feature.source"/>
   <feature id="org.jboss.tools.openshift.feature.source"/>
   <feature id="org.jboss.tools.openshift.cdk.feature.source"/>
-  <feature id="org.jboss.tools.openshift.js.feature.source"/>
   <feature id="org.jboss.tools.openshift.express.feature.source"/>
   <feature id="org.jboss.tools.openshift.egit.integration.feature.source"/>
   <feature id="org.jboss.ide.eclipse.archives.feature.source"/>
