@@ -38,9 +38,6 @@ Requires: rh-eclipse46-eclipse-rse
 # tm deps: org.eclipse.tm.terminal.connector.local
 Requires: rh-eclipse46-eclipse-tm-terminal-connectors
 
-# JBDS-4132 nodejs deps: tern.server.nodejs depends on nodejs
-Requires: rh-nodejs4-runtime, rh-nodejs4-nodejs
-
 # include AERI logging/reporting
 Requires: rh-eclipse46-eclipse-epp-logging
 
