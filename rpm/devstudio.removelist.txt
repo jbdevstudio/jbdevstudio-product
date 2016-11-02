@@ -13,6 +13,7 @@ javassist
 javax.annotation
 javax.annotation-api
 javax.inject
+javax.servlet
 javax.servlet-api
 javax.servlet.jsp
 javax.ws.rs

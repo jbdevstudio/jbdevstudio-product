@@ -14,6 +14,7 @@ javax.annotation-api
 #./usr/share/eclipse/droplets/webtools-javaee/eclipse/plugins/javax.servlet_3.0.0.jar
 #./usr/share/eclipse/droplets/devstudio/eclipse/plugins/javax.servlet_3.1.0.v201410161800.jar
 #./usr/share/eclipse/droplets/devstudio/eclipse/plugins/javax.servlet.jsp_2.2.0.v201112011158.jar
+javax.servlet
 javax.servlet-api
 javax.servlet.jsp
 
