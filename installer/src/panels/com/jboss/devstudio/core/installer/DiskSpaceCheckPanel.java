@@ -18,7 +18,6 @@ import com.izforge.izpack.Pack;
 import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.InstallerFrame;
 import com.izforge.izpack.installer.IzPanel;
-import com.izforge.izpack.installer.Unpacker;
 import com.izforge.izpack.util.IoHelper;
 
 public class DiskSpaceCheckPanel extends IzPanel
@@ -65,11 +64,12 @@ public class DiskSpaceCheckPanel extends IzPanel
    private static long calculateAggregateSize(String sizes)
    {
       long totalSize = 0;
-      if (sizes != null && !sizes.isEmpty()) {
+
+      if (sizes != null && !sizes.trim().isEmpty() && !sizes.equals("null")) {
     	  String[] afs = sizes.split(",");
-    	  for (int i = 0; i < afs.length; i++) 
+    	  for (int i = 0; i < afs.length; i++)
     		  totalSize += Long.parseLong(afs[i]);
-      }
+	  }
       return totalSize;
    }
     
