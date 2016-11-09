@@ -866,10 +866,7 @@ public class Unpacker extends UnpackerBase
 	    	// Standard jar file extraction if an RT server exists.
 	    	if (runtimeEntry != null) {
 			handler.progress(i + 1, "Runtime " + runtimeEntry.getName());
-				String separator = java.io.File.separator;
-				if (separator.equals("\\"))
-					separator = "/";
-	    		String[] rtlComponents = rtl[i].split(separator);
+	    		String[] rtlComponents = rtl[i].split("/");
 	    		File entryFile = new File(installLocation, rtlComponents[0]);
 	    	    entryFile.setLastModified(runtimeEntry.getTime());
 	            entryFile.getParentFile().mkdirs();
