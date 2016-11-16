@@ -35,6 +35,30 @@ public class UpdatePacksPanel extends IzPanel{
 		if("jbosseap".equals(group))
 			buffer.append("Red Hat JBoss Enterprise Application Platform " + eapVersion+ "<br>");
 		
+		// Summarize any additional features and runtimes.
+		String additionalSummaryInfo = "";
+		String installIUs = idata.getVariable("INSTALL_IUS");
+		if (installIUs != null) {
+			if (installIUs.contains("integration-stack.fuse"))
+				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat JBoss Fuse Development<br>");
+			if (installIUs.contains("integration-stack.bpr"))
+				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat JBoss Business Process and Rules Development<br>");
+			if (installIUs.contains("integration-stack.ds"))
+				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat JBoss Data Virtualization<br>");
+		}
+
+		String installRTLocs = idata.getVariable("INSTALL_RT_LOCATIONS");
+		if (installRTLocs != null) {
+	    	String[] rtl = installRTLocs.split(",");
+	    	for (int i = 0; i < rtl.length; i++) {		
+	    		String[] rtlComponents = rtl[i].split("/");
+	    		additionalSummaryInfo = additionalSummaryInfo.concat(rtlComponents[rtlComponents.length-1] + "<br>");
+	    	}
+		}
+
+		if (additionalSummaryInfo.length() > 0)
+			buffer.append(additionalSummaryInfo);
+
         return buffer.toString();
     }
 }

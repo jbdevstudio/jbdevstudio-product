@@ -854,7 +854,7 @@ public class Unpacker extends UnpackerBase
     	String jarLocation = P2DirectorStarterListener.findPathJar(Unpacker.class);
     	String[] rtl = rtLocations.split(",");
     	handler.nextStep("Processing Supplemental Runtimes", step + 1, 1);
-    	installLocation += java.io.File.separator + "runtimes" + java.io.File.separator;
+    	installLocation += File.separator + "runtimes" + File.separator;
     	Path zipPath = null;
 	
     	java.util.jar.JarFile jar = new java.util.jar.JarFile(jarLocation);
@@ -865,7 +865,7 @@ public class Unpacker extends UnpackerBase
 	
 	    	// Standard jar file extraction if an RT server exists.
 	    	if (runtimeEntry != null) {
-			handler.progress(i + 1, "Runtime " + runtimeEntry.getName());
+	    		handler.progress(i + 1, "Runtime " + runtimeEntry.getName());
 	    		String[] rtlComponents = rtl[i].split("/");
 	    		File entryFile = new File(installLocation, rtlComponents[0]);
 	    	    entryFile.setLastModified(runtimeEntry.getTime());
