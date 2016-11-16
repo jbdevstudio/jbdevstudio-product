@@ -102,12 +102,14 @@ pushd %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins
 ln -s $(build-classpath httpcomponents/httpclient) org.apache.httpcomponents.httpclient_4.3.6.v201511171540.jar
 ln -s $(build-classpath httpcomponents/httpclient-cache) org.apache.httpcomponents.httpclient.cache_4.3.6.v201511171540.jar
 ln -s $(build-classpath slf4j/api) org.slf4j.api_1.7.2.v20121108-1250.jar
+ln -s /usr/lib64/eclipse/plugins/javax.servlet-api_3.1.0.jar javax.servlet_3.1.0.v201410161800.jar
 popd
 
 # JBDS-4150 add to fragment.info
 echo "org.apache.httpcomponents.httpclient,4.3.6.v201511171540,plugins/org.apache.httpcomponents.httpclient_4.3.6.v201511171540.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
 echo "org.apache.httpcomponents.httpclient.cache,4.3.6.v201511171540,plugins/org.apache.httpcomponents.httpclient.cache_4.3.6.v201511171540.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
 echo "org.slf4j.api,1.7.2.v20121108-1250,plugins/org.slf4j.api_1.7.2.v20121108-1250.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "javax.servlet-api,3.1.0.v201410161800,plugins/javax.servlet-api_3.1.0.v201410161800.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
 
 
 %files
@@ -118,7 +120,7 @@ echo "org.slf4j.api,1.7.2.v20121108-1250,plugins/org.slf4j.api_1.7.2.v20121108-1
 
 %changelog
 * Wed Nov 16 2016 Nick Boldt <nboldt@redhat.com> 10.2.0.20161116
-- JBDS-4150 Add dependency to httpcomponents.client(.cache); add symlinks + fragment.info entries for httpcomponents.client(.cache) and org.slf4j
+- JBDS-4150 Add dependency to httpcomponents.client(.cache); add symlinks + fragment.info entries for httpcomponents.client(.cache), javax.servlet(.api) and org.slf4j(.api)
 
 * Tue Oct 25 2016 Mat Booth <mat.booth@redhat.com> - 10.2.0.20161025
 - Install marker file to be picked up by the usage plugin
