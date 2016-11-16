@@ -44,6 +44,9 @@ Requires: rh-eclipse46-eclipse-epp-logging
 # JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
 # Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis, rh-java-common-lucene5-queryparser
 
+# JBDS-4150 needed for Thym and all the things that use httpcomponents.client or client.cache
+Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-client-cache
+
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
 
@@ -94,6 +97,18 @@ rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 install -d -m 755 %{buildroot}%{_libdir}/eclipse/.pkgs
 echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
+# JBDS-4150 symlink to jars installed via RPM
+pushd %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins
+ln -s $(build-classpath httpcomponents/httpclient) org.apache.httpcomponents.httpclient_4.3.6.v201511171540.jar
+ln -s $(build-classpath httpcomponents/httpclient-cache) org.apache.httpcomponents.httpclient.cache_4.3.6.v201511171540.jar
+ln -s $(build-classpath slf4j/api) org.slf4j.api_1.7.2.v20121108-1250.jar
+popd
+
+# JBDS-4150 add to fragment.info
+echo "org.apache.httpcomponents.httpclient,4.3.6.v201511171540,plugins/org.apache.httpcomponents.httpclient_4.3.6.v201511171540.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.httpcomponents.httpclient.cache,4.3.6.v201511171540,plugins/org.apache.httpcomponents.httpclient.cache_4.3.6.v201511171540.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.slf4j.api,1.7.2.v20121108-1250,plugins/org.slf4j.api_1.7.2.v20121108-1250.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+
 
 %files
 %{_libdir}/eclipse/.pkgs
@@ -102,6 +117,9 @@ echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Wed Nov 16 2016 Nick Boldt <nboldt@redhat.com> 10.2.0.20161116
+- JBDS-4150 Add dependency to httpcomponents.client(.cache); add symlinks + fragment.info entries for httpcomponents.client(.cache) and org.slf4j
+
 * Tue Oct 25 2016 Mat Booth <mat.booth@redhat.com> - 10.2.0.20161025
 - Install marker file to be picked up by the usage plugin
 
