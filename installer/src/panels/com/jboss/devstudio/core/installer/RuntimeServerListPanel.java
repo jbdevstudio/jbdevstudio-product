@@ -11,6 +11,7 @@
 
 package com.jboss.devstudio.core.installer;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -64,7 +65,8 @@ public class RuntimeServerListPanel extends JPanel {
 		this.langpack = langpack;
 
 		table = new JTable(new RuntimeServerListTableModel());
-
+		
+		table.setSelectionBackground(Color.white);
 		table.getColumnModel().getColumn(1).setPreferredWidth(440);
 		table.getColumnModel().getColumn(1).setMinWidth(440);
 		table.getColumnModel().getColumn(0).setPreferredWidth(110);
