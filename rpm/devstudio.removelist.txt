@@ -591,7 +591,6 @@ org.jboss.tools.usage
 org.jboss.tools.usage.feature
 org.sat4j.core
 org.sat4j.pb
-org.slf4j.api
 org.tukaani.xz
 org.uddi4j
 org.w3c.css.sac

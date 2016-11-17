@@ -164,8 +164,9 @@ org.eclipse.tm.terminal.connector.process
 # org.apache.lucene.analysis
 # org.apache.lucene.core
 
-# exclude because newer version already installed (jgit, linuxtools-docker, egit-egit, mylyn-versions-git, egit-mylyn: slf4j.api_1.7.4.jar)
-org.slf4j.api
+# JBDS-4162 include org.slf4j.api 1.7.2, despite newer version installed via jgit dep
+# needed for ch.qos.logback.slf4j, org.slf4j.impl.log4j12
+# org.slf4j.api
 
 # removed because excluded from devstudio rpm (but included in the devstudio installer/udpate site)
 org.jboss.tools.usage.feature
