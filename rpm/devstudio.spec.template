@@ -126,7 +126,8 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 
 %changelog
 * Wed Nov 16 2016 Nick Boldt <nboldt@redhat.com> 10.2.0.20161116
-- JBDS-4150 Add dependency to httpcomponents.client(.cache); add symlinks + fragment.info entries for httpcomponents.client(.cache), javax.servlet(.api) and org.slf4j(.api)
+- JBDS-4150 Add dependency to httpcomponents.client(.cache); add symlinks + fragment.info entries for 7 plugins:
+- httpcomponents.client(+ .cache), javax.servlet(.api), org.slf4j(.api), o.apache.commons.lang, o.apache.xml.resolver, o.apache.xml.serializer
 
 * Tue Oct 25 2016 Mat Booth <mat.booth@redhat.com> - 10.2.0.20161025
 - Install marker file to be picked up by the usage plugin
