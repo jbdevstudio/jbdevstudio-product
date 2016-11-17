@@ -99,14 +99,10 @@ echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
 # JBDS-4150 symlink to jars installed via RPM
 pushd %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins
-# reuse /opt/rh/rh-eclipse46/root/usr/lib64/eclipse/plugins/org.apache.httpcomponents.httpclient_4.3.6.jar -> httpclient.jar
-ln -s /usr/share/java/httpcomponents/httpclient.jar org.apache.httpcomponents.httpclient_4.3.6.v201511171540.jar
-# use /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient-cache.jar
-ln -s /usr/share/java/httpcomponents/httpclient-cache.jar org.apache.httpcomponents.httpclient.cache_4.3.6.v201511171540.jar
-# reuse /opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/jgit/eclipse/plugins/slf4j.api_1.7.4.jar -> slf4j-api.jar
-ln -s /usr/share/java/slf4j/slf4j-api.jar org.slf4j.api_1.7.2.v20121108-1250.jar
-# reuse /opt/rh/rh-eclipse46/root/usr/lib64/eclipse/plugins/javax.servlet-api_3.1.0.jar -> glassfish-servlet-api.jar
-ln -s /usr/share/java/glassfish-servlet-api.jar javax.servlet_3.1.0.v201410161800.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient.jar org.apache.httpcomponents.httpclient_4.3.6.v201511171540.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient-cache.jar org.apache.httpcomponents.httpclient.cache_4.3.6.v201511171540.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/slf4j/slf4j-api.jar org.slf4j.api_1.7.2.v20121108-1250.jar
+ln -s /opt/rh/rh-eclipse46/root/usr/share/java/glassfish-servlet-api.jar javax.servlet_3.1.0.v201410161800.jar
 popd
 
 # JBDS-4150 add to fragment.info
