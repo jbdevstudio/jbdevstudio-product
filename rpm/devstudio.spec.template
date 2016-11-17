@@ -44,7 +44,7 @@ Requires: rh-eclipse46-eclipse-epp-logging
 # JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
 # Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis, rh-java-common-lucene5-queryparser
 
-# JBDS-4150 needed for Thym and all the things that use httpcomponents.client or client.cache
+# JBDS-4150 needed for devstudio optional installs
 Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-client-cache
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
@@ -99,17 +99,23 @@ echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
 # JBDS-4150 symlink to jars installed via RPM
 pushd %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins
-ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient.jar org.apache.httpcomponents.httpclient_4.3.6.v201511171540.jar
-ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient-cache.jar org.apache.httpcomponents.httpclient.cache_4.3.6.v201511171540.jar
-ln -s /opt/rh/rh-java-common/root/usr/share/java/slf4j/slf4j-api.jar org.slf4j.api_1.7.2.v20121108-1250.jar
-ln -s /opt/rh/rh-eclipse46/root/usr/share/java/glassfish-servlet-api.jar javax.servlet_3.1.0.v201410161800.jar
+ln -s /opt/rh/rh-eclipse46/root/usr/share/java/glassfish-servlet-api.jar javax.servlet_3.1.0.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/commons-lang.jar org.apache.commons.lang_2.6.0.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient.jar org.apache.httpcomponents.httpclient_4.3.6.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient-cache.jar org.apache.httpcomponents.httpclient.cache_4.3.6.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/xml-commons-resolver.jar org.apache.xml.resolver_1.2.0.v200806030312.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/xalan-j2-serializer.jar org.apache.xml.serializer_2.7.1.v200806030322.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/slf4j/slf4j-api.jar org.slf4j.api_1.7.4.jar
 popd
 
 # JBDS-4150 add to fragment.info
-echo "org.apache.httpcomponents.httpclient,4.3.6.v201511171540,plugins/org.apache.httpcomponents.httpclient_4.3.6.v201511171540.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
-echo "org.apache.httpcomponents.httpclient.cache,4.3.6.v201511171540,plugins/org.apache.httpcomponents.httpclient.cache_4.3.6.v201511171540.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
-echo "org.slf4j.api,1.7.2.v20121108-1250,plugins/org.slf4j.api_1.7.2.v20121108-1250.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
-echo "javax.servlet-api,3.1.0.v201410161800,plugins/javax.servlet-api_3.1.0.v201410161800.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "javax.servlet-api,3.1.0,plugins/javax.servlet-api_3.1.0.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.commons.lang,2.6.0,plugins/org.apache.commons.lang_2.6.0.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.httpcomponents.httpclient,4.3.6,plugins/org.apache.httpcomponents.httpclient_4.3.6.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.httpcomponents.httpclient.cache,4.3.6,plugins/org.apache.httpcomponents.httpclient.cache_4.3.6.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.xml.resolver,1.2.0.v200806030312,plugins/jorg.apache.xml.resolver_1.2.0.v200806030312.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.xml.serializer,2.7.1.v200806030322,plugins/org.apache.xml.serializer_2.7.1.v200806030322.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
 
 
 %files
