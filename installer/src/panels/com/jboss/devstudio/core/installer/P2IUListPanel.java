@@ -1,6 +1,5 @@
 package com.jboss.devstudio.core.installer;
 
-import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
@@ -73,8 +72,7 @@ public class P2IUListPanel extends JPanel {
 		this.langpack = langpack;
 
 		table = new JTable(new P2IUListTableModel());
-		
-		table.setSelectionBackground(Color.white);
+
 		table.getColumnModel().getColumn(1).setPreferredWidth(440);
 		table.getColumnModel().getColumn(1).setMinWidth(440);
 		table.getColumnModel().getColumn(0).setPreferredWidth(110);
