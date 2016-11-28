@@ -125,6 +125,9 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Mon Nov 28 2016 Nick Boldt <nboldt@redhat.com> 10.3.0.20161128
+- Bump to 10.3.0
+
 * Thu Nov 17 2016 Nick Boldt <nboldt@redhat.com> 10.2.0.20161117
 - JBDS-4162 include org.slf4j.api 1.7.2
 - JBDS-4150 Add dependency to httpcomponents.client(.cache); add symlinks + fragment.info entries for 7 plugins:

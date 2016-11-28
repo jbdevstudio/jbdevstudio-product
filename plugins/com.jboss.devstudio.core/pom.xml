@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.jboss.devstudio.core</groupId>
     <artifactId>plugins</artifactId>
-    <version>10.2.0-SNAPSHOT</version>
+    <version>10.3.0-SNAPSHOT</version>
   </parent>
   <groupId>com.jboss.devstudio.core.plugins</groupId>
   <artifactId>com.jboss.devstudio.core</artifactId>
@@ -57,7 +57,7 @@
                 <!-- back up a copy of the latest about.mappings because we're about to replace it -->
                 <copy file="${basedir}/about.mappings" tofile="${basedir}/about.mappings_UNMERGED" overwrite="true"/>
 
-                <!-- [echo] buildQualifier = Beta2-v20130528-2036, project.version = 10.2.0-SNAPSHOT, BUILD_ALIAS=Beta2 -->
+                <!-- [echo] buildQualifier = Beta2-v20130528-2036, project.version = 10.3.0-SNAPSHOT, BUILD_ALIAS=Beta2 -->
                 <echo level="debug">buildQualifier = ${buildQualifier}, project.version = ${project.version}, BUILD_ALIAS=${BUILD_ALIAS}</echo>
 
                 <taskdef resource="net/sf/antcontrib/antlib.xml" />
