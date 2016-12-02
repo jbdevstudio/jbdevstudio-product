@@ -122,26 +122,23 @@ su -</pre></li>
 name=rh-eclipse46-devstudio-stable-10.x
 baseurl=https://devstudio.redhat.com/static/10.0/stable/rpms/x86_64/
 enabled=1
-sslverify=0
-gpgcheck=0
-includepkgs=rh-eclipse*
+gpgcheck=1
 upgrade_requirements_on_install=1
-skip_if_unavailable=1
 metadata_expire=24h
 
 [rh-eclipse46-devstudio-snapshot-10.2]
 name=rh-eclipse46-devstudio-snapshot-10.2
 baseurl=https://devstudio.redhat.com/10.0/snapshots/rpms/10.2.0/x86_64/
 enabled=0
-sslverify=0
 gpgcheck=0
-includepkgs=rh-eclipse*
 upgrade_requirements_on_install=1
-skip_if_unavailable=1
 metadata_expire=20m
 EOF</pre></li>
 
-          <li>3. Install devstudio with yum
+          <li>3. Install <a href=https://access.redhat.com/security/team/key>product signing</a> (<a href=http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x08B871E6A5787476>GPG</a>) key
+<pre>rpm --import "http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x08B871E6A5787476"</pre></li>
+
+          <li>4. Install devstudio with yum
 <pre>yum install rh-eclipse46-devstudio</pre></li>
         </ul>
     </div>
