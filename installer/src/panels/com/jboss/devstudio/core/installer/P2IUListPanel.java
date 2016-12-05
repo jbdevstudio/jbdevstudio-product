@@ -72,7 +72,7 @@ public class P2IUListPanel extends JPanel {
 		this.langpack = langpack;
 
 		table = new JTable(new P2IUListTableModel());
-
+		table.setRowSelectionAllowed(false);
 		table.getColumnModel().getColumn(1).setPreferredWidth(440);
 		table.getColumnModel().getColumn(1).setMinWidth(440);
 		table.getColumnModel().getColumn(0).setPreferredWidth(110);
