@@ -103,7 +103,7 @@
 
    <h2 class="prime">Red Hat JBoss Developer Studio 10 RPM</h2>
 		
-		<p>This repo contains the latest <b>Development Milestone</b>
+		<p>This repo contains the latest <b>Technology Preview</b>
      RPM of <a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://developers.redhat.com/products/devstudio/">Red Hat JBoss Developer Studio 10</a>.
         
     <h4>RPM Installation Instructions</h4>
@@ -135,8 +135,8 @@ upgrade_requirements_on_install=1
 metadata_expire=20m
 EOF</pre></li>
 
-          <li>3. Install <a href=https://access.redhat.com/security/team/key>product signing</a> (<a href=http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x08B871E6A5787476>GPG</a>) key
-<pre>rpm --import "http://pgp.mit.edu:11371/pks/lookup?op=get&search=0x08B871E6A5787476"</pre></li>
+          <li>3. Install <a href=https://access.redhat.com/security/team/key>product signing</a> (<a href=https://www.redhat.com/security/a5787476.txt>GPG</a>) key
+<pre>rpm --import "https://www.redhat.com/security/a5787476.txt"</pre></li>
 
           <li>4. Install devstudio with yum
 <pre>yum install rh-eclipse46-devstudio</pre></li>
