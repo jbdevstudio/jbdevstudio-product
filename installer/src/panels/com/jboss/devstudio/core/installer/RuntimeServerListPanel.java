@@ -64,7 +64,7 @@ public class RuntimeServerListPanel extends JPanel {
 		this.langpack = langpack;
 
 		table = new JTable(new RuntimeServerListTableModel());
-
+		table.setRowSelectionAllowed(false);
 		table.getColumnModel().getColumn(1).setPreferredWidth(440);
 		table.getColumnModel().getColumn(1).setMinWidth(440);
 		table.getColumnModel().getColumn(0).setPreferredWidth(110);
