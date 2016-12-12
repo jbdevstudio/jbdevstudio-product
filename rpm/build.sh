@@ -167,7 +167,7 @@ tot=-2 # omit features and plugins folders from the count
 for iu in ${mirroredIUs}; do
   tot=$((tot+1))
 done
-if [[ ${quiet} != "-q" ]]; then echo "Total [0] IUs in ${mirror_folder}: ${tot}"; fi
+if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] Total [0] IUs in ${mirror_folder}: ${tot}"; fi
 
 cnt=0
 rpmlist="$(rpm -q --requires rh-eclipse46-base | grep -v rpmlib | sed "s#\(rh-[^=]\+\).*#\1#")" # echo $rpmlist
@@ -195,7 +195,7 @@ tot=-2 # omit features and plugins folders from the count
 for iu in ${mirroredIUs}; do
   tot=$((tot+1))
 done
-if [[ ${quiet} != "-q" ]]; then echo "Total [1] IUs in ${mirror_folder}: ${tot}"; fi
+if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] Total [1] IUs in ${mirror_folder}: ${tot}"; fi
 
 # remove IUs available in other rpms; depends on rh-eclipse46-devstudio already being installed; otherwise skip this step
 # Generate list of features & plugins provided by rh-eclipse46-devstudio
@@ -253,12 +253,12 @@ tot=-2 # omit features and plugins folders from the count
 for iu in ${mirroredIUs}; do
   tot=$((tot+1))
 done
-if [[ ${quiet} != "-q" ]]; then echo "Total [2] IUs in ${mirror_folder}: ${tot}"; fi
+if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] Total [2] IUs in ${mirror_folder}: ${tot}"; fi
 
 # clean up the removelist file
 cat ${package_name}.removelist.txt | sort | uniq > ${package_name}.removelist.txt.2
 mv -f ${package_name}.removelist.txt.2 ${package_name}.removelist.txt
-if [[ ${quiet} != "-q" ]]; then echo "Total [3] IUs in ${package_name}.removelist.txt: "$(cat ${package_name}.removelist.txt | wc -l); fi
+if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] Total [3] IUs in ${package_name}.removelist.txt: "$(cat ${package_name}.removelist.txt | wc -l); fi
 
 echo ""; echo "[INFO] Build devstudio.tar.xz ..."
 time tar caf ${package_name}.tar.xz ${package_name}/
@@ -271,7 +271,7 @@ RPM_BUILD_VERSION=${BUILD_VERSION##*.}.$(date -u +%Y%m%d.%H%M); echo RPM_BUILD_V
 cat ${package_name}.spec.template | sed -e "s#RPM_VERSION#${RPM_VERSION}#g" -e "s#RPM_BUILD_VERSION#${RPM_BUILD_VERSION}#g" > ${package_name}.spec
 echo ""; echo "[INFO] Build rpm using ${package_name}.spec ..."
 
-echo "## BEGIN RPMBUILD ##"
+echo "[INFO] ## BEGIN RPMBUILD ##"
 time rpmbuild \
   --define "_sourcedir $(pwd)" \
   --define "_srcrpmdir $(pwd)" \
@@ -279,7 +279,7 @@ time rpmbuild \
   --define "_rpmdir $(pwd)" \
   --define "_specdir $(pwd)" \
   -bs ${package_name}.spec
-echo "## END RPMBUILD ##"
+echo "[INFO] ## END RPMBUILD ##"
 
 # Run the build in a mock chroot containing RHEL 7 and everything needed
 # to build SCL packages
@@ -309,9 +309,9 @@ if [[ -d ${mock_root}/${JOB_NAME}/result ]] && [[ $(ls ${mock_root}/${JOB_NAME}/
   rm -f ${mock_root}/${JOB_NAME}/result/*.log
 fi
 
-echo "## BEGIN MOCK ##"
+echo "[INFO] ## BEGIN MOCK ##"
 time /usr/bin/mock -r $(pwd)/${JOB_NAME}.cfg ${mock_opts} --rebuild ${package_name}*.src.rpm
-echo "## END MOCK ##"
+echo "[INFO] ## END MOCK ##"
 
 # collect new mock logs, if any
 if [[ -d ${mock_root}/${JOB_NAME}/result ]] && [[ $(ls ${mock_root}/${JOB_NAME}/result/*.log) ]]; then
@@ -325,7 +325,7 @@ mkdir ${yum_repo}
 mv ${mock_root}/${JOB_NAME}/result/*.rpm ${yum_repo}
 # keep src.rpm, do not delete # rm -f ${yum_repo}/*.src.rpm
 time createrepo_c ${yum_repo}
-echo "Yum repository generated in: ${yum_repo}"
+echo "[INFO] Yum repository generated in: ${yum_repo}"
 
 # create sha256sum
 rpmfiles=$(find ${yum_repo} -maxdepth 1 -type f -name "*.rpm")
