@@ -81,7 +81,7 @@ fi
 if [[ ! -f /etc/yum.repos.d/rh-eclipse46.repo ]]; then
   echo "Your system is not configured to resolve rh-eclipse46 packages!"
   echo "Configure with:"
-  echo "$su -c 'cp rh-eclipse46.repo /etc/yum.repos.d/rh-eclipse46.repo'"
+  echo "$ su -c 'cp rh-eclipse46.repo /etc/yum.repos.d/rh-eclipse46.repo'"
   exit 2
 fi
 
