@@ -25,8 +25,6 @@ Red Hat, Inc. - Initial implementation.
 com.jboss.devstudio.core.product
 -showsplash
 platform\:/base/plugins/com.jboss.devstudio.core
---launcher.XXMaxPermSize
-256m
 --launcher.defaultAction
 openFile</programArgs>
       <vmArgs>-Xms512m
@@ -34,7 +32,7 @@ openFile</programArgs>
 -Dosgi.framework.extensions=org.eclipse.wst.jsdt.nashorn.extension
 -Dosgi.instance.area.default=@user.home/workspace</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
--Xdock:icon=../Resources/devstudio.icns -XX:MaxPermSize=256m -Xdock:name=&quot;Red Hat JBoss Developer Studio&quot;</vmArgsMac>
+-Xdock:icon=../Resources/devstudio.icns -XX:MetaspaceSize=256m -Xdock:name=&quot;Red Hat JBoss Developer Studio&quot;</vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
