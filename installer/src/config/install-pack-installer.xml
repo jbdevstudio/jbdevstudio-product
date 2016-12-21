@@ -16,6 +16,8 @@
 
       <singlefile src="config/resources/devstudio-unity" target="$INSTALL_PATH/devstudio-unity" condition="izpack.linuxinstall" />
       <executable targetfile="$INSTALL_PATH/devstudio-unity" condition="izpack.linuxinstall" />
+      <singlefile src="config/resources/devstudio-wayland" target="$INSTALL_PATH/devstudio-wayland" condition="izpack.linuxinstall" />
+      <executable targetfile="$INSTALL_PATH/devstudio-wayland" condition="izpack.linuxinstall" />
       <singlefile src="config/resources/icons/48-devstudio.icon.png" target="$INSTALL_PATH/studio/48-devstudio.icon.png" condition="izpack.linuxinstall" />
       <singlefile src="config/resources/icons/48-uninstall.icon.png" target="$INSTALL_PATH/studio/48-uninstall.icon.png" condition="izpack.linuxinstall" />
       <singlefile src="config/resources/icons/devstudio.ico" target="$INSTALL_PATH/studio/devstudio.ico" os="windows" />
