@@ -2,13 +2,10 @@ package com.jboss.devstudio.core.installer;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.Properties;
 
 import com.izforge.izpack.adaptator.IXMLElement;
-import com.izforge.izpack.installer.AutomatedInstallData;
 import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.InstallerFrame;
 import com.izforge.izpack.installer.IzPanel;
@@ -53,7 +50,7 @@ public class CreateLinkPanel extends IzPanel {
 	public void panelActivate() {
 		installPath = idata.getVariable("INSTALL_PATH");
 		createSoftLink();
-		writeProperty("runtime_locations.properties");
+		CreateLinkPanelAutomationHelper.writeProperty(idata, "runtime_locations.properties");
 		addJREPath();
 
 		parent.skipPanel();
@@ -90,37 +87,6 @@ public class CreateLinkPanel extends IzPanel {
 		return System.getProperty("os.name","").toLowerCase().indexOf("win") == -1;
 	}
 	
-	public void writeProperty(String fileName) {
-
-		File folder = new File(installPath, P2DirectorStarterListener.DEVSTUDIO_LOCATION);
-
-		Properties servers = (Properties) idata.getAttribute("AS_SERVERS");
-		if (!servers.isEmpty()) {
-			if (!folder.exists()) {
-				folder.mkdirs();
-			}
-			File file = new File(folder, fileName);
-			FileOutputStream stream = null;
-			try {
-				file.createNewFile();
-				stream = new FileOutputStream(file);
-				servers.store(stream, null);
-				stream.flush();
-				stream.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
-				if (stream != null) {
-					try {
-						stream.close();
-					} catch (IOException e1) {
-						Debug.trace(e1);
-					}
-				}
-			}
-		}
-	}
-
 	public void createLink(String fileName, String folderName) {
 		String path = installPath + File.separator + "eclipse" + File.separator
 				+ "links";
