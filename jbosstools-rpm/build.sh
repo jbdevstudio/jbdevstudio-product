@@ -66,13 +66,7 @@ if [ ! $(getent group | grep -e '^mock' | grep -e "$USER") ] ; then
   exit 2
 fi
 
-if [[ ! -f /etc/yum.repos.d/rh-eclipse46.repo ]]; then
-  echo "Your system is not configured to resolve rh-eclipse46 packages!"
-  echo "Configure with:"
-  echo "$ su -c 'cp rh-eclipse46.repo /etc/yum.repos.d/rh-eclipse46.repo'"
-  exit 2
-fi
-
+# TODO: should not use rh-eclipse46 launcher here
 launcher="$(ls /opt/rh/rh-eclipse46/root/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar 2>/dev/null | head -1)"
 #if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] launcher = ${launcher}"; fi
 # dnf whatprovides /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar
@@ -86,15 +80,16 @@ if [[ ! ${launcher} ]]; then
   exit 2
 fi
 
-# Usage: p2extract ${dropletRepo} ${inputRepo1},${inputRepo2} ${featureID}
+# Usage: p2extract ${mirror_folder} ${inputRepo1},${inputRepo2} ${featureID}
 function p2extract () {
-  dropletRepo="${1}"
+  mirror_folder="${1}"
   inputRepos="${2}"
   IUID="${3}"
+  # java -version
   time java -jar ${launcher} \
   -application org.eclipse.equinox.p2.director \
-  -clean -nosplash -consoleLog -flavor tooling \
-  -profile rh-eclipse-jbosstools \
+  -clean -debug -nosplash -consoleLog -flavor tooling \
+  -profile jbosstools \
   -profileProperties org.eclipse.update.install.features=true \
   -destination ${mirror_folder} \
   -bundlepool  ${mirror_folder} \
