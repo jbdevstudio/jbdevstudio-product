@@ -1,6 +1,6 @@
 [rh-eclipse46-build]
 name=rh-eclipse46-build
-baseurl=http://download.devel.redhat.com/brewroot/repos/rhscl-2.3-rh-eclipse46-rhel-7-build/latest/x86_64
+baseurl=http://download.devel.redhat.com/brewroot/repos/rhscl-2.4-rh-eclipse46-rhel-7-build/latest/x86_64
 enabled=1
 sslverify=0
 gpgcheck=0
