@@ -40,6 +40,7 @@ source_p2_sites="" # comma-separated list passed in from commandline
 JOB_NAME=rh-eclipse46-devstudio
 mock_opts="" # eg., --no-clean and/or --update flags
 mock_root=/var/lib/mock/ # or /opt/data/mock_root
+brewrepo=http://download.devel.redhat.com/brewroot/repos/rhscl-2.4-rh-eclipse46-rhel-7-build/latest/x86_64
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
@@ -50,6 +51,7 @@ while [[ "$#" -gt 0 ]]; do
     '-j') JOB_NAME="$2"; shift 1;;
     '-mo') mock_opts="${mock_opts} $2"; shift 1;;
     '-mr') mock_root="$2"; shift 1;;
+    '-b') brewroot="$2"; shift 1;;
   esac
   shift 1
 done
@@ -288,7 +290,7 @@ config_opts['chroothome'] = '/builddir'
 config_opts['use_host_resolv'] = False
 config_opts['basedir'] = '${mock_root}'
 config_opts['rpmbuild_timeout'] = 86400
-config_opts['yum.conf'] = '[main]\ncachedir=/var/cache/yum\ndebuglevel=2\n\nlogfile=/var/log/yum.log\nreposdir=/dev/null\nretries=20\nobsoletes=1\ngpgcheck=0\nassumeyes=1\nkeepcache=1\ninstall_weak_deps=0\nstrict=0\n\n[build]\nname=build\nbaseurl=http://download.devel.redhat.com/brewroot/repos/rhscl-2.3-rh-eclipse46-rhel-7-build/latest/x86_64\nenabled=1\ngpgcheck=0'
+config_opts['yum.conf'] = '[main]\ncachedir=/var/cache/yum\ndebuglevel=2\n\nlogfile=/var/log/yum.log\nreposdir=/dev/null\nretries=20\nobsoletes=1\ngpgcheck=0\nassumeyes=1\nkeepcache=1\ninstall_weak_deps=0\nstrict=0\n\n[build]\nname=build\nbaseurl=${brewrepo}\nenabled=1\ngpgcheck=0'
 config_opts['chroot_setup_cmd'] = 'groupinstall build'
 config_opts['target_arch'] = 'x86_64'
 config_opts['root'] = '${JOB_NAME}'
