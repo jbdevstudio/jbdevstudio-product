@@ -100,9 +100,9 @@ if [[ ! ${launcher} ]]; then
   exit 2
 fi
 
-# Usage: p2extract ${dropletRepo} ${inputRepo1},${inputRepo2} ${featureID}
+# Usage: p2extract ${mirror_folder} ${inputRepo1},${inputRepo2} ${featureID}
 function p2extract () {
-  dropletRepo="${1}"
+  mirror_folder="${1}"
   inputRepos="${2}"
   IUID="${3}"
   time java -jar ${launcher} \
