@@ -1,0 +1,9 @@
+jbosstools
+jbosstools_deps
+rh-eclipse46.cfg
+jbosstools-*.src.rpm
+jbosstools.tar.xz
+yum_repo/
+mock_logs/
+jbosstools.spec
+*.cfg

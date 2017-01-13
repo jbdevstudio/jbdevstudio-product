@@ -1,0 +1,21 @@
+# Building the jbosstools RPMs
+
+Run the ./build.sh script to see options. You can run the build against an update site or a collection of previously-downloaded update site zips:
+
+For example, you can build against the latest stable jbosstools update site release:
+
+    ./build.sh -clean -u "http://download.jboss.org/jbosstools/neon/stable/updates/" -mo "--update"
+
+Or, build against the latest jbosstools update site CI build:
+
+    ./build.sh -clean -u "http://download.jboss.org/jbosstools/neon/snapshots/updates/" -mo "--no-clean --update"
+
+You can also pass options to the mock process using the -mo flagusch as `--update` or `--no-clean`. See more examples in build.sh.
+
+Once built, there will be a pair of RPMs (one binary RPM, one source SRPM) in `./yum_repo/`.
+
+You can install these by hand with:
+
+    yum install ./yum_repo/rh-eclipse46-jbosstools-**.x86_64.rpm
+
+Or, follow the instructions in link:README.html[Install Instructions README] to add a yum.repos.d repo, then enable a repo with a path to the `./yum_repo/` folder where you built the RPMs locally.

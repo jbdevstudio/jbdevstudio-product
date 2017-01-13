@@ -1,0 +1,137 @@
+%{?scl:%scl_package jbosstools}
+%{!?scl:%global pkg_name %{name}}
+%{?java_common_find_provides_and_requires}
+
+# Prevent useless debuginfo package generation
+%global debug_package %{nil}
+
+Name:           %{?scl_prefix}jbosstools
+Version:        RPM_VERSION
+Release:        RPM_BUILD_VERSION%{?dist}
+Summary:        JBoss Tools
+
+License:        EPL
+URL:            https://tools.jboss.org/
+
+Source0: %{pkg_name}.tar.xz
+Source1: build.sh
+
+BuildArch: x86_64
+
+BuildRequires: eclipse-pde
+
+# requirements of rh-eclipse46-base, omitting the rh-eclipse46- prefix to get the Fedora versions
+Requires: eclipse-abrt eclipse-cdt-native eclipse-ecf-core eclipse-ecf-runtime eclipse-egit eclipse-egit-mylyn
+Requires: eclipse-emf-core eclipse-emf-runtime eclipse-epp-logging eclipse-equinox-osgi eclipse-filesystem eclipse-gef
+Requires: eclipse-jdt eclipse-jgit eclipse-linuxtools-docker eclipse-linuxtools-vagrant eclipse-mpc eclipse-mylyn
+Requires: eclipse-mylyn-builds eclipse-mylyn-builds-hudson eclipse-mylyn-context-java eclipse-mylyn-context-pde
+Requires: eclipse-mylyn-docs-epub eclipse-mylyn-docs-wikitext eclipse-mylyn-tasks-bugzilla eclipse-mylyn-tasks-trac
+Requires: eclipse-mylyn-tasks-web eclipse-mylyn-versions eclipse-mylyn-versions-cvs eclipse-mylyn-versions-git
+Requires: eclipse-p2-discovery eclipse-pde eclipse-platform eclipse-swt eclipse-tm-terminal
+Requires: eclipse-tm-terminal-connectors eclipse-webtools-common eclipse-webtools-javaee
+Requires: eclipse-webtools-jsf eclipse-webtools-servertools eclipse-webtools-sourceediting eclipse-xsd
+
+# xulrunner dependencies needed for the Visual Page Editor (VPE) since Fedora Eclipse doesn't ship xulrunner
+Requires: ORBit2
+Requires: gnome-vfs2
+Requires: libnotify
+Requires: libIDL
+
+# cdt deps: org.eclipse.cdt.core.native and org.eclipse.cdt.core.utils.pty
+Requires: eclipse-cdt-native
+# include freemarker because cdt's org.eclipse.tools.templates.freemarker needs it 
+Requires: freemarker
+
+# rse deps: org.eclipse.rse.core and org.eclipse.rse.ui
+Requires: eclipse-rse
+
+# tm deps: org.eclipse.tm.terminal.connector.local
+Requires: eclipse-tm-terminal-connectors
+
+# include AERI logging/reporting
+Requires: eclipse-epp-logging
+
+# JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
+# Requires: lucene5 lucene5-analysis lucene5-queryparser
+
+# JBDS-4150 needed for jbosstools optional installs
+Requires: httpcomponents-client httpcomponents-client-cache
+
+# note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
+Requires: java-1.8.0-openjdk-devel
+
+%description
+Red Hat Developer Studio.
+
+%prep
+%{?scl:scl enable %{scl_maven} %{scl} - << "EOF"}
+set -e -x
+%setup -q -c
+%{?scl:EOF}
+
+
+%build
+%{?scl:scl enable %{scl_maven} %{scl} - << "EOF"}
+set -e -x
+# Generate p2 repo from bundles
+eclipse -nosplash -consolelog \
+  -configuration /tmp/jbosstools-rpm-eclipse-configuration \
+  -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
+  -metadataRepository file:$(pwd)/p2-repo \
+  -artifactRepository file:$(pwd)/p2-repo \
+  -source $(pwd)/%{pkg_name} \
+  -publishArtifacts -compress -append
+# Remove temporary eclipse config folder
+rm -fr /tmp/jbosstools-rpm-eclipse-configuration
+%{?scl:EOF}
+
+
+%install
+%{?scl:scl enable %{scl_maven} %{scl} - << "EOF"}
+set -e -x
+# Install droplets
+install -d -m755 %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}
+eclipse -nosplash -consolelog \
+  -configuration /tmp/jbosstools-rpm-eclipse-configuration \
+  -application org.eclipse.equinox.p2.repository.repo2runnable \
+  -createFragments \
+  -source $(pwd)/p2-repo \
+  -destination %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse
+# Remove temporary eclipse config folder
+rm -fr /tmp/jbosstools-rpm-eclipse-configuration
+# Remove unneeded metadata
+rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
+%{?scl:EOF}
+
+# Usage marker
+install -d -m 755 %{buildroot}%{_libdir}/eclipse/.pkgs
+echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
+
+# JBDS-4150 symlink to jars installed via RPM
+pushd %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins
+ln -s /usr/share/java/glassfish-servlet-api.jar javax.servlet_3.1.0.jar
+ln -s /usr/share/java/commons-lang.jar org.apache.commons.lang_2.6.0.jar
+ln -s /usr/share/java/httpcomponents/httpclient.jar org.apache.httpcomponents.httpclient_4.3.6.jar
+ln -s /usr/share/java/httpcomponents/httpclient-cache.jar org.apache.httpcomponents.httpclient.cache_4.3.6.jar
+ln -s /usr/share/java/xml-commons-resolver.jar org.apache.xml.resolver_1.2.0.v200806030312.jar
+ln -s /usr/share/java/xalan-j2-serializer.jar org.apache.xml.serializer_2.7.1.v200806030322.jar
+ln -s /usr/share/java/slf4j/slf4j-api.jar org.slf4j.api_1.7.4.jar
+popd
+
+# JBDS-4150 add to fragment.info
+echo "javax.servlet-api,3.1.0,plugins/javax.servlet-api_3.1.0.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.commons.lang,2.6.0,plugins/org.apache.commons.lang_2.6.0.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.httpcomponents.httpclient,4.3.6,plugins/org.apache.httpcomponents.httpclient_4.3.6.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.httpcomponents.httpclient.cache,4.3.6,plugins/org.apache.httpcomponents.httpclient.cache_4.3.6.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.xml.resolver,1.2.0.v200806030312,plugins/jorg.apache.xml.resolver_1.2.0.v200806030312.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.apache.xml.serializer,2.7.1.v200806030322,plugins/org.apache.xml.serializer_2.7.1.v200806030322.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/fragment.info
+
+
+%files
+%{_libdir}/eclipse/.pkgs
+%{_datadir}/eclipse/droplets/%{pkg_name}
+
+%changelog
+* Fri Jan 13 2016 Nick Boldt <nboldt@redhat.com> 4.4.3.20170113
+- Initial packaging
