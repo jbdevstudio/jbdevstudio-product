@@ -4,6 +4,7 @@ com.fasterxml.jackson.core.jackson-databind
 com.fasterxml.jackson.datatype.jackson-datatype-guava
 com.fasterxml.jackson.jaxrs.jackson-jaxrs-base
 com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider
+com.google.gson
 com.ibm.icu
 com.jcraft.jsch
 com.kenai.jffi
@@ -589,6 +590,7 @@ org.glassfish.jersey.core.jersey-common
 org.glassfish.jersey.media.jersey-media-json-jackson
 org.jboss.tools.usage
 org.jboss.tools.usage.feature
+org.junit
 org.sat4j.core
 org.sat4j.pb
 org.tukaani.xz
