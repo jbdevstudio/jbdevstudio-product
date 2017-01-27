@@ -32,6 +32,9 @@ Requires: rh-eclipse46-eclipse-cdt-native
 # include freemarker because cdt's org.eclipse.tools.templates.freemarker needs it 
 Requires: rh-eclipse46-freemarker
 
+# m2e deps
+Requires: rh-eclipse46-eclipse-m2e-core, rh-eclipse46-eclipse-m2e-workspace
+
 # rse deps: org.eclipse.rse.core and org.eclipse.rse.ui
 Requires: rh-eclipse46-eclipse-rse
 
@@ -46,6 +49,9 @@ Requires: rh-eclipse46-eclipse-epp-logging
 
 # JBDS-4150 needed for devstudio optional installs
 Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-client-cache
+
+# require testng
+Requires: rh-eclipse46-eclipse-testng
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
