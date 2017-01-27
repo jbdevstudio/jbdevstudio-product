@@ -4,4 +4,3 @@
 
 com.jboss.devstudio.core.rpm.feature
 com.jboss.devstudio.core.capabilities.feature
-org.testng.eclipse

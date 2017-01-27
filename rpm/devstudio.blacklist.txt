@@ -68,9 +68,6 @@ org.glassfish.hk2.locator
 org.glassfish.hk2.osgi-resource-locator
 org.glassfish.hk2.utils
 
-# JBDS-4131 keep com.google.guava 0.15 because o.e.m2e needs it
-# com.google.guava
-
 #➔ find . -name javassist.\*
 # ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/javassist_3.13.0.GA_v201209210905.jar
 javassist
@@ -145,6 +142,30 @@ org.eclipse.mylyn.commons.workbench
 org.eclipse.mylyn.discovery.core
 org.eclipse.mylyn.discovery.ui
 
+# JBDS-4258 remove m2e bundles as they're available in rh-eclipse46-eclipse-m2e-core and rh-eclipse46-eclipse-m2e-workspace
+org.eclipse.m2e.archtype.common
+org.eclipse.m2e.maven.indexer
+org.eclipse.m2e.maven.runtime
+org.eclipse.m2e.maven.runtime.slf4j.simple
+org.eclipse.m2e.core
+org.eclipse.m2e.core.ui
+org.eclipse.m2e.discovery
+org.eclipse.m2e.editor
+org.eclipse.m2e.editor.xml
+org.eclipse.m2e.importer
+org.eclipse.m2e.jdt
+org.eclipse.m2e.jdt.ui
+org.eclipse.m2e.launching
+org.eclipse.m2e.model.edit
+org.eclipse.m2e.profiles.core
+org.eclipse.m2e.profiles.ui
+org.eclipse.m2e.refactoring
+org.eclipse.m2e.scm
+org.eclipse.m2e.workspace.cli
+
+# JBDS-4131 keep com.google.guava 0.15 because o.e.m2e needs it
+# com.google.guava
+
 # JBDS-4134 remove stuff available from rh-eclipse46-eclipse-cdt-native
 org.eclipse.cdt.core.native
 
@@ -168,6 +189,7 @@ org.eclipse.tm.terminal.connector.process
 # needed for ch.qos.logback.slf4j, org.slf4j.impl.log4j12
 # org.slf4j.api
 
-# removed because excluded from devstudio rpm (but included in the devstudio installer/udpate site)
+# removed because excluded from devstudio rpm (but included in the devstudio installer/update site)
 org.jboss.tools.usage.feature
 org.jboss.tools.usage
+
