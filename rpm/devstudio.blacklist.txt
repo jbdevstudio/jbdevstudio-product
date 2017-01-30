@@ -162,9 +162,7 @@ org.eclipse.m2e.profiles.ui
 org.eclipse.m2e.refactoring
 org.eclipse.m2e.scm
 org.eclipse.m2e.workspace.cli
-
-# JBDS-4131 keep com.google.guava 0.15 because o.e.m2e needs it
-# com.google.guava
+com.google.guava
 
 # JBDS-4134 remove stuff available from rh-eclipse46-eclipse-cdt-native
 org.eclipse.cdt.core.native
