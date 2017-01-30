@@ -28,6 +28,8 @@
 
       if nothing reported, no dupes!
       if output, move those features to the rpmdeps.feature.
+
+      Then also run ../../rpm/checkDependencies.sh to look for more things you can remove from ../rpm.feature and move here.
   -->
   <requires>
     <!-- these dependencies are available from rpms -->
@@ -36,11 +38,10 @@
     <import feature="org.eclipse.equinox.p2.core.feature"/>
     <import feature="org.eclipse.help"/>
     <import feature="org.eclipse.jdt"/>
-    <import plugin="org.eclipse.jem.util" />
     <import feature="org.eclipse.jgit"/>
     <import feature="org.eclipse.jsf.feature"/>
-    <import feature="org.eclipse.jst.enterprise_ui.feature"/>
     <import feature="org.eclipse.jst.common.fproj.enablement.jdt"/>
+    <import feature="org.eclipse.jst.enterprise_ui.feature"/>
     <import feature="org.eclipse.jst.server_adapters.feature"/>
     <import feature="org.eclipse.jst.server_ui.feature"/>
     <import feature="org.eclipse.jst.web_ui.feature"/>
@@ -49,33 +50,66 @@
     <import feature="org.eclipse.jst.ws.cxf.feature"/>
     <import feature="org.eclipse.jst.ws.jaxws.dom.feature"/>
     <import feature="org.eclipse.jst.ws.jaxws.feature"/>
-    <import plugin="org.eclipse.linuxtools.docker.core" version="1.1.0" match="greaterOrEqual"/>
-    <import plugin="org.eclipse.linuxtools.docker.ui" version="1.1.0" match="greaterOrEqual"/>
-    <import plugin="org.eclipse.linuxtools.docker.docs" version="1.1.0" match="greaterOrEqual"/>
+    <import feature="org.eclipse.m2e.feature"/>
     <import feature="org.eclipse.mylyn.wikitext_feature"/>
     <import feature="org.eclipse.platform"/>
     <import feature="org.eclipse.rcp" />
+    <import feature="org.eclipse.tm.terminal.connector.local.feature" version="4.0.0" match="greaterOrEqual"/>
+    <import feature="org.eclipse.tm.terminal.connector.ssh.feature" version="4.0.0" match="greaterOrEqual"/>
+    <import feature="org.eclipse.tm.terminal.connector.telnet.feature" version="4.0.0" match="greaterOrEqual"/>
     <import feature="org.eclipse.wst.common.fproj"/>
+    <import feature="org.eclipse.wst.jsdt.chromium.debug.feature"/>
     <import feature="org.eclipse.wst.jsdt.feature"/>
+    <import feature="org.eclipse.wst.jsdt.nodejs.feature"/>
+    <import feature="org.eclipse.wst.json_core.feature"/>
+    <import feature="org.eclipse.wst.json_ui.feature"/>
     <import feature="org.eclipse.wst.server_adapters.feature"/>
     <import feature="org.eclipse.wst.web_ui.feature"/>
     <import feature="org.eclipse.wst.xml_ui.feature"/>
     <import feature="org.eclipse.wst.xsl.feature"/>
+
+    <import plugin="org.eclipse.core.expressions" version="3.4.400" match="greaterOrEqual"/>
     <import plugin="org.eclipse.emf.ecore" />
     <import plugin="org.eclipse.emf.ecore.edit" />
     <import plugin="org.eclipse.emf.ecore.xmi" />
     <import plugin="org.eclipse.emf.edit" />
     <import plugin="org.eclipse.jdt.doc.user"/>
+    <import plugin="org.eclipse.jem.util" />
     <import plugin="org.eclipse.jst.server.tomcat.core"/>
     <import plugin="org.eclipse.jst.server.tomcat.ui"/>
-    <import plugin="org.eclipse.wst.common.emf" />
-    <import plugin="org.eclipse.wst.sse.core" />
-    <import plugin="org.eclipse.wst.xml.core" />
-    <import plugin="org.eclipse.core.expressions" version="3.4.400" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.linuxtools.docker.core" version="1.1.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.linuxtools.docker.docs" version="1.1.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.linuxtools.docker.ui" version="1.1.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.rse.connectorservice.local"/>
+    <import plugin="org.eclipse.rse.connectorservice.ssh"/>
+    <import plugin="org.eclipse.rse.core" version="3.3.100" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.files.ui" version="3.2.0" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.processes.ui"/>
+    <import plugin="org.eclipse.rse.services" version="3.2.100" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.services.files.ftp" version="3.0.300" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.services.local" version="2.1.300" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.services.ssh" version="3.1.0" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.shells.ui"/>
+    <import plugin="org.eclipse.rse.subsystems.files.core" version="3.3.1" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.subsystems.files.local"/>
+    <import plugin="org.eclipse.rse.subsystems.files.ssh"/>
+    <import plugin="org.eclipse.rse.subsystems.processes.core"/>
+    <import plugin="org.eclipse.rse.subsystems.processes.local"/>
+    <import plugin="org.eclipse.rse.subsystems.processes.shell.linux"/>
+    <import plugin="org.eclipse.rse.subsystems.shells.core" version="3.1.200" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.subsystems.shells.local" version="2.1.300" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.subsystems.shells.ssh" version="2.1.300" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.subsystems.shells.telnet" version="1.2.200" match="greaterOrEqual" />
+    <import plugin="org.eclipse.rse.subsystems.terminals.core"/>
+    <import plugin="org.eclipse.rse.subsystems.terminals.ssh"/>
+    <import plugin="org.eclipse.rse.terminals.ui"/>
+    <import plugin="org.eclipse.rse.ui" version="3.3.100" match="greaterOrEqual"/>
     <import plugin="org.eclipse.tm.terminal.control" version="4.0.0" match="greaterOrEqual"/>
     <import plugin="org.eclipse.tm.terminal.view.core" version="4.0.0" match="greaterOrEqual"/>
     <import plugin="org.eclipse.tm.terminal.view.ui" version="4.0.0" match="greaterOrEqual"/>
-    <import feature="org.eclipse.tm.terminal.connector.ssh.feature" version="4.0.0" match="greaterOrEqual"/>
-    <import feature="org.eclipse.tm.terminal.connector.telnet.feature" version="4.0.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.tm.terminal.view.ui.rse" version="4.0.0" match="greaterOrEqual"/>
+    <import plugin="org.eclipse.wst.common.emf" />
+    <import plugin="org.eclipse.wst.sse.core" />
+    <import plugin="org.eclipse.wst.xml.core" />
   </requires>
 </feature>

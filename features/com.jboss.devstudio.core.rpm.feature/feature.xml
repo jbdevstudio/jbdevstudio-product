@@ -24,50 +24,42 @@
   <plugin id="com.jboss.devstudio.core.project.examples" download-size="0" install-size="0" version="0.0.0"/>
   <plugin id="com.jboss.devstudio.core.usage.branding" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="com.jboss.devstudio.core.central" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
-
-  <includes id="org.jboss.tools.foundation.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.foundation.security.linux.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.stacks.core.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/>
-  <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.jmx.feature" version="0.0.0"/>
-  <includes id="org.jboss.ide.eclipse.archives.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/>
-  <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/>
-  <includes id="org.hibernate.eclipse.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.ws.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.websockets.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.central.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.central.easymport.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.forge.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.browsersim.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.openshift.js.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.openshift.cdk.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.openshift.express.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.openshift.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.common.jdt.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>
-
   <plugin id="org.jboss.tools.discovery.core" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
   <plugin id="org.jboss.tools.foundation.help.ui" download-size="0" install-size="0" version="0.0.0" unpack="false"/>
+
+  <includes id="org.hibernate.eclipse.feature" version="0.0.0"/>
+  <includes id="org.jboss.ide.eclipse.archives.feature" version="0.0.0"/>
+  <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/>
+  <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.browsersim.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.central.easymport.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.central.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.common.jdt.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.forge.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.foundation.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.foundation.security.linux.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.jmx.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.openshift.cdk.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.openshift.express.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.openshift.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.openshift.js.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.stacks.core.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.websockets.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.ws.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/>
   
    <requires>
-    <import feature="org.eclipse.wst.jsdt.nodejs.feature"/>
-    <import feature="org.eclipse.wst.jsdt.chromium.debug.feature"/>
-    <import feature="org.eclipse.wst.jsdt.feature"/>
-    <import feature="org.eclipse.wst.json_core.feature"/>
-    <import feature="org.eclipse.wst.json_ui.feature"/>
-    <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
-
     <import feature="org.eclipse.datatools.common.doc.user"/>
     <import feature="org.eclipse.datatools.connectivity.doc.user"/>
     <import feature="org.eclipse.datatools.connectivity.feature"/>
@@ -79,12 +71,12 @@
     <import feature="org.eclipse.datatools.sqltools.doc.user"/>
     <import feature="org.eclipse.jpt.jaxb.feature"/>
     <import feature="org.eclipse.jpt.jpa.feature"/>
-    <import feature="org.eclipse.m2e.feature"/>
     <import feature="org.eclipse.m2e.wtp.feature"/>
     <import feature="org.eclipse.m2e.wtp.jaxrs.feature"/>
     <import feature="org.eclipse.m2e.wtp.jpa.feature"/>
     <import feature="org.eclipse.m2e.wtp.jsf.feature"/>
     <import feature="org.eclipse.recommenders.rcp.feature"/>
+    <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
     <import feature="org.jboss.tools.m2e.jdt.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
@@ -97,18 +89,6 @@
     <import feature="org.sonatype.m2e.buildhelper.feature"/>
     <import feature="org.sonatype.m2e.egit.feature"/>
     <import feature="org.sonatype.m2e.mavenarchiver.feature"/>
-    <import plugin="org.eclipse.rse.core" version="3.3.100" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.files.ui" version="3.2.0" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.services" version="3.2.100" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.services.files.ftp" version="3.0.300" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.services.local" version="2.1.300" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.services.ssh" version="3.1.0" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.subsystems.files.core" version="3.3.1" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.subsystems.shells.core" version="3.1.200" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.subsystems.shells.local" version="2.1.300" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.subsystems.shells.ssh" version="2.1.300" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.subsystems.shells.telnet" version="1.2.200" match="greaterOrEqual" />
-    <import plugin="org.eclipse.rse.ui" version="3.3.100" match="greaterOrEqual"/>
     <!-- 
        The following plugins are required for completeness and usability of product only. 
        We have no compilation requirements against them, nor any critical outstanding bugs
@@ -117,20 +97,6 @@
        the sending and receiving of remote commands, the sending and receiving of remote files, 
        and support for the connector service.  
     -->
-    <import plugin="org.eclipse.rse.connectorservice.local"/>
-    <import plugin="org.eclipse.rse.connectorservice.ssh"/>
-    <import plugin="org.eclipse.rse.processes.ui"/>
-    <import plugin="org.eclipse.rse.shells.ui"/>
-    <import plugin="org.eclipse.rse.subsystems.files.local"/>
-    <import plugin="org.eclipse.rse.subsystems.files.ssh"/>
-    <import plugin="org.eclipse.rse.subsystems.processes.core"/>
-    <import plugin="org.eclipse.rse.subsystems.processes.local"/>
-    <import plugin="org.eclipse.rse.subsystems.processes.shell.linux"/>
-    <import plugin="org.eclipse.rse.subsystems.terminals.core"/>
-    <import plugin="org.eclipse.rse.subsystems.terminals.ssh"/>
-    <import plugin="org.eclipse.rse.terminals.ui"/>
-    <import plugin="org.eclipse.tm.terminal.view.ui.rse" version="4.0.0" match="greaterOrEqual"/>
-    <import feature="org.eclipse.tm.terminal.connector.local.feature" version="4.0.0" match="greaterOrEqual"/>
     <import feature="org.eclipse.tm.terminal.connector.serial.feature" version="4.0.0" match="greaterOrEqual"/>
     <import plugin="org.dadacoalition.yedit" version="1.0.18" match="greaterOrEqual"/>
     <import plugin="org.yaml.snakeyaml" version="1.14.0" match="greaterOrEqual"/>
