@@ -163,8 +163,9 @@ org.eclipse.m2e.refactoring
 org.eclipse.m2e.scm
 org.eclipse.m2e.workspace.cli
 
-# JBDS-4259 still need guava 0.15.0 for org.eclipse.recommenders
-com.google.guava
+# JBDS-4259 still need guava 0.15.0 for org.eclipse.recommenders and gson for org.eclipse.jgit.pgm
+# com.google.guava
+# com.google.gson
 
 # JBDS-4134 remove stuff available from rh-eclipse46-eclipse-cdt-native
 org.eclipse.cdt.core.native
