@@ -45,6 +45,8 @@ public class UpdatePacksPanel extends IzPanel{
 				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat JBoss Business Process and Rules Development<br>");
 			if (installIUs.contains("integration-stack.ds"))
 				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat JBoss Data Virtualization<br>");
+			if (installIUs.contains("integration-stack.soa"))
+				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat JBoss Integration and SOA Development<br>");
 		}
 
 		String installRTLocs = idata.getVariable("INSTALL_RT_LOCATIONS");
