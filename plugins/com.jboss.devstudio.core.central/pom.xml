@@ -46,27 +46,57 @@
 					</execution>
 				</executions>
 			</plugin>
-      <plugin>
-        <groupId>com.googlecode.maven-download-plugin</groupId>
-        <artifactId>download-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>get-earlyaccess-listing</id>
-            <phase>generate-resources</phase>
-            <goals>
-              <goal>wget</goal>
-            </goals>
-            <configuration>
-              <url>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/updates/earlyaccess.properties/${stream_jbt}/devstudio-earlyaccess.properties</url>
-              <overwrite>true</overwrite>
-              <skipCache>true</skipCache>
-              <skip>false</skip>
-              <outputDirectory>${project.basedir}</outputDirectory>
-              <outputFileName>earlyaccess.properties</outputFileName>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
+			<plugin>
+				<groupId>com.googlecode.maven-download-plugin</groupId>
+				<artifactId>download-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>get-earlyaccess-listing</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>wget</goal>
+						</goals>
+						<configuration>
+							<url>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/updates/earlyaccess.properties/${stream_jbt}/devstudio-earlyaccess.properties</url>
+							<overwrite>true</overwrite>
+							<skipCache>true</skipCache>
+							<skip>false</skip>
+							<outputDirectory>${project.basedir}</outputDirectory>
+							<outputFileName>earlyaccess.properties</outputFileName>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-enforcer-plugin</artifactId>
+				<version>1.4.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.jboss.tools.releng</groupId>
+						<artifactId>enforcer-rules</artifactId>
+						<version>${jbossTychoPluginsVersion}</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>devstudio-core-default-version-check</id>
+						<goals>
+							<goal>enforce</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<foundationCoreVersionMatchesParentPom implementation="org.jboss.tools.releng.FoundationCoreVersionMatchesParentPom">
+									<currentVersionProperties>src/com/jboss/devstudio/core/internal/properties/currentversion.properties</currentVersionProperties>
+									<requiredQualifier>.GA</requiredQualifier>
+								</foundationCoreVersionMatchesParentPom>
+							</rules>
+							<!-- warn but continue the build when fail = false -->
+							<fail>true</fail>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
