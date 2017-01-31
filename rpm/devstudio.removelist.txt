@@ -4,6 +4,7 @@ com.fasterxml.jackson.core.jackson-databind
 com.fasterxml.jackson.datatype.jackson-datatype-guava
 com.fasterxml.jackson.jaxrs.jackson-jaxrs-base
 com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider
+com.google.gson
 com.ibm.icu
 com.jcraft.jsch
 com.kenai.jffi
@@ -334,16 +335,19 @@ org.eclipse.linuxtools.docker.feature
 org.eclipse.linuxtools.docker.ui
 org.eclipse.ltk.core.refactoring
 org.eclipse.ltk.ui.refactoring
+org.eclipse.m2e.archetype.common
 org.eclipse.m2e.archtype.common
 org.eclipse.m2e.core
 org.eclipse.m2e.core.ui
 org.eclipse.m2e.discovery
 org.eclipse.m2e.editor
 org.eclipse.m2e.editor.xml
+org.eclipse.m2e.feature
 org.eclipse.m2e.importer
 org.eclipse.m2e.jdt
 org.eclipse.m2e.jdt.ui
 org.eclipse.m2e.launching
+org.eclipse.m2e.lifecyclemapping.defaults
 org.eclipse.m2e.maven.indexer
 org.eclipse.m2e.maven.runtime
 org.eclipse.m2e.maven.runtime.slf4j.simple
@@ -608,6 +612,7 @@ org.glassfish.jersey.core.jersey-common
 org.glassfish.jersey.media.jersey-media-json-jackson
 org.jboss.tools.usage
 org.jboss.tools.usage.feature
+org.junit
 org.sat4j.core
 org.sat4j.pb
 org.tukaani.xz

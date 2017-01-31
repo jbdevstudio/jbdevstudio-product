@@ -44,6 +44,9 @@ Requires: rh-eclipse46-eclipse-tm-terminal-connectors
 # include AERI logging/reporting
 Requires: rh-eclipse46-eclipse-epp-logging
 
+# include jgit
+Requires: rh-eclipse46-eclipse-jgit
+
 # JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
 # Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis, rh-java-common-lucene5-queryparser
 

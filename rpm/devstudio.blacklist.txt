@@ -162,6 +162,8 @@ org.eclipse.m2e.profiles.ui
 org.eclipse.m2e.refactoring
 org.eclipse.m2e.scm
 org.eclipse.m2e.workspace.cli
+
+# JBDS-4259 still need guava 0.15.0 for org.eclipse.recommenders
 com.google.guava
 
 # JBDS-4134 remove stuff available from rh-eclipse46-eclipse-cdt-native
@@ -191,3 +193,5 @@ org.eclipse.tm.terminal.connector.process
 org.jboss.tools.usage.feature
 org.jboss.tools.usage
 
+# exclude to avoid use constrain violations
+org.eclipse.osgi
