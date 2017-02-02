@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.jboss.tools</groupId>
     <artifactId>parent</artifactId>
-		<version>4.4.3.AM2-SNAPSHOT</version>
+		<version>4.4.3.Final-SNAPSHOT</version>
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>product</artifactId>
@@ -24,9 +24,7 @@
   <!-- Should you want to build it locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.60.x/ -->
   <properties>
     <tpc.group>jbdevstudio</tpc.group>
-    <!-- Do not hardcode this value, or we'll get GA-named bits when we do CRx maintenance builds. Instead set this flag in the job config for GA builds ONLY
-      <BUILD_ALIAS>GA</BUILD_ALIAS> 
-    -->
+    <BUILD_ALIAS>GA</BUILD_ALIAS> 
     <tpc.version>${TARGET_PLATFORM_VERSION_MAX}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
@@ -38,7 +36,6 @@
     <jbosstools-site>http://download.jboss.org/jbosstools/${eclipseReleaseName}/snapshots/updates/core/${stream_jbt}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.CR1-SNAPSHOT/REPO/</jbosstools-target-site> -->
     <stagingBaselineRepository>https://devstudio.redhat.com/10.0/staging/updates/</stagingBaselineRepository>
-
 
     <!--
       By default, use EAP 6.1.0.Alpha, which is publically available. This allows devstudio to be build locally w/o needing access to devel.redhat.com
