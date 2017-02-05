@@ -196,3 +196,17 @@ org.jboss.tools.usage
 
 # exclude to avoid use constrain violations
 org.eclipse.osgi
+
+# JBDS-4265 Ensure all jgit bundles are removed
+javaewah
+com.google.gson
+org.eclipse.jgit
+org.eclipse.jgit.archive
+org.eclipse.jgit.http.apache
+org.eclipse.jgit.http.server
+org.eclipse.jgit.junit
+org.eclipse.jgit.junit.http
+org.eclipse.jgit.lfs
+org.eclipse.jgit.lfs.server
+org.eclipse.jgit.pgm
+org.eclipse.jgit.ui
