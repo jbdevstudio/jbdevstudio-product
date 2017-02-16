@@ -4,25 +4,25 @@ usage ()
 {
     echo "Usage:     $0 -clean -z \"https://path/to/1.zip,https://path/to/2.zip,...\" -u \"https://path/to/site,...\" "
     echo ""
-    echo "Example 1a: $0 -z \"https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-updatesite-core.zip,\\
-https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform.zip,\\
-https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\\
-https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip\""
+    echo "Example 1a: $0 -z \"https://devstudio.redhat.com/static/11/stable/updates/core/devstudio-11.0.0.GA-updatesite-core.zip,\\
+https://devstudio.redhat.com/static/11/stable/updates/core/devstudio-11.0.0.GA-target-platform.zip,\\
+https://devstudio.redhat.com/static/11/stable/updates/core/devstudio-11.0.0.GA-target-platform-central.zip,\\
+https://devstudio.redhat.com/static/11/stable/updates/central/devstudio-11.0.0.GA-updatesite-central.zip\""
     echo ""
-    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/10.0/stable/updates/\" -mo \"--update\""
+    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/11/stable/updates/\" -mo \"--update\""
     echo ""
-    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\" -mo \"--update\""
+    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/11/staging/updates/\" -mo \"--update\""
     echo ""
-    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\" -mo \"--no-clean --update\""
+    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/11/snapshots/updates/\" -mo \"--no-clean --update\""
     echo ""
-    echo "Example 3b: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
-https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
-https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
-https://devstudio.jboss.com/10.0/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
+    echo "Example 3b: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.jboss.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
+https://devstudio.jboss.com/11/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
     echo ""
-    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
-https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
-https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
+    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.jboss.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
 file:///path/to/jbdevstudio-product/site/target/repository\"" 
     echo ""
     exit 1;
