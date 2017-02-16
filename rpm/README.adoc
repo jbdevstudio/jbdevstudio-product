@@ -4,11 +4,11 @@ Run the ./build.sh script to see options. You can run the build against an updat
 
 For example, you can build against the latest stable devstudio update site release:
 
-    ./build.sh -clean -u "https://devstudio.redhat.com/10.0/stable/updates/" -mo "--update"
+    ./build.sh -clean -u "https://devstudio.redhat.com/11/stable/updates/" -mo "--update"
 
 Or, build against the latest devstudio update site CI build:
 
-    ./build.sh -clean -u "https://devstudio.redhat.com/10.0/snapshots/updates/" -mo "--no-clean --update"
+    ./build.sh -clean -u "https://devstudio.redhat.com/11/snapshots/updates/" -mo "--no-clean --update"
 
 You can also pass options to the mock process using the -mo flagusch as `--update` or `--no-clean`. See more examples in build.sh.
 

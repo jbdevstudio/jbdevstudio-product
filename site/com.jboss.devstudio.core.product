@@ -76,7 +76,7 @@ openFile</programArgs>
    </configurations>
 
    <repositories>
-      <repository location="https://devstudio.redhat.com/10.0/stable/updates/" enabled="true" />
+      <repository location="https://devstudio.redhat.com/11/stable/updates/" enabled="true" />
    </repositories>
 
 </product>
