@@ -12,5 +12,12 @@
 		"label"      :"TestNG",
 		"description":"",
 		"selected"   :"true"
+	},
+	{
+		"id"         :"org.eclipse.wst.common_core_EBZ511793.feature.patch.feature.group",
+		"path"       :"devstudio",
+		"label"      :"org.eclipse.wst.common_core_EBZ511793.feature.patch",
+		"description":"Patch feature for Eclipse Bugzilla 511793 / JBIDE-24240 - fix for org.eclipse.wst.common.modulecore",
+		"selected"   :"true"
 	}
 ]

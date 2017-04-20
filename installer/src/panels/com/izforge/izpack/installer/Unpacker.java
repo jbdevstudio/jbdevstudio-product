@@ -680,7 +680,7 @@ public class Unpacker extends UnpackerBase
 
 	public static String resolveIUs(String ius) {
 		if(ius == null || "".equals(ius.trim())) {
-			ius = "com.jboss.devstudio.core.package,org.testng.eclipse.feature.group";
+			ius = "com.jboss.devstudio.core.package,org.testng.eclipse.feature.group,org.eclipse.wst.common_core_EBZ511793.feature.patch.feature.group";
 		}
 		return ius;
 	}
