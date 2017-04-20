@@ -46,6 +46,12 @@
   </bundle>
   <bundle id="org.yaml.snakeyaml"/>
 
+  <!-- https://issues.jboss.org/browse/JBIDE-24240 / EBZ 511793 org.eclipse.wst.common.modulecore patch feature -->
+  <feature id="org.eclipse.wst.common_core_EBZ511793.feature.patch">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+
   <!-- JBDS-3898 JSON editor -->
   <feature id="org.eclipse.wst.json_core.feature">
     <category name="CoreTools" />
