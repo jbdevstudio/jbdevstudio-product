@@ -18,7 +18,6 @@
   <properties>
     <snapshotLocation>core</snapshotLocation>
     <snapshotUpdateSitePath>${devstudioReleaseVersion}/snapshots/updates/${snapshotLocation}/${stream_jbt}</snapshotUpdateSitePath>
-    <RHDS_SSH>hudson@dev90.hosts.mwqe.eng.bos.redhat.com:/qa/services/http/binaries/devstudio</RHDS_SSH><!-- use dev90 as of 2017-03-15 -->
   </properties>
   <build>
     <plugins>
