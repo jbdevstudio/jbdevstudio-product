@@ -48,8 +48,10 @@
 
   <!-- https://issues.jboss.org/browse/JBIDE-24240 / EBZ 511793 org.eclipse.wst.common.modulecore patch feature -->
   <feature id="org.eclipse.wst.common_core_EBZ511793.feature.patch">
+    <category name="BringYourOwnEclipse" />
     <category name="CoreTools" />
     <category name="WebTools" />
+    <category name="Patches" />
   </feature>
 
   <!-- JBDS-3898 JSON editor -->
@@ -505,4 +507,9 @@
   <category-def name="CloudContainerTools" label="JBoss Cloud And Container Development Tools">
     <description>Tools for Cloud and Container Development.</description>
   </category-def>
+
+  <category-def name="Patches" label="Patches">
+    <description>Patch features for Eclipse or Eclipse projects.</description>
+  </category-def>
+
 </site>
