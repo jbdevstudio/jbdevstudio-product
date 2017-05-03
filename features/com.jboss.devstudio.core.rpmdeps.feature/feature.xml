@@ -50,7 +50,8 @@
     <import feature="org.eclipse.jst.ws.cxf.feature"/>
     <import feature="org.eclipse.jst.ws.jaxws.dom.feature"/>
     <import feature="org.eclipse.jst.ws.jaxws.feature"/>
-    <import feature="org.eclipse.m2e.feature"/>
+    <import feature="org.eclipse.linuxtools.docker.feature" version="2.3.0.201704251823" match="greaterOrEqual"/>
+    <import feature="org.eclipse.m2e.feature" version="1.7.1.20161104-1805" match="greaterOrEqual"/>
     <import feature="org.eclipse.mylyn.wikitext_feature"/>
     <import feature="org.eclipse.platform"/>
     <import feature="org.eclipse.rcp" />
@@ -77,9 +78,6 @@
     <import plugin="org.eclipse.jem.util" />
     <import plugin="org.eclipse.jst.server.tomcat.core"/>
     <import plugin="org.eclipse.jst.server.tomcat.ui"/>
-    <import plugin="org.eclipse.linuxtools.docker.core" version="1.1.0" match="greaterOrEqual"/>
-    <import plugin="org.eclipse.linuxtools.docker.docs" version="1.1.0" match="greaterOrEqual"/>
-    <import plugin="org.eclipse.linuxtools.docker.ui" version="1.1.0" match="greaterOrEqual"/>
     <import plugin="org.eclipse.rse.connectorservice.local"/>
     <import plugin="org.eclipse.rse.connectorservice.ssh"/>
     <import plugin="org.eclipse.rse.core" version="3.3.100" match="greaterOrEqual" />
