@@ -56,6 +56,9 @@ Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-cli
 # require testng
 Requires: rh-eclipse46-eclipse-testng
 
+# require gson
+Requires: rh-java-common-google-gson
+
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
 
@@ -134,6 +137,9 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Fri May 19 2017 Nick Boldt <nboldt@redhat.com> 11.0.0.20170519
+- Add requirement on rh-java-common-google-gson
+
 * Wed May 17 2017 Nick Boldt <nboldt@redhat.com> 11.0.0.20170517
 - Bump to 11.0.0
 
