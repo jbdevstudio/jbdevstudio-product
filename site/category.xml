@@ -272,7 +272,7 @@
 
   <!-- JBIDE-20216 add wikitext asciidoc editor to Core Tools category -->  
   <feature id="org.eclipse.mylyn.wikitext_feature"/>
-  <bundle id="org.eclipse.mylyn.wikitext.asciidoc.core">
+  <bundle id="org.eclipse.mylyn.wikitext.asciidoc">
     <category name="CoreTools" />
   </bundle>
   <bundle id="org.eclipse.mylyn.wikitext.asciidoc.ui">
