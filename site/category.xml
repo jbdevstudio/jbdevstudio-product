@@ -364,7 +364,6 @@
   <feature id="org.eclipse.m2e.wtp.jaxrs.feature"/>
   <feature id="org.eclipse.m2e.wtp.jpa.feature"/>
   <feature id="org.eclipse.m2e.wtp.jsf.feature"/>
-  <feature id="org.jboss.tools.m2e.jdt.feature"/>
   <feature id="org.sonatype.m2e.buildhelper.feature"/>
   <feature id="org.sonatype.m2e.egit.feature"/>
   <feature id="org.sonatype.m2e.mavenarchiver.feature"/>

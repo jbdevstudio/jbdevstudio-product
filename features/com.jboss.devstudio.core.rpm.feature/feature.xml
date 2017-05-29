@@ -77,7 +77,6 @@
     <import feature="org.eclipse.m2e.wtp.jsf.feature"/>
     <import feature="org.eclipse.recommenders.rcp.feature"/>
     <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
-    <import feature="org.jboss.tools.m2e.jdt.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.cdi.feature"/>
