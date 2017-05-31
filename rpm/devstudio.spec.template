@@ -57,7 +57,7 @@ Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-cli
 Requires: rh-eclipse46-eclipse-testng
 
 # require gson
-Requires: rh-java-common-google-gson
+Requires: rh-java-common-google-gson >= 2.2.4, rh-java-common-google-gson < 3.0.0
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
