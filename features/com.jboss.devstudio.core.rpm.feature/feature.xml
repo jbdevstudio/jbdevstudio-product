@@ -60,6 +60,7 @@
   <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/>
   
    <requires>
+    <import feature="org.eclipse.buildship"/>
     <import feature="org.eclipse.datatools.common.doc.user"/>
     <import feature="org.eclipse.datatools.connectivity.doc.user"/>
     <import feature="org.eclipse.datatools.connectivity.feature"/>

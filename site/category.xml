@@ -56,6 +56,12 @@
     <category name="WebTools" />
   </feature>
 
+  <!-- JBDS-3510 add Buildship -->
+  <feature id="org.eclipse.buildship">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+
   <!-- JBIDE-19045 include Tern -->
   <bundle id="minimal-json"/>
   <bundle id="minimatch.java" />
