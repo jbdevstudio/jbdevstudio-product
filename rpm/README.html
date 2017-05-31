@@ -96,7 +96,7 @@
 # OR
 su -</pre></li>
           <li>2. Enable devstudio yum repos
-<pre>cat << EOF > /etc/yum.repos.d/rh-eclipse46-devstudio.repo
+<pre>cat << EOF > /etc/yum.repos.d/rh-eclipse47-devstudio.repo
 [rh-eclipse47-devstudio-stable-11.x]
 name=rh-eclipse47-devstudio-stable-11.x
 baseurl=https://devstudio.redhat.com/static/11/stable/rpms/x86_64/
@@ -105,8 +105,8 @@ gpgcheck=1
 upgrade_requirements_on_install=1
 metadata_expire=24h
 
-[rh-eclipse46-devstudio-snapshot-11.0]
-name=rh-eclipse46-devstudio-snapshot-11.0
+[rh-eclipse47-devstudio-snapshot-11.0]
+name=rh-eclipse47-devstudio-snapshot-11.0
 baseurl=https://devstudio.redhat.com/11/snapshots/rpms/11.0.0/x86_64/
 enabled=0
 gpgcheck=0
@@ -118,7 +118,7 @@ EOF</pre></li>
 <pre>rpm --import "https://www.redhat.com/security/a5787476.txt"</pre></li>
 
           <li>4. Install devstudio with yum
-<pre>yum install rh-eclipse46-devstudio</pre></li>
+<pre>yum install rh-eclipse47-devstudio</pre></li>
         </ul>
     </div>
 
