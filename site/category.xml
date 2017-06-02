@@ -473,7 +473,7 @@
 
   <!-- only in devstudio -->
   <category-def name="BringYourOwnEclipse" label="* Red Hat JBoss Developer Studio 11 - Bring Your Own Eclipse">
-    <description>Select this feature if you want to install all of the Red Hat JBoss Developer Studio (Core Features) into your own Eclipse 4.6 (Neon).</description>
+    <description>Select this feature if you want to install all of the Red Hat JBoss Developer Studio (Core Features) into your own Eclipse 4.7 (Oxygen).</description>
   </category-def>
   <category-def name="CoreTools" label="* Red Hat JBoss Developer Studio 11 - Core">
     <description>Contains most of the Red Hat JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web Development.</description>
