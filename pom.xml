@@ -43,6 +43,7 @@
     <!--
       By default, use EAP 6.1.0.Alpha, which is publically available. This allows devstudio to be build locally w/o needing access to devel.redhat.com
       To build the EAP bundled installer, use the "eap" profile: `mvn install -Peap`
+      Note: as of devstudio 11, this is no longer required as EAP is bundled downstream in the devsuite installer.
      -->
     <eapVersion>6.1.0.Alpha</eapVersion>
     <eapFilename>jboss-eap-${eapVersion}.zip</eapFilename>
@@ -104,7 +105,7 @@
 
   <profiles>
     <!-- 
-      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP 6.4 with CVE-2015-7501 patch, which is not a public URL (unlike 6.1.0.Alpha).
+      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP, from a non-public URL.
     -->
     <profile>
       <id>hudson</id>
@@ -276,7 +277,7 @@ Build product features, site, and installers like this:
 
 To replicate a Jenkins CI build, run like this (unified.target and hudson profile require VPN access):
 
-  mvn clean install -P hudson,eap,pack200 -Dtpc.version=4.60.0.Final-SNAPSHOT -DBUILD_NUMBER=460000 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Dstream_jbt=master -DBUILD_ALIAS=GA
+  mvn clean install -P hudson,pack200 -Dtpc.version=4.60.0.Final-SNAPSHOT -DBUILD_NUMBER=460000 -DJOB_NAME=devstudio.product_master -Dupdate.site.description="Development Milestone" -Dstream_jbt=master -DBUILD_ALIAS=GA
 
 See README.md for information building, installing, contributing, generated artifacts, and more.
 
