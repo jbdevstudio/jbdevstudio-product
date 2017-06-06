@@ -140,6 +140,7 @@
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <executions>
+			  <!-- JBDS-4362 disable publishing devstudio internally onto wonka, as we no longer include EAP bundles so don't need an internal server
               <execution>
                 <id>deploy-snapshot-build-internal</id>
                 <goals>
@@ -156,7 +157,7 @@
                     <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all</arg>
                   </arguments>
                 </configuration>
-              </execution>
+              </execution> -->
               <execution>
                 <id>deploy-snapshot-build</id>
                 <goals>
