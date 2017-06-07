@@ -89,6 +89,7 @@
     <import feature="org.sonatype.m2e.buildhelper.feature"/>
     <import feature="org.sonatype.m2e.egit.feature"/>
     <import feature="org.sonatype.m2e.mavenarchiver.feature"/>
+    <import plugin="org.eclipse.wst.jsdt.nashorn.extension"/>
     <!-- 
        The following plugins are required for completeness and usability of product only. 
        We have no compilation requirements against them, nor any critical outstanding bugs
