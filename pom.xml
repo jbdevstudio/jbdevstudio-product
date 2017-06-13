@@ -31,7 +31,7 @@
     <central.tpc.version>4.70.0.AM1-SNAPSHOT</central.tpc.version>
     <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${stream_jbt}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
 
-    <RHDS_SSH>devstudio@10.16.89.81:/home/windup/apache2/www/html/rhd/devstudio</RHDS_SSH> <!-- use wonka.mw as of 04/20 -->
+    <!-- <RHDS_SSH>devstudio@10.16.89.81:/home/windup/apache2/www/html/rhd/devstudio</RHDS_SSH> no need to use wonka.mw - no EAP bundles -->
     <!-- <RHDS_SSH>hudson@dev90.hosts.mwqe.eng.bos.redhat.com:/qa/services/http/binaries/devstudio</RHDS_SSH> server is readonly now?  -->
 
     <!-- stream_jbt is set in parent pom = 4.4.neon / master -->
