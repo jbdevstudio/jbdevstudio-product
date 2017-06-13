@@ -7,6 +7,13 @@
 		"selected"   :"true"
 	},
 	{
+		"id"         :"com.jboss.devstudio.fuse.feature.feature.group",
+		"path"       :"devstudio",
+		"label"      :"JBoss Fuse Tools",
+		"description":"",
+		"selected"   :"true"
+	},
+	{
 		"id"         :"org.testng.eclipse.feature.group",
 		"path"       :"devstudio",
 		"label"      :"TestNG",

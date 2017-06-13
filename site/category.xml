@@ -290,6 +290,26 @@
     <category name="CoreTools" />
   </feature>
 
+  <feature id="org.fusesource.ide.core.feature">
+    <category name="FuseTools" />
+  </feature>
+
+  <feature id="org.fusesource.ide.camel.editor.feature">
+    <category name="FuseTools" />
+  </feature>
+
+  <feature id="org.fusesource.ide.jmx.feature">
+    <category name="FuseTools" />
+  </feature>
+
+  <feature id="org.fusesource.ide.server.extensions.feature">
+    <category name="FuseTools" />
+  </feature>
+
+  <feature id="org.jboss.tools.fuse.transformation.feature">
+    <category name="FuseTools" />
+  </feature>
+
   <!-- include but do not categorize -->
   <feature id="org.jboss.tools.central.feature"/>
   <feature id="org.jboss.tools.common.feature"/>
@@ -363,6 +383,11 @@
   <feature id="com.jboss.devstudio.core.capabilities.feature"/>
   <feature id="com.jboss.devstudio.core.rpm.feature"/>
   <feature id="com.jboss.devstudio.core.rpmdeps.feature"/>
+  <feature id="com.jboss.devstudio.fuse.feature">
+    <category name="BringYourOwnEclipse" />
+    <category name="CoreTools" />
+    <category name="FuseTools" />
+  </feature>
   <feature id="org.eclipse.egit"/>
   <feature id="org.eclipse.jgit"/>
   <feature id="org.eclipse.m2e.feature"/>
@@ -444,6 +469,12 @@
   <bundle id="org.jboss.tools.discovery.core.source"/>
   <!-- not in devstudio yet? <bundle id="org.jboss.tools.foundation.help.ui.source"/> -->
 
+  <feature id="org.fusesource.ide.core.feature.source"/>
+  <feature id="org.fusesource.ide.camel.editor.feature.source"/>
+  <feature id="org.fusesource.ide.jmx.feature.source"/>
+  <feature id="org.fusesource.ide.server.extensions.feature.source"/>
+  <feature id="org.jboss.tools.fuse.transformation.feature.source"/>
+
   <!-- only in JBT
   <feature id="org.jboss.tools.arquillian.feature.source"/>
   <feature id="org.jboss.tools.central.themes.feature.source"/>
@@ -504,4 +535,9 @@
   <category-def name="CloudContainerTools" label="JBoss Cloud And Container Development Tools">
     <description>Tools for Cloud and Container Development.</description>
   </category-def>
+
+  <category-def name="FuseTools" label="JBoss Fuse Tools">
+    <description>Tools to allow you to create Apache Camel routes in a graphical editor, launch them locally and deploy them to runtimes like Apache Karaf, Fabric8 and JBoss Fuse.</description>
+  </category-def>
+
 </site>

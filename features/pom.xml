@@ -19,6 +19,7 @@
 		<module>com.jboss.devstudio.core.feature.source</module>
 		<module>com.jboss.devstudio.core.capabilities.feature</module>
 		<module>com.jboss.devstudio.core.capabilities.feature.source</module>
+		<module>com.jboss.devstudio.fuse.feature</module>
 	</modules>
 </project>
 	

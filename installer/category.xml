@@ -10,4 +10,7 @@
 	<feature id="org.testng.eclipse">
 		<category name="devstudio" />
 	</feature>
+	<feature id="com.jboss.devstudio.fuse.feature">
+		<category name="devstudio" />
+	</feature>
 </site>
