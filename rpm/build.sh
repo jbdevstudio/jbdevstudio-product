@@ -13,16 +13,16 @@ https://devstudio.redhat.com/static/11/stable/updates/central/devstudio-11.0.0.G
     echo ""
     echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/11/staging/updates/\" -mo \"--update\""
     echo ""
-    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/11/snapshots/updates/\" -mo \"--no-clean --update\""
+    echo "Example 3a: $0 -clean -u \"https://devstudio.redhat.com/11/snapshots/updates/\" -mo \"--no-clean --update\""
     echo ""
-    echo "Example 3b: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
-https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
-https://devstudio.jboss.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
-https://devstudio.jboss.com/11/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
+    echo "Example 3b: $0 -clean -u \"https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.redhat.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
+https://devstudio.redhat.com/11/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
     echo ""
-    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
-https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
-https://devstudio.jboss.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
+    echo "Example 4: $0 -clean -u \"https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.redhat.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
 file:///path/to/jbdevstudio-product/site/target/repository\"" 
     echo ""
     exit 1;
