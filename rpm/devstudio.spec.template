@@ -28,24 +28,24 @@ Requires: libnotify
 Requires: libIDL
 
 # cdt deps: org.eclipse.cdt.core.native and org.eclipse.cdt.core.utils.pty
-Requires: rh-eclipse46-eclipse-cdt-native
+Requires: rh-eclipse47-eclipse-cdt-native
 # include freemarker because cdt's org.eclipse.tools.templates.freemarker needs it 
-Requires: rh-eclipse46-freemarker
+Requires: rh-eclipse47-freemarker
 
 # m2e deps
-Requires: rh-eclipse46-eclipse-m2e-core, rh-eclipse46-eclipse-m2e-workspace
+Requires: rh-eclipse47-eclipse-m2e-core, rh-eclipse47-eclipse-m2e-workspace
 
 # rse deps: org.eclipse.rse.core and org.eclipse.rse.ui
-Requires: rh-eclipse46-eclipse-rse
+Requires: rh-eclipse47-eclipse-rse
 
 # tm deps: org.eclipse.tm.terminal.connector.local
-Requires: rh-eclipse46-eclipse-tm-terminal-connectors
+Requires: rh-eclipse47-eclipse-tm-terminal-connectors
 
 # include AERI logging/reporting
-Requires: rh-eclipse46-eclipse-epp-logging
+Requires: rh-eclipse47-eclipse-epp-logging
 
 # include jgit
-Requires: rh-eclipse46-eclipse-jgit
+Requires: rh-eclipse47-eclipse-jgit
 
 # JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
 # Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis, rh-java-common-lucene5-queryparser
@@ -54,7 +54,7 @@ Requires: rh-eclipse46-eclipse-jgit
 Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-client-cache
 
 # require testng
-Requires: rh-eclipse46-eclipse-testng
+Requires: rh-eclipse47-eclipse-testng
 
 # require gson
 Requires: rh-java-common-google-gson >= 2.2.4, rh-java-common-google-gson < 3.0.0
@@ -111,7 +111,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
 # JBDS-4150 symlink to jars installed via RPM
 pushd %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins
-ln -s /opt/rh/rh-eclipse46/root/usr/share/java/glassfish-servlet-api.jar javax.servlet_3.1.0.jar
+ln -s /opt/rh/rh-eclipse47/root/usr/share/java/glassfish-servlet-api.jar javax.servlet_3.1.0.jar
 ln -s /opt/rh/rh-java-common/root/usr/share/java/commons-lang.jar org.apache.commons.lang_2.6.0.jar
 ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient.jar org.apache.httpcomponents.httpclient_4.3.6.jar
 ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient-cache.jar org.apache.httpcomponents.httpclient.cache_4.3.6.jar
