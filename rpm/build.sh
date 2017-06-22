@@ -80,10 +80,10 @@ if [ ! $(getent group | grep -e '^mock' | grep -e "$USER") ] ; then
   exit 2
 fi
 
-if [[ ! -f /etc/yum.repos.d/rh-eclipse47.repo ]]; then
+if [[ ! -f /etc/yum.repos.d/rh-eclipse47-build.repo ]]; then
   echo "Your system is not configured to resolve rh-eclipse47 packages!"
   echo "Configure with:"
-  echo "$ su -c 'cp rh-eclipse47.repo /etc/yum.repos.d/rh-eclipse47.repo'"
+  echo "$ su -c 'cp rh-eclipse47-build.repo /etc/yum.repos.d/rh-eclipse47-build.repo'"
   exit 2
 fi
 
