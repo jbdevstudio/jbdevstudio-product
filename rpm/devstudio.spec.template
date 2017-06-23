@@ -59,6 +59,13 @@ Requires: rh-eclipse47-eclipse-testng
 # require gson
 Requires: rh-java-common-google-gson >= 2.2.4, rh-java-common-google-gson < 3.0.0
 
+# require javax.el and javax.el-api 2.2.4
+Requires: rh-java-common-glassfish-el >= 2.2, rh-java-common-glassfish-el < 3.0.0
+Requires: rh-java-common-glassfish-el-api >= 2.2, rh-java-common-glassfish-el-api < 3.0.0
+Requires: rh-eclipse47-glassfish-el >= 2.2, rh-eclipse47-glassfish-el < 3.0.0
+Requires: rh-eclipse47-glassfish-el-api >= 2.2, rh-eclipse47-glassfish-el-api < 3.0.0
+# Requires: rh-java-common-mvn
+
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
 
@@ -76,7 +83,8 @@ set -e -x
 %{?scl:scl enable %{scl_maven} %{scl} - << "EOF"}
 set -e -x
 # Generate p2 repo from bundles
-eclipse -nosplash -consolelog \
+echo "Run Eclipse from: /opt/rh/%{scl}/root/usr/lib/eclipse/eclipse"
+/opt/rh/%{scl}/root/usr/lib/eclipse/eclipse -nosplash -consolelog \
   -configuration /tmp/devstudio-rpm-eclipse-configuration \
   -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
   -metadataRepository file:$(pwd)/p2-repo \
@@ -93,7 +101,8 @@ rm -fr /tmp/devstudio-rpm-eclipse-configuration
 set -e -x
 # Install droplets
 install -d -m755 %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}
-eclipse -nosplash -consolelog \
+echo "Run Eclipse from: /opt/rh/%{scl}/root/usr/lib/eclipse/eclipse"
+/opt/rh/%{scl}/root/usr/lib/eclipse/eclipse -nosplash -consolelog \
   -configuration /tmp/devstudio-rpm-eclipse-configuration \
   -application org.eclipse.equinox.p2.repository.repo2runnable \
   -createFragments \
