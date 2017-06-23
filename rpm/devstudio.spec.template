@@ -83,8 +83,8 @@ set -e -x
 %{?scl:scl enable %{scl_maven} %{scl} - << "EOF"}
 set -e -x
 # Generate p2 repo from bundles
-echo "Run Eclipse from: /opt/rh/%{scl}/root/usr/lib/eclipse/eclipse"
-/opt/rh/%{scl}/root/usr/lib/eclipse/eclipse -nosplash -consolelog \
+echo "[1] Run Eclipse from: /opt/rh/%{scl}/root/usr/lib/eclipse/eclipse"
+/opt/rh/%{scl}/root/usr/lib/eclipse/eclipse -nosplash -clean -consolelog \
   -configuration /tmp/devstudio-rpm-eclipse-configuration \
   -application org.eclipse.equinox.p2.publisher.FeaturesAndBundlesPublisher \
   -metadataRepository file:$(pwd)/p2-repo \
@@ -101,8 +101,8 @@ rm -fr /tmp/devstudio-rpm-eclipse-configuration
 set -e -x
 # Install droplets
 install -d -m755 %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}
-echo "Run Eclipse from: /opt/rh/%{scl}/root/usr/lib/eclipse/eclipse"
-/opt/rh/%{scl}/root/usr/lib/eclipse/eclipse -nosplash -consolelog \
+echo "[2] Run Eclipse from: /opt/rh/%{scl}/root/usr/lib/eclipse/eclipse"
+/opt/rh/%{scl}/root/usr/lib/eclipse/eclipse -nosplash -clean -consolelog \
   -configuration /tmp/devstudio-rpm-eclipse-configuration \
   -application org.eclipse.equinox.p2.repository.repo2runnable \
   -createFragments \
