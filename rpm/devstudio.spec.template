@@ -127,6 +127,7 @@ ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient-cache
 ln -s /opt/rh/rh-java-common/root/usr/share/java/xml-commons-resolver.jar org.apache.xml.resolver_1.2.0.v200806030312.jar
 ln -s /opt/rh/rh-java-common/root/usr/share/java/xalan-j2-serializer.jar org.apache.xml.serializer_2.7.1.v200806030322.jar
 ln -s /opt/rh/rh-java-common/root/usr/share/java/slf4j/slf4j-api.jar org.slf4j.api_1.7.4.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/glassfish-el-api.jar javax.el-api_2.2.4.jar
 popd
 
 # JBDS-4150 add to fragment.info
