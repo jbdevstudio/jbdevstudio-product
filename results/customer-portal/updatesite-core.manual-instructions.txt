@@ -4,7 +4,7 @@ To use this zip for offline update (or if blocked by firewall or proxy when doin
 
 1. Download, but DO NOT unpack, the zip
 
-2. Launch devstudio or ${eclipse.version}
+2. Launch Devstudio or Eclipse ${eclipse.version}
 
 3. Select Help > Install new software
 
