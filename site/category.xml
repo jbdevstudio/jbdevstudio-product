@@ -143,7 +143,6 @@
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.openshift.express.feature">
-    <category name="CoreTools" />
     <category name="CloudContainerTools" />
   </feature>
   <feature id="org.jboss.tools.openshift.egit.integration.feature">
