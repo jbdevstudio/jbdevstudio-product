@@ -173,7 +173,6 @@
     <category name="GeneralTools" />
   </feature>
   <feature id="org.jboss.ide.eclipse.freemarker.feature">
-    <category name="CoreTools" />
     <category name="GeneralTools" />
   </feature>
   <feature id="org.jboss.tools.ws.feature">
