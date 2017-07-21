@@ -401,6 +401,7 @@ org.eclipse.pde.ds.core
 org.eclipse.pde.ds.lib
 org.eclipse.pde.ds.ui
 org.eclipse.pde.genericeditor.extension
+org.eclipse.pde.genericeditor
 org.eclipse.pde.junit.runtime
 org.eclipse.pde.launching
 org.eclipse.pde.runtime

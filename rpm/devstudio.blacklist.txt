@@ -217,3 +217,7 @@ org.eclipse.jgit.lfs
 org.eclipse.jgit.lfs.server
 org.eclipse.jgit.pgm
 org.eclipse.jgit.ui
+
+# JBDS-4475 remove pde plugins as already installed via pde rpm
+org.eclipse.pde.genericeditor
+org.eclipse.pde.genericeditor.extension

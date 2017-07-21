@@ -144,6 +144,7 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 
 %changelog
 * Fri Jul 21 2017 Nick Boldt <nboldt@redhat.com> 11.0.0.20170721-1050
+- JBDS-4475 add more plugins to blacklist (pde.genericeditor and .extension) 
 - JBDS-4257 Add more rh-eclipse* dependencies / add more plugins to blacklist (JavaEWAH 1.1.6, Lucene 6.1) 
 
 * Fri Jul 21 2017 Lukas Valach <lvalach@redhat.com> 11.0.0.20170721-0622
