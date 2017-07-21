@@ -2,6 +2,9 @@
 %{!?scl:%global pkg_name %{name}}
 %{?java_common_find_provides_and_requires}
 
+# Disable automatic provision generation 
+AutoProv: no
+
 # Prevent useless debuginfo package generation
 %global debug_package %{nil}
 
@@ -47,8 +50,11 @@ Requires: rh-eclipse47-eclipse-epp-logging
 # include jgit
 Requires: rh-eclipse47-eclipse-jgit
 
-# JBDS-4133 lucene 5 needed for AERI and Eclipse help docs
-# Requires: rh-java-common-lucene5, rh-java-common-lucene5-analysis, rh-java-common-lucene5-queryparser
+# lucene 6.1.0
+Requires: rh-eclipse47-lucene, rh-eclipse47-lucene-misc, rh-eclipse47-lucene-analysis, rh-eclipse47-lucene-analyzers-smartcn
+
+# JavaEWAH 1.1.6
+Requires: rh-eclipse47-javaewah
 
 # JBDS-4150 needed for devstudio optional installs
 Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-client-cache
@@ -137,6 +143,10 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Fri Jul 21 2017 Nick Boldt <nboldt@redhat.com> 11.0.0.20170721
+- JBDS-4257 Disable automatic provision generation
+- Add more rh-eclipse* dependencies / add more plugins to blacklist (JavaEWAH 1.1.6, Lucene 6.1) 
+
 * Wed Jun 21 2017 Nick Boldt <nboldt@redhat.com> 11.0.0.20170621
 - Switch from RHSCL 2.4 / rh-eclipse46 to DevTools 1.0 / rh-eclipse47 rpm deps
 
