@@ -68,6 +68,7 @@
     <import feature="org.eclipse.wst.xml_ui.feature"/>
     <import feature="org.eclipse.wst.xsl.feature"/>
 
+    <import plugin="javax.el" version="2.2" match="compatible"/>
     <import plugin="org.eclipse.core.expressions" version="3.4.400" match="greaterOrEqual"/>
     <import plugin="org.eclipse.emf.ecore" />
     <import plugin="org.eclipse.emf.ecore.edit" />
