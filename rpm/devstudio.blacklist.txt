@@ -78,6 +78,13 @@ javassist
 org.bouncycastle.bcprov
 org.bouncycastle.bcpkix
 
+com.googlecode.javaewah.JavaEWAH
+org.apache.lucene.analyzers-common
+org.apache.lucene.analyzers-smartcn
+org.apache.lucene.misc
+# do we need to keep this in so that lucene.core 3.5.0 is included?
+org.apache.lucene.core
+
 # removed because available in upstream eclipse-* or rh-eclipse* packages
 # list computed by looking at buildlog and scanning for "[INFO osgi.prov] rh-eclipse46-osgi" lines
 com.ibm.icu
