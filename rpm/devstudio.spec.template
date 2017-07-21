@@ -62,6 +62,9 @@ Requires: rh-java-common-google-gson >= 2.2.4, rh-java-common-google-gson < 3.0.
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
 
+# Disable automatic provision generation 
+AutoProv: no
+
 %description
 Red Hat Developer Studio.
 
@@ -137,6 +140,9 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Fri Jul 21 2017 Lukas Valach <lvalach@redhat.com> 11.0.0.20170721
+- JBDS-4257 Disable automatic provision generation 
+
 * Wed Jun 21 2017 Nick Boldt <nboldt@redhat.com> 11.0.0.20170621
 - Switch from RHSCL 2.4 / rh-eclipse46 to DevTools 1.0 / rh-eclipse47 rpm deps
 
