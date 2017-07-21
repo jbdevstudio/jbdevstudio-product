@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.jboss.devstudio</groupId>
     <artifactId>product</artifactId>
-    <version>10.3.0-SNAPSHOT</version>
+    <version>11.0.0-SNAPSHOT</version>
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>com.jboss.devstudio.core.buildresults</artifactId>
@@ -132,6 +132,7 @@
       <properties>
         <!-- Skip publishing to Nexus, since we don't use it and it takes a lot of time -->
         <maven.deploy.skip>true</maven.deploy.skip>
+        <skipNexusStagingDeployMojo>true</skipNexusStagingDeployMojo>
       </properties>
       <build>
         <plugins>
@@ -139,6 +140,7 @@
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <executions>
+			  <!-- JBDS-4362 disable publishing devstudio internally onto wonka, as we no longer include EAP bundles so don't need an internal server
               <execution>
                 <id>deploy-snapshot-build-internal</id>
                 <goals>
@@ -148,14 +150,14 @@
                 <configuration>
                   <arguments>
                     <arg>-DESTINATION</arg>
-                    <arg>hudson@dev01.mw.lab.eng.bos.redhat.com:/qa/services/http/binaries/RHDS</arg>
+                    <arg>${RHDS_SSH}</arg>
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
                     <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all</arg>
                   </arguments>
                 </configuration>
-              </execution>
+              </execution> -->
               <execution>
                 <id>deploy-snapshot-build</id>
                 <goals>
@@ -165,8 +167,7 @@
                 <configuration>
                   <arguments>
                     <arg>-DESTINATION</arg>
-                    <!-- use filemgmt.jboss.org IP instead of 10.5.105.197 because it's 3x faster -->
-                    <arg>devstudio@10.5.105.197:/www_htdocs/devstudio</arg>
+                    <arg>devstudio@${filemgmtJbossOrg}:/www_htdocs/devstudio</arg>
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
@@ -186,7 +187,7 @@
                   <arguments>
                     <arg>--del</arg>
                     <arg>-DESTINATION</arg>
-                    <arg>devstudio@10.5.105.197:/www_htdocs/devstudio</arg>
+                    <arg>devstudio@${filemgmtJbossOrg}:/www_htdocs/devstudio</arg>
                     <arg>-s</arg>
                     <arg>${project.build.directory}/all/repo</arg>
                     <arg>-t</arg>
@@ -204,7 +205,7 @@
 </project>
 <!--
 To build locally
-  mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=https://devstudio.redhat.com/10.0/snapshots/builds/jbosstools-build-sites.aggregate.central-site_master/latest/all/repository.zip
+  mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=https://devstudio.redhat.com/11/snapshots/builds/jbosstools-build-sites.aggregate.central-site_master/latest/all/repository.zip
 
 To deploy 
   mvn deploy -Pdeploy-to-jboss.org

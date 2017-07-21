@@ -21,9 +21,8 @@ openFile
 -XX:CompileCommand=exclude,org/eclipse/cdt/internal/core/pdom/dom/cpp/PDOMCPPLinkage,addBinding
 -XX:CompileCommand=exclude,org/python/pydev/editor/codecompletion/revisited/PythonPathHelper,isValidSourceFile
 -XX:CompileCommand=exclude,org/eclipse/tycho/core/osgitools/EquinoxResolver,newState
--Dorg.eclipse.equinox.p2.reconciler.dropins.directory=/opt/rh/rh-eclipse46/root/usr/share/eclipse/dropins
--Dp2.fragments=/opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets,/opt/rh/rh-eclipse46/root/usr/lib64/eclipse/droplets
+-Dorg.eclipse.equinox.p2.reconciler.dropins.directory=/opt/rh/rh-eclipse47/root/usr/share/eclipse/dropins
+-Dp2.fragments=/opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets,/opt/rh/rh-eclipse47/root/usr/lib64/eclipse/droplets
 -Declipse.p2.skipMovedInstallDetection=true
 -Dosgi.bundles=org.eclipse.equinox.simpleconfigurator@1:start,org.eclipse.equinox.transforms.xslt@1:start,org.jboss.tools.equinox.transforms.xslt@1:start
--Dosgi.framework.extensions=org.eclipse.wst.jsdt.nashorn.extension
 -Dosgi.instance.area.default=@user.home/workspace

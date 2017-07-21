@@ -38,14 +38,14 @@ To build product features, site, and installers:
 To build an RPM, you can then do:
 
     cd jbdevstudio-product/rpm; ./build.sh -clean -mo "--update" \
-      -u "https://devstudio.redhat.com/10.0/stable/updates/"
+      -u "https://devstudio.redhat.com/11/stable/updates/"
 
 Or, to include the update site your built in the above step, try this:
 
     cd jbdevstudio-product/rpm; ./build.sh -clean \
       -u "https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\
 https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\
-https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\
+https://devstudio.jboss.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\
 file:///path/to/locally/built/jbdevstudio-product/site/target/repository"
 
 == Install Red Hat JBoss Developer Studio
@@ -77,7 +77,7 @@ Or, to install the "Bring Your Own Eclipse" category or "Core Features" feature 
 
 == Update Red Hat JBoss Developer Studio
 
-To update from one version of Red Hat JBoss Developer Studio on the same stream to another (eg., from Red Hat JBoss Developer Studio 10.0 to 10.1):
+To update from one version of Red Hat JBoss Developer Studio on the same stream to another (eg., from Red Hat JBoss Developer Studio 11 to 11.1):
 
   * `Help > Install` from the generated site in `site/target/repository/` (or the installer jar, as noted above)
   * Uncheck the box for '`Group items by category`'

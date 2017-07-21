@@ -4,25 +4,25 @@ usage ()
 {
     echo "Usage:     $0 -clean -z \"https://path/to/1.zip,https://path/to/2.zip,...\" -u \"https://path/to/site,...\" "
     echo ""
-    echo "Example 1a: $0 -z \"https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-updatesite-core.zip,\\
-https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform.zip,\\
-https://devstudio.redhat.com/static/10.0/stable/updates/core/devstudio-10.0.0.GA-target-platform-central.zip,\\
-https://devstudio.redhat.com/static/10.0/stable/updates/central/devstudio-10.0.0.GA-updatesite-central.zip\""
+    echo "Example 1a: $0 -z \"https://devstudio.redhat.com/static/11/stable/updates/core/devstudio-11.0.0.GA-updatesite-core.zip,\\
+https://devstudio.redhat.com/static/11/stable/updates/core/devstudio-11.0.0.GA-target-platform.zip,\\
+https://devstudio.redhat.com/static/11/stable/updates/core/devstudio-11.0.0.GA-target-platform-central.zip,\\
+https://devstudio.redhat.com/static/11/stable/updates/central/devstudio-11.0.0.GA-updatesite-central.zip\""
     echo ""
-    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/10.0/stable/updates/\" -mo \"--update\""
+    echo "Example 1b: $0 -clean -u \"https://devstudio.redhat.com/11/stable/updates/\" -mo \"--update\""
     echo ""
-    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/10.0/staging/updates/\" -mo \"--update\""
+    echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/11/staging/updates/\" -mo \"--update\""
     echo ""
-    echo "Example 3a: $0 -clean -u \"https://devstudio.jboss.com/10.0/snapshots/updates/\" -mo \"--no-clean --update\""
+    echo "Example 3a: $0 -clean -u \"https://devstudio.redhat.com/11/snapshots/updates/\" -mo \"--no-clean --update\""
     echo ""
-    echo "Example 3b: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
-https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
-https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
-https://devstudio.jboss.com/10.0/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
+    echo "Example 3b: $0 -clean -u \"https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.redhat.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
+https://devstudio.redhat.com/11/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
     echo ""
-    echo "Example 4: $0 -clean -u \"https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.60.1.Final/,\\
-https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.60.1.Final-SNAPSHOT/,\\
-https://devstudio.jboss.com/10.0/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
+    echo "Example 4: $0 -clean -u \"https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
+https://devstudio.redhat.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
 file:///path/to/jbdevstudio-product/site/target/repository\"" 
     echo ""
     exit 1;
@@ -37,10 +37,10 @@ quiet="" # or "" or "-q"
 clean=0
 source_p2_zips="" # comma-separated list passed in from commandline
 source_p2_sites="" # comma-separated list passed in from commandline
-JOB_NAME=rh-eclipse46-devstudio
+JOB_NAME=rh-eclipse47-devstudio
 mock_opts="" # eg., --no-clean and/or --update flags
 mock_root=/var/lib/mock/ # or /opt/data/mock_root
-brewrepo=http://download.devel.redhat.com/brewroot/repos/rhscl-2.4-rh-eclipse46-rhel-7-build/latest/x86_64
+brewrepo=http://download.devel.redhat.com/brewroot/repos/devtools-1.0-rh-eclipse47-rhel-7-build/latest/x86_64
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
@@ -80,23 +80,23 @@ if [ ! $(getent group | grep -e '^mock' | grep -e "$USER") ] ; then
   exit 2
 fi
 
-if [[ ! -f /etc/yum.repos.d/rh-eclipse46.repo ]]; then
-  echo "Your system is not configured to resolve rh-eclipse46 packages!"
+if [[ ! -f /etc/yum.repos.d/rh-eclipse47-build.repo ]]; then
+  echo "Your system is not configured to resolve rh-eclipse47 packages!"
   echo "Configure with:"
-  echo "$ su -c 'cp rh-eclipse46.repo /etc/yum.repos.d/rh-eclipse46.repo'"
+  echo "$ su -c 'cp rh-eclipse47-build.repo /etc/yum.repos.d/rh-eclipse47-build.repo'"
   exit 2
 fi
 
-launcher="$(ls /opt/rh/rh-eclipse46/root/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar 2>/dev/null | head -1)"
+launcher="$(ls /opt/rh/rh-eclipse47/root/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar 2>/dev/null | head -1)"
 #if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] launcher = ${launcher}"; fi
 # dnf whatprovides /usr/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar
-# dnf whatprovides /opt/rh/rh-eclipse46/root/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar
+# dnf whatprovides /opt/rh/rh-eclipse47/root/lib*/eclipse/plugins/org.eclipse.equinox.launcher_*.jar
 if [[ ! ${launcher} ]]; then
   echo "Eclipse equinox launcher is not installed!"
   echo "Install with:"
   echo "$ su -c 'yum install eclipse-platform'"
   echo " or "
-  echo "$ su -c 'yum install rh-eclipse46-eclipse-platform'"
+  echo "$ su -c 'yum install rh-eclipse47-eclipse-platform'"
   exit 2
 fi
 
@@ -163,7 +163,7 @@ if [[ ${quiet} != "-q" ]]; then echo ""; echo -n "[INFO] Install these features 
 p2extract ${mirror_folder} ${source_p2_sites} ${featurelist}
 # when done, should have 660M in mirror_folder (takes about 1 min when using zipped update sites)
 
-# remove IUs available in the rh-eclipse46-base rpm
+# remove IUs available in the rh-eclipse47-base rpm
 mirroredIUs=$(find ${mirror_folder}/{plugins,features}/ -maxdepth 1 -not -name "org.jboss.*" -a -not -name "com.jboss.*" | sort)
 tot=-2 # omit features and plugins folders from the count
 for iu in ${mirroredIUs}; do
@@ -172,7 +172,7 @@ done
 if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] Total [0] IUs in ${mirror_folder}: ${tot}"; fi
 
 cnt=0
-rpmlist="$(rpm -q --requires rh-eclipse46-base | grep -v rpmlib | sed "s#\(rh-[^=]\+\).*#\1#")" # echo $rpmlist
+rpmlist="$(rpm -q --requires rh-eclipse47-base | grep -v rpmlib | sed "s#\(rh-[^=]\+\).*#\1#")" # echo $rpmlist
 for iu in ${mirroredIUs}; do 
   # strip version from the IU
   iu_name=${iu##*/}; iu_name=${iu_name%.jar}
@@ -181,8 +181,8 @@ for iu in ${mirroredIUs}; do
     cnt=$((cnt+1))
     iu_name=${iu_name%%_${iu_ver}*} # trim off version suffix
     #if [[ ${quiet} != "-q" ]]; then echo "[INFO] [${cnt}/${tot}] ${iu_name} = ${iu_ver}"; fi
-    # check if this IU is in rh-eclipse46-base
-    match=$(rpm -q --provides ${rpmlist} | sed -rn '/rh-eclipse46-osgi\('${iu_name}'\)\ \=\ '${iu_ver}'/p')
+    # check if this IU is in rh-eclipse47-base
+    match=$(rpm -q --provides ${rpmlist} | sed -rn '/rh-eclipse47-osgi\('${iu_name}'\)\ \=\ '${iu_ver}'/p')
     if [[ ${match} ]]; then
       #if [[ ${quiet} != "-q" ]]; then echo "[INFO] [1] [${cnt}/${tot}] Remove ${iu_name} ${iu_ver} == ${match}"; fi
       rm -fr ${iu}
@@ -199,17 +199,17 @@ for iu in ${mirroredIUs}; do
 done
 if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] Total [1] IUs in ${mirror_folder}: ${tot}"; fi
 
-# remove IUs available in other rpms; depends on rh-eclipse46-devstudio already being installed; otherwise skip this step
-# Generate list of features & plugins provided by rh-eclipse46-devstudio
-productPath=/opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/${package_name}/eclipse
+# remove IUs available in other rpms; depends on rh-eclipse47-devstudio already being installed; otherwise skip this step
+# Generate list of features & plugins provided by rh-eclipse47-devstudio
+productPath=/opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/${package_name}/eclipse
 if [[ -d ${productPath} ]]; then 
   for iu in ${productPath}/{features,plugins}/*; do
     productIUs="$productIUs $(basename $iu | rev | cut -d_ -f1 --complement | rev)"
   done
 
   # Check for duplicates provided by other packages
-  archful=/opt/rh/rh-eclipse46/root/usr/lib64/eclipse
-  noarch=/opt/rh/rh-eclipse46/root/usr/share/eclipse
+  archful=/opt/rh/rh-eclipse47/root/usr/lib64/eclipse
+  noarch=/opt/rh/rh-eclipse47/root/usr/share/eclipse
   for IUtype in features plugins; do
     for iu in $archful/${IUtype}/* {${archful},${noarch}}/droplets/*/eclipse/${IUtype}/*; do
       if [ -e "$iu" ] ; then
@@ -220,7 +220,7 @@ if [[ -d ${productPath} ]]; then
         for productIU in $productIUs ; do
           if [ "$iu_name" == "$productIU" ] ; then
             pkg=$(rpm -qf $iu | rev | cut -d- -f1,2 --complement | rev)
-            if [ "$pkg" != "rh-eclipse46-${package_name}" ] ; then
+            if [ "$pkg" != "rh-eclipse47-${package_name}" ] ; then
               #if [[ ${quiet} != "-q" ]]; then echo "[INFO] ${IUtype%s} ${iu_name} is provided by $pkg"; fi
               #if [[ ${quiet} != "-q" ]]; then echo "[DEBUG] match ==> find ${mirror_folder}/${IUtype} -maxdepth 1 -name \"${iu_name}_*\""; fi
               match="$(find ${mirror_folder}/${IUtype} -maxdepth 1 -name "${iu_name}_*")"

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Red Hat JBoss Developer Studio 10 - RPM</title>
+<title>Red Hat JBoss Developer Studio 11 - RPM</title>
 <link href="https://devstudio.redhat.com/web/devstudio_styles.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <!-- Google Analytics -->
@@ -19,27 +19,6 @@
 
 <script type="text/javascript">
     <!--
-    function toggle(idToggled)
-    {
-      theImg=document.getElementById(idToggled);
-      if (theImg.src.indexOf("540.png")>0)
-      {
-        theImg.src=theImg.src.replace('devstudio10-'+idToggled+'-540.png','devstudio10-'+idToggled+'.png');
-        theImg.style.zIndex="1";
-        theImg.style.position="absolute";
-        theImg.style.top="-115px";
-        theImg.style.left="-15px";
-      }
-      else
-      {
-        theImg.src=theImg.src.replace('devstudio10-'+idToggled+'.png','devstudio10-'+idToggled+'-540.png');
-        theImg.style.zIndex="0";
-        theImg.style.position="relative";
-        theImg.style.top="0px";
-        theImg.style.left="0px";
-      }
-    }
-
     // given /path/to/devstudio-8.0.2.GA-source.zip, return devstudio-8.0.2.GA-source.zip
     function cleanURL(url,prefix)
     {
@@ -55,7 +34,7 @@
 <body>
 <div id="container">
 	<div id="header">
-    	<h1>Red Hat JBoss Developer Studio 10 - RPM</h1>
+    	<h1>Red Hat JBoss Developer Studio 11 - RPM</h1>
 	</div>
  	<div id="content">
 
@@ -71,7 +50,7 @@
 
   <div class="rightsidebar" style="width:280px;padding-right:0px;padding-left:10px;z-index:-1;float:right">
     <h4>Supported OS + JVM Combinations</h4>
-    <p>DevStudio 10 RPM can be installed on many Linux distributions. Oracle JDK or OpenJDK 8 is required. <a onClick="javascript: _gaq.push(['_trackPageview', cleanURL(this.href, 'access.redhat.com/')])" href="https://access.redhat.com/site/articles/4274103">Details here</a>.</p>
+    <p>DevStudio 11 RPM can be installed on many Linux distributions. Oracle JDK or OpenJDK 8 is required. <a onClick="javascript: _gaq.push(['_trackPageview', cleanURL(this.href, 'access.redhat.com/')])" href="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/">Details here</a>.</p>
     <br/>
 
     <hr size="1"/>
@@ -80,8 +59,8 @@
         <p>Looking for an <b>offline</b> solution? You can perform an update or install using the RPM:
           <div class="proj_checklist">
             <ul>
-              <li><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://devstudio.redhat.com/static/10.0/stable/rpms/x86_64/">Download Stable RPM</a></li>
-              <li><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://devstudio.redhat.com/10.0/snapshots/rpms/10.3.0/x86_64/">Download Snapshot RPM</a></li>
+              <li><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://devstudio.redhat.com/static/11/stable/rpms/x86_64/">Download Stable RPM</a></li>
+              <li><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://devstudio.redhat.com/11/snapshots/rpms/11/x86_64/">Download Snapshot RPM</a></li>
           </div>
         </p>
 
@@ -101,10 +80,10 @@
 
   </div>
 
-   <h2 class="prime">Red Hat JBoss Developer Studio 10 RPM</h2>
+   <h2 class="prime">Red Hat JBoss Developer Studio 11 RPM</h2>
 		
 		<p>This repo contains the latest <b>Technology Preview</b>
-     RPM of <a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://developers.redhat.com/products/devstudio/">Red Hat JBoss Developer Studio 10</a>.
+     RPM of <a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://developers.redhat.com/products/devstudio/">Red Hat JBoss Developer Studio 11</a>.
         
     <h4>RPM Installation Instructions</h4>
     <br/>
@@ -117,18 +96,18 @@
 # OR
 su -</pre></li>
           <li>2. Enable devstudio yum repos
-<pre>cat << EOF > /etc/yum.repos.d/rh-eclipse46-devstudio.repo
-[rh-eclipse46-devstudio-stable-10.x]
-name=rh-eclipse46-devstudio-stable-10.x
-baseurl=https://devstudio.redhat.com/static/10.0/stable/rpms/x86_64/
+<pre>cat << EOF > /etc/yum.repos.d/rh-eclipse47-devstudio.repo
+[rh-eclipse47-devstudio-stable-11.x]
+name=rh-eclipse47-devstudio-stable-11.x
+baseurl=https://devstudio.redhat.com/static/11/stable/rpms/x86_64/
 enabled=1
 gpgcheck=1
 upgrade_requirements_on_install=1
 metadata_expire=24h
 
-[rh-eclipse46-devstudio-snapshot-10.3]
-name=rh-eclipse46-devstudio-snapshot-10.3
-baseurl=https://devstudio.redhat.com/10.0/snapshots/rpms/10.3.0/x86_64/
+[rh-eclipse47-devstudio-snapshot-11.0]
+name=rh-eclipse47-devstudio-snapshot-11.0
+baseurl=https://devstudio.redhat.com/11/snapshots/rpms/11.0.0/x86_64/
 enabled=0
 gpgcheck=0
 upgrade_requirements_on_install=1
@@ -139,7 +118,7 @@ EOF</pre></li>
 <pre>rpm --import "https://www.redhat.com/security/a5787476.txt"</pre></li>
 
           <li>4. Install devstudio with yum
-<pre>yum install rh-eclipse46-devstudio</pre></li>
+<pre>yum install rh-eclipse47-devstudio</pre></li>
         </ul>
     </div>
 

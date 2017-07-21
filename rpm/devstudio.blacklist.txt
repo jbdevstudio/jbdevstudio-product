@@ -1,4 +1,4 @@
-# list of IUs to EXCLUDE from rh-eclipse46-devstudio rpm
+# list of IUs to EXCLUDE from rh-eclipse47-devstudio rpm
 # dependencies will NOT be included automatically MUST list them here explicitly
 # lines starting with # will be ignored
 
@@ -29,11 +29,11 @@ javax.ws.rs-api
 org.eclipse.osgi
 
 #➔ find . -name org.glassfish.jersey.\*
-#./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.apache.connector_2.14.0.v201504171603.jar
-#./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.bundles.repackaged.jersey-guava_2.14.0.v201504151636.jar
-#./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.core.jersey-client_2.14.0.v201504211925.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.core.jersey-common_2.14.0.v201504171603.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.media.jersey-media-json-jackson_2.14.0.v201504171603.jar
+#./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.apache.connector_2.14.0.v201504171603.jar
+#./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.bundles.repackaged.jersey-guava_2.14.0.v201504151636.jar
+#./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.core.jersey-client_2.14.0.v201504211925.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.core.jersey-common_2.14.0.v201504171603.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.media.jersey-media-json-jackson_2.14.0.v201504171603.jar
 org.glassfish.jersey.apache.connector
 org.glassfish.jersey.bundles.repackaged.jersey-guava
 org.glassfish.jersey.core.jersey-client
@@ -41,12 +41,12 @@ org.glassfish.jersey.core.jersey-common
 org.glassfish.jersey.media.jersey-media-json-jackson
 
 #➔ find . -name com.fasterxml.jackson.\*
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.core.jackson-annotations_2.5.0.v201504151636.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.core.jackson-core_2.5.0.v201504151636.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.core.jackson-databind_2.5.0.v201504151636.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.datatype.jackson-datatype-guava_2.5.0.v201504151636.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.jaxrs.jackson-jaxrs-base_2.5.0.v201504171603.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider_2.5.0.v201504171603.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.core.jackson-annotations_2.5.0.v201504151636.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.core.jackson-core_2.5.0.v201504151636.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.core.jackson-databind_2.5.0.v201504151636.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.datatype.jackson-datatype-guava_2.5.0.v201504151636.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.jaxrs.jackson-jaxrs-base_2.5.0.v201504171603.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider_2.5.0.v201504171603.jar
 com.fasterxml.jackson.core.jackson-annotations
 com.fasterxml.jackson.core.jackson-core
 com.fasterxml.jackson.core.jackson-databind
@@ -69,12 +69,12 @@ org.glassfish.hk2.osgi-resource-locator
 org.glassfish.hk2.utils
 
 #➔ find . -name javassist.\*
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/javassist_3.13.0.GA_v201209210905.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/javassist_3.13.0.GA_v201209210905.jar
 javassist
 
 #➔ find . -name org.bouncycastle.\*
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.bouncycastle.bcpkix_1.51.0.v201505131810.jar
-# ./opt/rh/rh-eclipse46/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.bouncycastle.bcprov_1.51.0.v201505131810.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.bouncycastle.bcpkix_1.51.0.v201505131810.jar
+# ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.bouncycastle.bcprov_1.51.0.v201505131810.jar
 org.bouncycastle.bcprov
 org.bouncycastle.bcpkix
 
@@ -86,7 +86,7 @@ org.apache.lucene.misc
 org.apache.lucene.core
 
 # removed because available in upstream eclipse-* or rh-eclipse* packages
-# list computed by looking at buildlog and scanning for "[INFO osgi.prov] rh-eclipse46-osgi" lines
+# list computed by looking at buildlog and scanning for "[INFO osgi.prov] rh-eclipse47-osgi" lines
 com.ibm.icu
 com.jcraft.jsch
 com.kenai.jffi
@@ -149,7 +149,7 @@ org.eclipse.mylyn.commons.workbench
 org.eclipse.mylyn.discovery.core
 org.eclipse.mylyn.discovery.ui
 
-# JBDS-4258 remove m2e bundles as they're available in rh-eclipse46-eclipse-m2e-core and rh-eclipse46-eclipse-m2e-workspace
+# JBDS-4258 remove m2e bundles as they're available in rh-eclipse47-eclipse-m2e-core and rh-eclipse47-eclipse-m2e-workspace
 org.eclipse.m2e.archtype.common
 org.eclipse.m2e.maven.indexer
 org.eclipse.m2e.maven.runtime
@@ -170,17 +170,18 @@ org.eclipse.m2e.refactoring
 org.eclipse.m2e.scm
 org.eclipse.m2e.workspace.cli
 
-# JBDS-4259 still need guava 0.15.0 for org.eclipse.recommenders
-com.google.guava
+# JBDS-4259 still need guava 0.15.0 for org.eclipse.recommenders and gson for org.eclipse.jgit.pgm
+# com.google.guava
+# com.google.gson
 
-# JBDS-4134 remove stuff available from rh-eclipse46-eclipse-cdt-native
+# JBDS-4134 remove stuff available from rh-eclipse47-eclipse-cdt-native
 org.eclipse.cdt.core.native
 
-# JBDS-4134 remove stuff available from rh-eclipse46-eclipse-rse
+# JBDS-4134 remove stuff available from rh-eclipse47-eclipse-rse
 org.eclipse.rse.core
 org.eclipse.rse.ui
 
-# JBDS-4134 remove stuff available from rh-eclipse46-eclipse-tm-terminal-connectors
+# JBDS-4134 remove stuff available from rh-eclipse47-eclipse-tm-terminal-connectors
 org.eclipse.tm.terminal.connector.local
 org.eclipse.tm.terminal.connector.local.feature
 org.eclipse.tm.terminal.view.ui.rse
@@ -202,3 +203,17 @@ org.jboss.tools.usage
 
 # exclude to avoid use constrain violations
 org.eclipse.osgi
+
+# JBDS-4265 Ensure all jgit bundles are removed
+javaewah
+com.google.gson
+org.eclipse.jgit
+org.eclipse.jgit.archive
+org.eclipse.jgit.http.apache
+org.eclipse.jgit.http.server
+org.eclipse.jgit.junit
+org.eclipse.jgit.junit.http
+org.eclipse.jgit.lfs
+org.eclipse.jgit.lfs.server
+org.eclipse.jgit.pgm
+org.eclipse.jgit.ui

@@ -4,11 +4,11 @@ Run the ./build.sh script to see options. You can run the build against an updat
 
 For example, you can build against the latest stable devstudio update site release:
 
-    ./build.sh -clean -u "https://devstudio.redhat.com/10.0/stable/updates/" -mo "--update"
+    ./build.sh -clean -u "https://devstudio.redhat.com/11/stable/updates/" -mo "--update"
 
 Or, build against the latest devstudio update site CI build:
 
-    ./build.sh -clean -u "https://devstudio.redhat.com/10.0/snapshots/updates/" -mo "--no-clean --update"
+    ./build.sh -clean -u "https://devstudio.redhat.com/11/snapshots/updates/" -mo "--no-clean --update"
 
 You can also pass options to the mock process using the -mo flagusch as `--update` or `--no-clean`. See more examples in build.sh.
 
@@ -16,6 +16,6 @@ Once built, there will be a pair of RPMs (one binary RPM, one source SRPM) in `.
 
 You can install these by hand with:
 
-    yum install ./yum_repo/rh-eclipse46-devstudio-**.x86_64.rpm
+    yum install ./yum_repo/rh-eclipse47-devstudio-**.x86_64.rpm
 
 Or, follow the instructions in link:README.html[Install Instructions README] to add a yum.repos.d repo, then enable a repo with a path to the `./yum_repo/` folder where you built the RPMs locally.

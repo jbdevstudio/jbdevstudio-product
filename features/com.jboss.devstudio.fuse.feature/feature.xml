@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature 
-    id="com.jboss.devstudio.core.feature" 
+    id="com.jboss.devstudio.fuse.feature" 
     label="%featureName" 
     version="11.0.0.qualifier" 
     provider-name="%providerName" 
     license-feature="org.jboss.tools.foundation.license.feature"
-    license-feature-version="0.0.0"
-    plugin="com.jboss.devstudio.core">
+    license-feature-version="0.0.0">
 
   <description url="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/">
     %description
@@ -20,8 +19,11 @@
     %license
   </license>
 
-  <includes id="com.jboss.devstudio.core.rpm.feature" version="0.0.0"/>
-  <includes id="com.jboss.devstudio.core.rpmdeps.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.usage.feature" version="0.0.0"/>
-
- </feature>
+   <requires>
+    <import feature="org.fusesource.ide.core.feature"/>
+    <import feature="org.fusesource.ide.camel.editor.feature"/>
+    <import feature="org.fusesource.ide.jmx.feature"/>
+    <import feature="org.fusesource.ide.server.extensions.feature"/>
+    <import feature="org.jboss.tools.fuse.transformation.feature"/>
+  </requires>
+</feature>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-  <description>Red Hat JBoss Developer Studio 10 Updates - Core</description>
+  <description>Red Hat JBoss Developer Studio 11 Updates - Core</description>
 
   <!-- PLEASE NOTE!
     When updating this file, please be sure that it parses as valid XML before committing it.
@@ -52,6 +52,12 @@
     <category name="WebTools" />
   </feature>
   <feature id="org.eclipse.wst.json_ui.feature">
+    <category name="CoreTools" />
+    <category name="WebTools" />
+  </feature>
+
+  <!-- JBDS-3510 add Buildship -->
+  <feature id="org.eclipse.buildship">
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
@@ -137,7 +143,6 @@
     <category name="WebTools" />
   </feature>
   <feature id="org.jboss.tools.openshift.express.feature">
-    <category name="CoreTools" />
     <category name="CloudContainerTools" />
   </feature>
   <feature id="org.jboss.tools.openshift.egit.integration.feature">
@@ -168,7 +173,6 @@
     <category name="GeneralTools" />
   </feature>
   <feature id="org.jboss.ide.eclipse.freemarker.feature">
-    <category name="CoreTools" />
     <category name="GeneralTools" />
   </feature>
   <feature id="org.jboss.tools.ws.feature">
@@ -272,7 +276,7 @@
 
   <!-- JBIDE-20216 add wikitext asciidoc editor to Core Tools category -->  
   <feature id="org.eclipse.mylyn.wikitext_feature"/>
-  <bundle id="org.eclipse.mylyn.wikitext.asciidoc.core">
+  <bundle id="org.eclipse.mylyn.wikitext.asciidoc">
     <category name="CoreTools" />
   </bundle>
   <bundle id="org.eclipse.mylyn.wikitext.asciidoc.ui">
@@ -282,6 +286,26 @@
   <!-- JBIDE-22196 add recomenders snippets -->
   <feature id="org.eclipse.recommenders.snipmatch.rcp.feature">
     <category name="CoreTools" />
+  </feature>
+
+  <feature id="org.fusesource.ide.core.feature">
+    <category name="FuseTools" />
+  </feature>
+
+  <feature id="org.fusesource.ide.camel.editor.feature">
+    <category name="FuseTools" />
+  </feature>
+
+  <feature id="org.fusesource.ide.jmx.feature">
+    <category name="FuseTools" />
+  </feature>
+
+  <feature id="org.fusesource.ide.server.extensions.feature">
+    <category name="FuseTools" />
+  </feature>
+
+  <feature id="org.jboss.tools.fuse.transformation.feature">
+    <category name="FuseTools" />
   </feature>
 
   <!-- include but do not categorize -->
@@ -357,6 +381,11 @@
   <feature id="com.jboss.devstudio.core.capabilities.feature"/>
   <feature id="com.jboss.devstudio.core.rpm.feature"/>
   <feature id="com.jboss.devstudio.core.rpmdeps.feature"/>
+  <feature id="com.jboss.devstudio.fuse.feature">
+    <category name="BringYourOwnEclipse" />
+    <category name="CoreTools" />
+    <category name="FuseTools" />
+  </feature>
   <feature id="org.eclipse.egit"/>
   <feature id="org.eclipse.jgit"/>
   <feature id="org.eclipse.m2e.feature"/>
@@ -364,7 +393,6 @@
   <feature id="org.eclipse.m2e.wtp.jaxrs.feature"/>
   <feature id="org.eclipse.m2e.wtp.jpa.feature"/>
   <feature id="org.eclipse.m2e.wtp.jsf.feature"/>
-  <feature id="org.jboss.tools.m2e.jdt.feature"/>
   <feature id="org.sonatype.m2e.buildhelper.feature"/>
   <feature id="org.sonatype.m2e.egit.feature"/>
   <feature id="org.sonatype.m2e.mavenarchiver.feature"/>
@@ -439,6 +467,12 @@
   <bundle id="org.jboss.tools.discovery.core.source"/>
   <!-- not in devstudio yet? <bundle id="org.jboss.tools.foundation.help.ui.source"/> -->
 
+  <feature id="org.fusesource.ide.core.feature.source"/>
+  <feature id="org.fusesource.ide.camel.editor.feature.source"/>
+  <feature id="org.fusesource.ide.jmx.feature.source"/>
+  <feature id="org.fusesource.ide.server.extensions.feature.source"/>
+  <feature id="org.jboss.tools.fuse.transformation.feature.source"/>
+
   <!-- only in JBT
   <feature id="org.jboss.tools.arquillian.feature.source"/>
   <feature id="org.jboss.tools.central.themes.feature.source"/>
@@ -467,13 +501,13 @@
   -->
 
   <!-- only in devstudio -->
-  <category-def name="BringYourOwnEclipse" label="* Red Hat JBoss Developer Studio 10 - Bring Your Own Eclipse">
-    <description>Select this feature if you want to install all of the Red Hat JBoss Developer Studio (Core Features) into your own Eclipse 4.6 (Neon).</description>
+  <category-def name="BringYourOwnEclipse" label="* Red Hat JBoss Developer Studio 11 - Bring Your Own Eclipse">
+    <description>Select this feature if you want to install all of the Red Hat JBoss Developer Studio (Core Features) into your own Eclipse 4.7 (Oxygen).</description>
   </category-def>
-  <category-def name="CoreTools" label="* Red Hat JBoss Developer Studio 10 - Core">
+  <category-def name="CoreTools" label="* Red Hat JBoss Developer Studio 11 - Core">
     <description>Contains most of the Red Hat JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web Development.</description>
   </category-def>
-  <category-def name="AdditionalTools" label="* Red Hat JBoss Developer Studio 10 - Extras">
+  <category-def name="AdditionalTools" label="* Red Hat JBoss Developer Studio 11 - Extras">
     <description>Contains the rest of the Red Hat JBoss Developer Studio features, not included in Core category. This category includes miscellaneous, new, experimental and incubating features. See individual feature descriptions for details.</description>
   </category-def>
   
@@ -499,4 +533,9 @@
   <category-def name="CloudContainerTools" label="JBoss Cloud And Container Development Tools">
     <description>Tools for Cloud and Container Development.</description>
   </category-def>
+
+  <category-def name="FuseTools" label="JBoss Fuse Tools">
+    <description>Tools to allow you to create Apache Camel routes in a graphical editor, launch them locally and deploy them to runtimes like Apache Karaf, Fabric8 and JBoss Fuse.</description>
+  </category-def>
+
 </site>

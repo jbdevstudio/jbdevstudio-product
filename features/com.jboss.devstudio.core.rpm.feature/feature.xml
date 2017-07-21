@@ -2,7 +2,7 @@
 <feature 
     id="com.jboss.devstudio.core.rpm.feature" 
     label="%featureName" 
-    version="10.3.0.qualifier" 
+    version="11.0.0.qualifier" 
     provider-name="%providerName" 
     license-feature="org.jboss.tools.foundation.license.feature"
     license-feature-version="0.0.0"
@@ -30,7 +30,6 @@
   <includes id="org.hibernate.eclipse.feature" version="0.0.0"/>
   <includes id="org.jboss.ide.eclipse.archives.feature" version="0.0.0"/>
   <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/>
-  <includes id="org.jboss.ide.eclipse.freemarker.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.browsersim.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
@@ -47,7 +46,6 @@
   <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.cdk.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.openshift.express.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.js.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/>
@@ -60,6 +58,7 @@
   <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/>
   
    <requires>
+    <import feature="org.eclipse.buildship"/>
     <import feature="org.eclipse.datatools.common.doc.user"/>
     <import feature="org.eclipse.datatools.connectivity.doc.user"/>
     <import feature="org.eclipse.datatools.connectivity.feature"/>
@@ -77,7 +76,6 @@
     <import feature="org.eclipse.m2e.wtp.jsf.feature"/>
     <import feature="org.eclipse.recommenders.rcp.feature"/>
     <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
-    <import feature="org.jboss.tools.m2e.jdt.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.cdi.feature"/>
@@ -97,7 +95,6 @@
        the sending and receiving of remote commands, the sending and receiving of remote files, 
        and support for the connector service.  
     -->
-    <import feature="org.eclipse.tm.terminal.connector.serial.feature" version="4.0.0" match="greaterOrEqual"/>
     <import plugin="org.dadacoalition.yedit" version="1.0.18" match="greaterOrEqual"/>
     <import plugin="org.yaml.snakeyaml" version="1.14.0" match="greaterOrEqual"/>
   </requires>
