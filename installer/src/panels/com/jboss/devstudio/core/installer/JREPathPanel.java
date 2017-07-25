@@ -59,6 +59,8 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 	private static final int minVersion = 8;
 	private static final int maxVersion = 8;
 
+	JREPathValidator validator = new JREPathValidator();
+
 	static {
 		winTestFiles = (new String[] { "bin" + File.separator + "javaw.exe",
 				"jre" + File.separator + "bin" + File.separator + "javaw.exe" });
@@ -240,7 +242,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 		super.panelActivate();
 		String chosenPath = idata.getVariable(VAR_SELECTED_JAVA_PATH);
 		if (chosenPath == null || "".equals(chosenPath)) {
-			File javaHome = getDefaultJava7Location(idata.getVariable(VAR_JAVA_HOME));
+			File javaHome = validator.getDefaultJDKLocation(idata.getVariable(VAR_JAVA_HOME));
 			System.out.println("[DEBUG] idata.setVariable(VAR_JAVA_HOME,javaHome.getAbsolutePath()) = "
 					+ VAR_JAVA_HOME + ", " + javaHome.getAbsolutePath());
 			idata.setVariable(VAR_JAVA_HOME, javaHome.getAbsolutePath());
@@ -387,22 +389,33 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 		return jvmInfo;
 	}
 
-	public static File getDefaultJava7Location(String izPackDefaultJVM) {
-		if (OsVersion.IS_OSX && izPackDefaultJVM.contains(JAVA_APPLET_PLUGIN)) {
-			String[] params = { "/usr/libexec/java_home", "-v", "1." + JREPathPanel.minVersion };
-			String[] output = new String[2];
-			FileExecutor fe = new FileExecutor();
-			Debug.trace("[DEBUG] getDefaultJava7Location() " + params[0] + " " + params[1]);
-			fe.executeCommand(params, output);
-			Debug.trace("[DEBUG] getDefaultJava7Location() " + output[0]);
-			File location = new File(output[0].trim());
-			if (location.canRead()) {
-				return location;
-			}
-		}
+	// public static File getDefaultJDKLocation(String izPackDefaultJVM) {
+	// 	if (OsVersion.IS_OSX && izPackDefaultJVM.contains(JAVA_APPLET_PLUGIN)) {
+	// 		String[] params = { "/usr/libexec/java_home", "-v", "1." + JREPathPanel.minVersion };
+	// 		String[] output = new String[2];
+	// 		FileExecutor fe = new FileExecutor();
+	// 		Debug.trace("[DEBUG] getDefaultJDKLocation() " + params[0] + " " + params[1]);
+	// 		fe.executeCommand(params, output);
+	// 		Debug.trace("[DEBUG] getDefaultJDKLocation() " + output[0]);
+	// 		File location = new File(output[0].trim());
+	// 		if (location.canRead()) {
+	// 			return location;
+	// 		}
+	// 	} else if (OsVersion.IS_LINUX) {
+	// 		String locations[] = { "/etc/alternatives/java_sdk",
+	// 				"/etc/alternatives/java_sdk/jre" + "/etc/alternatives/jre" };
+	// 		for (String location : locations) {
+	// 			Debug.trace("[DEBUG] getDefaultJDKLocation() Check alternatives for: " + location);
+	// 			System.out.println("[DEBUG] getDefaultJDKLocation() Check alternatives for: " + location);
+	// 			File locFile = new File(location);
+	// 			if (locFile.canRead() && (new File(location, "bin/java")).canExecute()) {
+	// 				return locFile;
+	// 			}
+	// 		}
+	// 	}
 
-		return new File(izPackDefaultJVM);
-	}
+	// 	return new File(izPackDefaultJVM);
+	// }
 
 	public boolean isArchSupported(String arch) {
 		String[] output = new String[2];

@@ -119,7 +119,7 @@ public class JREPathPanelAutomationHelper implements PanelAutomation {
 	}
 	
 	public void updateJavaHomeVariable(AutomatedInstallData idata) {
-		File javaHome = validator.getDefaultJavaLocation(idata.getVariable(JREPathPanel.VAR_JAVA_HOME));
+		File javaHome = validator.getDefaultJDKLocation(idata.getVariable(JREPathPanel.VAR_JAVA_HOME));
 		Debug.trace("[DEBUG] updateJavaHomeVariable() " + javaHome.toString());
 		idata.setVariable(JREPathPanel.VAR_JAVA_HOME, javaHome.getAbsolutePath());
 		// This case is for starting installer with jdk/bin/java under any

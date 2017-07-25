@@ -197,7 +197,7 @@ public class JREPathValidator {
 		return vs.indexOf(JREPathValidator.GNU_VERSION) >= 0;
 	}
 
-	public File getDefaultJavaLocation(String izPackDefaultJVM) {
+	public File getDefaultJDKLocation(String izPackDefaultJVM) {
 		if (izPackDefaultJVM.contains(JAVA_APPLET_PLUGIN)) {
 			String[] params = { "/usr/libexec/java_home", "-v",
 					"1." + MIN_VERSION };
@@ -208,6 +208,17 @@ public class JREPathValidator {
 			File location = new File(output[0].trim());
 			if (location.canRead()) {
 				return location;
+			}
+		} else if (OsVersion.IS_LINUX) {
+			String locations[] = { "/etc/alternatives/java_sdk",
+					"/etc/alternatives/java_sdk/jre" + "/etc/alternatives/jre" };
+			for (String location : locations) {
+				Debug.trace("[DEBUG] getDefaultJDKLocation() Check alternatives for: " + location);
+				System.out.println("[DEBUG] getDefaultJDKLocation() Check alternatives for: " + location);
+				File locFile = new File(location);
+				if (locFile.canRead() && (new File(location, "bin/java")).canExecute()) {
+					return locFile;
+				}
 			}
 		}
 

@@ -142,19 +142,19 @@ public class JREPathValidatorTest extends TestCase {
 	public void testGetDefaultJava7LocationFound() {
 		String location = System.getProperty(SYSPN_TEMP_DIR);
 		String[] macOut = { location, ""};
-		File result = createValidator(createFileExecutor(macOut)).getDefaultJavaLocation(JREPathValidator.JAVA_APPLET_PLUGIN);
+		File result = createValidator(createFileExecutor(macOut)).getDefaultJDKLocation(JREPathValidator.JAVA_APPLET_PLUGIN);
 		assertEquals(location, result.getPath());
 	}
 	
 	public void testGetDefaultJava7LocationNotFound() {
 		String location = CommonTestData.findClassLocation(TestJvm.class) + JREPathValidator.JAVA_APPLET_PLUGIN;
 		String[] macOut = { RANDOM_LOCATION, ""};
-		File result = createValidator(createFileExecutor(macOut)).getDefaultJavaLocation(location);
+		File result = createValidator(createFileExecutor(macOut)).getDefaultJDKLocation(location);
 		assertEquals(location, result.getPath());
 	}
 
 	public void testGetDefaultJava7LocationNoNeedToFind() {
-		File result = createValidator().getDefaultJavaLocation(RANDOM_LOCATION);
+		File result = createValidator().getDefaultJDKLocation(RANDOM_LOCATION);
 		assertEquals(RANDOM_LOCATION, result.getPath());
 	}
 
