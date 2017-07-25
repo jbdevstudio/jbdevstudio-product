@@ -11,6 +11,7 @@ import org.mockito.stubbing.Answer;
 
 import com.izforge.izpack.util.FileExecutor;
 import com.izforge.izpack.util.OsVersion;
+import com.izforge.izpack.util.Debug;
 import com.jboss.devstudio.core.installer.JREPathValidator.ValidationCode;
 import com.jboss.devstudio.core.installer.bean.Java;
 
@@ -33,7 +34,8 @@ public class JREPathValidatorTest extends TestCase {
 		// verify default JVM execution is supported
 		
 		ValidationCode result = createValidator().runAndVerifyVersion(System.getProperty(Java.SYSPN_JAVA_HOME));
-		System.out.println(System.getProperty(Java.SYSPN_JAVA_HOME));
+		System.out.println("[DEBUG] testRunSpecificJvm() Java.SYSPN_JAVA_HOME = " + System.getProperty(Java.SYSPN_JAVA_HOME));
+		Debug.trace("[DEBUG] testRunSpecificJvm() Java.SYSPN_JAVA_HOME = " + System.getProperty(Java.SYSPN_JAVA_HOME));
 		assertEquals(result,ValidationCode.OK);
 	}
 
@@ -44,15 +46,15 @@ public class JREPathValidatorTest extends TestCase {
 	}
 
 	public void testRunAndVerifyVersion() {
-		ValidationCode result = createValidator().runAndVerifyVersion(RNADOM_LOCATION, new Properties());
+		ValidationCode result = createValidator().runAndVerifyVersion(RANDOM_LOCATION, new Properties());
 		assertTrue(result== ValidationCode.ERR_PATH_DOES_NOT_EXIST);
 	}
 
-	public static final String RNADOM_LOCATION = "/random/location";
+	public static final String RANDOM_LOCATION = "/random/location";
 
 	public void testVerifyPathDoesNotExists() {
 		
-		ValidationCode result = createValidator().verifyPath(RNADOM_LOCATION);
+		ValidationCode result = createValidator().verifyPath(RANDOM_LOCATION);
 		assertTrue("ValidationCode.ERR_PATH_DOES_NOT_EXIST error expected", result == ValidationCode.ERR_PATH_DOES_NOT_EXIST);
 	}
 
@@ -123,7 +125,7 @@ public class JREPathValidatorTest extends TestCase {
 	public void testRunJavaAndGetPlatformPropertiesString() {
 		String[] javaOutput = createOut("Vendor Name","1.X.X_XX","64");
 		JREPathValidator validator = new JREPathValidator(createFileExecutor(javaOutput));
-		Properties props = validator.runJavaAndGetPlatformProperties(RNADOM_LOCATION);
+		Properties props = validator.runJavaAndGetPlatformProperties(RANDOM_LOCATION);
 		assertEquals(3, props.size());
 	}
 
@@ -146,14 +148,14 @@ public class JREPathValidatorTest extends TestCase {
 	
 	public void testGetDefaultJava7LocationNotFound() {
 		String location = CommonTestData.findClassLocation(TestJvm.class) + JREPathValidator.JAVA_APPLET_PLUGIN;
-		String[] macOut = { RNADOM_LOCATION, ""};
+		String[] macOut = { RANDOM_LOCATION, ""};
 		File result = createValidator(createFileExecutor(macOut)).getDefaultJavaLocation(location);
 		assertEquals(location, result.getPath());
 	}
 
 	public void testGetDefaultJava7LocationNoNeedToFind() {
-		File result = createValidator().getDefaultJavaLocation(RNADOM_LOCATION);
-		assertEquals(RNADOM_LOCATION, result.getPath());
+		File result = createValidator().getDefaultJavaLocation(RANDOM_LOCATION);
+		assertEquals(RANDOM_LOCATION, result.getPath());
 	}
 
 	public void testValidationCodeEnum() {

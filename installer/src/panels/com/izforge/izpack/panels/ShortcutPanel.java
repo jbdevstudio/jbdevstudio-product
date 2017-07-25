@@ -1006,7 +1006,7 @@ public class ShortcutPanel extends IzPanel implements ActionListener, ListSelect
         // input.
         String substitutedSpec = substitutor.substitute(input, "xml");
         /*
-         * TODO: internal flag mapped if( idata.isDebug() ) { System.out.println( "SUBSTITUDED
+         * TODO: internal flag mapped if( idata.isDebug() ) { System.out.println( "SUBSTITUTED
          * SHORTCUT SPEC" ); System.out.println(
          * "==================================================================" );
          * System.out.println( "==================================================================" );
@@ -1329,7 +1329,7 @@ public class ShortcutPanel extends IzPanel implements ActionListener, ListSelect
 //          for( int i = 0; i < conditions.size(); i++ ) { Condition condition = new Condition(
 //          conditions.elementAt( i ) );
 //          
-//          //System.out.println( "Readed: " + condition.toString( true ) ); boolean result =
+//          //System.out.println( "Read: " + condition.toString( true ) ); boolean result =
 //          condition.eval();
 //          
 //          if( result == false ) { System.out.println( "Unresolved Condition: " + condition );

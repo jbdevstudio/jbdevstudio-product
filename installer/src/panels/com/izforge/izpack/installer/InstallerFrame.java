@@ -393,11 +393,11 @@ public class InstallerFrame extends JFrame {
             inXML = ResourceManager.getInstance().getInputStream(CUSTOM_ICONS_RESOURCEFILE);
         }
         catch (Throwable exception) {
-            Debug.trace("Resource " + CUSTOM_ICONS_RESOURCEFILE
+            Debug.trace("[DEBUG] Resource " + CUSTOM_ICONS_RESOURCEFILE
                     + " not defined. No custom icons available.");
             return;
         }
-        Debug.trace("Custom icons available.");
+        Debug.trace("[DEBUG] Custom icons available.");
         URL url;
         ImageIcon img;
         IXMLElement icon;
@@ -415,7 +415,7 @@ public class InstallerFrame extends JFrame {
             icon = children.get(i);
             url = InstallerFrame.class.getResource(icon.getAttribute("res"));
             img = new ImageIcon(url);
-            Debug.trace("Icon with id found: " + icon.getAttribute("id"));
+            Debug.trace("[DEBUG] Icon with id found: " + icon.getAttribute("id"));
             icons.put(icon.getAttribute("id"), img);
         }
 
@@ -902,7 +902,7 @@ public class InstallerFrame extends JFrame {
                 out = new FileOutputStream(outFile);
             }
             catch (FileNotFoundException e) {
-                Debug.trace("Cannot create logfile!");
+                Debug.trace("[DEBUG] Cannot create logfile!");
                 Debug.error(e);
             }
             if (out != null) {
@@ -1039,7 +1039,7 @@ public class InstallerFrame extends JFrame {
                                     // exception because
                                     // a doubled entry was tried, then we should
                                     // ignore ...
-                                    Debug.trace("ZipException in writing custom data: "
+                                    Debug.trace("[DEBUG] ZipException in writing custom data: "
                                             + ze.getMessage());
                                     continue;
                                 }
@@ -1050,7 +1050,7 @@ public class InstallerFrame extends JFrame {
                                         bytesCopied += bytesInBuffer;
                                     }
                                 } else {
-                                    Debug.trace("custom data not found: " + contentPath);
+                                    Debug.trace("[DEBUG] custom data not found: " + contentPath);
                                 }
                                 outJar.closeEntry();
 
@@ -1378,10 +1378,10 @@ public class InstallerFrame extends JFrame {
             nextButton.requestFocusInWindow();
             getRootPane().setDefaultButton(nextButton);
             if (this.getFocusOwner() != null) {
-                Debug.trace("Current focus owner: " + this.getFocusOwner().getName());
+                Debug.trace("[DEBUG] Current focus owner: " + this.getFocusOwner().getName());
             }
             if (!(getRootPane().getDefaultButton() == nextButton)) {
-                Debug.trace("Next button not default button, setting...");
+                Debug.trace("[DEBUG] Next button not default button, setting...");
                 quitButton.setDefaultCapable(false);
                 prevButton.setDefaultCapable(false);
                 nextButton.setDefaultCapable(true);
@@ -1414,7 +1414,7 @@ public class InstallerFrame extends JFrame {
         IzPanel panel = installdata.panels.get(panelnumber);
         Panel panelmetadata = panel.getMetadata();
         String panelid = panelmetadata.getPanelid();
-        Debug.trace("Current Panel: " + panelid);
+        Debug.trace("[DEBUG] Current Panel: " + panelid);
 
         if (panelmetadata.hasCondition()) {
             Debug.log("Checking panelcondition");

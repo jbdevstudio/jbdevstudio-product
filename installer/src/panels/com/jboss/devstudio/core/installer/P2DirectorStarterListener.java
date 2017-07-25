@@ -132,7 +132,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 			try {
 				cancelLocation.createNewFile();
 			} catch (IOException e) {
-				Debug.trace("Cannot cancel installation");
+				Debug.trace("[DEBUG] Cannot cancel installation");
 			};
 				
 		}

@@ -205,7 +205,7 @@ public class JavaVersionReader {
 	 * Sends the given string and a newline to the server.
 	 */
 	public void writeLine(String s) throws IOException {
-		Debug.trace("[ Command ] " + s);
+		Debug.trace("[DEBUG] [ Command ] " + s);
 		outputStream.write(s);
 		outputStream.newLine();;
 	}

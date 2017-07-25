@@ -245,7 +245,7 @@ public class AutomatedInstaller extends InstallerBase
                                     // exception because
                                     // a doubled entry was tried, then we should
                                     // ignore ...
-                                    Debug.trace("ZipException in writing custom data: "
+                                    Debug.trace("[DEBUG] ZipException in writing custom data: "
                                             + ze.getMessage());
                                     continue;
                                 }
@@ -260,7 +260,7 @@ public class AutomatedInstaller extends InstallerBase
                                 }
                                 else
                                 {
-                                    Debug.trace("custom data not found: " + contentPath);
+                                    Debug.trace("[DEBUG] custom data not found: " + contentPath);
                                 }
                                 outJar.closeEntry();
 

@@ -630,7 +630,7 @@ public class ServerListPanel extends JPanel {
 
 		private static boolean isLocationInList(RuntimePath location, List<RuntimePath> servers) {
 			for (RuntimePath serverBean : servers) {
-				if(serverBean.getLocation().equals(location) && serverBean!=location) {
+				if(serverBean.getLocation().equals(location.getLocation()) && serverBean!=location) {
 					return true;
 				}
 			}

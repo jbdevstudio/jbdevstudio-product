@@ -15,6 +15,7 @@ import com.izforge.izpack.installer.InstallData;
 import com.izforge.izpack.installer.InstallerException;
 import com.izforge.izpack.installer.PanelAutomation;
 import com.izforge.izpack.util.OsVersion;
+import com.izforge.izpack.util.Debug;
 import com.jboss.devstudio.core.installer.JREPathValidator.ValidationCode;
 
 public class JREPathPanelAutomationHelper implements PanelAutomation {
@@ -73,12 +74,15 @@ public class JREPathPanelAutomationHelper implements PanelAutomation {
 								throw new InstallerException(MessageFormat.format("[ERROR] cannot get canonical path to configured java executable ''{0}''",jreLocation), e);
 							}
 						}
+						Debug.trace("[DEBUG] runAutomated() jreLocation = " + jreLocation);
 						String jreHome = new File(jreLocation)
 										.getParentFile() // bin
 										.getParentFile() // ${java.home}
 										.getAbsolutePath();
+						Debug.trace("[DEBUG] (1) runAutomated() JREPathPanel.VAR_SELECTED_JAVA_PATH = " + JREPathPanel.VAR_SELECTED_JAVA_PATH);
+						Debug.trace("[DEBUG] (1) runAutomated() jreHome = " + jreHome);
 						installData.setVariable(JREPathPanel.VAR_SELECTED_JAVA_PATH, jreHome);
-						vlaidateSelectedJavaPath(installData);
+						validateSelectedJavaPath(installData);
 						return;
 					}
 				}
@@ -86,11 +90,13 @@ public class JREPathPanelAutomationHelper implements PanelAutomation {
 		}
 		// No jrelocation node found, current jvm should be used to match GUI installer behavior
 		updateJavaHomeVariable(installData);
+		Debug.trace("[DEBUG] (2) runAutomated() JREPathPanel.VAR_SELECTED_JAVA_PATH = " + JREPathPanel.VAR_SELECTED_JAVA_PATH);
+		Debug.trace("[DEBUG] (2) runAutomated() installData.getVariable(JREPathPanel.VAR_JAVA_HOME) = " + installData.getVariable(JREPathPanel.VAR_JAVA_HOME));
 		installData.setVariable(JREPathPanel.VAR_SELECTED_JAVA_PATH, installData.getVariable(JREPathPanel.VAR_JAVA_HOME));
-		vlaidateSelectedJavaPath(installData);
+		validateSelectedJavaPath(installData);
 	}
 	
-	private void vlaidateSelectedJavaPath(AutomatedInstallData installData) throws InstallerException {
+	private void validateSelectedJavaPath(AutomatedInstallData installData) throws InstallerException {
 		Properties props = new Properties();
 		String jreLocation = installData.getVariable(JREPathPanel.VAR_SELECTED_JAVA_PATH);
 		ValidationCode code = validator.runAndVerifyVersion(jreLocation,props);
@@ -114,6 +120,7 @@ public class JREPathPanelAutomationHelper implements PanelAutomation {
 	
 	public void updateJavaHomeVariable(AutomatedInstallData idata) {
 		File javaHome = validator.getDefaultJavaLocation(idata.getVariable(JREPathPanel.VAR_JAVA_HOME));
+		Debug.trace("[DEBUG] updateJavaHomeVariable() " + javaHome.toString());
 		idata.setVariable(JREPathPanel.VAR_JAVA_HOME, javaHome.getAbsolutePath());
 		// This case is for starting installer with jdk/bin/java under any
 		// platform

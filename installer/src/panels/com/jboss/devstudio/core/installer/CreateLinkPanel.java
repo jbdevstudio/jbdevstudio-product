@@ -20,7 +20,7 @@ public class CreateLinkPanel extends IzPanel {
 	private static final String winTestFiles[] = new String[] { "bin" + File.separator + "javaw.exe",
 			"jre" + File.separator + "bin" + File.separator + "javaw.exe" };
 	private static final String linTestFiles[] = new String[] { "bin" + File.separator + "java",
-		"jre" + File.separator + "bin" + File.separator + "java" };
+			"jre" + File.separator + "bin" + File.separator + "java" };
 	private String installPath = "";
 
 	public CreateLinkPanel(InstallerFrame parent, InstallData idata) {
@@ -35,7 +35,7 @@ public class CreateLinkPanel extends IzPanel {
 		} else if (OsVersion.IS_LINUX || OsVersion.IS_MAC) {
 			testFiles = linTestFiles;
 		}
-		
+
 		if (jdkPath != null && !"".equals(jdkPath)) {
 			for (int i = 0; i < testFiles.length; ++i) {
 				File path = new File(jdkPath, testFiles[i]).getAbsoluteFile();
@@ -62,34 +62,33 @@ public class CreateLinkPanel extends IzPanel {
 	}
 
 	public static void createSoftLink(String installPath) {
-		if(isUnixLikeSystem()) {
+		if (isUnixLikeSystem()) {
 
 			StringBuffer cmd = new StringBuffer();
 			String launcherName = OsVersion.IS_OSX ? "devstudio.app" : "devstudio";
-			 
+
 			cmd.append("cd \"").append(installPath).append("\"\n")
-				.append("ln -s \"." + File.separator + "studio" + File.separator)
-				.append(launcherName + "\"")
-				.append(" \"" + launcherName + "\"");
+					.append("ln -s \"." + File.separator + "studio" + File.separator).append(launcherName + "\"")
+					.append(" \"" + launcherName + "\"");
 			try {
 				ShellScript.execute(cmd, File.createTempFile("devstudio-launcher-link-", ".sh").getAbsolutePath());
 			} catch (IOException e) {
 				e.printStackTrace();
-			}		
+			}
 		}
 	}
+
 	/*
 	 * If Unix like system return true
 	 * 
 	 * @return
 	 */
 	public static boolean isUnixLikeSystem() {
-		return System.getProperty("os.name","").toLowerCase().indexOf("win") == -1;
+		return System.getProperty("os.name", "").toLowerCase().indexOf("win") == -1;
 	}
-	
+
 	public void createLink(String fileName, String folderName) {
-		String path = installPath + File.separator + "eclipse" + File.separator
-				+ "links";
+		String path = installPath + File.separator + "eclipse" + File.separator + "links";
 
 		File folder = new File(path);
 
@@ -110,19 +109,19 @@ public class CreateLinkPanel extends IzPanel {
 	public void addJREPath() {
 		String installPath = idata.getVariable("INSTALL_PATH");
 		String jdkPath = idata.getVariable("JREPath");
-		String index = validatePath(jdkPath!=null && !"".equals(jdkPath)? jdkPath : idata.getVariable("JAVA_HOME"));
+		String index = validatePath(jdkPath != null && !"".equals(jdkPath) ? jdkPath : idata.getVariable("JAVA_HOME"));
 
-		if (index.length()>0) {
+		if (index.length() > 0) {
 			addJREPath(installPath, jdkPath + File.separator + index);
 		}
 	}
 
 	public static void addJREPath(String installPath, String execPath) {
-		File pathToIni = new File(installPath + File.separator + P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator
-				+ "devstudio.ini");
-		if(pathToIni.exists()) {
+		File pathToIni = new File(installPath + File.separator + P2DirectorStarterListener.DEVSTUDIO_LOCATION
+				+ File.separator + "devstudio.ini");
+		if (pathToIni.exists()) {
 			addJVM(execPath, pathToIni);
-		} 
+		}
 	}
 
 	public static void addJVM(String execPath, File path) {
@@ -136,20 +135,19 @@ public class CreateLinkPanel extends IzPanel {
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		} finally {
-			if(is != null) {
+			if (is != null) {
 				try {
 					is.close();
 				} catch (IOException e) {
-					Debug.trace(e);  
+					Debug.trace(e);
 				}
 			}
 		}
-		
-		if(b.length != 0) {
+
+		if (b.length != 0) {
 			try {
 				String str = new String(b);
-				str = "-vm\n" + execPath + "\n"
-						+ str;
+				str = "-vm\n" + execPath + "\n" + str;
 				stream = new FileOutputStream(path);
 				stream.write(str.getBytes());
 			} catch (IOException ex) {
@@ -163,7 +161,7 @@ public class CreateLinkPanel extends IzPanel {
 			}
 		}
 	}
-	
+
 	/**
 	 * Asks to make the XML panel data.
 	 * 

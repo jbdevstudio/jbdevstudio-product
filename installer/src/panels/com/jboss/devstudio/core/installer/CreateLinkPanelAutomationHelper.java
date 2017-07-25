@@ -57,11 +57,11 @@ public class CreateLinkPanelAutomationHelper implements PanelAutomation {
 		IXMLElement jreLocation = new XMLElementImpl("jrelocation", panelRoot);
 		// check this writes even if value is the default,
 		// because without the constructor, default does not get set.
-		String jdkPath = iData.getVariable("JREPath");
-		String index = CreateLinkPanel.validatePath(jdkPath);
+		String jrePath = iData.getVariable("JREPath");
+		String index = CreateLinkPanel.validatePath(jrePath);
 
 		if (index.length()>0) {
-			jreLocation.setContent(jdkPath + File.separator + index);
+			jreLocation.setContent(jrePath + File.separator + index);
 			panelRoot.addChild(jreLocation);
 		}
 	}
@@ -69,7 +69,7 @@ public class CreateLinkPanelAutomationHelper implements PanelAutomation {
 	/**
 	 * Establish the runtime_locations.properties file containing minimally the 'runtimes' directory.  
 	 * This file is read at startup and affects the runtime UI preferences.  Also set the install data
-	 * runtime locations variable and update the installtion path to contain the JRE path.
+	 * runtime locations variable and update the installation path to contain the JRE path.
 	 */
 	public void runAutomated(AutomatedInstallData idata, IXMLElement panelRoot)
 		throws InstallerException {
@@ -79,9 +79,16 @@ public class CreateLinkPanelAutomationHelper implements PanelAutomation {
 		}
 		writeProperty(idata, "runtime_locations.properties");
 		CreateLinkPanel.createSoftLink(idata.getInstallPath());
+//		Vector<IXMLElement> jrelocations = panelRoot.getChildrenNamed("jrelocation");
+//		for (int i = 0; i < jrelocations.size(); i++) {
+//			Debug.trace("[DEBUG] runAutomated() " + i + " = " + jrelocations.get(i).getContent());
+//		}
+//		Debug.trace("[DEBUG] jrelocation = " + panelRoot.getChildrenNamed("jrelocation").getContent());
 		IXMLElement ipath = panelRoot.getFirstChildNamed("jrelocation");
 		if(ipath!=null) {
 			String path = ipath.getContent();
+			Debug.trace("[DEBUG] runAutomated() INSTALL_PATH = " + idata.getVariable("INSTALL_PATH"));
+			Debug.trace("[DEBUG] runAutomated() path (jrelocation) = " + path);
 			CreateLinkPanel.addJREPath(idata.getVariable("INSTALL_PATH"), path);
 		}
 	}

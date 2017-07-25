@@ -231,7 +231,7 @@ public class Librarian implements CleanupClient
         {
             String path = System.getProperty("DLL_PATH") + "/" + name + extension;
             path = path.replace('/', File.separatorChar);
-            Debug.trace("Try to load library " + path);
+            Debug.trace("[DEBUG] Try to load library " + path);
             System.load(path);
             return;
 
