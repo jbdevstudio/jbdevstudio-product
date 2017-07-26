@@ -214,7 +214,6 @@ public class JREPathValidator {
 					"/etc/alternatives/java_sdk/jre" + "/etc/alternatives/jre" };
 			for (String location : locations) {
 				Debug.trace("[DEBUG] getDefaultJDKLocation() Check alternatives for: " + location);
-				System.out.println("[DEBUG] getDefaultJDKLocation() Check alternatives for: " + location);
 				File locFile = new File(location);
 				if (locFile.canRead() && (new File(location, "bin/java")).canExecute()) {
 					return locFile;
