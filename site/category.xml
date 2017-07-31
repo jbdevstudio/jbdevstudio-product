@@ -141,6 +141,7 @@
   <feature id="org.jboss.ide.eclipse.as.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
+    <category name="org.eclipse.wst.server.core.serverAdapter"/>
   </feature>
   <feature id="org.jboss.tools.openshift.express.feature">
     <category name="CloudContainerTools" />
@@ -153,6 +154,7 @@
   <feature id="org.jboss.tools.openshift.feature">
     <category name="CoreTools" />
     <category name="CloudContainerTools" />
+    <category name="org.eclipse.wst.server.core.serverAdapter"/>
   </feature>
   <feature id="org.jboss.tools.openshift.cdk.feature">
     <category name="CoreTools" />
@@ -464,14 +466,14 @@
   <feature id="org.jboss.tools.wtp.runtimes.tomcat.feature.source"/>
   <!-- not in devstudio yet <feature id="org.jboss.tools.wtp.server.launchbar.feature.source"/> -->
 
-  <bundle id="org.jboss.tools.discovery.core.source"/>
-  <!-- not in devstudio yet? <bundle id="org.jboss.tools.foundation.help.ui.source"/> -->
-
   <feature id="org.fusesource.ide.core.feature.source"/>
   <feature id="org.fusesource.ide.camel.editor.feature.source"/>
   <feature id="org.fusesource.ide.jmx.feature.source"/>
   <feature id="org.fusesource.ide.server.extensions.feature.source"/>
   <feature id="org.jboss.tools.fuse.transformation.feature.source"/>
+
+  <bundle id="org.jboss.tools.discovery.core.source"/>
+  <!-- not in devstudio yet? <bundle id="org.jboss.tools.foundation.help.ui.source"/> -->
 
   <!-- only in JBT
   <feature id="org.jboss.tools.arquillian.feature.source"/>
@@ -489,6 +491,8 @@
   <!-- ########## -->
   <!-- CATEGORIES -->
   <!-- ########## -->
+
+  <category-def label="JBoss Application Server Adapters" name="org.eclipse.wst.server.core.serverAdapter"/>
 
   <!-- only in JBT
   <category-def label="JBoss Application Server Adapters" name="org.eclipse.wst.server.core.serverAdapter"/>
@@ -537,5 +541,11 @@
   <category-def name="FuseTools" label="JBoss Fuse Tools">
     <description>Tools to allow you to create Apache Camel routes in a graphical editor, launch them locally and deploy them to runtimes like Apache Karaf, Fabric8 and JBoss Fuse.</description>
   </category-def>
+
+<!--
+  <category-def name="Patches" label="Patches">
+    <description>Patch features for Eclipse or Eclipse projects.</description>
+  </category-def>
+-->
 
 </site>
