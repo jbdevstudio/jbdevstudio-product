@@ -35,9 +35,7 @@ org.eclipse.osgi
 # ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.core.jersey-common_2.14.0.v201504171603.jar
 # ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.media.jersey-media-json-jackson_2.14.0.v201504171603.jar
 org.glassfish.jersey.apache.connector
-org.glassfish.jersey.bundles.repackaged.jersey-guava
 org.glassfish.jersey.core.jersey-client
-org.glassfish.jersey.core.jersey-common
 org.glassfish.jersey.media.jersey-media-json-jackson
 
 #➔ find . -name com.fasterxml.jackson.\*
@@ -65,7 +63,6 @@ com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider
 #./usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.hk2.utils_2.3.0.b10_v201508191500.jar
 org.glassfish.hk2.api
 org.glassfish.hk2.locator
-org.glassfish.hk2.osgi-resource-locator
 org.glassfish.hk2.utils
 
 #➔ find . -name javassist.\*
@@ -82,8 +79,6 @@ com.googlecode.javaewah.JavaEWAH
 org.apache.lucene.analyzers-common
 org.apache.lucene.analyzers-smartcn
 org.apache.lucene.misc
-# do we need to keep this in so that lucene.core 3.5.0 is included?
-org.apache.lucene.core
 
 # removed because available in upstream eclipse-* or rh-eclipse* packages
 # list computed by looking at buildlog and scanning for "[INFO osgi.prov] rh-eclipse47-osgi" lines
@@ -105,7 +100,6 @@ org.apache.batik.css
 org.apache.batik.util.gui
 org.apache.batik.util
 org.apache.commons.httpclient
-org.apache.commons.lang
 org.apache.felix.gogo.command
 org.apache.felix.gogo.runtime
 org.apache.felix.gogo.shell
@@ -221,3 +215,11 @@ org.eclipse.jgit.ui
 # JBDS-4475 remove pde plugins as already installed via pde rpm
 org.eclipse.pde.genericeditor
 org.eclipse.pde.genericeditor.extension
+
+# JBDS-4498 add these back in
+# net.sourceforge.lpg.lpgjavaruntime
+# org.apache.commons.lang
+# org.apache.lucene.core
+# org.glassfish.hk2.osgi-resource-locator
+# org.glassfish.jersey.bundles.repackaged.jersey-guava
+# org.glassfish.jersey.core.jersey-common
