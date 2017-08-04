@@ -18,6 +18,7 @@
   <properties>
     <snapshotLocation>core</snapshotLocation>
     <snapshotUpdateSitePath>${devstudioReleaseVersion}/snapshots/updates/${snapshotLocation}/${stream_jbt}</snapshotUpdateSitePath>
+    <skipDeployToJBossOrg>false</skipDeployToJBossOrg>
   </properties>
   <build>
     <plugins>
@@ -175,6 +176,7 @@
                     <arg>-e</arg>
                     <arg>*eap.jar*</arg>
                   </arguments>
+                  <skip>${skipDeployToJBossOrg}</skip>
                 </configuration>
               </execution>
               <execution>
@@ -193,6 +195,7 @@
                     <arg>-t</arg>
                     <arg>${snapshotUpdateSitePath}</arg>
                   </arguments>
+                  <skip>${skipDeployToJBossOrg}</skip>
                 </configuration>
               </execution>
             </executions>

@@ -16,6 +16,7 @@
 		<update.site.description>Snapshot Build</update.site.description>
 		<siteTemplateFolder>siteTemplateFolder</siteTemplateFolder>
 		<associateSite>https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/</associateSite>
+		<skipDeployToJBossOrg>false</skipDeployToJBossOrg>
 	</properties>
 
 	<build>
