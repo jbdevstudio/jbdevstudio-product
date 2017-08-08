@@ -120,6 +120,7 @@
     <category name="GeneralTools" />
   </feature>
   <feature id="org.jboss.tools.cdi.feature">
+    <category name="CoreTools" />
     <category name="WebTools" />
     <category name="GeneralTools" />
   </feature>
@@ -128,6 +129,7 @@
     <category name="GeneralTools" />
   </feature>
   <feature id="org.jboss.tools.cdi.deltaspike.feature">
+    <category name="CoreTools" />
     <category name="WebTools" />
     <category name="GeneralTools" />
   </feature>
@@ -210,6 +212,7 @@
     <category name="MavenTools" />
   </feature>
   <feature id="org.jboss.tools.maven.cdi.feature">
+    <category name="CoreTools" />
     <category name="MavenTools" />
   </feature>
   <feature id="org.jboss.tools.maven.hibernate.feature">
