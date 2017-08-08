@@ -32,6 +32,8 @@
   <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.browsersim.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.central.easymport.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.central.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.common.jdt.feature" version="0.0.0"/>
@@ -75,7 +77,7 @@
     <import feature="org.eclipse.recommenders.rcp.feature"/>
     <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
     <import feature="org.jboss.tools.maven.apt.feature"/>
-    <import feature="org.jboss.tools.maven.apt.feature"/>
+    <import feature="org.jboss.tools.maven.cdi.feature"/>
     <import feature="org.jboss.tools.maven.feature"/>
     <import feature="org.jboss.tools.maven.hibernate.feature"/>
     <import feature="org.jboss.tools.maven.jdt.feature"/>
