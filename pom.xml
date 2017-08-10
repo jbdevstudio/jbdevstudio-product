@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>product</artifactId>
-  <version>11.0.0-SNAPSHOT</version>
+  <version>11.1.0-SNAPSHOT</version>
   <name>devstudio - Product, Installers</name>
   <packaging>pom</packaging>
   <modules>
@@ -28,7 +28,7 @@
     <tpc.version>${TARGET_PLATFORM_VERSION_MAX}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
-    <central.tpc.version>4.70.0.AM1-SNAPSHOT</central.tpc.version>
+    <central.tpc.version>4.70.0.Final-SNAPSHOT</central.tpc.version>
     <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${stream_jbt}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
 
     <!-- <RHDS_SSH>devstudio@10.16.89.81:/home/windup/apache2/www/html/rhd/devstudio</RHDS_SSH> no need to use wonka.mw - no EAP bundles -->
