@@ -44,6 +44,9 @@ Requires: rh-eclipse47-eclipse-rse
 # tm deps: org.eclipse.tm.terminal.connector.local
 Requires: rh-eclipse47-eclipse-tm-terminal-connectors
 
+# JBDS-4538 docker tooling dep:
+Requires: rh-eclipse47-eclipse-linuxtools-docker
+
 # include AERI logging/reporting
 Requires: rh-eclipse47-eclipse-epp-logging
 
@@ -143,6 +146,9 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Mon Sep 04 2017 Nick Boldt <nboldt@redhat.com> 11.1.0.20170904-1119
+- JBDS-4538 depend on docker tooling rpm
+
 * Thu Aug 10 2017 Nick Boldt <nboldt@redhat.com> 11.1.0.20170810-1744
 - Bump to 11.1.0
 

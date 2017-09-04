@@ -30,6 +30,7 @@ jnr.ffi
 jnr.posix
 jnr.unixsocket
 jnr.x86asm
+net.sourceforge.lpg.lpgjavaruntime
 org.apache.ant
 org.apache.axis
 org.apache.batik.css
@@ -349,6 +350,7 @@ org.eclipse.linuxtools.docker.docs
 org.eclipse.linuxtools.docker.editor
 org.eclipse.linuxtools.docker.feature
 org.eclipse.linuxtools.docker.ui
+org.eclipse.linuxtools.jdt.docker.launcher
 org.eclipse.ltk.core.refactoring
 org.eclipse.ltk.ui.refactoring
 org.eclipse.m2e.archetype.common

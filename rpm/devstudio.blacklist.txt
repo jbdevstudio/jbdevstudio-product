@@ -24,6 +24,14 @@ javax.servlet.jsp
 javax.ws.rs
 javax.ws.rs-api
 
+# docker feature/plugins
+org.eclipse.linuxtools.docker.core
+org.eclipse.linuxtools.docker.docs
+org.eclipse.linuxtools.docker.editor
+org.eclipse.linuxtools.docker.feature
+org.eclipse.linuxtools.docker.ui
+org.eclipse.linuxtools.jdt.docker.launcher
+
 #➔ find . -name org.eclipse.osgi_\*
 # ./usr/lib64/eclipse/plugins/org.eclipse.osgi_3.11.0.v20160819-1000.jar
 org.eclipse.osgi
