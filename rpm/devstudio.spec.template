@@ -34,6 +34,8 @@ Requires: libIDL
 Requires: rh-eclipse47-eclipse-cdt-native
 # include freemarker because cdt's org.eclipse.tools.templates.freemarker needs it 
 Requires: rh-eclipse47-freemarker
+# rh-eclipse47-eclipse-cdt-parsers provides net.sourceforge.lpg.lpgjavaruntime
+Requires: rh-eclipse47-eclipse-cdt-parsers
 
 # m2e deps
 Requires: rh-eclipse47-eclipse-m2e-core, rh-eclipse47-eclipse-m2e-workspace

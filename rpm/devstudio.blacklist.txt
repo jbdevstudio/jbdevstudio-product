@@ -225,9 +225,11 @@ org.eclipse.pde.genericeditor
 org.eclipse.pde.genericeditor.extension
 
 # JBDS-4498 add these back in
-# net.sourceforge.lpg.lpgjavaruntime
 # org.apache.commons.lang
 # org.apache.lucene.core
 # org.glassfish.hk2.osgi-resource-locator
 # org.glassfish.jersey.bundles.repackaged.jersey-guava
 # org.glassfish.jersey.core.jersey-common
+
+# remove - provided by rh-eclipse47-eclipse-cdt-parsers
+net.sourceforge.lpg.lpgjavaruntime
