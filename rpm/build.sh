@@ -40,7 +40,7 @@ source_p2_sites="" # comma-separated list passed in from commandline
 JOB_NAME=rh-eclipse47-devstudio
 mock_opts="" # eg., --no-clean and/or --update flags
 mock_root=/var/lib/mock/ # or /opt/data/mock_root
-brewrepo=http://download.devel.redhat.com/brewroot/repos/devtools-1.0-rh-eclipse47-rhel-7-build/latest/x86_64
+brewrepo=http://download.devel.redhat.com/brewroot/repos/devtools-2.1-rh-eclipse47-rhel-7-build/latest/x86_64
 
 while [[ "$#" -gt 0 ]]; do
   case $1 in
