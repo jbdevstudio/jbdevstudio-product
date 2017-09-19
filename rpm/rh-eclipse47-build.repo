@@ -1,6 +1,6 @@
 [rh-eclipse47-build]
 name=rh-eclipse47-build
-baseurl=http://brewweb.engineering.redhat.com/brewroot/repos/devtools-1.0-rh-eclipse47-rhel-7-build/latest/x86_64/
+baseurl=http://brewweb.engineering.redhat.com/brewroot/repos/devtools-2.1-rh-eclipse47-rhel-7-build/latest/x86_64/
 enabled=1
 sslverify=0
 gpgcheck=0
