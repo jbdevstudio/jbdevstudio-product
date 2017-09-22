@@ -233,3 +233,7 @@ org.eclipse.pde.genericeditor.extension
 
 # remove - provided by rh-eclipse47-eclipse-cdt-parsers
 net.sourceforge.lpg.lpgjavaruntime
+
+# JBDS-4530 remove - provided by rh-java-common-jdom, rh-java-common-snakeyaml
+org.yaml.snakeyaml
+org.jdom

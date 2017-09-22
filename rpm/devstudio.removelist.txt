@@ -634,6 +634,7 @@ org.glassfish.jersey.core.jersey-client
 org.glassfish.jersey.media.jersey-media-json-jackson
 org.jboss.tools.usage
 org.jboss.tools.usage.feature
+org.jdom
 org.junit
 org.sat4j.core
 org.sat4j.pb
@@ -643,3 +644,4 @@ org.w3c.css.sac
 org.w3c.dom.events
 org.w3c.dom.smil
 org.w3c.dom.svg
+org.yaml.snakeyaml

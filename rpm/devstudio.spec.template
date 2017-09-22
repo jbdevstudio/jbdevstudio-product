@@ -46,7 +46,7 @@ Requires: rh-eclipse47-eclipse-rse
 # tm deps: org.eclipse.tm.terminal.connector.local
 Requires: rh-eclipse47-eclipse-tm-terminal-connectors
 
-# JBDS-4538 docker tooling dep:
+# JBDS-4538 docker tooling dep
 Requires: rh-eclipse47-eclipse-linuxtools-docker
 
 # include AERI logging/reporting
@@ -61,14 +61,19 @@ Requires: rh-eclipse47-lucene, rh-eclipse47-lucene-misc, rh-eclipse47-lucene-ana
 # JavaEWAH 1.1.6
 Requires: rh-eclipse47-javaewah
 
-# JBDS-4150 needed for devstudio optional installs
-Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-client-cache
-
 # require testng
 Requires: rh-eclipse47-eclipse-testng
 
+### rh-java-common dependencies
+
+# JBDS-4150 needed for devstudio optional installs
+Requires: rh-java-common-httpcomponents-client rh-java-common-httpcomponents-client-cache
+
 # require gson
 Requires: rh-java-common-google-gson >= 2.2.4, rh-java-common-google-gson < 3.0.0
+
+# JBDS-4530 require orbit / java deps
+Requires: rh-java-common-jdom rh-java-common-snakeyaml
 
 # note that java-1.8.0-openjdk-devel should also be installed but that should be already required upstream
 Requires: java-1.8.0-openjdk-devel
@@ -120,7 +125,7 @@ rm %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/*.jar
 install -d -m 755 %{buildroot}%{_libdir}/eclipse/.pkgs
 echo "%{version}-%{release}" > %{buildroot}%{_libdir}/eclipse/.pkgs/Devstudio
 
-# JBDS-4150 symlink to jars installed via RPM
+# JBDS-4530 JBDS-4150 symlink to jars installed via rh-java-common-* RPMs
 pushd %{buildroot}%{_datadir}/eclipse/droplets/%{pkg_name}/eclipse/plugins
 ln -s /opt/rh/rh-eclipse47/root/usr/share/java/glassfish-servlet-api.jar javax.servlet_3.1.0.jar
 ln -s /opt/rh/rh-java-common/root/usr/share/java/commons-lang.jar org.apache.commons.lang_2.6.0.jar
@@ -129,6 +134,8 @@ ln -s /opt/rh/rh-java-common/root/usr/share/java/httpcomponents/httpclient-cache
 ln -s /opt/rh/rh-java-common/root/usr/share/java/xml-commons-resolver.jar org.apache.xml.resolver_1.2.0.v200806030312.jar
 ln -s /opt/rh/rh-java-common/root/usr/share/java/xalan-j2-serializer.jar org.apache.xml.serializer_2.7.1.v200806030322.jar
 ln -s /opt/rh/rh-java-common/root/usr/share/java/slf4j/slf4j-api.jar org.slf4j.api_1.7.4.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/jdom.jar org.jdom_1.1.1.v201101151400.jar
+ln -s /opt/rh/rh-java-common/root/usr/share/java/snakeyaml.jar org.yaml.snakeyaml_1.14.0.v201604211500.jar
 popd
 
 # JBDS-4150 add to fragment.info
@@ -148,6 +155,9 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Fri Sep 22 2017 Nick Boldt <nboldt@redhat.com> 11.1.0.20170922-1214
+- JBDS-4530 Require rh-java-common-jdom rh-java-common-snakeyaml
+
 * Mon Sep 04 2017 Nick Boldt <nboldt@redhat.com> 11.1.0.20170904-1119
 - JBDS-4538 depend on docker tooling rpm
 
