@@ -48,6 +48,7 @@
   <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.js.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.openshift.io.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.project.examples.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.richfaces.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/>
