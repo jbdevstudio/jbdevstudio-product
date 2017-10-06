@@ -60,23 +60,14 @@
   
    <requires>
     <import feature="org.eclipse.buildship"/>
-    <import feature="org.eclipse.datatools.common.doc.user"/>
-    <import feature="org.eclipse.datatools.connectivity.doc.user"/>
-    <import feature="org.eclipse.datatools.connectivity.feature"/>
-    <import feature="org.eclipse.datatools.doc.user"/>
-    <import feature="org.eclipse.datatools.enablement.feature"/>
-    <import feature="org.eclipse.datatools.intro"/>
-    <import feature="org.eclipse.datatools.modelbase.feature"/>
-    <import feature="org.eclipse.datatools.sqldevtools.feature"/>
-    <import feature="org.eclipse.datatools.sqltools.doc.user"/>
-    <import feature="org.eclipse.jpt.jaxb.feature"/>
-    <import feature="org.eclipse.jpt.jpa.feature"/>
+
+    <!-- TODO remove these https://issues.jboss.org/browse/JBDS-4533 -->
     <import feature="org.eclipse.m2e.wtp.feature"/>
     <import feature="org.eclipse.m2e.wtp.jaxrs.feature"/>
     <import feature="org.eclipse.m2e.wtp.jpa.feature"/>
     <import feature="org.eclipse.m2e.wtp.jsf.feature"/>
-    <import feature="org.eclipse.recommenders.rcp.feature"/>
-    <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
+
+    <!-- TODO remove these https://issues.jboss.org/browse/JBDS-4532 -->
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.cdi.feature"/>
     <import feature="org.jboss.tools.maven.feature"/>
@@ -84,11 +75,9 @@
     <import feature="org.jboss.tools.maven.jdt.feature"/>
     <import feature="org.jboss.tools.maven.project.examples.feature"/>
     <import feature="org.jboss.tools.maven.sourcelookup.feature"/>
-    <import feature="org.sonatype.m2e.buildhelper.feature"/>
-    <import feature="org.sonatype.m2e.egit.feature"/>
-    <import feature="org.sonatype.m2e.mavenarchiver.feature"/>
+
     <!-- 
-       The following plugins are required for completeness and usability of product only. 
+       The following plugin is required for completeness and usability of product only. 
        We have no compilation requirements against them, nor any critical outstanding bugs
        that require a specific version or API. Functionality this forces to be included
        are things such as terminal support, process support, shell support, 
@@ -96,6 +85,5 @@
        and support for the connector service.  
     -->
     <import plugin="org.dadacoalition.yedit" version="1.0.18" match="greaterOrEqual"/>
-    <import plugin="org.yaml.snakeyaml" version="1.14.0" match="greaterOrEqual"/>
   </requires>
 </feature>
