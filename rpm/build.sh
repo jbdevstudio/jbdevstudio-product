@@ -13,17 +13,17 @@ https://devstudio.redhat.com/static/11/stable/updates/central/devstudio-11.0.0.G
     echo ""
     echo "Example 2: $0 -clean -u \"https://devstudio.redhat.com/11/staging/updates/\" -mo \"--update\""
     echo ""
-    echo "Example 3a: $0 -clean -u \"https://devstudio.redhat.com/11/snapshots/updates/\" -mo \"--no-clean --update\""
+    echo "Example 3: $0 -clean -u \"https://devstudio.redhat.com/11/snapshots/updates/\" -mo \"--no-clean --update\""
     echo ""
-    echo "Example 3b: $0 -clean -u \"https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
-https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
-https://devstudio.redhat.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
-https://devstudio.redhat.com/11/snapshots/builds/devstudio.product_master/latest/all/repo/\"" 
+    echo "Example 4a: $0 /build.sh -lus -clean -mo \"--no-clean --update\" -u \\
+\"https://devstudio.redhat.com/targetplatforms/devstudiotarget/4.71.0.AM3-SNAPSHOT/REPO/,\\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.71.0.AM3-SNAPSHOT/REPO/,\\
+https://devstudio.redhat.com/11/snapshots/updates/central/master/\" # use locally built update site"
     echo ""
-    echo "Example 4: $0 -clean -u \"https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget/4.70.0.AM1-SNAPSHOT/,\\
-https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.70.0.AM1-SNAPSHOT/,\\
-https://devstudio.redhat.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\\
-file:///path/to/jbdevstudio-product/site/target/repository\"" 
+    echo "Example 4b: $0 /build.sh -bus -clean -mo \"--no-clean --update\" -u \\
+\"https://devstudio.redhat.com/targetplatforms/devstudiotarget/4.71.0.AM3-SNAPSHOT/REPO/,\\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.71.0.AM3-SNAPSHOT/REPO/,\\
+https://devstudio.redhat.com/11/snapshots/updates/central/master/\" # build and use local update site"
     echo ""
     exit 1;
 }
@@ -35,6 +35,8 @@ fi
 # defaults
 quiet="" # or "" or "-q"
 clean=0
+buildUpdateSite=0; # if =1 build the plugins, features, and update site from the pom in this folder
+localUpdateSite=0; # if =1 use local update site in ../site/target/repository
 source_p2_zips="" # comma-separated list passed in from commandline
 source_p2_sites="" # comma-separated list passed in from commandline
 JOB_NAME=rh-eclipse47-devstudio
@@ -45,6 +47,8 @@ brewrepo=http://download.devel.redhat.com/brewroot/repos/devtools-2.1-rh-eclipse
 while [[ "$#" -gt 0 ]]; do
   case $1 in
     '-clean') clean=1; shift 0;;
+    '-build-update-site'|'-bus') buildUpdateSite=1; localUpdateSite=1; shift 0;;
+    '-local-update-site'|'-lus') localUpdateSite=1; shift 0;;
     '-z') source_p2_zips=",$2"; shift 1;;
     '-u') source_p2_sites=",$2"; shift 1;;
     '-q') quiet="-q"; shift 0;;
@@ -117,6 +121,15 @@ function p2extract () {
   -artifactRepository "${inputRepos}" \
   -vmargs -Declipse.p2.MD5Check=false
 }
+
+# create an update site in ../site/target/repository
+if [[ ${buildUpdateSite} -eq 1 ]]; then
+  mvn clean install
+fi
+
+if [[ ${localUpdateSite} -eq 1 ]]; then
+  source_p2_sites=",file:///$(cd ..;pwd)/site/target/repository/"${source_p2_sites}
+fi
 
 package_name=devstudio
 
