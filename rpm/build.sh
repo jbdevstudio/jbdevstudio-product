@@ -124,7 +124,7 @@ function p2extract () {
 
 # create an update site in ../site/target/repository
 if [[ ${buildUpdateSite} -eq 1 ]]; then
-  mvn clean install
+  time mvn clean install
 fi
 
 if [[ ${localUpdateSite} -eq 1 ]]; then
