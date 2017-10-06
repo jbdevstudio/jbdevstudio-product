@@ -5,7 +5,7 @@
 # requires that you have the devstudio rpm installed
 upstreamIUs=""
 
-IUs=$(cat ../features/com.jboss.devstudio.core.rpm.feature/feature.xml | grep import | sed -e "s/.*<import \(plugin\|feature\)=\"\([^\"]\+\)\".\+/\2/g")
+IUs=$(cat ${0%%/*}/../features/com.jboss.devstudio.core.rpm.feature/feature.xml | grep import | sed -e "s/.*<import \(plugin\|feature\)=\"\([^\"]\+\)\".\+/\2/g")
 for IU in ${IUs}; do
 	# echo "Check $IU..."
 	IUinstalled=$(find /opt/rh/ -name "${IU}*.jar" 2>/dev/null)

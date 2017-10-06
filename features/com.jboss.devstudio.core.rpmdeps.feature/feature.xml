@@ -36,9 +36,20 @@
     <import feature="org.eclipse.cvs"/>
     <import feature="org.eclipse.egit"/>
     <import feature="org.eclipse.equinox.p2.core.feature"/>
+    <import feature="org.eclipse.datatools.common.doc.user"/>
+    <import feature="org.eclipse.datatools.connectivity.doc.user"/>
+    <import feature="org.eclipse.datatools.connectivity.feature"/>
+    <import feature="org.eclipse.datatools.doc.user"/>
+    <import feature="org.eclipse.datatools.enablement.feature"/>
+    <import feature="org.eclipse.datatools.intro"/>
+    <import feature="org.eclipse.datatools.modelbase.feature"/>
+    <import feature="org.eclipse.datatools.sqldevtools.feature"/>
+    <import feature="org.eclipse.datatools.sqltools.doc.user"/>
     <import feature="org.eclipse.help"/>
     <import feature="org.eclipse.jdt"/>
     <import feature="org.eclipse.jgit"/>
+    <import feature="org.eclipse.jpt.jaxb.feature"/>
+    <import feature="org.eclipse.jpt.jpa.feature"/>
     <import feature="org.eclipse.jsf.feature"/>
     <import feature="org.eclipse.jst.common.fproj.enablement.jdt"/>
     <import feature="org.eclipse.jst.enterprise_ui.feature"/>
@@ -55,6 +66,8 @@
     <import feature="org.eclipse.mylyn.wikitext_feature"/>
     <import feature="org.eclipse.platform"/>
     <import feature="org.eclipse.rcp" />
+    <import feature="org.eclipse.recommenders.rcp.feature"/>
+    <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
     <import feature="org.eclipse.tm.terminal.connector.local.feature" version="4.0.0" match="greaterOrEqual"/>
     <import feature="org.eclipse.tm.terminal.connector.ssh.feature" version="4.0.0" match="greaterOrEqual"/>
     <import feature="org.eclipse.tm.terminal.connector.telnet.feature" version="4.0.0" match="greaterOrEqual"/>
@@ -68,6 +81,10 @@
     <import feature="org.eclipse.wst.web_ui.feature"/>
     <import feature="org.eclipse.wst.xml_ui.feature"/>
     <import feature="org.eclipse.wst.xsl.feature"/>
+
+    <import feature="org.sonatype.m2e.buildhelper.feature"/>
+    <import feature="org.sonatype.m2e.egit.feature"/>
+    <import feature="org.sonatype.m2e.mavenarchiver.feature"/>
 
     <import plugin="org.eclipse.core.expressions" version="3.4.400" match="greaterOrEqual"/>
     <import plugin="org.eclipse.emf.ecore" />
@@ -109,5 +126,15 @@
     <import plugin="org.eclipse.wst.common.emf" />
     <import plugin="org.eclipse.wst.sse.core" />
     <import plugin="org.eclipse.wst.xml.core" />
+
+    <!-- 
+       The following plugin is required for completeness and usability of product only. 
+       We have no compilation requirements against them, nor any critical outstanding bugs
+       that require a specific version or API. Functionality this forces to be included
+       are things such as terminal support, process support, shell support, 
+       the sending and receiving of remote commands, the sending and receiving of remote files, 
+       and support for the connector service.  
+    -->
+    <import plugin="org.yaml.snakeyaml" version="1.14.0" match="greaterOrEqual"/>
   </requires>
 </feature>
