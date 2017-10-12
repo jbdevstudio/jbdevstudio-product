@@ -477,6 +477,17 @@ org.eclipse.m2e.profiles.ui
 org.eclipse.m2e.refactoring
 org.eclipse.m2e.scm
 org.eclipse.m2e.workspace.cli
+org.eclipse.m2e.wtp
+org.eclipse.m2e.wtp.feature
+org.eclipse.m2e.wtp.jaxrs
+org.eclipse.m2e.wtp.jaxrs.feature
+org.eclipse.m2e.wtp.jpa
+org.eclipse.m2e.wtp.jpa.feature
+org.eclipse.m2e.wtp.jsf
+org.eclipse.m2e.wtp.jsf.feature
+org.eclipse.m2e.wtp.overlay
+org.eclipse.m2e.wtp.overlay.ui
+org.eclipse.m2e.wtp.sdk.feature
 org.eclipse.mylyn.commons.core
 org.eclipse.mylyn.commons.net
 org.eclipse.mylyn.commons.notifications.core

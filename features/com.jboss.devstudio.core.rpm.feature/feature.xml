@@ -61,12 +61,6 @@
    <requires>
     <import feature="org.eclipse.buildship"/>
 
-    <!-- TODO remove these https://issues.jboss.org/browse/JBDS-4533 -->
-    <import feature="org.eclipse.m2e.wtp.feature"/>
-    <import feature="org.eclipse.m2e.wtp.jaxrs.feature"/>
-    <import feature="org.eclipse.m2e.wtp.jpa.feature"/>
-    <import feature="org.eclipse.m2e.wtp.jsf.feature"/>
-
     <!-- TODO remove these https://issues.jboss.org/browse/JBDS-4532 -->
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.cdi.feature"/>

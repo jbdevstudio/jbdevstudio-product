@@ -184,6 +184,20 @@ org.sonatype.m2e.egit.feature
 org.sonatype.m2e.mavenarchiver
 org.sonatype.m2e.mavenarchiver.feature
 
+# JBDS-4533 m2e-wtp
+# find /opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/m2e-wtp/eclipse -name "org.eclipse.m2e.wtp*" | sed -e "s#.\+\(features\|plugins\)/\(.\+\)#\2#" | sort | uniq | sed -e "s#\(.\+\)_[0-9.rv-]\+\(.jar\|\)#\1#"
+org.eclipse.m2e.wtp
+org.eclipse.m2e.wtp.feature
+org.eclipse.m2e.wtp.jaxrs
+org.eclipse.m2e.wtp.jaxrs.feature
+org.eclipse.m2e.wtp.jpa
+org.eclipse.m2e.wtp.jpa.feature
+org.eclipse.m2e.wtp.jsf
+org.eclipse.m2e.wtp.jsf.feature
+org.eclipse.m2e.wtp.overlay
+org.eclipse.m2e.wtp.overlay.ui
+org.eclipse.m2e.wtp.sdk.feature
+
 # JBDS-4259 still need guava 0.15.0 for org.eclipse.recommenders and gson for org.eclipse.jgit.pgm
 # com.google.guava
 # com.google.gson

@@ -16,13 +16,13 @@ https://devstudio.redhat.com/static/11/stable/updates/central/devstudio-11.0.0.G
     echo "Example 3: $0 -clean -u \"https://devstudio.redhat.com/11/snapshots/updates/\" -mo \"--no-clean --update\""
     echo ""
     echo "Example 4a: $0 /build.sh -lus -clean -mo \"--no-clean --update\" -u \\
-\"https://devstudio.redhat.com/targetplatforms/devstudiotarget/4.71.0.AM3-SNAPSHOT/REPO/,\\
-https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.71.0.AM3-SNAPSHOT/REPO/,\\
+\"https://devstudio.redhat.com/targetplatforms/devstudiotarget/4.71.0.Final-SNAPSHOT/REPO/,\\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.71.0.Final-SNAPSHOT/REPO/,\\
 https://devstudio.redhat.com/11/snapshots/updates/central/master/\" # use locally built update site"
     echo ""
     echo "Example 4b: $0 /build.sh -bus -clean -mo \"--no-clean --update\" -u \\
-\"https://devstudio.redhat.com/targetplatforms/devstudiotarget/4.71.0.AM3-SNAPSHOT/REPO/,\\
-https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.71.0.AM3-SNAPSHOT/REPO/,\\
+\"https://devstudio.redhat.com/targetplatforms/devstudiotarget/4.71.0.Final-SNAPSHOT/REPO/,\\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.71.0.Final-SNAPSHOT/REPO/,\\
 https://devstudio.redhat.com/11/snapshots/updates/central/master/\" # build and use local update site"
     echo ""
     exit 1;
