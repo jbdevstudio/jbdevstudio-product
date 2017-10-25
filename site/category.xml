@@ -313,9 +313,9 @@
     <category name="FuseTools" />
   </feature>
 
-  <feature id="com.redhat.fabric8analytics.lsp.eclipse.feature">
+  <!-- JBIDE-24897 not ready yet <feature id="com.redhat.fabric8analytics.lsp.eclipse.feature">
     <category name="WebTools" />
-  </feature>
+  </feature> -->
 
   <!-- include but do not categorize -->
   <feature id="org.jboss.tools.central.feature"/>
