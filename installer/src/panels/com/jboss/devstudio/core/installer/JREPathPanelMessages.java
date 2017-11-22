@@ -11,12 +11,14 @@ public class JREPathPanelMessages {
 	
 	// messages keys for CustomLangpack_eng.xml entries
 	private static final String VPE_DOES_NOT_SUPPORTED = "JREPathPanel.VPEdoesNotSupportJava64.title";
-	private static final String PATH_CONTAINS_JAVA_APPLET_PLUGIN_JVM = "PathInputPanel.badVersion4";
 	private static final String PATH_IS_NOT_JVM_HOME_LOCATION = "PathInputPanel.notValid";
 	private static final String PATH_DOESNT_EXIST = "JREPathPanel.wrongPath.title";
-	private static final String NOT_TESTED_JVM_VERSION = "PathInputPanel.notTestedVesion";
+	private static final String NOT_TESTED_JVM_VERSION = "PathInputPanel.notTestedVersion";
 	private static final String DOESNT_WORK_WITH_GNU_JVM = "PathInputPanel.badVersion2";
 	private static final String DOESNT_WORK_WITH_SELECTED_VERSION = "PathInputPanel.badVersion3";
+	private static final String PATH_CONTAINS_JAVA_APPLET_PLUGIN_JVM = "PathInputPanel.badVersion4";
+	private static final String JVM_VERSION_NOT_FOUND = "PathInputPanel.badVersion5";
+	private static final String JVM_VERSION_NOT_PARSED = "PathInputPanel.badVersion6";
 	private static final String JRE_WARNING = "PathInputPanel.jreWarning";
 	
 	private LocaleDatabase langpack;
@@ -42,7 +44,11 @@ public class JREPathPanelMessages {
 		String message = "";
 		switch(jvmValidationCode) {
 			case ERR_JVM_VERSION_NOT_FOUND:
+				message = getString(JVM_VERSION_NOT_FOUND);
+				break;
 			case ERR_JVM_VERSION_NOT_PARSED:
+				message = getString(JVM_VERSION_NOT_PARSED);
+				break;
 			case ERR_JVM_VERSION_LESS_THAN_MINIMAL:
 				message = getString(DOESNT_WORK_WITH_SELECTED_VERSION);
 				break;

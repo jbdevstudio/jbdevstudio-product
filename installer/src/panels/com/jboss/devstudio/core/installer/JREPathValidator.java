@@ -28,7 +28,7 @@ public class JREPathValidator {
 		ERR_JVM_VERSION_NOT_FOUND (-5),
 		ERR_JVM_VERSION_NOT_PARSED (-4),
 		ERR_JVM_VERSION_LESS_THAN_MINIMAL (-3),
-		WRN_JVM_VERSION_NOT_TESTED(2),
+		WRN_JVM_VERSION_NOT_TESTED(-2),
 		WRN_NO_VPE_SUPPORT_64BIT(1),
 		WRN_JRE_SELECTED(3),
 		OK(0);
@@ -47,8 +47,10 @@ public class JREPathValidator {
 	private static final String EMPTY_STRING = "";
 	private static final String DEFAULT_JVM_LOCATION = EMPTY_STRING;
 	private static final String[] EMPTY_OUTPUT = new String[] {EMPTY_STRING,EMPTY_STRING};
+	// TODO support jre10/jdk10 when it comes out
+	// see also JREPathPanel.java
 	private static final int MIN_VERSION = 8;
-	private static final int MAX_VERSION = 8;
+	private static final int MAX_VERSION = 9;
 	private static final String EXE_EXT = ".exe";
 
 	static final String JAVA_APPLET_PLUGIN = "JavaAppletPlugin.plugin";
@@ -108,45 +110,61 @@ public class JREPathValidator {
 
 		// Eclipse doesn't work with Gnu JVM implementation
 		if (isGnuVersion(output)) {
-			return ValidationCode.ERR_GNU_JVM;
+			return ValidationCode.ERR_GNU_JVM; // -1
 		}
 		// Java versions cold be 1.1..1.9 considering early access for java 9
 		// So we accept the pattern for java version 1\.[1-9] and
-		// check 3d char for >6 and return new error code -3 for none supported
+		// check 3d char for >=8 and return new error code -3 for none supported
 		// java version
 		if (detectedVersion == null) {
-			return ValidationCode.ERR_JVM_VERSION_NOT_FOUND;
+			return ValidationCode.ERR_JVM_VERSION_NOT_FOUND; // -5 
 		}
+		
+		Debug.trace("[INFO] Detected Java: " + detectedVersion);
+
 		// Check detected version format
-		if (!detectedVersion.matches("1\\.[1-9]\\.[0-9].*") && !detectedVersion.matches("[1-9]-.*")) {
+		if (
+			!detectedVersion.matches("[1-9]+\\.[1-9]+\\.[0-9].*") && // 1.8.0_102, 9.0.1 (windows)
+			!detectedVersion.matches("[1-9]+.*") // 9-ea or 9 (linux)
+		) {
 			// Unknown version
-			return ValidationCode.ERR_JVM_VERSION_NOT_PARSED; 
+			return ValidationCode.ERR_JVM_VERSION_NOT_PARSED; // -4
 		}
 		int versionNumber = 0;
-		if (detectedVersion.matches("1\\.[1-9]\\.[0-9].*")) {
-			 versionNumber = Integer.parseInt(detectedVersion.substring(2, 3));
+
+		String[] detectedVersionBits = detectedVersion.split("\\.");
+		if (detectedVersionBits.length > 0) 
+		{
+			if (detectedVersionBits[0].equals("1")) {
+				versionNumber = Integer.parseInt(detectedVersionBits[1]); // JDK 1.8 and before
+			} else {
+				versionNumber = Integer.parseInt(detectedVersionBits[0]); // JDK 9 onward
+			}
+			Debug.trace("[INFO] Detected Java version: " + versionNumber);
 		} else {
+			// TODO support jre10/jdk10 when it comes out
 			versionNumber = 9;
+			Debug.trace("[WARNING] Defaulted Java version: " + versionNumber);
 		}
 
 		// check selected JVM version range
 		if (versionNumber < MIN_VERSION) {
 			// Version is less that minimum version - do not let to continue
 			// installation
-			return ValidationCode.ERR_JVM_VERSION_LESS_THAN_MINIMAL;
+			return ValidationCode.ERR_JVM_VERSION_LESS_THAN_MINIMAL; // -3 
 		}
 
 		if (versionNumber > MAX_VERSION) {
 			// Version is more maximum version tested - warn and let to continue
 			// installation
-			return ValidationCode.WRN_JVM_VERSION_NOT_TESTED;
+			return ValidationCode.WRN_JVM_VERSION_NOT_TESTED; // -2 
 		}
 
 		if ((OsVersion.IS_WINDOWS || OsVersion.IS_OSX) && VPE_NOT_SUPPORTED_ARCH
 						.equals(props.getProperty(Java.SYSPN_SUN_ARCH_DATA_MODEL))) {
-			return ValidationCode.WRN_NO_VPE_SUPPORT_64BIT;
+			return ValidationCode.WRN_NO_VPE_SUPPORT_64BIT; // 1 
 		}
-		return ValidationCode.OK;
+		return ValidationCode.OK; // 0
 	}
 
 	static public class StringInputStream extends InputStream {

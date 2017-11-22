@@ -56,8 +56,10 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 	private static final String winTestFiles[];
 	private static final String linTestFiles[];
 	private static final String gnuVersion = "gij ";
-	private static final int minVersion = 8;
-	private static final int maxVersion = 8;
+	// TODO support jre10/jdk10 when it comes out
+	// see also JREPathValidator.java
+	private static final int MIN_VERSION = 8;
+	private static final int MAX_VERSION = 9;
 
 	JREPathValidator validator = new JREPathValidator();
 
@@ -337,6 +339,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 		return verifyVersionRange(props.getProperty(SYSPN_JAVA_VERSION));
 	}
 
+	// TODO: why aren't we using JREPathValidator.verifyVersion() ?
 	public static int verifyVersionRange(String detectedVersion) {
 		// Java versions cold be 1.1..1.9 considering early access for java 9
 		// So we accept the pattern for java version 1\.[1-9] and
@@ -346,23 +349,37 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 			return -5;
 		}
 
-		if (!detectedVersion.matches("1\\.[1-9]\\.[0-9].*") && !detectedVersion.matches("[1-9]-.*")) {
+		// Check detected version format
+		if (
+			!detectedVersion.matches("[1-9]+\\.[1-9]+\\.[0-9].*") && // 1.8.0_102, 9.0.1 (windows)
+			!detectedVersion.matches("[1-9]+.*") // 9-ea or 9 (linux)
+		) {
 			return -4; // Unknown version
 		}
-
 		int versionNumber = 0;
 
-		if (detectedVersion.matches("1\\.[1-9]\\.[0-9].*")) {
-			versionNumber = Integer.parseInt(detectedVersion.substring(2, 3));
+		String[] detectedVersionBits = detectedVersion.split("\\.");
+		if (detectedVersionBits.length > 0) 
+		{
+			if (detectedVersionBits[0].equals("1")) {
+				versionNumber = Integer.parseInt(detectedVersionBits[1]); // JDK 1.8 and before
+			} else {
+				versionNumber = Integer.parseInt(detectedVersionBits[0]); // JDK 9 onward
+			}
+			Debug.trace("[INFO] Detected Java version: " + versionNumber);
 		} else {
+			// TODO support jre10/jdk10 when it comes out
 			versionNumber = 9;
+			Debug.trace("[WARNING] Defaulted Java version: " + versionNumber);
 		}
 
-		if (versionNumber < minVersion) {
+		// TODO: why aren't we using JREPathValidator.MIN_VERSION ?
+		if (versionNumber < MIN_VERSION) {
 			return -3; // Version is less that minimum version
 		}
 
-		if (versionNumber > maxVersion) {
+		// TODO: why aren't we using JREPathValidator.MAX_VERSION ?
+		if (versionNumber > MAX_VERSION) {
 			return -2;
 		}
 		return 0;
@@ -464,8 +481,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 			} else if (status == 0) {
 				parent.unlockNextButton();
 			} else if (status == -2) {
-				messageLabel.setText(
-						"<html><p>This JVM was not tested with Red Hat JBoss Developer Studio.<br>It is not guaranteed to work.</p></html>");
+				messageLabel.setText(parent.langpack.getString(getI18nStringForClass("notTestedVersion", "PathInputPanel")));
 				parent.unlockNextButton();
 			} else if (status == -1) {
 				messageLabel.setText(parent.langpack.getString(getI18nStringForClass("badVersion2", "PathInputPanel")));

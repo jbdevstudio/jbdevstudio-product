@@ -14,11 +14,13 @@
     <str id="JREPathPanel.wrongPath.title" txt="The chosen directory does not exist." />    
     <str id="PathInputPanel.notValid" txt="The chosen directory does not contain a Java VM."/>
     <str id="PathInputPanel.jreWarning" txt="&lt;html&gt;&lt;p&gt;Chosen Java VM is a Java Runtime only, it will run Developer Studio but it is recommended to use a Java SDK.&lt;/p&gt;&lt;/html&gt;" />
-    <str id="PathInputPanel.notTestedVesion" txt="&lt;html&gt;&lt;p&gt;This JVM was not tested with Red Hat JBoss Developer Studio.&lt;br&gt;It is not guaranteed to work.&lt;/p&gt;&lt;/html&gt;" />
+    <str id="PathInputPanel.notTestedVersion" txt="&lt;html&gt;&lt;p&gt;This JVM was not tested with Red Hat JBoss Developer Studio.&lt;br&gt;It is not guaranteed to work.&lt;/p&gt;&lt;/html&gt;" />
     <str id="PathInputPanel.badVersion" txt="The chosen directory contains an unsupported version of Java."/>
     <str id="PathInputPanel.badVersion2" txt="Red Hat JBoss Developer Studio does not work with gij java."/>
     <str id="PathInputPanel.badVersion3" txt="Red Hat JBoss Developer Studio does not work with selected version of Java."/>
     <str id="PathInputPanel.badVersion4" txt="Red Hat JBoss Developer Studio does not work with Java Applet Plug-in."/>
+    <str id="PathInputPanel.badVersion5" txt="ERROR: JVM version could not be found."/>
+    <str id="PathInputPanel.badVersion6" txt="ERROR: JVM version could not be parsed."/>
     <str id="PathInputPanel.empty" txt="You must select a Java VM home directory."/>
     <str id="PathInputPanel.summaryCaption" txt="Installation path:" />    
     <str id="JREPathPanel.summaryCaption" txt="Java VM path:"/>
