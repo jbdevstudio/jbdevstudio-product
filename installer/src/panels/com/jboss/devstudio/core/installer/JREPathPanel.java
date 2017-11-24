@@ -358,7 +358,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 		}
 		int versionNumber = 0;
 
-		String[] detectedVersionBits = detectedVersion.split("\\.");
+		String[] detectedVersionBits = detectedVersion.split("\\.|-|_");
 		if (detectedVersionBits.length > 0) 
 		{
 			if (detectedVersionBits[0].equals("1")) {
