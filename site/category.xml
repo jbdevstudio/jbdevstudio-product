@@ -309,6 +309,10 @@
     <category name="FuseTools" />
   </feature>
 
+  <feature id="org.fusesource.ide.syndesis.extension.feature">
+    <category name="FuseTools" />
+  </feature>
+
   <feature id="org.jboss.tools.fuse.transformation.feature">
     <category name="FuseTools" />
   </feature>
@@ -478,6 +482,7 @@
   <feature id="org.fusesource.ide.camel.editor.feature.source"/>
   <feature id="org.fusesource.ide.jmx.feature.source"/>
   <feature id="org.fusesource.ide.server.extensions.feature.source"/>
+  <feature id="org.fusesource.ide.syndesis.extension.feature"/>
   <feature id="org.jboss.tools.fuse.transformation.feature.source"/>
 
   <!-- not available yet <feature id="com.redhat.fabric8analytics.lsp.eclipse.feature.source"/> -->

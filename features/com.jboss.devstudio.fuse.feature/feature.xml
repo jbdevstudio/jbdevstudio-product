@@ -24,6 +24,7 @@
     <import feature="org.fusesource.ide.camel.editor.feature"/>
     <import feature="org.fusesource.ide.jmx.feature"/>
     <import feature="org.fusesource.ide.server.extensions.feature"/>
+    <import feature="org.fusesource.ide.syndesis.extension.feature"/>
     <import feature="org.jboss.tools.fuse.transformation.feature"/>
   </requires>
 </feature>
