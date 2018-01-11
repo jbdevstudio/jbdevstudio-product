@@ -178,11 +178,11 @@
   <feature id="org.jboss.ide.eclipse.freemarker.feature">
     <category name="GeneralTools" />
   </feature>
-  <feature id="org.jboss.tools.ws.feature">
+  <feature id="org.jboss.tools.ws.jaxrs.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <feature id="org.jboss.tools.ws.jaxrs.feature">
+  <feature id="org.jboss.tools.ws.jaxws.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
@@ -440,8 +440,8 @@
   <feature id="org.jboss.ide.eclipse.archives.feature.source"/>
   <feature id="org.hibernate.eclipse.feature.source"/>
   <feature id="org.jboss.ide.eclipse.freemarker.feature.source"/>
-  <feature id="org.jboss.tools.ws.feature.source"/>
   <feature id="org.jboss.tools.ws.jaxrs.feature.source"/>
+  <feature id="org.jboss.tools.ws.jaxws.feature.source"/>
   <feature id="org.jboss.tools.websockets.feature.source"/>
   <feature id="org.jboss.tools.portlet.feature.source"/>
   <feature id="org.jboss.tools.forge.feature.source"/>
