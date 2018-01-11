@@ -54,8 +54,8 @@
   <includes id="org.jboss.tools.runtime.core.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.stacks.core.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.websockets.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.ws.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.ws.jaxws.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/>
   
    <requires>
