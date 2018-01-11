@@ -176,6 +176,9 @@ echo "org.slf4j.api,1.7.4,plugins/org.slf4j.api_1.7.4.jar,4,false" >> %{buildroo
 # %{buildroot}/usr/lib64/eclipse/eclipse.ini
 
 %changelog
+* Thu Jan 11 2018 Nick Boldt <nboldt@redhat.com> 11.2.0.20180111
+- JBDS-4664 Bump copyright dates
+
 * Thu Oct 12 2017 Nick Boldt <nboldt@redhat.com> 11.1.0.20171012
 - JBDS-4533 Require rh-eclipse47-eclipse-m2e-wtp
 
