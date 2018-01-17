@@ -1,15 +1,7 @@
 [rh-eclipse47-build]
 name=rh-eclipse47-build
-baseurl=http://brewweb.engineering.redhat.com/brewroot/repos/devtools-2.1-rh-eclipse47-rhel-7-build/latest/x86_64/
+baseurl=http://brewweb.engineering.redhat.com/brewroot/repos/devtools-2018.1-rh-eclipse47-rhel-7-build/latest/x86_64/
 enabled=1
-sslverify=0
-gpgcheck=0
-includepkgs=rh-java-common*,rh-maven*,rh-eclipse*,devtoolset-*,rh-thermostat*
-
-[rh-eclipse46-build]
-name=rh-eclipse46-build
-baseurl=http://brewweb.engineering.redhat.com/brewroot/repos/rhscl-2.4-rh-eclipse46-rhel-7-build/latest/x86_64
-enabled=0
 sslverify=0
 gpgcheck=0
 includepkgs=rh-java-common*,rh-maven*,rh-eclipse*,devtoolset-*,rh-thermostat*
