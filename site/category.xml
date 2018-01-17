@@ -239,6 +239,10 @@
     <category name="CoreTools" />
     <category name="MavenTools" />
   </feature>
+  <feature id="org.jboss.tools.maven.springboot.feature">
+    <category name="CoreTools" />
+    <category name="MavenTools" />
+  </feature>
   <feature id="org.jboss.tools.common.jdt.feature">
     <category name="CoreTools" />
     <category name="GeneralTools"/>
@@ -456,6 +460,7 @@
   <feature id="org.jboss.tools.maven.project.examples.feature.source"/>
   <feature id="org.jboss.tools.maven.seam.feature.source"/>
   <feature id="org.jboss.tools.maven.sourcelookup.feature.source"/>
+  <feature id="org.jboss.tools.maven.springboot.feature.source"/>
   <feature id="org.jboss.tools.runtime.core.feature.source"/>
   <feature id="org.jboss.tools.runtime.seam.detector.feature.source"/>
   <feature id="org.jboss.tools.livereload.feature.source"/>
