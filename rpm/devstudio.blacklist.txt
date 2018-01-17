@@ -47,7 +47,11 @@ org.eclipse.osgi
 # ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.core.jersey-common_2.14.0.v201504171603.jar
 # ./opt/rh/rh-eclipse47/root/usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.jersey.media.jersey-media-json-jackson_2.14.0.v201504171603.jar
 org.glassfish.jersey.apache.connector
+org.glassfish.jersey.bundles.repackaged.jersey-guava
 org.glassfish.jersey.core.jersey-client
+org.glassfish.jersey.core.jersey-common
+org.glassfish.jersey.core.jersey-server
+org.glassfish.jersey.ext.entityfiltering
 org.glassfish.jersey.media.jersey-media-json-jackson
 
 #➔ find . -name com.fasterxml.jackson.\*
@@ -75,6 +79,7 @@ com.fasterxml.jackson.jaxrs.jackson-jaxrs-json-provider
 #./usr/share/eclipse/droplets/devstudio/eclipse/plugins/org.glassfish.hk2.utils_2.3.0.b10_v201508191500.jar
 org.glassfish.hk2.api
 org.glassfish.hk2.locator
+org.glassfish.hk2.osgi-resource-locator
 org.glassfish.hk2.utils
 
 #➔ find . -name javassist.\*
@@ -90,10 +95,20 @@ org.bouncycastle.bcpkix
 com.googlecode.javaewah.JavaEWAH
 org.apache.lucene.analyzers-common
 org.apache.lucene.analyzers-smartcn
+org.apache.lucene.core
 org.apache.lucene.misc
 
 # removed because available in upstream eclipse-* or rh-eclipse* packages
 # list computed by looking at buildlog and scanning for "[INFO osgi.prov] rh-eclipse47-osgi" lines
+com.github.jnr.constants
+com.github.jnr.enxio
+com.github.jnr.ffi
+com.github.jnr.ffi.native
+com.github.jnr.posix
+com.github.jnr.unixsocket
+com.github.jnr.x86asm
+com.google.javascript
+com.google.protobuf
 com.ibm.icu
 com.jcraft.jsch
 com.kenai.jffi
@@ -104,6 +119,7 @@ javax.xml
 jnr.constants
 jnr.enxio
 jnr.ffi
+jnr.ffi.native
 jnr.posix
 jnr.unixsocket
 jnr.x86asm
@@ -111,16 +127,24 @@ org.apache.axis
 org.apache.batik.css
 org.apache.batik.util.gui
 org.apache.batik.util
+org.apache.commons.codec
+org.apache.commons.collections
+org.apache.commons.discovery
 org.apache.commons.httpclient
+org.apache.commons.lang
+org.apache.commons.lang3
 org.apache.felix.gogo.command
 org.apache.felix.gogo.runtime
 org.apache.felix.gogo.shell
+org.apache.felix.scr
 org.apache.httpcomponents.httpclient
 org.apache.httpcomponents.httpcore
 org.apache.wsil4j
 org.apache.xalan
+org.apiguardian
 org.eclipse.draw2d
 org.eclipse.gef
+org.eclipse.jdt.junit5.runtime
 org.eclipse.pde.api.tools.annotations
 org.eclipse.pde.api.tools.ui
 org.eclipse.pde.api.tools
@@ -140,6 +164,18 @@ org.eclipse.pde.ui
 org.eclipse.pde
 org.eclipse.ui.trace
 org.eclipse.ui.views.log
+org.hamcrest.core
+org.junit.jupiter.api
+org.junit.jupiter.engine
+org.junit.jupiter.migrationsupport
+org.junit.jupiter.params
+org.junit.platform.commons
+org.junit.platform.engine
+org.junit.platform.launcher
+org.junit.platform.runner
+org.junit.platform.suite.api
+org.junit.vintage.engine
+org.opentest4j
 org.w3c.css.sac
 org.w3c.dom.events
 org.w3c.dom.smil
@@ -197,6 +233,10 @@ org.eclipse.m2e.wtp.jsf.feature
 org.eclipse.m2e.wtp.overlay
 org.eclipse.m2e.wtp.overlay.ui
 org.eclipse.m2e.wtp.sdk.feature
+
+org.jboss.tools.maven.apt.core
+org.jboss.tools.maven.apt.feature
+org.jboss.tools.maven.apt.ui
 
 # JBDS-4259 still need guava 0.15.0 for org.eclipse.recommenders and gson for org.eclipse.jgit.pgm
 # com.google.guava
