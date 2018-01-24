@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.jboss.tools</groupId>
     <artifactId>parent</artifactId>
-		<version>4.5.2.Final-SNAPSHOT</version>
+		<version>4.5.3.AM1-SNAPSHOT</version>
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>product</artifactId>
@@ -23,16 +23,12 @@
   </modules>
   <!-- Should you want to build it locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.60.x/ -->
   <properties>
-    <!-- JBDS-4440 No longer need a different TP to build devstudio - use the default jbosstools one <tpc.group>jbdevstudio</tpc.group> -->
-    <BUILD_ALIAS>GA</BUILD_ALIAS> 
+    <!-- <BUILD_ALIAS>GA</BUILD_ALIAS> -->
     <tpc.version>${TARGET_PLATFORM_VERSION_MAX}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <central.tpc.version>4.70.0.Final-SNAPSHOT</central.tpc.version>
     <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${stream_jbt}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
-
-    <!-- <RHDS_SSH>devstudio@10.16.89.81:/home/windup/apache2/www/html/rhd/devstudio</RHDS_SSH> no need to use wonka.mw - no EAP bundles -->
-    <!-- <RHDS_SSH>hudson@dev90.hosts.mwqe.eng.bos.redhat.com:/qa/services/http/binaries/devstudio</RHDS_SSH> server is readonly now?  -->
 
     <!-- stream_jbt is set in parent pom = 4.4.neon / master -->
     <!-- <stream_jbt>master</stream_jbt> -->
@@ -40,17 +36,6 @@
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.CR1-SNAPSHOT/REPO/</jbosstools-target-site> -->
     <stagingBaselineRepository>https://devstudio.redhat.com/11/staging/updates/</stagingBaselineRepository>
 
-    <!--
-      By default, use EAP 6.1.0.Alpha, which is publically available. This allows devstudio to be build locally w/o needing access to devel.redhat.com
-      To build the EAP bundled installer, use the "eap" profile: `mvn install -Peap`
-      Note: as of devstudio 11, this is no longer required as EAP is bundled downstream in the devsuite installer.
-     -->
-    <eapVersion>6.1.0.Alpha</eapVersion>
-    <eapFilename>jboss-eap-${eapVersion}.zip</eapFilename>
-    <eapURL>http://download.jboss.org/jbosseap/6/jboss-eap-${eapVersion}/${eapFilename}</eapURL>
-    <eapMD5>21ab4c71230ca9fd311c265be24b6505</eapMD5>
-    <eapRootFolder>jboss-eap-6.1</eapRootFolder>
-    <buildEAPBundle>false</buildEAPBundle>
     <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
     <p2StatsUrl>https://devstudio.redhat.com/usage/installs/local/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
     <!-- inherit from JBT parent pom <tychoVersion>0.23.1</tychoVersion> -->
@@ -104,22 +89,6 @@
   </build>
 
   <profiles>
-    <!-- 
-      Addendum to "hudson" profile from parent pom. This adds the correct download URL for EAP, from a non-public URL.
-    -->
-    <profile>
-      <id>hudson</id>
-      <properties>
-        <eapVersion>7.0.0</eapVersion>
-        <!-- http://download.eng.rdu2.redhat.com/released/JBEAP-7/7.0.0/jboss-eap-7.0.0.zip -->
-        <eapFilename>jboss-eap-${eapVersion}.zip</eapFilename>
-        <eapURL>http://download.devel.redhat.com/released/JBEAP-7/${eapVersion}/${eapFilename}</eapURL>
-        <eapMD5>cd02482daa0398bf5500e1628d28179a</eapMD5>
-        <eapRootFolder>jboss-eap-7.0</eapRootFolder>
-        <p2StatsUrl>https://devstudio.redhat.com/usage/installs/${JOB_NAME}/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
-      </properties>
-    </profile>
-
     <profile>
       <id>local-sources</id>
       <properties>

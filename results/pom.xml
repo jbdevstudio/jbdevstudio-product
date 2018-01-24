@@ -55,7 +55,6 @@
                   <property name="eclipse.version" value="${targetEclipseVersion}"/>
                   <property name="devstudioReleaseVersion" value="${devstudioReleaseVersion}"/>
                   <property name="devstudio.update.site" value="https://devstudio.redhat.com/${devstudioReleaseVersion}/stable/updates/"/>
-                  <property name="eap.version" value="${eapVersion}"/>
                   <property name="eclipseReleaseName" value="${eclipseReleaseName}"/>
                   <property name="project.version" value="${project.version}" />
                   <property name="JBT.version" value="${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}" />
@@ -141,24 +140,6 @@
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
             <executions>
-			  <!-- JBDS-4362 disable publishing devstudio internally onto wonka, as we no longer include EAP bundles so don't need an internal server
-              <execution>
-                <id>deploy-snapshot-build-internal</id>
-                <goals>
-                  <goal>exec</goal>
-                </goals>
-                <phase>deploy</phase>
-                <configuration>
-                  <arguments>
-                    <arg>-DESTINATION</arg>
-                    <arg>${RHDS_SSH}</arg>
-                    <arg>-s</arg>
-                    <arg>${project.build.directory}/all</arg>
-                    <arg>-t</arg>
-                    <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all</arg>
-                  </arguments>
-                </configuration>
-              </execution> -->
               <execution>
                 <id>deploy-snapshot-build</id>
                 <goals>
@@ -173,8 +154,6 @@
                     <arg>${project.build.directory}/all</arg>
                     <arg>-t</arg>
                     <arg>${devstudioReleaseVersion}/snapshots/builds/${JOB_NAME}/${BUILD_TIMESTAMP}-B${BUILD_NUMBER}/all</arg>
-                    <arg>-e</arg>
-                    <arg>*eap.jar*</arg>
                   </arguments>
                   <skip>${skipDeployToJBossOrg}</skip>
                 </configuration>

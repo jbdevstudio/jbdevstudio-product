@@ -35,7 +35,6 @@
 		<variable name="PACK_NAME" value="installer" />
 		<variable name="INSTALL_GROUP" value="@{install.group}"/>
 		<variable name="VERSION" value="@{specification.version.presentstring}"/>
-		<variable name="EAP_VERSION" value="@{eapVersion}"/>
 		<variable name="jboss.logname" value="devstudio.install-"/>
 		<variable name="DESKTOP_SHORTCUT_NAME" 
 			value="JBoss-Developer-Studio-@{version.presentstring}@{nightly_build_qualifier}" />
@@ -184,15 +183,8 @@
 		</listener-->
 	</listeners>
 	
-	<conditions>
-		<condition type="variable" id="jbeap-selected">
-			<name>INSTALL_GROUP</name>
-			<value>jbosseap</value>
-		</condition>
-	</conditions>
-
 	<installerrequirements>
-		<installerrequirement condition="izpack.windowsinstall|izpack.macinstall|izpack.linuxinstall" message="&lt;html&gt;&lt;p&gt;This installer contains Red Hat JBoss Developer Studio&lt;br&gt;for Winodws, Mac OS X and Linux operating systems.&lt;br&gt;Current operating system is not supported.&lt;/p&gt;&lt;/html&gt;"/>
+		<installerrequirement condition="izpack.windowsinstall|izpack.macinstall|izpack.linuxinstall" message="&lt;html&gt;&lt;p&gt;This installer contains Red Hat JBoss Developer Studio&lt;br&gt;for Winodws, MacOS and Linux operating systems.&lt;br&gt;Current operating system is not supported.&lt;/p&gt;&lt;/html&gt;"/>
 	</installerrequirements>
 
 	<packs>
