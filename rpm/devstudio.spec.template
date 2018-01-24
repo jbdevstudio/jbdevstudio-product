@@ -86,7 +86,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_prefix}/lib/eclipse/.pkgs/Devstudi
 %{_datadir}/eclipse/droplets/%{pkg_name}
 
 %changelog
-* Tue Jan 16 2018 Mat Booth <mat.booth@redhat.com> - 11.2.0.20180116
+* Tue Jan 16 2018 Mat Booth <mat.booth@redhat.com> - 11.3.0.20180116
 - Update BR/R on {scl}-base, drop other unneeded Rs
 - Remove unused eclipse.ini
 - Prevent expensive jar-repacking
@@ -94,7 +94,7 @@ echo "%{version}-%{release}" > %{buildroot}%{_prefix}/lib/eclipse/.pkgs/Devstudi
 - Fix usage marker location
 - Avoid deps on java-common packages
 
-* Thu Jan 11 2018 Nick Boldt <nboldt@redhat.com> 11.2.0.20180111
+* Thu Jan 11 2018 Nick Boldt <nboldt@redhat.com> 11.3.0.20180111
 - JBDS-4664 Bump copyright dates
 
 * Thu Oct 12 2017 Nick Boldt <nboldt@redhat.com> 11.1.0.20171012
