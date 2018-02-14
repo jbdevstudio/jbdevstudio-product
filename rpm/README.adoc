@@ -10,7 +10,7 @@ Or, build against the latest devstudio update site CI build:
 
     ./build.sh -clean -u "https://devstudio.redhat.com/11/snapshots/updates/" -mo "--no-clean --update"
 
-You can also pass options to the mock process using the -mo flagusch as `--update` or `--no-clean`. See more examples in build.sh.
+You can also pass options to the mock process using the -mo flag, such as `--update` or `--no-clean`. See more examples in build.sh.
 
 Once built, there will be a pair of RPMs (one binary RPM, one source SRPM) in `./yum_repo/`.
 
