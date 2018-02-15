@@ -95,13 +95,13 @@ public class JREPathValidatorTest extends TestCase {
 		ValidationCode result = createValidatorWithVersionOutput("9-ea").runAndVerifyVersion("");
 		assertTrue(result == ValidationCode.OK);
 
-		ValidationCode result = createValidatorWithVersionOutput("9").runAndVerifyVersion("");
+		result = createValidatorWithVersionOutput("9").runAndVerifyVersion("");
 		assertTrue(result == ValidationCode.OK);
 
-		ValidationCode result = createValidatorWithVersionOutput("9.0.1").runAndVerifyVersion("");
+		result = createValidatorWithVersionOutput("9.0.1").runAndVerifyVersion("");
 		assertTrue(result == ValidationCode.OK);
 
-		ValidationCode result = createValidatorWithVersionOutput("1.8.0_64").runAndVerifyVersion("");
+		result = createValidatorWithVersionOutput("1.8.0_64").runAndVerifyVersion("");
 		assertTrue(result == ValidationCode.OK);
 	}
 
