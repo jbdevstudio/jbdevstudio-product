@@ -16,29 +16,6 @@
     <category name="AdditionalTools" />
     <category name="MobileTools"/>
   </feature>
-  <feature id="org.jboss.tools.aerogear.easymport.feature">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
-  <feature id="org.jboss.tools.aerogear.thym.feature">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
-  <feature id="org.jboss.tools.feedhenry">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
-  <!-- JBDS-3079 move to Central TP for devstudio only (?)
-  <feature id="org.jboss.tools.cordovasim.feature">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
-  -->
-  <feature id="org.jboss.tools.browsersim.feature">
-    <category name="CoreTools" />
-    <category name="WebTools" />
-    <category name="MobileTools"/>
-  </feature>
 
   <!-- JBIDE-21377 -->
   <bundle id="org.dadacoalition.yedit">
@@ -187,10 +164,7 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <feature id="org.jboss.tools.portlet.feature">
-    <!-- removed from devstudio & JBT CoreTools -->
-    <category name="WebTools" />
-  </feature>
+
   <feature id="org.jboss.tools.forge.feature">
     <category name="CoreTools"/>
     <category name="WebTools" />
@@ -222,9 +196,6 @@
     <category name="CoreTools" />
     <category name="MavenTools" />
   </feature>
-  <feature id="org.jboss.tools.maven.portlet.feature">
-    <category name="MavenTools" />
-  </feature>
   <feature id="org.jboss.tools.maven.project.examples.feature">
     <category name="CoreTools" />
     <category name="MavenTools" />
@@ -243,10 +214,6 @@
   <feature id="org.jboss.tools.common.jdt.feature">
     <category name="CoreTools" />
     <category name="GeneralTools"/>
-  </feature>
-  <feature id="org.jboss.tools.livereload.feature">
-    <category name="CoreTools" />
-    <category name="WebTools" />
   </feature>
 
   <feature id="org.jboss.tools.foundation.feature">
@@ -379,6 +346,16 @@
   -->
   <feature id="org.jboss.tools.usage.feature"/>
 
+  <!-- JBIDE-25736 Portlet, Aerogear, Browsersim, Livereload are deprecated -->
+  <feature id="org.jboss.tools.aerogear.easymport.feature"/>
+  <feature id="org.jboss.tools.aerogear.thym.feature"/>
+  <feature id="org.jboss.tools.feedhenry"/>
+  <!-- <feature id="org.jboss.tools.cordovasim.feature"/> -->
+  <feature id="org.jboss.tools.browsersim.feature"/>
+  <feature id="org.jboss.tools.portlet.feature"/>
+  <feature id="org.jboss.tools.maven.portlet.feature"/>
+  <feature id="org.jboss.tools.livereload.feature"/>
+
   <!-- only in devstudio -->
   <feature id="com.jboss.devstudio.core.feature" patch="false">
     <category name="BringYourOwnEclipse" />
@@ -409,11 +386,7 @@
 
   <feature id="org.jboss.tools.central.feature.source"/>
   <feature id="org.jboss.tools.richfaces.feature.source"/>
-  <feature id="org.jboss.tools.aerogear.easymport.feature.source"/>
-  <feature id="org.jboss.tools.aerogear.thym.feature.source"/>
-  <feature id="org.jboss.tools.feedhenry.source"/> 
-  <!-- JBDS-3079 remove <feature id="org.jboss.tools.cordovasim.feature.source"/> -->
-  <feature id="org.jboss.tools.browsersim.feature.source"/>
+
   <feature id="org.jboss.tools.jst.feature.source"/>
   <feature id="org.jboss.tools.jst.jsdt.feature.source"/>
   <!-- not in devstudio yet <feature id="org.jboss.tools.jst.angularjs.feature.source"/> -->
@@ -438,7 +411,6 @@
   <feature id="org.jboss.tools.ws.jaxrs.feature.source"/>
   <feature id="org.jboss.tools.ws.jaxws.feature.source"/>
   <feature id="org.jboss.tools.websockets.feature.source"/>
-  <feature id="org.jboss.tools.portlet.feature.source"/>
   <feature id="org.jboss.tools.forge.feature.source"/>
   <feature id="org.jboss.tools.project.examples.feature.source"/>
   <feature id="org.jboss.tools.project.examples.seam.feature.source"/>
@@ -447,14 +419,12 @@
   <feature id="org.jboss.tools.maven.cdi.feature.source"/>
   <feature id="org.jboss.tools.maven.hibernate.feature.source"/>
   <feature id="org.jboss.tools.maven.jdt.feature.source"/>
-  <feature id="org.jboss.tools.maven.portlet.feature.source"/>
   <feature id="org.jboss.tools.maven.project.examples.feature.source"/>
   <feature id="org.jboss.tools.maven.seam.feature.source"/>
   <feature id="org.jboss.tools.maven.sourcelookup.feature.source"/>
   <feature id="org.jboss.tools.maven.springboot.feature.source"/>
   <feature id="org.jboss.tools.runtime.core.feature.source"/>
   <feature id="org.jboss.tools.runtime.seam.detector.feature.source"/>
-  <feature id="org.jboss.tools.livereload.feature.source"/>
   <feature id="org.jboss.tools.usage.feature.source"/>
   <feature id="org.jboss.tools.common.jdt.feature.source"/>
   <!-- JBDS-3079 remove <feature id="org.jboss.tools.common.mylyn.feature.source"/> -->
@@ -493,6 +463,16 @@
   <!-- only in devstudio -->
   <feature id="com.jboss.devstudio.core.feature.source" patch="false"/>
   <feature id="com.jboss.devstudio.core.capabilities.feature.source" patch="false"/>
+
+  <!-- JBIDE-25736 Portlet, Aerogear, Browsersim, Livereload are deprecated -->
+  <feature id="org.jboss.tools.aerogear.easymport.feature.source"/>
+  <feature id="org.jboss.tools.aerogear.thym.feature.source"/>
+  <feature id="org.jboss.tools.feedhenry.source"/> 
+  <!-- JBDS-3079 remove <feature id="org.jboss.tools.cordovasim.feature.source"/> -->
+  <feature id="org.jboss.tools.browsersim.feature.source"/>
+  <feature id="org.jboss.tools.portlet.feature.source"/>
+  <feature id="org.jboss.tools.maven.portlet.feature.source"/>
+  <feature id="org.jboss.tools.livereload.feature.source"/>
 
   <!-- ########## -->
   <!-- CATEGORIES -->
