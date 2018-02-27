@@ -175,9 +175,6 @@
     <category name="DataTools" />
     <category name="GeneralTools" />
   </feature>
-  <feature id="org.jboss.ide.eclipse.freemarker.feature">
-    <category name="GeneralTools" />
-  </feature>
   <feature id="org.jboss.tools.ws.jaxrs.feature">
     <category name="CoreTools" />
     <category name="WebTools" />
@@ -337,11 +334,6 @@
   <bundle id="org.jboss.tools.foundation.help.ui"/>
 
   <!-- only in JBT
-  <feature id="org.jboss.tools.arquillian.feature">
-    <category name="AdditionalTools" />
-    <category name="WebTools" />
-    <category name="GeneralTools"/>
-  </feature>
   <feature id="org.jboss.tools.central.themes.feature">
     <category name="AdditionalTools" />
   </feature>
@@ -443,7 +435,6 @@
   <feature id="org.jboss.tools.openshift.io.feature.source"/>
   <feature id="org.jboss.ide.eclipse.archives.feature.source"/>
   <feature id="org.hibernate.eclipse.feature.source"/>
-  <feature id="org.jboss.ide.eclipse.freemarker.feature.source"/>
   <feature id="org.jboss.tools.ws.jaxrs.feature.source"/>
   <feature id="org.jboss.tools.ws.jaxws.feature.source"/>
   <feature id="org.jboss.tools.websockets.feature.source"/>
@@ -492,7 +483,6 @@
   <!-- not in devstudio yet? <bundle id="org.jboss.tools.foundation.help.ui.source"/> -->
 
   <!-- only in JBT
-  <feature id="org.jboss.tools.arquillian.feature.source"/>
   <feature id="org.jboss.tools.central.themes.feature.source"/>
   <feature id="org.jboss.tools.community.central.feature.source"/>
   <feature id="org.jboss.tools.community.project.examples.feature.source"/>

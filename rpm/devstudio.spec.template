@@ -86,6 +86,9 @@ echo "%{version}-%{release}" > %{buildroot}%{_prefix}/lib/eclipse/.pkgs/Devstudi
 %{_datadir}/eclipse/droplets/%{pkg_name}
 
 %changelog
+* Tue Feb 27 2018 Nick Boldt <nboldt@redhat.com> - 11.3.0.20180227
+- Remove freemarker and arquillian from devstudio
+
 * Tue Jan 16 2018 Mat Booth <mat.booth@redhat.com> - 11.3.0.20180116
 - Update BR/R on {scl}-base, drop other unneeded Rs
 - Remove unused eclipse.ini
