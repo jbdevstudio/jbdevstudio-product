@@ -31,7 +31,6 @@
   <includes id="org.jboss.ide.eclipse.archives.feature" version="0.0.0"/>
   <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.browsersim.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.central.easymport.feature" version="0.0.0"/>
@@ -43,7 +42,6 @@
   <includes id="org.jboss.tools.jmx.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.jst.jsdt.feature" version="0.0.0"/>
-  <includes id="org.jboss.tools.livereload.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.cdk.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.egit.integration.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.openshift.feature" version="0.0.0"/>
