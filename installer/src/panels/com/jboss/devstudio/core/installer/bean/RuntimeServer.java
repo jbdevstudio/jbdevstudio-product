@@ -15,8 +15,8 @@ package com.jboss.devstudio.core.installer.bean;
  * A runtime server bean is a set of methods for describing and manipulating supplemental runtime
  * servers from json files (e.g.):
  	{
-		"label":"JBoss Fuse Server",
-		"description":"Fuse Server/ Runtime",
+		"label":"Red Hat Fuse Server",
+		"description":"Red Hat Fuse Server/ Runtime",
 		"selected":"true",
 		"path":"devstudio-is/runtime/jboss-fuse-full-6.3.0.redhat-077.zip"
 		"size":"804978918"

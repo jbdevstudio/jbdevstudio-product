@@ -2,7 +2,7 @@
 	{
 		"id"         :"com.jboss.devstudio.fuse.feature.feature.group",
 		"path"       :"devstudio",
-		"label"      :"JBoss Fuse Tooling",
+		"label"      :"Red Hat Fuse Tooling",
 		"description":"",
 		"selected"   :"false"
 	}

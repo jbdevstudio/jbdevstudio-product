@@ -37,7 +37,7 @@ public class UpdatePacksPanel extends IzPanel{
 		String installIUs = idata.getVariable("INSTALL_IUS");
 		if (installIUs != null) {
 			if (installIUs.contains("devstudio.fuse"))
-				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat JBoss Fuse Tooling<br>");
+				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat Red Hat Fuse Tooling<br>");
 			if (installIUs.contains("integration-stack.bpr"))
 				additionalSummaryInfo = additionalSummaryInfo.concat("Red Hat JBoss Business Process and Rules Development<br>");
 			if (installIUs.contains("integration-stack.ds"))

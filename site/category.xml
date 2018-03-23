@@ -259,27 +259,27 @@
   </feature>
 
   <feature id="org.fusesource.ide.core.feature">
-    <category name="FuseTools" />
+    <category name="FuseTooling" />
   </feature>
 
   <feature id="org.fusesource.ide.camel.editor.feature">
-    <category name="FuseTools" />
+    <category name="FuseTooling" />
   </feature>
 
   <feature id="org.fusesource.ide.jmx.feature">
-    <category name="FuseTools" />
+    <category name="FuseTooling" />
   </feature>
 
   <feature id="org.fusesource.ide.server.extensions.feature">
-    <category name="FuseTools" />
+    <category name="FuseTooling" />
   </feature>
 
   <feature id="org.fusesource.ide.syndesis.extension.feature">
-    <category name="FuseTools" />
+    <category name="FuseTooling" />
   </feature>
 
   <feature id="org.jboss.tools.fuse.transformation.feature">
-    <category name="FuseTools" />
+    <category name="FuseTooling" />
   </feature>
 
   <!-- JBIDE-24897 not ready yet <feature id="com.redhat.fabric8analytics.lsp.eclipse.feature">
@@ -367,7 +367,7 @@
   <feature id="com.jboss.devstudio.fuse.feature">
     <category name="BringYourOwnEclipse" />
     <category name="CoreTools" />
-    <category name="FuseTools" />
+    <category name="FuseTooling" />
   </feature>
   <feature id="org.eclipse.egit"/>
   <feature id="org.eclipse.jgit"/>
@@ -524,8 +524,8 @@
     <description>Tools for Cloud and Container Development.</description>
   </category-def>
 
-  <category-def name="FuseTools" label="JBoss Fuse Tools">
-    <description>Tools to allow you to create Apache Camel routes in a graphical editor, launch them locally and deploy them to runtimes like Apache Karaf, Fabric8 and JBoss Fuse.</description>
+  <category-def name="FuseTooling" label="Red Hat Fuse Tooling">
+    <description>Tools to allow you to create Apache Camel routes in a graphical editor, launch them locally and deploy them to runtimes like Apache Karaf, Fabric8 and Red Hat Fuse.</description>
   </category-def>
 
 <!--
