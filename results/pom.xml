@@ -5,7 +5,7 @@
   <parent>
     <groupId>com.jboss.devstudio</groupId>
     <artifactId>product</artifactId>
-    <version>11.3.0-SNAPSHOT</version>
+    <version>12.0.0-SNAPSHOT</version>
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>com.jboss.devstudio.core.buildresults</artifactId>
@@ -187,7 +187,7 @@
 </project>
 <!--
 To build locally
-  mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=https://devstudio.redhat.com/11/snapshots/builds/jbosstools-build-sites.aggregate.central-site_master/latest/all/repository.zip
+  mvn clean verify -Dupdate.site.description="Development Milestone" -DBUILD_NUMBER=69 -DJOB_NAME=devstudio.product_trunk -DJBOSS_CENTRAL_ZIP=https://devstudio.redhat.com/12/snapshots/builds/jbosstools-build-sites.aggregate.central-site_master/latest/all/repository.zip
 
 To deploy 
   mvn deploy -Pdeploy-to-jboss.org

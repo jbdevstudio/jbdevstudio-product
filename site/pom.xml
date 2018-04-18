@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.jboss.devstudio</groupId>
 		<artifactId>product</artifactId>
-		<version>11.3.0-SNAPSHOT</version>
+		<version>12.0.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.jboss.devstudio.core</groupId>
 	<artifactId>com.jboss.devstudio.core.site</artifactId>
@@ -170,7 +170,7 @@
 							<quiet>true</quiet>
 							<tasks>
 								<echo>Replace zip: ${project.build.directory}/${project.artifactId}-${project.version}.zip</echo>
-								<!-- TODO in 11: use devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-updatesite-core.zip -->
+								<!-- TODO in future release?: use devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-updatesite-core.zip -->
 								<mkdir dir="${project.build.directory}/repository/web"/>
 								<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.zip" whenempty="fail">
 									<zipfileset dir="${project.build.directory}/repository/web" includes="site.css" prefix="web"/>

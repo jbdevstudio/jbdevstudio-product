@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>Red Hat JBoss Developer Studio 11 - RPM</title>
+<title>Red Hat JBoss Developer Studio 12 - RPM</title>
 <link href="https://devstudio.redhat.com/web/devstudio_styles.css" rel="stylesheet" type="text/css">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 <!-- Google Analytics -->
@@ -34,7 +34,7 @@
 <body>
 <div id="container">
 	<div id="header">
-    	<h1>Red Hat JBoss Developer Studio 11 - RPM</h1>
+    	<h1>Red Hat JBoss Developer Studio 12 - RPM</h1>
 	</div>
  	<div id="content">
 
@@ -50,7 +50,7 @@
 
   <div class="rightsidebar" style="width:280px;padding-right:0px;padding-left:10px;z-index:-1;float:right">
     <h4>Supported OS + JVM Combinations</h4>
-    <p>DevStudio 11 RPM can be installed on many Linux distributions. Oracle JDK or OpenJDK 8 is required. <a onClick="javascript: _gaq.push(['_trackPageview', cleanURL(this.href, 'access.redhat.com/')])" href="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/">Details here</a>.</p>
+    <p>DevStudio 12 RPM can be installed on many Linux distributions. Oracle JDK or OpenJDK 8 is required. <a onClick="javascript: _gaq.push(['_trackPageview', cleanURL(this.href, 'access.redhat.com/')])" href="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/">Details here</a>.</p>
     <br/>
 
     <hr size="1"/>
@@ -59,8 +59,8 @@
         <p>Looking for an <b>offline</b> solution? You can perform an update or install using the RPM:
           <div class="proj_checklist">
             <ul>
-              <li><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://devstudio.redhat.com/static/11/stable/rpms/x86_64/">Download Stable RPM</a></li>
-              <li><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://devstudio.redhat.com/11/snapshots/rpms/11/x86_64/">Download Snapshot RPM</a></li>
+              <li><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://devstudio.redhat.com/static/12/stable/rpms/x86_64/">Download Stable RPM</a></li>
+              <li><a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://devstudio.redhat.com/12/snapshots/rpms/12.x86_64/">Download Snapshot RPM</a></li>
           </div>
         </p>
 
@@ -80,10 +80,10 @@
 
   </div>
 
-   <h2 class="prime">Red Hat JBoss Developer Studio 11 RPM</h2>
+   <h2 class="prime">Red Hat JBoss Developer Studio 12 RPM</h2>
 		
 		<p>This repo contains the latest <b>Technology Preview</b>
-     RPM of <a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://developers.redhat.com/products/devstudio/">Red Hat JBoss Developer Studio 11</a>.
+     RPM of <a onClick="javascript: _gaq.push(['_trackPageview', cleanBaseURL(this.href)])" href="https://developers.redhat.com/products/devstudio/">Red Hat JBoss Developer Studio 12</a>.
         
     <h4>RPM Installation Instructions</h4>
     <br/>
@@ -97,17 +97,17 @@
 su -</pre></li>
           <li>2. Enable devstudio yum repos
 <pre>cat << EOF > /etc/yum.repos.d/rh-eclipse47-devstudio.repo
-[rh-eclipse47-devstudio-stable-11.x]
-name=rh-eclipse47-devstudio-stable-11.x
-baseurl=https://devstudio.redhat.com/static/11/stable/rpms/x86_64/
+[rh-eclipse47-devstudio-stable-12.x]
+name=rh-eclipse47-devstudio-stable-12.x
+baseurl=https://devstudio.redhat.com/static/12/stable/rpms/x86_64/
 enabled=1
 gpgcheck=1
 upgrade_requirements_on_install=1
 metadata_expire=24h
 
-[rh-eclipse47-devstudio-snapshot-11.3.0]
-name=rh-eclipse47-devstudio-snapshot-11.3.0
-baseurl=https://devstudio.redhat.com/11/snapshots/rpms/11.3.0/x86_64/
+[rh-eclipse47-devstudio-snapshot-12.0.0]
+name=rh-eclipse47-devstudio-snapshot-12.0.0
+baseurl=https://devstudio.redhat.com/12/snapshots/rpms/12.0.0/x86_64/
 enabled=0
 gpgcheck=0
 upgrade_requirements_on_install=1

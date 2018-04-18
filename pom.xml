@@ -10,7 +10,7 @@
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>product</artifactId>
-  <version>11.3.0-SNAPSHOT</version>
+  <version>12.0.0-SNAPSHOT</version>
   <name>devstudio - Product, Installers</name>
   <packaging>pom</packaging>
   <modules>
@@ -23,7 +23,6 @@
   </modules>
   <!-- Should you want to build it locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.60.x/ -->
   <properties>
-    <BUILD_ALIAS>GA</BUILD_ALIAS>
     <tpc.version>${TARGET_PLATFORM_VERSION_MAX}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
@@ -34,7 +33,7 @@
     <!-- <stream_jbt>master</stream_jbt> -->
     <jbosstools-site>http://download.jboss.org/jbosstools/${eclipseReleaseName}/snapshots/updates/core/${stream_jbt}/</jbosstools-site>
     <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.CR1-SNAPSHOT/REPO/</jbosstools-target-site> -->
-    <stagingBaselineRepository>https://devstudio.redhat.com/11/staging/updates/</stagingBaselineRepository>
+    <stagingBaselineRepository>https://devstudio.redhat.com/12/staging/updates/</stagingBaselineRepository>
 
     <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
     <p2StatsUrl>https://devstudio.redhat.com/usage/installs/local/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
