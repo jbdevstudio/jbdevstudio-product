@@ -346,16 +346,6 @@
   -->
   <feature id="org.jboss.tools.usage.feature"/>
 
-  <!-- JBIDE-25736 Portlet, Aerogear, Browsersim, Livereload are deprecated -->
-  <feature id="org.jboss.tools.aerogear.easymport.feature"/>
-  <feature id="org.jboss.tools.aerogear.thym.feature"/>
-  <feature id="org.jboss.tools.feedhenry"/>
-  <!-- <feature id="org.jboss.tools.cordovasim.feature"/> -->
-  <feature id="org.jboss.tools.browsersim.feature"/>
-  <feature id="org.jboss.tools.portlet.feature"/>
-  <feature id="org.jboss.tools.maven.portlet.feature"/>
-  <feature id="org.jboss.tools.livereload.feature"/>
-
   <!-- only in devstudio -->
   <feature id="com.jboss.devstudio.core.feature" patch="false">
     <category name="BringYourOwnEclipse" />
@@ -463,16 +453,6 @@
   <!-- only in devstudio -->
   <feature id="com.jboss.devstudio.core.feature.source" patch="false"/>
   <feature id="com.jboss.devstudio.core.capabilities.feature.source" patch="false"/>
-
-  <!-- JBIDE-25736 Portlet, Aerogear, Browsersim, Livereload are deprecated -->
-  <feature id="org.jboss.tools.aerogear.easymport.feature.source"/>
-  <feature id="org.jboss.tools.aerogear.thym.feature.source"/>
-  <feature id="org.jboss.tools.feedhenry.source"/> 
-  <!-- JBDS-3079 remove <feature id="org.jboss.tools.cordovasim.feature.source"/> -->
-  <feature id="org.jboss.tools.browsersim.feature.source"/>
-  <feature id="org.jboss.tools.portlet.feature.source"/>
-  <feature id="org.jboss.tools.maven.portlet.feature.source"/>
-  <feature id="org.jboss.tools.livereload.feature.source"/>
 
   <!-- ########## -->
   <!-- CATEGORIES -->
