@@ -1,3 +1,6 @@
+# This build is deprecated. There will be no RPM builds for devstudio 12.
+
+
 # Building the devstudio RPMs
 
 Run the ./build.sh script to see options. You can run the build against an update site or a collection of previously-downloaded update site zips:
