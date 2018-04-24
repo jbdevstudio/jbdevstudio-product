@@ -58,8 +58,6 @@
   
    <requires>
     <import feature="org.eclipse.buildship"/>
-
-    <!-- TODO remove these https://issues.jboss.org/browse/JBDS-4532 -->
     <import feature="org.jboss.tools.maven.apt.feature"/>
     <import feature="org.jboss.tools.maven.cdi.feature"/>
     <import feature="org.jboss.tools.maven.feature"/>
