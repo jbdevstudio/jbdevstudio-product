@@ -11,11 +11,6 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <!-- JBIDE-18869 add Thym to JBT/devstudio directly -->
-  <feature id="org.eclipse.thym.feature">
-    <category name="AdditionalTools" />
-    <category name="MobileTools"/>
-  </feature>
 
   <!-- JBIDE-21377 -->
   <bundle id="org.dadacoalition.yedit">
