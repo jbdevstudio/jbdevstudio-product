@@ -340,6 +340,7 @@
   <feature id="org.jboss.tools.common.mylyn.feature"/>
   -->
   <feature id="org.jboss.tools.usage.feature"/>
+  <feature id="org.jboss.tools.livereload.feature"/>
 
   <!-- only in devstudio -->
   <feature id="com.jboss.devstudio.core.feature" patch="false">
@@ -448,6 +449,8 @@
   <!-- only in devstudio -->
   <feature id="com.jboss.devstudio.core.feature.source" patch="false"/>
   <feature id="com.jboss.devstudio.core.capabilities.feature.source" patch="false"/>
+
+  <feature id="org.jboss.tools.livereload.feature.source"/>
 
   <!-- ########## -->
   <!-- CATEGORIES -->
