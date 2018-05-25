@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-  <description>Red Hat JBoss Developer Studio 12 Updates - Core</description>
+  <description>Red Hat JBoss Developer Studio Updates - Core</description>
 
   <!-- PLEASE NOTE!
     When updating this file, please be sure that it parses as valid XML before committing it.
@@ -469,13 +469,13 @@
   -->
 
   <!-- only in devstudio -->
-  <category-def name="BringYourOwnEclipse" label="* Red Hat JBoss Developer Studio 12 - Bring Your Own Eclipse">
-    <description>Select this feature if you want to install all of the Red Hat JBoss Developer Studio (Core Features) into your own Eclipse 4.7 (Oxygen).</description>
+  <category-def name="BringYourOwnEclipse" label="* Red Hat JBoss Developer Studio - Bring Your Own Eclipse">
+    <description>Select this feature if you want to install all of the Red Hat JBoss Developer Studio (Core Features) into your own Eclipse install.</description>
   </category-def>
-  <category-def name="CoreTools" label="* Red Hat JBoss Developer Studio 12 - Core">
+  <category-def name="CoreTools" label="* Red Hat JBoss Developer Studio - Core">
     <description>Contains most of the Red Hat JBoss Developer Studio features. Excluded are those related to integration with 3rd party plugins. Selecting this category will give you all tools needed for Web Development.</description>
   </category-def>
-  <category-def name="AdditionalTools" label="* Red Hat JBoss Developer Studio 12 - Extras">
+  <category-def name="AdditionalTools" label="* Red Hat JBoss Developer Studio - Extras">
     <description>Contains the rest of the Red Hat JBoss Developer Studio features, not included in Core category. This category includes miscellaneous, new, experimental and incubating features. See individual feature descriptions for details.</description>
   </category-def>
   
