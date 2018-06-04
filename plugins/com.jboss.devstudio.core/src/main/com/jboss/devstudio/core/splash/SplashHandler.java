@@ -19,7 +19,7 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.Version;
 
 /**
- * This SplashHandler add's in the version number onto Red Hat JBoss Developer Studio splash screen.
+ * This SplashHandler add's in the version number onto Red Hat Developer Studio splash screen.
  * 
  * Supports the same location info as Eclipse but introduces "startupVersionLocation" property to 
  * render version right aligned to a lower right position.

@@ -1,11 +1,11 @@
-Red Hat JBoss Developer Studio
+Red Hat Developer Studio
 ======================
 version @full_version@, @buildDate@
 
 Instructions
 ------------
 
-You start Red Hat JBoss Developer Studio by clicking on the installed icon
+You start Red Hat Developer Studio by clicking on the installed icon
 in your program menu or desktop. Alternatively you can launch it via
 the command line to provide further options.
 
@@ -22,7 +22,7 @@ For Windows use:
 
 <install-path>/devstudio.bat
 
-Note: Do not use GCJ as the Java to launch Red Hat JBoss Developer Studio;
+Note: Do not use GCJ as the Java to launch Red Hat Developer Studio;
 it will crash. If your default Java vm is GCJ launch eclipse as
 follows to use another vm:
 

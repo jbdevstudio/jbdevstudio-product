@@ -13,7 +13,7 @@
          point="org.eclipse.ui.commands">
       <command
       		defaultHandler="com.jboss.devstudio.core.central.actions.OpenDevstudioHomeHandler"
-            name="Red Hat JBoss Developer Studio Home"
+            name="Red Hat Developer Studio Home"
             id="com.jboss.devstudio.core.central.openDevstudioHome">
       </command>
          

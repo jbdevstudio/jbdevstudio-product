@@ -1,5 +1,5 @@
 <langpack>
-  <str id="description.radio" txt="Do you want to install the Red Hat JBoss Enterprise Application Platform that comes with Red Hat JBoss Developer Studio ?"/>
+  <str id="description.radio" txt="Do you want to install the Red Hat JBoss Enterprise Application Platform that comes with Red Hat Developer Studio ?"/>
   <str id="radio.label.1" txt="Yes, and have it ready for use in Developer Studio"/>
   <str id="radio.label.2" txt="No"/>
   

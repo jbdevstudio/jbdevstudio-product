@@ -6,7 +6,7 @@
     <str id="PathInputPanel.fileDialog.approve" txt="Select"/>
     <str id="JREPathPanel.fileDialog.title" txt="Select Java VM Home Folder"/>
     <str id="JREPathPanel.headline.jre" txt="Select Java VM"/>
-    <str id="JREPathPanel.intro" txt="Red Hat JBoss Developer Studio works with Java 8 and has been tested with OpenJDK and Oracle JDK."/>
+    <str id="JREPathPanel.intro" txt="Red Hat Developer Studio works with Java 8 and has been tested with OpenJDK and Oracle JDK."/>
     <str id="JREPathPanel.dataModel.title" txt="Installation type:" />
     <str id="JREPathPanel.dataModel32.title" txt="32-bit" />
     <str id="JREPathPanel.dataModel64.title" txt="64-bit" />
@@ -14,11 +14,11 @@
     <str id="JREPathPanel.wrongPath.title" txt="The chosen directory does not exist." />    
     <str id="PathInputPanel.notValid" txt="The chosen directory does not contain a Java VM."/>
     <str id="PathInputPanel.jreWarning" txt="&lt;html&gt;&lt;p&gt;Chosen Java VM is a Java Runtime only, it will run Developer Studio but it is recommended to use a Java SDK.&lt;/p&gt;&lt;/html&gt;" />
-    <str id="PathInputPanel.notTestedVersion" txt="&lt;html&gt;&lt;p&gt;This JVM was not tested with Red Hat JBoss Developer Studio.&lt;br&gt;It is not guaranteed to work.&lt;/p&gt;&lt;/html&gt;" />
+    <str id="PathInputPanel.notTestedVersion" txt="&lt;html&gt;&lt;p&gt;This JVM was not tested with Red Hat Developer Studio.&lt;br&gt;It is not guaranteed to work.&lt;/p&gt;&lt;/html&gt;" />
     <str id="PathInputPanel.badVersion" txt="The chosen directory contains an unsupported version of Java."/>
-    <str id="PathInputPanel.badVersion2" txt="Red Hat JBoss Developer Studio does not work with gij java."/>
-    <str id="PathInputPanel.badVersion3" txt="Red Hat JBoss Developer Studio does not work with selected version of Java."/>
-    <str id="PathInputPanel.badVersion4" txt="Red Hat JBoss Developer Studio does not work with Java Applet Plug-in."/>
+    <str id="PathInputPanel.badVersion2" txt="Red Hat Developer Studio does not work with gij java."/>
+    <str id="PathInputPanel.badVersion3" txt="Red Hat Developer Studio does not work with selected version of Java."/>
+    <str id="PathInputPanel.badVersion4" txt="Red Hat Developer Studio does not work with Java Applet Plug-in."/>
     <str id="PathInputPanel.badVersion5" txt="ERROR: JVM version could not be found."/>
     <str id="PathInputPanel.badVersion6" txt="ERROR: JVM version could not be parsed."/>
     <str id="PathInputPanel.empty" txt="You must select a Java VM home directory."/>
@@ -32,15 +32,15 @@
     <str id="InstallPanel.headline.install" txt="Installation"/>
     <str id="DevstudioShortcutPanel.headline.shortcut" txt="Shortcuts"/>
     <str id="SimpleFinishPanel.headline.finish" txt="Finish"/>
-    <str id="SimpleFinishPanel.headline.run_after" txt="Run Red Hat JBoss Developer Studio after installation"/>
+    <str id="SimpleFinishPanel.headline.run_after" txt="Run Red Hat Developer Studio after installation"/>
     <str id="installer.step" txt="Step"/>
     <str id="installer.of" txt="of"/>
-    <str id="installer.cannotInstallOver" txt="&lt;html&gt;&lt;p&gt;Specified folder already contains a Red Hat JBoss Developer Studio installation.&lt;br&gt;One does not simply install into an existing install folder.&lt;br&gt;Choose another folder or cancel this installer and run&lt;/p&gt;Red Hat JBoss Developer Studio to perform an update.&lt;/p&gt;&lt;/html&gt;"/>
+    <str id="installer.cannotInstallOver" txt="&lt;html&gt;&lt;p&gt;Specified folder already contains a Red Hat Developer Studio installation.&lt;br&gt;One does not simply install into an existing install folder.&lt;br&gt;Choose another folder or cancel this installer and run&lt;/p&gt;Red Hat Developer Studio to perform an update.&lt;/p&gt;&lt;/html&gt;"/>
     <str id="UpdatePacksPanel.summaryCaption" txt="Components to install:"/>
-    <str id="JBossAsSelectPanel.question" txt="Red Hat JBoss Developer Studio includes Red Hat JBoss Enterprise Application Platform. Install it now?"/>
+    <str id="JBossAsSelectPanel.question" txt="Red Hat Developer Studio includes Red Hat JBoss Enterprise Application Platform. Install it now?"/>
     <str id="JBossAsSelectPanel.question1" txt="Add locations you want to be scanned to discover platforms and servers you have:"/>
     <str id="JBossAsSelectPanel.statement1" txt="Select the additional features you would like to install:"/>
-    <str id="JBossAsSelectPanel.YesOption" txt="Yes, and have it ready for use in Red Hat JBoss Developer Studio"/>
+    <str id="JBossAsSelectPanel.YesOption" txt="Yes, and have it ready for use in Red Hat Developer Studio"/>
     <str id="JBossAsSelectPanel.NoOption" txt="No"/>
     <str id="JBossAsSelectPanel.FindButton" txt="Find..."/>
     <str id="JBossAsSelectPanel.AddButton" txt="Add..."/>
@@ -88,7 +88,7 @@
     <str id="ServerDialog_ServerTypeDoesntMatch" txt="Type is different from Platform/Server in selected location"/>
     <str id="ServerDialog_TypeAndVersionCannotBeDefined" txt="Type and Version cannot be defined for Platform/Server in selected location, you need to fill them manually"/>
     <str id="ServerDialog_VersionCannotBeDefined" txt="Version cannot be defined for Platform/Server in selected location, You need to fill it manually"/>
-    <str id="ServerDialog_MsgASInsideEAPSelected" txt="Location you''ve selected contains Application Server that is part of {0}.{1}Selected location is adjusted to {0} to let Red Hat JBoss Developer Studio{1}configure all runtimes available in it after first start on a new workspace" />
+    <str id="ServerDialog_MsgASInsideEAPSelected" txt="Location you''ve selected contains Application Server that is part of {0}.{1}Selected location is adjusted to {0} to let Red Hat Developer Studio{1}configure all runtimes available in it after first start on a new workspace" />
     <str id="ServerDialog_ErrASInsideEAPSelected" txt="Selected JBoss Application Server is part of {0}" />
     <str id="ServerSearchDailog_Title" txt="Platform/Server Search"/>
     <str id="ServerSearchDailog_StatusMessage" txt="Platform/Server Search in Progress ..."/>

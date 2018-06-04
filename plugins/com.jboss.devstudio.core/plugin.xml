@@ -6,10 +6,10 @@
 				 point="org.eclipse.core.runtime.products">
 			<product
 							 application="com.jboss.devstudio.core.application"
-							 name="Red Hat JBoss Developer Studio">
+							 name="Red Hat Developer Studio">
 				 <property 
 							 name="appName" 
-							 value="Red Hat JBoss Developer Studio"/> 
+							 value="Red Hat Developer Studio"/> 
          <!-- message box is offest 1 px from the x coord of the progress bar, so shift it over by 1 px from the left and shave 1 px off the right -->
          <property
                name="startupMessageRect"
