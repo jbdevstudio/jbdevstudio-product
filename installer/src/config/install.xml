@@ -10,10 +10,10 @@
 		</appversion>
 		<appsubpath>devstudio</appsubpath>
 		<authors>
-			<author name="Red Hat" email="sales@jboss.com" />
+			<author name="Red Hat" email="sales@redhat.com" />
 		</authors>
-		<url>http://www.jboss.com/</url>
-		<webdir>http://labs.jboss.com/portal/jemsinstaller/</webdir>
+		<url>https://developers.redhat.com/products/devstudio/overview/</url>
+		<webdir>https://developers.redhat.com/products/devstudio/overview/</webdir>
 		<javaversion>1.5</javaversion>
 		<summarylogfilepath>$INSTALL_PATH/InstallSummary.html</summarylogfilepath>
 		<!-- uninstaller="no" attribute is required to fix unintaller problem under linux and it doesn't affect windows uninstaller -->

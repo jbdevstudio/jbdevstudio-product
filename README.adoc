@@ -43,9 +43,9 @@ To build an RPM, you can then do:
 Or, to include the update site your built in the above step, try this:
 
     cd jbdevstudio-product/rpm; ./build.sh -clean \
-      -u "https://devstudio.jboss.com/targetplatforms/jbdevstudiotarget/4.80.0.Final/,\
-https://devstudio.jboss.com/targetplatforms/jbtcentraltarget/4.80.0.Final-SNAPSHOT/,\
-https://devstudio.jboss.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\
+      -u "https://devstudio.redhat.com/targetplatforms/jbdevstudiotarget/4.80.0.Final/,\
+https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.80.0.Final-SNAPSHOT/,\
+https://devstudio.redhat.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\
 file:///path/to/locally/built/jbdevstudio-product/site/target/repository"
 
 == Install Red Hat Developer Studio

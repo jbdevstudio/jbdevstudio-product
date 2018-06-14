@@ -28,7 +28,7 @@
         <value name="HelpLink"
                keypath="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\devstudio @version_string@@nightly_build_qualifier@ $TIMESTAMP"
                root="HKLM"
-               string="http://www.jboss.com/products/devstudio"/>
+               string="https://developers.redhat.com/products/devstudio/overview/"/>
         <value name="DisplayVersion"
                keypath="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\devstudio @version_string@@nightly_build_qualifier@ $TIMESTAMP"
                root="HKLM"

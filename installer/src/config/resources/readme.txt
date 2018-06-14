@@ -33,7 +33,7 @@ Latest Documentation, Release Notes, and News:
 ----------------------------------------------
 
    https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/
-   http://www.jboss.com/products/devstudio
+   https://developers.redhat.com/products/devstudio/overview/
 
 
 Bug Reports:

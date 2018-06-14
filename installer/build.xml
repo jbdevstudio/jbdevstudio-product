@@ -17,7 +17,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   <!-- Manifest version info -->
   <property name="specification.title" value="Red Hat Developer Studio Installer" />
 
-  <property name="implementation.vendor" value="Red Hat (http://www.jboss.com/)" />
+  <property name="implementation.vendor" value="Red Hat (https://developers.redhat.com/products/devstudio/overview/)" />
   <property name="implementation.vendor.id" value="${implementation.url}" />
 
   <property name="src.dir" location="src" />
@@ -315,7 +315,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     <propertyregex property="update.site.version" defaultvalue="${project.version}" input="${project.version}" regexp="-SNAPSHOT" replace="" override="true" />
     <!-- eg., 9.1.0.CR1-v20160203-1627 -->
     <property name="specification.version" value="${update.site.version}.${buildQualifier}" />
-    <property name="specification.vendor" value="Red Hat (http://www.jboss.com/)" />
+    <property name="specification.vendor" value="Red Hat (https://developers.redhat.com/products/devstudio/overview/)" />
     <property name="specification.version.presentstring" value="${update.site.version}.${BUILD_ALIAS}" />
 
     <property name="installer.name" value="devstudio-${specification.version}-installer-standalone" />
