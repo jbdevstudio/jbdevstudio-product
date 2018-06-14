@@ -9,7 +9,7 @@
     <str id="installer.next" txt="cat:Next"/>
     <str id="installer.prev" txt="cat:Previous"/>
     <str id="installer.quit" txt="cat:Quit"/>
-    <str id="installer.madewith" txt="cat:JBoss by Red Hat"/> <!-- X -->
+    <str id="installer.madewith" txt="cat:Red Hat"/> <!-- X -->
     <str id="installer.quit.title" txt="cat:Are you sure you want to quit?"/>
     <str id="installer.quit.message" txt="cat:This will cancel the installation!"/>
     <str id="installer.warning" txt="cat:Warning!"/>

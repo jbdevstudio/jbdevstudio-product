@@ -5,7 +5,7 @@
  * See terms of license at gnu.org.
  * 
  * Contributors:
- *     JBoss by Red Hat - Initial implementation.
+ *     Red Hat - Initial implementation.
  ************************************************************************************/
 package com.jboss.devstudio.core.installer;
 

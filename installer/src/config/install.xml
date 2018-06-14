@@ -10,7 +10,7 @@
 		</appversion>
 		<appsubpath>devstudio</appsubpath>
 		<authors>
-			<author name="JBoss by Red Hat" email="sales@jboss.com" />
+			<author name="Red Hat" email="sales@jboss.com" />
 		</authors>
 		<url>http://www.jboss.com/</url>
 		<webdir>http://labs.jboss.com/portal/jemsinstaller/</webdir>

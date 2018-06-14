@@ -28,7 +28,7 @@
 		
        	<group id="footer">
        		<group id="logos">
-       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | JBoss by Red Hat"/>
+       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | Red Hat"/>
        		</group>
 		</group>	      
 
@@ -68,7 +68,7 @@
         </group>
 		<group id="footer">
        		<group id="logos">
-       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | JBoss by Red Hat"/>
+       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | Red Hat"/>
        		</group>
 		</group>	
         
@@ -169,7 +169,7 @@
 		</group>
 		<group id="footer">
        		<group id="logos">
-       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | JBoss by Red Hat"/>
+       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | Red Hat"/>
        		</group>
 		</group>	
     </page>
@@ -258,7 +258,7 @@
 
 		<group id="footer">
        		<group id="logos">
-       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | JBoss by Red Hat"/>
+       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | Red Hat"/>
        		</group>
 		</group>	
     </page>    
@@ -333,7 +333,7 @@
 
 		<group id="footer">
        		<group id="logos">
-       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | JBoss by Red Hat"/>
+       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | Red Hat"/>
        		</group>
 		</group>	
     </page>    
@@ -406,7 +406,7 @@
 		</group>
 		<group id="footer">
        		<group id="logos">
-       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | JBoss by Red Hat"/>
+       			<img src="$theme$/graphics/root4page/logos.png" alt="Red Hat | Red Hat"/>
        		</group>
 		</group>	
     </page>    
