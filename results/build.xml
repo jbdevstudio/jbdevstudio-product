@@ -260,7 +260,7 @@ $java.home = ${java.home}</echo>
       </else>
     </if>
 
-    <!-- https://devstudio.redhat.com/12/snapshots/builds/devstudio.product_master/latest/all/devstudio-12.0.0.AM1-v20170909-2010-B5374-installer-standalone.jar -->
+    <!-- https://devstudio.redhat.com/12/snapshots/builds/devstudio.product_master/latest/all/devstudio-12.9.0.AM1-v20170909-2010-B5374-installer-standalone.jar -->
     <echo file="${destdir}/content.json">{
 "name": "Red Hat Developer Studio Installer",
 "description": "Red Hat Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
