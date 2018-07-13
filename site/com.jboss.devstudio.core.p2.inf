@@ -15,10 +15,10 @@ units.1.requires.1.greedy=true
 
 requires.0.namespace=org.eclipse.equinox.p2.iu
 requires.0.name=a.jre.javase
-requires.0.range=[1.7.0,1.7.0]
+requires.0.range=[1.7.0,12)
 requires.1.namespace=org.eclipse.equinox.p2.iu
 requires.1.name=config.a.jre.javase
-requires.1.range=[1.7.0,1.7.0]
+requires.1.range=[1.7.0,12)
 
 instructions.unconfigure=\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-product);\
