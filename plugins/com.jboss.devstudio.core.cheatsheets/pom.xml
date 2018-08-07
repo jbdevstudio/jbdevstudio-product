@@ -10,4 +10,5 @@
   <groupId>com.jboss.devstudio.core.plugins</groupId>
   <artifactId>com.jboss.devstudio.core.cheatsheets</artifactId>
   <packaging>eclipse-plugin</packaging>
+<version>12.9.1-SNAPSHOT</version>
 </project>
