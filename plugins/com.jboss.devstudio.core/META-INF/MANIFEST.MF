@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.ui,
  org.jboss.tools.central
 Eclipse-LazyStart: true
 Bundle-ClassPath: devstudio-product.jar
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

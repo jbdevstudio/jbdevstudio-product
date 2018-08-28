@@ -7,3 +7,4 @@ Bundle-Vendor: %BundleVendor
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.ui.workbench;bundle-version="3.107.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
