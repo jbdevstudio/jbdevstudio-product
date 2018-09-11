@@ -210,6 +210,10 @@
     <category name="CoreTools" />
     <category name="GeneralTools"/>
   </feature>
+  <feature id="org.jboss.tools.common.launcher.feature">
+    <category name="CoreTools" />
+    <category name="GeneralTools"/>
+  </feature>
 
   <feature id="org.jboss.tools.foundation.feature">
     <category name="CoreTools" />
@@ -409,6 +413,7 @@
   <feature id="org.jboss.tools.runtime.seam.detector.feature.source"/>
   <feature id="org.jboss.tools.usage.feature.source"/>
   <feature id="org.jboss.tools.common.jdt.feature.source"/>
+  <feature id="org.jboss.tools.common.launcher.feature.source"/>
   <!-- JBDS-3079 remove <feature id="org.jboss.tools.common.mylyn.feature.source"/> -->
   <feature id="org.jboss.tools.foundation.feature.source"/>
   <feature id="org.jboss.tools.foundation.security.linux.feature.source"/>
