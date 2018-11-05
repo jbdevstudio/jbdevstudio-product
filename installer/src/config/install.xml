@@ -19,17 +19,13 @@
 		<!-- uninstaller="no" attribute is required to fix unintaller problem under linux and it doesn't affect windows uninstaller -->
 		<!-- run-privileged condition="izpack.windowsinstall.7" uninstaller="no" /-->
 	</info>
-	<native type="izpack" name="ShellLink.dll">
-		<os family="windows" />
-		<os arch="x86" />
-	</native>
 	<native type="izpack" name="ShellLink_x64.dll">
 		<os family="windows" />
 		<os arch="x86_64" />
 	</native>
 	<native type="3rdparty" name="COIOSHelper.dll" stage="both">
 		<os family="windows" />
-		<os arch="x86" />
+		<os arch="x86_64" />
 	</native>
 	<variables>
 		<variable name="PACK_NAME" value="installer" />
