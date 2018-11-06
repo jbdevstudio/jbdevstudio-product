@@ -42,7 +42,7 @@
       </plugin>
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
-        <version>1.7</version>
+        <version>${maven.antrun.plugin.version}</version>
         <inherited>false</inherited>
         <executions>
           <execution>
