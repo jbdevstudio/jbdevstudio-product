@@ -59,7 +59,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 	// TODO support jre10/jdk10 when it comes out
 	// see also JREPathValidator.java
 	private static final int MIN_VERSION = 8;
-	private static final int MAX_VERSION = 9;
+	private static final int MAX_VERSION = 12;
 
 	JREPathValidator validator = new JREPathValidator();
 
@@ -352,16 +352,16 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 		// Check detected version format
 		if (
 			!detectedVersion.matches("[1-9]+\\.[1-9]+\\.[0-9].*") && // 1.8.0_102, 9.0.1 (windows)
-			!detectedVersion.matches("[1-9]+.*") // 9-ea or 9 (linux)
+			!detectedVersion.matches("[1-9]+.*") // 9-ea or 9 (linux) or 11-ea or 12-ea
 		) {
 			return -4; // Unknown version
 		}
 		int versionNumber = 0;
 
-		String[] detectedVersionBits = detectedVersion.split("\\.|-|_");
+		String[] detectedVersionBits = detectedVersion.split("\\.|-|_"); // support -ea versions 
 		if (detectedVersionBits.length > 0) 
 		{
-			if (detectedVersionBits[0].equals("1")) {
+			if (detectedVersionBits[0].equals("1") && Character.toString(detectedVersion.charAt(1)).equals(".")) {
 				versionNumber = Integer.parseInt(detectedVersionBits[1]); // JDK 1.8 and before
 			} else {
 				versionNumber = Integer.parseInt(detectedVersionBits[0]); // JDK 9 onward
