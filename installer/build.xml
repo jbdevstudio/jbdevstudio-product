@@ -71,12 +71,13 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
       </fileset>
     </path>
 
+    <!-- JBDS-4742 move up to JDK 1.8 sources instead of 1.5 -->
     <javac srcdir="${src.dir}/panels/"
            destdir="${build.dir}/classes"
            classpathref="izpack.panels.classpath"
            debug="on"
-           source="1.5"
-           target="1.5"
+           source="1.8"
+           target="1.8"
            verbose="false"
          executable="${env.JAVA_HOME}/bin/javac">
     </javac>

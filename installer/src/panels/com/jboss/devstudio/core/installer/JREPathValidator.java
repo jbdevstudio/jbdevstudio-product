@@ -50,7 +50,7 @@ public class JREPathValidator {
 	// TODO support jre10/jdk10 when it comes out
 	// see also JREPathPanel.java
 	private static final int MIN_VERSION = 8;
-	private static final int MAX_VERSION = 9;
+	private static final int MAX_VERSION = 12;
 	private static final String EXE_EXT = ".exe";
 
 	static final String JAVA_APPLET_PLUGIN = "JavaAppletPlugin.plugin";
@@ -125,17 +125,17 @@ public class JREPathValidator {
 		// Check detected version format
 		if (
 			!detectedVersion.matches("[1-9]+\\.[1-9]+\\.[0-9].*") && // 1.8.0_102, 9.0.1 (windows)
-			!detectedVersion.matches("[1-9]+.*") // 9-ea or 9 (linux)
+			!detectedVersion.matches("[1-9]+.*") // 9-ea or 9 (linux) or 11-ea or 12-ea
 		) {
 			// Unknown version
 			return ValidationCode.ERR_JVM_VERSION_NOT_PARSED; // -4
 		}
 		int versionNumber = 0;
 
-		String[] detectedVersionBits = detectedVersion.split("\\.");
+		String[] detectedVersionBits = detectedVersion.split("\\.|-|_"); // support -ea versions 
 		if (detectedVersionBits.length > 0) 
 		{
-			if (detectedVersionBits[0].equals("1")) {
+			if (detectedVersionBits[0].equals("1") && Character.toString(detectedVersion.charAt(1)).equals(".")) {
 				versionNumber = Integer.parseInt(detectedVersionBits[1]); // JDK 1.8 and before
 			} else {
 				versionNumber = Integer.parseInt(detectedVersionBits[0]); // JDK 9 onward
