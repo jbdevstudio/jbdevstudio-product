@@ -1,14 +1,14 @@
-# Red Hat Developer Studio - Product Build
+# Red Hat CodeReady Studio - Product Build
 
 
 == Summary
 
-*Red Hat Developer Studio* is the productization project for JBoss Tools, which includes an update site, izPack installers, sources, and some generated HTML pages.
+*Red Hat CodeReady Studio* is the productization project for JBoss Tools, which includes an update site, izPack installers, sources, and some generated HTML pages.
 
 
 == Upstream projects
 
-*Red Hat Developer Studio* uses a parent pom, target platform, and Central Discovery plugin which are not part of this project's sources. Also upstream are multiple JBoss Tools projects. Sources can be found here:
+*Red Hat CodeReady Studio* uses a parent pom, target platform, and Central Discovery plugin which are not part of this project's sources. Also upstream are multiple JBoss Tools projects. Sources can be found here:
 
 * Parent: https://github.com/jbosstools/jbosstools-build/
 * Target Platform: https://github.com/jbosstools/jbosstools-target-platforms/
@@ -18,16 +18,16 @@
 
 == Download an installer jar or update site zip
 
-*Red Hat Developer Studio* is the productization project for http://jboss.org/tools[JBoss Tools]. It can be downloaded in binary form from here:
+*Red Hat CodeReady Studio* is the productization project for http://jboss.org/tools[JBoss Tools]. It can be downloaded in binary form from here:
 
 * https://devstudio.redhat.com/download/ (current releases)
 * https://devstudio.redhat.com/earlyaccess/ (future releases)
 * https://devstudio.redhat.com/updates/ (update sites)
 
 
-== Build Red Hat Developer Studio
+== Build Red Hat CodeReady Studio
 
-Building *Red Hat Developer Studio* requires Java 8 and Maven 3.5.
+Building *Red Hat CodeReady Studio* requires Java 8 and Maven 3.5.
 
 See https://github.com/jbosstools/jbosstools-devdoc/blob/master/building/how_to_build_jbosstools_faq.adoc[JBoss Tools Build FAQ] for Maven configuration and other tips.
 
@@ -48,7 +48,7 @@ https://devstudio.redhat.com/targetplatforms/jbtcentraltarget/4.80.0.Final-SNAPS
 https://devstudio.redhat.com/11/snapshots/builds/jbosstools-discovery.central_master/latest/all/repo/,\
 file:///path/to/locally/built/jbdevstudio-product/site/target/repository"
 
-== Install Red Hat Developer Studio
+== Install Red Hat CodeReady Studio
 
 After a successful build, two or more artifacts are produced:
 
@@ -61,34 +61,34 @@ Installer jar(s) will be produced in `installer/target/` and can be installed wi
 
 An unpacked update site, which can be used to perform an initial install or to install updates to a previous installation, can be found in `site/target/repository/`.
 
-The installer jar can be used as an archived update site. Launch Eclipse or Red Hat Developer Studio, then select:
+The installer jar can be used as an archived update site. Launch Eclipse or Red Hat CodeReady Studio, then select:
 
   Help > Install New Software... > Add... > Archive... >
-    Browse for the Red Hat Developer Studio installer jar > OK >
+    Browse for the Red Hat CodeReady Studio installer jar > OK >
       Work with: jar:file:/path/to/devstudio-*-installer-*.jar!/ >
-        Install the Red Hat Developer Studio feature(s) >
+        Install the Red Hat CodeReady Studio feature(s) >
           Restart when prompted.
 
-Or, to install the "Bring Your Own Eclipse" category or "Core Features" feature into Eclipse (not as an update to an existing Red Hat Developer Studio install):
+Or, to install the "Bring Your Own Eclipse" category or "Core Features" feature into Eclipse (not as an update to an existing Red Hat CodeReady Studio install):
 
   * `Help > Install` from the generated site in `site/target/repository/` (or the installer jar, as noted above
-  * Select the '`Red Hat Developer Studio (Core Features)`' feature
+  * Select the '`Red Hat CodeReady Studio (Core Features)`' feature
 
 
-== Update Red Hat Developer Studio
+== Update Red Hat CodeReady Studio
 
-To update from one version of Red Hat Developer Studio on the same stream to another (eg., from Red Hat Developer Studio 12.0 to 12.x):
+To update from one version of Red Hat CodeReady Studio on the same stream to another (eg., from Red Hat CodeReady Studio 12.0 to 12.x):
 
   * `Help > Install` from the generated site in `site/target/repository/` (or the installer jar, as noted above)
   * Uncheck the box for '`Group items by category`'
-  * Select the '`Red Hat Developer Studio (Branded Product)`' feature
+  * Select the '`Red Hat CodeReady Studio (Branded Product)`' feature
 
 
 == Contribute fixes and features
 
-*Red Hat Developer Studio* is open source, and we welcome anybody that wants to participate and contribute!
+*Red Hat CodeReady Studio* is open source, and we welcome anybody that wants to participate and contribute!
 
-If you want to fix a bug or make any changes, please log an issue in the https://issues.jboss.org/browse/JBDS[Red Hat Developer Studio JIRA] or the https://issues.jboss.org/browse/JBIDE[JBoss Tools JIRA] describing the bug or new feature.
+If you want to fix a bug or make any changes, please log an issue in the https://issues.jboss.org/browse/JBDS[Red Hat CodeReady Studio JIRA] or the https://issues.jboss.org/browse/JBIDE[JBoss Tools JIRA] describing the bug or new feature.
 
 After you are happy with your changes and a full build runs successfully, attach a patch to the JIRA.
 

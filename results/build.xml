@@ -264,8 +264,8 @@ $java.home = ${java.home}</echo>
 
     <!-- https://devstudio.redhat.com/12/snapshots/builds/devstudio.product_master/latest/all/devstudio-12.9.0.AM1-v20170909-2010-B5374-installer-standalone.jar -->
     <echo file="${destdir}/content.json">{
-"name": "Red Hat Developer Studio Installer",
-"description": "Red Hat Developer Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
+"name": "Red Hat CodeReady Studio Installer",
+"description": "Red Hat CodeReady Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
 "fullVersion": "${devstudio.version}",
 "pathToJars": "${pathToJars}",
 "installer": "https://devstudio.redhat.com/${pathToJars}/devstudio-${devstudio.version}-installer-standalone.jar"

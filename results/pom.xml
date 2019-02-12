@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.jboss.devstudio</groupId>
   <artifactId>com.jboss.devstudio.core.buildresults</artifactId>
-  <name>Red Hat Developer Studio Build Results</name>
+  <name>Red Hat CodeReady Studio Build Results</name>
   <description>
     Generates index.html linking to jars and zips, plus provides other metadata
   </description>

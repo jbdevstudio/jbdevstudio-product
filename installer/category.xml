@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-	<description>Red Hat Developer Studio Installer P2 Repository</description>
-	<category-def name="devstudio" label="Red Hat Developer Studio">
-		<description>Red Hat Developer Studio Features</description>
+	<description>Red Hat CodeReady Studio Installer P2 Repository</description>
+	<category-def name="devstudio" label="Red Hat CodeReady Studio">
+		<description>Red Hat CodeReady Studio Features</description>
 	</category-def>
 	<bundle id="com.jboss.devstudio.core.package">
 		<category name="devstudio" />

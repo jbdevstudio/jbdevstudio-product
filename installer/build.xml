@@ -1,7 +1,7 @@
 <!-- A build file to create an IzPack (http://www.izforge.com/izpack/) installer.
 $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 -->
-<project name="Red Hat Developer Studio Installer" default="installer">
+<project name="Red Hat CodeReady Studio Installer" default="installer">
   <taskdef resource="net/sf/antcontrib/antlib.xml" />
 
   <property file="local.properties" />
@@ -15,7 +15,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
   <property name="build.id" value="${build.number}" />
 
   <!-- Manifest version info -->
-  <property name="specification.title" value="Red Hat Developer Studio Installer" />
+  <property name="specification.title" value="Red Hat CodeReady Studio Installer" />
 
   <property name="implementation.vendor" value="Red Hat (https://developers.redhat.com/products/devstudio/overview/)" />
   <property name="implementation.vendor.id" value="${implementation.url}" />
@@ -322,7 +322,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     <property name="installer.name" value="devstudio-${specification.version}-installer-standalone" />
     <property name="installer.eap.name" value="devstudio-${specification.version}-installer-eap" />
 
-    <property name="implementation.title" value="Red Hat Developer Studio Installer [${update.site.version}]" />
+    <property name="implementation.title" value="Red Hat CodeReady Studio Installer [${update.site.version}]" />
     <property name="implementation.url" value="http://www.jboss.org/" />
     <property name="implementation.version" value="${update.site.version}.${buildQualifier}" />
 
@@ -339,7 +339,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
 
   <target name="installer" depends="init, init-properties, create-temp-update-sites, buildcustompanels, prepare-distribution">
 
-    <echo message="Building Red Hat Developer Studio Installers with nightly_build_qualifier=${nightly_build_qualifier}"/>
+    <echo message="Building Red Hat CodeReady Studio Installers with nightly_build_qualifier=${nightly_build_qualifier}"/>
     <taskdef name="izpack" classname="com.izforge.izpack.ant.IzPackTask" classpathref="izpack.classpath" />
 
     <mkdir dir="${build.dir}" />
@@ -350,7 +350,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
       <then>
         <var name="install.group" value="jbosseap" />
         <!-- Now call the izpack compiler -->
-        <echo message="Building Red Hat Developer Studio Installer (EAP Bundle): ${installer.eap.name}.jar"/>
+        <echo message="Building Red Hat CodeReady Studio Installer (EAP Bundle): ${installer.eap.name}.jar"/>
         <izpack input="${src.dir}/config/install.xml"
                 output="${destination.dir}/${installer.eap.name}.jar"
                 installerType="standard"
@@ -374,7 +374,7 @@ $Id: build.xml,v 1.1.2.14 2006/03/31 07:47:31 starksm Exp $
     </if>
     <var name="install.group" value="devstudio" />
     <!-- Now call the izpack compiler -->
-    <echo message="Building Red Hat Developer Studio Installer (Standalone): ${installer.name}.jar"/>
+    <echo message="Building Red Hat CodeReady Studio Installer (Standalone): ${installer.name}.jar"/>
     <izpack input="${src.dir}/config/install.xml"
             output="${destination.dir}/${installer.name}.jar"
             installerType="standard"
