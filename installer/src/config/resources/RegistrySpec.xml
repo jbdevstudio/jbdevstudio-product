@@ -16,7 +16,7 @@
         <value name="DisplayName"
                keypath="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\devstudio @version_string@@nightly_build_qualifier@ $TIMESTAMP"
                root="HKLM"
-               string="Red Hat Developer Studio @version_string@@nightly_build_qualifier@"/>
+               string="Red Hat CodeReady Studio @version_string@@nightly_build_qualifier@"/>
         <value name="UninstallString"
                keypath="SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\devstudio @version_string@@nightly_build_qualifier@ $TIMESTAMP" 
                root="HKLM"

@@ -30,7 +30,7 @@ public class UpdatePacksPanel extends IzPanel{
 		String group = idata.getVariable("INSTALL_GROUP");
 		String version = idata.getVariable("VERSION");
 		StringBuffer buffer = new StringBuffer();
-		buffer.append("Red Hat Developer Studio "+version+"<br>");
+		buffer.append("Red Hat CodeReady Studio "+version+"<br>");
 		
 		// Summarize any additional features and runtimes.
 		String additionalSummaryInfo = "";

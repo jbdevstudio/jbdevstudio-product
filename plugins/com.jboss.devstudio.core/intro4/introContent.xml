@@ -6,13 +6,13 @@
 <!-- 		
 	<div id="container">
     	<div id="header">
-        	<div id="welcome"><a href="https://developers.redhat.com/products/devstudio/overview/">Welcome to Red Hat Developer Studio</a></div>
+        	<div id="welcome"><a href="https://developers.redhat.com/products/devstudio/overview/">Welcome to Red Hat CodeReady Studio</a></div>
             <div id="workbench"><a href="#"><b>Workbench</b><img src="images/workbench.png" alt="Workbench" /></a></div>
         </div>
 -->        
         <group id="header" filteredFrom="swt">
            <group id="welcome">
-           		<img src="$theme$/graphics/root4page/welcome.png" alt="Welcome to Red Hat Developer Studio"/>
+           		<img src="$theme$/graphics/root4page/welcome.png" alt="Welcome to Red Hat CodeReady Studio"/>
            </group>
            <group id="workbench">
    				<link url="http://org.eclipse.ui.intro/switchToLaunchBar" label="Workbench" />
@@ -89,7 +89,7 @@
     	<group id="header" filteredFrom="swt">
     	
         	<group id="welcome">
-           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat Developer Studio" />
+           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat CodeReady Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -178,7 +178,7 @@
     <page id="perspectives" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat Developer Studio" />
+           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat CodeReady Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -267,7 +267,7 @@
     <page id="createnew" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat Developer Studio" />
+           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat CodeReady Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -342,7 +342,7 @@
     <page id="webresources" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat Developer Studio" />
+           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat CodeReady Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
