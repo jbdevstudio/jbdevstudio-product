@@ -23,7 +23,7 @@
   </modules>
   <!-- Should you want to build it locally, target platform sources are here: https://github.com/jbosstools/jbosstools-target-platforms/tree/4.60.x/ -->
   <properties>
-    <BUILD_ALIAS>GA</BUILD_ALIAS>
+    <!--<BUILD_ALIAS>GA</BUILD_ALIAS>-->
     <tpc.version>${TARGET_PLATFORM_VERSION_MAX}</tpc.version>
     <tycho.scmUrl>scm:git:https://github.com/jbdevstudio/jbdevstudio-product.git</tycho.scmUrl>
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
