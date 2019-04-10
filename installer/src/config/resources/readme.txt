@@ -12,15 +12,15 @@ the command line to provide further options.
 On Linux:
 
 cd <install-path>
-./devstudio
+./codereadystudio
 
 For OS X the application is:
 
-<install-path>/devstudio.app
+<install-path>/codereadystudio.app
 
 For Windows use:
 
-<install-path>/devstudio.bat
+<install-path>/codereadystudio.bat
 
 Note: Do not use GCJ as the Java to launch Red Hat CodeReady Studio;
 it will crash. If your default Java vm is GCJ launch eclipse as
@@ -32,8 +32,8 @@ devstudio -vm <path to java executable>
 Latest Documentation, Release Notes, and News:
 ----------------------------------------------
 
-   https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/
-   https://developers.redhat.com/products/devstudio/overview/
+   https://access.redhat.com/documentation/en/red_hat_codeready_studio/
+   https://developers.redhat.com/products/codeready-studio/overview/
 
 
 Bug Reports:

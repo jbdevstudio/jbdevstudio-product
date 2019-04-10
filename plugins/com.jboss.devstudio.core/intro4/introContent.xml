@@ -6,7 +6,7 @@
 <!-- 		
 	<div id="container">
     	<div id="header">
-        	<div id="welcome"><a href="https://developers.redhat.com/products/devstudio/overview/">Welcome to Red Hat CodeReady Studio</a></div>
+        	<div id="welcome"><a href="https://developers.redhat.com/products/codeready-studio/overview/">Welcome to Red Hat CodeReady Studio</a></div>
             <div id="workbench"><a href="#"><b>Workbench</b><img src="images/workbench.png" alt="Workbench" /></a></div>
         </div>
 -->        
@@ -89,7 +89,7 @@
     	<group id="header" filteredFrom="swt">
     	
         	<group id="welcome">
-           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat CodeReady Studio" />
+           		<link url="https://developers.redhat.com/products/codeready-studio/overview/" label="Welcome to Red Hat CodeReady Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -131,13 +131,13 @@
 			<group style-id="content-group" id="content-group">
 				<group>
 				<link style-id="content-link" label="$introLink1Title-gettingstarted$" 
-						url="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/" id="weblink">
+						url="https://access.redhat.com/documentation/en/red_hat_codeready_studio/" id="weblink">
 					<text>$introLink1Description-gettingstarted$</text>
 				</link>
 				</group>
 				<group>
 				<link style-id="content-link" label="$introLink2Title-gettingstarted$" 
-						url="https://developers.redhat.com/products/devstudio/overview/" id="weblink">
+						url="https://developers.redhat.com/products/codeready-studio/overview/" id="weblink">
 					<text>$introLink2Description-gettingstarted$</text>
 				</link>
 				</group>
@@ -178,7 +178,7 @@
     <page id="perspectives" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat CodeReady Studio" />
+           		<link url="https://developers.redhat.com/products/codeready-studio/overview/" label="Welcome to Red Hat CodeReady Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -267,7 +267,7 @@
     <page id="createnew" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat CodeReady Studio" />
+           		<link url="https://developers.redhat.com/products/codeready-studio/overview/" label="Welcome to Red Hat CodeReady Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">
@@ -342,7 +342,7 @@
     <page id="webresources" style="$theme$/html/internal-page.css" alt-style="$theme$/swt/overview.properties" style-id="page">
         <group id="header" filteredFrom="swt">
         	<group id="welcome">
-           		<link url="https://developers.redhat.com/products/devstudio/overview/" label="Welcome to Red Hat CodeReady Studio" />
+           		<link url="https://developers.redhat.com/products/codeready-studio/overview/" label="Welcome to Red Hat CodeReady Studio" />
 			</group>
 			<group id="navigation">
 				<group id="gs-nav-link">

@@ -8,7 +8,7 @@
       license-feature-version="0.0.0"
       plugin="com.jboss.devstudio.core">
 
-   <description url="https://access.redhat.com/documentation/en/red-hat-jboss-developer-studio/">
+   <description url="https://access.redhat.com/documentation/en/red_hat_codeready_studio/">
       %description
    </description>
 

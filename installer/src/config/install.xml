@@ -8,12 +8,12 @@
 		<appversion>
 			@{specification.version}, JBoss AS @{jboss.version}
 		</appversion>
-		<appsubpath>devstudio</appsubpath>
+		<appsubpath>codereadystudio</appsubpath>
 		<authors>
 			<author name="Red Hat" email="sales@redhat.com" />
 		</authors>
-		<url>https://developers.redhat.com/products/devstudio/overview/</url>
-		<webdir>https://developers.redhat.com/products/devstudio/overview/</webdir>
+		<url>https://developers.redhat.com/products/codeready-studio/overview/</url>
+		<webdir>https://developers.redhat.com/products/codeready-studio/overview/</webdir>
 		<javaversion>1.5</javaversion>
 		<summarylogfilepath>$INSTALL_PATH/InstallSummary.html</summarylogfilepath>
 		<!-- uninstaller="no" attribute is required to fix unintaller problem under linux and it doesn't affect windows uninstaller -->
