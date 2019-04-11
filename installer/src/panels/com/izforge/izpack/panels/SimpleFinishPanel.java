@@ -176,9 +176,9 @@ public class SimpleFinishPanel extends IzPanel {
 				command = new String[3];
 				command[0] = "open";
 				command[1] = "-a";
-				command[2] = path+File.separator+"devstudio.app";
+				command[2] = path+File.separator+"codereadystudio.app";
 			}else{
-				command = new String[]{path+File.separator+"devstudio"};
+				command = new String[]{path+File.separator+"codereadystudio"};
 				if(OsVersion.IS_WINDOWS){
 					command[0] += ".bat";
 				}

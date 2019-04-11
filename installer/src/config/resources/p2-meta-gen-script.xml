@@ -12,7 +12,7 @@
 	
 	<target name="main" description="description" unless="skipMain">
 		<echo>Run p2 metadata generator</echo>
-		<condition property="devstudio" value="devstudio.app/Contents/MacOS/devstudio" else="devstudio">
+		<condition property="devstudio" value="codereadystudio.app/Contents/MacOS/codereadystudio" else="codereadystudio">
 			<os family="mac" />
 		</condition>
 		<exec executable="${install-root}/studio/${devstudio}" taskname="p2">

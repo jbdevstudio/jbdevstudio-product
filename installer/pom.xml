@@ -14,7 +14,7 @@
 	</properties>
 
 	<!-- to debug installer installation process, run like this:
-		java -DTRACE=true -jar /path/to/jbdevstudio-product/installer/target/devstudio-*.jar
+		java -DTRACE=true -jar /path/to/jbdevstudio-product/installer/target/codereadystudio-*.jar
 	-->
 
 	<profiles>

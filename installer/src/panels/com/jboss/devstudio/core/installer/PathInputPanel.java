@@ -175,7 +175,7 @@ public class PathInputPanel extends IzPanel implements ActionListener
             }
             // We put a warning if the directory exists else we warn
             // that it will be created
-            File devstudioBrandingPlugin = new File(chosenPath, "studio/devstudio.ini");
+            File devstudioBrandingPlugin = new File(chosenPath, "studio/codereadystudio.ini");
             if (path.exists() && !devstudioBrandingPlugin.exists())
             {
                 int res = askQuestion(parent.langpack.getString("installer.warning"), warnMsg,

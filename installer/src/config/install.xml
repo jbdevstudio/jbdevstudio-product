@@ -84,10 +84,10 @@
  			src="config/resources/images/runtime_wiz.png" />
 		<res id="Error.image"
 			src="config/resources/images/message_error.png" />
-		<res id="128-devstudio.icon.png"
-			src="config/resources/icons/128-devstudio.icon.png" />
-		<res id="32-devstudio.icon.png"
-			src="config/resources/icons/32-devstudio.icon.png" />
+		<res id="128-studio.icon.png"
+			src="config/resources/icons/128-studio.icon.png" />
+		<res id="32-studio.icon.png"
+			src="config/resources/icons/32-studio.icon.png" />
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 
 		<!-- Licencees in different languages -->	
 		<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx --> 

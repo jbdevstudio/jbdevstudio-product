@@ -439,9 +439,9 @@ public class InstallerFrame extends JFrame {
         // Sets the frame icon
 		try {
 			if (OsVersion.IS_WINDOWS) {
-				setIconImage(loadIcon("32-devstudio.icon.png", 0, true).getImage());
+				setIconImage(loadIcon("32-studio.icon.png", 0, true).getImage());
 			} else {
-				setIconImage(loadIcon("128-devstudio.icon.png", 0, true).getImage());
+				setIconImage(loadIcon("128-studio.icon.png", 0, true).getImage());
 				try {
 					Toolkit xToolkit = Toolkit.getDefaultToolkit();
 					java.lang.reflect.Field awtAppClassNameField = xToolkit

@@ -1,8 +1,8 @@
-To compile devstudio.icns use follow commands:
+To compile studio.icns use follow commands:
 
 cd devstudio-product/site/macosx
 
-iconutil -c icns devstudio.iconset
+iconutil -c icns studio.iconset
 
 For additional info see:
 

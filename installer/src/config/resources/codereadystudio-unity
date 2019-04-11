@@ -14,4 +14,4 @@
 # It is workaround for https://issues.jboss.org/browse/JBDS-1781
 #
 
-UBUNTU_MENUPROXY=0 $(dirname "$0")/studio/devstudio
+UBUNTU_MENUPROXY=0 $(dirname "$0")/studio/codereadystudio

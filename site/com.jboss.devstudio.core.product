@@ -32,18 +32,18 @@ openFile</programArgs>
 --add-modules=ALL-SYSTEM
 -Dosgi.instance.area.default=@user.home/workspace</vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
--Xdock:icon=../Resources/devstudio.icns -XX:MetaspaceSize=256m -Xdock:name=&quot;Red Hat CodeReady Studio&quot;</vmArgsMac>
+-Xdock:icon=../Resources/studio.icns -XX:MetaspaceSize=256m -Xdock:name=&quot;Red Hat CodeReady Studio&quot;</vmArgsMac>
    </launcherArgs>
 
    <windowImages/>
 
    <splash
       location="com.jboss.devstudio.core" />
-   <launcher name="devstudio">
-      <macosx icon="macosx/devstudio.icns"/>
+   <launcher name="codereadystudio">
+      <macosx icon="macosx/studio.icns"/>
       <solaris/>
       <win useIco="true">
-         <ico path="devstudio.ico"/>
+         <ico path="studio.ico"/>
          <bmp/>
       </win>
    </launcher>

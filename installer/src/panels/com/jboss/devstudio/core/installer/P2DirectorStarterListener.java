@@ -21,7 +21,7 @@ import com.jboss.devstudio.core.installer.JavaVersionReader.ResponseListener;
 
 public class P2DirectorStarterListener implements InstallerListener {
 
-	public static final String DEVSTUDIO_LOCATION =  "studio" + (OsVersion.IS_OSX ? File.separator + "devstudio.app" + File.separator + "Contents" + File.separator + "Eclipse" : "");
+	public static final String DEVSTUDIO_LOCATION =  "studio" + (OsVersion.IS_OSX ? File.separator + "codereadystudio.app" + File.separator + "Contents" + File.separator + "Eclipse" : "");
 	
 	private String installLocation;
 	private String selectedJvm;

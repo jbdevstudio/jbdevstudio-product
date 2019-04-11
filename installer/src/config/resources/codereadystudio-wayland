@@ -14,4 +14,4 @@
 # It is workaround for https://issues.jboss.org/browse/JBDS-4230
 # and https://issues.jboss.org/browse/JBDS-4204
 
-GDK_BACKEND=x11 $(dirname "$0")/studio/devstudio
+GDK_BACKEND=x11 $(dirname "$0")/studio/codereadystudio

@@ -18,9 +18,9 @@
       <executable targetfile="$INSTALL_PATH/codereadystudio-unity" condition="izpack.linuxinstall" />
       <singlefile src="config/resources/codereadystudio-wayland" target="$INSTALL_PATH/codereadystudio-wayland" condition="izpack.linuxinstall" />
       <executable targetfile="$INSTALL_PATH/codereadystudio-wayland" condition="izpack.linuxinstall" />
-      <singlefile src="config/resources/icons/48-devstudio.icon.png" target="$INSTALL_PATH/studio/48-devstudio.icon.png" condition="izpack.linuxinstall" />
+      <singlefile src="config/resources/icons/48-studio.icon.png" target="$INSTALL_PATH/studio/48-studio.icon.png" condition="izpack.linuxinstall" />
       <singlefile src="config/resources/icons/48-uninstall.icon.png" target="$INSTALL_PATH/studio/48-uninstall.icon.png" condition="izpack.linuxinstall" />
-      <singlefile src="config/resources/icons/devstudio.ico" target="$INSTALL_PATH/studio/devstudio.ico" os="windows" />
+      <singlefile src="config/resources/icons/studio.ico" target="$INSTALL_PATH/studio/studio.ico" os="windows" />
       <singlefile src="config/resources/icons/uninstall.ico" target="$INSTALL_PATH/studio/uninstall.ico" os="windows" />
 
       <singlefile src="config/resources/codereadystudio.bat" target="$INSTALL_PATH/codereadystudio.bat" os="windows" />

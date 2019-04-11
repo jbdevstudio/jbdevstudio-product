@@ -26,7 +26,7 @@ Note: Do not use GCJ as the Java to launch Red Hat CodeReady Studio;
 it will crash. If your default Java vm is GCJ launch eclipse as
 follows to use another vm:
 
-devstudio -vm <path to java executable> 
+codereadystudio -vm <path to java executable> 
 
 
 Latest Documentation, Release Notes, and News:
