@@ -40,21 +40,21 @@ public class ShortcutPanelPatch extends IzPanel {
 		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + ".eclipseproduct",
 		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "epl-v10.html",
 		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "icon.xpm",
-		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "devstudio",
+		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "codereadystudio",
 		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "notice.html",
 		P2DirectorStarterListener.DEVSTUDIO_LOCATION + File.separator + "runtime_locations.properties",
-		"studio" + File.separator + "48-devstudio.icon.png",
+		"studio" + File.separator + "48-studio.icon.png",
 		"studio" + File.separator + "48-uninstall.icon.png",
-		"studio" + File.separator + "devstudio.ico",
+		"studio" + File.separator + "studio.ico",
 		"studio" + File.separator + "uninstall.ico",
 
 		/* files/folders in root folder */
 		"Uninstaller",
 		".installationinformation",
 		"InstallConfigRecord.xml",
-		"devstudio",
-		"devstudio-unity",
-		"devstudio-wayland",
+		"codereadystudio",
+		"codereadystudio-unity",
+		"codereadystudio-wayland",
 		"JBoss-EULA.html",
 		"readme.txt"
 	};

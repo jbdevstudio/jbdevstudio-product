@@ -2,13 +2,13 @@
 	<defaultCurrentUser/>
 	<programGroup defaultName=""
 		location="applications"
-		iconFile="$INSTALL_PATH/studio/48-devstudio.icon.png"
+		iconFile="$INSTALL_PATH/studio/48-studio.icon.png"
 		comment="Red Hat CodeReady Studio @major_version@" />
 	<shortcut name="Red Hat CodeReady Studio @version_string@@nightly_build_qualifier@" programGroup="yes"
-		iconFile="$INSTALL_PATH/studio/48-devstudio.icon.png"
+		iconFile="$INSTALL_PATH/studio/48-studio.icon.png"
 		iconIndex="0"
 		desktop="yes" applications="no" startMenu="no" startup="no"
-		target="$INSTALL_PATH/studio/devstudio"
+		target="$INSTALL_PATH/studio/codereadystudio"
 		workingDirectory="$INSTALL_PATH/studio"
 		description="Runs the Red Hat CodeReady Studio @version_string@@nightly_build_qualifier@" type="Application"
 		encoding="UTF-8" terminal="false" KdeSubstUID="false"

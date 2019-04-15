@@ -59,9 +59,9 @@ $java.home = ${java.home}</echo>
     <var name="devstudio.version" value="${update.site.version}.${qualifier}"/>
     <echo level="info">update.site.version = ${update.site.version}, JBT.version = ${JBT.version}, devstudio.version = ${devstudio.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
-    <path id="devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="devstudio-*-installer-standalone.jar"/></fileset></path><property name="devstudio-installer-standalone-file" refid="devstudio-installer-standalone-file-id"/>
+    <path id="devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="codereadystudio-*-installer-standalone.jar"/></fileset></path><property name="devstudio-installer-standalone-file" refid="devstudio-installer-standalone-file-id"/>
 
-    <path id="devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="devstudio-*-installer-eap.jar"/></fileset></path><property name="devstudio-installer-eap-file" refid="devstudio-installer-eap-file-id"/>
+    <path id="devstudio-installer-eap-file-id"><fileset dir="../installer/target"><include name="codereadystudio-*-installer-eap.jar"/></fileset></path><property name="devstudio-installer-eap-file" refid="devstudio-installer-eap-file-id"/>
 
     <path id="devstudio-updatesite-core-file-id"><fileset dir="../site/target"><include name="com.jboss.devstudio.core.site-*.zip"/></fileset></path><property name="devstudio-updatesite-core-file" refid="devstudio-updatesite-core-file-id"/>
 
@@ -268,7 +268,7 @@ $java.home = ${java.home}</echo>
 "description": "Red Hat CodeReady Studio ${update.site.version}.${BUILD_ALIAS} Installer${update.site.description.json}",
 "fullVersion": "${devstudio.version}",
 "pathToJars": "${pathToJars}",
-"installer": "https://devstudio.redhat.com/${pathToJars}/devstudio-${devstudio.version}-installer-standalone.jar"
+"installer": "https://devstudio.redhat.com/${pathToJars}/codereadystudio-${devstudio.version}-installer-standalone.jar"
 }
 </echo>
   </target>

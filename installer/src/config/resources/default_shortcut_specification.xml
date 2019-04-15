@@ -4,8 +4,8 @@
 	<programGroup defaultName="Red Hat CodeReady Studio @major_version@" location="applications" />
 	<shortcut
 		name="Red Hat CodeReady Studio @version_string@@nightly_build_qualifier@"
-		iconFile="$INSTALL_PATH\studio\devstudio.ico" 
-		target="$INSTALL_PATH\studio\devstudio.exe"
+		iconFile="$INSTALL_PATH\studio\studio.ico" 
+		target="$INSTALL_PATH\studio\codereadystudio.exe"
 		workingDirectory="$INSTALL_PATH\studio"
 		description="Start Red Hat CodeReady Studio @version_string@@nightly_build_qualifier@"
 		initialState="normal" programGroup="yes" desktop="yes" startMenu="no" />

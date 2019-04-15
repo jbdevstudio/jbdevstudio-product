@@ -65,7 +65,7 @@ public class CreateLinkPanel extends IzPanel {
 		if (isUnixLikeSystem()) {
 
 			StringBuffer cmd = new StringBuffer();
-			String launcherName = OsVersion.IS_OSX ? "devstudio.app" : "devstudio";
+			String launcherName = OsVersion.IS_OSX ? "codereadystudio.app" : "codereadystudio";
 
 			cmd.append("cd \"").append(installPath).append("\"\n")
 					.append("ln -s \"." + File.separator + "studio" + File.separator).append(launcherName + "\"")
@@ -118,7 +118,7 @@ public class CreateLinkPanel extends IzPanel {
 
 	public static void addJREPath(String installPath, String execPath) {
 		File pathToIni = new File(installPath + File.separator + P2DirectorStarterListener.DEVSTUDIO_LOCATION
-				+ File.separator + "devstudio.ini");
+				+ File.separator + "codereadystudio.ini");
 		if (pathToIni.exists()) {
 			addJVM(execPath, pathToIni);
 		}
