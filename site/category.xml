@@ -239,9 +239,6 @@
     <category name="CoreTools" />
     <category name="WebTools" />
   </feature>
-  <feature id="org.jboss.tools.central.easymport.feature">
-    <category name="CoreTools" />
-  </feature>
 
   <!-- JBIDE-20216 add wikitext asciidoc editor to Core Tools category -->  
   <feature id="org.eclipse.mylyn.wikitext_feature"/>
