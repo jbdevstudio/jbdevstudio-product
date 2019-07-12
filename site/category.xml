@@ -132,11 +132,6 @@
     <category name="CoreTools" />
     <category name="CloudContainerTools" />
   </feature>
-  <!-- OpenShift.io -->
-  <feature id="org.jboss.tools.openshift.io.feature">
-    <category name="CoreTools" />
-    <category name="CloudContainerTools" />
-  </feature>
   <feature id="org.jboss.ide.eclipse.archives.feature">
     <category name="CoreTools" />
     <category name="GeneralTools" />
@@ -347,8 +342,6 @@
     <category name="CoreTools" />
   </feature>
   <feature id="com.jboss.devstudio.core.capabilities.feature"/>
-  <feature id="com.jboss.devstudio.core.rpm.feature"/>
-  <feature id="com.jboss.devstudio.core.rpmdeps.feature"/>
   <feature id="com.jboss.devstudio.fuse.feature">
     <category name="BringYourOwnEclipse" />
     <category name="CoreTools" />
@@ -388,7 +381,6 @@
   <feature id="org.jboss.tools.openshift.cdk.feature.source"/>
   <feature id="org.jboss.tools.openshift.js.feature.source"/>
   <feature id="org.jboss.tools.openshift.egit.integration.feature.source"/>
-  <feature id="org.jboss.tools.openshift.io.feature.source"/>
   <feature id="org.jboss.ide.eclipse.archives.feature.source"/>
   <feature id="org.hibernate.eclipse.feature.source"/>
   <feature id="org.jboss.tools.ws.jaxrs.feature.source"/>
