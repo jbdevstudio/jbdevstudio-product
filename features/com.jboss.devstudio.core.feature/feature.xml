@@ -20,8 +20,6 @@
     %license
   </license>
 
-  <includes id="com.jboss.devstudio.core.rpm.feature" version="0.0.0"/>
-  <includes id="com.jboss.devstudio.core.rpmdeps.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.usage.feature" version="0.0.0"/>
 
   <plugin id="com.jboss.devstudio.core.cheatsheets" version="0.0.0"/>

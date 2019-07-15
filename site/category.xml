@@ -347,8 +347,6 @@
     <category name="CoreTools" />
   </feature>
   <feature id="com.jboss.devstudio.core.capabilities.feature"/>
-  <feature id="com.jboss.devstudio.core.rpm.feature"/>
-  <feature id="com.jboss.devstudio.core.rpmdeps.feature"/>
   <feature id="com.jboss.devstudio.fuse.feature">
     <category name="BringYourOwnEclipse" />
     <category name="CoreTools" />
