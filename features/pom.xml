@@ -13,8 +13,6 @@
 	<name>devstudio - Product Features - Core</name>
 	<packaging>pom</packaging>
 	<modules>
-		<module>com.jboss.devstudio.core.rpm.feature</module>
-		<module>com.jboss.devstudio.core.rpmdeps.feature</module>
 		<module>com.jboss.devstudio.core.feature</module>
 		<module>com.jboss.devstudio.core.feature.source</module>
 		<module>com.jboss.devstudio.core.capabilities.feature</module>
