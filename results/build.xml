@@ -57,6 +57,8 @@ $java.home = ${java.home}</echo>
     <propertyregex property="qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="GA.*" replace="GA" override="true" />
     <var name="devstudio.version" unset="true"/>
     <var name="devstudio.version" value="${update.site.version}.${qualifier}"/>
+    <echoproperties destfile="${project.build.directory}/devstudio-results-echoproperties.txt" />
+    <echo level="info">Results properties written to ${project.build.directory}/devstudio-results-echoproperties.txt</echo>
     <echo level="info">update.site.version = ${update.site.version}, JBT.version = ${JBT.version}, devstudio.version = ${devstudio.version}, update.site.qualifier = ${update.site.qualifier}</echo>
 
     <path id="devstudio-installer-standalone-file-id"><fileset dir="../installer/target"><include name="codereadystudio-*-installer-standalone.jar"/></fileset></path><property name="devstudio-installer-standalone-file" refid="devstudio-installer-standalone-file-id"/>
