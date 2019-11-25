@@ -62,6 +62,8 @@ openFile</programArgs>
       <feature id="com.jboss.devstudio.core.capabilities.feature"/>
       <!-- JBDS-3566 new for Mars.2 / Neon.M4 -->
       <feature id="org.eclipse.epp.logging.aeri.feature"/>
+      <!-- JBIDE-26863 Quarkus Tooling -->
+      <feature id="org.jboss.tools.quarkus.feature"/>
    </features>
 
    <configurations>
