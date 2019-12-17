@@ -76,7 +76,7 @@ To update from one version of Red Hat CodeReady Studio on the same stream to ano
 
 *Red Hat CodeReady Studio* is open source, and we welcome anybody that wants to participate and contribute!
 
-If you want to fix a bug or make any changes, please log an issue in the https://issues.jboss.org/browse/JBDS[Red Hat CodeReady Studio JIRA] or the https://issues.jboss.org/browse/JBIDE[JBoss Tools JIRA] describing the bug or new feature.
+If you want to fix a bug or make any changes, please log an issue in the https://issues.redhat.com/browse/JBDS[Red Hat CodeReady Studio JIRA] or the https://issues.redhat.com/browse/JBIDE[JBoss Tools JIRA] describing the bug or new feature.
 
 After you are happy with your changes and a full build runs successfully, attach a patch to the JIRA.
 
