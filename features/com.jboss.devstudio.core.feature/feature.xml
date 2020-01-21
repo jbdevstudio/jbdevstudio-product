@@ -112,6 +112,8 @@
 	    <import feature="org.eclipse.mylyn.wikitext_feature"/>
 	    <import feature="org.eclipse.platform"/>
 	    <import feature="org.eclipse.rcp" />
+	    <import feature="org.eclipse.recommenders.rcp.feature"/>
+	    <import feature="org.eclipse.recommenders.snipmatch.rcp.feature"/>
 	    <import feature="org.eclipse.tm.terminal.connector.local.feature" version="4.0.0" match="greaterOrEqual"/>
 	    <import feature="org.eclipse.tm.terminal.connector.ssh.feature" version="4.0.0" match="greaterOrEqual"/>
 	    <import feature="org.eclipse.tm.terminal.connector.telnet.feature" version="4.0.0" match="greaterOrEqual"/>
