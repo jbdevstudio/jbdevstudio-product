@@ -41,7 +41,9 @@ $java.home = ${java.home}</echo>
         <xmlproperty file="../installer/target/p2content.xml" collapseAttributes="true"/>
         <propertyregex property="update.site.qualifier" defaultvalue="${units.unit.id}" input="${units.unit.id}" regexp=".devstudio" replace="" override="true" />
         <propertyregex property="update.site.qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="config.a.jre.javase," replace="" override="true" />
+        <propertyregex property="update.site.qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="config.a.jre," replace="" override="true" />
         <propertyregex property="update.site.qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="a.jre.javase," replace="" override="true" />
+        <propertyregex property="update.site.qualifier" defaultvalue="${update.site.qualifier}" input="${update.site.qualifier}" regexp="a.jre," replace="" override="true" />
       </then>
       <else>
         <if>
