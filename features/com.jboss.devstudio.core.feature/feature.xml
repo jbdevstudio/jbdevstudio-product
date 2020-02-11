@@ -180,6 +180,8 @@
 	    <import feature="org.jboss.tools.maven.sourcelookup.feature"/>
 	    <import feature="org.jboss.tools.maven.springboot.feature"/>
 	    
+	    <import feature="m2e.chromatic.feature"/>
+	    <import feature="net.mihai-nita.ansicon"/>
 	
 	    <!-- 
 	       The following plugin is required for completeness and usability of product only. 
