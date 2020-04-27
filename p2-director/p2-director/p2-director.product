@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Tweaked P2 Director application" uid="com.jboss.devstudio.core.p2.director.product" id="org.eclipse.equinox.p2.director.product" application="com.jboss.devstudio.core.p2.director" version="12.15.0.qualifier" useFeatures="false" includeLaunchers="false">
+<product name="Tweaked P2 Director application" uid="com.jboss.devstudio.core.p2.director.product" id="org.eclipse.equinox.p2.director.product" application="com.jboss.devstudio.core.p2.director" version="12.16.0.qualifier" useFeatures="false" includeLaunchers="false">
 
    <configIni use="default">
    </configIni>
