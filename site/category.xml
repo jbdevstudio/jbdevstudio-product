@@ -64,10 +64,6 @@
     <category name="WebTools" />
     <category name="MobileTools"/>
   </feature>
-  <feature id="org.eclipse.wst.jsdt.nodejs.feature">
-    <category name="WebTools" />
-    <category name="MobileTools"/>
-  </feature>
   <!-- not in devstudio yet 
   <feature id="org.jboss.tools.jst.angularjs.feature" >
     <category name="CoreTools" />
@@ -315,7 +311,7 @@
     <category name="CoreTools" />
     <category name="CloudContainerTools"/>
   </feature>
-  <bundle id="com.spotify.docker.client"/>
+  <bundle id="org.mandas.docker-client"/>
   <bundle id="org.eclipse.linuxtools.docker.core"/>
   <bundle id="org.eclipse.linuxtools.docker.ui"/>
   <bundle id="org.eclipse.linuxtools.docker.docs"/>
