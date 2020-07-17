@@ -2,7 +2,7 @@
 <feature 
     id="com.jboss.devstudio.fuse.feature" 
     label="%featureName" 
-    version="12.16.0.qualifier" 
+    version="12.17.0.qualifier" 
     provider-name="%providerName" 
     license-feature="org.jboss.tools.foundation.license.feature"
     license-feature-version="0.0.0">
