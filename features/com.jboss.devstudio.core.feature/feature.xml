@@ -190,8 +190,6 @@
 	       the sending and receiving of remote commands, the sending and receiving of remote files, 
 	       and support for the connector service.  
 	    -->
-	    <import plugin="org.yaml.snakeyaml" version="1.14.0" match="greaterOrEqual"/>
-	    <import plugin="org.dadacoalition.yedit" version="1.0.18" match="greaterOrEqual"/>
 	  
 	</requires>
  </feature>
