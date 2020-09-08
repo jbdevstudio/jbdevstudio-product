@@ -12,12 +12,6 @@
     <category name="WebTools" />
   </feature>
 
-  <!-- JBIDE-21377 -->
-  <bundle id="org.dadacoalition.yedit">
-    <category name="CoreTools" />
-  </bundle>
-  <bundle id="org.yaml.snakeyaml"/>
-
   <!-- JBDS-3898 JSON editor -->
   <feature id="org.eclipse.wst.json_core.feature">
     <category name="CoreTools" />
