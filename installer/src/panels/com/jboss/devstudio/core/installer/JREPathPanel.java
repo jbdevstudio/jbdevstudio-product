@@ -56,9 +56,9 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 	private static final String winTestFiles[];
 	private static final String linTestFiles[];
 	private static final String gnuVersion = "gij ";
-	// TODO support jre10/jdk10 when it comes out
+
 	// see also JREPathValidator.java
-	private static final int MIN_VERSION = 8;
+	private static final int MIN_VERSION = 11;
 	private static final int MAX_VERSION = 12;
 
 	JREPathValidator validator = new JREPathValidator();
