@@ -47,9 +47,8 @@ public class JREPathValidator {
 	private static final String EMPTY_STRING = "";
 	private static final String DEFAULT_JVM_LOCATION = EMPTY_STRING;
 	private static final String[] EMPTY_OUTPUT = new String[] {EMPTY_STRING,EMPTY_STRING};
-	// TODO support jre10/jdk10 when it comes out
 	// see also JREPathPanel.java
-	private static final int MIN_VERSION = 8;
+	private static final int MIN_VERSION = 11;
 	private static final int MAX_VERSION = 12;
 	private static final String EXE_EXT = ".exe";
 
