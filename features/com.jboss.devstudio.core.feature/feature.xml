@@ -36,6 +36,7 @@
   <includes id="org.jboss.ide.eclipse.as.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.batch.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.deltaspike.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.cdi.microprofile.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.cdi.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.central.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.common.jdt.feature" version="0.0.0"/>
