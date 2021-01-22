@@ -40,10 +40,6 @@
 				 <property
 							 name="aboutImage"
 							 value="about_devstudio.jpg"/>
-				 <property
-							 name="applicationXMI"
-							 value="org.eclipse.platform/LegacyIDE.e4xmi">
-			</property>
 			<property
 							 name="cssTheme"
 							 value="org.eclipse.e4.ui.css.theme.e4_default">
