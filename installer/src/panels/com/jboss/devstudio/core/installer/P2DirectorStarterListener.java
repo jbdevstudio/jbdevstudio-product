@@ -102,7 +102,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 
 			if (cmd.length() > 0) {
 				String result = rt.executeJava(parameters.get(0) + File.separator + "bin",
-						MessageFormat.format(cmd, parameters.toArray(new Object[parameters.size()])), listener);
+						parameters, listener);
 				Debug.trace(result);
 				if (rt.getErrCode() != 0) {
 					throw new ConsoleCommandException(rt.getErrCode(), result);

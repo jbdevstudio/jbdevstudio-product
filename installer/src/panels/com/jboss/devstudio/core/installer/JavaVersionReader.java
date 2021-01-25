@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import com.izforge.izpack.util.Debug;
@@ -85,12 +87,12 @@ public class JavaVersionReader {
 	 * @param request the command to execute
 	 * 
 	 */
-	private int executeRequest(String request) throws IOException {
+	private int executeRequest(String request, List<String> arguments) throws IOException {
 		fResponseText.setLength(0);
 		fErrorText.setLength(0);
 
 		// send request
-		open(request);
+		open(request, arguments);
 		CountDownLatch latch = new CountDownLatch(2);
 		new Thread(() -> readErrorLine(latch)).start();
 		new Thread(() -> readLine(latch)).start();
@@ -104,8 +106,8 @@ public class JavaVersionReader {
 		return errCode;
 	}
 
-  private void open(String request) throws IOException {
-    executable = Runtime.getRuntime().exec(request);
+  private void open(String request, List<String> arguments) throws IOException {
+    executable = Runtime.getRuntime().exec(request, arguments.toArray(new String[arguments.size()]));
 		inputStream = new BufferedReader(new InputStreamReader(executable.getInputStream()));
     errorStream = new BufferedReader(new InputStreamReader(executable.getErrorStream()));
   }
@@ -155,30 +157,28 @@ public class JavaVersionReader {
 		return inputStream.readLine();
 	}
 
-	public String getJavaVersion(String path) {
-		return executeJava(path, " -version");
+	public String executeJava(String path, List<String> args) {
+		return executeJava(path, args, true);
 	}
 
-	public String executeJava(String path, String command) {
-		return executeJava(path, command, true);
-	}
-
-	public String executeJava(String path, String command,boolean headless) {
+	public String executeJava(String path, List<String> args,boolean headless) {
 		String result = null;
+		List<String> arguments = new ArrayList<>();
 		try {
-			StringBuilder request = new StringBuilder();
-			request
-				.append("\"")
-				.append(path)
-				.append(File.separator)
-				.append(isUnixLikeSystem()?"java\" ":"javaw\" ")
-				.append(headless?"-Djava.awt.headless=true":"")
-				.append(SPACE)
-				.append(getSecurityProperties())
-				.append(SPACE)
-				.append(command);
-
-			executeRequest(request.toString());
+		  path = path + File.separator + (isUnixLikeSystem()?"java":"javaw");
+		  if (headless) {
+		    arguments.add("-Djava.awt.headless=true");
+		  }
+		  String manager = getSecurityPropertiesManager();
+		  if (manager.length() > 0) {
+		    arguments.add(manager);
+		  }
+      String policy = getSecurityPropertiesPolicy();
+      if (policy.length() > 0) {
+        arguments.add(policy);
+      }
+      arguments.addAll(args);
+			executeRequest(path, arguments);
 			result = getErrorText();
 		} catch (IOException e) {
 			Debug.trace(e);
@@ -190,20 +190,27 @@ public class JavaVersionReader {
 	}
 
 	
-	private Object getSecurityProperties() {
+	private String getSecurityPropertiesManager() {
 		StringBuilder sp = new StringBuilder();
 		String manager = System.getProperty(JAVA_SECURITY_MANAGER_SYSPROP);
-		String policy = System.getProperty(JAVA_SECURITY_POLICY_SYSPROP);
-		if(manager!=null && policy!=null) {
+		if(manager!=null) {
 			sp.append("-D").append(JAVA_SECURITY_MANAGER_SYSPROP).append(manager).append(SPACE);
-			sp.append("-D").append(JAVA_SECURITY_POLICY_SYSPROP).append("=\"").append(policy).append("\"");
 		}
 		return sp.toString();
 	}
 
-	public String executeJava(String path, String command, ResponseListener listener) {
+  private String getSecurityPropertiesPolicy() {
+    StringBuilder sp = new StringBuilder();
+    String policy = System.getProperty(JAVA_SECURITY_POLICY_SYSPROP);
+    if(policy!=null) {
+      sp.append("-D").append(JAVA_SECURITY_POLICY_SYSPROP).append("=\"").append(policy).append("\"");
+    }
+    return sp.toString();
+  }
+
+  public String executeJava(String path, List<String> args, ResponseListener listener) {
 		this.responseListener = listener;
-		return executeJava(path, command);
+		return executeJava(path, args);
 	}
 	
 	public interface ResponseListener {
