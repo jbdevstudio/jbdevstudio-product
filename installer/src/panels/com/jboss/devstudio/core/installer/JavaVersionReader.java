@@ -66,7 +66,9 @@ public class JavaVersionReader {
 				// Ignore I/O Exception on close
 			}
 		}
-		executable.destroy();
+		if (executable != null) {
+		  executable.destroy();
+		}
 	}
 
 	public String getOutputText() {
