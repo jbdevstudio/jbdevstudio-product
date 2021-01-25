@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: com.jboss.devstudio.core.project.examples;singleton:=true
-Bundle-Version: 12.18.0.qualifier
+Bundle-Version: 12.19.0.qualifier
 Bundle-Localization: plugin
 Bundle-Vendor: %Bundle-Vendor
 Require-Bundle: org.jboss.tools.project.examples

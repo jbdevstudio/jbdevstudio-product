@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name.0
 Bundle-SymbolicName: com.jboss.devstudio.core;singleton:=true
-Bundle-Version: 12.18.0.qualifier
+Bundle-Version: 12.19.0.qualifier
 Bundle-Activator: com.jboss.devstudio.core.Activator
 Bundle-Vendor: %Bundle-Vendor.0
 Bundle-Localization: plugin
@@ -14,7 +14,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.intro.universal,
  org.eclipse.help,
  org.eclipse.ui.cheatsheets,
- org.jboss.tools.central
+ org.jboss.tools.central,
+ org.eclipse.platform;bundle-version="4.17.0"
 Eclipse-LazyStart: true
 Bundle-ClassPath: devstudio-product.jar
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
