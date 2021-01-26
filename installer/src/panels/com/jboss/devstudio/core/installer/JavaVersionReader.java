@@ -12,7 +12,6 @@ import java.util.concurrent.CountDownLatch;
 import com.izforge.izpack.util.Debug;
 
 public class JavaVersionReader {
-	private static final String SPACE = " ";
 	private static final String JAVA_SECURITY_POLICY_SYSPROP = "java.security.policy";
 	private static final String JAVA_SECURITY_MANAGER_SYSPROP = "java.security.manager";
 
@@ -107,7 +106,10 @@ public class JavaVersionReader {
 	}
 
   private void open(String request, List<String> arguments) throws IOException {
-    executable = Runtime.getRuntime().exec(request, arguments.toArray(new String[arguments.size()]));
+    List<String> args = new ArrayList<>();
+    args.add(request);
+    args.addAll(arguments);
+    executable = new ProcessBuilder(args).start();
 		inputStream = new BufferedReader(new InputStreamReader(executable.getInputStream()));
     errorStream = new BufferedReader(new InputStreamReader(executable.getErrorStream()));
   }
@@ -169,11 +171,11 @@ public class JavaVersionReader {
 		  if (headless) {
 		    arguments.add("-Djava.awt.headless=true");
 		  }
-		  String manager = getSecurityPropertiesManager();
+		  String manager = getSecurityProperties(true);
 		  if (manager.length() > 0) {
 		    arguments.add(manager);
 		  }
-      String policy = getSecurityPropertiesPolicy();
+      String policy = getSecurityProperties(false);
       if (policy.length() > 0) {
         arguments.add(policy);
       }
@@ -189,24 +191,19 @@ public class JavaVersionReader {
 		return result;
 	}
 
-	
-	private String getSecurityPropertiesManager() {
+	private String getSecurityProperties(boolean forManager) {
 		StringBuilder sp = new StringBuilder();
+    String policy = System.getProperty(JAVA_SECURITY_POLICY_SYSPROP);
 		String manager = System.getProperty(JAVA_SECURITY_MANAGER_SYSPROP);
-		if(manager!=null) {
-			sp.append("-D").append(JAVA_SECURITY_MANAGER_SYSPROP).append(manager).append(SPACE);
+		if(manager!=null && !manager.isBlank() && policy != null && !policy.isBlank()) {
+		  if (forManager) {
+		    sp.append("-D").append(JAVA_SECURITY_MANAGER_SYSPROP).append('=').append(manager);
+		  } else {
+	      sp.append("-D").append(JAVA_SECURITY_POLICY_SYSPROP).append("=\"").append(policy).append("\"");
+		  }
 		}
 		return sp.toString();
 	}
-
-  private String getSecurityPropertiesPolicy() {
-    StringBuilder sp = new StringBuilder();
-    String policy = System.getProperty(JAVA_SECURITY_POLICY_SYSPROP);
-    if(policy!=null) {
-      sp.append("-D").append(JAVA_SECURITY_POLICY_SYSPROP).append("=\"").append(policy).append("\"");
-    }
-    return sp.toString();
-  }
 
   public String executeJava(String path, List<String> args, ResponseListener listener) {
 		this.responseListener = listener;
