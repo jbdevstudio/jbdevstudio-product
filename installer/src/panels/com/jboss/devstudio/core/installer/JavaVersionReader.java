@@ -100,7 +100,9 @@ public class JavaVersionReader {
     } catch (InterruptedException e) {
       throw new IOException(e);
     }
-		errCode = executable.exitValue();
+		try {
+      errCode = executable.waitFor();
+    } catch (InterruptedException e) {}
 		
 		return errCode;
 	}
