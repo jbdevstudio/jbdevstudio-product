@@ -7,8 +7,10 @@ import java.net.URL;
 import java.net.URLDecoder;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import com.izforge.izpack.Pack;
 import com.izforge.izpack.PackFile;
@@ -91,7 +93,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 	public static class BaseConsoleCommand implements ConsoleCommand, ResponseListener {
 		protected static final String EOL = System.getProperty("line.separator");
 		private final JavaVersionReader rt = new JavaVersionReader();
-		protected String cmd = "";
+		protected List<String> cmd = new ArrayList<>();
 		private List<String> parameters = new ArrayList<String>();
 
 		public void execute() throws ConsoleCommandException {
@@ -100,9 +102,10 @@ public class P2DirectorStarterListener implements InstallerListener {
 
 		public void execute(ResponseListener listener) throws ConsoleCommandException {
 
-			if (cmd.length() > 0) {
+			if (!cmd.isEmpty()) {
+			  List<String> arguments = cmd.stream().map(cmd -> MessageFormat.format(cmd, parameters.toArray())).collect(Collectors.toList());
 				String result = rt.executeJava(parameters.get(0) + File.separator + "bin",
-						MessageFormat.format(cmd, parameters.toArray(new Object[parameters.size()])), listener);
+						arguments, listener);
 				Debug.trace(result);
 				if (rt.getErrCode() != 0) {
 					throw new ConsoleCommandException(rt.getErrCode(), result);
@@ -148,7 +151,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 		
 		private List<String> bundles = new ArrayList<String>(256);
 		public BundleListConsoleCommand() {
-			cmd="-jar \"{1}\" -l -r " + URL_SURROUND_CHAR + "{2}" + URL_SURROUND_CHAR + " -d \"{3}" + File.separator + DEVSTUDIO_LOCATION + "\" ";
+			cmd=Arrays.asList("-jar", "{1}",  "-l",  "-r",  "{2}", "-d",  "{3}" + File.separator + DEVSTUDIO_LOCATION);
 		}
 
 		@Override
@@ -172,20 +175,13 @@ public class P2DirectorStarterListener implements InstallerListener {
 		int DOWNLOADING_WEIGHT = 5;
 		int CONFI_INSTALL_WEIGHT = 1;
 		public FeatureInstallConsoleCommand(AutomatedInstallData installerData) {
-			cmd="-jar \"{1}\" " +
-					"-roaming " +
-					"-vm \"{0}\" " +
-					"-r " +
-					URL_SURROUND_CHAR + "{2}" + URL_SURROUND_CHAR + " " +
-					"-d \"{3}" + File.separator + DEVSTUDIO_LOCATION + "\" " +
-					"-p devstudio " +
-					"-i {4} " +
-					"-profileProperties org.eclipse.update.install.features=true";
+			cmd=Arrays.asList("-jar", "{1}", "-roaming", "-vm", "{0}", "-r", "{2}", "-d", "{3}" + File.separator + DEVSTUDIO_LOCATION,
+			    "-p", "devstudio", "-i",  "{4}", "-profileProperties", "org.eclipse.update.install.features=true");
 			if(OsVersion.IS_OSX && installerData.getVariable(JREPathPanel.DATA_MODEL_VAR)!=null) {
 				// this is required to force director to install selected architecture
 				// devstudio.ini file doesn't need this -d32 or -d64 because in some way 
 				// mac always select right architecture for studio
-				cmd = cmd + " -vmargs -d" + installerData.getVariable(JREPathPanel.DATA_MODEL_VAR);
+				cmd.addAll(Arrays.asList("-vmargs", "-d", installerData.getVariable(JREPathPanel.DATA_MODEL_VAR)));
 			}
 		}
 
@@ -211,7 +207,7 @@ public class P2DirectorStarterListener implements InstallerListener {
 	public static class MetadataGenerationConsoleCommand extends BaseConsoleCommand {
 		int counter = 0;
 		public MetadataGenerationConsoleCommand() {
-			cmd="-jar \"{1}\" -vm \"{0}\" -application com.jboss.devstudio.core.EclipseGenerator -noSplash -clean";
+			cmd=Arrays.asList("-jar",  "{1}",  "-vm",  "{0}",  "-application",  "com.jboss.devstudio.core.EclipseGenerator", "-noSplash",  "-clean");
 		}
 	}
 	
