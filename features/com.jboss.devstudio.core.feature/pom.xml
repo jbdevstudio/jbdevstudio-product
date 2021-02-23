@@ -10,4 +10,16 @@
 	<groupId>com.jboss.devstudio.core.features</groupId>
 	<artifactId>com.jboss.devstudio.core.feature</artifactId>
 	<packaging>eclipse-feature</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
