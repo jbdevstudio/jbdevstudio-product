@@ -59,6 +59,7 @@
   <includes id="org.jboss.tools.ws.jaxrs.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.ws.jaxws.feature" version="0.0.0"/>
   <includes id="org.jboss.tools.wtp.runtimes.tomcat.feature" version="0.0.0"/>
+  <includes id="org.jboss.tools.common.oauth.feature" version="0.0.0"/>
   
    <requires>
 	    <import feature="org.eclipse.cvs"/>
