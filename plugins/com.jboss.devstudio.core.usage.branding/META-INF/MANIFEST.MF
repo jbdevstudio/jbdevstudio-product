@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %BundleName
 Bundle-SymbolicName: com.jboss.devstudio.core.usage.branding
-Bundle-Version: 12.19.1.qualifier
+Bundle-Version: 12.21.0.qualifier
 Bundle-Localization: plugin
 Bundle-Vendor: %BundleVendor
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
