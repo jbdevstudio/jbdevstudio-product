@@ -114,7 +114,7 @@
 										</goals>
 										<phase>generate-resources</phase>
 										<configuration>
-			 <skip>false</skip>
+											<skip>false</skip>
 												<artifactItems>
 														<artifactItem>
 																<groupId>com.google.code.gson</groupId>
@@ -249,39 +249,24 @@
 					</executions>
 					<dependencies>
 						<dependency>
-							<groupId>ant</groupId>
-							<artifactId>ant-optional</artifactId>
-							<version>1.5.3-1</version>
-						</dependency>
-						<dependency>
 							<groupId>commons-net</groupId>
 							<artifactId>commons-net</artifactId>
-							<version>1.4.1</version>
+							<version>3.8.0</version>
 						</dependency>
 						<dependency>
 							<groupId>org.apache.ant</groupId>
 							<artifactId>ant</artifactId>
-							<version>1.7.1</version>
-						</dependency>
-						<dependency>
-							<groupId>org.apache.ant</groupId>
-							<artifactId>ant-nodeps</artifactId>
-							<version>1.7.1</version>
-						</dependency>
-						<dependency>
-							<groupId>org.apache.ant</groupId>
-							<artifactId>ant-trax</artifactId>
-							<version>1.7.1</version>
+							<version>${antVersion}</version>
 						</dependency>
 						<dependency>
 							<groupId>org.apache.ant</groupId>
 							<artifactId>ant-commons-net</artifactId>
-							<version>1.7.1</version>
+							<version>${antVersion}</version>
 						</dependency>
 						<dependency>
 							<groupId>org.apache.ant</groupId>
 							<artifactId>ant-apache-regexp</artifactId>
-							<version>1.7.1</version>
+							<version>${antVersion}</version>
 						</dependency>
 						<dependency>
 							<groupId>ant-contrib</groupId>
