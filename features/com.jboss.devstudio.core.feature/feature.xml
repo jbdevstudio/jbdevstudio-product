@@ -184,6 +184,9 @@
 	    <import feature="m2e.chromatic.feature"/>
 	    <import feature="net.mihai-nita.ansicon"/>
 	    
+	    <import feature="org.eclipse.jdt.java17patch"/>
+	    <import feature="org.eclipse.pde.java17patch"/>
+	
 	    <!-- 
 	       The following plugin is required for completeness and usability of product only. 
 	       We have no compilation requirements against them, nor any critical outstanding bugs
