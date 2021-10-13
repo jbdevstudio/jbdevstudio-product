@@ -159,25 +159,6 @@
 							<includePackedArtifacts>false</includePackedArtifacts>
 						</configuration>
 					</plugin>
-					<!-- first we normalize -->
-					<plugin>
-						<groupId>org.eclipse.tycho.extras</groupId>
-						<artifactId>tycho-pack200a-plugin</artifactId>
-						<version>${tychoExtrasVersion}</version>
-						<executions>
-							<execution>
-								<id>pack200-normalize</id>
-								<goals>
-									<goal>normalize</goal>
-								</goals>
-								<phase>package</phase>
-		<configuration>
-				<skip>true</skip>
-		</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- then we sign -->
 					<plugin>
 						<artifactId>exec-maven-plugin</artifactId>
 						<groupId>org.codehaus.mojo</groupId>
@@ -199,24 +180,6 @@
 							</execution>
 						</executions>
 					</plugin>
-					<!-- then we pack -->
-					<plugin>
-						<groupId>org.eclipse.tycho.extras</groupId>
-						<artifactId>tycho-pack200b-plugin</artifactId>
-						<version>${tychoExtrasVersion}</version>
-						<executions>
-							<execution>
-								<id>pack200-pack</id>
-								<goals>
-									<goal>pack</goal>
-								</goals>
-								<phase>package</phase>
-								<configuration>
-									<skip>true</skip>
-								</configuration>
-							</execution>
-						</executions>
-				</plugin>
 				<plugin>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>${maven.antrun.plugin.version}</version>
