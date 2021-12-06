@@ -49,7 +49,7 @@ public class JREPathValidator {
 	private static final String[] EMPTY_OUTPUT = new String[] {EMPTY_STRING,EMPTY_STRING};
 	// see also JREPathPanel.java
 	private static final int MIN_VERSION = 11;
-	private static final int MAX_VERSION = 12;
+	private static final int MAX_VERSION = 17;
 	private static final String EXE_EXT = ".exe";
 
 	static final String JAVA_APPLET_PLUGIN = "JavaAppletPlugin.plugin";

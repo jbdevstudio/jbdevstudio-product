@@ -59,7 +59,7 @@ public class JREPathPanel extends PathInputPanel implements IChangeListener {
 
 	// see also JREPathValidator.java
 	private static final int MIN_VERSION = 11;
-	private static final int MAX_VERSION = 12;
+	private static final int MAX_VERSION = 17;
 
 	JREPathValidator validator = new JREPathValidator();
 
