@@ -80,7 +80,6 @@
 				<version>${tychoVersion}</version>
 				<configuration>
 					<includeAllDependencies>true</includeAllDependencies>
-					<includePackedArtifacts>false</includePackedArtifacts>
 				</configuration>
 			</plugin>
 			<plugin>
