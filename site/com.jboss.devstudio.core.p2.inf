@@ -13,13 +13,9 @@ units.1.requires.1.name=com.jboss.devstudio.core.package
 units.1.requires.1.range=[$version$,$version$]
 units.1.requires.1.greedy=true
 
-instructions.unconfigure=\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-product);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:com.jboss.devstudio.core.product);\
+instructions.configure=\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-application);\
+org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:org.eclipse.ui.ide.workbench);\
 org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:-showsplash);\
-org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:platform${#58}/base/plugins/com.jboss.devstudio.core);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:-application);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:org.eclipse.ui.ide.workbench);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:-showsplash);\
-org.eclipse.equinox.p2.touchpoint.eclipse.addProgramArg(programArg:org.eclipse.platform);
+org.eclipse.equinox.p2.touchpoint.eclipse.removeProgramArg(programArg:org.eclipse.platform);
 
