@@ -1,0 +1,46 @@
+<project default="fix" name="log4j 1.2.X fix for CVEs">
+	<taskdef resource="org/apache/ant/compress/antlib.xml" classpath="${plugin_classpath}"/>
+	
+	<property name="log4j.version" value="${log4j.version}" />
+	<property name="log4j.path" value="${basedir}/target/repository-nopackgz/plugins/org.apache.log4j_${log4j.version}.jar" />
+	<property name="log4j.path.new" value="${java.io.tmpdir}/log4j_${log4j.version}.new.jar" />
+	<property name="artifacts.path.new" value="${java.io.tmpdir}/artifacts.new.jar/" />
+	<property name="artifacts.jar.path" value="${basedir}/target/repository-nopackgz/artifacts.jar" />
+	<property name="artifacts.xz.path" value="${basedir}/target/repository-nopackgz/artifacts.xml.xz" />
+
+	<target name="fix">
+		<echo>Removing files from Log4j bundle archive...</echo>
+		<jar destfile="${log4j.path.new}" manifest="log4jManifest.MF">
+			<zipfileset src="${log4j.path}" excludes="org/apache/log4j/net/JMSSink.class, org/apache/log4j/jdbc/JDBCAppender.class, org/apache/log4j/chainsaw/*, META-INF/*" />
+		</jar>
+		<delete file="${log4j.path}" />
+		<move file="${log4j.path.new}" tofile="${log4j.path}" />
+		
+		<echo>Removing Signature from repository...</echo>
+		<unzip src="${artifacts.jar.path}" dest="${artifacts.path.new}"/>
+		<delete file="${artifacts.jar.path}" />
+		<delete file="${artifacts.xz.path}" />
+
+		<replace file="${artifacts.path.new}/artifacts.xml" failOnNoReplacements="true">
+			<replacetoken><![CDATA[<artifact classifier='osgi.bundle' id='org.apache.log4j' version='1.2.15.v201012070815'>
+      <properties size='5'>
+        <property name='download.size' value='429018'/>
+        <property name='artifact.size' value='429018'/>
+        <property name='download.md5' value='fd1612de2f5d365b0591c87bfb350ffb'/>
+        <property name='download.checksum.md5' value='fd1612de2f5d365b0591c87bfb350ffb'/>
+        <property name='download.checksum.sha-256' value='92fa108877e4e63688d83de76b6c2d43ffd9c86a0b82465715be4d0680f690bd'/>
+      </properties>]]></replacetoken>
+				<replacevalue><![CDATA[<artifact classifier='osgi.bundle' id='org.apache.log4j' version='1.2.15.v201012070815'>
+      <properties size='2'>
+        <property name='download.size' value='429018'/>
+        <property name='artifact.size' value='429018'/>
+      </properties>]]></replacevalue>
+			</replace>
+		<zip destfile="${artifacts.jar.path}">
+			<fileset dir="${artifacts.path.new}"/>
+		</zip>
+		<xz src="${artifacts.path.new}/artifacts.xml" destfile="${artifacts.xz.path}"/>
+
+		<echo>Done.</echo>
+	</target>
+</project>

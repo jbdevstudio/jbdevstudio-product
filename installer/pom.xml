@@ -11,6 +11,7 @@
 	<packaging>eclipse-repository</packaging>
 	<properties>
 		<IzPackVersion>4.3.5</IzPackVersion>
+		<log4j.version>1.2.15.v201012070815</log4j.version>
 	</properties>
 
 	<!-- to debug installer installation process, run like this:
@@ -180,15 +181,30 @@
 						</executions>
 					</plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>${maven.antrun.plugin.version}</version>
 					<executions>
+						<execution>
+							<id>fix_log4j_cve</id>
+							<phase>package</phase>
+							<configuration>
+								<target>
+									<property name="log4j.version" value="${log4j.version}"/>
+									<property name="plugin_classpath" refid="maven.plugin.classpath"/>
+									<ant antfile="fix_log4j_cve.xml" target="fix"/>
+								</target>
+							</configuration>
+							<goals>
+								<goal>run</goal>
+							</goals>
+						</execution>
 						<execution>
 							<id>install</id>
 							<phase>package</phase>
 							<configuration>
 								<quiet>true</quiet>
-								<tasks>
+								<target>
 									<ant antfile="build.xml">
 										<property name="basedir" value="${basedir}" />
 										<property name="project.build.directory" value="${project.build.directory}" />
@@ -202,7 +218,7 @@
 										<property name="project.version" value="${project.version}" />
 										<property name="BUILD_ALIAS" value="${BUILD_ALIAS}"/>
 									</ant>
-								</tasks>
+								</target>
 							</configuration>
 							<goals>
 								<goal>run</goal>
@@ -234,6 +250,11 @@
 							<groupId>ant-contrib</groupId>
 							<artifactId>ant-contrib</artifactId>
 							<version>1.0b3</version>
+						</dependency>
+						<dependency>
+							<groupId>org.apache.ant</groupId>
+							<artifactId>ant-compress</artifactId>
+							<version>1.5</version>
 						</dependency>
 					</dependencies>
 				</plugin>

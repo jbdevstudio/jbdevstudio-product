@@ -29,15 +29,11 @@
     <!-- JBDS-2805 used in results/pom.xml to provide link to Central zip -->
     <JBOSS_CENTRAL_ZIP>https://devstudio.redhat.com/${devstudioReleaseVersion}/snapshots/builds/jbosstools-build-sites.aggregate.central-site_${stream_jbt}/latest/all/repository.zip</JBOSS_CENTRAL_ZIP>
 
-    <!-- stream_jbt is set in parent pom = 4.4.neon / master -->
-    <!-- <stream_jbt>master</stream_jbt> -->
-    <jbosstools-site>http://download.jboss.org/jbosstools/${eclipseReleaseName}/snapshots/updates/core/${stream_jbt}/</jbosstools-site>
-    <!-- <jbosstools-target-site>http://download.jboss.org/jbosstools/targetplatforms/jbdevstudiotarget/4.40.0.CR1-SNAPSHOT/REPO/</jbosstools-target-site> -->
+    <jbosstools-site>https://download.jboss.org/jbosstools/${eclipseReleaseName}/snapshots/updates/core/${stream_jbt}/</jbosstools-site>
     <stagingBaselineRepository>https://devstudio.redhat.com/12/staging/updates/</stagingBaselineRepository>
 
     <devstudio.version>${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}</devstudio.version>
     <p2StatsUrl>https://devstudio.redhat.com/usage/installs/local/${project.version}/${BUILD_ALIAS}/${buildQualifier}/</p2StatsUrl>
-    <!-- inherit from JBT parent pom <tychoVersion>0.23.1</tychoVersion> -->
     <antVersion>1.10.9</antVersion>
   </properties>
 
