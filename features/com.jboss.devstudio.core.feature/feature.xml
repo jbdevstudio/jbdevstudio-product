@@ -62,7 +62,6 @@
   <includes id="org.jboss.tools.common.oauth.feature" version="0.0.0"/>
   
    <requires>
-	    <import feature="org.eclipse.cvs"/>
 	    <import feature="org.eclipse.egit"/>
 	    <import feature="org.eclipse.equinox.p2.core.feature"/>
 	    <import feature="org.eclipse.datatools.common.doc.user"/>
