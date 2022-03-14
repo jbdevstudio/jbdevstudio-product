@@ -11,7 +11,6 @@
 	<packaging>eclipse-repository</packaging>
 	<properties>
 		<IzPackVersion>4.3.5</IzPackVersion>
-		<log4j.version>1.2.15.v201012070815</log4j.version>
 	</properties>
 
 	<!-- to debug installer installation process, run like this:
@@ -185,20 +184,6 @@
 					<artifactId>maven-antrun-plugin</artifactId>
 					<version>${maven.antrun.plugin.version}</version>
 					<executions>
-						<execution>
-							<id>fix_log4j_cve</id>
-							<phase>package</phase>
-							<configuration>
-								<target>
-									<property name="log4j.version" value="${log4j.version}"/>
-									<property name="plugin_classpath" refid="maven.plugin.classpath"/>
-									<ant antfile="fix_log4j_cve.xml" target="fix"/>
-								</target>
-							</configuration>
-							<goals>
-								<goal>run</goal>
-							</goals>
-						</execution>
 						<execution>
 							<id>install</id>
 							<phase>package</phase>

@@ -12,7 +12,6 @@
 	<packaging>eclipse-repository</packaging>
 
 	<properties>
-		<log4j.version>1.2.15.v201012070815</log4j.version>
 		<update.site.name>Red Hat CodeReady Studio</update.site.name>
 		<update.site.description>Snapshot Build</update.site.description>
 		<siteTemplateFolder>siteTemplateFolder</siteTemplateFolder>
@@ -171,9 +170,6 @@
 							<quiet>true</quiet>
 							<tasks>
 								<echo>Replace zip: ${project.build.directory}/${project.artifactId}-${project.version}.zip</echo>
-								<property name="log4j.version" value="${log4j.version}"/>
-									<property name="plugin_classpath" refid="maven.plugin.classpath"/>
-									<ant antfile="fix_log4j_cve.xml" target="fix"/>
 								<!-- TODO in future release?: use devstudio-${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}.${BUILD_ALIAS}-updatesite-core.zip -->
 								<mkdir dir="${project.build.directory}/repository/web"/>
 								<zip destfile="${project.build.directory}/${project.artifactId}-${project.version}.zip" whenempty="fail">
@@ -187,13 +183,6 @@
 						</configuration>
 					</execution>
 				</executions>
-				<dependencies>
-				<dependency>
-            <groupId>org.apache.ant</groupId>
-            <artifactId>ant-compress</artifactId>
-            <version>1.5</version>
-        </dependency>
-					</dependencies>
 			</plugin>
 
 			<plugin>
